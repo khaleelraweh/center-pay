@@ -17,24 +17,34 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Factory::create();
+        // $faker = Factory::create();
+        $faker = Factory::create('ar_JO');
+     
 
         //this will return all product categories id where it is submain categories 
         $categories = ProductCategory::whereNotNull('parent_id')->pluck('id');
 
-        for( $i = 1; $i <= 1000; $i++ ){
+        for( $i = 1; $i <= 200; $i++ ){
             //انشاء مصفوفة لتخزين الف منتج فيها لاضافتها الي قاعدة البيانات
+
             $products [] = [
-                'name'                => $faker->sentence(2,true),
-                'slug'                => $faker->unique()->slug(2,true),
-                'description'         => $faker->paragraph,
-                'price'               => $faker->numberBetween(5,200),
-                'quantity'            => $faker->numberBetween(10,100),
-                'product_category_id' => $categories->random(),
-                'featured'            => rand(0,1),
-                'status'              => true,
-                'created_at'          =>now(),
-                'updated_at'          =>now(),
+                'name'          =>  $faker->realTextBetween(10,12),
+                'slug'          =>  $faker->unique()->slug(2,3),
+                'description'   =>  $faker->realText(50),
+                'quantity'      =>  $faker->numberBetween(10,100),
+                'price'         =>  $faker->numberBetween(5,200),
+                'offer_price'   => $faker->numberBetween(5,100),
+                'offer-ends'    =>  $faker->dateTime(),
+                'sku'           =>  $faker->realText(10),
+                'max-order'     =>  $faker->numberBetween(5,10),
+                'featured'      => rand(0,1),
+                'status'        => true,
+                'product_category_id'   =>  $categories->random(),
+                'published_on'          => $faker->dateTime(),
+                'created_by'            =>  $faker->realTextBetween(10,20),
+                'created_at'            =>now(),
+                'updated_at'            =>now(),
+                
             ];
         }
 

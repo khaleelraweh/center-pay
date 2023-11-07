@@ -18,11 +18,17 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug')->unique();
             $table->text('description')->nullable();
-            $table->double('price');
             $table->unsignedBigInteger('quantity')->default(false);
-            $table->foreignId('product_category_id')->constrained()->cascadeOnDelete();
+            $table->double('price');
+            $table->double('offer_price')->default(0.0);
+            $table->dateTime('offer-ends')->nullable();
+            $table->string('sku')->nullable();
+            $table->unsignedBigInteger('max-order')->default(false);
             $table->boolean('featured')->default(false);
             $table->boolean('status')->default(false);
+            $table->foreignId('product_category_id')->constrained()->cascadeOnDelete();
+            $table->dateTime('published_on')->nullable();
+            $table->string('created_by')->nullable();
             $table->timestamps();
         });
     }
