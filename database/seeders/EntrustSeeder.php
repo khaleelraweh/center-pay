@@ -148,7 +148,7 @@ class EntrustSeeder extends Seeder
 
 
          //Products 
-         $manageProducts = Permission::create(['name' => 'manage_products', 'display_name' => 'المنتجات' , 'route' => 'products' , 'module' => 'products' , 'as' => 'products.index' , 'icon' => 'fas fa-file-archive' , 'parent' => '0' , 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '15',] );
+         $manageProducts = Permission::create(['name' => 'manage_products', 'display_name' => 'المنتجات' , 'route' => 'products' , 'module' => 'products' , 'as' => 'products.index' , 'icon' => 'fas fa-file-archive' , 'parent' => '0' , 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '10',] );
          $manageProducts->parent_show = $manageProducts->id; $manageProducts->save();
          $showProducts    =  Permission::create(['name' => 'show_products'    ,  'display_name' => 'عرض المنتجات'       , 'route' => 'products' , 'module' => 'products' , 'as' => 'products.index'    , 'icon' => 'fas fa-file-archive'  , 'parent' => $manageProducts->id , 'parent_original' => $manageProducts->id ,'parent_show' => $manageProducts->id , 'sidebar_link' => '1' , 'appear' => '1'] );
          $createProducts  =  Permission::create(['name' => 'create_products'  , 'display_name'  => 'إضافة منتج جديد' , 'route' => 'products' , 'module' => 'products' , 'as' => 'products.create'   , 'icon' => null           , 'parent' => $manageProducts->id , 'parent_original' => $manageProducts->id ,'parent_show' => $manageProducts->id , 'sidebar_link' => '1' , 'appear' => '0'] );
@@ -157,6 +157,15 @@ class EntrustSeeder extends Seeder
          $deleteProducts  =  Permission::create(['name' => 'delete_products'  , 'display_name'  => 'حذف منتج' , 'route' => 'products' , 'module' => 'products' , 'as' => 'products.destroy'  , 'icon' => null           , 'parent' => $manageProducts->id , 'parent_original' => $manageProducts->id ,'parent_show' => $manageProducts->id , 'sidebar_link' => '0' , 'appear' => '0'] );
  
 
+        //sliders
+        $manageSliders = Permission::create(['name' => 'manage_sliders', 'display_name' => 'إدارة عارض الشرائح' , 'route' => 'sliders' , 'module' => 'sliders' , 'as' => 'sliders.index' , 'icon' => 'fas fa-sliders-h' , 'parent' => '0' , 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '20',] );
+        $manageSliders->parent_show = $manageSliders->id; $manageSliders->save();
+
+        $showProductCategories    =  Permission::create(['name' => 'show_sliders'    , 'display_name' => 'عارض الشرائح الرئيسي'     , 'route' => 'sliders' , 'module' => 'sliders' , 'as' => 'sliders.index'    , 'icon' => 'fas  fa-sliders-h' , 'parent' => $manageSliders->id , 'parent_original' => $manageSliders->id ,'parent_show' => $manageSliders->id , 'sidebar_link' => '1' , 'appear' => '1'] );
+        $createProductCategories  =  Permission::create(['name' => 'create_sliders'  , 'display_name'  => 'إضافة شريحة جديد'        , 'route' => 'sliders' , 'module' => 'sliders' , 'as' => 'sliders.create'   , 'icon' => null                  , 'parent' => $manageSliders->id , 'parent_original' => $manageSliders->id ,'parent_show' => $manageSliders->id , 'sidebar_link' => '0' , 'appear' => '0'] );
+        $displayProductCategories =  Permission::create(['name' => 'display_sliders' , 'display_name'  => 'عرض الشريحة'             ,  'route' => 'sliders' , 'module' => 'sliders' , 'as' => 'sliders.show'     , 'icon' => null                  , 'parent' => $manageSliders->id , 'parent_original' => $manageSliders->id ,'parent_show' => $manageSliders->id , 'sidebar_link' => '0' , 'appear' => '0'] );
+        $updateProductCategories  =  Permission::create(['name' => 'update_sliders'  , 'display_name'  => 'تعديل الشريحة'           ,  'route' => 'sliders' , 'module' => 'sliders' , 'as' => 'sliders.edit'     , 'icon' => null                  , 'parent' => $manageSliders->id , 'parent_original' => $manageSliders->id ,'parent_show' => $manageSliders->id , 'sidebar_link' => '0' , 'appear' => '0'] );
+        $deleteProductCategories  =  Permission::create(['name' => 'delete_sliders'  , 'display_name'  => 'حذف الشريحة'             ,  'route' => 'sliders' , 'module' => 'sliders' , 'as' => 'sliders.destroy'  , 'icon' => null                  , 'parent' => $manageSliders->id , 'parent_original' => $manageSliders->id ,'parent_show' => $manageSliders->id , 'sidebar_link' => '0' , 'appear' => '0'] );
 
         
     }
