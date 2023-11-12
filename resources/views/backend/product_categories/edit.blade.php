@@ -9,6 +9,15 @@
         .picker__select--month,.picker__select--year{
             padding: 0 !important;
         }
+        .picker__list{
+            list-style-type: none;
+        }
+        .x-title{
+            border-bottom: 2px solid #E6E9ED;
+            padding: 1px 5px 6px;
+            margin-bottom: 10px;
+        }
+        .require.red{color:red;}
     </style>
 @endsection
 
@@ -18,14 +27,14 @@
     <div class="card shadow mb-4">
 
         {{-- menu part  --}}
-        <div class="card-header py-3 d-flex">
-            <h6 class="m-0 font-weight-bold text-primary">ُEdit Category {{$productCategory->name}}</h6>
+        <div class="card-header py-3 d-flex justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">تعديل محتوي {{$productCategory->name}}</h6>
             <div class="ml-auto">
                 <a href="{{route('admin.product_categories.index')}}" class="btn btn-primary">
                     <span class="icon text-white-50">
                         <i class="fa fa-home"></i>
                     </span>
-                    <span class="text">Categories</span>
+                    <span class="text">الاصناف</span>
                 </a>
             </div>
         </div>
@@ -207,6 +216,7 @@
 
     <script src="{{asset('backend/vendor/datepicker/picker.js')}}"></script>
     <script src="{{asset('backend/vendor/datepicker/picker.date.js')}}"></script>
+    <script src="{{asset('backend/vendor/datepicker/picker.time.js')}}"></script>
     <script>
         $(function(){
 
@@ -261,25 +271,12 @@
                 if(selected_ci_date != null){
                     var cidate = new Date(selected_ci_date); // make cidate(start date ) = current date you selected in selected ci date (selected start date )
                     min_codate = "";
-                    min_codate = new Date();
-                    min_codate.setDate(cidate.getDate()+1); // minimum selected date to be expired shoud be current date plus one 
-                    enddate.set('min',min_codate);
                 }
-
             });
-
-          
 
             $('#publish_time').pickatime({
-                format: 'H:M',
-                min: new Time(),
-                selectHours: true, // Creates a dropdoen to control month
-                selectMunites: true, // Creates a dropdown to control month 
-                clear: 'Clear',
-                close: 'OK',
-                colseOnSelect: true // Close upon selecting a date ,
+                clear: ''
             });
-
 
 
             $('.summernote').summernote({
@@ -295,8 +292,6 @@
                     ['view',['fullscreen','codeview','help']]
                 ]
             });
-
-           
 
 
         });

@@ -156,7 +156,7 @@
                                 </div>
                             </div>
 
-                            {{-- تاريخ النشر --}}
+                            {{-- وقت النشر --}}
                             <div class="row pt-4">
                                 <label for="publish_time" class="control-label col-md-3 col-sm-12 ">
                                      <span>وقت النشر</span>
