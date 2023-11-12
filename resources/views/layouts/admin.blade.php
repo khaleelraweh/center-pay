@@ -8,6 +8,7 @@
     <meta name="robots" content="all,follow">
     <meta name="author" content="Themesdesign"  />
 
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -36,19 +37,27 @@
     <!-- DataTables -->
     <link href="{{asset('backend/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
 
+    <!-- Responsive fileinput css  -->
+    <link rel="stylesheet" href="{{asset('backend/vendor/bootstrap-fileinput/css/fileinput.min.css')}}">
+
     <!-- Responsive datatable examples -->
     <link href="{{asset('backend/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />  
 
     <!-- Bootstrap Css -->
     {{-- <link href="{{asset('backend/css/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" /> --}}
     <link href="{{asset('backend/css/bootstrap-rtl.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
-
+    
     <!-- Icons Css -->
     <link href="{{asset('backend/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
+
+    {{-- summernote for description field  --}}
+    <link rel="stylesheet" href="{{asset('backend/vendor/summernote/summernote-bs4.min.css')}}">
     
     <!-- App Css-->
     {{-- <link href="{{asset('backend/css/app.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />  --}}
     <link href="{{asset('backend/css/app-rtl.min.css')}}" id="app-style" rel="stylesheet" type="text/css" /> 
+
+    
     @yield('style')
 </head>
 <body data-topbar="dark">
@@ -76,6 +85,7 @@
           <div class="page-content">
 
             <div class="container-fluid">
+              @include('partial.backend.flash')
               @yield('content')
             </div>
 
@@ -123,10 +133,25 @@
     <script src="{{asset('backend/libs/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
     <script src="{{asset('backend/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js')}}"></script>
 
+    <!-- Responsive fileInput js start -->
+    <script src="{{asset('backend/vendor/bootstrap-fileinput/js/plugins/piexif.min.js')}}"></script>
+    <script src="{{asset('backend/vendor/bootstrap-fileinput/js/plugins/sortable.min.js')}}"></script>
+    <script src="{{asset('backend/vendor/bootstrap-fileinput/js/fileinput.min.js')}}"></script>
+    <script src="{{asset('backend/vendor/bootstrap-fileinput/themes/fa5/theme.min.js')}}"></script>
+    <!-- Responsive fileInput js end -->
+
+
+    <!-- Datatable init js -->
     <script src="{{asset('backend/js/pages/dashboard.init.js')}}"></script>
+
+     {{-- outer lab  --}}
+    {{-- summernote for description note field --}}
+    <script src="{{asset('backend/vendor/summernote/summernote-bs4.min.js')}}"></script>
+
 
     <!-- App js -->
     <script src="{{asset('backend/js/app.js')}}"></script>
+    <script src="{{asset('backend/js/custom.js')}}"></script>
     @yield('script')
     
     

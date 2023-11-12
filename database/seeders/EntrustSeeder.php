@@ -166,6 +166,18 @@ class EntrustSeeder extends Seeder
         $displayProductCategories =  Permission::create(['name' => 'display_sliders' , 'display_name'  => 'عرض الشريحة'             ,  'route' => 'sliders' , 'module' => 'sliders' , 'as' => 'sliders.show'     , 'icon' => null                  , 'parent' => $manageSliders->id , 'parent_original' => $manageSliders->id ,'parent_show' => $manageSliders->id , 'sidebar_link' => '0' , 'appear' => '0'] );
         $updateProductCategories  =  Permission::create(['name' => 'update_sliders'  , 'display_name'  => 'تعديل الشريحة'           ,  'route' => 'sliders' , 'module' => 'sliders' , 'as' => 'sliders.edit'     , 'icon' => null                  , 'parent' => $manageSliders->id , 'parent_original' => $manageSliders->id ,'parent_show' => $manageSliders->id , 'sidebar_link' => '0' , 'appear' => '0'] );
         $deleteProductCategories  =  Permission::create(['name' => 'delete_sliders'  , 'display_name'  => 'حذف الشريحة'             ,  'route' => 'sliders' , 'module' => 'sliders' , 'as' => 'sliders.destroy'  , 'icon' => null                  , 'parent' => $manageSliders->id , 'parent_original' => $manageSliders->id ,'parent_show' => $manageSliders->id , 'sidebar_link' => '0' , 'appear' => '0'] );
+        
+        
+        
+
+        //Product Tags
+        $manageTags = Permission::create(['name' => 'manage_tags', 'display_name' => 'إدارة الكلمات المفتاحية' , 'route' => 'tags' , 'module' => 'tags' , 'as' => 'tags.index' , 'icon' => 'fas fa-tags' , 'parent' => '0' , 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '25',] );
+        $manageTags->parent_show = $manageTags->id; $manageTags->save();
+        $showTags    =  Permission::create(['name' => 'show_tags'    ,  'display_name' => 'عرض الكلمات المفتاحية'       , 'route' => 'tags' , 'module' => 'tags' , 'as' => 'tags.index'    , 'icon' => 'fas fa-tags'  , 'parent' => $manageTags->id , 'parent_original' => $manageTags->id ,'parent_show' => $manageTags->id , 'sidebar_link' => '1' , 'appear' => '1'] );
+        $createTags  =  Permission::create(['name' => 'create_tags'  , 'display_name'  => 'إضافة كلمة مفتاحية' , 'route' => 'tags' , 'module' => 'tags' , 'as' => 'tags.create'   , 'icon' => null           , 'parent' => $manageTags->id , 'parent_original' => $manageTags->id ,'parent_show' => $manageTags->id , 'sidebar_link' => '1' , 'appear' => '0'] );
+        $displayTags =  Permission::create(['name' => 'display_tags' , 'display_name'  => 'استعراض كلمة مفتاحية'   , 'route' => 'tags' , 'module' => 'tags' , 'as' => 'tags.show'     , 'icon' => null           , 'parent' => $manageTags->id , 'parent_original' => $manageTags->id ,'parent_show' => $manageTags->id , 'sidebar_link' => '0' , 'appear' => '0'] );
+        $updateTags  =  Permission::create(['name' => 'update_tags'  , 'display_name'  => 'تعديل كلمة مفتاحية' , 'route' => 'tags' , 'module' => 'tags' , 'as' => 'tags.edit'     , 'icon' => null           , 'parent' => $manageTags->id , 'parent_original' => $manageTags->id ,'parent_show' => $manageTags->id , 'sidebar_link' => '0' , 'appear' => '0'] );
+        $deleteTags  =  Permission::create(['name' => 'delete_tags'  , 'display_name'  => 'حذف لكمة مفتاحية' , 'route' => 'tags' , 'module' => 'tags' , 'as' => 'tags.destroy'  , 'icon' => null           , 'parent' => $manageTags->id , 'parent_original' => $manageTags->id ,'parent_show' => $manageTags->id , 'sidebar_link' => '0' , 'appear' => '0'] );
 
         
     }

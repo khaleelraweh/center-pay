@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('file_type');
             $table->string('file_size');
             $table->string('file_status')->default(1);
+            $table->unsignedBigInteger('file_sort')->default(0);
             $table->unsignedBigInteger('imageable_id');
             $table->string('imageable_type');
             $table->timestamps();

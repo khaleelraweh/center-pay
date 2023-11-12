@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Nicolaslopezj\Searchable\SearchableTrait;
 
 class ProductCategory extends Model
 {
-    use HasFactory ,Sluggable;
+    use HasFactory ,Sluggable , SearchableTrait;
 
     protected $guarded = [];
 
@@ -22,6 +23,20 @@ class ProductCategory extends Model
             ]
         ];
     }
+
+    protected $searchable = [
+        'columns' => [
+            // table we use : product_categories 
+            // field to be searched by : name 
+            //prioraty : from 0 to 10
+            'product_categories.name' => 10,
+        ]
+    ];
+
+    public function status(){
+        return $this->status ? 'Active' : "Inactive";
+    }
+
 
     // Get Parent of This Element in the same table inner Relationship
     public function parent()
