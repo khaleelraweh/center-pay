@@ -34,7 +34,7 @@ class ProductCategoryRequest extends FormRequest
                     'publish_time'  => 'nullable',
                     'view_in_main'  =>  'required',
                     'description'   => 'nullable',
-                    'images'        =>  'required',  
+                    'images'        =>  'nullable',  
                     'images.*'      =>  'mimes:jpg,jpeg,png,gif|max:3000',
                     
                 ];
@@ -50,7 +50,7 @@ class ProductCategoryRequest extends FormRequest
                     'publish_time'  => 'nullable',
                     'view_in_main'  =>  'required',
                     'description'   => 'nullable',
-                    'images'        =>  'required',  
+                    'images'        =>  'nullable',  
                     'images.*'      =>  'mimes:jpg,jpeg,png,gif|max:3000',
                     
                     

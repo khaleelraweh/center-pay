@@ -1,18 +1,40 @@
 @extends('layouts.admin')
+
+@section('style')
+    {{-- pickadate calling css --}}
+    <link rel="stylesheet" href="{{asset('backend/vendor/datepicker/themes/classic.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/vendor/datepicker/themes/classic.date.css')}}">
+
+    <style>
+        .picker__select--month,.picker__select--year{
+            padding: 0 !important;
+        }
+        .picker__list{
+            list-style-type: none;
+        }
+        .x-title{
+            border-bottom: 2px solid #E6E9ED;
+            padding: 1px 5px 6px;
+            margin-bottom: 10px;
+        }
+        .require.red{color:red;}
+    </style>
+@endsection
+
 @section('content')
 
     {{-- main holder page  --}}
     <div class="card shadow mb-4">
 
         {{-- menu part  --}}
-        <div class="card-header py-3 d-flex">
-            <h6 class="m-0 font-weight-bold text-primary">ُEdit Category {{$productCategory->name}}</h6>
+        <div class="card-header py-3 d-flex justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">تعديل محتوي {{$productCategory->name}}</h6>
             <div class="ml-auto">
                 <a href="{{route('admin.product_categories.index')}}" class="btn btn-primary">
                     <span class="icon text-white-50">
                         <i class="fa fa-home"></i>
                     </span>
-                    <span class="text">Categories</span>
+                    <span class="text">الاصناف</span>
                 </a>
             </div>
         </div>
@@ -61,7 +83,7 @@
                                 </label>
                                 <div class="col-md-9 col-sm-12">
                                     <div class="form-group">
-                                        <input type="text" id="name" name="name" value="{{old('name')}}" class="form-control" placeholder="العنوان..">
+                                        <input type="text" id="name" name="name" value="{{old('name',$productCategory->name)}}" class="form-control" placeholder="name">
                                         @error('name') <span class="text-danger">{{$message}}</span> @enderror
                                     </div>
                                 </div>
@@ -76,7 +98,7 @@
                                 <div class="col-md-9 col-sm-12">
                                     <div class="form-group">
                                         <textarea name="description"  rows="3" class="form-control summernote">
-                                            {!!old('description')!!}
+                                            {!!old('description',$productCategory->description)!!}
                                         </textarea>
                                         @error('description') <span class="text-danger">{{$message}}</span> @enderror
                                     </div>
@@ -109,6 +131,7 @@
                         </div>
 
                         <div class="contents">
+
                             {{-- حالة التصنيف --}}
                             <div class="row pt-4">
                                 <label for="status" class="control-label col-md-3 col-sm-12 ">
@@ -118,8 +141,8 @@
                                 <div class="col-md-9 col-sm-12">
                                     <select name="status" class="form-control">
                                         <option value="">---</option>
-                                        <option value="1" {{ old('status') == '1' ? 'selected' : null}}>مفعل</option>
-                                        <option value="0" {{ old('status') == '0' ? 'selected' : null}}>غير مفعل</option>
+                                        <option value="1" {{ old('status',$productCategory->status) == '1' ? 'selected' : null}}>مفعل</option>
+                                        <option value="0" {{ old('status',$productCategory->status) == '0' ? 'selected' : null}}>غير مفعل</option>
                                     </select>
                                     @error('status')<span class="text-danger">{{$message}}</span>@enderror
                                 </div>
@@ -133,13 +156,13 @@
                                 </label>
                                 <div class="col-md-9 col-sm-12">
                                     <div class="form-group">
-                                        <input type="text" id="publish_date" name="publish_date" value="{{old('publish_date')}}" class="form-control" >
+                                        <input type="text" id="publish_date" name="publish_date" value="{{old('publish_date',$productCategory->publish_date)}}" class="form-control" >
                                         @error('publish_date') <span class="text-danger">{{$message}}</span> @enderror
                                     </div>
                                 </div>
                             </div>
 
-                            {{-- تاريخ النشر --}}
+                            {{-- وقت النشر --}}
                             <div class="row pt-4">
                                 <label for="publish_time" class="control-label col-md-3 col-sm-12 ">
                                      <span>وقت النشر</span>
@@ -147,7 +170,7 @@
                                 </label>
                                 <div class="col-md-9 col-sm-12">
                                     <div class="form-group">
-                                        <input type="text" id="publish_time" name="publish_time" value="{{old('publish_time')}}" class="form-control" >
+                                        <input type="text" id="publish_time" name="publish_time" value="{{old('publish_time',$productCategory->publish_time)}}" class="form-control" >
                                         @error('publish_time') <span class="text-danger">{{$message}}</span> @enderror
                                     </div>
                                 </div>
@@ -162,8 +185,8 @@
                                 <div class="col-md-9 col-sm-12">
                                     <select name="view_in_main" class="form-control">
                                         <option value="">---</option>
-                                        <option value="1" {{ old('view_in_main') == '1' ? 'selected' : null}}>مفعل</option>
-                                        <option value="0" {{ old('view_in_main') == '0' ? 'selected' : null}}>غير مفعل</option>
+                                        <option value="1" {{ old('view_in_main',$productCategory->view_in_main) == '1' ? 'selected' : null}}>مفعل</option>
+                                        <option value="0" {{ old('view_in_main',$productCategory->view_in_main) == '0' ? 'selected' : null}}>غير مفعل</option>
                                     </select>
                                     @error('view_in_main')<span class="text-danger">{{$message}}</span>@enderror
                                 </div>
@@ -180,57 +203,6 @@
                     </div>
                 </div>
 
-
-
-
-                {{-- //////////////////////// --}}
-                <div class="row">
-                    <div class="col-6">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" value="{{old('name',$productCategory->name)}}" class="form-control" placeholder="name">
-                            @error('name') <span class="text-danger">{{$message}}</span> @enderror
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <label for="parent_id">Parent</label>
-                        <select name="parent_id" class="form-control">
-                            <option value="">---</option>
-                            @forelse ($main_categories as $main_category)
-                            <option value="{{$main_category->id}}" {{old('parent_id',$productCategory->parent_id) == $main_category->id ? 'selected' : null }}>{{ $main_category->name }}</option>
-                            @empty 
-                            @endforelse
-                        </select>
-                    </div>
-                    <div class="col-3">
-                        <label for="status">Status</label>
-                        <select name="status" class="form-control">
-                            <option value="">---</option>
-                            <option value="1" {{ old('status',$productCategory->status) == '1' ? 'selected' : null}}>Active</option>
-                            <option value="0" {{ old('status',$productCategory->status) == '0' ? 'selected' : null}}>Inactive</option>
-                        </select>
-                        @error('status')<span class="text-danger">{{$message}}</span>@enderror
-                    </div>
-
-                </div>
-                {{-- end row --}}
-
-                <div class="row pt-4">
-                    <div class="col-12">
-                        <label for="cover">Cover</label>
-                        <br>
-                        <div class="file-loading">
-                            <input type="file" name="cover" id="category_image" class="file-input-overview ">
-                            <span class="form-text text-muted">Image width should be 500px x 500px </span>
-                            @error('cover')<span class="text-danger">{{$message}}</span>@enderror
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group pt-4">
-                    <button type="submit" name="submit" class="btn btn-primary">Update Category</button>
-                </div>
-
             </form>
         </div>
         
@@ -238,10 +210,30 @@
 
 @endsection
 
+
 @section('script')
-    {{--#category_image is the id in file input file above  --}}
+    {{-- pickadate calling js --}}
+
+    <script src="{{asset('backend/vendor/datepicker/picker.js')}}"></script>
+    <script src="{{asset('backend/vendor/datepicker/picker.date.js')}}"></script>
+    <script src="{{asset('backend/vendor/datepicker/picker.time.js')}}"></script>
     <script>
         $(function(){
+
+
+
+           
+
+
+
+
+
+
+
+
+
+
+
             $("#category_image").fileinput({
                 theme:"fa5",
                 maxFileCount: 1 ,
@@ -252,16 +244,16 @@
                 overwriteInitial:false,
                 // اضافات للتعامل مع الصورة عند التعديل علي احد اقسام المنتجات
                 initialPreview: [
-                    @if($productCategory->cover !='')
-                    "{{ asset('assets/product_categories/' . $productCategory->cover)}}",
+                    @if($productCategory->photo->file_name !='')
+                    "{{ asset('assets/product_categories/' . $productCategory->photo->file_name)}}",
                     @endif
                 ],
                 initialPreviewAsData:true,
                 initialPreviewFileType: 'image',
                 initialPreviewConfig: [
-                    @if($productCategory->cover !='')
+                    @if($productCategory->photo->file_name !='')
                     {
-                        caption: "{{$productCategory->cover }}",
+                        caption: "{{$productCategory->photo->file_name }}",
                         size: '111' , 
                         width: "120px" , 
                         // url : الراوت المستخدم لحذف الصورة
@@ -271,7 +263,59 @@
                     @endif
                 ]
             });
+
+            // ======= start pickadate codeing ===========
+            $('#publish_date').pickadate({
+                format: 'yyyy-mm-dd',
+                selectMonths: true , // Creates a dropdown to control month
+                selectYears: true, // creates a dropdown to control years
+                clear: 'Clear',
+                close: 'OK',
+                colseOnSelect: true // Close Upon Selecting a date
+            });
+
+            var startdate = $('#publish_date').pickadate('picker'); // set startdate in the picker to the start date in the #publish_date elemet
+            
+            var enddate = $('#publish_time').pickadate('picker'); 
+
+            // when change date 
+            $('#publish_date').change(function(){
+                selected_ci_date = ""; 
+                selected_ci_date = $('#publish_date').val(); // make selected start date in picker = publish_date value
+                if(selected_ci_date != null){
+                    var cidate = new Date(selected_ci_date); // make cidate(start date ) = current date you selected in selected ci date (selected start date )
+                    min_codate = "";
+                }
+            });
+
+            $('#publish_time').pickatime({
+                formatLabel: function(time) {
+                    var hours = ( time.pick - this.get('now').pick ) / 60,
+                    label = hours < 0 ? ' !hours to now' : hours > 0 ? ' !hours from now' : 'now'
+                    return  'h:i a <sm!all>' + ( hours ? Math.abs(hours) : '' ) + label +'</sm!all>'
+                }
+            });
+
+
+            $('.summernote').summernote({
+                tabSize:2,
+                height:200,
+                toolbar:[
+                    ['style' ,['style']],
+                    ['font',['bold','underline','clear']],
+                    ['color',['color']],
+                    ['para',['ul','ol','paragraph']],
+                    ['table',['table']],
+                    ['insert',['link','picture','video']],
+                    ['view',['fullscreen','codeview','help']]
+                ]
+            });
+
+
         });
     </script>
     
 @endsection
+
+
+

@@ -93,7 +93,7 @@ class ProductCategoriesController extends Controller
 
         // اعادة التوجية الي صفحة العرض مع رسالة نجاح العملية 
         return redirect()->route('admin.product_categories.index')->with([
-            'message' => 'created successfully',
+            'message' => 'تم الانشاء بنجاح',
             'alert-type' => 'success'
         ]);
     }
@@ -122,7 +122,7 @@ class ProductCategoriesController extends Controller
             return redirect('admin/index');
         }
 
-        dd($request);
+        
         $input['name'] = $request->name;
         $input['parent_id'] = $request->parent_id;
         $input['status'] = $request->status;
@@ -137,6 +137,7 @@ class ProductCategoriesController extends Controller
        
         
 
+        // edit images in media db and in path : public/assets/products
         if($request->images && count( $request->images) > 0){
 
             $i = $productCategory->photo()->count() + 1; // $i is used for making sort to image 
@@ -168,7 +169,7 @@ class ProductCategoriesController extends Controller
         }
 
         return redirect()->route('admin.product_categories.index')->with([
-            'message' => 'Updated successfully',
+            'message' => 'تم التعديل بنجاح',
             'alert-type' => 'success'
         ]);
     }
@@ -179,15 +180,21 @@ class ProductCategoriesController extends Controller
             return redirect('admin/index');
         }
 
-        // first: delete image from project path 
-        if(File::exists('assets/product_categories/' . $productCategory->cover)){
-            unlink('assets/product_categories/' . $productCategory->cover);
+        if($productCategory->photo()->count() > 0){
+            foreach($productCategory->photo() as $photo){
+                
+                if(File::exists('assets/product_categories/' . $photo->file_name)){
+                    unlink('assets/product_categories/' . $photo->file_name);
+                }
+                
+                $photo->delete();
+            }
         }
-        // second: delete productCategory from database
+
         $productCategory->delete();
 
         return redirect()->route('admin.product_categories.index')->with([
-            'message' => 'Deleted successfully',
+            'message' => 'تم الحذف بنجاح',
             'alert-type' => 'success'
         ]);
     }
@@ -198,17 +205,18 @@ class ProductCategoriesController extends Controller
             return redirect('admin/index');
         }
 
-        // اعثر علي رقم قسم الصنف الحالي 
+        // dd($request);
+
         $category = ProductCategory::findOrFail($request->product_category_id);
-        // من الفايل ابحث عن اسم الصورة في مجلد الصور في المشروع ما اذا كانت موجودة
-        if(File::exists('assets/product_categories/' . $category->cover)){
-            // اذا كانت موجودة احذفها من مسار حفظ الصور في البرنامج
-            unlink('assets/product_categories/' . $category->cover);
-            // غير قيمتها في الجدول الي نل 
-            $category->cover = null;
-            // احفظ التغييرات علي قسم الصنف الحالي 
-            $category->save();
+
+         //find media image from media table 
+         $image = $category->photo()->whereId($request->image_id)->first();
+
+        if(File::exists('assets/product_categories/' . $image->file_name)){
+            unlink('assets/product_categories/' . $image->file_name);
         }
+
+        $image->delete();
 
         return true;
     }

@@ -45,9 +45,10 @@
             {{-- we send route name and the id of product Category that will be update --}}
             <form action="{{route('admin.product_categories.update',$productCategory->id)}}" method="post" enctype="multipart/form-data">
                 @csrf
-                {{-- تستخدم مع عملية ارسال فورم لدالة ابديت --}}
+
                 @method('PATCH')
 
+                {{-- {{dd($productCategory)}} --}}
 
                 <div class="row">
                     {{-- بيانات المحتوي --}}
@@ -197,10 +198,8 @@
 
                 </div>
 
-                <div class="row">
-                    <div class="form-group pt-4">
-                        <button type="submit" name="submit" class="btn btn-primary">حفظ البيانات</button>
-                    </div>
+                <div class="form-group pt-4">
+                    <button type="submit" name="submit" class="btn btn-primary">تعديل البيانات</button>
                 </div>
 
             </form>
@@ -220,6 +219,8 @@
     <script>
         $(function(){
 
+           
+
             $("#category_image").fileinput({
                 theme:"fa5",
                 maxFileCount: 1 ,
@@ -230,22 +231,27 @@
                 overwriteInitial:false,
                 // اضافات للتعامل مع الصورة عند التعديل علي احد اقسام المنتجات
                 initialPreview: [
-                    @if($productCategory->photo->file_name !='')
-                    "{{ asset('assets/product_categories/' . $productCategory->photo->file_name)}}",
+                    @if($productCategory->photo()->count() > 0)
+                        @if($productCategory->photo->file_name !='')
+                        "{{ asset('assets/product_categories/' . $productCategory->photo->file_name)}}",
+                        @endif
                     @endif
                 ],
                 initialPreviewAsData:true,
                 initialPreviewFileType: 'image',
                 initialPreviewConfig: [
-                    @if($productCategory->photo->file_name !='')
-                    {
-                        caption: "{{$productCategory->photo->file_name }}",
-                        size: '111' , 
-                        width: "120px" , 
-                        // url : الراوت المستخدم لحذف الصورة
-                        url: "{{route('admin.product_categories.remove_image' , ['product_category_id'=>$productCategory->id , '_token'=> csrf_token()]) }}", 
-                        key:{{ $productCategory->id}} 
-                    }
+                    @if($productCategory->photo()->count() > 0)
+                        @if($productCategory->photo->file_name !='')
+                        {
+                            caption: "{{$productCategory->photo->file_name }}",
+                            size: '111' , 
+                            width: "120px" , 
+                            // url : الراوت المستخدم لحذف الصورة
+                            url: "{{route('admin.product_categories.remove_image' , ['image_id' => $productCategory->photo->id , 'product_category_id'=>$productCategory->id , '_token'=> csrf_token()]) }}", 
+
+                            key:{{ $productCategory->id}} 
+                        }
+                        @endif
                     @endif
                 ]
             });
