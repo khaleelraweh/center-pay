@@ -21,7 +21,7 @@
             </div>
 
             <div class="form-check form-switch mb-3">
-                <input class="form-check-input theme-choice" type="checkbox" id="light-mode-switch" checked>
+                <input class="form-check-input theme-choice" type="checkbox" id="light-mode-switch" >
                 <label class="form-check-label" for="light-mode-switch">Light Mode</label>
             </div>
 
@@ -31,7 +31,7 @@
                 </label>
             </div>
             <div class="form-check form-switch mb-3">
-                <input class="form-check-input theme-choice" type="checkbox" id="dark-mode-switch" data-bsStyle="{{asset('backend/css/bootstrap-dark.min.css')}}" data-appStyle="{{asset('backend/css/app-dark.min.css')}}">
+                <input class="form-check-input theme-choice" type="checkbox" id="dark-mode-switch" data-bsStyle="{{asset('backend/css/bootstrap-dark.min.css')}}" data-appStyle="{{asset('backend/css/app-dark.min.css')}}" checked>
                 <label class="form-check-label" for="dark-mode-switch">Dark Mode</label>
             </div>
 

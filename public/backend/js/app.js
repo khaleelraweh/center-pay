@@ -80,7 +80,8 @@
                 sessionStorage.setItem("is_rtl_active", "active");
                
             }else{
-                light_mode_switch();
+                // light_mode_switch();
+                dark_rtl_mode_switch();
                 sessionStorage.setItem("is_rtl_active", "active");
                
             }
@@ -106,7 +107,7 @@
 
     function storages(){
         sessionStorage.setItem("is_rtl_active" , "active") , 
-        sessionStorage.setItem("is_visited" , "light-mode-switch") 
+        sessionStorage.setItem("is_visited" , "dark-mode-switch") 
     }
 
     function e() {

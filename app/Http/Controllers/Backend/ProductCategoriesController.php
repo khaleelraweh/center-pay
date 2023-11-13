@@ -122,27 +122,50 @@ class ProductCategoriesController extends Controller
             return redirect('admin/index');
         }
 
+        dd($request);
         $input['name'] = $request->name;
-        $input['slug'] = null; // slug should be change because name maybe change in db
-        $input['status'] = $request->status;
         $input['parent_id'] = $request->parent_id;
+        $input['status'] = $request->status;
+        $input['publish_date'] = $request->publish_date;
+        $input['publish_time'] = $request->publish_time;
+        $input['view_in_main'] = $request->view_in_main;
+        $input['description'] = $request->description;
 
-        if ($image = $request->file('cover')) {
 
-            //check $productCategory->cover if it is not null  and it is exist in the path assets/product_categories
-            // Then unlink this image from project path   
-            if($productCategory->cover != null && File::exists('assets/product_categories/' . $productCategory->cover)){
-                unlink('assets/product_categories/' . $productCategory->cover);
-            }
-            $file_name = Str::slug($request->name).".".$image->getClientOriginalExtension();
-            $path = public_path('assets/product_categories/'.$file_name);
-            Image::make($image->getRealPath())->resize(500,null,function($constraint){
-                $constraint->aspectRatio();
-            })->save($path);
 
-            $input['cover'] = $file_name;
-        }
         $productCategory->update($input);
+       
+        
+
+        if($request->images && count( $request->images) > 0){
+
+            $i = $productCategory->photo()->count() + 1; // $i is used for making sort to image 
+
+            foreach ($request->images as $image) {
+                
+                // $file_name = Str::slug($request->name).".".$image->getClientOriginalExtension(); // will not used because product already created to db and slug is there by steps upove
+                $file_name = $productCategory->slug. '_' . time() . $i . '.' . $image->getClientOriginalExtension(); // time() and $id used to avoid repeating image name 
+                $file_size = $image->getSize();
+                $file_type = $image->getMimeType();
+                $path = public_path('assets/product_categories/' . $file_name);
+                
+                // get the real path of this image then resize its width to 500 and height let it aspect it with width
+                Image::make($image->getRealPath())->resize(500,null,function($constraint){
+                    $constraint->aspectRatio();
+                })->save($path,100);//then make copy of this image in new path as $path say with new name as $file_name say with clear 100%
+
+                // add this media to db using media relational function
+                $productCategory->photo()->create([
+                    'file_name' =>$file_name,
+                    'file_size' =>$file_size,
+                    'file_type' =>$file_type,
+                    'file_status' => 'true',
+                    'file_sort' =>$i,
+                ]); 
+
+                $i++; // step ahead by one for sort new image 
+            }
+        }
 
         return redirect()->route('admin.product_categories.index')->with([
             'message' => 'Updated successfully',

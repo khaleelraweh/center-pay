@@ -275,7 +275,11 @@
             });
 
             $('#publish_time').pickatime({
-                clear: ''
+                formatLabel: function(time) {
+                    var hours = ( time.pick - this.get('now').pick ) / 60,
+                    label = hours < 0 ? ' !hours to now' : hours > 0 ? ' !hours from now' : 'now'
+                    return  'h:i a <sm!all>' + ( hours ? Math.abs(hours) : '' ) + label +'</sm!all>'
+                }
             });
 
 
