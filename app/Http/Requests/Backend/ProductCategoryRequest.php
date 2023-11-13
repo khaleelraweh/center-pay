@@ -29,13 +29,17 @@ class ProductCategoryRequest extends FormRequest
                 return [
                     'name'          =>'required|max:255|unique:product_categories',
                     'parent_id'     =>  'nullable',
-                    'status'        =>'required',
-                    'publish_date'  => 'nullable|date_format:Y-m-d',
-                    'publish_time'  => 'nullable',
+                    'status'        =>  'required',
+                    'publish_date'  =>  'nullable|date_format:Y-m-d',
+                    'publish_time'  =>  'nullable',
                     'view_in_main'  =>  'required',
-                    'description'   => 'nullable',
+                    'description'   =>  'required',
                     'images'        =>  'nullable',  
                     'images.*'      =>  'mimes:jpg,jpeg,png,gif|max:3000',
+                    'views'         =>  'nullable',
+                    'created_by'    =>  'nullable',
+                    'updated_by'    =>  'nullable',
+                    'deleted_by'    =>  'nullable',
                     
                 ];
             }
@@ -43,15 +47,19 @@ class ProductCategoryRequest extends FormRequest
             case 'PATCH':
             {
                 return [ 
-                    'name'          =>'required|max:255|unique:product_categories,name,'.$this->route()->product_category->id,
+                    'name'          =>  'required|max:255|unique:product_categories,name,'.$this->route()->product_category->id,
                     'parent_id'     =>  'nullable',
-                    'status'        =>'required',
-                    'publish_date'  => 'nullable|date_format:Y-m-d',
-                    'publish_time'  => 'nullable',
+                    'status'        =>  'required',
+                    'publish_date'  =>  'nullable|date_format:Y-m-d',
+                    'publish_time'  =>  'nullable',
                     'view_in_main'  =>  'required',
-                    'description'   => 'nullable',
+                    'description'   =>  'required',
                     'images'        =>  'nullable',  
                     'images.*'      =>  'mimes:jpg,jpeg,png,gif|max:3000',
+                    'views'         =>  'nullable',
+                    'created_by'    =>  'nullable',
+                    'updated_by'    =>  'nullable',
+                    'deleted_by'    =>  'nullable',
                     
                     
                 ];

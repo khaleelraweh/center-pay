@@ -16,13 +16,15 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                <h4 class="mb-sm-0">Data Tables</h4>
+                <h4 class="mb-sm-0">تصنيف المنتجات</h4>
 
                 <div class="page-title-right">
-                    <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
-                        <li class="breadcrumb-item active">Data Tables</li>
-                    </ol>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                          <li class="breadcrumb-item"><a href="{{route('admin.product_categories.index')}}">الاقسام</a></li>
+                          <li class="breadcrumb-item active" aria-current="page">عرض</li>
+                        </ol>
+                    </nav>
                 </div>
 
             </div>

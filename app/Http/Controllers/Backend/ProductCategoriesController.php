@@ -57,7 +57,8 @@ class ProductCategoriesController extends Controller
         $input['publish_time'] = $request->publish_time;
         $input['view_in_main'] = $request->view_in_main;
         $input['description'] = $request->description;
-       
+        $input['views'] = 0;
+        $input['created_by'] = auth()->user()->full_name;
         $productCategory = ProductCategory::create($input);
 
         // add images to media db and to path : public/assets/products
@@ -130,8 +131,8 @@ class ProductCategoriesController extends Controller
         $input['publish_time'] = $request->publish_time;
         $input['view_in_main'] = $request->view_in_main;
         $input['description'] = $request->description;
-
-
+        $input['views'] = 0;
+        $input['updated_by'] = auth()->user()->full_name;
 
         $productCategory->update($input);
        
@@ -191,6 +192,9 @@ class ProductCategoriesController extends Controller
             }
         }
 
+        $productCategory->views = 0;
+        $productCategory->deleted_by = auth()->user()->full_name;
+        $productCategory->save();
         $productCategory->delete();
 
         return redirect()->route('admin.product_categories.index')->with([

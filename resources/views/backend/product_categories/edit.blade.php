@@ -5,6 +5,12 @@
     <link rel="stylesheet" href="{{asset('backend/vendor/datepicker/themes/classic.css')}}">
     <link rel="stylesheet" href="{{asset('backend/vendor/datepicker/themes/classic.date.css')}}">
 
+    {{-- is used to make tab-content --}}
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+
+    
     <style>
         .picker__select--month,.picker__select--year{
             padding: 0 !important;
@@ -41,166 +47,193 @@
 
         {{-- body part  --}}
         <div class="card-body">
-            {{-- enctype used cause we will save images  --}}
-            {{-- we send route name and the id of product Category that will be update --}}
             <form action="{{route('admin.product_categories.update',$productCategory->id)}}" method="post" enctype="multipart/form-data">
                 @csrf
-
                 @method('PATCH')
 
-                {{-- {{dd($productCategory)}} --}}
+                {{-- links of tabs --}}
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" id="content-tab" data-toggle="tab" href="#content" role="tab" aria-controls="content" aria-selected="true">بيانات المحتوي</a>
+                    </li>
 
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="publish-tab" data-toggle="tab" href="#publish" role="tab" aria-controls="publish" aria-selected="false">بيانات النشر</a>
+                    </li>
+
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="other-tab" data-toggle="tab" href="#other" role="tab" aria-controls="other" aria-selected="false">اخري</a>
+                    </li>
+                </ul>
+
+                {{-- contents of links tabs  --}}
+                <div class="tab-content" id="myTabContent">
+                    
+                    {{-- تاب بيانات المحتوي --}}
+                    <div class="tab-pane fade active show" id="content" role="tabpanel" aria-labelledby="content-tab">
+
+                        <div class="row">
+
+                            {{-- البيانات الاساسية --}}
+                            <div class="col-md-7 col-sm-12 ">
+
+                                {{-- تصنيفات المنتجات --}}
+                                <div class="row pt-4">
+                                    <label for="parent_id" class="control-label col-md-3 col-sm-12 ">
+                                        تصنيف المنتجات
+                                        <span class="require red">*</span>
+                                    </label>
+                                    <div class="col-md-9 col-sm-12">
+                                        <select name="parent_id" class="form-control">
+                                            <option value="">التصنيف الرئيسي_</option>
+                                            @forelse ($main_categories as $main_category)
+                                            <option value="{{$main_category->id}}" {{old('parent_id',$productCategory->parent_id) == $main_category->id ? 'selected' : null }}>{{ $main_category->name }}</option>
+                                            @empty 
+                                            @endforelse
+                                        </select>
+                                    </div>
+                                </div>
+
+                                {{-- عنوان التصنيف  --}}
+                                <div class="row pt-4">
+                                    <label for="name" class="control-label col-md-3 col-sm-12 ">
+                                        العنوان  
+                                        <span class="require red">*</span>
+                                    </label>
+                                    <div class="col-md-9 col-sm-12">
+                                        <div class="form-group">
+                                            <input type="text" id="name" name="name" value="{{old('name',$productCategory->name)}}" class="form-control" placeholder="name">
+                                            @error('name') <span class="text-danger">{{$message}}</span> @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {{-- الوصف  --}}
+                                <div class="row pt-4">
+                                    <label for="description" class="control-label col-md-3 col-sm-12 ">
+                                        <span>التفاصيل</span>
+                                        <span class="require red">*</span>
+                                    </label>
+                                    <div class="col-md-9 col-sm-12">
+                                        <div class="form-group">
+                                            <textarea name="description"  rows="3" class="form-control summernote">
+                                                {!!old('description',$productCategory->description)!!}
+                                            </textarea>
+                                            @error('description') <span class="text-danger">{{$message}}</span> @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+        
+                            {{-- مرفق الصورة --}}
+                            <div class="col-md-5 col-sm-12 ">
+
+                                {{-- الصورة  --}}
+                                <div class="row pt-4">
+                                    <label for="images" class="control-label col-md-3 col-sm-12 ">
+                                        <span>صورة</span>
+                                        <span class="require red">*</span>
+                                    </label>
+                                    <div class="col-md-9 col-sm-12">
+                                        <div class="file-loading">
+                                            <input type="file" name="images[]" id="category_image" class="file-input-overview ">
+                                            <span class="form-text text-muted">Image width should be 500px x 500px </span>
+                                            @error('images')<span class="text-danger">{{$message}}</span>@enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+        
+                        </div>
+
+                    </div>
+
+
+                    {{-- تاب بيانات النشر --}}
+                    <div class="tab-pane fade" id="publish" role="tabpanel" aria-labelledby="publish-tab">
+
+                        {{-- حالة التصنيف --}}
+                        <div class="row pt-4">
+                            <label for="status" class="control-label col-md-3 col-sm-12 ">
+                                 <span>الحالة</span>
+                                <span class="require red">*</span>
+                            </label>
+                            <div class="col-md-9 col-sm-12">
+                                <select name="status" class="form-control">
+                                    <option value="">---</option>
+                                    <option value="1" {{ old('status',$productCategory->status) == '1' ? 'selected' : null}}>مفعل</option>
+                                    <option value="0" {{ old('status',$productCategory->status) == '0' ? 'selected' : null}}>غير مفعل</option>
+                                </select>
+                                @error('status')<span class="text-danger">{{$message}}</span>@enderror
+                            </div>
+                        </div>
+
+                        {{-- تاريخ النشر --}}
+                        <div class="row pt-4">
+                            <label for="publish_date" class="control-label col-md-3 col-sm-12 ">
+                                 <span>تاريخ النشر</span>
+                                <span class="require red">*</span>
+                            </label>
+                            <div class="col-md-9 col-sm-12">
+                                <div class="form-group">
+                                    <input type="text" id="publish_date" name="publish_date" value="{{old('publish_date',$productCategory->publish_date)}}" class="form-control" >
+                                    @error('publish_date') <span class="text-danger">{{$message}}</span> @enderror
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- وقت النشر --}}
+                        <div class="row pt-4">
+                            <label for="publish_time" class="control-label col-md-3 col-sm-12 ">
+                                 <span>وقت النشر</span>
+                                <span class="require red">*</span>
+                            </label>
+                            <div class="col-md-9 col-sm-12">
+                                <div class="form-group">
+                                    <input type="text" id="publish_time" name="publish_time" value="{{old('publish_time',$productCategory->publish_time)}}" class="form-control" >
+                                    @error('publish_time') <span class="text-danger">{{$message}}</span> @enderror
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- عرض في القائمة الرئيسية --}}
+                        <div class="row pt-4">
+                            <label for="view_in_main" class="control-label col-md-3 col-sm-12 ">
+                                 <span>عرض في الرئيسية</span>
+                                <span class="require red">*</span>
+                            </label>
+                            <div class="col-md-9 col-sm-12">
+                                <select name="view_in_main" class="form-control">
+                                    <option value="">---</option>
+                                    <option value="1" {{ old('view_in_main',$productCategory->view_in_main) == '1' ? 'selected' : null}}>مفعل</option>
+                                    <option value="0" {{ old('view_in_main',$productCategory->view_in_main) == '0' ? 'selected' : null}}>غير مفعل</option>
+                                </select>
+                                @error('view_in_main')<span class="text-danger">{{$message}}</span>@enderror
+                            </div>
+                        </div>
+
+                    </div>
+
+                    {{-- تاب لاي شي جديد --}}
+                    <div class="tab-pane fade" id="other" role="tabpanel" aria-labelledby="other-tab">
+                        any think you want
+                    </div>
+
+                </div>
+
+
+                {{-- submit part --}}
                 <div class="row">
-                    {{-- بيانات المحتوي --}}
-                    <div class="col-md-8 col-sm-12 ">
-                        <div class="x-title">
-                            <h2>بيانات المحتوي</h2>
-                        </div>
-
-                        <div class="contents">
-
-                            {{-- تصنيفات المنتجات --}}
-                            <div class="row pt-4">
-                                <label for="parent_id" class="control-label col-md-3 col-sm-12 ">
-                                     تصنيف المنتجات
-                                    <span class="require red">*</span>
-                                </label>
-                                <div class="col-md-9 col-sm-12">
-                                    <select name="parent_id" class="form-control">
-                                        <option value="">التصنيف الرئيسي_</option>
-                                        @forelse ($main_categories as $main_category)
-                                        <option value="{{$main_category->id}}" {{old('parent_id',$productCategory->parent_id) == $main_category->id ? 'selected' : null }}>{{ $main_category->name }}</option>
-                                        @empty 
-                                        @endforelse
-                                    </select>
-                                </div>
-                            </div>
-
-                            {{-- عنوان التصنيف  --}}
-                            <div class="row pt-4">
-                                <label for="name" class="control-label col-md-3 col-sm-12 ">
-                                    العنوان  
-                                    <span class="require red">*</span>
-                                </label>
-                                <div class="col-md-9 col-sm-12">
-                                    <div class="form-group">
-                                        <input type="text" id="name" name="name" value="{{old('name',$productCategory->name)}}" class="form-control" placeholder="name">
-                                        @error('name') <span class="text-danger">{{$message}}</span> @enderror
-                                    </div>
-                                </div>
-                            </div>
-
-                            {{-- الوصف  --}}
-                            <div class="row pt-4">
-                                <label for="description" class="control-label col-md-3 col-sm-12 ">
-                                    <span>التفاصيل</span>
-                                    <span class="require red">*</span>
-                                </label>
-                                <div class="col-md-9 col-sm-12">
-                                    <div class="form-group">
-                                        <textarea name="description"  rows="3" class="form-control summernote">
-                                            {!!old('description',$productCategory->description)!!}
-                                        </textarea>
-                                        @error('description') <span class="text-danger">{{$message}}</span> @enderror
-                                    </div>
-                                </div>
-                            </div>
-
-                            {{-- الصورة  --}}
-                            <div class="row pt-4">
-                                <label for="images" class="control-label col-md-3 col-sm-12 ">
-                                    <span>صورة</span>
-                                    <span class="require red">*</span>
-                                </label>
-                                <div class="col-md-9 col-sm-12">
-                                    <div class="file-loading">
-                                        <input type="file" name="images[]" id="category_image" class="file-input-overview ">
-                                        <span class="form-text text-muted">Image width should be 500px x 500px </span>
-                                        @error('images')<span class="text-danger">{{$message}}</span>@enderror
-                                    </div>
-                                </div>
-                            </div>
-
+                    <div class="col-md-1"></div>
+                    <div class="col-md-11">
+                        <div class="form-group pt-3 mx-3">
+                            <button type="submit" name="submit" class="btn btn-primary">تعديل البيانات</button>
                         </div>
                     </div>
-
-                    {{-- نشر المحتوي  --}}
-                    <div class="col-md-4 col-sm-12 pt-sm-4">
-
-                        <div class="x-title">
-                            <h2>نشر المحتوي</h2>
-                        </div>
-
-                        <div class="contents">
-
-                            {{-- حالة التصنيف --}}
-                            <div class="row pt-4">
-                                <label for="status" class="control-label col-md-3 col-sm-12 ">
-                                     <span>الحالة</span>
-                                    <span class="require red">*</span>
-                                </label>
-                                <div class="col-md-9 col-sm-12">
-                                    <select name="status" class="form-control">
-                                        <option value="">---</option>
-                                        <option value="1" {{ old('status',$productCategory->status) == '1' ? 'selected' : null}}>مفعل</option>
-                                        <option value="0" {{ old('status',$productCategory->status) == '0' ? 'selected' : null}}>غير مفعل</option>
-                                    </select>
-                                    @error('status')<span class="text-danger">{{$message}}</span>@enderror
-                                </div>
-                            </div>
-
-                            {{-- تاريخ النشر --}}
-                            <div class="row pt-4">
-                                <label for="publish_date" class="control-label col-md-3 col-sm-12 ">
-                                     <span>تاريخ النشر</span>
-                                    <span class="require red">*</span>
-                                </label>
-                                <div class="col-md-9 col-sm-12">
-                                    <div class="form-group">
-                                        <input type="text" id="publish_date" name="publish_date" value="{{old('publish_date',$productCategory->publish_date)}}" class="form-control" >
-                                        @error('publish_date') <span class="text-danger">{{$message}}</span> @enderror
-                                    </div>
-                                </div>
-                            </div>
-
-                            {{-- وقت النشر --}}
-                            <div class="row pt-4">
-                                <label for="publish_time" class="control-label col-md-3 col-sm-12 ">
-                                     <span>وقت النشر</span>
-                                    <span class="require red">*</span>
-                                </label>
-                                <div class="col-md-9 col-sm-12">
-                                    <div class="form-group">
-                                        <input type="text" id="publish_time" name="publish_time" value="{{old('publish_time',$productCategory->publish_time)}}" class="form-control" >
-                                        @error('publish_time') <span class="text-danger">{{$message}}</span> @enderror
-                                    </div>
-                                </div>
-                            </div>
-
-                            {{-- عرض في القائمة الرئيسية --}}
-                            <div class="row pt-4">
-                                <label for="view_in_main" class="control-label col-md-3 col-sm-12 ">
-                                     <span>عرض في الرئيسية</span>
-                                    <span class="require red">*</span>
-                                </label>
-                                <div class="col-md-9 col-sm-12">
-                                    <select name="view_in_main" class="form-control">
-                                        <option value="">---</option>
-                                        <option value="1" {{ old('view_in_main',$productCategory->view_in_main) == '1' ? 'selected' : null}}>مفعل</option>
-                                        <option value="0" {{ old('view_in_main',$productCategory->view_in_main) == '0' ? 'selected' : null}}>غير مفعل</option>
-                                    </select>
-                                    @error('view_in_main')<span class="text-danger">{{$message}}</span>@enderror
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
                 </div>
 
-                <div class="form-group pt-4">
-                    <button type="submit" name="submit" class="btn btn-primary">تعديل البيانات</button>
-                </div>
 
             </form>
         </div>

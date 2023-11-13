@@ -8,11 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Nicolaslopezj\Searchable\SearchableTrait;
 
 class ProductCategory extends Model
 {
-    use HasFactory ,Sluggable , SearchableTrait;
+    use HasFactory ,Sluggable , SearchableTrait , SoftDeletes;
 
     protected $guarded = [];
 
