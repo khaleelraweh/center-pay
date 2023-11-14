@@ -35,20 +35,20 @@
       
         {{-- menu part  --}}
         <div class="card-header py-3 d-flex justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">تعديل محتوي {{$productCategory->name}}</h6>
+            <h6 class="m-0 font-weight-bold text-primary">تعديل محتوي البطاقة  {{$productCategory->name}}</h6>
             <div class="ml-auto">
-                <a href="{{route('admin.product_categories.index')}}" class="btn btn-primary">
+                <a href="{{route('admin.cards.index')}}" class="btn btn-primary">
                     <span class="icon text-white-50">
                         <i class="fa fa-home"></i>
                     </span>
-                    <span class="text">الاصناف</span>
+                    <span class="text">البطاقات</span>
                 </a>
             </div>
         </div>
 
         {{-- body part  --}}
         <div class="card-body">
-            <form action="{{route('admin.product_categories.update',$productCategory->id)}}" method="post" enctype="multipart/form-data">
+            <form action="{{route('admin.cards.update',$productCategory->id)}}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
 
@@ -77,23 +77,6 @@
 
                             {{-- البيانات الاساسية --}}
                             <div class="col-md-7 col-sm-12 ">
-
-                                {{-- تصنيفات المنتجات --}}
-                                <div class="row pt-4">
-                                    <label for="parent_id" class="control-label col-md-3 col-sm-12 ">
-                                        تصنيف المنتجات
-                                        <span class="require red">*</span>
-                                    </label>
-                                    <div class="col-md-9 col-sm-12">
-                                        <select name="parent_id" class="form-control">
-                                            <option value="">التصنيف الرئيسي_</option>
-                                            @forelse ($main_categories as $main_category)
-                                            <option value="{{$main_category->id}}" {{old('parent_id',$productCategory->parent_id) == $main_category->id ? 'selected' : null }}>{{ $main_category->name }}</option>
-                                            @empty 
-                                            @endforelse
-                                        </select>
-                                    </div>
-                                </div>
 
                                 {{-- عنوان التصنيف  --}}
                                 <div class="row pt-4">
@@ -281,7 +264,7 @@
                             size: '111' , 
                             width: "120px" , 
                             // url : الراوت المستخدم لحذف الصورة
-                            url: "{{route('admin.product_categories.remove_image' , ['image_id' => $productCategory->photo->id , 'product_category_id'=>$productCategory->id , '_token'=> csrf_token()]) }}", 
+                            url: "{{route('admin.cards.remove_image' , ['image_id' => $productCategory->photo->id , 'product_category_id'=>$productCategory->id , '_token'=> csrf_token()]) }}", 
 
                             key:{{ $productCategory->id}} 
                         }

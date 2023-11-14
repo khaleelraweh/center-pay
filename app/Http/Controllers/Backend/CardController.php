@@ -5,21 +5,21 @@ namespace App\Http\Controllers\Backend;
 use illuminate\support\Str;
 use Intervention\Image\Facades\Image;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Backend\ProductCategoryRequest;
+use App\Http\Requests\Backend\CardRequest;
 use App\Models\ProductCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
-class ProductCategoriesController extends Controller
+class CardController extends Controller
 {
    
     public function index()
     {
-        if(!auth()->user()->ability('admin','manage_product_categories , show_product_categories')){
+        if(!auth()->user()->ability('admin','manage_cards , show_cards')){
             return redirect('admin/index');
         }
 
-        $categories = ProductCategory::withCount('products')->where('section',1)
+        $categories = ProductCategory::withCount('products')->where('section',2)
         ->when(\request()->keyword != null , function($query){
             // $query->where('name','like','%'.\request()->keyword .'%');
             $query->search(\request()->keyword);
@@ -30,28 +30,26 @@ class ProductCategoriesController extends Controller
         ->orderBy(\request()->sort_by ?? 'id' , \request()->order_by ?? 'desc')
         ->paginate(\request()->limit_by ?? 10);
         
-        return view('backend.product_categories.index',compact('categories'));
+        return view('backend.cards.index',compact('categories'));
         
     }
 
     public function create()
     {
-        if(!auth()->user()->ability('admin','create_product_categories')){
+        if(!auth()->user()->ability('admin','create_cards')){
             return redirect('admin/index');
         }
 
-        $main_categories =ProductCategory::WhereSection(1)->whereNull('parent_id')->get(['id','name']);
-        return view('backend.product_categories.create',compact('main_categories'));
+        return view('backend.cards.create');
     }
 
-    public function store(ProductCategoryRequest $request)
+    public function store(CardRequest $request)
     {
-        if(!auth()->user()->ability('admin','create_product_categories')){
+        if(!auth()->user()->ability('admin','create_cards')){
             return redirect('admin/index');
         }
 
         $input['name'] = $request->name;
-        $input['parent_id'] = $request->parent_id;
         $input['status'] = $request->status;
         $input['publish_date'] = $request->publish_date;
         $input['publish_time'] = $request->publish_time;
@@ -59,8 +57,9 @@ class ProductCategoriesController extends Controller
         $input['description'] = $request->description;
         $input['views'] = 0;
         $input['created_by'] = auth()->user()->full_name;
-        $input['section'] = 1;
-        
+        $input['section'] = 2;
+
+
         $productCategory = ProductCategory::create($input);
 
         // add images to media db and to path : public/assets/products
@@ -94,8 +93,7 @@ class ProductCategoriesController extends Controller
             }
         }
 
-        // اعادة التوجية الي صفحة العرض مع رسالة نجاح العملية 
-        return redirect()->route('admin.product_categories.index')->with([
+        return redirect()->route('admin.cards.index')->with([
             'message' => 'تم الانشاء بنجاح',
             'alert-type' => 'success'
         ]);
@@ -103,28 +101,30 @@ class ProductCategoriesController extends Controller
     
     public function show($id)
     {
-        if(!auth()->user()->ability('admin','display_product_categories')){
+        if(!auth()->user()->ability('admin','display_cards')){
             return redirect('admin/index');
         }
-        return view('backend.product_categories.show');
+        return view('backend.cards.show');
     }
 
-    public function edit(ProductCategory $productCategory)
+  
+    public function edit($id)
     {
-        if(!auth()->user()->ability('admin','update_product_categories')){
+        if(!auth()->user()->ability('admin','update_cards')){
+            return redirect('admin/index');
+        }
+        $productCategory = ProductCategory::findOrFail($id);
+
+        return view('backend.cards.edit',compact('productCategory'));
+    }
+    
+    public function update(CardRequest $request, $id)
+    {
+        if(!auth()->user()->ability('admin','update_cards')){
             return redirect('admin/index');
         }
         
-
-        $main_categories = ProductCategory::whereNull('parent_id')->get(['id','name']);
-        return view('backend.product_categories.edit',compact('main_categories' , 'productCategory'));
-    }
-    
-    public function update(ProductCategoryRequest $request, ProductCategory $productCategory)
-    {
-        if(!auth()->user()->ability('admin','update_product_categories')){
-            return redirect('admin/index');
-        }
+        $productCategory = ProductCategory::findOrFail($id);
 
         
         $input['name'] = $request->name;
@@ -136,6 +136,7 @@ class ProductCategoriesController extends Controller
         $input['description'] = $request->description;
         $input['views'] = 0;
         $input['updated_by'] = auth()->user()->full_name;
+        $input['section'] = 2;
 
         $productCategory->update($input);
        
@@ -172,15 +173,19 @@ class ProductCategoriesController extends Controller
             }
         }
 
-        return redirect()->route('admin.product_categories.index')->with([
+        return redirect()->route('admin.cards.index')->with([
             'message' => 'تم التعديل بنجاح',
             'alert-type' => 'success'
         ]);
     }
+    
+   
 
-    public function destroy(ProductCategory $productCategory)
+    public function destroy($id)
     {
-        if(!auth()->user()->ability('admin','delete_product_categories')){
+        $productCategory  = ProductCategory::findOrFail($id);
+
+        if(!auth()->user()->ability('admin','delete_cards')){
             return redirect('admin/index');
         }
 
@@ -200,7 +205,7 @@ class ProductCategoriesController extends Controller
         $productCategory->save();
         $productCategory->delete();
 
-        return redirect()->route('admin.product_categories.index')->with([
+        return redirect()->route('admin.cards.index')->with([
             'message' => 'تم الحذف بنجاح',
             'alert-type' => 'success'
         ]);
@@ -208,7 +213,7 @@ class ProductCategoriesController extends Controller
 
     public function remove_image(Request $request){
 
-        if(!auth()->user()->ability('admin','delete_product_categories')){
+        if(!auth()->user()->ability('admin','delete_cards')){
             return redirect('admin/index');
         }
 

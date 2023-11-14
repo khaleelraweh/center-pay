@@ -11,7 +11,8 @@
 @endsection --}}
 
 @section('content')
- 
+
+
     <!-- start page title -->
     <div class="row">
         <div class="col-12">
@@ -21,7 +22,7 @@
                 <div class="page-title-right">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                          <li class="breadcrumb-item"><a href="{{route('admin.product_categories.index')}}">الاقسام</a></li>
+                          <li class="breadcrumb-item"><a href="{{route('admin.cards.index')}}">إدارة البطائق</a></li>
                           <li class="breadcrumb-item active" aria-current="page">عرض</li>
                         </ol>
                     </nav>
@@ -42,12 +43,12 @@
                 <div class="card-header py-3 d-flex justify-content-between">
                     <h6 class="m-0 font-weight-bold text-primary">تصنيف المنتجات</h6>
                     <div class="ml-auto">
-                        @ability('admin','create_product_categories')
-                        <a href="{{route('admin.product_categories.create')}}" class="btn btn-primary">
+                        @ability('admin','create_cards')
+                        <a href="{{route('admin.cards.create')}}" class="btn btn-primary">
                             <span class="icon text-white-50">
                                 <i class="fa fa-plus"></i>
                             </span>
-                            <span class="text">إضافة تصنيف جديد</span>
+                            <span class="text">إضافة محتوي جديد</span>
                         </a>
                         @endability
                     </div>
@@ -57,7 +58,7 @@
                 <div class="card-body">
 
                     {{-- filter form part  --}}
-                    @include('backend.product_categories.filter.filter')
+                    @include('backend.cards.filter.filter')
 
                     {{-- table part --}}
                     <div class="table-responsive">
@@ -73,10 +74,11 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                
                             @forelse ($categories as $category)
                                 <tr>
                                     <td>
-                                        {{-- <img src="{{asset('assets/product_categories/girls-s-electronies_16999441521.jpg')}}" alt="not found"> --}}
+                                        {{-- <img src="{{asset('assets/cards/girls-s-electronies_16999441521.jpg')}}" alt="not found"> --}}
                                         {{$category->name}}
                                     </td>
                                     <td>{{$category->products_count}}</td>
@@ -84,19 +86,20 @@
                                     <td><span class="btn btn-round  rounded-pill btn-success btn-xs">{{$category->status()}}</span></td>
                                     <td>{{$category->created_at}}</td>
                                     <td>
+                                        
                                         <div class="btn-group btn-group-sm">
-                                            <a href="{{route('admin.product_categories.edit', $category->id)}}" class="btn btn-primary">
+                                            <a href="{{route('admin.cards.edit', $category->id)}}" class="btn btn-primary">
                                                 <i class="fa fa-edit"></i>
                                             </a>
                                             <a 
                                                 href="javascript:void(0);" 
-                                                onclick=" if( confirm('Are you sure to delete this record?') ){document.getElementById('delete-product-category-{{$category->id}}').submit();}else{return false;}" 
+                                                onclick=" if( confirm('Are you sure to delete this record?') ){document.getElementById('delete-card-{{$category->id}}').submit();}else{return false;}" 
                                                 class="btn btn-danger"
                                             >
                                                 <i class="fa fa-trash"></i>
                                             </a>
                                         </div>
-                                        <form action="{{route('admin.product_categories.destroy',$category->id)}}" method="post" class="d-none" id="delete-product-category-{{$category->id}}">
+                                        <form action="{{route('admin.cards.destroy',$category->id)}}" method="post" class="d-none" id="delete-card-{{$category->id}}">
                                             @csrf
                                             @method('DELETE')
                                         </form>

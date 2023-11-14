@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug')->unique();
-            $table->text('description')->unique();
+            $table->text('description')->nullable();
             $table->boolean('status')->default(false);
             $table->date('publish_date')->nullable();
             $table->time('publish_time')->nullable();
@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('created_by')->default('admin');
             $table->string('updated_by')->nullable();
             $table->string('deleted_by')->nullable();
+            $table->unsignedBigInteger('section')->default(1);
             $table->softDeletes();
             $table->timestamps();
         });

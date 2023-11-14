@@ -4,7 +4,7 @@ namespace App\Http\Requests\Backend;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ProductCategoryRequest extends FormRequest
+class CardRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,7 +27,7 @@ class ProductCategoryRequest extends FormRequest
             case 'POST':
             {
                 return [
-                    'name'          =>'required|max:255|unique:product_categories',
+                    'name'=>'required|max:255|unique:product_categories',
                     'parent_id'     =>  'nullable',
                     'status'        =>  'required',
                     'publish_date'  =>  'nullable|date_format:Y-m-d',
@@ -48,7 +48,7 @@ class ProductCategoryRequest extends FormRequest
             case 'PATCH':
             {
                 return [ 
-                    'name'          =>  'required|max:255|unique:product_categories,name,'.$this->route()->product_category->id,
+                    'name'=>'required|max:255|unique:product_categories,name,'.$this->route()->product_category->id,
                     'parent_id'     =>  'nullable',
                     'status'        =>  'required',
                     'publish_date'  =>  'nullable|date_format:Y-m-d',
@@ -73,5 +73,3 @@ class ProductCategoryRequest extends FormRequest
         }
     }
 }
-
-
