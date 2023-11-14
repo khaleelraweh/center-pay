@@ -40,7 +40,7 @@ class ProductCategoriesController extends Controller
             return redirect('admin/index');
         }
 
-        $main_categories =ProductCategory::WhereSection(1)->whereNull('parent_id')->get(['id','name']);
+        $main_categories =ProductCategory::whereNull('parent_id')->where('section',1)->get(['id','name']);
         return view('backend.product_categories.create',compact('main_categories'));
     }
 
@@ -60,7 +60,7 @@ class ProductCategoriesController extends Controller
         $input['views'] = 0;
         $input['created_by'] = auth()->user()->full_name;
         $input['section'] = 1;
-        
+
         $productCategory = ProductCategory::create($input);
 
         // add images to media db and to path : public/assets/products
