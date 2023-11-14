@@ -64,9 +64,9 @@
                         <table  class="table table-hover table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Products count</th>
-                                    <th>Parent</th>
+                                    <th>اسم الصنف</th>
+                                    <th>عدد المنتجات</th>
+                                    <th>الكاتب</th>
                                     <th>Status</th>
                                     <th>Created at</th>
                                     <th class="text-center" style="width:30px;">Actions</th>
@@ -75,10 +75,13 @@
                             <tbody>
                             @forelse ($categories as $category)
                                 <tr>
-                                    <td>{{$category->name}}</td>
+                                    <td>
+                                        {{-- <img src="{{asset('assets/product_categories/girls-s-electronies_16999441521.jpg')}}" alt="not found"> --}}
+                                        {{$category->name}}
+                                    </td>
                                     <td>{{$category->products_count}}</td>
-                                    <td>{{$category->parent != null ? $category->parent->name : '-'}}</td>
-                                    <td>{{$category->status()}}</td>
+                                    <td>{{$category->created_by}}</td>
+                                    <td><span class="btn btn-round  rounded-pill btn-success btn-xs">{{$category->status()}}</span></td>
                                     <td>{{$category->created_at}}</td>
                                     <td>
                                         <div class="btn-group btn-group-sm">

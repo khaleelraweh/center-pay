@@ -25,7 +25,7 @@ return new class extends Migration
             $table->unsignedBigInteger('parent_id')->nullable();
             $table->foreign('parent_id')->references('id')->on('product_categories')->nullOnDelete();
             $table->integer('views')->default(0);
-            $table->string('created_by')->nullable();
+            $table->string('created_by')->default('admin');
             $table->string('updated_by')->nullable();
             $table->string('deleted_by')->nullable();
             $table->softDeletes();

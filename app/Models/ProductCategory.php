@@ -36,7 +36,7 @@ class ProductCategory extends Model
     ];
 
     public function status(){
-        return $this->status ? 'Active' : "Inactive";
+        return $this->status ? 'مفعل' : "غير مفعل";
     }
 
 
