@@ -18,17 +18,23 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug')->unique();
             $table->text('description')->nullable();
-            $table->unsignedBigInteger('quantity')->default(false);
-            $table->double('price');
-            $table->double('offer_price')->default(0.0);
-            $table->dateTime('offer-ends')->nullable();
+            $table->integer('quantity')->nullable()->default(-1);// سالب واحد تعني ان الكمية غير محدودة
+            $table->double('price')->default(0.0);
+            $table->double('offer_price')->nullable()->default(0.0); // سعر العرض
+            $table->date('offer_ends')->nullable(); // تاريخ انتهاء العرض 
             $table->string('sku')->nullable();
-            $table->unsignedBigInteger('max-order')->default(false);
+            $table->integer('max_order')->nullable()->default(-1);
             $table->boolean('featured')->default(false);
             $table->boolean('status')->default(false);
+            $table->date('publish_date')->nullable();
+            $table->time('publish_time')->nullable();
+            $table->boolean('view_in_main')->default(false);
             $table->foreignId('product_category_id')->constrained()->cascadeOnDelete();
-            $table->dateTime('published_on')->nullable();
-            $table->string('created_by')->nullable();
+            $table->dateTime('published_on')->nullable(); // تاريخ انشاء الملف 
+            $table->string('created_by')->default('admin');
+            $table->string('updated_by')->nullable();
+            $table->string('deleted_by')->nullable();
+            $table->integer('views')->default(0);
             $table->timestamps();
         });
     }

@@ -172,7 +172,6 @@
                             </label>
                             <div class="col-md-10 col-sm-12">
                                 <select name="status" class="form-control">
-                                    <option value="">---</option>
                                     <option value="1" {{ old('status') == '1' ? 'selected' : null}}>مفعل</option>
                                     <option value="0" {{ old('status') == '0' ? 'selected' : null}}>غير مفعل</option>
                                 </select>
@@ -188,7 +187,8 @@
                             </label>
                             <div class="col-md-10 col-sm-12">
                                 <div class="form-group">
-                                    <input type="text" id="publish_date" name="publish_date" value="{{old('publish_date')}}" class="form-control" >
+                                    {{-- <input type="text" id="publish_date" name="publish_date" value="{{old('publish_date')}}" class="form-control" > --}}
+                                    <input type="text" id="publish_date" name="publish_date" value="{{old('publish_date',now()->format('Y-m-d'))}}" class="form-control" >
                                     @error('publish_date') <span class="text-danger">{{$message}}</span> @enderror
                                 </div>
                             </div>
@@ -202,7 +202,7 @@
                             </label>
                             <div class="col-md-10 col-sm-12">
                                 <div class="form-group">
-                                    <input type="text" id="publish_time" name="publish_time" value="{{old('publish_time')}}" class="form-control" >
+                                    <input type="text" id="publish_time" name="publish_time" value="{{old('publish_time',now()->format('h:m'))}}" class="form-control" >
                                     @error('publish_time') <span class="text-danger">{{$message}}</span> @enderror
                                 </div>
                             </div>
@@ -216,7 +216,6 @@
                             </label>
                             <div class="col-md-10 col-sm-12">
                                 <select name="view_in_main" class="form-control">
-                                    <option value="">---</option>
                                     <option value="1" {{ old('view_in_main') == '1' ? 'selected' : null}}>مفعل</option>
                                     <option value="0" {{ old('view_in_main') == '0' ? 'selected' : null}}>غير مفعل</option>
                                 </select>
@@ -254,7 +253,6 @@
 
 @section('script')
     {{-- pickadate calling js --}}
-
     <script src="{{asset('backend/vendor/datepicker/picker.js')}}"></script>
     <script src="{{asset('backend/vendor/datepicker/picker.date.js')}}"></script>
     <script src="{{asset('backend/vendor/datepicker/picker.time.js')}}"></script>
