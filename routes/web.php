@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\BackendController;
 use App\Http\Controllers\Backend\CardController;
+use App\Http\Controllers\Backend\ProductCardController;
 use App\Http\Controllers\Backend\ProductCategoriesController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SliderController;
@@ -46,6 +47,8 @@ Route::group(['prefix'=>'admin' , 'as' =>'admin.'],function(){
         Route::resource('tags', SliderController::class);
         Route::post('cards/remove-image', [CardController::class, 'remove_image'])->name('cards.remove_image');
         Route::resource('cards', CardController::class);
+        Route::post('product_cards/remove-image', [ProductCardController::class, 'remove_image'])->name('product_cards.remove_image');
+        Route::resource('product_cards', ProductCardController::class);
     });
     
 });
