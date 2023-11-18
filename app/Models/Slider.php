@@ -60,10 +60,11 @@ class Slider extends Model
         });
     }
 
-    public function scopeProductCategory($query){
-        return $query->whereHas('category',function($query){
-            $query->whereSection(1); //means any product 
-        });
+    public function scopeMainSliders($query){
+        return $query->whereSection(1);
+    }
+    public function scopeAdvertisorSliders($query){
+        return $query->whereSection(2);
     }
 
      // to get only first one media elemet

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\AdvertisorSliderController;
 use App\Http\Controllers\Backend\BackendController;
 use App\Http\Controllers\Backend\CardController;
 use App\Http\Controllers\Backend\MainSliderController;
@@ -46,6 +47,9 @@ Route::group(['prefix'=>'admin' , 'as' =>'admin.'],function(){
         Route::resource('products', ProductController::class);
         Route::post('main_sliders/remove-image', [MainSliderController::class, 'remove_image'])->name('main_sliders.remove_image');
         Route::resource('main_sliders', MainSliderController::class);
+        Route::post('advertisor_sliders/remove-image', [AdvertisorSliderController::class, 'remove_image'])->name('advertisor_sliders.remove_image');
+        Route::resource('advertisor_sliders', AdvertisorSliderController::class);
+
         Route::resource('tags', TagController::class);
         Route::post('cards/remove-image', [CardController::class, 'remove_image'])->name('cards.remove_image');
         Route::resource('cards', CardController::class);

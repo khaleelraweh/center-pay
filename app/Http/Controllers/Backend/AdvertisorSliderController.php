@@ -9,18 +9,17 @@ use App\Models\Slider;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
-
-class MainSliderController extends Controller
+class AdvertisorSliderController extends Controller
 { 
 
     public function index()
     {
-        if(!auth()->user()->ability('admin','manage_main_sliders , show_main_sliders')){
+        if(!auth()->user()->ability('admin','manage_advertisor_sliders , show_advertisor_sliders')){
             return redirect('admin/index');
         }
 
         $sliders = Slider::with('firstMedia')
-        ->MainSliders()
+        ->AdvertisorSliders()
         ->when(\request()->keyword != null , function($query){
             $query->search(\request()->keyword);
         })
@@ -31,25 +30,25 @@ class MainSliderController extends Controller
         ->paginate(\request()->limit_by ?? 10);
 
 
-        return view('backend.main_sliders.index',compact('sliders'));
+        return view('backend.advertisor_sliders.index',compact('sliders'));
         
     }
 
     public function create()
     {
-        if(!auth()->user()->ability('admin','create_main_sliders')){
+        if(!auth()->user()->ability('admin','create_advertisor_sliders')){
             return redirect('admin/index');
         }
         
         $tags = Tag::whereStatus(1)->get(['id','name']);
 
-        return view('backend.main_sliders.create',compact('tags'));
+        return view('backend.advertisor_sliders.create',compact('tags'));
     }
 
     public function store(SliderRequest $request)
     {
      
-        if(!auth()->user()->ability('admin','create_main_sliders')){
+        if(!auth()->user()->ability('admin','create_advertisor_sliders')){
             return redirect('admin/index');
         }
 
@@ -63,7 +62,7 @@ class MainSliderController extends Controller
         $input['publish_date']   =   $request->publish_date;
         $input['publish_time']   =   $request->publish_time;
         $input['view_in_main']   =   $request->view_in_main;
-        $input['section']        =   1;
+        $input['section']        =   2;
         $input['created_by']     =   auth()->user()->full_name;
 
         //Add slider to db with save instance of it in $slider to use it later 
@@ -103,7 +102,7 @@ class MainSliderController extends Controller
             }
         }
 
-        return redirect()->route('admin.main_sliders.index')->with([
+        return redirect()->route('admin.advertisor_sliders.index')->with([
             'message' => 'تمت الاضافة بنجاح',
             'alert-type' =>'success'
         ]);
@@ -123,19 +122,19 @@ class MainSliderController extends Controller
     public function edit($slider)
     {
         $slider = Slider::findOrFail( $slider );
-        if(!auth()->user()->ability('admin','update_main_sliders')){
+        if(!auth()->user()->ability('admin','update_advertisor_sliders')){
             return redirect('admin/index');
         }
 
         // get all tags to add some of them to slider 
         $tags = Tag::whereStatus(1)->get(['id','name']); 
 
-        return view('backend.main_sliders.edit',compact('tags' ,'slider'));
+        return view('backend.advertisor_sliders.edit',compact('tags' ,'slider'));
     }
 
     public function update(SliderRequest $request, $slider)
     {
-        if(!auth()->user()->ability('admin','update_main_sliders')){
+        if(!auth()->user()->ability('admin','update_advertisor_sliders')){
             return redirect('admin/index');
         }
 
@@ -151,7 +150,7 @@ class MainSliderController extends Controller
         $input['publish_date']   =   $request->publish_date;
         $input['publish_time']   =   $request->publish_time;
         $input['view_in_main']   =   $request->view_in_main;
-        $input['section']        =   1;
+        $input['section']        =   2;
         $input['created_by']     =   auth()->user()->full_name;
         $input['updated_by']            =   auth()->user()->full_name;
 
@@ -194,7 +193,7 @@ class MainSliderController extends Controller
             }
         }
 
-        return redirect()->route('admin.main_sliders.index')->with([
+        return redirect()->route('admin.advertisor_sliders.index')->with([
             'message' => 'تم التعديل بنجاح',
             'alert-type' =>'success'
         ]);
@@ -205,7 +204,7 @@ class MainSliderController extends Controller
 
     public function destroy( $slider)
     {
-        if(!auth()->user()->ability('admin','delete_main_sliders')){
+        if(!auth()->user()->ability('admin','delete_advertisor_sliders')){
             return redirect('admin/index');
         }
 
@@ -222,7 +221,7 @@ class MainSliderController extends Controller
 
         $slider->delete();
 
-        return redirect()->route('admin.main_sliders.index')->with([
+        return redirect()->route('admin.advertisor_sliders.index')->with([
             'message' => 'تم الحذف بنجاح',
             'alert-type' => 'success'
         ]);
@@ -230,7 +229,7 @@ class MainSliderController extends Controller
 
     public function remove_image(Request $request){
 
-        if(!auth()->user()->ability('admin','delete_main_sliders')){
+        if(!auth()->user()->ability('admin','delete_advertisor_sliders')){
             return redirect('admin/index');
         }
 
