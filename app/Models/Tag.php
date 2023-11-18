@@ -6,10 +6,12 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Nicolaslopezj\Searchable\SearchableTrait;
 
 class Tag extends Model
 {
-    use HasFactory , Sluggable;
+    use HasFactory , Sluggable , SearchableTrait , SoftDeletes;
 
     protected $guarded = [];
 
@@ -27,6 +29,14 @@ class Tag extends Model
             ]
         ];
     }
+
+    protected $searchable = [
+        'columns' => [
+            // tableName.fieldName => priority
+            'tags.name' => 10,
+        ]
+    ]; 
+
 
 
     public function status(){

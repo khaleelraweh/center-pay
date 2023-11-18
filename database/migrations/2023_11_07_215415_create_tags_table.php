@@ -18,6 +18,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug')->unique();
             $table->boolean('status')->default(false);
+            $table->string('created_by')->nullable(); 
+            $table->string('updated_by')->nullable(); 
+            $table->string('deleted_by')->nullable(); 
+            $table->softDeletes();
             $table->timestamps();
         });
     }
