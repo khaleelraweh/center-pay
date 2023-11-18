@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('created_by')->default('admin');
             $table->string('updated_by')->nullable();
             $table->string('deleted_by')->nullable();
-            $table->unsignedBigInteger('section')->default(1);
+            $table->unsignedBigInteger('section')->default(1); // one means it related to any category except cards
             $table->softDeletes();
             $table->timestamps();
         });

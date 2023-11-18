@@ -55,7 +55,19 @@ class Product extends Model
 
     public function scopeActiveCategory($query){
         return $query->whereHas('category',function($query){
-            $query->whereStatus(1);
+            $query->whereStatus(1) ;
+        });
+    }
+
+    public function scopeProductCategory($query){
+        return $query->whereHas('category',function($query){
+            $query->whereSection(1); //means any product 
+        });
+    }
+
+    public function scopeProductCardCategory($query){
+        return $query->whereHas('category',function($query){
+            $query->whereSection(2); //only product whoes section is 1 means card product 
         });
     }
 
@@ -79,5 +91,7 @@ class Product extends Model
     {
         return $this->morphToMany(Tag::class, 'taggable');
     }
+
+
 
 }

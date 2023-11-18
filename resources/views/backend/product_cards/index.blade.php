@@ -5,7 +5,7 @@
 
         {{-- menu part  --}}
         <div class="card-header py-3 d-flex justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">المنتجات</h6>
+            <h6 class="m-0 font-weight-bold text-primary">البطائق</h6>
             <div class="ml-auto">
                 @ability('admin','create_products')
                 <a href="{{route('admin.product_cards.create')}}" class="btn btn-primary">

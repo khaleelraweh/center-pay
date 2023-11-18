@@ -21,6 +21,8 @@ class ProductCardController extends Controller
         }
 
         $products = Product::with('category','tags','firstMedia')
+        ->ActiveCategory()
+        ->ProductCardCategory()
         ->when(\request()->keyword != null , function($query){
             $query->search(\request()->keyword);
         })
@@ -41,7 +43,7 @@ class ProductCardController extends Controller
         }
         
         // get all categories that are active to choose one of them to be parent of product
-        $categories =ProductCategory::whereStatus(1)->get(['id','name']);
+        $categories =ProductCategory::whereStatus(1)->whereSection(2)->get(['id','name']);
         // get all tags to add some of them to product 
         $tags = Tag::whereStatus(1)->get(['id','name']);
 
@@ -136,7 +138,7 @@ class ProductCardController extends Controller
         
 
         // get all categories that are active to choose one of them to be parent of product
-        $categories =ProductCategory::whereStatus(1)->get(['id','name']);
+        $categories =ProductCategory::whereStatus(1)->whereSection(2)->get(['id','name']);
         // get all tags to add some of them to product 
         $tags = Tag::whereStatus(1)->get(['id','name']); 
 

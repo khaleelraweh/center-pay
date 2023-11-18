@@ -20,7 +20,9 @@ class ProductController extends Controller
             return redirect('admin/index');
         }
 
-        $products = Product::with('category','tags','firstMedia')
+        $products = Product::with('tags','firstMedia')
+        ->ActiveCategory()
+        ->ProductCategory()
         ->when(\request()->keyword != null , function($query){
             $query->search(\request()->keyword);
         })
@@ -29,6 +31,9 @@ class ProductController extends Controller
         })
         ->orderBy(\request()->sort_by ?? 'id' , \request()->order_by ?? 'desc')
         ->paginate(\request()->limit_by ?? 10);
+
+
+        // $products = $products->ActiveCategory();
         
         return view('backend.products.index',compact('products'));
         
