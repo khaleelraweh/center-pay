@@ -30,7 +30,7 @@ class Product extends Model
         'columns' => [
             'products.name' => 10,
         ]
-    ];
+    ]; 
 
 
     public function status(){

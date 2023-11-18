@@ -5,11 +5,17 @@ namespace App\Models;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Nicolaslopezj\Searchable\SearchableTrait;
+
 
 class Slider extends Model
 {
-    use HasFactory ,Sluggable ;
+    use HasFactory ,Sluggable , SearchableTrait , SoftDeletes;
 
     protected $guarded = [];
 
@@ -22,11 +28,59 @@ class Slider extends Model
         ];
     }
 
+    protected $searchable = [
+        'columns' => [
+            'sliders.title' => 10,
+        ]
+    ]; 
 
-    // slider has only one photo in  photo table so relation is morphone
-    public function photo():MorphOne
+    public function status(){
+        return $this->status ? 'مفعل' : "غير مفعل";
+    }
+
+    public function featured(){
+        return $this->featured ? 'نعم' : "لا";
+    }
+
+    public function scopeFeatured($query){
+        return $query->whereFeatured(true);
+    }
+
+    public function scopeActive($query){
+        return $query->whereStatus(true);
+    }
+
+    public function scopeHasQuantity($query){
+        return $query->where('quantity','>',0);
+    }
+
+    public function scopeActiveCategory($query){
+        return $query->whereHas('category',function($query){
+            $query->whereStatus(1) ;
+        });
+    }
+
+    public function scopeProductCategory($query){
+        return $query->whereHas('category',function($query){
+            $query->whereSection(1); //means any product 
+        });
+    }
+
+     // to get only first one media elemet
+     public function firstMedia(): MorphOne{
+        return $this->MorphOne(Photo::class, 'imageable')->orderBy('file_sort','asc');
+    }
+    
+    // one product may have more than one photo
+    public function photos():MorphMany
     {
-        return $this->morphOne(photo::class, 'imageable');
+        return $this->morphMany(Photo::class, 'imageable');
+    }
+
+
+    public function tags():MorphToMany
+    {
+        return $this->morphToMany(Tag::class, 'taggable');
     }
     
 }

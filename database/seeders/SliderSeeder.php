@@ -31,8 +31,8 @@ class SliderSeeder extends Seeder
                 'target'        =>  Arr::random($target),
                 'published_on'  =>  $faker->dateTime(),
                 'created_by'    =>  $faker->realTextBetween(10,12),
-                'modified_by'   =>  $faker->realTextBetween(10,12),
-                'deleted_at'    =>  $faker->dateTime(),
+                'updated_by'   =>  $faker->realTextBetween(10,12),
+                'deleted_at'    =>  null,
                 'created_at'    =>  now(),
                 'updated_at'    =>  now(),
             ];

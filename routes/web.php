@@ -2,10 +2,11 @@
 
 use App\Http\Controllers\Backend\BackendController;
 use App\Http\Controllers\Backend\CardController;
+use App\Http\Controllers\Backend\MainSliderController;
 use App\Http\Controllers\Backend\ProductCardController;
 use App\Http\Controllers\Backend\ProductCategoriesController;
 use App\Http\Controllers\Backend\ProductController;
-use App\Http\Controllers\Backend\SliderController;
+use App\Http\Controllers\Backend\TagController;
 use App\Http\Controllers\Frontend\FrontendController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -43,8 +44,9 @@ Route::group(['prefix'=>'admin' , 'as' =>'admin.'],function(){
         Route::resource('product_categories', ProductCategoriesController::class);
         Route::post('products/remove-image', [ProductController::class, 'remove_image'])->name('products.remove_image');
         Route::resource('products', ProductController::class);
-        Route::resource('sliders', SliderController::class);
-        Route::resource('tags', SliderController::class);
+        Route::post('main_sliders/remove-image', [MainSliderController::class, 'remove_image'])->name('main_sliders.remove_image');
+        Route::resource('main_sliders', MainSliderController::class);
+        Route::resource('tags', TagController::class);
         Route::post('cards/remove-image', [CardController::class, 'remove_image'])->name('cards.remove_image');
         Route::resource('cards', CardController::class);
         Route::post('product_cards/remove-image', [ProductCardController::class, 'remove_image'])->name('product_cards.remove_image');

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class SliderController extends Controller
+class TagController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class SliderController extends Controller
      */
     public function index()
     {
-        return view('backend.sliders.index');
+        return view('backend.tags.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class SliderController extends Controller
      */
     public function create()
     {
-        return view('backend.sliders.create');
+        return view('backend.tags.create');
     }
 
     /**
@@ -46,7 +46,7 @@ class SliderController extends Controller
      */
     public function show($id)
     {
-        return view('backend.sliders.show');
+        //
     }
 
     /**
@@ -57,7 +57,7 @@ class SliderController extends Controller
      */
     public function edit($id)
     {
-        return view('backend.sliders.edit');
+        return view('backend.tags.edit');
     }
 
     /**
@@ -83,4 +83,3 @@ class SliderController extends Controller
         //
     }
 }
-

@@ -14,7 +14,7 @@ class ProductCategoriesController extends Controller
 {
    
     public function index()
-    {
+    { 
         if(!auth()->user()->ability('admin','manage_product_categories , show_product_categories')){
             return redirect('admin/index');
         }
