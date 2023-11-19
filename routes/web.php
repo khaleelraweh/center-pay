@@ -3,6 +3,7 @@
 use App\Http\Controllers\Backend\AdvertisorSliderController;
 use App\Http\Controllers\Backend\BackendController;
 use App\Http\Controllers\Backend\CardController;
+use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\MainSliderController;
 use App\Http\Controllers\Backend\ProductCardController;
 use App\Http\Controllers\Backend\ProductCategoriesController;
@@ -55,6 +56,8 @@ Route::group(['prefix'=>'admin' , 'as' =>'admin.'],function(){
         Route::resource('cards', CardController::class);
         Route::post('product_cards/remove-image', [ProductCardController::class, 'remove_image'])->name('product_cards.remove_image');
         Route::resource('product_cards', ProductCardController::class);
+
+        Route::resource('coupons',CouponController::class);
     });
     
 });

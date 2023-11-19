@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 @section('style')
     <link rel="stylesheet" href="{{asset('backend/vendor/select2/css/select2.min.css')}}">
+    
     {{-- pickadate calling css --}}
     <link rel="stylesheet" href="{{asset('backend/vendor/datepicker/themes/classic.css')}}">
     <link rel="stylesheet" href="{{asset('backend/vendor/datepicker/themes/classic.date.css')}}">

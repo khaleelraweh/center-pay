@@ -208,6 +208,17 @@ class EntrustSeeder extends Seeder
         $updateTags  =  Permission::create(['name' => 'update_tags'  , 'display_name'  => 'تعديل كلمة مفتاحية' , 'route' => 'tags' , 'module' => 'tags' , 'as' => 'tags.edit'     , 'icon' => null           , 'parent' => $manageTags->id , 'parent_original' => $manageTags->id ,'parent_show' => $manageTags->id , 'sidebar_link' => '0' , 'appear' => '0'] );
         $deleteTags  =  Permission::create(['name' => 'delete_tags'  , 'display_name'  => 'حذف لكمة مفتاحية' , 'route' => 'tags' , 'module' => 'tags' , 'as' => 'tags.destroy'  , 'icon' => null           , 'parent' => $manageTags->id , 'parent_original' => $manageTags->id ,'parent_show' => $manageTags->id , 'sidebar_link' => '0' , 'appear' => '0'] );
 
+
+        //Coupons
+        $manageCoupons = Permission::create(['name' => 'manage_coupons', 'display_name' => 'Coupons' , 'route' => 'coupons' , 'module' => 'coupons' , 'as' => 'coupons.index' , 'icon' => 'fas fa-percent' , 'parent' => '0' , 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '20',] );
+        $manageCoupons->parent_show = $manageCoupons->id; $manageCoupons->save();
+        $showProductCoupons    =  Permission::create(['name' => 'show_coupons'    ,  'display_name'  => 'Coupons'       , 'route' => 'coupons' , 'module' => 'coupons' , 'as' => 'coupons.index'    , 'icon' => 'fas fa-percent'  , 'parent' => $manageCoupons->id , 'parent_original' => $manageCoupons->id ,'parent_show' => $manageCoupons->id , 'sidebar_link' => '1' , 'appear' => '1'] );
+        $createProductCoupons  =  Permission::create(['name' => 'create_coupons'  , 'display_name'   => 'Create Coupon' , 'route' => 'coupons' , 'module' => 'coupons' , 'as' => 'coupons.create'   , 'icon' => null              , 'parent' => $manageCoupons->id , 'parent_original' => $manageCoupons->id ,'parent_show' => $manageCoupons->id , 'sidebar_link' => '1' , 'appear' => '0'] );
+        $displayProductCoupons =  Permission::create(['name' => 'display_coupons' , 'display_name'  => 'Show Coupon'   , 'route' => 'coupons' , 'module' => 'coupons' , 'as' => 'coupons.show'     , 'icon' => null              , 'parent' => $manageCoupons->id , 'parent_original' => $manageCoupons->id ,'parent_show' => $manageCoupons->id , 'sidebar_link' => '0' , 'appear' => '0'] );
+        $updateProductCoupons  =  Permission::create(['name' => 'update_coupons'  , 'display_name'  => 'Update Coupon' , 'route' => 'coupons' , 'module' => 'coupons' , 'as' => 'coupons.edit'     , 'icon' => null              , 'parent' => $manageCoupons->id , 'parent_original' => $manageCoupons->id ,'parent_show' => $manageCoupons->id , 'sidebar_link' => '0' , 'appear' => '0'] );
+        $deleteProductCoupons  =  Permission::create(['name' => 'delete_coupons'  , 'display_name'   => 'Delete Coupon' , 'route' => 'coupons' , 'module' => 'coupons' , 'as' => 'coupons.destroy'  , 'icon' => null              , 'parent' => $manageCoupons->id , 'parent_original' => $manageCoupons->id ,'parent_show' => $manageCoupons->id , 'sidebar_link' => '0' , 'appear' => '0'] );
+
+
         
     }
 }
