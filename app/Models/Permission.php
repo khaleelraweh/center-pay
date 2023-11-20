@@ -30,7 +30,7 @@ class Permission extends EntrustPermission
         return static::with(implode('.', array_fill(0, $level, 'children')))
             ->whereParent(0)
             ->whereAppear(1)
-            ->whereSidebarLink(1)
+            ->whereSidebarLink(1) // this is the option to let the sidebar link is happened in side link
             ->orderBy('ordering', 'asc')
             ->get();
     }

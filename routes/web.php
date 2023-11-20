@@ -4,10 +4,13 @@ use App\Http\Controllers\Backend\AdvertisorSliderController;
 use App\Http\Controllers\Backend\BackendController;
 use App\Http\Controllers\Backend\CardController;
 use App\Http\Controllers\Backend\CouponController;
+use App\Http\Controllers\Backend\CustomerAddressController;
+use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\MainSliderController;
 use App\Http\Controllers\Backend\ProductCardController;
 use App\Http\Controllers\Backend\ProductCategoriesController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\SupervisorController;
 use App\Http\Controllers\Backend\TagController;
 use App\Http\Controllers\Frontend\FrontendController;
 use Illuminate\Support\Facades\Auth;
@@ -58,6 +61,15 @@ Route::group(['prefix'=>'admin' , 'as' =>'admin.'],function(){
         Route::resource('product_cards', ProductCardController::class);
 
         Route::resource('coupons',CouponController::class);
+
+        Route::post('customers/remove-image', [CustomerController::class, 'remove_image'])->name('customers.remove_image');
+        Route::resource('customers',CustomerController::class);
+
+        Route::post('supervisors/remove-image', [SupervisorController::class, 'remove_image'])->name('supervisors.remove_image');
+        Route::resource('supervisors',SupervisorController::class);
+        
+        Route::resource('customer_addresses',CustomerAddressController::class);
+
     });
     
 });

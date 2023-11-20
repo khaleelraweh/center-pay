@@ -26,6 +26,14 @@ return new class extends Migration
             $table->unsignedTinyInteger('status')->default(0); // حالة الحساب محمد او فعال 
             $table->rememberToken();
             $table->boolean('receive_emails')->default(true);
+
+             // will be use always
+             $table->string('created_by')->nullable(); 
+             $table->string('updated_by')->nullable(); 
+             $table->string('deleted_by')->nullable();
+             $table->softDeletes();
+             // end of will be use always
+
             $table->timestamps();
         });
     }
