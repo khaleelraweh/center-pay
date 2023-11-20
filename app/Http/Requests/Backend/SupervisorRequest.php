@@ -34,7 +34,13 @@ class SupervisorRequest extends FormRequest
                     'mobile'     => 'required|numeric|unique:users',
                     'password'   => 'nullable|min:8',
                     'status'     => 'required',
-                    'user_image' => 'nullable|mimes:jpg,jpeg,png,svg|max:20000'
+                    'user_image' => 'nullable|mimes:jpg,jpeg,png,svg|max:20000',
+
+                    'created_by' => 'nullable',
+                    'updated_by' => 'nullable',
+                    'deleted_by' => 'nullable',
+
+                    'all_permissions'   => 'nullable',
                 ];
             }
             case 'PUT':
@@ -48,7 +54,13 @@ class SupervisorRequest extends FormRequest
                     'mobile'     => 'required|numeric|unique:users,mobile,'.$this->route()->supervisor->id,
                     'password'   => 'nullable|min:8',
                     'status'     => 'required',
-                    'user_image' => 'nullable|mimes:jpg,jpeg,png,svg|max:20000'
+                    'user_image' => 'nullable|mimes:jpg,jpeg,png,svg|max:20000',
+
+                    'created_by' => 'nullable',
+                    'updated_by' => 'nullable',
+                    'deleted_by' => 'nullable',
+
+                    'all_permissions'   => 'nullable',
                 ];
             }
             

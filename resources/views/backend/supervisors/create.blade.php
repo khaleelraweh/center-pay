@@ -132,17 +132,29 @@
                                     
                                 </div>
 
-                                {{-- permissions row --}}
-                                <div class="row pt-3">
-                                    <div class="col-sm-12 col-md-12">
+                                {{-- permission row--}}
+                                <div class="row pt-4">
+
+                                    <div class="col-md-12 col-sm-12 ">
+
                                         <label for="permissions">الصلاحيات</label>
-                                        <select name="permissions[]" class="form-control select2" multiple="multiple">
+                                        <select name="permissions[]" class="form-control select2 child" multiple="multiple">
                                             @forelse ($permissions as $permission)
                                                 <option value="{{$permission->id}}"  {{ in_array($permission->id,old('permissions',[])) ? 'selected' : null }}>{{$permission->display_name}}</option>
                                             @empty
                                             @endforelse
                                         </select>
+
+                                        {{-- child class is used to make disabled and enabled to select part --}}
+                                        <div class="col-md-12 col-sm-12 ">
+                                            <label class="col-form-label col-md-12 col-sm-12 ">
+                                                <input class='child' type='checkbox' name="all_permissions" value="ok" />
+                                                 منح كل الصلاحيات
+                                            </label>
+                                        </div>
+
                                     </div>
+
                                 </div>
 
                             </div>
@@ -243,6 +255,19 @@
                 showUpload: false,
                 overwriteInitial:false
             })
+        });
+    </script>
+
+    {{-- is related to select permision disable and enable by child class --}}
+    <script language="javascript">
+                                                        
+        var $cbox = $('.child').change(function() {
+        
+            if(this.checked) {
+                $cbox.not(this).attr('disabled','disabled');
+            } else {
+                $cbox.removeAttr('disabled'); 
+            }
         });
     </script>
     

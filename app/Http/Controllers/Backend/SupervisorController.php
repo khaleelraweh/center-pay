@@ -55,6 +55,8 @@ class SupervisorController extends Controller
             return redirect('admin/index');
         }
 
+        // dd($request);
+
         $input['first_name'] = $request->first_name;
         $input['last_name'] = $request->last_name;
         $input['username'] = $request->username;
@@ -80,9 +82,20 @@ class SupervisorController extends Controller
         $supervisor->attachRole(Role::whereName('supervisor')->first()->id);
         
         //add permissions
-        if(isset($request->permissions) && count($request->permissions) > 0){
-            $supervisor->permissions()->sync($request->permissions);
+        // if(isset($request->permissions) && count($request->permissions) > 0){
+        //     $supervisor->permissions()->sync($request->permissions);
+        // }
+
+        if(isset($request->all_permissions)){
+            $permissions = Permission::get(['id']);
+            $supervisor->permissions()->sync($permissions);
         }
+        else if(isset($request->permissions) && count($request->permissions) > 0){
+                    $supervisor->permissions()->sync($request->permissions);
+        }
+
+
+        
 
         return redirect()->route('admin.supervisors.index')->with([
             'message' => 'created successfully',
@@ -146,8 +159,13 @@ class SupervisorController extends Controller
         $supervisor->update($input);
         //update permission
         //add permissions
-        if(isset($request->permissions) && count($request->permissions) > 0){
-            $supervisor->permissions()->sync($request->permissions);
+
+        if(isset($request->all_permissions)){
+            $permissions = Permission::get(['id']);
+            $supervisor->permissions()->sync($permissions);
+        }
+        else if(isset($request->permissions) && count($request->permissions) > 0){
+                    $supervisor->permissions()->sync($request->permissions);
         }
 
         return redirect()->route('admin.supervisors.index')->with([
