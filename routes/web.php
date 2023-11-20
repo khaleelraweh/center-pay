@@ -3,6 +3,8 @@
 use App\Http\Controllers\Backend\AdvertisorSliderController;
 use App\Http\Controllers\Backend\BackendController;
 use App\Http\Controllers\Backend\CardController;
+use App\Http\Controllers\Backend\CityController;
+use App\Http\Controllers\Backend\CountryController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\CustomerAddressController;
 use App\Http\Controllers\Backend\CustomerController;
@@ -10,6 +12,7 @@ use App\Http\Controllers\Backend\MainSliderController;
 use App\Http\Controllers\Backend\ProductCardController;
 use App\Http\Controllers\Backend\ProductCategoriesController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\StateController;
 use App\Http\Controllers\Backend\SupervisorController;
 use App\Http\Controllers\Backend\TagController;
 use App\Http\Controllers\Frontend\FrontendController;
@@ -69,6 +72,12 @@ Route::group(['prefix'=>'admin' , 'as' =>'admin.'],function(){
         Route::resource('supervisors',SupervisorController::class);
         
         Route::resource('customer_addresses',CustomerAddressController::class);
+
+        Route::resource('countries',CountryController::class);
+        Route::get('states/get_states',[StateController::class,'get_states'])->name('states.get_states');
+        Route::resource('states',StateController::class);
+        Route::get('cities/get_cities',[CityController::class,'get_cities'])->name('cities.get_cities');
+        Route::resource('cities',CityController::class);
 
     });
     
