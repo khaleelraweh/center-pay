@@ -4,7 +4,7 @@
     <div class="card shadow mb-4">
 
         {{-- menu part  --}}
-        <div class="card-header py-3 d-flex">
+        <div class="card-header py-3 d-flex justify-content-between">
             <h6 class="m-0 font-weight-bold text-primary">Customer Addresses</h6>
             <div class="ml-auto">
                 @ability('admin','create_customer_addresses')

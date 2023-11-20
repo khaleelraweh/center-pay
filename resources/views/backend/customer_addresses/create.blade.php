@@ -5,7 +5,7 @@
     <div class="card shadow mb-4">
 
         {{-- menu part  --}}
-        <div class="card-header py-3 d-flex">
+        <div class="card-header py-3 d-flex justify-content-between">
             <h6 class="m-0 font-weight-bold text-primary">Create Address</h6>
             <div class="ml-auto">
                 <a href="{{route('admin.customer_addresses.index')}}" class="btn btn-primary">
