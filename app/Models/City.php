@@ -29,4 +29,8 @@ class City extends Model
     public function state():BelongsTo{
         return $this->belongsTo(State::class);
     }
+
+    public function addresses():HasMany {
+        return $this->hasMany(UserAddress::class);
+    }
 }

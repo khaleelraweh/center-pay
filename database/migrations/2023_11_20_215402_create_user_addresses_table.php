@@ -29,7 +29,16 @@ return new class extends Migration
             $table->foreignId('city_id')->constrained()->cascadeOnDelete();
             $table->string('zip_code')->nullable();
             $table->string('po_box')->nullable();
+
+            // will be use always
+            $table->boolean('status')->default(true);
+            $table->dateTime('published_on')->nullable(); 
+            $table->string('created_by')->nullable(); 
+            $table->string('updated_by')->nullable(); 
+            $table->string('deleted_by')->nullable();
+            $table->softDeletes();
             $table->timestamps();
+            // end of will be use always
         });
     }
 

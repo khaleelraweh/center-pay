@@ -5,14 +5,14 @@
 
         {{-- menu part  --}}
         <div class="card-header py-3 d-flex justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">Cities</h6>
+            <h6 class="m-0 font-weight-bold text-primary">إدارة المدن</h6>
             <div class="ml-auto">
                 @ability('admin','create_cities')
                 <a href="{{route('admin.cities.create')}}" class="btn btn-primary">
                     <span class="icon text-white-50">
                         <i class="fa fa-plus"></i>
                     </span>
-                    <span class="text">Add New City</span>
+                    <span class="text">إضافة مدينة جديدة</span>
                 </a>
                 @endability
             </div>
@@ -27,10 +27,10 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>State Name</th>
-                        <th>Status</th>
-                        <th class="text-center" style="width:30px;">Actions</th>
+                        <th>اسم المدينة</th>
+                        <th>المقاطعة</th>
+                        <th>الحالة</th>
+                        <th class="text-center" style="width:30px;">العمليات</th>
                     </tr>
                 </thead>
                 <tbody>

@@ -5,14 +5,14 @@
 
         {{-- menu part  --}}
         <div class="card-header py-3 d-flex justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">Customer Addresses</h6>
+            <h6 class="m-0 font-weight-bold text-primary">إدارة عناوين العملاء </h6>
             <div class="ml-auto">
                 @ability('admin','create_customer_addresses')
                 <a href="{{route('admin.customer_addresses.create')}}" class="btn btn-primary">
                     <span class="icon text-white-50">
                         <i class="fa fa-plus"></i>
                     </span>
-                    <span class="text">Add New Customer Address</span>
+                    <span class="text">إضافة عنوان عميل جديد</span>
                 </a>
                 @endability
             </div>
@@ -27,14 +27,14 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>Customer</th>
-                        <th>Title</th>
+                        <th>العميل </th>
+                        <th>عنوان الموقع</th>
                         <th>Shipping Info</th>
-                        <th>Location</th>
-                        <th>Address</th>
+                        <th>الموقع</th>
+                        <th>الموقع بالضبط</th>
                         <th>Zip Code</th>
                         <th>PoBox</th>
-                        <th class="text-center" style="width:30px;">Actions</th>
+                        <th class="text-center" style="width:30px;">العمليات</th>
                     </tr>
                 </thead>
                 <tbody>

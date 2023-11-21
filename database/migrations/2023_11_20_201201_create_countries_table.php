@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('capital')->nullable();
             $table->string('currency')->nullable();
             $table->string('currency_name')->nullable();
+            $table->string('currency_name_native')->nullable();
             $table->string('currency_symbol')->nullable();
             $table->string('region')->nullable();
             $table->string('nationality')->nullable();
@@ -30,7 +31,15 @@ return new class extends Migration
             $table->string('emoji')->nullable();
             $table->boolean('status')->default(false);
 
-        });
+            $table->dateTime('published_on')->nullable(); 
+            $table->boolean('view_in_main')->default(false); 
+            $table->string('created_by')->nullable(); 
+            $table->string('updated_by')->nullable(); 
+            $table->string('deleted_by')->nullable();
+            $table->softDeletes();
+            $table->timestamps();
+
+        }); 
     }
 
     /**

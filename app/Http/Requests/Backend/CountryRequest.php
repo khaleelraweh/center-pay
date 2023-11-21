@@ -27,16 +27,55 @@ class CountryRequest extends FormRequest
             case 'POST':
             {
                 return [
-                    'name'=>'required|max:255|unique:countries',
-                    'status'=>'required',
+                    'name'              => 'required|max:255|unique:countries',
+                    'name_native'       => 'nullable',
+                    'country_code'      => 'nullable',
+                    'phone_code'        => 'nullable',
+                    'capital'           => 'nullable',
+                    'currency'          => 'nullable',
+                    'currency_name'     => 'nullable',
+                    'currency_name_native'     => 'nullable',
+                    'currency_symbol'   => 'nullable',
+                    'region'            => 'nullable',
+                    'nationality'       => 'nullable',
+                    'nationality_native'=> 'nullable',
+                    'translations'      => 'nullable',
+                    'emoji'             => 'nullable',
+                    'status'            =>  'required',
+
+                    'published_on'       =>  'nullable',
+                    'published_on_time'  =>  'nullable',
+                    'created_by'         =>  'nullable',
+                    'updated_by'         =>  'nullable',
+                    'deleted_by'         =>  'nullable',
+
                 ];
             }
             case 'PUT':
             case 'PATCH':
             {
                 return [
-                    'name'=>'required|max:255|unique:countries,name,'.$this->route()->country->id,
-                    'status'=>'required',
+                    'name'              => 'required|max:255|unique:countries,name,'.$this->route()->country->id,
+                    'name_native'       => 'nullable',
+                    'country_code'      => 'nullable',
+                    'phone_code'        => 'nullable',
+                    'capital'           => 'nullable',
+                    'currency'          => 'nullable',
+                    'currency_name'     => 'nullable',
+                    'currency_name_native'     => 'nullable',
+                    'currency_symbol'   => 'nullable',
+                    'region'            => 'nullable',
+                    'nationality'       => 'nullable',
+                    'nationality_native'=> 'nullable',
+                    'translations'      => 'nullable',
+                    'emoji'             => 'nullable',
+                    'status'            => 'required',
+
+                    'published_on'       =>  'nullable',
+                    'published_on_time'  =>  'nullable',
+                    'created_by'         =>  'nullable',
+                    'updated_by'         =>  'nullable',
+                    'deleted_by'         =>  'nullable',
                 ];
             }
             

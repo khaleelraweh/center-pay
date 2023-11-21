@@ -6,13 +6,13 @@
 
         {{-- menu part  --}}
         <div class="card-header py-3 d-flex justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">ُ Edit State: {{$state->name}}</h6>
+            <h6 class="m-0 font-weight-bold text-primary"> تعديل بيانات المقاطعة : {{$state->name}}</h6>
             <div class="ml-auto">
                 <a href="{{route('admin.states.index')}}" class="btn btn-primary">
                     <span class="icon text-white-50">
                         <i class="fa fa-home"></i>
                     </span>
-                    <span class="text">States</span>
+                    <span class="text">إدارة المقاطعات</span>
                 </a>
             </div>
         </div>
@@ -25,13 +25,13 @@
                 <div class="row">
                     <div class="col-4">
                         <div class="form-group">
-                            <label for="name">Name</label>
+                            <label for="name">اسم المقاطعة</label>
                             <input type="text" id="name" name="name" value="{{old('name',$state->name)}}" class="form-control" >
                             @error('name') <span class="text-danger">{{$message}}</span> @enderror
                         </div>
                     </div>
                     <div class="col-4">
-                        <label for="country_id">Country</label>
+                        <label for="country_id">الدولة</label>
                         <select name="country_id" class="form-control">
                             <option value="">---</option>
                             @forelse ($countries as $country)
@@ -42,11 +42,10 @@
                         @error('country_id')<span class="text-danger">{{$message}}</span>@enderror
                     </div>
                     <div class="col-4">
-                        <label for="status">Status</label>
+                        <label for="status">الحالة</label>
                         <select name="status" class="form-control">
-                            <option value="">---</option>
-                            <option value="1" {{ old('status',$state->status) == '1' ? 'selected' : null}}>Active</option>
-                            <option value="0" {{ old('status',$state->status) == '0' ? 'selected' : null}}>Inactive</option>
+                            <option value="1" {{ old('status',$state->status) == '1' ? 'selected' : null}}>مفعل</option>
+                            <option value="0" {{ old('status',$state->status) == '0' ? 'selected' : null}}>غير مفعل</option>
                         </select>
                         @error('status')<span class="text-danger">{{$message}}</span>@enderror
                     </div>

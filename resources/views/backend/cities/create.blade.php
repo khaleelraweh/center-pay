@@ -6,13 +6,13 @@
 
         {{-- menu part  --}}
         <div class="card-header py-3 d-flex justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">Create City</h6>
+            <h6 class="m-0 font-weight-bold text-primary">إضافة مدينة جديدة</h6>
             <div class="ml-auto">
                 <a href="{{route('admin.cities.index')}}" class="btn btn-primary">
                     <span class="icon text-white-50">
                         <i class="fa fa-home"></i>
                     </span>
-                    <span class="text">Cities</span>
+                    <span class="text">إدارة المدن</span>
                 </a>
             </div>
         </div>
@@ -25,13 +25,13 @@
                 <div class="row">
                     <div class="col-4">
                         <div class="form-group">
-                            <label for="name">Name</label>
+                            <label for="name">إسم المدينة</label>
                             <input type="text" id="name" name="name" value="{{old('name')}}" class="form-control" placeholder="name">
                             @error('name') <span class="text-danger">{{$message}}</span> @enderror
                         </div>
                     </div>
                     <div class="col-4">
-                        <label for="state_id">State </label>
+                        <label for="state_id">المقاطعة </label>
                         <select name="state_id" class="form-control">
                             <option value="">---</option>
                             @forelse ($states as $state)
@@ -42,9 +42,8 @@
                         @error('state_id')<span class="text-danger">{{$message}}</span>@enderror
                     </div>
                     <div class="col-4">
-                        <label for="status">Status</label>
+                        <label for="status">الحالة</label>
                         <select name="status" class="form-control">
-                            <option value="">---</option>
                             <option value="1" {{ old('status') == '1' ? 'selected' : null}}>Active</option>
                             <option value="0" {{ old('status') == '0' ? 'selected' : null}}>Inactive</option>
                         </select>

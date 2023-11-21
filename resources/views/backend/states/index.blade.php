@@ -5,14 +5,14 @@
 
         {{-- menu part  --}}
         <div class="card-header py-3 d-flex justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">States</h6>
+            <h6 class="m-0 font-weight-bold text-primary">المقاطعات/المحافظات</h6>
             <div class="ml-auto">
                 @ability('admin','create_states')
                 <a href="{{route('admin.states.create')}}" class="btn btn-primary">
                     <span class="icon text-white-50">
                         <i class="fa fa-plus"></i>
                     </span>
-                    <span class="text">Add new State</span>
+                    <span class="text">إضافة مقاطعة جديدة</span>
                 </a>
                 @endability
             </div>
@@ -27,11 +27,11 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Cities Count</th>
-                        <th>Country Name</th>
-                        <th>Status</th>
-                        <th class="text-center" style="width:30px;">Actions</th>
+                        <th>اسم المقاطعة</th>
+                        <th>عدد المدن في المقاطعة</th>
+                        <th>إسم الدولة </th>
+                        <th>الحالة</th>
+                        <th class="text-center" style="width:30px;">العمليات</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -62,7 +62,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="5" class="text-center">No States found</td>
+                        <td colspan="5" class="text-center">لا توجد اي مقاطعة مضافة في الوقت الحالي </td>
                     </tr>
                 @endforelse    
                 </tbody>

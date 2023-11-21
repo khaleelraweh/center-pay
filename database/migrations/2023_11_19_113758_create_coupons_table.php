@@ -38,7 +38,7 @@ return new class extends Migration
             $table->timestamps();
             // end of will be use always
 
-        }); 
+        });  
     }
 
     /**
