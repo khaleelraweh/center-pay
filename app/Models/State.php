@@ -18,6 +18,7 @@ class State extends Model
     public $searchable =  [
         'columns' =>[
             'states.name' => 10,
+            'states.name_native' => 10,
         ]
     ];
 

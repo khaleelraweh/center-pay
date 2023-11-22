@@ -28,6 +28,7 @@ class StateRequest extends FormRequest
             {
                 return [
                     'name'          =>  'required|max:255|unique:states',
+                    'name_native'   =>  'nullable',
                     'country_id'    =>  'required',
                     'status'        =>  'required',
                 ];
@@ -37,6 +38,7 @@ class StateRequest extends FormRequest
             {
                 return [
                     'name'          =>  'required|max:255|unique:states,name,'.$this->route()->state->id,
+                    'name_native'          =>  'nullable',
                     'country_id'    =>  'required',
                     'status'        =>  'required',
                 ];

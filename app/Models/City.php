@@ -19,11 +19,12 @@ class City extends Model
     public $searchable =  [
         'columns' =>[
             'cities.name' => 10,
+            'cities.name_native' => 10,
         ]
     ];
 
     public function status():string{
-        return $this->status ?'Active' : 'Inactive';
+        return $this->status ?'مفعل' : 'غير مفعل';
     }
 
     public function state():BelongsTo{

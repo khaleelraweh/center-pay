@@ -23,14 +23,23 @@
                 @csrf
                 @method('PATCH')
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-sm-12 col-md-6 pt-4">
                         <div class="form-group">
                             <label for="name">إسم المدينة</label>
                             <input type="text" id="name" name="name" value="{{old('name',$city->name)}}" class="form-control" >
                             @error('name') <span class="text-danger">{{$message}}</span> @enderror
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-sm-12 col-md-6 pt-4">
+                        <div class="form-group">
+                            <label for="name_native">إسم المدينة native</label>
+                            <input type="text" id="name_native" native="name_native" value="{{old('name_native',$city->name_native)}}" class="form-control" >
+                            @error('name_native') <span class="text-danger">{{$message}}</span> @enderror
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 pt-4">
                         <label for="state_id">المقاطعة</label>
                         <select name="state_id" class="form-control">
                             <option value="">---</option>
@@ -41,7 +50,7 @@
                         </select>
                         @error('state_id')<span class="text-danger">{{$message}}</span>@enderror
                     </div>
-                    <div class="col-4">
+                    <div class="col-sm-12 col-md-6 pt-4">
                         <label for="status">الحالة</label>
                         <select name="status" class="form-control">
                             <option value="1" {{ old('status',$city->status) == '1' ? 'selected' : null}}>مفعل</option>
@@ -54,7 +63,7 @@
                 {{-- end row --}}
 
                 <div class="form-group pt-4">
-                    <button type="submit" name="submit" class="btn btn-primary">Update City</button>
+                    <button type="submit" name="submit" class="btn btn-primary">تعديل البيانات</button>
                 </div>
 
             </form>

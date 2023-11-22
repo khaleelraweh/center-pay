@@ -23,14 +23,23 @@
             <form action="{{route('admin.states.store')}}" method="post">
                 @csrf
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-sm-12 col-md-6 pt-4">
                         <div class="form-group">
                             <label for="name">إسم المقاطعة</label>
-                            <input type="text" id="name" name="name" value="{{old('name')}}" class="form-control" placeholder="name">
+                            <input type="text" id="name" name="name" value="{{old('name')}}" class="form-control" placeholder="">
                             @error('name') <span class="text-danger">{{$message}}</span> @enderror
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-sm-12 col-md-6 pt-4">
+                        <div class="form-group">
+                            <label for="name_native">إسم المقاطعة native</label>
+                            <input type="text" id="name_native" name="name_native" value="{{old('name_native')}}" class="form-control" placeholder="">
+                            @error('name_native') <span class="text-danger">{{$message}}</span> @enderror
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 pt-4">
                         <label for="country_id">الدولة </label>
                         <select name="country_id" class="form-control">
                             <option value="">---</option>
@@ -41,7 +50,7 @@
                         </select>
                         @error('country_id')<span class="text-danger">{{$message}}</span>@enderror
                     </div>
-                    <div class="col-4">
+                    <div class="col-sm-12 col-md-6 pt-4">
                         <label for="status">الحالة</label>
                         <select name="status" class="form-control">
                             <option value="1" {{ old('status') == '1' ? 'selected' : null}}>مفعل</option>
@@ -52,7 +61,7 @@
                 </div>
                 {{-- end row --}}
                 <div class="form-group pt-4">
-                    <button type="submit" name="submit" class="btn btn-primary">Add State</button>
+                    <button type="submit" name="submit" class="btn btn-primary">إضافة مقاطعة</button>
                 </div>
 
             </form>

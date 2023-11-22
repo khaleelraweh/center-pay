@@ -46,7 +46,14 @@ class StateController extends Controller
             return redirect('admin/index');
         }
 
-        State::create($request->validated());
+        $input['name']  = $request->name;
+        $input['name_native']   = $request->name_native;
+        $input['country_id']    = $request->country_id;
+        $input['status']    = $request->status;
+
+        State::create($input);
+
+        // State::create($request->validated());
 
         return redirect()->route('admin.states.index')->with([
             'message' => 'created successfully',
@@ -79,7 +86,13 @@ class StateController extends Controller
             return redirect('admin/index');
         }
 
-        $state->update($request->validated());
+        $input['name']  = $request->name;
+        $input['name_native']   = $request->name_native;
+        $input['country_id']    = $request->country_id;
+        $input['status']    = $request->status;
+
+        // $state->update($request->validated());
+        $state->update($input);
 
         return redirect()->route('admin.states.index')->with([
             'message' => 'Updated successfully',

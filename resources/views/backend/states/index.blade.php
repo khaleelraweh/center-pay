@@ -39,7 +39,7 @@
                     <tr>
                         <td>{{$state->name}}</td>
                         <td>{{$state->cities->count()}}</td>
-                        <td>{{$state->country->name}}</td>
+                        <td>{{$state->country->name_native}}</td>
                         <td>{{$state->status()}}</td>
                         <td>
                             <div class="btn-group btn-group-sm">

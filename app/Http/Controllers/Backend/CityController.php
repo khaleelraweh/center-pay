@@ -36,6 +36,7 @@ class CityController extends Controller
             return redirect('admin/index');
         }
 
+        
         $states = State::get(['id','name']);
         return view('backend.cities.create',compact('states'));
     }
@@ -46,7 +47,13 @@ class CityController extends Controller
             return redirect('admin/index');
         }
 
-        City::create($request->validated());
+        $input['name']  = $request->name;
+        $input['name_native']   = $request->name_native;
+        $input['state_id']  = $request->state_id;
+        $input['status']    = $request->status;
+
+        // City::create($request->validated());
+        City::create($input);
 
         return redirect()->route('admin.cities.index')->with([
             'message' => 'created successfully',
@@ -79,7 +86,13 @@ class CityController extends Controller
             return redirect('admin/index');
         }
 
-        $city->update($request->validated());
+        $input['name']  = $request->name;
+        $input['name_native']   = $request->name_native;
+        $input['state_id']  = $request->state_id;
+        $input['status']    = $request->status;
+
+        // $city->update($request->validated());
+        $city->update($input);
 
         return redirect()->route('admin.cities.index')->with([
             'message' => 'Updated successfully',

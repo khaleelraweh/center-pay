@@ -23,14 +23,23 @@
                 @csrf
                 @method('PATCH')
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-sm-12 col-md-6 pt-4">
                         <div class="form-group">
                             <label for="name">اسم المقاطعة</label>
                             <input type="text" id="name" name="name" value="{{old('name',$state->name)}}" class="form-control" >
                             @error('name') <span class="text-danger">{{$message}}</span> @enderror
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-sm-12 col-md-6 pt-4">
+                        <div class="form-group">
+                            <label for="name_native">اسم المقاطعة native</label>
+                            <input type="text" id="name_native" name="name_native" value="{{old('name_native',$state->name_native)}}" class="form-control" >
+                            @error('name_native') <span class="text-danger">{{$message}}</span> @enderror
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 pt-4">
                         <label for="country_id">الدولة</label>
                         <select name="country_id" class="form-control">
                             <option value="">---</option>
@@ -41,7 +50,7 @@
                         </select>
                         @error('country_id')<span class="text-danger">{{$message}}</span>@enderror
                     </div>
-                    <div class="col-4">
+                    <div class="col-sm-12 col-md-6 pt-4">
                         <label for="status">الحالة</label>
                         <select name="status" class="form-control">
                             <option value="1" {{ old('status',$state->status) == '1' ? 'selected' : null}}>مفعل</option>

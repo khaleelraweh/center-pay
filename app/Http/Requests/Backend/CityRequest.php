@@ -28,6 +28,7 @@ class CityRequest extends FormRequest
             {
                 return [
                     'name'          =>  'required|max:255|unique:cities',
+                    'name_native'   =>  'nullable',
                     'state_id'      =>  'required',
                     'status'        =>  'required',
                 ];
@@ -37,6 +38,7 @@ class CityRequest extends FormRequest
             {
                 return [
                     'name'          =>  'required|max:255|unique:cities,name,'.$this->route()->city->id,
+                    'name_native'   =>  'nullable',
                     'state_id'      =>  'required',
                     'status'        =>  'required',
                 ];

@@ -49,7 +49,7 @@
                                     @foreach ($menu->appearedChildren as $sub_menu)
                                         <li>
                                             <a href="{{route('admin.' . $sub_menu->as)}}">
-                                                <i class="{{$menu->icon != null ? $menu->icon : 'fas fa-home'}}"></i>
+                                                <i class="{{$sub_menu->icon != null ? $sub_menu->icon : 'fas fa-home'}}"></i>
                                                 <span><b> {{$sub_menu->display_name}}</b></span>
                                             </a>
                                         </li>
