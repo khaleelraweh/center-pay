@@ -290,6 +290,16 @@ class EntrustSeeder extends Seeder
        $deleteShippingCompanies =  Permission::create(['name'  => 'delete_shipping_companies'    , 'display_name'    => 'حذف شركة الشحن'       , 'route' => 'shipping_companies' , 'module' => 'shipping_companies' , 'as' => 'shipping_companies.destroy'  , 'icon' => null              , 'parent' => $manageShippingCompanies->id , 'parent_original' => $manageShippingCompanies->id ,'parent_show' => $manageShippingCompanies->id , 'sidebar_link' => '0' , 'appear' => '0'] );
        
 
+        //Product Reviews
+        $manageProductReviews = Permission::create(['name' => 'manage_product_reviews', 'display_name' => 'إدارة التعليقات' , 'route' => 'product_reviews' , 'module' => 'product_reviews' , 'as' => 'product_reviews.index' , 'icon' => 'fas fa-comment' , 'parent' => '0' , 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '85',] );
+        $manageProductReviews->parent_show = $manageProductReviews->id; $manageProductReviews->save();
+        $showProductReviews   =  Permission::create(['name' => 'show_product_reviews'    ,  'display_name'  => 'التعليقات'       , 'route' => 'product_reviews' , 'module' => 'product_reviews' , 'as' => 'product_reviews.index'    , 'icon' => 'fas fa-comment'  , 'parent' => $manageProductReviews->id , 'parent_original' => $manageProductReviews->id ,'parent_show' => $manageProductReviews->id , 'sidebar_link' => '1' , 'appear' => '1'] );
+        $createProductReviews =  Permission::create(['name' => 'create_product_reviews'  , 'display_name'   => 'إضافة تعليق' , 'route' => 'product_reviews' , 'module' => 'product_reviews' , 'as' => 'product_reviews.create'   , 'icon' => null              , 'parent' => $manageProductReviews->id , 'parent_original' => $manageProductReviews->id ,'parent_show' => $manageProductReviews->id , 'sidebar_link' => '1' , 'appear' => '0'] );
+        $displayProductReviews =  Permission::create(['name' => 'display_product_reviews' , 'display_name'  => 'عرض تعليق'   , 'route' => 'product_reviews' , 'module' => 'product_reviews' , 'as' => 'product_reviews.show'     , 'icon' => null              , 'parent' => $manageProductReviews->id , 'parent_original' => $manageProductReviews->id ,'parent_show' => $manageProductReviews->id , 'sidebar_link' => '0' , 'appear' => '0'] );
+        $updateProductReviews  =  Permission::create(['name' => 'update_product_reviews'  , 'display_name'  => 'تعديل تعليق' , 'route' => 'product_reviews' , 'module' => 'product_reviews' , 'as' => 'product_reviews.edit'     , 'icon' => null              , 'parent' => $manageProductReviews->id , 'parent_original' => $manageProductReviews->id ,'parent_show' => $manageProductReviews->id , 'sidebar_link' => '0' , 'appear' => '0'] );
+        $deleteProductReviews =  Permission::create(['name' => 'delete_product_reviews'  , 'display_name'   => 'حذف تعليق' , 'route' => 'product_reviews' , 'module' => 'product_reviews' , 'as' => 'product_reviews.destroy'  , 'icon' => null              , 'parent' => $manageProductReviews->id , 'parent_original' => $manageProductReviews->id ,'parent_show' => $manageProductReviews->id , 'sidebar_link' => '0' , 'appear' => '0'] );
+
+
         
     }
 }

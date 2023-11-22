@@ -38,15 +38,7 @@ class User extends Authenticatable implements MustVerifyEmail
         ]
     ]; 
 
-    public function status(){
-        return $this->status ? 'Active' : "Inactive";
-    }
-    public function addresses():HasMany {
-        return $this->hasMany(UserAddress::class);
-    }
-
-
-  
+    
     protected $hidden = [
         'password',
         'remember_token',
@@ -62,6 +54,18 @@ class User extends Authenticatable implements MustVerifyEmail
     // ucfirst : get first alphabet as bigger alpha
     public function getFullNameAttribute():string{
         return ucfirst($this->first_name) . ' ' . ucfirst($this->last_name);
+    }
+
+    public function status(){
+        return $this->status ? 'Active' : "Inactive";
+    }
+    
+    public function addresses():HasMany {
+        return $this->hasMany(UserAddress::class);
+    }
+
+    public function reviews(): HasMany{
+        return $this->hasMany(ProductReview::class);
     }
 
 
