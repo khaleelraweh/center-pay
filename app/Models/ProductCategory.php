@@ -74,7 +74,7 @@ class ProductCategory extends Model
     // product category has only one photo in photo table so relationship is morphone
     public function photo():MorphOne
     {
-        return $this->morphOne(photo::class, 'imageable');
+        return $this->morphOne(Photo::class, 'imageable');
     }
 
 
