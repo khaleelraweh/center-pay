@@ -48,7 +48,7 @@ class CardRequest extends FormRequest
             case 'PATCH':
             {
                 return [ 
-                    'name'=>'required|max:255|unique:product_categories,name,'.$this->route()->product_category->id,
+                    'name'=>'required|max:255|unique:product_categories,name,'.$this->route()->card->id,
                     'parent_id'     =>  'nullable',
                     'status'        =>  'required',
                     'publish_date'  =>  'nullable|date_format:Y-m-d',

@@ -118,13 +118,13 @@ class CardController extends Controller
         return view('backend.cards.edit',compact('productCategory'));
     }
     
-    public function update(CardRequest $request, $id)
+    public function update(CardRequest $request, ProductCategory $card)
     {
         if(!auth()->user()->ability('admin','update_cards')){
             return redirect('admin/index');
         }
         
-        $productCategory = ProductCategory::findOrFail($id);
+        $productCategory = $card;
 
         
         $input['name'] = $request->name;
@@ -181,9 +181,9 @@ class CardController extends Controller
     
    
 
-    public function destroy($id)
+    public function destroy(ProductCategory $card)
     {
-        $productCategory  = ProductCategory::findOrFail($id);
+        $productCategory  = $card;
 
         if(!auth()->user()->ability('admin','delete_cards')){
             return redirect('admin/index');
