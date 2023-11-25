@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\CustomerAddressController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\MainSliderController;
+use App\Http\Controllers\Backend\PaymentMethodController;
 use App\Http\Controllers\Backend\ProductCardController;
 use App\Http\Controllers\Backend\ProductCategoriesController;
 use App\Http\Controllers\Backend\ProductController;
@@ -98,6 +99,9 @@ Route::group(['prefix'=>'admin' , 'as' =>'admin.'],function(){
         Route::resource('shipping_companies',ShippingCompanyController::class);
 
         Route::resource('product_reviews',ProductReviewController::class);
+
+        Route::post('payment_methods/remove-image', [PaymentMethodController::class, 'remove_image'])->name('payment_methods.remove_image');
+        Route::resource('payment_methods',PaymentMethodController::class);
 
 
 

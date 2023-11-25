@@ -314,12 +314,9 @@
 
             });
 
-            
             $('#published_on_time').pickatime({
                 clear: ''
             });
-            
-
             // ======= End pickadate codeing for publish start and end date  ===========
 
             $('#code').keyup(function(){

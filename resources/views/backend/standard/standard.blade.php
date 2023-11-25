@@ -215,7 +215,6 @@
                         later work...
                     </div>
 
-
                     {{-- submit button  --}}
                     <div class="form-group pt-4">
                         <button type="submit" name="submit" class="btn btn-primary">إنشاء الكوبون</button>
@@ -274,8 +273,8 @@
             });
 
             // This is for publish this coupon =========================
+            
             // ======= start pickadate codeing ===========
-           
             $('#published_on').pickadate({
                 format: 'yyyy-mm-dd',
                 min: new Date(),
@@ -286,7 +285,6 @@
                 colseOnSelect: true // Close Upon Selecting a date
             });
 
-           
             var publishedOn = $('#published_on').pickadate('picker'); // set startdate in the picker to the start date in the #start_date elemet
 
             // when change date 
@@ -299,7 +297,6 @@
             $('#published_on_time').pickatime({
                 clear: ''
             });
-           
             // ======= End pickadate codeing ===========
 
          
