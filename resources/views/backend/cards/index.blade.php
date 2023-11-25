@@ -107,7 +107,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="6" class="text-center">No categories found</td>
+                                    <td colspan="6" class="text-center">No Cards found</td>
                                 </tr>
                             @endforelse    
                             </tbody>
