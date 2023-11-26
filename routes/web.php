@@ -19,6 +19,7 @@ use App\Http\Controllers\Backend\StateController;
 use App\Http\Controllers\Backend\SupervisorController;
 use App\Http\Controllers\Backend\TagController;
 use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -102,6 +103,8 @@ Route::group(['prefix'=>'admin' , 'as' =>'admin.'],function(){
 
         Route::post('payment_methods/remove-image', [PaymentMethodController::class, 'remove_image'])->name('payment_methods.remove_image');
         Route::resource('payment_methods',PaymentMethodController::class);
+
+        Route::resource('orders',OrderController::class);
 
 
 

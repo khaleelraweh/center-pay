@@ -59,13 +59,17 @@ class User extends Authenticatable implements MustVerifyEmail
     public function status(){
         return $this->status ? 'Active' : "Inactive";
     }
-    
+
     public function addresses():HasMany {
         return $this->hasMany(UserAddress::class);
     }
 
     public function reviews(): HasMany{
         return $this->hasMany(ProductReview::class);
+    }
+
+    public function orders():HasMany {
+        return $this->hasMany(Order::class);
     }
 
 
