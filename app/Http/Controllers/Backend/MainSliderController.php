@@ -124,7 +124,7 @@ class MainSliderController extends Controller
             return redirect('admin/index');
         }
 
-        return view('backend.amin_sliders.show');
+        return view('backend.main_sliders.show');
     }
 
  

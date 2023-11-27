@@ -32,7 +32,6 @@
                         {{-- <th>Tags</th> --}}
                         <th>الكاتب</th>
                         <th>تاريخ الانشاء </th>
-                        <th>عدد المشاهدات </th>
                         <th>الحالة</th>
                         <th class="text-center" style="width:30px;">الاعدادات</th>
                     </tr>
@@ -54,7 +53,6 @@
                         {{-- <td>{{$slider->tags->pluck('name')->join(',')}}</td> --}}
                         <td>{{$slider->created_by}}</td>
                         <td>{{$slider->created_at}}</td>
-                        <td>{{$slider->views}}</td>
                         <td>{{$slider->status()}}</td>
                         <td>
                             
@@ -78,13 +76,13 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="7" class="text-center">No Products found</td>
+                        <td colspan="6" class="text-center">No Products found</td>
                     </tr>
                 @endforelse    
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="7">
+                        <td colspan="6">
                             <div class="float-right">
                                 {!! $sliders->appends(request()->all())->links() !!}
                             </div>

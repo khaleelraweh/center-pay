@@ -233,7 +233,7 @@
 
 
                     <div class="form-group pt-4">
-                        <button type="submit" name="submit" class="btn btn-primary">إنشاء الكوبون</button>
+                        <button type="submit" name="submit" class="btn btn-primary">إنشاء المحتوي</button>
                     </div>
                 </div>
 
@@ -294,7 +294,7 @@
                     min_codate = new Date();
                     min_codate.setDate(cidate.getDate()+1); // minimum selected date to be expired shoud be current date plus one 
                     enddate.set('min',min_codate);
-                }
+                } 
 
             });
 

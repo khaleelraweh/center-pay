@@ -228,7 +228,7 @@
 
 
                     <div class="form-group pt-4">
-                        <button type="submit" name="submit" class="btn btn-primary">إنشاء الكوبون</button>
+                        <button type="submit" name="submit" class="btn btn-primary">تعديل المحتوي</button>
                     </div>
                 </div>
 
