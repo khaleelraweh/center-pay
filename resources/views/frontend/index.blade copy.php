@@ -21,34 +21,28 @@
           data-start-mheight="1000"
         >
         
-        @forelse ($main_sliders as $main_slider)
-        @if ($loop->first)
           {{-- slider slid  --}}
           <div class="bnslider-slide">
             {{-- for desktop --}}
             <div
               class="bnslider-image-mobile lazyload fade-up"
-              data-bgset="{{asset('assets/sliders/'.$main_slider->firstMedia?->file_name)}}"
+              data-bgset="{{asset('frontend/assests/images/skins/games/banner-games-01.webp')}}"
             ></div>
-
             {{-- for mobile --}}
             <div
               class="bnslider-image-mobile lazyload bnslider-lightning bnslider-flashit"
-              data-bgset="{{asset('assets/sliders/'.$main_slider->firstMedia?->file_name)}}"
+              data-bgset="{{asset('frontend/assests/images/skins/games/banner-games-01.webp')}}"
               style="opacity: 0"
             ></div>
-
             <div
               class="bnslider-image lazyload fade-up"
-              data-bgset="{{asset('assets/sliders/'.$main_slider->firstMedia?->file_name)}}"
+              data-bgset="{{asset('frontend/assests/images/skins/games/banner-games-01.webp')}}"
             ></div>
-
             <div
               class="bnslider-image lazyload bnslider-lightning bnslider-flashit"
-              data-bgset="{{asset('assets/sliders/'.$main_slider->firstMedia?->file_name)}}"
+              data-bgset="{{asset('frontend/assests/images/skins/games/banner-games-01.webp')}}"
               style="opacity: 0"
             ></div>
-
             <div class="bnslider-text-wrap bnslider-overlay">
               <div class="bnslider-text-content txt-middle txt-center">
                 <div class="bnslider-text-content-flex">
@@ -60,8 +54,7 @@
                       data-fontcolor="#fff"
                       data-fontweight="900"
                     >
-                      {{$main_slider->title}}
-                      
+                      30% تخفيض
                     </div>
                     <div
                       class="bnslider-text order-2 mt-sm bnslider-text--sm text-center heading-font"
@@ -70,7 +63,7 @@
                       data-fontcolor="#fff"
                       data-fontweight="900"
                     >
-                    {!!$main_slider->content!!}
+                      لكل العملاء
                     </div>
                     <div
                       class="btn-wrap text-center order-3 mt-lg"
@@ -89,18 +82,17 @@
               </div>
             </div>
           </div>
-
-        @else
+          
           {{-- slider slid  --}}
           <div class="bnslider-slide">
             <div
               class="bnslider-image-mobile lazyload"
-              data-bgset="{{asset('assets/sliders/'.$main_slider->firstMedia?->file_name)}}"
+              data-bgset="{{asset('frontend/assests/images/skins/games/banner-games-02.webp')}}"
             ></div>
 
             <div
               class="bnslider-image lazyload"
-              data-bgset="{{asset('assets/sliders/'.$main_slider->firstMedia?->file_name)}}"
+              data-bgset="{{asset('frontend/assests/images/skins/games/banner-games-02.webp')}}"
             ></div>
             
             <div class="bnslider-text-wrap bnslider-overlay">
@@ -114,7 +106,7 @@
                       data-fontcolor="#fff"
                       data-fontweight="900"
                     >
-                      {{$main_slider->title}}
+                      تخفيض
                     </div>
                     <div
                       class="bnslider-text order-2 mt-sm bnslider-text--sm text-center heading-font"
@@ -123,7 +115,7 @@
                       data-fontcolor="#fff"
                       data-fontweight="900"
                     >
-                      {!! $main_slider->content !!}
+                      رأس السنة!!!
                     </div>
                     <div
                       class="btn-wrap text-center order-3 mt-lg"
@@ -142,12 +134,6 @@
               </div>
             </div>
           </div>
-        @endif
-            
-        @empty
-            
-        @endforelse
-          
 
         </div>
         <div class="bnslider-arrows container-fluid">

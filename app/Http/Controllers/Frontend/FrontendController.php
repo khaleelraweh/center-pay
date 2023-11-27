@@ -11,8 +11,19 @@ class FrontendController extends Controller
     public function index(){
         // $main_slider = Slider::whereStatus(1)->whereNull('parent_id')->get();
         
-        // return view('frontend.index',compact('product_categories'));
-        return view('frontend.index');
+
+        $sliders = Slider::with('firstMedia')
+        ->MainSliders()->get();
+
+       $main_sliders = Slider::with('firstMedia')
+                        ->MainSliders()
+                        ->inRandomOrder()
+                        ->Featured()
+                        ->Active()
+                        ->take(8)
+        ->get();
+
+        return view('frontend.index',compact('main_sliders'));
     }
 
     public function cart(){

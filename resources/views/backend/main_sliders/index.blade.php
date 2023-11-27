@@ -43,9 +43,9 @@
                         {{-- To make code better by making laravel cal only first media using relation shap to low querys --}}
                         <td>
                             @if ($slider->firstMedia)
-                                <img src="{{asset('assets/sliders/'.$slider->firstMedia->file_name)}}" width="60" height="60" alt="{{$slider->name}}"> 
+                                <img src="{{asset('assets/sliders/'.$slider->firstMedia->file_name)}}" width="60" height="60" alt="{{$slider->title}}"> 
                             @else
-                                <img src="{{asset('assets/No-Image-Found.png')}}"  width="60" height="60" alt="{{$slider->name}}">
+                                <img src="{{asset('assets/No-Image-Found.png')}}"  width="60" height="60" alt="{{$slider->title}}"> 
                             @endif
                         
                         </td>
@@ -76,7 +76,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="6" class="text-center">No Products found</td>
+                        <td colspan="6" class="text-center">لم يتم الحصول علي اي شريحة</td>
                     </tr>
                 @endforelse    
                 </tbody>

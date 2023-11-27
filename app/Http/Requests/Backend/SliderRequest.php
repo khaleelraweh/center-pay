@@ -36,7 +36,7 @@ class SliderRequest extends FormRequest
                     'expire_date'   => 'required_with:start_date|date|date_format:Y-m-d',
                     'tags.*'        =>  'required', 
                     'images'        =>  'required',   
-                    'images.*'      =>  'mimes:jpg,jpeg,png,gif|max:3000',  
+                    'images.*'      =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',  
                     
 
 
@@ -65,7 +65,7 @@ class SliderRequest extends FormRequest
                     'expire_date'   => 'required_with:start_date|date|date_format:Y-m-d',
                     'tags.*'            =>  'required', 
                     'images'            =>  'nullable',
-                    'images.*'          =>  'mimes:jpg,jpeg,png,gif|max:3000',
+                    'images.*'          =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
 
                     // used always 
                     'status'             =>  'required',

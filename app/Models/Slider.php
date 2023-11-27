@@ -55,19 +55,20 @@ class Slider extends Model
         return $query->whereStatus(true);
     }
 
-    public function scopeHasQuantity($query){
-        return $query->where('quantity','>',0);
-    }
-
+   
+    // not working now because there is no categories for sliders
     public function scopeActiveCategory($query){
         return $query->whereHas('category',function($query){
             $query->whereStatus(1) ;
         });
     }
 
+    // To check if this slider is main or not 
     public function scopeMainSliders($query){
         return $query->whereSection(1);
     }
+
+    // to check if this slider is advertisorsliders or not 
     public function scopeAdvertisorSliders($query){
         return $query->whereSection(2);
     }
