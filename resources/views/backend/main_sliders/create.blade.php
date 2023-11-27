@@ -1,36 +1,18 @@
 @extends('layouts.admin')
+
 @section('style')
-    <link rel="stylesheet" href="{{asset('backend/vendor/select2/css/select2.min.css')}}">
+<style>
+    .picker__select--month,.picker__select--year{
+        padding: 0 !important;
+    }
+    .picker__list{
+        list-style-type: none;
+    }
+    .note-editor.note-airframe, .note-editor.note-frame{
+        margin-bottom: 0 !important;
+    }
+</style>
     
-    {{-- pickadate calling css --}}
-    <link rel="stylesheet" href="{{asset('backend/vendor/datepicker/themes/classic.css')}}">
-    <link rel="stylesheet" href="{{asset('backend/vendor/datepicker/themes/classic.date.css')}}">
-
-    {{-- is used to make tab-content --}}
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
-
-    <style>
-        .picker__select--month,.picker__select--year{
-            padding: 0 !important;
-        }
-        .picker__list{
-            list-style-type: none;
-        }
-        .x-title{
-            border-bottom: 2px solid #E6E9ED;
-            padding: 1px 5px 6px;
-            margin-bottom: 10px;
-        }
-        .select2-container{
-            display: block !important;
-        }
-        .note-editor.note-airframe, .note-editor.note-frame{
-            margin-bottom: 0;
-        }
-        .require.red{color:red;}
-    </style>
 @endsection
 
 @section('content')
@@ -40,13 +22,13 @@
 
         {{-- menu part  --}}
         <div class="card-header py-3 d-flex justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">إضافة شريحة رئيسية</h6>
+            <h6 class="m-0 font-weight-bold text-primary">إنشاء عارض شرائح جديد</h6>
             <div class="ml-auto">
-                <a href="{{route('admin.products.index')}}" class="btn btn-primary">
+                <a href="{{route('admin.main_sliders.index')}}" class="btn btn-primary">
                     <span class="icon text-white-50">
                         <i class="fa fa-home"></i>
                     </span>
-                    <span class="text">إدارة الشرائح</span>
+                    <span class="text">إدارة عارض الشرائح </span>
                 </a>
             </div>
         </div>
@@ -64,14 +46,13 @@
                     </ul>
                 </div>
             @endif
- 
 
             {{-- enctype used cause we will save images  --}}
             <form action="{{route('admin.main_sliders.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
 
-                {{-- links of tabs --}}
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                 {{-- links of tabs --}}
+                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
                         <a class="nav-link active" id="content-tab" data-toggle="tab" href="#content" role="tab" aria-controls="content" aria-selected="true">بيانات الشريحة</a>
                     </li>
@@ -90,7 +71,6 @@
 
                 </ul>
 
-                {{-- contents of links tabs  --}}
                 <div class="tab-content" id="myTabContent">
                     
                     {{-- Content Tab --}}
@@ -101,8 +81,8 @@
                             <div class="col-md-7 col-sm-12 ">
                 
                                 {{-- slider title field --}}
-                                <div class="row pt-4">
-                                    <div class="col-12">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12 pt-4">
                                         <div class="form-group">
                                             <label for="title">العنوان</label>
                                             <input type="text" id="title" name="title" value="{{old('title')}}" class="form-control" placeholder="">
@@ -111,26 +91,46 @@
                                     </div>
                                 </div>
 
+                                {{-- start date and expired date of the slider use  --}}
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6 pt-4">
+                                        <div class="form-group">
+                                            <label for="start_date">تاريخ البدء</label>
+                                            <input type="text" id="start_date" name="start_date" value="{{old('start_date')}}" class="form-control" >
+                                            @error('start_date') <span class="text-danger">{{$message}}</span> @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6 pt-4">
+                                        <div class="form-group">
+                                            <label for="expire_date">تاريخ الانتهاء </label>
+                                            <input type="text" id="expire_date" name="expire_date" value="{{old('expire_date')}}" class="form-control" >
+                                            @error('expire_date') <span class="text-danger">{{$message}}</span> @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
                                 {{-- product content field --}}
-                                <div class="row pt-4">
-                                    <div class="col-12">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12 pt-4">
                                         <label for="content">الوصف</label>
                                         <textarea name="content"  rows="10" class="form-control summernote">
                                             {!!old('content')!!}
                                         </textarea>
                                     </div>
                                 </div>
+
+                                
                             </div>
 
                             {{-- مرفق الصور  --}}
                             <div class="col-md-5 col-sm-12 ">
 
-                                <div class="row pt-4">
-                                    <div class="col-12">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12 pt-4">
                                         <label for="images">الصورة/ الصور</label>
                                         <br>
                                         <div class="file-loading">
-                                            <input type="file" name="images[]" id="product_images" class="file-input-overview" multiple="multiple">
+                                            <input type="file" name="images[]" id="slider_images" class="file-input-overview" multiple="multiple">
                                             @error('images')<span class="text-danger">{{$message}}</span>@enderror
                                         </div>
                                     </div>
@@ -155,7 +155,7 @@
 
                         {{--  target  fields --}}
                         <div class="row">
-                            <div class="col-12 pt-4">
+                            <div class="col-sm-12 col-md-12 pt-4 pt-4">
                                 <label for="target">مكان العرض</label>
                                 <select name="target" class="form-control">
                                     <option value="_self" {{ old('target') == '1' ? 'selected' : null}}>على نفس الصفحة</option>
@@ -165,6 +165,7 @@
                             </div>
                         </div>
                     </div>
+
 
                     {{-- Publish Tab --}}
                     <div class="tab-pane fade" id="publish" role="tabpanel" aria-labelledby="publish-tab">
@@ -178,7 +179,6 @@
                                 </select>
                                 @error('status')<span class="text-danger">{{$message}}</span>@enderror
                             </div>
-
                             <div class="col-6 pt-4">
                                 <label for="featured">عرض في المفضلة</label>
                                 <select name="featured" class="form-control">
@@ -189,25 +189,27 @@
                             </div>
                         </div>
 
-                        {{-- publish_date publish time field --}}
+                        {{-- publish_start publish time field --}}
                         <div class="row">
-                            <div class="col-md-6 com-sm-12 pt-4">
-                                <label for="publish_date" class="control-label"><span>تاريخ النشر</span><span class="require red">*</span></label>
+                            <div class="col-sm-12 col-md-6 pt-4">
                                 <div class="form-group">
-                                    {{-- <input type="text" id="publish_date" name="publish_date" value="{{old('publish_date')}}" class="form-control" > --}}
-                                    <input type="text" id="publish_date" name="publish_date" value="{{old('publish_date',now()->format('Y-m-d'))}}" class="form-control" >
-                                    @error('publish_date') <span class="text-danger">{{$message}}</span> @enderror
+                                    <label for="published_on">تاريخ النشر</label>
+                                    <input type="text" id="published_on" name="published_on" value="{{old('published_on')}}" class="form-control" >
+                                    @error('published_on') <span class="text-danger">{{$message}}</span> @enderror
                                 </div>
                             </div>
-                            <div class="col-md-6 col-sm-12 pt-4">
-                                <label for="publish_time" class="control-label"><span>وقت النشر</span><span class="require red">*</span></label>
+
+                            <div class="col-sm-12 col-md-6 pt-4">
                                 <div class="form-group">
-                                    <input type="text" id="publish_time" name="publish_time" value="{{old('publish_time',now()->format('h:m'))}}" class="form-control" >
-                                    @error('publish_time') <span class="text-danger">{{$message}}</span> @enderror
+                                    <label for="published_on_time">وقت النشر</label>
+                                    <input type="text" id="published_on_time" name="published_on_time" value="{{old('published_on_time')}}" class="form-control" >
+                                    @error('published_on_time') <span class="text-danger">{{$message}}</span> @enderror
                                 </div>
                             </div>
+                           
                         </div>
-                        
+
+                      
                         {{-- view_in_main and  tags fields --}}
                         <div class="row ">
                             {{-- view_in_main field --}}
@@ -219,54 +221,35 @@
                                 </select>
                                 @error('view_in_main')<span class="text-danger">{{$message}}</span>@enderror
                             </div>
-
-                            {{-- Tags field  --}}
-                            <div class="col-md-6 col-sm-12 pt-4">
-                                <label for="tags">كلمات مفتاحية</label>
-                                <select name="tags[]" class="form-control select2" multiple="multiple">
-                                    @forelse ($tags as $tag)
-                                        <option value="{{$tag->id}}" {{in_array($tag->id , old('tags',[])) ? 'selected' : null }}  >{{$tag->name}}</option>
-                                    @empty
-                                    @endforelse
-                                </select>
-                            </div>
                         </div>
 
                     </div>
 
+                    {{-- seo tab  --}}
                     <div class="tab-pane fade" id="seo" role="tabpanel" aria-labelledby="seo-tab">
                         later work...
                     </div>
 
-                    <div class="form-group pt-4">
-                        <button type="submit" name="submit" class="btn btn-primary">إضافةالشريحة</button>
-                    </div>
 
+
+                    <div class="form-group pt-4">
+                        <button type="submit" name="submit" class="btn btn-primary">إنشاء الكوبون</button>
+                    </div>
                 </div>
 
-
             </form>
-
-
         </div>
         
     </div>
 
 @endsection
 
-@section('script')
-    {{-- Call select2 plugin --}}
-    <script src="{{asset('backend/vendor/select2/js/select2.full.min.js')}}"></script>
-
-     {{-- pickadate calling js --}}
-     <script src="{{asset('backend/vendor/datepicker/picker.js')}}"></script>
-     <script src="{{asset('backend/vendor/datepicker/picker.date.js')}}"></script>
-     <script src="{{asset('backend/vendor/datepicker/picker.time.js')}}"></script>
+@section('script') 
     
     <script>
         $(function(){
-            
-            $("#product_images").fileinput({
+
+            $("#slider_images").fileinput({
                 theme:"fa5",
                 maxFileCount: 5 ,
                 allowedFileTypes: ['image'],
@@ -276,9 +259,11 @@
                 overwriteInitial:false
             });
 
+            // This is only for start dant and expire date of slider 
             // ======= start pickadate codeing ===========
-            $('#publish_date').pickadate({
+            $('#start_date').pickadate({
                 format: 'yyyy-mm-dd',
+                min: new Date(),
                 selectMonths: true , // Creates a dropdown to control month
                 selectYears: true, // creates a dropdown to control years
                 clear: 'Clear',
@@ -286,22 +271,23 @@
                 colseOnSelect: true // Close Upon Selecting a date
             });
 
-            $('#offer_ends').pickadate({
+            $('#expire_date').pickadate({
                 format: 'yyyy-mm-dd',
-                selectMonths: true , // Creates a dropdown to control month
-                selectYears: true, // creates a dropdown to control years
+                min: new Date(),
+                selectMonths: true, // Creates a dropdoen to control month
+                selectYears: true, // Creates a dropdown to control month 
                 clear: 'Clear',
                 close: 'OK',
-                colseOnSelect: true // Close Upon Selecting a date
+                colseOnSelect: true // Close upon selecting a date ,
             });
 
-            var startdate = $('#publish_date').pickadate('picker'); // set startdate in the picker to the start date in the #publish_date elemet
-            var enddate = $('#publish_time').pickadate('picker'); 
+            var startdate = $('#start_date').pickadate('picker'); // set startdate in the picker to the start date in the #start_date elemet
+            var enddate = $('#expire_date').pickadate('picker'); 
 
             // when change date 
-            $('#publish_date').change(function(){
+            $('#start_date').change(function(){
                 selected_ci_date = ""; 
-                selected_ci_date = $('#publish_date').val(); // make selected start date in picker = publish_date value
+                selected_ci_date = $('#start_date').val(); // make selected start date in picker = start_date value
                 if(selected_ci_date != null){
                     var cidate = new Date(selected_ci_date); // make cidate(start date ) = current date you selected in selected ci date (selected start date )
                     min_codate = "";
@@ -312,14 +298,40 @@
 
             });
 
+            // This is for publish this slider =========================
+            // ======= start pickadate codeing ===========
            
-            $('#publish_time').pickatime({
+            $('#published_on').pickadate({
+                format: 'yyyy-mm-dd',
+                min: new Date(),
+                selectMonths: true , // Creates a dropdown to control month
+                selectYears: true, // creates a dropdown to control years
+                clear: 'Clear',
+                close: 'OK',
+                colseOnSelect: true // Close Upon Selecting a date
+            });
+
+           
+            var publishedOn = $('#published_on').pickadate('picker'); // set startdate in the picker to the start date in the #start_date elemet
+
+            // when change date 
+            $('#published_on').change(function(){
+                selected_ci_date = ""; 
+                selected_ci_date = now() // make selected start date in picker = start_date value  
+
+            });
+
+            $('#published_on_time').pickatime({
                 clear: ''
             });
+           
+            // ======= End pickadate codeing ===========
+
+           
 
             $('.summernote').summernote({
                 tabSize:2,
-                height:150,
+                height:120,
                 toolbar:[
                     ['style' ,['style']],
                     ['font',['bold','underline','clear']],
@@ -332,52 +344,7 @@
             });
 
 
-             //select2: code to search in data 
-             function matchStart(params, data) {
-                    // If there are no search terms, return all of the data
-                    if ($.trim(params.term) === '') {
-                        return data;
-                    }
-
-                    // Skip if there is no 'children' property
-                    if (typeof data.children === 'undefined') {
-                        return null;
-                    }
-
-                    // `data.children` contains the actual options that we are matching against
-                    var filteredChildren = [];
-                    $.each(data.children, function (idx, child) {
-                        if (child.text.toUpperCase().indexOf(params.term.toUpperCase()) == 0) {
-                        filteredChildren.push(child);
-                        }
-                    });
-
-                    // If we matched any of the timezone group's children, then set the matched children on the group
-                    // and return the group object
-                    if (filteredChildren.length) {
-                        var modifiedData = $.extend({}, data, true);
-                        modifiedData.children = filteredChildren;
-
-                        // You can return modified objects from here
-                        // This includes matching the `children` how you want in nested data sets
-                        return modifiedData;
-                    }
-
-                    // Return `null` if the term should not be displayed
-                    return null;
-            }
-
-            // select2 : .select2 : is  identifier used with element to be effected
-            $(".select2").select2({
-                tags:true,
-                colseOnSelect:false,
-                minimumResultsForSearch: Infinity,
-                matcher: matchStart
-            });
-
         });
     </script>
-
-  
     
 @endsection

@@ -17,22 +17,24 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug')->unique();
-            $table->string('content')->nullable(); //done apart 
+            $table->string('content')->nullable(); 
             $table->string('url')->nullable();
             $table->string('target')->default('_self');
-            $table->dateTime('published_on')->nullable();
-            $table->boolean('featured')->default(false); // done 
-            $table->boolean('status')->default(false); // done 
-            $table->date('publish_date')->nullable(); // done 
-            $table->time('publish_time')->nullable(); // done 
-            $table->boolean('view_in_main')->default(false); // done 
-            $table->integer('views')->default(0); // عدد المشاهدات  //done 
-            $table->unsignedBigInteger('section')->default(1); // one means it related to any main slider
-            $table->string('created_by')->nullable(); // done 
-            $table->string('updated_by')->nullable(); // done 
-            $table->string('deleted_by')->nullable(); // done 
+            $table->unsignedBigInteger('section')->default(1); 
+            $table->dateTime('start_date')->nullable()->default(now());
+            $table->dateTime('expire_date')->nullable()->default(now());
+
+            // will be use always
+            $table->boolean('status')->default(false);
+            $table->boolean('featured')->default(false); 
+            $table->dateTime('published_on')->nullable(); 
+            $table->boolean('view_in_main')->default(false); 
+            $table->string('created_by')->nullable(); 
+            $table->string('updated_by')->nullable(); 
+            $table->string('deleted_by')->nullable();
             $table->softDeletes();
             $table->timestamps();
+            // end of will be use always
         });
     }
 

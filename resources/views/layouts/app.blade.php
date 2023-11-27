@@ -51,7 +51,7 @@
     <link rel="stylesheet" href="{{asset('frontend/assests/css/style-rtl.css')}}" class="languages" />
 
     <link href="{{asset('frontend/assests/css/icons.css')}}" rel="stylesheet" />
-    
+    <livewire:styles />
     @yield('style')
     
 </head>
@@ -85,6 +85,8 @@
     <script src="{{asset('frontend/assests/js/app-html.js')}}"></script>
     <!-- <script src="assests/js/styleswitcher.js"></script> -->
     @yield('script')
+    <livewire:scripts />
+
     
 </body>
 </html>

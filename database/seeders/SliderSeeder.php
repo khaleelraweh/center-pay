@@ -29,6 +29,7 @@ class SliderSeeder extends Seeder
                 'content'       =>  $faker->realTextBetween(10,12),
                 'url'           =>  'https://' . $faker->slug(2) . '.com',
                 'target'        =>  Arr::random($target),
+                'section'       => Arr::random([1,2]),
                 'published_on'  =>  $faker->dateTime(),
                 'created_by'    =>  $faker->realTextBetween(10,12),
                 'updated_by'   =>  $faker->realTextBetween(10,12),

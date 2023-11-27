@@ -19,6 +19,11 @@ class Slider extends Model
 
     protected $guarded = [];
 
+    protected $casts = [
+        'start_date' => 'datetime',
+        'expire_date' => 'datetime'
+    ];
+
     public function sluggable(): array
     {
         return [

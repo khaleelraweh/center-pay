@@ -121,11 +121,8 @@ class CouponController extends Controller
         $input['views']             =   0;
         $input['updated_by']        =   auth()->user()->full_name;
     
-        
-
         $published_on = $request->published_on.' '.$request->published_on_time;
         $published_on = new DateTimeImmutable($published_on);
-        
         $input['published_on'] = $published_on;
         // end of always added 
 

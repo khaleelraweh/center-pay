@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\SliderRequest;
 use App\Models\Slider;
 use App\Models\Tag;
+use DateTimeImmutable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -58,13 +59,20 @@ class MainSliderController extends Controller
         $input['content']        =   $request->content;
         $input['url']            =   $request->url;
         $input['target']         =   $request->target;
-        $input['featured']       =   $request->featured;
-        $input['status']         =   $request->status;
-        $input['publish_date']   =   $request->publish_date;
-        $input['publish_time']   =   $request->publish_time;
-        $input['view_in_main']   =   $request->view_in_main;
         $input['section']        =   1;
-        $input['created_by']     =   auth()->user()->full_name;
+        $input['start_date']        =   $request->start_date;
+        $input['expire_date']       =   $request->expire_date;
+
+         // always added 
+         $input['status']            =   $request->status;
+         $input['featured']          =   $request->featured;
+         $input['view_in_main']      =   $request->view_in_main;
+         $input['created_by']        =   auth()->user()->full_name;
+
+         $published_on = $request->published_on.' '.$request->published_on_time;
+         $published_on = new DateTimeImmutable($published_on);
+         $input['published_on'] = $published_on;
+         // end of always added 
 
         //Add slider to db with save instance of it in $slider to use it later 
         $slider = Slider::create($input);
@@ -142,19 +150,24 @@ class MainSliderController extends Controller
         $slider = Slider::findOrFail($slider);
 
          // get Input from create.blade.php form request using sliderRequest to validate fields
-        $input['title']          =   $request->title;
-        $input['content']        =   $request->content;
-        $input['url']            =   $request->url;
-        $input['target']         =   $request->target;
-        $input['featured']       =   $request->featured;
-        $input['status']         =   $request->status;
-        $input['publish_date']   =   $request->publish_date;
-        $input['publish_time']   =   $request->publish_time;
-        $input['view_in_main']   =   $request->view_in_main;
-        $input['section']        =   1;
-        $input['created_by']     =   auth()->user()->full_name;
-        $input['updated_by']            =   auth()->user()->full_name;
+         $input['title']          =   $request->title;
+         $input['content']        =   $request->content;
+         $input['url']            =   $request->url;
+         $input['target']         =   $request->target;
+         $input['section']        =   1;
+         $input['start_date']        =   $request->start_date;
+         $input['expire_date']       =   $request->expire_date;
 
+         // always added 
+         $input['status']            =   $request->status;
+         $input['featured']          =   $request->featured;
+         $input['view_in_main']      =   $request->view_in_main;
+         $input['updated_by']        =   auth()->user()->full_name;
+
+         $published_on = $request->published_on.' '.$request->published_on_time;
+         $published_on = new DateTimeImmutable($published_on);
+         $input['published_on'] = $published_on;
+         // end of always added 
 
          //Add slider to db with save instance of it in $slider to use it later 
          $slider->update($input);

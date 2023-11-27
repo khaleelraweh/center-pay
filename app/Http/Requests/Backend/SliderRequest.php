@@ -28,22 +28,28 @@ class SliderRequest extends FormRequest
             {
                 return [
                     'title'         =>  'required|max:255', 
-                    'content'       =>  'nullable',
-                    'url'           =>  'nullable',
-                    'target'        =>  'required',
-                    'publish_date'  =>  'nullable|date_format:Y-m-d',
-                    'publish_time'  =>  'nullable',
-                    'featured'      =>  'required',
-                    'status'        =>  'required',
-                    'view_in_main'  =>  'nullable',
-                    'views'         =>  'nullable',// عدد مرات العرض
-                    'section'       =>  'nullable',
-                    'tags.*'        =>  'required',
-                    'images'        =>  'required',  
-                    'images.*'      =>  'mimes:jpg,jpeg,png,gif|max:3000',
-                    'created_by'    =>  'nullable',
-                    'updated_by'    =>  'nullable',
-                    'deleted_by'    =>  'nullable',
+                    'content'       =>  'nullable',  
+                    'url'           =>  'nullable', 
+                    'target'        =>  'required', 
+                    'section'       =>  'nullable', 
+                    'start_date'    => 'nullable|date_format:Y-m-d',
+                    'expire_date'   => 'required_with:start_date|date|date_format:Y-m-d',
+                    'tags.*'        =>  'required', 
+                    'images'        =>  'required',   
+                    'images.*'      =>  'mimes:jpg,jpeg,png,gif|max:3000',  
+                    
+
+
+                    // used always 
+                    'status'             =>  'required',
+                    'featured'           =>  'nullable',
+                    'published_on'       =>  'nullable',
+                    'published_on_time'  =>  'nullable',
+                    'view_in_main'       =>  'nullable',
+                    'created_by'         =>  'nullable',
+                    'updated_by'         =>  'nullable',
+                    'deleted_by'         =>  'nullable',
+                    // end of used always 
                 ];
             }
             case 'PUT':
@@ -54,19 +60,23 @@ class SliderRequest extends FormRequest
                     'content'           =>  'nullable',
                     'url'               =>  'nullable',
                     'target'            =>  'required',
-                    'featured'          =>  'required',
-                    'status'            =>  'required',
-                    'publish_date'      =>  'nullable|date_format:Y-m-d',
-                    'publish_time'      =>  'nullable',
-                    'view_in_main'      =>  'nullable',
-                    'views'             =>  'nullable', // عدد مرات العرض
                     'section'           =>  'nullable',
+                    'start_date'    => 'nullable|date_format:Y-m-d',
+                    'expire_date'   => 'required_with:start_date|date|date_format:Y-m-d',
                     'tags.*'            =>  'required', 
                     'images'            =>  'nullable',
                     'images.*'          =>  'mimes:jpg,jpeg,png,gif|max:3000',
-                    'created_by'        =>  'nullable',
-                    'updated_by'        =>  'nullable',
-                    'deleted_by'        =>  'nullable',
+
+                    // used always 
+                    'status'             =>  'required',
+                    'featured'           =>  'nullable',
+                    'published_on'       =>  'nullable',
+                    'published_on_time'  =>  'nullable',
+                    'view_in_main'       =>  'nullable',
+                    'created_by'         =>  'nullable',
+                    'updated_by'         =>  'nullable',
+                    'deleted_by'         =>  'nullable',
+                    // end of used always 
                 ];
             }
             
