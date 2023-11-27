@@ -31,9 +31,8 @@
                         <th>العنوان</th>
                         {{-- <th>Tags</th> --}}
                         <th>الكاتب</th>
-                        <th>تاريخ الانشاء </th>
+                        <th>تاريخ النشر </th>
                         <th>عدد المشاهدات </th>
-                        <th>الحالة</th>
                         <th class="text-center" style="width:30px;">الاعدادات</th>
                     </tr>
                 </thead>
@@ -53,8 +52,7 @@
                         <td>{{$slider->title}}</td>
                         {{-- <td>{{$slider->tags->pluck('name')->join(',')}}</td> --}}
                         <td>{{$slider->created_by}}</td>
-                        <td>{{$slider->created_at}}</td>
-                        <td>{{$slider->views}}</td>
+                        <td>{{$slider->published_on->Format('Y-m-d h:i A')}}</td>
                         <td>{{$slider->status()}}</td>
                         <td>
                             

@@ -12,18 +12,27 @@ class FrontendController extends Controller
         // $main_slider = Slider::whereStatus(1)->whereNull('parent_id')->get();
         
 
-        $sliders = Slider::with('firstMedia')
-        ->MainSliders()->get();
+        
 
        $main_sliders = Slider::with('firstMedia')
                         ->MainSliders()
-                        ->inRandomOrder()
+                        // ->inRandomOrder()
+                        ->orderBy('published_on','desc')
                         ->Featured()
                         ->Active()
                         ->take(8)
         ->get();
 
-        return view('frontend.index',compact('main_sliders'));
+        $adv_sliders = Slider::with('firstMedia')
+                        ->AdvertisorSliders()
+                        // ->inRandomOrder()
+                        ->orderBy('published_on','desc')
+                        ->Featured()
+                        ->Active()
+                        ->take(3)
+        ->get();
+
+        return view('frontend.index',compact('main_sliders','adv_sliders'));
     }
 
     public function cart(){
