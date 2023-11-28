@@ -19,14 +19,14 @@ class PhotoSeeder extends Seeder
     public function run()
     {
         {
-            $images[] = ['file_name' => '01.jpg', 'file_type' => 'images/jpg', 'file_size' => rand(100, 900), 'file_status' => true];
-            $images[] = ['file_name' => '02.jpg', 'file_type' => 'images/jpg', 'file_size' => rand(100, 900), 'file_status' => true];
-            $images[] = ['file_name' => '03.jpg', 'file_type' => 'images/jpg', 'file_size' => rand(100, 900), 'file_status' => true];
-            $images[] = ['file_name' => '04.jpg', 'file_type' => 'images/jpg', 'file_size' => rand(100, 900), 'file_status' => true];
-            $images[] = ['file_name' => '05.jpg', 'file_type' => 'images/jpg', 'file_size' => rand(100, 900), 'file_status' => true];
-            $images[] = ['file_name' => '06.jpg', 'file_type' => 'images/jpg', 'file_size' => rand(100, 900), 'file_status' => true];
-            $images[] = ['file_name' => '07.jpg', 'file_type' => 'images/jpg', 'file_size' => rand(100, 900), 'file_status' => true];
-            $images[] = ['file_name' => '08.jpg', 'file_type' => 'images/jpg', 'file_size' => rand(100, 900), 'file_status' => true];
+            $images[] = ['file_name' => '1.webp', 'file_type' => 'images/webp', 'file_size' => rand(100, 900), 'file_status' => true];
+            $images[] = ['file_name' => '2.webp', 'file_type' => 'images/webp', 'file_size' => rand(100, 900), 'file_status' => true];
+            $images[] = ['file_name' => '3.webp', 'file_type' => 'images/webp', 'file_size' => rand(100, 900), 'file_status' => true];
+            $images[] = ['file_name' => '4.webp', 'file_type' => 'images/webp', 'file_size' => rand(100, 900), 'file_status' => true];
+            $images[] = ['file_name' => '5.webp', 'file_type' => 'images/webp', 'file_size' => rand(100, 900), 'file_status' => true];
+            $images[] = ['file_name' => '6.webp', 'file_type' => 'images/webp', 'file_size' => rand(100, 900), 'file_status' => true];
+            $images[] = ['file_name' => '7.webp', 'file_type' => 'images/webp', 'file_size' => rand(100, 900), 'file_status' => true];
+            $images[] = ['file_name' => '8.webp', 'file_type' => 'images/webp', 'file_size' => rand(100, 900), 'file_status' => true];
     
             // get all products from product table each product use $images arrays
             // each product use media() function from Product Model then 
@@ -34,6 +34,7 @@ class PhotoSeeder extends Seeder
             ProductCategory::all()->each(function ($productCategory) use ($images) {
                 $productCategory->photo()->createMany(Arr::random($images, rand(1, 1)));
             });
+
 
             //product photo faker 
             Product::all()->each(function ($product) use ($images) {

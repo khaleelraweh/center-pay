@@ -4,6 +4,7 @@ use App\Http\Controllers\Backend\AdvertisorSliderController;
 use App\Http\Controllers\Backend\BackendController;
 use App\Http\Controllers\Backend\CardController;
 use App\Http\Controllers\Backend\CityController;
+use App\Http\Controllers\Backend\CommonQuestionController;
 use App\Http\Controllers\Backend\CountryController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\CustomerAddressController;
@@ -105,6 +106,8 @@ Route::group(['prefix'=>'admin' , 'as' =>'admin.'],function(){
         Route::resource('payment_methods',PaymentMethodController::class);
 
         Route::resource('orders',OrderController::class);
+
+        Route::resource('common_questions',CommonQuestionController::class);
 
 
 

@@ -67,7 +67,7 @@
                                 <tr>
                                     <th>الصورة</th>
                                     <th>اسم الصنف</th>
-                                    <th>عدد المنتجات</th>
+                                    <th>عدد الباقات</th>
                                     <th>الكاتب</th>
                                     <th>Status</th>
                                     <th>Created at</th>

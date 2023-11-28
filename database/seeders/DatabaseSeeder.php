@@ -21,8 +21,10 @@ class DatabaseSeeder extends Seeder
         $this->call(EntrustSeeder::class);
         $this->call(UserAddressSeeder::class);//This will be only for user khaleel user
         $this->call(ProductCategorySeeder::class);
+        $this->call(CardCategorySeeder::class);
         $this->call(TagSeeder::class);
         $this->call(ProductSeeder::class);
+        $this->call(ProductCardSeeder::class);
         $this->call(SliderSeeder::class);
         $this->call(PhotoSeeder::class);
         $this->call(ProductTagSeeder::class);
@@ -31,6 +33,8 @@ class DatabaseSeeder extends Seeder
         $this->call(ShippingCompanySeeder::class);
         $this->call(PaymentMethodSeeder::class);
         $this->call(OrderSeeder::class);
+        $this->call(CommonQuestionSeeder::class);
+
 
         
         

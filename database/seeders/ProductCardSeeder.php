@@ -8,7 +8,7 @@ use Faker\Factory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class ProductSeeder extends Seeder
+class ProductCardSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -22,9 +22,13 @@ class ProductSeeder extends Seeder
      
 
         //this will return all product categories id where it is submain categories 
-        $categories = ProductCategory::whereNotNull('parent_id')->pluck('id');
+        // $categories = ProductCategory::whereNotNull('parent_id')->pluck('id');
 
-        for( $i = 1; $i <= 200; $i++ ){
+        $categories = ProductCategory::query()->Active()->RootCategory()->CardCategory()->pluck('id');
+        
+        // whereNotNull('parent_id')->pluck('id');
+
+        for( $i = 1; $i <= 10; $i++ ){
             //انشاء مصفوفة لتخزين الف منتج فيها لاضافتها الي قاعدة البيانات
 
             $products [] = [
@@ -37,7 +41,7 @@ class ProductSeeder extends Seeder
                 'offer_ends'    =>  $faker->dateTime(),
                 'sku'           =>  $faker->realText(10),
                 'max_order'     =>  $faker->numberBetween(5,10),
-                'featured'      =>  rand(0,1),
+                'featured'      => rand(0,1),
                 'status'        => true,
                 'product_category_id'   =>  $categories->random(),
                 'published_on'          => $faker->dateTime(),

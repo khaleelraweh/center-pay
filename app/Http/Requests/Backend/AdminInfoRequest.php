@@ -30,7 +30,7 @@ class AdminInfoRequest extends FormRequest
             'email'      => 'required|email|max:255|unique:users,email,'.auth()->id(),
             'mobile'     => 'required|numeric|unique:users,mobile,'.auth()->id(),
             'password'   => 'nullable|min:8',
-            'user_image' => 'nullable|mimes:jpg,jpeg,png,svg|max:20000'
+            'user_image' => 'nullable|mimes:jpg,jpeg,png,svg,webp|max:20000'
         ];
     }
 }

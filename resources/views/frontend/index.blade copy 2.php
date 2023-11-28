@@ -783,25 +783,103 @@
           <div class="wrapper center-block">
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
               
-              @forelse ($common_questions as $question)
-                <div class="panel panel-default">
-                  <div class="panel-heading" role="tab" id="{{$question->id}}">
-                    <h4 class="panel-title">
-                      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$question->id}}" aria-expanded="false" aria-controls="collapse{{$question->id}}">
-                        {{$question->title}}
-                      </a>
-                    </h4>
-                  </div>
-                  <div id="collapse{{$question->id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="{{$question->id}}">
-                    <div class="panel-body">
-                      {!!$question->content!!}
-                    </div>
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="14">
+                  <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse14" aria-expanded="false" aria-controls="collapse14">
+                    حصلت لي مشكلة كيف أقوم بالتواصل معكم؟
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapse14" class="panel-collapse collapse" role="tabpanel" aria-labelledby="14">
+                  <div class="panel-body">
+                  <p>حصلت لي مشكلة كيف أقوم بالتواصل معكم؟</p>
+
                   </div>
                 </div>
-              @empty
-                  
-              @endforelse
+              </div>
+              
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="6">
+                  <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse6" aria-expanded="false" aria-controls="collapse6">
+                    هل متجر "سنتر باي CenterPay" آمن وموثوق؟
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapse6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="6">
+                  <div class="panel-body">
+                  <p><b>متجر </b>سنتر باي CenterPay <b>آمن وموثوق ومسجل في وزارة التجارة ومنصة معروف برقم&nbsp;164491</b><span style="color: rgb(68, 68, 68); font-family: dinnextltarabic-regular; font-size: 13px; white-space: pre-wrap; background-color: transparent;"><b>????</b></span></p><p>&nbsp;</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="5">
+                  <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                    ماهي طرق الدفع المتوفرة؟
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="5">
+                  <div class="panel-body">
+                  <p><b>طرق الدفع عندنا حالياً ( مدى - فيزا - ماستر كارد - STCPay ) تقبل لجميع البنوك وجميع الدول العربية <img alt="????????" class="emojione" src="https://ish7nha.com/vendor/emojione/png/32/1f44c-1f3fb.png" title=":ok_hand_tone1:" /><img alt="????" class="emojione" src="https://ish7nha.com/vendor/emojione/png/32/1f9f8.png" title=":teddy_bear:" /></b></p>
 
+                  </div>
+                </div>
+              </div>
+              
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="4">
+                  <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                    كيف اقوم بالشراء؟
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="4">
+                  <div class="panel-body">
+                  <p><b>﻿قم باختيار المنتج الذي تريده الى سلة المشتريات بعد ذلك انتقل الى السلة وقم باتمام الدفع عبر طرق الدفع وسيصلك المنتج بشكل فوري </b></p>
+
+                  </div>
+                </div>
+              </div>
+              
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="3">
+                  <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                    كيف اشحن شدات ببجي ؟
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="3">
+                  <div class="panel-body">
+                  <p class="text-base dark:text-white text-black">&nbsp;</p>
+
+                  <p style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; cursor: text; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0;"><b><span data-darkreader-inline-color="" style="--darkreader-inline-color:  #b1aba1; font-family: Nunito;">&nbsp;بمجرد أتمامكم لعملية الشراء ماعليك بعد الشراء هو نسخ الكود و وضعة في موقع ببجي الرسمي ???? ✅:</span><br />
+                  <span style="font-family: Nunito;">1 - يجب عليك دخول موقع ببجي الرسمي لشحن الكود&nbsp;</span><br />
+                  <span style="font-family: Nunito;">- قم بالبحث في قوقل : midasbuy redeem</span><br />
+                  <span data-darkreader-inline-color="" style="--darkreader-inline-color:  #b1aaa0;">2- عمل تسجيل دخول او انشاء حساب جديد ????</span><br />
+                  <span data-darkreader-inline-bgcolor="" style="--darkreader-inline-bgcolor:  transparent;">- في حال لايوجد لديك حساب استعمل الحساب هذا :&nbsp;</span></b></p>
+
+                  <p data-darkreader-inline-color="" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; cursor: text; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; --darkreader-inline-color:  #b1aaa0;"><b>Centerpay.pubg@gmail.com</b></p>
+
+                  <p data-darkreader-inline-color="" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; cursor: text; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; --darkreader-inline-color:  #b1aaa0;"><b>CenterPay123</b></p>
+
+                  <p data-darkreader-inline-color="" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; cursor: text; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; --darkreader-inline-color:  #b1aaa0;"><b>3 - تقوم بوضع الايدي <img alt="????" class="emojione" src="https://ish7nha.com/vendor/emojione/png/32/1f194.png" title=":id:" /></b></p>
+
+                  <p data-darkreader-inline-color="" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; cursor: text; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; --darkreader-inline-color:  #b1aaa0;"><b>4 - تقوم بوضع الكود <img alt="????" class="emojione" src="https://ish7nha.com/vendor/emojione/png/32/1f510.png" title=":closed_lock_with_key:" /></b></p>
+
+                  <p data-darkreader-inline-color="" style="margin-right: 0px; margin-left: 0px; cursor: text; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; --darkreader-inline-color:  #b1aaa0;"><b>5 - مبروك الشدات وصلت حسابك <img alt="????" class="emojione" src="https://ish7nha.com/vendor/emojione/png/32/1f389.png" title=":tada:" /></b></p>
+
+                  <p>&nbsp;</p>
+
+                  </div>
+                </div>
+              </div>
+                                 
             </div>
           </div>
         </div>

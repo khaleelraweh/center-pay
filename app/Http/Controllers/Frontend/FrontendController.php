@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\CommonQuestion;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\Slider;
@@ -56,11 +57,12 @@ class FrontendController extends Controller
             ->RootCategory()
             ->CardCategory()
             ->HasProducts()
-            
         ->get();
 
+        $common_questions = CommonQuestion::query()->active()->take(6)->get();
 
-        return view('frontend.index',compact('main_sliders','adv_sliders','featured_product_cards','card_categories','random_product_cards'));
+
+        return view('frontend.index',compact('main_sliders','adv_sliders','featured_product_cards','card_categories','random_product_cards','common_questions'));
     }
 
     public function cart(){
