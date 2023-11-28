@@ -65,6 +65,7 @@
                         <table  class="table table-hover table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                                 <tr>
+                                    <th>الصورة</th>
                                     <th>اسم الصنف</th>
                                     <th>عدد المنتجات</th>
                                     <th>الكاتب</th>
@@ -78,7 +79,16 @@
                             @forelse ($categories as $category)
                                 <tr>
                                     <td>
-                                        {{-- <img src="{{asset('assets/cards/girls-s-electronies_16999441521.jpg')}}" alt="not found"> --}}
+                                        @if ($category->firstMedia)
+                                            {{-- <td><img src="{{asset('assets/products/'.$product->photos()->first()->file_name)}}" width="60" alt="product Image"> </td> --}}
+                                            <img src="{{asset('assets/product_categories/'.$category->firstMedia->file_name)}}" width="60" height="60" alt="{{$category->name}}"> 
+                                        @else
+                                            <img src="{{asset('assets/No-Image-Found.png')}}"  width="60" height="60" alt="{{$product->name}}">
+                                        @endif
+                                    
+                                    </td>
+
+                                    <td>
                                         {{$category->name}}
                                     </td>
                                     <td>{{$category->products_count}}</td>
@@ -107,7 +117,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="6" class="text-center">No Cards found</td>
+                                    <td colspan="7" class="text-center">No Cards found</td>
                                 </tr>
                             @endforelse    
                             </tbody>
@@ -115,7 +125,7 @@
                         </table>
                         <tfoot>
                             <tr>
-                                <td colspan="6">
+                                <td colspan="7">
                                     <div class="float-right">
                                         {!! $categories->appends(request()->all())->links() !!}
                                     </div>

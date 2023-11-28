@@ -44,7 +44,7 @@ class ProductRequest extends FormRequest
                     'status'                =>  'required',
                     'views'                 =>  'nullable',// عدد مرات العرض
                     'images'                =>  'required',  
-                    'images.*'              =>  'mimes:jpg,jpeg,png,gif|max:3000',
+                    'images.*'              =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
                     'created_by'            =>  'nullable',
                     'updated_by'            =>  'nullable',
                     'deleted_by'            =>  'nullable',
@@ -71,7 +71,7 @@ class ProductRequest extends FormRequest
                     'status'                =>  'required',
                     'views'                 =>  'nullable', // عدد مرات العرض
                     'images'                =>  'nullable',
-                    'images.*'              =>  'mimes:jpg,jpeg,png,gif|max:3000',
+                    'images.*'              =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
                     'created_by'            =>  'nullable',
                     'updated_by'            =>  'nullable',
                     'deleted_by'            =>  'nullable',

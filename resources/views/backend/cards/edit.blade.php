@@ -121,7 +121,7 @@
                                     </label>
                                     <div class="col-md-9 col-sm-12">
                                         <div class="file-loading">
-                                            <input type="file" name="images[]" id="category_image" class="file-input-overview ">
+                                            <input type="file" name="images[]" id="category_image" class="file-input-overview " multiple>
                                             <span class="form-text text-muted">Image width should be 500px x 500px </span>
                                             @error('images')<span class="text-danger">{{$message}}</span>@enderror
                                         </div>
@@ -240,7 +240,7 @@
 
             $("#category_image").fileinput({
                 theme:"fa5",
-                maxFileCount: 1 ,
+                maxFileCount: 5 ,
                 allowedFileTypes: ['image'],
                 showCancel: true,
                 showRemove: false,

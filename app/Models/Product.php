@@ -67,7 +67,7 @@ class Product extends Model
         });
     }
 
-    public function scopeProductCardCategory($query){
+    public function scopeCardCategory($query){
         return $query->whereHas('category',function($query){
             $query->whereSection(2); //only product whoes section is 1 means card product 
         });
@@ -81,6 +81,10 @@ class Product extends Model
     // to get only first one media elemet
     public function firstMedia(): MorphOne{
         return $this->MorphOne(Photo::class, 'imageable')->orderBy('file_sort','asc');
+    }
+
+    public function lastMedia(): MorphOne{
+        return $this->MorphOne(Photo::class, 'imageable')->orderBy('file_sort','desc');
     }
     
     // one product may have more than one photo

@@ -22,7 +22,7 @@ class ProductCardController extends Controller
 
         $products = Product::with('category','tags','firstMedia')
         ->ActiveCategory()
-        ->ProductCardCategory()
+        ->CardCategory()
         ->when(\request()->keyword != null , function($query){
             $query->search(\request()->keyword);
         })

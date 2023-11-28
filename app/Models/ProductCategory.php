@@ -39,6 +39,28 @@ class ProductCategory extends Model
         return $this->status ? 'مفعل' : "غير مفعل";
     }
 
+    public function scopeActive($query){
+        return $query->whereStatus(true);
+    }
+
+    public function scopeRootCategory($query){
+        return $query->whereNull('parent_id');
+        
+    }
+
+    public function scopeHasProducts($query){
+
+        return $query->whereHas('products');
+    }
+
+    public function scopeProductCategory($query){
+        return $query->whereSection(1); //means any product 
+    }
+
+    public function scopeCardCategory($query){
+        return $query->whereSection(2); //only product whoes section is 1 means card product 
+    }
+
 
     // Get Parent of This Element in the same table inner Relationship
     public function parent()
@@ -51,6 +73,7 @@ class ProductCategory extends Model
     {
         return $this->hasMany(ProductCategory::class, 'parent_id', 'id');
     }
+
     // Get The children that allowed to be appeared and used
     public function appearedChildren()
     {
@@ -71,11 +94,28 @@ class ProductCategory extends Model
         return $this->hasMany(Product::class);
     }
 
+    
+
     // product category has only one photo in photo table so relationship is morphone
     public function photo():MorphOne
     {
         return $this->morphOne(Photo::class, 'imageable');
     }
+
+    // to get only first one media elemet
+    public function firstMedia(): MorphOne{
+        return $this->MorphOne(Photo::class, 'imageable')->orderBy('file_sort','asc');
+    }
+
+    public function lastMedia(): MorphOne{
+        return $this->MorphOne(Photo::class, 'imageable')->orderBy('file_sort','desc');
+    }
+    
+    // one product may have more than one photo
+    // public function photos():MorphMany
+    // {
+    //     return $this->morphMany(Photo::class, 'imageable');
+    // }
 
 
 }
