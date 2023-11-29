@@ -66,7 +66,6 @@
 </head>
 
 <body class=" {{!request()->routeIs('frontend.product')? 'has-squared-btns has-loader-bg equal-height has-btn-not-upper' : 'template-product has-smround-btns has-loader-bg equal-height has-sm-container'}}">
-{{-- <body class="has-squared-btns has-loader-bg equal-height has-btn-not-upper"> --}}
 {{-- <body class="template-product has-smround-btns has-loader-bg equal-height has-sm-container"> --}}
 
     <div id="app">

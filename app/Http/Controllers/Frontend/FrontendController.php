@@ -65,20 +65,21 @@ class FrontendController extends Controller
         return view('frontend.index',compact('main_sliders','adv_sliders','featured_product_cards','card_categories','random_product_cards','common_questions'));
     }
 
-    public function cart(){
-        return view('frontend.cart');
+ 
+    public function product($slug){
+
+        $card_product  = Product::with('category','tags','photos','reviews')->withAvg('reviews','rating')->whereSlug($slug)->Active()->HasQuantity()->ActiveCategory()->firstOrFail();
+
+        // releated card_product = get card_product with first Media where has relation category 
+        $relatedProducts = Product::with('firstMedia','photos')->whereHas('category', function ($query) use ($card_product){
+            // where this category id is equal to $card_product->product_category_id where its status is true :means active
+            $query->whereId($card_product->product_category_id)->whereStatus(true);
+        })->inRandomOrder()->Active()->HasQuantity()->take(4)->get(); // get in random order  only card_product which is active and has quantity :and take from them 4 card_product 
+
+        return view('frontend.product',compact('card_product','relatedProducts'));
     }
 
-    public function checkout(){
-        return view('frontend.checkout');
-    }
+   
 
-    public function detail(){
-        return view('frontend.detail');
-    }
-
-    public function shop(){
-        return view('frontend.shop');
-    }
 
 }

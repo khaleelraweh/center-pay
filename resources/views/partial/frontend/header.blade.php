@@ -1,4 +1,4 @@
-<header class="hdr-wrap hdr-transparent">
+<header  class="hdr-wrap {{!request()->routeIs('frontend.product')? 'hdr-transparent' : null}}">
     <div class="hdr-content hdr-content-sticky">
       <div class="container">
         <div class="row">
@@ -89,7 +89,7 @@
               </div>
             </div>
             <div class="col-auto hdr-logo">
-              <a href="index.html" class="logo"
+              <a href="{{route('frontend.index')}}" class="logo"
                 ><img
                   srcset="
                     {{asset('frontend/assests/images/skins/games/logo-games.webp ')}}  1x,

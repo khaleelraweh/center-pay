@@ -1,4 +1,4 @@
-<footer class="page-footer footer-style-1">
+<footer class="page-footer {{!request()->routeIs('frontend.product')? 'footer-style-1' : 'footer-style-6'}}">
     <div class="footer-top">
       <div class="container">
         <div class="row mt-0">

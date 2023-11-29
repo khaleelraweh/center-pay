@@ -28,11 +28,15 @@ Auth::routes(['verify'=>true]);
 
 //Frontend 
 Route::get('/',         [FrontendController::class,'index'])->name('frontend.index');
-Route::get('/index',    [FrontendController::class,'index'])->name('frontend.index');
-// Route::get('/cart',     [FrontendController::class,'cart'])->name('frontend.cart');
-// Route::get('/checkout', [FrontendController::class,'checkout'])->name('frontend.checkout');
-// Route::get('/detail',   [FrontendController::class,'detail'])->name('frontend.detail');
-// Route::get('/shop',     [FrontendController::class,'shop'])->name('frontend.shop');
+
+
+Route::get('/index',[FrontendController::class,'index'])->name('frontend.index');
+// Route::get('/shop/{slug?}',[Frontend\FrontendController::class,'shop'])->name('frontend.shop');
+// Route::get('/shop/tags/{slug}',[Frontend\FrontendController::class,'shop_tag'])->name('frontend.shop_tag');
+Route::get('/product/{slug?}',[FrontendController::class,'product'])->name('frontend.product');
+// Route::get('/cart',[Frontend\FrontendController::class,'cart'])->name('frontend.cart');
+// Route::get('/wishlist',[Frontend\FrontendController::class,'wishlist'])->name('frontend.wishlist');
+
 
 
 //Backend

@@ -1,24 +1,24 @@
 @extends('layouts.app')
 
 @section('style')
-
-<style>
-  .prd{
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }
-  .prd-price{
-    justify-content: center !important;
-  }
-  .prd-action-left{
-    justify-content: center !important;
-  }
-  .prd .prd-action {
-    justify-content: center;
-    margin-top: 5px;
-  }
-</style>
-    
+{{-- 
+  <style>
+    .prd{
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+    .prd-price{
+      justify-content: center !important;
+    }
+    .prd-action-left{
+      justify-content: center !important;
+    }
+    .prd .prd-action {
+      justify-content: center;
+      margin-top: 5px;
+    }
+  </style>
+     --}}
 @endsection
 
 @section('content')   
@@ -270,12 +270,11 @@
         class="prd-grid prd-carousel js-prd-carousel slick-arrows-aside-simple slick-arrows-mobile-lg data-to-show-4 data-to-show-md-3 data-to-show-sm-3 data-to-show-xs-2"
         data-slick='{"slidesToShow": 5, "slidesToScroll": 2, "responsive": [{"breakpoint": 992,"settings": {"slidesToShow": 3, "slidesToScroll": 1}},{"breakpoint": 768,"settings": {"slidesToShow": 2, "slidesToScroll": 1}},{"breakpoint": 480,"settings": {"slidesToShow": 2, "slidesToScroll": 1}}]}'
       >
-
       @forelse ($featured_product_cards as $featured_product_card)
         <div class=" prd prd--style2 prd-labels--max prd-labels-shadow">
           <div class="prd-inside">
             <div class="prd-img-area">
-              <a href="product.html" class="prd-img image-container">
+              <a href="{{route('frontend.product',$featured_product_card->slug)}}" class="prd-img image-container">
                 {{-- first image  --}}
                 <img
                   src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
@@ -378,7 +377,7 @@
                     <form action="#">
                       <button
                         class="btn js-prd-addtocart"
-                        data-product='{"name": "{{$featured_product_card->name}}", "path":"{{asset('assets/products/'.$featured_product_card->firstMedia->file_name)}}", "url":"product.html", "aspect_ratio":0.778}'
+                        data-product='{"name": "{{$featured_product_card->name}}", "path":"{{asset('assets/products/'.$featured_product_card->firstMedia->file_name)}}", "url":"{{route('frontend.product',$featured_product_card->slug)}}", "aspect_ratio":0.778}'
                       >
                         اضافة للسلة
                       </button>
@@ -396,7 +395,6 @@
     </div>
   </div>
 
-
   {{-- random product cards --}}
   <div class="holder">
     <div class="container">
@@ -411,7 +409,7 @@
           <div class="py-4 col-xl-3 col-lg-4 col-sm-6 prd prd--style2 prd-labels--max prd-labels-shadow">
             <div class="prd-inside">
               <div class="prd-img-area">
-                <a href="product.html" class="prd-img image-container">
+                <a href="{{route('frontend.product',$random_product_card->slug)}}" class="prd-img image-container">
                   <img
                     src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
                     data-src="{{asset('assets/products/'.$random_product_card->firstMedia->file_name)}}"
@@ -606,7 +604,7 @@
   </div>
 
   {{-- product cards news --}}
-  {{-- <div class="holder holder-mt-medium">
+  <div class="holder holder-mt-medium">
     <div class="container">
       <div class="title-with-arrows">
         <h2 class="h1-style">
@@ -730,7 +728,7 @@
         </div>
       </div>
     </div>
-  </div> --}}
+  </div>
 
   {{-- get discount by login --}}
   {{-- <div class="holder holder-subscribe-full mt-0" style="background-color: transparent">
