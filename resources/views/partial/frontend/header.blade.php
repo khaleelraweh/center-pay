@@ -1,4 +1,4 @@
-<header  class="hdr-wrap {{!request()->routeIs('frontend.product')? 'hdr-transparent' : null}}">
+<header  class="hdr-wrap {{request()->routeIs('frontend.index') ? 'hdr-transparent' : null}}">
     <div class="hdr-content hdr-content-sticky">
       <div class="container">
         <div class="row">

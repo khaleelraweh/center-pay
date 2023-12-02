@@ -31,7 +31,7 @@ Route::get('/',         [FrontendController::class,'index'])->name('frontend.ind
 
 
 Route::get('/index',[FrontendController::class,'index'])->name('frontend.index');
-// Route::get('/shop/{slug?}',[Frontend\FrontendController::class,'shop'])->name('frontend.shop');
+Route::get('/card-category/{slug?}',[FrontendController::class,'card_category'])->name('frontend.card_category');
 // Route::get('/shop/tags/{slug}',[Frontend\FrontendController::class,'shop_tag'])->name('frontend.shop_tag');
 Route::get('/product/{slug?}',[FrontendController::class,'product'])->name('frontend.product');
 // Route::get('/cart',[Frontend\FrontendController::class,'cart'])->name('frontend.cart');

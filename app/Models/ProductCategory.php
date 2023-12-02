@@ -112,10 +112,10 @@ class ProductCategory extends Model
     }
     
     // one product may have more than one photo
-    // public function photos():MorphMany
-    // {
-    //     return $this->morphMany(Photo::class, 'imageable');
-    // }
+    public function photos():MorphMany
+    {
+        return $this->morphMany(Photo::class, 'imageable');
+    }
 
 
 }

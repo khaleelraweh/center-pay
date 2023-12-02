@@ -545,7 +545,7 @@
           <div class="prd-promo prd-promo--lg prd-has-loader">
             <div class="prd-inside">
               <div class="prd-img-area">
-                <a href="product.html" class="image-hover-scale">
+                <a href="{{route('frontend.card_category',$card_category->slug)}}" class="image-hover-scale">
                   <img
                     src="{{asset('assets/product_categories/'.$card_category->firstMedia->file_name)}}"
                     alt="{{$card_category->name}}"
@@ -565,7 +565,7 @@
                 </a>
               </div>
               <div class="prd-info text-center">
-                <h2 class="prd-title"><a href="product.html">{{$card_category->name}}</a></h2>
+                <h2 class="prd-title"><a href="{{route('frontend.card_category',$card_category->slug)}}">{{$card_category->name}}</a></h2>
                 {{-- <div class="prd-rating">
                   <i class="icon-star-fill fill"></i
                   ><i class="icon-star-fill fill"></i
@@ -575,17 +575,16 @@
                   <span></span>
                 </div> --}}
                 <div class="prd-hover">
-                  {{-- <div class="prd-price">
-                    <div class="price-old">$ 200</div>
-                    <div class="price-new">$ 180</div>
-                  </div> --}}
                   <div class="prd-action">
-                    <button
+                    <a href="{{route('frontend.card_category',$card_category->slug)}}"  class="btn js-prd-addtocart">
+                      عرض الباقات
+                    </a>
+                    {{-- <button
                       class="btn js-prd-addtocart"
-                      {{-- data-product='{"name": "بطائق الدفع", "path":"{{asset('frontend/assests/images/skins/games/products/product-07-1.webp')}}", "url":"product.html", "aspect_ratio":0.778}' --}}
+                      data-product='{"name": "بطائق الدفع", "path":"{{asset('frontend/assests/images/skins/games/products/product-07-1.webp')}}", "url":"product.html", "aspect_ratio":0.778}'
                     >
                        عرض الباقات
-                    </button>
+                    </button> --}}
                   </div>
                 </div>
               </div>

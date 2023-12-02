@@ -51,16 +51,6 @@
 		<div class="container js-prd-gallery" id="prdGallery">
 			<div class="row prd-block prd-block-under prd-block--prv-bottom">
 
-				@foreach ($reviews as $review)
-					{{-- {{dd($review)}} --}}
-				@endforeach
-
-				{{-- <h1>This is my title</h1> {{dd($card_product->reviews )}} <br> --}}
-				<h3>rating is </h3>{{$card_product->reviews_avg_rating}}
-				@foreach ($card_product->reviews as $review)
-				
-				@endforeach
-				
 				{{-- rating and  review part --}}
 				<div class="col">
 					<div class="js-prd-d-holder">
@@ -91,7 +81,27 @@
 					</div>
 				</div>
 
-				
+				{{-- nto now for what  --}}
+				{{-- <div class="col-md-auto prd-block-prevnext-wrap">
+					<div class="prd-block-prevnext">
+						@foreach ($card_product->photos as $photo)
+						
+						<a href="#">
+								<span class="prd-img">
+									<img 	class="lazyload fade-up"
+											src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+											data-src="{{asset('assets/products/' . $photo->file_name)}}" 
+											alt="{{$card_product->name}}"
+									>
+									<i class="icon-arrow-left"></i>
+								</span>
+							</a>
+
+						@endforeach
+						
+
+					</div>
+				</div> --}}
 
 			</div>
 			<div class="row prd-block prd-block--prv-bottom">
@@ -127,7 +137,10 @@
 								</div>
 							</div>
 							
-							
+							{{-- need:to py fixed  --}}
+							{{-- <div class="prd-block_main-image-links">
+								<a href="{{asset('assets/products/' . $card_product->photos[0]->file_name)}}" class="prd-block_zoom-link"><i class="icon-zoom-in"></i></a>
+							</div> --}}
 						</div>
 
 						{{-- images link views --}}
@@ -554,7 +567,33 @@
 										data-src="ajax/ajax-quickview.html"><i class="icon-eye"></i><span>QUICK
 											VIEW</span></a>
 
-									
+									{{-- <div class="colorswatch-label colorswatch-label--variants js-prd-colorswatch">
+										<i class="icon-palette"><span class="path1"></span><span class="path2"></span><span
+												class="path3"></span><span class="path4"></span><span
+												class="path5"></span><span class="path6"></span><span
+												class="path7"></span><span class="path8"></span><span
+												class="path9"></span><span class="path10"></span></i>
+										<ul>
+											<li
+												data-image="{{asset('frontend/assests/images/skins/fashion/products/product-06-1.webp')}}">
+												<a class="js-color-toggle" data-toggle="tooltip" data-placement="left"
+													title="Color Name"><img
+														src="{{asset('frontend/assests/images/colorswatch/color-grey.webp')}}"
+														alt=""></a></li>
+											<li
+												data-image="{{asset('frontend/assests/images/skins/fashion/products/product-06-color-2.webp')}}">
+												<a class="js-color-toggle" data-toggle="tooltip" data-placement="left"
+													title="Color Name"><img
+														src="{{asset('frontend/assests/images/colorswatch/color-green.webp')}}"
+														alt=""></a></li>
+											<li
+												data-image="{{asset('frontend/assests/images/skins/fashion/products/product-06-color-3.webp')}}">
+												<a class="js-color-toggle" data-toggle="tooltip" data-placement="left"
+													title="Color Name"><img
+														src="{{asset('frontend/assests/images/colorswatch/color-black.webp')}}"
+														alt=""></a></li>
+										</ul>
+									</div> --}}
 
 								</div>
 								{{-- color style switcher  --}}
