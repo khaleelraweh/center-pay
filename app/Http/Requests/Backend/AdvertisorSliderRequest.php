@@ -4,7 +4,7 @@ namespace App\Http\Requests\Backend;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SliderRequest extends FormRequest
+class AdvertisorSliderRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,7 +27,7 @@ class SliderRequest extends FormRequest
             case 'POST':
             {
                 return [
-                    'title'         =>  'required|max:255', 
+                    'title'         =>  'required|max:255|unique:sliders', 
                     'content'       =>  'nullable',  
                     'url'           =>  'nullable', 
                     'target'        =>  'required', 
@@ -54,7 +54,7 @@ class SliderRequest extends FormRequest
             case 'PATCH':
             {
                 return [
-                    'title'             =>  'required|max:255', 
+                    'title'             =>  'required|max:255|unique:sliders,title,'.$this->route()->advertisor_slider->id,
                     'content'           =>  'nullable',
                     'url'               =>  'nullable',
                     'target'            =>  'required',
@@ -82,5 +82,3 @@ class SliderRequest extends FormRequest
        
     }
 }
-
-

@@ -4,12 +4,6 @@
     {{-- pickadate calling css --}}
     <link rel="stylesheet" href="{{asset('backend/vendor/datepicker/themes/classic.css')}}">
     <link rel="stylesheet" href="{{asset('backend/vendor/datepicker/themes/classic.date.css')}}">
-
-    {{-- is used to make tab-content --}}
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
-
     
     <style>
         .picker__select--month,.picker__select--year{
@@ -139,12 +133,12 @@
                     <div class="tab-pane fade" id="publish" role="tabpanel" aria-labelledby="publish-tab">
 
                         {{-- حالة التصنيف --}}
-                        <div class="row pt-4">
-                            <label for="status" class="control-label col-md-3 col-sm-12 ">
-                                 <span>الحالة</span>
-                                <span class="require red">*</span>
-                            </label>
-                            <div class="col-md-9 col-sm-12">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 pt-4">
+                                <label for="status" class="control-label col-md-3 col-sm-12 ">
+                                    <span>الحالة</span>
+                                   <span class="require red">*</span>
+                               </label>
                                 <select name="status" class="form-control">
                                     <option value="">---</option>
                                     <option value="1" {{ old('status',$productCategory->status) == '1' ? 'selected' : null}}>مفعل</option>
@@ -154,49 +148,41 @@
                             </div>
                         </div>
 
-                        {{-- تاريخ النشر --}}
-                        <div class="row pt-4">
-                            <label for="publish_date" class="control-label col-md-3 col-sm-12 ">
-                                 <span>تاريخ النشر</span>
-                                <span class="require red">*</span>
-                            </label>
-                            <div class="col-md-9 col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 pt-4">
                                 <div class="form-group">
-                                    <input type="text" id="publish_date" name="publish_date" value="{{old('publish_date',$productCategory->publish_date)}}" class="form-control" >
-                                    @error('publish_date') <span class="text-danger">{{$message}}</span> @enderror
+                                    <label for="published_on">تاريخ النشر</label>
+                                    <input type="text" id="published_on" name="published_on" value="{{old('published_on',\Carbon\Carbon::parse($productCategory->published_on)->Format('Y-m-d'))}}" class="form-control" >
+                                    @error('published_on') <span class="text-danger">{{$message}}</span> @enderror
                                 </div>
                             </div>
-                        </div>
 
-                        {{-- وقت النشر --}}
-                        <div class="row pt-4">
-                            <label for="publish_time" class="control-label col-md-3 col-sm-12 ">
-                                 <span>وقت النشر</span>
-                                <span class="require red">*</span>
-                            </label>
-                            <div class="col-md-9 col-sm-12">
+                            <div class="col-sm-12 col-md-6 pt-4">
                                 <div class="form-group">
-                                    <input type="text" id="publish_time" name="publish_time" value="{{old('publish_time',$productCategory->publish_time)}}" class="form-control" >
-                                    @error('publish_time') <span class="text-danger">{{$message}}</span> @enderror
+                                    <label for="published_on_time">وقت النشر</label>
+                                    <input type="text" id="published_on_time" name="published_on_time" value="{{old('published_on_time',\Carbon\Carbon::parse($productCategory->published_on)->Format('h:i A'))}}" class="form-control" >
+                                    @error('published_on_time') <span class="text-danger">{{$message}}</span> @enderror
                                 </div>
                             </div>
+                            
                         </div>
 
-                        {{-- عرض في القائمة الرئيسية --}}
-                        <div class="row pt-4">
-                            <label for="view_in_main" class="control-label col-md-3 col-sm-12 ">
-                                 <span>عرض في الرئيسية</span>
-                                <span class="require red">*</span>
-                            </label>
-                            <div class="col-md-9 col-sm-12">
-                                <select name="view_in_main" class="form-control">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 pt-4">
+                                <label for="featured" class="control-label col-md-3 col-sm-12 ">
+                                    <span>المفضلة</span>
+                                   <span class="require red">*</span>
+                               </label>
+                                <select name="featured" class="form-control">
                                     <option value="">---</option>
-                                    <option value="1" {{ old('view_in_main',$productCategory->view_in_main) == '1' ? 'selected' : null}}>مفعل</option>
-                                    <option value="0" {{ old('view_in_main',$productCategory->view_in_main) == '0' ? 'selected' : null}}>غير مفعل</option>
+                                    <option value="1" {{ old('featured',$productCategory->featured) == '1' ? 'selected' : null}}>نعم</option>
+                                    <option value="0" {{ old('featured',$productCategory->featured) == '0' ? 'selected' : null}}> لا</option>
                                 </select>
-                                @error('view_in_main')<span class="text-danger">{{$message}}</span>@enderror
+                                @error('featured')<span class="text-danger">{{$message}}</span>@enderror
                             </div>
                         </div>
+
+                       
 
                     </div>
 
@@ -273,38 +259,26 @@
                 ]
             });
 
-            // ======= start pickadate codeing ===========
-            $('#publish_date').pickadate({
+          
+            $('#published_on').pickadate({
                 format: 'yyyy-mm-dd',
+                min: new Date(),
                 selectMonths: true , // Creates a dropdown to control month
                 selectYears: true, // creates a dropdown to control years
                 clear: 'Clear',
                 close: 'OK',
                 colseOnSelect: true // Close Upon Selecting a date
             });
-
-            var startdate = $('#publish_date').pickadate('picker'); // set startdate in the picker to the start date in the #publish_date elemet
-            
-            var enddate = $('#publish_time').pickadate('picker'); 
-
-            // when change date 
-            $('#publish_date').change(function(){
+            var publishedOn = $('#published_on').pickadate('picker'); // set startdate in the picker to the start date in the #start_date elemet
+            $('#published_on').change(function(){
                 selected_ci_date = ""; 
-                selected_ci_date = $('#publish_date').val(); // make selected start date in picker = publish_date value
-                if(selected_ci_date != null){
-                    var cidate = new Date(selected_ci_date); // make cidate(start date ) = current date you selected in selected ci date (selected start date )
-                    min_codate = "";
-                }
+                selected_ci_date = now() // make selected start date in picker = start_date value  
+
             });
 
-            $('#publish_time').pickatime({
-                formatLabel: function(time) {
-                    var hours = ( time.pick - this.get('now').pick ) / 60,
-                    label = hours < 0 ? ' !hours to now' : hours > 0 ? ' !hours from now' : 'now'
-                    return  'h:i a <sm!all>' + ( hours ? Math.abs(hours) : '' ) + label +'</sm!all>'
-                }
+            $('#published_on_time').pickatime({
+                clear: ''
             });
-
 
             $('.summernote').summernote({
                 tabSize:2,

@@ -35,19 +35,21 @@ class ProductRequest extends FormRequest
                     'offer_ends'            =>  'nullable|date_format:Y-m-d',
                     'sku'                   =>  'nullable',
                     'max_order'             =>  'nullable|numeric',
-                    'publish_date'          =>  'nullable|date_format:Y-m-d',
-                    'publish_time'          =>  'nullable',
-                    'view_in_main'          =>  'nullable',
                     'product_category_id'   =>  'required',
                     'tags.*'                =>  'required',
                     'featured'              =>  'required',
-                    'status'                =>  'required',
-                    'views'                 =>  'nullable',// عدد مرات العرض
                     'images'                =>  'required',  
                     'images.*'              =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
-                    'created_by'            =>  'nullable',
-                    'updated_by'            =>  'nullable',
-                    'deleted_by'            =>  'nullable',
+                    'views'                 =>  'nullable',// عدد مرات العرض
+
+                    // used always 
+                    'status'             =>  'required',
+                    'published_on'       =>  'nullable',
+                    'published_on_time'  =>  'nullable',
+                    'created_by'         =>  'nullable',
+                    'updated_by'         =>  'nullable',
+                    'deleted_by'         =>  'nullable',
+                    // end of used always 
                 ];
             }
             case 'PUT':
@@ -62,19 +64,21 @@ class ProductRequest extends FormRequest
                     'offer_ends'            =>  'nullable|date_format:Y-m-d',
                     'sku'                   =>  'nullable',
                     'max_order'             =>  'nullable|numeric',
-                    'publish_date'          =>  'nullable|date_format:Y-m-d',
-                    'publish_time'          =>  'nullable',
-                    'view_in_main'          =>  'nullable',
                     'product_category_id'   =>  'required',
                     'tags.*'                =>  'required', 
                     'featured'              =>  'required',
-                    'status'                =>  'required',
-                    'views'                 =>  'nullable', // عدد مرات العرض
                     'images'                =>  'nullable',
                     'images.*'              =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
-                    'created_by'            =>  'nullable',
-                    'updated_by'            =>  'nullable',
-                    'deleted_by'            =>  'nullable',
+                    'views'                 =>  'nullable', // عدد مرات العرض
+
+                    // used always 
+                    'status'             =>  'required',
+                    'published_on'       =>  'nullable',
+                    'published_on_time'  =>  'nullable',
+                    'created_by'         =>  'nullable',
+                    'updated_by'         =>  'nullable',
+                    'deleted_by'         =>  'nullable',
+                    // end of used always 
                 ];
             }
             

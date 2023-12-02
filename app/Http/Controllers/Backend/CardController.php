@@ -7,6 +7,7 @@ use Intervention\Image\Facades\Image;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\CardRequest;
 use App\Models\ProductCategory;
+use DateTimeImmutable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -27,7 +28,7 @@ class CardController extends Controller
         ->when(\request()->status != null , function($query){
             $query->where('status',\request()->status);
         })
-        ->orderBy(\request()->sort_by ?? 'id' , \request()->order_by ?? 'desc')
+        ->orderBy(\request()->sort_by ?? 'published_on' , \request()->order_by ?? 'desc')
         ->paginate(\request()->limit_by ?? 10);
         
         return view('backend.cards.index',compact('categories'));
@@ -50,15 +51,18 @@ class CardController extends Controller
         }
 
         $input['name'] = $request->name;
-        $input['status'] = $request->status;
-        $input['publish_date'] = $request->publish_date;
-        $input['publish_time'] = $request->publish_time;
-        $input['view_in_main'] = $request->view_in_main;
         $input['description'] = $request->description;
         $input['views'] = 0;
         $input['created_by'] = auth()->user()->full_name;
         $input['section'] = 2;
+        $input['featured'] = $request->featured;
 
+        $input['status']            =   $request->status;
+        $input['updated_by']        =   auth()->user()->full_name;
+
+        $published_on = $request->published_on.' '.$request->published_on_time;
+        $published_on = new DateTimeImmutable($published_on);
+        $input['published_on'] = $published_on;
 
         $productCategory = ProductCategory::create($input);
 
@@ -129,14 +133,18 @@ class CardController extends Controller
         
         $input['name'] = $request->name;
         $input['parent_id'] = $request->parent_id;
-        $input['status'] = $request->status;
-        $input['publish_date'] = $request->publish_date;
-        $input['publish_time'] = $request->publish_time;
-        $input['view_in_main'] = $request->view_in_main;
         $input['description'] = $request->description;
         $input['views'] = 0;
         $input['updated_by'] = auth()->user()->full_name;
         $input['section'] = 2;
+        $input['featured'] = $request->featured;
+
+        $input['status']            =   $request->status;
+        $input['updated_by']        =   auth()->user()->full_name;
+
+        $published_on = $request->published_on.' '.$request->published_on_time;
+        $published_on = new DateTimeImmutable($published_on);
+        $input['published_on'] = $published_on;
 
         $productCategory->update($input);
        

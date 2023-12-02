@@ -25,17 +25,18 @@ return new class extends Migration
             $table->string('sku')->nullable();
             $table->integer('max_order')->nullable()->default(-1);
             $table->boolean('featured')->default(false);
-            $table->boolean('status')->default(false);
-            $table->date('publish_date')->nullable();
-            $table->time('publish_time')->nullable();
-            $table->boolean('view_in_main')->default(false);
             $table->foreignId('product_category_id')->constrained()->cascadeOnDelete();
-            $table->dateTime('published_on')->nullable(); // تاريخ انشاء الملف 
-            $table->string('created_by')->default('admin');
-            $table->string('updated_by')->nullable();
-            $table->string('deleted_by')->nullable();
             $table->integer('views')->default(0);
+
+            // will be use always
+            $table->boolean('status')->default(true);
+            $table->dateTime('published_on')->nullable(); 
+            $table->string('created_by')->nullable(); 
+            $table->string('updated_by')->nullable(); 
+            $table->string('deleted_by')->nullable();
+            $table->softDeletes();
             $table->timestamps();
+            // end of will be use always
         });
     }
 

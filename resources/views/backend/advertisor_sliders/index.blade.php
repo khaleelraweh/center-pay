@@ -5,31 +5,28 @@
 
         {{-- menu part  --}}
         <div class="card-header py-3 d-flex justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">عارض الشرائح</h6>
+            <h6 class="m-0 font-weight-bold text-primary">عارض شرائح الاعلانات</h6>
             <div class="ml-auto">
                 @ability('admin','create_products')
                 <a href="{{route('admin.advertisor_sliders.create')}}" class="btn btn-primary">
                     <span class="icon text-white-50">
                         <i class="fa fa-plus"></i>
                     </span>
-                    <span class="text">إضافة شريحة رئيسية جديد</span>
+                    <span class="text">إضافة شريحة اعلانات جديد</span>
                 </a>
                 @endability
             </div>
         </div>
 
-        {{-- filter form part  --}}
 
         @include('backend.advertisor_sliders.filter.filter')
 
-        {{-- table part --}}
         <div class="table-responsive">
             <table class="table table-hover">
                 <thead>
                     <tr>
                         <th>الصورة</th>
                         <th>العنوان</th>
-                        {{-- <th>Tags</th> --}}
                         <th>الكاتب</th>
                         <th>تاريخ النشر </th>
                         <th>عدد المشاهدات </th>
@@ -37,20 +34,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                @forelse ($sliders as $slider)
+                @forelse ($advertisor_sliders as $slider)
                     <tr>
 
-                        {{-- To make code better by making laravel cal only first media using relation shap to low querys --}}
                         <td>
                             @if ($slider->firstMedia)
-                                <img src="{{asset('assets/sliders/'.$slider->firstMedia->file_name)}}" width="60" height="60" alt="{{$slider->name}}"> 
+                                <img src="{{asset('assets/advertisor_sliders/'.$slider->firstMedia->file_name)}}" width="60" height="60" alt="{{$slider->name}}"> 
                             @else
                                 <img src="{{asset('assets/No-Image-Found.png')}}"  width="60" height="60" alt="{{$slider->name}}">
                             @endif
                         
                         </td>
                         <td>{{$slider->title}}</td>
-                        {{-- <td>{{$slider->tags->pluck('name')->join(',')}}</td> --}}
                         <td>{{$slider->created_by}}</td>
                         <td>{{$slider->published_on->Format('Y-m-d h:i A')}}</td>
                         <td>{{$slider->status()}}</td>
@@ -84,7 +79,7 @@
                     <tr>
                         <td colspan="7">
                             <div class="float-right">
-                                {!! $sliders->appends(request()->all())->links() !!}
+                                {!! $advertisor_sliders->appends(request()->all())->links() !!}
                             </div>
                         </td>
                     </tr>

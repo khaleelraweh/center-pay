@@ -96,7 +96,7 @@
                                     <div class="col-sm-12 col-md-6 pt-4">
                                         <div class="form-group">
                                             <label for="start_date">تاريخ البدء</label>
-                                            <input type="text" id="start_date" name="start_date" value="{{old('start_date')}}" class="form-control" >
+                                            <input type="text" id="start_date" name="start_date" value="{{old('start_date' , now()->format('Y-m-d'))}}" class="form-control" >
                                             @error('start_date') <span class="text-danger">{{$message}}</span> @enderror
                                         </div>
                                     </div>
@@ -291,10 +291,7 @@
                 close: 'OK',
                 colseOnSelect: true // Close Upon Selecting a date
             });
-
-           
             var publishedOn = $('#published_on').pickadate('picker'); // set startdate in the picker to the start date in the #start_date elemet
-
             // when change date 
             $('#published_on').change(function(){
                 selected_ci_date = ""; 

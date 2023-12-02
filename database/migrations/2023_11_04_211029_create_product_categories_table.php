@@ -18,19 +18,21 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug')->unique();
             $table->text('description')->nullable();
-            $table->boolean('status')->default(false);
-            $table->date('publish_date')->nullable();
-            $table->time('publish_time')->nullable();
-            $table->boolean('view_in_main')->default(false);
             $table->unsignedBigInteger('parent_id')->nullable();
             $table->foreign('parent_id')->references('id')->on('product_categories')->nullOnDelete();
             $table->integer('views')->default(0);
-            $table->string('created_by')->default('admin');
-            $table->string('updated_by')->nullable();
-            $table->string('deleted_by')->nullable();
             $table->unsignedBigInteger('section')->default(1); // one means it related to any category except cards
+            $table->boolean('featured')->default(false);
+
+            // will be use always
+            $table->boolean('status')->default(true);
+            $table->dateTime('published_on')->nullable(); 
+            $table->string('created_by')->nullable(); 
+            $table->string('updated_by')->nullable(); 
+            $table->string('deleted_by')->nullable();
             $table->softDeletes();
             $table->timestamps();
+            // end of will be use always
         });
     }
 

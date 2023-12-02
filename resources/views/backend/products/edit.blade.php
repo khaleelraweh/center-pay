@@ -252,36 +252,27 @@
                             </div>
                         </div>
 
-                        {{-- publish_date publish time field --}}
                         <div class="row">
-                            <div class="col-md-6 com-sm-12 pt-4">
-                                <label for="publish_date" class="control-label"><span>تاريخ النشر</span><span class="require red">*</span></label>
+                            <div class="col-sm-12 col-md-6 pt-4">
                                 <div class="form-group">
-                                    <input type="text" id="publish_date" name="publish_date" value="{{old('publish_date',$product->publish_date)}}" class="form-control" >
-                                    @error('publish_date') <span class="text-danger">{{$message}}</span> @enderror
+                                    <label for="published_on">تاريخ النشر</label>
+                                    <input type="text" id="published_on" name="published_on" value="{{old('published_on',\Carbon\Carbon::parse($product->published_on)->Format('Y-m-d'))}}" class="form-control" >
+                                    @error('published_on') <span class="text-danger">{{$message}}</span> @enderror
                                 </div>
                             </div>
-                            <div class="col-md-6 col-sm-12 pt-4">
-                                <label for="publish_time" class="control-label"><span>وقت النشر</span><span class="require red">*</span></label>
+
+                            <div class="col-sm-12 col-md-6 pt-4">
                                 <div class="form-group">
-                                    <input type="text" id="publish_time" name="publish_time" value="{{old('publish_time',$product->publish_time)}}" class="form-control" >
-                                    @error('publish_time') <span class="text-danger">{{$message}}</span> @enderror
+                                    <label for="published_on_time">وقت النشر</label>
+                                    <input type="text" id="published_on_time" name="published_on_time" value="{{old('published_on_time',\Carbon\Carbon::parse($product->published_on)->Format('h:i A'))}}" class="form-control" >
+                                    @error('published_on_time') <span class="text-danger">{{$message}}</span> @enderror
                                 </div>
                             </div>
+                            
                         </div>
                         
                         {{-- view_in_main and  tags fields --}}
                         <div class="row ">
-                            {{-- view_in_main field --}}
-                            <div class="col-md-6 col-sm-12 pt-4">
-                                <label for="view_in_main" class="control-label "><span>عرض في الرئيسية</span><span class="require red">*</span></label>
-                                <select name="view_in_main" class="form-control">
-                                    <option value="1" {{ old('view_in_main',$product->view_in_main) == '1' ? 'selected' : null}}>مفعل</option>
-                                    <option value="0" {{ old('view_in_main',$product->view_in_main) == '0' ? 'selected' : null}}>غير مفعل</option>
-                                </select>
-                                @error('view_in_main')<span class="text-danger">{{$message}}</span>@enderror
-                            </div>
-
                             {{-- Tags field  --}}
                             <div class="col-md-6 col-sm-12 pt-4">
                                 <label for="tags">كلمات مفتاحية</label>
@@ -375,15 +366,30 @@
                 console.log(params.previewId ,params.oldIndex,params.newIndex,params.stack);
             });
 
-            // ======= start pickadate codeing ===========
-            $('#publish_date').pickadate({
+
+            $('#published_on').pickadate({
                 format: 'yyyy-mm-dd',
+                min: new Date(),
                 selectMonths: true , // Creates a dropdown to control month
                 selectYears: true, // creates a dropdown to control years
                 clear: 'Clear',
                 close: 'OK',
                 colseOnSelect: true // Close Upon Selecting a date
             });
+
+            var publishedOn = $('#published_on').pickadate('picker'); // set startdate in the picker to the start date in the #start_date elemet
+
+            // when change date 
+            $('#published_on').change(function(){
+                selected_ci_date = ""; 
+                selected_ci_date = now() // make selected start date in picker = start_date value  
+
+            });
+
+            $('#published_on_time').pickatime({
+                clear: ''
+            });
+          
 
             $('#offer_ends').pickadate({
                 format: 'yyyy-mm-dd',
@@ -394,24 +400,7 @@
                 colseOnSelect: true // Close Upon Selecting a date
             });
 
-            var startdate = $('#publish_date').pickadate('picker'); // set startdate in the picker to the start date in the #publish_date elemet
-            var enddate = $('#publish_time').pickadate('picker'); 
-
-            var startdate = $('#offer_ends').pickadate('picker'); // set startdate in the picker to the start date in the #publish_date elemet
-            var enddate = $('#publish_time').pickadate('picker'); 
-
-            // when change date 
-            $('#publish_date').change(function(){
-                selected_ci_date = ""; 
-                selected_ci_date = $('#publish_date').val(); // make selected start date in picker = publish_date value
-                if(selected_ci_date != null){
-                    var cidate = new Date(selected_ci_date); // make cidate(start date ) = current date you selected in selected ci date (selected start date )
-                    min_codate = "";
-                    min_codate = new Date();
-                    min_codate.setDate(cidate.getDate()+1); // minimum selected date to be expired shoud be current date plus one 
-                    enddate.set('min',min_codate);
-                }
-            });
+          
 
             // when change date 
             $('#offer_ends').change(function(){
@@ -425,11 +414,6 @@
                     enddate.set('min',min_codate);
                 }
 
-            });
-
-
-            $('#publish_time').pickatime({
-                clear: ''
             });
 
             $('.summernote').summernote({

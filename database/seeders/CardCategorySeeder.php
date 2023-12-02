@@ -18,14 +18,14 @@ class CardCategorySeeder extends Seeder
     {
         $faker = Factory::create();
 
-        $colthes = ProductCategory::create(['name' => 'بوبجي'      ,   'description' =>  $faker->paragraph()  ,    'status' => true  ,  'section' => 2  , 'publish_date' => $faker->date()  , 'publish_time' =>  $faker->time() , 'view_in_main' => true , 'parent_id' => null]);
+        $colthes = ProductCategory::create(['name' => 'بوبجي'      ,   'description' =>  $faker->paragraph()  ,    'status' => true  ,  'section' => 2  , 'published_on' => $faker->dateTime()  ,  'parent_id' => null]);
        
 
-        $shose = ProductCategory::create(['name' => 'حرب النجوم'  ,  'description' =>  $faker->paragraph() , 'status' => true  ,  'section' => 2  ,  'publish_date'  =>  $faker->date() , 'publish_time'  =>  $faker->time()  ,  'view_in_main'   => true  ,  'parent_id' => null]);
+        $shose = ProductCategory::create(['name' => 'حرب النجوم'  ,  'description' =>  $faker->paragraph() , 'status' => true  ,  'section' => 2  ,  'published_on'  =>  $faker->dateTime()  ,   'parent_id' => null]);
        
-        $watches = ProductCategory::create(['name' => 'الاسطورة' ,   'description' =>  $faker->paragraph() , 'status' => true  ,  'section' => 2  ,  'publish_date'  =>  $faker->date()    ,  'publish_time'  => $faker->time()   , 'view_in_main'   => true  ,  'parent_id' => null]);
+        $watches = ProductCategory::create(['name' => 'الاسطورة' ,   'description' =>  $faker->paragraph() , 'status' => true  ,  'section' => 2  ,  'published_on'  =>  $faker->dateTime()        ,  'parent_id' => null]);
         
-        $electronies = ProductCategory::create(['name' => 'القرون الوسطي'  ,  'description' =>  $faker->paragraph() , 'status' => true  ,  'section' => 2  ,  'publish_date'   =>  $faker->date()  ,  'publish_time'   =>  $faker->time()  , 'view_in_main'    => true   ,  'parent_id' => null]);
+        $electronies = ProductCategory::create(['name' => 'القرون الوسطي'  ,  'description' =>  $faker->paragraph() , 'status' => true  ,  'section' => 2  ,  'published_on'   =>  $faker->dateTime()   ,  'parent_id' => null]);
        
     }
 }

@@ -8,6 +8,7 @@ use App\Http\Requests\Backend\ProductRequest;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\Tag;
+use DateTimeImmutable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -29,7 +30,7 @@ class ProductController extends Controller
         ->when(\request()->status != null , function($query){
             $query->where('status',\request()->status);
         })
-        ->orderBy(\request()->sort_by ?? 'id' , \request()->order_by ?? 'desc')
+        ->orderBy(\request()->sort_by ?? 'published_on' , \request()->order_by ?? 'desc')
         ->paginate(\request()->limit_by ?? 10);
 
 
@@ -69,13 +70,14 @@ class ProductController extends Controller
         $input['offer_ends']            =   $request->offer_ends;
         $input['sku']                   =   $request->sku;
         $input['max_order']             =   $request->max_order;
-        $input['publish_date']          =   $request->publish_date;
-        $input['publish_time']          =   $request->publish_time;
-        $input['view_in_main']          =   $request->view_in_main;
         $input['product_category_id']   =   $request->product_category_id;
         $input['featured']              =   $request->featured;
         $input['status']                =   $request->status;
         $input['created_by']            =   auth()->user()->full_name;
+
+        $published_on = $request->published_on.' '.$request->published_on_time;
+         $published_on = new DateTimeImmutable($published_on);
+         $input['published_on'] = $published_on;
 
         //Add product to db with save instance of it in $product to use it later 
         $product = Product::create($input);
@@ -159,13 +161,14 @@ class ProductController extends Controller
         $input['offer_ends']            =   $request->offer_ends;
         $input['sku']                   =   $request->sku;
         $input['max_order']             =   $request->max_order;
-        $input['publish_date']          =   $request->publish_date;
-        $input['publish_time']          =   $request->publish_time;
-        $input['view_in_main']          =   $request->view_in_main;
         $input['product_category_id']   =   $request->product_category_id;
         $input['featured']              =   $request->featured;
         $input['status']                =   $request->status;
         $input['updated_by']            =   auth()->user()->full_name;
+
+        $published_on = $request->published_on.' '.$request->published_on_time;
+         $published_on = new DateTimeImmutable($published_on);
+         $input['published_on'] = $published_on;
  
          //Add product to db with save instance of it in $product to use it later 
          $product->update($input);

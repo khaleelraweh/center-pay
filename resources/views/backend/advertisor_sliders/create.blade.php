@@ -33,10 +33,8 @@
             </div>
         </div>
 
-        {{-- body part  --}}
         <div class="card-body">
 
-            {{-- erorrs show is exists --}}
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
@@ -47,11 +45,9 @@
                 </div>
             @endif
 
-            {{-- enctype used cause we will save images  --}}
             <form action="{{route('admin.advertisor_sliders.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
 
-                 {{-- links of tabs --}}
                  <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
                         <a class="nav-link active" id="content-tab" data-toggle="tab" href="#content" role="tab" aria-controls="content" aria-selected="true">بيانات الشريحة</a>
@@ -73,14 +69,11 @@
 
                 <div class="tab-content" id="myTabContent">
                     
-                    {{-- Content Tab --}}
                     <div class="tab-pane fade active show" id="content" role="tabpanel" aria-labelledby="content-tab">
                         <div class="row">
                             
-                            {{-- البيانات الاساسية --}}
                             <div class="col-md-7 col-sm-12 ">
                 
-                                {{-- slider title field --}}
                                 <div class="row">
                                     <div class="col-sm-12 col-md-12 pt-4">
                                         <div class="form-group">
@@ -91,12 +84,11 @@
                                     </div>
                                 </div>
 
-                                {{-- start date and expired date of the slider use  --}}
                                 <div class="row">
                                     <div class="col-sm-12 col-md-6 pt-4">
                                         <div class="form-group">
                                             <label for="start_date">تاريخ البدء</label>
-                                            <input type="text" id="start_date" name="start_date" value="{{old('start_date')}}" class="form-control" >
+                                            <input type="text" id="start_date" name="start_date" value="{{old('start_date' , now()->format('Y-m-d') )}}" class="form-control" >
                                             @error('start_date') <span class="text-danger">{{$message}}</span> @enderror
                                         </div>
                                     </div>
@@ -109,7 +101,6 @@
                                     </div>
                                 </div>
 
-                                {{-- product content field --}}
                                 <div class="row">
                                     <div class="col-sm-12 col-md-12 pt-4">
                                         <label for="content">الوصف</label>
@@ -122,7 +113,6 @@
                                 
                             </div>
 
-                            {{-- مرفق الصور  --}}
                             <div class="col-md-5 col-sm-12 ">
 
                                 <div class="row">
@@ -140,12 +130,9 @@
                         </div>
                     </div>
 
-                    {{-- url Tab --}}
                     <div class="tab-pane fade" id="url" role="tabpanel" aria-labelledby="url-tab">
                         
-                        {{-- url fields --}}
                         <div class="row">
-                            {{-- url field --}}
                             <div class="col-md-12 col-sm-12 pt-4">
                                 <label for="url">رمز المنتج url</label>
                                 <input type="text" name="url" id="url" value="{{old('url')}}" class="form-control" placeholder="">
@@ -153,7 +140,6 @@
                             </div>
                         </div>
 
-                        {{--  target  fields --}}
                         <div class="row">
                             <div class="col-sm-12 col-md-12 pt-4 pt-4">
                                 <label for="target">مكان العرض</label>
@@ -169,40 +155,24 @@
 
                     {{-- Publish Tab --}}
                     <div class="tab-pane fade" id="publish" role="tabpanel" aria-labelledby="publish-tab">
-                        {{-- status and featured field --}}
-                        <div class="row">
-                            <div class="col-6 pt-4">
-                                <label for="status">الحالة</label>
-                                <select name="status" class="form-control">
-                                    <option value="1" {{ old('status') == '1' ? 'selected' : null}}>مفعل</option>
-                                    <option value="0" {{ old('status') == '0' ? 'selected' : null}}>غير مفعل</option>
-                                </select>
-                                @error('status')<span class="text-danger">{{$message}}</span>@enderror
-                            </div>
-                            <div class="col-6 pt-4">
-                                <label for="featured">عرض في المفضلة</label>
-                                <select name="featured" class="form-control">
-                                    <option value="1" {{ old('featured') == '1' ? 'selected' : null}}>نعم</option>
-                                    <option value="0" {{ old('featured') == '0' ? 'selected' : null}}>لا</option>
-                                </select>
-                                @error('featured')<span class="text-danger">{{$message}}</span>@enderror                       
-                            </div>
-                        </div>
+                        
+                        
 
                         {{-- publish_start publish time field --}}
                         <div class="row">
-                            <div class="col-sm-12 col-md-6 pt-4">
+                            <div class="col-sm-12 col-md-12 pt-4">
                                 <div class="form-group">
                                     <label for="published_on">تاريخ النشر</label>
-                                    <input type="text" id="published_on" name="published_on" value="{{old('published_on')}}" class="form-control" >
+                                    <input type="text" id="published_on" name="published_on" value="{{old('published_on', now()->format('Y-m-d'))}}" class="form-control" >
                                     @error('published_on') <span class="text-danger">{{$message}}</span> @enderror
                                 </div>
                             </div>
-
-                            <div class="col-sm-12 col-md-6 pt-4">
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 pt-4">
                                 <div class="form-group">
                                     <label for="published_on_time">وقت النشر</label>
-                                    <input type="text" id="published_on_time" name="published_on_time" value="{{old('published_on_time')}}" class="form-control" >
+                                    <input type="text" id="published_on_time" name="published_on_time" value="{{old('published_on_time' , now()->format('h:m A'))}}" class="form-control" >
                                     @error('published_on_time') <span class="text-danger">{{$message}}</span> @enderror
                                 </div>
                             </div>
@@ -210,16 +180,15 @@
                         </div>
 
                       
-                        {{-- view_in_main and  tags fields --}}
-                        <div class="row ">
-                            {{-- view_in_main field --}}
-                            <div class="col-md-6 col-sm-12 pt-4">
-                                <label for="view_in_main" class="control-label "><span>عرض في الرئيسية</span><span class="require red">*</span></label>
-                                <select name="view_in_main" class="form-control">
-                                    <option value="1" {{ old('view_in_main') == '1' ? 'selected' : null}}>مفعل</option>
-                                    <option value="0" {{ old('view_in_main') == '0' ? 'selected' : null}}>غير مفعل</option>
+                        {{-- status and featured field --}}
+                        <div class="row">
+                            <div class="col-sm-12 pt-4">
+                                <label for="status">الحالة</label>
+                                <select name="status" class="form-control">
+                                    <option value="1" {{ old('status') == '1' ? 'selected' : null}}>مفعل</option>
+                                    <option value="0" {{ old('status') == '0' ? 'selected' : null}}>غير مفعل</option>
                                 </select>
-                                @error('view_in_main')<span class="text-danger">{{$message}}</span>@enderror
+                                @error('status')<span class="text-danger">{{$message}}</span>@enderror
                             </div>
                         </div>
 
@@ -259,7 +228,6 @@
                 overwriteInitial:false
             });
 
-            // This is only for start dant and expire date of slider 
             // ======= start pickadate codeing ===========
             $('#start_date').pickadate({
                 format: 'yyyy-mm-dd',
@@ -284,7 +252,6 @@
             var startdate = $('#start_date').pickadate('picker'); // set startdate in the picker to the start date in the #start_date elemet
             var enddate = $('#expire_date').pickadate('picker'); 
 
-            // when change date 
             $('#start_date').change(function(){
                 selected_ci_date = ""; 
                 selected_ci_date = $('#start_date').val(); // make selected start date in picker = start_date value
@@ -298,7 +265,6 @@
 
             });
 
-            // This is for publish this slider =========================
             // ======= start pickadate codeing ===========
            
             $('#published_on').pickadate({
@@ -317,7 +283,14 @@
             // when change date 
             $('#published_on').change(function(){
                 selected_ci_date = ""; 
-                selected_ci_date = now() // make selected start date in picker = start_date value  
+                selected_ci_date = $('#published_on').val(); 
+                if(selected_ci_date != null){
+                    var cidate = new Date(selected_ci_date); 
+                    min_codate = "";
+                    min_codate = new Date();
+                    min_codate.setDate(cidate.getDate()+1);  
+                    enddate.set('min',min_codate);
+                }
 
             });
 
@@ -327,7 +300,7 @@
            
             // ======= End pickadate codeing ===========
 
-           
+            
 
             $('.summernote').summernote({
                 tabSize:2,
@@ -342,7 +315,6 @@
                     ['view',['fullscreen','codeview','help']]
                 ]
             });
-
 
         });
     </script>

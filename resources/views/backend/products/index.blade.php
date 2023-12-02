@@ -33,7 +33,7 @@
                         <th>سعر الحبة</th>
                         {{-- <th>Tags</th> --}}
                         <th>الكاتب</th>
-                        <th>تاريخ الانشاء </th>
+                        <th>تاريخ النشر </th>
                         <th>عدد المشاهدات </th>
                         <th>الحالة</th>
                         <th class="text-center" style="width:30px;">الاعدادات</th>
@@ -56,9 +56,8 @@
                         <td>{{$product->name}}</td>
                         <td>{{$product->quantity}}</td>
                         <td>{{$product->price}}</td>
-                        {{-- <td>{{$product->tags->pluck('name')->join(',')}}</td> --}}
                         <td>{{$product->created_by}}</td>
-                        <td>{{$product->created_at}}</td>
+                        <td>{{$product->published_on}}</td>
                         <td>{{$product->views}}</td>
                         <td>{{$product->status()}}</td>
                         <td>

@@ -162,7 +162,7 @@
                     </div>
 
 
-                    {{-- Publish Tab --}}
+                    {{-- Publish Tab --}} 
                     <div class="tab-pane fade" id="publish" role="tabpanel" aria-labelledby="publish-tab">
 
                         {{-- published_on and published_on_time  --}}
@@ -284,7 +284,7 @@
                 clear: 'Clear',
                 close: 'OK',
                 colseOnSelect: true // Close upon selecting a date ,
-            });
+            }); 
 
             var startdate = $('#start_date').pickadate('picker'); // set startdate in the picker to the start date in the #start_date elemet
             var enddate = $('#expire_date').pickadate('picker'); 
@@ -305,9 +305,10 @@
             
 
             // ======= End pickadate codeing ===========
-
+ 
              // ======= start pickadate codeing  for start and end date ===========
-             $('#published_on').pickadate({
+
+            $('#published_on').pickadate({
                 format: 'yyyy-mm-dd',
                 min: new Date(),
                 selectMonths: true , // Creates a dropdown to control month
@@ -316,10 +317,7 @@
                 close: 'OK',
                 colseOnSelect: true // Close Upon Selecting a date
             });
-
             var publishedOn = $('#published_on').pickadate('picker'); // set startdate in the picker to the start date in the #start_date elemet
-
-            // when change date 
             $('#published_on').change(function(){
                 selected_ci_date = ""; 
                 selected_ci_date = now() // make selected start date in picker = start_date value  
@@ -329,6 +327,7 @@
             $('#published_on_time').pickatime({
                 clear: ''
             });
+
             // ======= End pickadate codeing for publish start and end date  ===========
 
            
