@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use Intervention\Image\Facades\Image;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Backend\SliderRequest;
+use App\Http\Requests\Backend\MainSliderRequest;
 use App\Models\Slider;
 use App\Models\Tag;
 use DateTimeImmutable;
@@ -20,7 +20,7 @@ class MainSliderController extends Controller
             return redirect('admin/index');
         }
 
-        $sliders = Slider::with('firstMedia')
+        $mainSliders = Slider::with('firstMedia')
         ->MainSliders()
         ->when(\request()->keyword != null , function($query){
             $query->search(\request()->keyword);
@@ -28,12 +28,11 @@ class MainSliderController extends Controller
         ->when(\request()->status != null , function($query){
             $query->where('status',\request()->status);
         })
-        // ->orderBy(\request()->sort_by ?? 'id' , \request()->order_by ?? 'desc')
         ->orderBy(\request()->sort_by ?? 'published_on' , \request()->order_by ?? 'desc')
         ->paginate(\request()->limit_by ?? 10);
 
 
-        return view('backend.main_sliders.index',compact('sliders'));
+        return view('backend.main_sliders.index',compact('mainSliders'));
         
     }
 
@@ -48,14 +47,13 @@ class MainSliderController extends Controller
         return view('backend.main_sliders.create',compact('tags'));
     }
 
-    public function store(SliderRequest $request)
+    public function store(MainSliderRequest $request)
     {
      
         if(!auth()->user()->ability('admin','create_main_sliders')){
             return redirect('admin/index');
         }
 
-        // get Input from create.blade.php form request using SliderRequest to validate fields
         $input['title']          =   $request->title;
         $input['content']        =   $request->content;
         $input['url']            =   $request->url;
@@ -64,43 +62,33 @@ class MainSliderController extends Controller
         $input['start_date']        =   $request->start_date;
         $input['expire_date']       =   $request->expire_date;
 
-         // always added 
          $input['status']            =   $request->status;
-         $input['featured']          =   $request->featured;
-         $input['view_in_main']      =   $request->view_in_main;
          $input['created_by']        =   auth()->user()->full_name;
 
          $published_on = $request->published_on.' '.$request->published_on_time;
          $published_on = new DateTimeImmutable($published_on);
          $input['published_on'] = $published_on;
-         // end of always added 
 
-        //Add slider to db with save instance of it in $slider to use it later 
-        $slider = Slider::create($input);
+        $mainSlider = Slider::create($input);
         
-        // make relation between this slider with tags choosed using tags()->attach(tags_id)
-        $slider->tags()->attach($request->tags); 
+        $mainSlider->tags()->attach($request->tags); 
 
-        // add images to photos db and to path : public/assets/sliders
         if($request->images && count( $request->images) > 0){
 
-            $i = 1; // $i is used for making sort to image 
+            $i = 1; 
 
             foreach ($request->images as $image) {
                 
-                // $file_name = Str::slug($request->name).".".$image->getClientOriginalExtension(); // will not used because slider already created to db and slug is there by steps upove
-                $file_name = $slider->slug. '_' . time() . $i . '.' . $image->getClientOriginalExtension(); // time() and $id used to avoid repeating image name 
+                $file_name = $mainSlider->slug. '_' . time() . $i . '.' . $image->getClientOriginalExtension(); // time() and $id used to avoid repeating image name 
                 $file_size = $image->getSize();
                 $file_type = $image->getMimeType();
-                $path = public_path('assets/sliders/' . $file_name);
+                $path = public_path('assets/main_sliders/' . $file_name);
                 
-                // get the real path of this image then resize its width to 500 and height let it aspect it with width
                 Image::make($image->getRealPath())->resize(500,null,function($constraint){
                     $constraint->aspectRatio();
-                })->save($path,100);//then make copy of this image in new path as $path say with new name as $file_name say with clear 100%
+                })->save($path,100);
 
-                // add this photos to db using photos relational function
-                $slider->photos()->create([
+                $mainSlider->photos()->create([
                     'file_name' =>$file_name,
                     'file_size' =>$file_size,
                     'file_type' =>$file_type,
@@ -108,7 +96,7 @@ class MainSliderController extends Controller
                     'file_sort' =>$i,
                 ]); 
 
-                $i++; // step ahead by one for sort new image 
+                $i++; 
             }
         }
 
@@ -129,28 +117,25 @@ class MainSliderController extends Controller
     }
 
  
-    public function edit($slider)
+    public function edit(Slider $mainSlider)
     {
-        $slider = Slider::findOrFail( $slider );
         if(!auth()->user()->ability('admin','update_main_sliders')){
             return redirect('admin/index');
         }
 
-        // get all tags to add some of them to slider 
         $tags = Tag::whereStatus(1)->get(['id','name']); 
 
-        return view('backend.main_sliders.edit',compact('tags' ,'slider'));
+        return view('backend.main_sliders.edit',compact('tags' ,'mainSlider'));
     }
 
-    public function update(SliderRequest $request, $slider)
+    public function update(MainSliderRequest $request, Slider $mainSlider)
     {
         if(!auth()->user()->ability('admin','update_main_sliders')){
             return redirect('admin/index');
         }
 
-        $slider = Slider::findOrFail($slider);
+        
 
-         // get Input from create.blade.php form request using sliderRequest to validate fields
          $input['title']          =   $request->title;
          $input['content']        =   $request->content;
          $input['url']            =   $request->url;
@@ -159,44 +144,34 @@ class MainSliderController extends Controller
          $input['start_date']        =   $request->start_date;
          $input['expire_date']       =   $request->expire_date;
 
-         // always added 
          $input['status']            =   $request->status;
-         $input['featured']          =   $request->featured;
-         $input['view_in_main']      =   $request->view_in_main;
          $input['updated_by']        =   auth()->user()->full_name;
 
          $published_on = $request->published_on.' '.$request->published_on_time;
          $published_on = new DateTimeImmutable($published_on);
          $input['published_on'] = $published_on;
-         // end of always added 
 
-         //Add slider to db with save instance of it in $slider to use it later 
-         $slider->update($input);
+         $mainSlider->update($input);
          
-        //  دالة السينك اذا كان في جديد ستضيفة فوق الاول اذا كان شي محذوف ستحذفة من الاول
-         $slider->tags()->sync($request->tags);
+         $mainSlider->tags()->sync($request->tags);
 
 
-        // edit images in photos db and in path : public/assets/sliders
         if($request->images && count( $request->images) > 0){
 
-            $i = $slider->photos->count() + 1; // $i is used for making sort to image 
+            $i = $mainSlider->photos->count() + 1; 
 
             foreach ($request->images as $image) {
                 
-                // $file_name = Str::slug($request->name).".".$image->getClientOriginalExtension(); // will not used because slider already created to db and slug is there by steps upove
-                $file_name = $slider->slug. '_' . time() . $i . '.' . $image->getClientOriginalExtension(); // time() and $id used to avoid repeating image name 
+                $file_name = $mainSlider->slug. '_' . time() . $i . '.' . $image->getClientOriginalExtension(); 
                 $file_size = $image->getSize();
                 $file_type = $image->getMimeType();
-                $path = public_path('assets/sliders/' . $file_name);
+                $path = public_path('assets/main_sliders/' . $file_name);
                 
-                // get the real path of this image then resize its width to 500 and height let it aspect it with width
                 Image::make($image->getRealPath())->resize(500,null,function($constraint){
                     $constraint->aspectRatio();
-                })->save($path,100);//then make copy of this image in new path as $path say with new name as $file_name say with clear 100%
+                })->save($path,100);
 
-                // add this photos to db using photos relational function
-                $slider->photos()->create([
+                $mainSlider->photos()->create([
                     'file_name' =>$file_name,
                     'file_size' =>$file_size,
                     'file_type' =>$file_type,
@@ -204,7 +179,7 @@ class MainSliderController extends Controller
                     'file_sort' =>$i,
                 ]); 
 
-                $i++; // step ahead by one for sort new image 
+                $i++; 
             }
         }
 
@@ -217,24 +192,23 @@ class MainSliderController extends Controller
 
 
 
-    public function destroy( $slider)
+    public function destroy( Slider $mainSlider)
     {
         if(!auth()->user()->ability('admin','delete_main_sliders')){
             return redirect('admin/index');
         }
 
-        $slider = Slider::findOrFail($slider);
 
-        if($slider->photos->count() > 0){
-            foreach($slider->photos as $photo){
-                if(File::exists('assets/sliders/' . $photo->file_name)){
-                    unlink('assets/sliders/' . $photo->file_name);
+        if($mainSlider->photos->count() > 0){
+            foreach($mainSlider->photos as $photo){
+                if(File::exists('assets/main_sliders/' . $photo->file_name)){
+                    unlink('assets/main_sliders/' . $photo->file_name);
                 }
                 $photo->delete();
             }
         }
 
-        $slider->delete();
+        $mainSlider->delete();
 
         return redirect()->route('admin.main_sliders.index')->with([
             'message' => 'تم الحذف بنجاح',
@@ -249,18 +223,13 @@ class MainSliderController extends Controller
         }
 
         
-
-        //find slider from slider table 
          $slider = Slider::findOrFail($request->slider_id);
 
-         //find photos image from photos table 
          $image = $slider->photos()->where('id',$request->image_id)->first();
 
-         if(File::exists('assets/sliders/' . $image->file_name)){
-            // delete image from path 
-             unlink('assets/sliders/' . $image->file_name);
+         if(File::exists('assets/main_sliders/' . $image->file_name)){
+             unlink('assets/main_sliders/' . $image->file_name);
          }
-            //delete image from db
             $image->delete();
 
          return true;

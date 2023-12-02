@@ -169,9 +169,33 @@
 
                     {{-- Publish Tab --}}
                     <div class="tab-pane fade" id="publish" role="tabpanel" aria-labelledby="publish-tab">
-                        {{-- status and featured field --}}
+
+                        {{-- publish_start publish time field --}}
                         <div class="row">
-                            <div class="col-6 pt-4">
+                            <div class="col-sm-12 col-md-12 pt-4">
+                                <div class="form-group">
+                                    <label for="published_on">تاريخ النشر</label>
+                                    <input type="text" id="published_on" name="published_on" value="{{old('published_on' , now()->format('Y-m-d') )}}" class="form-control" >
+                                    @error('published_on') <span class="text-danger">{{$message}}</span> @enderror
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 pt-4">
+                                <div class="form-group">
+                                    <label for="published_on_time">وقت النشر</label>
+                                    <input type="text" id="published_on_time" name="published_on_time" value="{{old('published_on_time' , now()->format('h:m A'))}}" class="form-control" >
+                                    @error('published_on_time') <span class="text-danger">{{$message}}</span> @enderror
+                                </div>
+                            </div>
+                           
+                        </div>
+
+
+                         {{-- status and featured field --}}
+                         <div class="row">
+                            <div class="col-sm-12 col-md-12 pt-4">
                                 <label for="status">الحالة</label>
                                 <select name="status" class="form-control">
                                     <option value="1" {{ old('status') == '1' ? 'selected' : null}}>مفعل</option>
@@ -179,50 +203,7 @@
                                 </select>
                                 @error('status')<span class="text-danger">{{$message}}</span>@enderror
                             </div>
-                            <div class="col-6 pt-4">
-                                <label for="featured">عرض في المفضلة</label>
-                                <select name="featured" class="form-control">
-                                    <option value="1" {{ old('featured') == '1' ? 'selected' : null}}>نعم</option>
-                                    <option value="0" {{ old('featured') == '0' ? 'selected' : null}}>لا</option>
-                                </select>
-                                @error('featured')<span class="text-danger">{{$message}}</span>@enderror                       
-                            </div>
                         </div>
-
-                        {{-- publish_start publish time field --}}
-                        <div class="row">
-                            <div class="col-sm-12 col-md-6 pt-4">
-                                <div class="form-group">
-                                    <label for="published_on">تاريخ النشر</label>
-                                    <input type="text" id="published_on" name="published_on" value="{{old('published_on')}}" class="form-control" >
-                                    @error('published_on') <span class="text-danger">{{$message}}</span> @enderror
-                                </div>
-                            </div>
-
-                            <div class="col-sm-12 col-md-6 pt-4">
-                                <div class="form-group">
-                                    <label for="published_on_time">وقت النشر</label>
-                                    <input type="text" id="published_on_time" name="published_on_time" value="{{old('published_on_time')}}" class="form-control" >
-                                    @error('published_on_time') <span class="text-danger">{{$message}}</span> @enderror
-                                </div>
-                            </div>
-                           
-                        </div>
-
-                      
-                        {{-- view_in_main and  tags fields --}}
-                        <div class="row ">
-                            {{-- view_in_main field --}}
-                            <div class="col-md-6 col-sm-12 pt-4">
-                                <label for="view_in_main" class="control-label "><span>عرض في الرئيسية</span><span class="require red">*</span></label>
-                                <select name="view_in_main" class="form-control">
-                                    <option value="1" {{ old('view_in_main') == '1' ? 'selected' : null}}>مفعل</option>
-                                    <option value="0" {{ old('view_in_main') == '0' ? 'selected' : null}}>غير مفعل</option>
-                                </select>
-                                @error('view_in_main')<span class="text-danger">{{$message}}</span>@enderror
-                            </div>
-                        </div>
-
                     </div>
 
                     {{-- seo tab  --}}
@@ -317,7 +298,14 @@
             // when change date 
             $('#published_on').change(function(){
                 selected_ci_date = ""; 
-                selected_ci_date = now() // make selected start date in picker = start_date value  
+                selected_ci_date = $('#published_on').val(); 
+                if(selected_ci_date != null){
+                    var cidate = new Date(selected_ci_date); 
+                    min_codate = "";
+                    min_codate = new Date();
+                    min_codate.setDate(cidate.getDate()+1);  
+                    enddate.set('min',min_codate);
+                }
 
             });
 

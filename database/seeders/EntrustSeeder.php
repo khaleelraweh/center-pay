@@ -137,7 +137,7 @@ class EntrustSeeder extends Seeder
 
 
         //Procuct Categories
-        $manageProductCategories = Permission::create(['name' => 'manage_product_categories', 'display_name' => 'إدارة المنتجات' , 'route' => 'product_categories' , 'module' => 'product_categories' , 'as' => 'product_categories.index' , 'icon' => 'fas fa-file-archive' , 'parent' => '0' , 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '0' , 'ordering' => '10',] );
+        $manageProductCategories = Permission::create(['name' => 'manage_product_categories', 'display_name' => 'إدارة المنتجات' , 'route' => 'product_categories' , 'module' => 'product_categories' , 'as' => 'product_categories.index' , 'icon' => 'fas fa-file-archive' , 'parent' => '0' , 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '10',] );
         $manageProductCategories->parent_show = $manageProductCategories->id; $manageProductCategories->save();
 
         $showProductCategories    =  Permission::create(['name' => 'show_product_categories'    ,  'display_name' => 'تصنيف المنتجات'      , 'route' => 'product_categories' , 'module' => 'product_categories' , 'as' => 'product_categories.index'    , 'icon' => 'fas fa-file-archive' , 'parent' => $manageProductCategories->id , 'parent_original' => $manageProductCategories->id ,'parent_show' => $manageProductCategories->id , 'sidebar_link' => '1' , 'appear' => '1'] );
@@ -148,7 +148,7 @@ class EntrustSeeder extends Seeder
         
 
         //Products 
-        $manageProducts = Permission::create(['name' => 'manage_products', 'display_name' => 'المنتجات' , 'route' => 'products' , 'module' => 'products' , 'as' => 'products.index' , 'icon' => 'fas fa-file-archive' , 'parent' => $manageProductCategories->id , 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '0' , 'ordering' => '15',] );
+        $manageProducts = Permission::create(['name' => 'manage_products', 'display_name' => 'المنتجات' , 'route' => 'products' , 'module' => 'products' , 'as' => 'products.index' , 'icon' => 'fas fa-file-archive' , 'parent' => $manageProductCategories->id , 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '15',] );
         $manageProducts->parent_show = $manageProducts->id; $manageProducts->save();
         $showProducts    =  Permission::create(['name' => 'show_products'    ,  'display_name' => 'المنتجات'       , 'route' => 'products' , 'module' => 'products' , 'as' => 'products.index'    , 'icon' => 'fas fa-file-archive'  , 'parent' => $manageProducts->id , 'parent_original' => $manageProducts->id ,'parent_show' => $manageProducts->id , 'sidebar_link' => '1' , 'appear' => '1'] );
         $createProducts  =  Permission::create(['name' => 'create_products'  , 'display_name'  => 'إضافة منتج'    , 'route' => 'products' , 'module' => 'products' , 'as' => 'products.create'   , 'icon' => null           , 'parent' => $manageProducts->id , 'parent_original' => $manageProducts->id ,'parent_show' => $manageProducts->id , 'sidebar_link' => '1' , 'appear' => '0'] );

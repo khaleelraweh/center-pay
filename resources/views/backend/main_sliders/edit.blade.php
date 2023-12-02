@@ -20,7 +20,7 @@
 
         {{-- menu part  --}}
         <div class="card-header py-3 d-flex justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">تعديل شريحة العرض :   {{$slider->title}}</h6>
+            <h6 class="m-0 font-weight-bold text-primary">تعديل شريحة العرض :   {{$mainSlider->title}}</h6>
             <div class="ml-auto">
                 <a href="{{route('admin.main_sliders.index')}}" class="btn btn-primary">
                     <span class="icon text-white-50">
@@ -46,7 +46,7 @@
             @endif
 
             {{-- enctype used cause we will save images  --}}
-            <form action="{{route('admin.main_sliders.update',$slider->id)}}" method="post" enctype="multipart/form-data">
+            <form action="{{route('admin.main_sliders.update',$mainSlider->id)}}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
 
@@ -84,7 +84,7 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="title">العنوان</label>
-                                            <input type="text" id="title" name="title" value="{{old('title',$slider->title)}}" class="form-control" placeholder="">
+                                            <input type="text" id="title" name="title" value="{{old('title',$mainSlider->title)}}" class="form-control" placeholder="">
                                             @error('title') <span class="text-danger">{{$message}}</span> @enderror
                                         </div>
                                     </div>
@@ -96,14 +96,14 @@
                                     <div class="col-sm-12 col-md-6 pt-4">
                                         <div class="form-group">
                                             <label for="start_date">Start Date</label>
-                                            <input type="text" id="start_date" name="start_date" value="{{old('start_date',$slider->start_date?->format('Y-m-d'))}}" class="form-control" >
+                                            <input type="text" id="start_date" name="start_date" value="{{old('start_date',$mainSlider->start_date?->format('Y-m-d'))}}" class="form-control" >
                                             @error('start_date') <span class="text-danger">{{$message}}</span> @enderror
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-6 pt-4">
                                         <div class="form-group">
                                             <label for="expire_date">Expire Date</label>
-                                            <input type="text" id="expire_date" name="expire_date" value="{{old('expire_date', $slider->expire_date?->format('Y-m-d'))}}" class="form-control" >
+                                            <input type="text" id="expire_date" name="expire_date" value="{{old('expire_date', $mainSlider->expire_date?->format('Y-m-d'))}}" class="form-control" >
                                             @error('expire_date') <span class="text-danger">{{$message}}</span> @enderror
                                         </div>
                                     </div>
@@ -114,7 +114,7 @@
                                     <div class="col-12">
                                         <label for="content">الوصف</label>
                                         <textarea name="content"  rows="10" class="form-control summernote">
-                                            {!!old('content',$slider->content)!!}
+                                            {!!old('content',$mainSlider->content)!!}
                                         </textarea>
                                     </div>
                                 </div>
@@ -146,7 +146,7 @@
                             {{-- url field --}}
                             <div class="col-md-12 col-sm-12 pt-4">
                                 <label for="url">رمز المنتج url</label>
-                                <input type="text" name="url" id="url" value="{{old('url',$slider->url)}}" class="form-control" placeholder="">
+                                <input type="text" name="url" id="url" value="{{old('url',$mainSlider->url)}}" class="form-control" placeholder="">
                                 @error('url') <span class="text-danger">{{$message}}</span> @enderror                        
                             </div>
                         </div>
@@ -155,7 +155,7 @@
                         <div class="row">
                             <div class="col-md-12 col-sm-12 pt-3">
                                 <label for="target">السعر المنتج </label>
-                                <input type="text" name="target" id="target" value="{{old('target',$slider->target)}}" class="form-control" placeholder="">
+                                <input type="text" name="target" id="target" value="{{old('target',$mainSlider->target)}}" class="form-control" placeholder="">
                                 @error('target') <span class="text-danger">{{$message}}</span> @enderror                        
                             </div>
                         </div>
@@ -164,33 +164,13 @@
 
                     {{-- Publish Tab --}}
                     <div class="tab-pane fade" id="publish" role="tabpanel" aria-labelledby="publish-tab">
-                        
-                        {{-- status and featured field --}}
-                        <div class="row">
-                            <div class="col-6 pt-4">
-                                <label for="status">الحالة</label>
-                                <select name="status" class="form-control">
-                                    <option value="1" {{ old('status', $slider->status) == '1' ? 'selected' : null}}>مفعل</option>
-                                    <option value="0" {{ old('status', $slider->status) == '0' ? 'selected' : null}}>غير مفعل</option>
-                                </select>
-                                @error('status')<span class="text-danger">{{$message}}</span>@enderror
-                            </div>
-                            <div class="col-6 pt-4">
-                                <label for="featured">عرض في المفضلة</label>
-                                <select name="featured" class="form-control">
-                                    <option value="1" {{ old('featured', $slider->featured) == '1' ? 'selected' : null}}>نعم</option>
-                                    <option value="0" {{ old('featured', $slider->featured) == '0' ? 'selected' : null}}>لا</option>
-                                </select>
-                                @error('featured')<span class="text-danger">{{$message}}</span>@enderror                       
-                            </div>
-                        </div>
 
                         {{-- published_on and published_on_time  --}}
                         <div class="row">
                             <div class="col-sm-12 col-md-6 pt-4">
                                 <div class="form-group">
                                     <label for="published_on">تاريخ النشر</label>
-                                    <input type="text" id="published_on" name="published_on" value="{{old('published_on',\Carbon\Carbon::parse($slider->published_on)->Format('Y-m-d'))}}" class="form-control" >
+                                    <input type="text" id="published_on" name="published_on" value="{{old('published_on',\Carbon\Carbon::parse($mainSlider->published_on)->Format('Y-m-d'))}}" class="form-control" >
                                     @error('published_on') <span class="text-danger">{{$message}}</span> @enderror
                                 </div>
                             </div>
@@ -198,23 +178,22 @@
                             <div class="col-sm-12 col-md-6 pt-4">
                                 <div class="form-group">
                                     <label for="published_on_time">وقت النشر</label>
-                                    <input type="text" id="published_on_time" name="published_on_time" value="{{old('published_on_time',\Carbon\Carbon::parse($slider->published_on)->Format('h:i A'))}}" class="form-control" >
+                                    <input type="text" id="published_on_time" name="published_on_time" value="{{old('published_on_time',\Carbon\Carbon::parse($mainSlider->published_on)->Format('h:i A'))}}" class="form-control" >
                                     @error('published_on_time') <span class="text-danger">{{$message}}</span> @enderror
                                 </div>
                             </div>
                             
                         </div>
 
-                        {{-- view_in_main and  tags fields --}}
-                        <div class="row ">
-                            {{-- view_in_main field --}}
-                            <div class="col-md-6 col-sm-12 pt-4">
-                                <label for="view_in_main" class="control-label "><span>عرض في الرئيسية</span><span class="require red">*</span></label>
-                                <select name="view_in_main" class="form-control">
-                                    <option value="1" {{ old('view_in_main', $slider->view_in_main) == '1' ? 'selected' : null}}>مفعل</option>
-                                    <option value="0" {{ old('view_in_main', $slider->view_in_main) == '0' ? 'selected' : null}}>غير مفعل</option>
+                        {{-- status and featured field --}}
+                        <div class="row">
+                            <div class="col-sm-12  pt-4">
+                                <label for="status">الحالة</label>
+                                <select name="status" class="form-control">
+                                    <option value="1" {{ old('status', $mainSlider->status) == '1' ? 'selected' : null}}>مفعل</option>
+                                    <option value="0" {{ old('status', $mainSlider->status) == '0' ? 'selected' : null}}>غير مفعل</option>
                                 </select>
-                                @error('view_in_main')<span class="text-danger">{{$message}}</span>@enderror
+                                @error('status')<span class="text-danger">{{$message}}</span>@enderror
                             </div>
                         </div>
 
@@ -259,23 +238,23 @@
                 // delete images from photos and assets/sliders 
                 // because there are maybe more than one image we will go for each image and show them in the edit page 
                 initialPreview: [
-                    @if($slider->photos()->count() > 0)
-                        @foreach($slider->photos as $media)
-                            "{{ asset('assets/sliders/' . $media->file_name)}}",
+                    @if($mainSlider->photos()->count() > 0)
+                        @foreach($mainSlider->photos as $media)
+                            "{{ asset('assets/main_sliders/' . $media->file_name)}}",
                         @endforeach
                     @endif
                 ],
                 initialPreviewAsData:true,
                 initialPreviewFileType: 'image',
                 initialPreviewConfig: [
-                    @if($slider->photos()->count() > 0)
-                        @foreach($slider->photos as $media)
+                    @if($mainSlider->photos()->count() > 0)
+                        @foreach($mainSlider->photos as $media)
                             { 
                                 caption: "{{$media->file_name }}",
                                 size: '{{$media->file_size}}' , 
                                 width: "120px" , 
                                 // url : الراوت المستخدم لحذف الصورة
-                                url: "{{route('admin.main_sliders.remove_image' , ['image_id' => $media->id , 'slider_id' => $slider->id , '_token'=> csrf_token()]) }}", 
+                                url: "{{route('admin.main_sliders.remove_image' , ['image_id' => $media->id , 'slider_id' => $mainSlider->id , '_token'=> csrf_token()]) }}", 
                                 key:{{ $media->id}} 
                             },                        
                         @endforeach

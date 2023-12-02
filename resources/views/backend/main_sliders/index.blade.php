@@ -37,15 +37,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                @forelse ($sliders as $slider)
+                @forelse ($mainSliders as $slider)
                     <tr>
 
                         {{-- To make code better by making laravel cal only first media using relation shap to low querys --}}
                         <td>
                             @if ($slider->firstMedia)
-                                <img src="{{asset('assets/sliders/'.$slider->firstMedia->file_name)}}" width="60" height="60" alt="{{$slider->title}}"> 
+                                <img src="{{asset('assets/main_sliders/'.$slider->firstMedia->file_name)}}" width="60" height="60" alt="{{$slider->title}}"> 
                             @else
-                                <img src="{{asset('assets/No-Image-Found.png')}}"  width="60" height="60" alt="{{$slider->title}}"> 
+                                <img src="{{asset('assets/noImage.png')}}" width="60" height="60" alt="{{$slider->title}}"> 
                             @endif
                         
                         </td>
@@ -84,7 +84,7 @@
                     <tr>
                         <td colspan="6">
                             <div class="float-right">
-                                {!! $sliders->appends(request()->all())->links() !!}
+                                {!! $mainSliders->appends(request()->all())->links() !!}
                             </div>
                         </td>
                     </tr>

@@ -264,7 +264,7 @@
                             <div class="col-md-6 col-sm-12 pt-4">
                                 <label for="publish_time" class="control-label"><span>وقت النشر</span><span class="require red">*</span></label>
                                 <div class="form-group">
-                                    <input type="text" id="publish_time" name="publish_time" value="{{old('publish_time',now()->format('h:m'))}}" class="form-control" >
+                                    <input type="text" id="publish_time" name="publish_time" value="{{old('publish_time',now()->format('h:m A'))}}" class="form-control" >
                                     @error('publish_time') <span class="text-danger">{{$message}}</span> @enderror
                                 </div>
                             </div>
