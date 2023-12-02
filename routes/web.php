@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\CustomerAddressController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\MainSliderController;
+use App\Http\Controllers\Backend\NewsController;
 use App\Http\Controllers\Backend\PaymentMethodController;
 use App\Http\Controllers\Backend\ProductCardController;
 use App\Http\Controllers\Backend\ProductCategoriesController;
@@ -21,6 +22,7 @@ use App\Http\Controllers\Backend\SupervisorController;
 use App\Http\Controllers\Backend\TagController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\OrderController;
+use App\Models\News;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -112,6 +114,9 @@ Route::group(['prefix'=>'admin' , 'as' =>'admin.'],function(){
         Route::resource('orders',OrderController::class);
 
         Route::resource('common_questions',CommonQuestionController::class);
+
+        Route::post('news/remove-image', [NewsController::class, 'remove_image'])->name('news.remove_image');
+        Route::resource('news',NewsController::class);
 
 
 

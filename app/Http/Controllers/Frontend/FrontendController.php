@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\CommonQuestion;
+use App\Models\News;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\ProductReview;
@@ -63,7 +64,10 @@ class FrontendController extends Controller
         $common_questions = CommonQuestion::query()->active()->take(3)->get();
 
 
-        return view('frontend.index',compact('main_sliders','adv_sliders','featured_product_cards','card_categories','random_product_cards','common_questions'));
+        $news = News::query()->active()->take(3)->get();
+
+
+        return view('frontend.index',compact('main_sliders','adv_sliders','featured_product_cards','card_categories','random_product_cards','common_questions' ,'news'));
     }
 
  

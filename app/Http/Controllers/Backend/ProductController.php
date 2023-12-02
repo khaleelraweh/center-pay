@@ -241,8 +241,6 @@ class ProductController extends Controller
             return redirect('admin/index');
         }
 
-        
-
         //find product from product table 
          $product = Product::findOrFail($request->product_id);
 

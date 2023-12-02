@@ -34,6 +34,8 @@
       {{-- {{dd($random_product_cards)}} --}}
       {{-- {{dd($common_questions)}} --}}
 
+      {{-- {{dd($news)}} --}}
+
       <div class="bnslider-wrapper">
         <div
           class="bnslider bnslider--lg keep-scale"
@@ -607,6 +609,67 @@
     <div class="container">
       <div class="title-with-arrows">
         <h2 class="h1-style">
+          <a href="blog.html" title="View all">أخر اخبار الألعاب</a>
+        </h2>
+        <div class="carousel-arrows"></div>
+      </div>
+      <div
+        class="post-prws post-prws-carousel post-prws-carousel--single js-post-prws-carousel"
+        data-slick='{"slidesToShow": 2, "responsive": [{"breakpoint": 1200,"settings": {"slidesToShow": 2}},{"breakpoint": 768,"settings": {"slidesToShow": 1}},{"breakpoint": 480,"settings": {"slidesToShow": 1}}]}'
+      >
+
+      @forelse ($news as $newsItem)
+        <div class="post-prw">
+          <div class="row vert-margin-middle">
+            <div class="post-prw-img col-sm-6">
+              <a
+                href="blog-post.html"
+                class="d-block image-container"
+                style="padding-bottom: 88.92%"
+              >
+                <img
+                  src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                  data-src="{{asset('assets/news/' . $newsItem->firstMedia->file_name)}}"
+                  class="lazyload fade-up"
+                  alt="Blog Title"
+                />
+              </a>
+            </div>
+            <div class="post-prw-text col-sm-6">
+              <h4 class="post-prw-title">
+                <a href="#"> {{$newsItem->name}} </a>
+              </h4>
+              <div class="post-prw-links">
+                <div class="post-prw-date">
+                  <i class="icon-calendar1"></i
+                  ><span>{{$newsItem->published_on}}</span>
+                </div>
+              </div>
+              <div class="post-prw-teaser">
+                {!! $newsItem->description !!}
+              </div>
+              <div class="post-prw-btn">
+                <a href="#" class="btn btn--md">اقرأ المزيد</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      @empty
+          
+      @endforelse
+
+        
+
+        
+
+      </div>
+    </div>
+  </div>
+  
+  {{-- <div class="holder holder-mt-medium">
+    <div class="container">
+      <div class="title-with-arrows">
+        <h2 class="h1-style">
           <a href="blog.html" title="View all">أحر أخبار الألعاب</a>
         </h2>
         <div class="carousel-arrows"></div>
@@ -727,7 +790,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> --}}
 
   {{-- get discount by login --}}
   {{-- <div class="holder holder-subscribe-full mt-0" style="background-color: transparent">
