@@ -189,7 +189,7 @@
                   <div
                     class="bnr-text3 mt-0 order-1"
                     style="
-                      font-size: 0.25em;
+                      font-size: 0.20em;
                       font-weight: 700;
                       line-height: 1em;
                       letter-spacing: 3px;
