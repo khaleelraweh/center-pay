@@ -81,7 +81,7 @@ class FrontendController extends Controller
             $query->whereId($card->product_category_id)->whereStatus(true);
         })->inRandomOrder()->Active()->HasQuantity()->take(4)->get(); // get in random order  only card which is active and has quantity :and take from them 4 card 
 
-        return view('frontend.card',compact('card','related_cards' , 'reviews'));
+        return view('frontend.card',compact('card','related_cards'));
     }
 
     public function card_category($slug = null){
