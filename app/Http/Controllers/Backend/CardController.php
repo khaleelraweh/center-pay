@@ -12,7 +12,7 @@ use DateTimeImmutable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
-class cardController extends Controller
+class CardController extends Controller
 {
 
     public function index()
