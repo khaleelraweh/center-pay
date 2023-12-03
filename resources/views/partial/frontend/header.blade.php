@@ -101,7 +101,7 @@
             <div class="hdr-nav hide-mobile nav-holder">
               <ul class="mmenu mmenu-js">
                 <li class="mmenu-item--simple">
-                  <a href="#" class="active"><span>الرئيسية</span></a>
+                  <a href="{{route('frontend.index')}}" class="active"><span>الرئيسية</span></a>
                 </li>
                 <li class="mmenu-item--simple">
                   <a href="#">الاقسام</a>
@@ -233,7 +233,8 @@
                         </ul>
                       </li>
                       <li><a href="gallery.html">مركز الصور</a></li>
-                      <li><a href="faq.html">الأسئلة الشائعة</a></li>
+                      {{-- <li><a href="faq.html">الأسئلة الشائعة</a></li> --}}
+                      <li><a href="{{route('frontend.index')}}#questions">الأسئلة الشائعة</a></li>
                       <li><a href="about.html">حولنا</a></li>
                       <li><a href="contact.html">اتصل بنا</a></li>
                       <li><a href="404.html">404 صفحة</a></li>

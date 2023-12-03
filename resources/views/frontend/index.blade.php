@@ -1,41 +1,12 @@
 @extends('layouts.app')
 
-@section('style')
-{{-- 
-  <style>
-    .prd{
-      margin-left: 0 !important;
-      margin-right: 0 !important;
-    }
-    .prd-price{
-      justify-content: center !important;
-    }
-    .prd-action-left{
-      justify-content: center !important;
-    }
-    .prd .prd-action {
-      justify-content: center;
-      margin-top: 5px;
-    }
-  </style>
-     --}}
-@endsection
-
 @section('content')   
 
   {{-- Main slider part  --}}
   <div class="holder fullwidth fullwidth mt-0 full-nopad">
     <div class="container">
 
-      {{-- {{dd($main_sliders)}} --}}
-      {{-- {{dd($adv_sliders)}} --}}
-      {{-- {{dd($featured_cards)}} --}}
-      {{-- {{dd($card_categories)}} --}}
-      {{-- {{dd($random_cards)}} --}}
-      {{-- {{dd($common_questions)}} --}}
-
-      {{-- {{dd($news)}} --}}
-
+   
       <div class="bnslider-wrapper">
         <div
           class="bnslider bnslider--lg keep-scale"
@@ -568,25 +539,11 @@
               </div>
               <div class="prd-info text-center">
                 <h2 class="prd-title"><a href="{{route('frontend.card_category',$card_category->slug)}}">{{$card_category->name}}</a></h2>
-                {{-- <div class="prd-rating">
-                  <i class="icon-star-fill fill"></i
-                  ><i class="icon-star-fill fill"></i
-                  ><i class="icon-star-fill fill"></i
-                  ><i class="icon-star-fill fill"></i
-                  ><i class="icon-star-fill fill"></i>
-                  <span></span>
-                </div> --}}
                 <div class="prd-hover">
                   <div class="prd-action">
                     <a href="{{route('frontend.card_category',$card_category->slug)}}"  class="btn js-prd-addtocart">
                       عرض الباقات
                     </a>
-                    {{-- <button
-                      class="btn js-prd-addtocart"
-                      data-product='{"name": "بطائق الدفع", "path":"{{asset('frontend/images/games/cards/product-07-1.webp')}}", "url":"product.html", "aspect_ratio":0.778}'
-                    >
-                       عرض الباقات
-                    </button> --}}
                   </div>
                 </div>
               </div>
@@ -832,11 +789,11 @@
     </div>
   </div> --}}
 
-  <div class="holder holder-subscribe-full mt-0" style="background-color: transparent" >
+  <div class="holder holder-subscribe-full mt-0" id="questions"  style="background-color: transparent" >
     <div class="container">
       <div class="title-wrap text-center">
         <h3 class="h2-style testimonials-carousel-simple-name">الإستفسارات</h3>
-        <h2 class="h1-style">الاسئلة الشائعة</h2>
+        <h2 class="h1-style" >الاسئلة الشائعة</h2>
       </div>
       <div class="row p-5">
         <div class="col-md-12">
