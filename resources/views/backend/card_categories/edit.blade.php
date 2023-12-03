@@ -29,7 +29,7 @@
       
         {{-- menu part  --}}
         <div class="card-header py-3 d-flex justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">تعديل محتوي البطاقة  {{$productCategory->name}}</h6>
+            <h6 class="m-0 font-weight-bold text-primary">تعديل محتوي البطاقة  {{$cardCategory->name}}</h6>
             <div class="ml-auto">
                 <a href="{{route('admin.card_categories.index')}}" class="btn btn-primary">
                     <span class="icon text-white-50">
@@ -42,7 +42,7 @@
 
         {{-- body part  --}}
         <div class="card-body">
-            <form action="{{route('admin.card_categories.update',$productCategory->id)}}" method="post" enctype="multipart/form-data">
+            <form action="{{route('admin.card_categories.update',$cardCategory->id)}}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
 
@@ -80,7 +80,7 @@
                                     </label>
                                     <div class="col-md-9 col-sm-12">
                                         <div class="form-group">
-                                            <input type="text" id="name" name="name" value="{{old('name',$productCategory->name)}}" class="form-control" placeholder="name">
+                                            <input type="text" id="name" name="name" value="{{old('name',$cardCategory->name)}}" class="form-control" placeholder="name">
                                             @error('name') <span class="text-danger">{{$message}}</span> @enderror
                                         </div>
                                     </div>
@@ -95,7 +95,7 @@
                                     <div class="col-md-9 col-sm-12">
                                         <div class="form-group">
                                             <textarea name="description"  rows="3" class="form-control summernote">
-                                                {!!old('description',$productCategory->description)!!}
+                                                {!!old('description',$cardCategory->description)!!}
                                             </textarea>
                                             @error('description') <span class="text-danger">{{$message}}</span> @enderror
                                         </div>
@@ -141,8 +141,8 @@
                                </label>
                                 <select name="status" class="form-control">
                                     <option value="">---</option>
-                                    <option value="1" {{ old('status',$productCategory->status) == '1' ? 'selected' : null}}>مفعل</option>
-                                    <option value="0" {{ old('status',$productCategory->status) == '0' ? 'selected' : null}}>غير مفعل</option>
+                                    <option value="1" {{ old('status',$cardCategory->status) == '1' ? 'selected' : null}}>مفعل</option>
+                                    <option value="0" {{ old('status',$cardCategory->status) == '0' ? 'selected' : null}}>غير مفعل</option>
                                 </select>
                                 @error('status')<span class="text-danger">{{$message}}</span>@enderror
                             </div>
@@ -152,7 +152,7 @@
                             <div class="col-sm-12 col-md-6 pt-4">
                                 <div class="form-group">
                                     <label for="published_on">تاريخ النشر</label>
-                                    <input type="text" id="published_on" name="published_on" value="{{old('published_on',\Carbon\Carbon::parse($productCategory->published_on)->Format('Y-m-d'))}}" class="form-control" >
+                                    <input type="text" id="published_on" name="published_on" value="{{old('published_on',\Carbon\Carbon::parse($cardCategory->published_on)->Format('Y-m-d'))}}" class="form-control" >
                                     @error('published_on') <span class="text-danger">{{$message}}</span> @enderror
                                 </div>
                             </div>
@@ -160,7 +160,7 @@
                             <div class="col-sm-12 col-md-6 pt-4">
                                 <div class="form-group">
                                     <label for="published_on_time">وقت النشر</label>
-                                    <input type="text" id="published_on_time" name="published_on_time" value="{{old('published_on_time',\Carbon\Carbon::parse($productCategory->published_on)->Format('h:i A'))}}" class="form-control" >
+                                    <input type="text" id="published_on_time" name="published_on_time" value="{{old('published_on_time',\Carbon\Carbon::parse($cardCategory->published_on)->Format('h:i A'))}}" class="form-control" >
                                     @error('published_on_time') <span class="text-danger">{{$message}}</span> @enderror
                                 </div>
                             </div>
@@ -175,8 +175,8 @@
                                </label>
                                 <select name="featured" class="form-control">
                                     <option value="">---</option>
-                                    <option value="1" {{ old('featured',$productCategory->featured) == '1' ? 'selected' : null}}>نعم</option>
-                                    <option value="0" {{ old('featured',$productCategory->featured) == '0' ? 'selected' : null}}> لا</option>
+                                    <option value="1" {{ old('featured',$cardCategory->featured) == '1' ? 'selected' : null}}>نعم</option>
+                                    <option value="0" {{ old('featured',$cardCategory->featured) == '0' ? 'selected' : null}}> لا</option>
                                 </select>
                                 @error('featured')<span class="text-danger">{{$message}}</span>@enderror
                             </div>
@@ -234,25 +234,25 @@
                 overwriteInitial:false,
                 // اضافات للتعامل مع الصورة عند التعديل علي احد اقسام المنتجات
                 initialPreview: [
-                    @if($productCategory->photo()->count() > 0)
-                        @if($productCategory->photo->file_name !='')
-                        "{{ asset('assets/product_categories/' . $productCategory->photo->file_name)}}",
+                    @if($cardCategory->photo()->count() > 0)
+                        @if($cardCategory->photo->file_name !='')
+                        "{{ asset('assets/card_categories/' . $cardCategory->photo->file_name)}}",
                         @endif
                     @endif
                 ],
                 initialPreviewAsData:true,
                 initialPreviewFileType: 'image',
                 initialPreviewConfig: [
-                    @if($productCategory->photo()->count() > 0)
-                        @if($productCategory->photo->file_name !='')
+                    @if($cardCategory->photo()->count() > 0)
+                        @if($cardCategory->photo->file_name !='')
                         {
-                            caption: "{{$productCategory->photo->file_name }}",
+                            caption: "{{$cardCategory->photo->file_name }}",
                             size: '111' , 
                             width: "120px" , 
                             // url : الراوت المستخدم لحذف الصورة
-                            url: "{{route('admin.card_categories.remove_image' , ['image_id' => $productCategory->photo->id , 'product_category_id'=>$productCategory->id , '_token'=> csrf_token()]) }}", 
+                            url: "{{route('admin.card_categories.remove_image' , ['image_id' => $cardCategory->photo->id , 'product_category_id'=>$cardCategory->id , '_token'=> csrf_token()]) }}", 
 
-                            key:{{ $productCategory->id}} 
+                            key:{{ $cardCategory->id}} 
                         }
                         @endif
                     @endif

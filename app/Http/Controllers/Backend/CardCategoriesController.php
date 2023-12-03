@@ -112,14 +112,13 @@ class CardCategoriesController extends Controller
     }
 
   
-    public function edit($id)
+    public function edit(ProductCategory $cardCategory)
     {
         if(!auth()->user()->ability('admin','update_card_categories')){
             return redirect('admin/index');
         }
-        $cardCategory = ProductCategory::findOrFail($id);
 
-        return view('backend.card_categories.edit',compact('productCategory'));
+        return view('backend.card_categories.edit',compact('cardCategory'));
     }
     
     public function update(CardCategoryRequest $request, ProductCategory $cardCategory)

@@ -81,7 +81,7 @@
                                     <td>
                                         @if ($category->firstMedia)
                                             {{-- <td><img src="{{asset('assets/products/'.$product->photos()->first()->file_name)}}" width="60" alt="product Image"> </td> --}}
-                                            <img src="{{asset('assets/product_categories/'.$category->firstMedia->file_name)}}" width="60" height="60" alt="{{$category->name}}"> 
+                                            <img src="{{asset('assets/card_categories/'.$category->firstMedia->file_name)}}" width="60" height="60" alt="{{$category->name}}"> 
                                         @else
                                             <img src="{{asset('assets/No-Image-Found.png')}}"  width="60" height="60" alt="{{$product->name}}">
                                         @endif
