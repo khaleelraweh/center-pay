@@ -44,13 +44,13 @@ class Slider extends Model
         return $this->status ? 'مفعل' : "غير مفعل";
     }
 
-    public function featured(){
-        return $this->featured ? 'نعم' : "لا";
-    }
+    // public function featured(){
+    //     return $this->featured ? 'نعم' : "لا";
+    // }
 
-    public function scopeFeatured($query){
-        return $query->whereFeatured(true);
-    }
+    // public function scopeFeatured($query){
+    //     return $query->whereFeatured(true);
+    // }
 
     public function scopeActive($query){
         return $query->whereStatus(true);

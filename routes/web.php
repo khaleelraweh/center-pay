@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\Backend\AdvertisorSliderController;
 use App\Http\Controllers\Backend\BackendController;
-use App\Http\Controllers\Backend\CardController;
+use App\Http\Controllers\Backend\CardCategoriesController;
+use App\Http\Controllers\Backend\cardController;
 use App\Http\Controllers\Backend\CityController;
 use App\Http\Controllers\Backend\CommonQuestionController;
 use App\Http\Controllers\Backend\CountryController;
@@ -78,11 +79,11 @@ Route::group(['prefix'=>'admin' , 'as' =>'admin.'],function(){
 
         Route::resource('tags', TagController::class);
         
-        Route::post('cards/remove-image', [CardController::class, 'remove_image'])->name('cards.remove_image');
-        Route::resource('cards', CardController::class);
+        Route::post('card_categories/remove-image', [CardCategoriesController::class, 'remove_image'])->name('card_categories.remove_image');
+        Route::resource('card_categories', CardCategoriesController::class);
         
-        Route::post('product_cards/remove-image', [ProductCardController::class, 'remove_image'])->name('product_cards.remove_image');
-        Route::resource('product_cards', ProductCardController::class);
+        Route::post('cards/remove-image', [cardController::class, 'remove_image'])->name('cards.remove_image');
+        Route::resource('cards', cardController::class);
 
         Route::resource('coupons',CouponController::class);
 

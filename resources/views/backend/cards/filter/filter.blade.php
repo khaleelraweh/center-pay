@@ -22,8 +22,6 @@
                         <option value="id" {{old('sort_by',request()->input('sort_by')) == 'id' ? 'selected' : ''}}>ID</option>
                         <option value="name" {{old('sort_by',request()->input('sort_by')) == 'name' ? 'selected' : ''}}>Name</option>
                         <option value="created_at" {{old('sort_by',request()->input('sort_by')) == 'created_at' ? 'selected' : ''}}>Created at</option>
-                        <option value="published_on" {{old('sort_by',request()->input('sort_by')) == 'published_on' ? 'selected' : ''}}>published on</option>
-
 
                     </select>
                 </div>

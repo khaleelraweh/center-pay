@@ -27,15 +27,20 @@ class CardRequest extends FormRequest
             case 'POST':
             {
                 return [
-                    'name'=>'required|max:255|unique:product_categories',
-                    'parent_id'     =>  'nullable',
-                    'description'   =>  'required',
-                    'images'        =>  'nullable',  
-                    'images.*'      =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
-                    'views'         =>  'nullable',
-                    'section'       =>  'nullable',
-                    'featured'       =>  'required',
-
+                    'name'                  =>  'required|max:255', 
+                    'description'           =>  'nullable',
+                    'quantity'              =>  'nullable|numeric',
+                    'price'                 =>  'required|numeric',
+                    'offer_price'           =>  'nullable|numeric',
+                    'offer_ends'            =>  'nullable|date_format:Y-m-d',
+                    'sku'                   =>  'nullable',
+                    'max_order'             =>  'nullable|numeric',
+                    'product_category_id'   =>  'required',
+                    'tags.*'                =>  'required',
+                    'featured'              =>  'required',
+                    'images'                =>  'required',  
+                    'images.*'              =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
+                    'views'                 =>  'nullable',// عدد مرات العرض
 
                     // used always 
                     'status'             =>  'required',
@@ -45,21 +50,26 @@ class CardRequest extends FormRequest
                     'updated_by'         =>  'nullable',
                     'deleted_by'         =>  'nullable',
                     // end of used always 
-                    
                 ];
             }
             case 'PUT':
             case 'PATCH':
             {
-                return [ 
-                    'name'=>'required|max:255|unique:product_categories,name,'.$this->route()->card->id,
-                    'parent_id'     =>  'nullable',
-                    'description'   =>  'required',
-                    'images'        =>  'nullable',  
-                    'images.*'      =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
-                    'views'         =>  'nullable',
-                    'section'       =>  'nullable',
-                    'featured'       =>  'required',
+                return [
+                    'name'                  =>  'required|max:255', 
+                    'description'           =>  'nullable',
+                    'quantity'              =>  'nullable|numeric',
+                    'price'                 =>  'required|numeric',
+                    'offer_price'           =>  'nullable|numeric',
+                    'offer_ends'            =>  'nullable|date_format:Y-m-d',
+                    'sku'                   =>  'nullable',
+                    'max_order'             =>  'nullable|numeric',
+                    'product_category_id'   =>  'required',
+                    'tags.*'                =>  'required', 
+                    'featured'              =>  'required',
+                    'images'                =>  'nullable',
+                    'images.*'              =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
+                    'views'                 =>  'nullable', // عدد مرات العرض
 
                     // used always 
                     'status'             =>  'required',
@@ -69,9 +79,6 @@ class CardRequest extends FormRequest
                     'updated_by'         =>  'nullable',
                     'deleted_by'         =>  'nullable',
                     // end of used always 
-
-                    
-                    
                 ];
             }
             

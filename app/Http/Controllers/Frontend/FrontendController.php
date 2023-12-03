@@ -20,7 +20,7 @@ class FrontendController extends Controller
             ->MainSliders()
             // ->inRandomOrder()
             ->orderBy('published_on','desc')
-            ->Featured()
+           
             ->Active()
             ->take(8)
         ->get();
@@ -29,7 +29,6 @@ class FrontendController extends Controller
             ->AdvertisorSliders()
             // ->inRandomOrder()
             ->orderBy('published_on','desc')
-            ->Featured()
             ->Active()
             ->take(3)
         ->get();

@@ -185,7 +185,7 @@
                             
                         </div>
 
-                        {{-- status and featured field --}}
+                        {{-- status and featured field --}} 
                         <div class="row">
                             <div class="col-sm-12  pt-4">
                                 <label for="status">الحالة</label>

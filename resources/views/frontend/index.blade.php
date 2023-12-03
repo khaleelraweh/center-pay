@@ -56,24 +56,24 @@
             {{-- for desktop --}}
             <div
               class="bnslider-image-mobile lazyload fade-up"
-              data-bgset="{{asset('assets/sliders/'.$main_slider->firstMedia?->file_name)}}"
+              data-bgset="{{asset('assets/main_sliders/'.$main_slider->firstMedia?->file_name)}}"
             ></div>
 
             {{-- for mobile --}}
             <div
               class="bnslider-image-mobile lazyload bnslider-lightning bnslider-flashit"
-              data-bgset="{{asset('assets/sliders/'.$main_slider->firstMedia?->file_name)}}"
+              data-bgset="{{asset('assets/main_sliders/'.$main_slider->firstMedia?->file_name)}}"
               style="opacity: 0"
             ></div>
 
             <div
               class="bnslider-image lazyload fade-up"
-              data-bgset="{{asset('assets/sliders/'.$main_slider->firstMedia?->file_name)}}"
+              data-bgset="{{asset('assets/main_sliders/'.$main_slider->firstMedia?->file_name)}}"
             ></div>
 
             <div
               class="bnslider-image lazyload bnslider-lightning bnslider-flashit"
-              data-bgset="{{asset('assets/sliders/'.$main_slider->firstMedia?->file_name)}}"
+              data-bgset="{{asset('assets/main_sliders/'.$main_slider->firstMedia?->file_name)}}"
               style="opacity: 0"
             ></div>
 
@@ -123,12 +123,12 @@
           <div class="bnslider-slide">
             <div
               class="bnslider-image-mobile lazyload"
-              data-bgset="{{asset('assets/sliders/'.$main_slider->firstMedia?->file_name)}}"
+              data-bgset="{{asset('assets/main_sliders/'.$main_slider->firstMedia?->file_name)}}"
             ></div>
 
             <div
               class="bnslider-image lazyload"
-              data-bgset="{{asset('assets/sliders/'.$main_slider->firstMedia?->file_name)}}"
+              data-bgset="{{asset('assets/main_sliders/'.$main_slider->firstMedia?->file_name)}}"
             ></div>
             
             <div class="bnslider-text-wrap bnslider-overlay">
@@ -208,7 +208,7 @@
                 >
                   <img
                     data
-                    srcset="{{asset('assets/sliders/'.$adv_slider->firstMedia?->file_name)}}"
+                    srcset="{{asset('assets/advertisor_sliders/'.$adv_slider->firstMedia?->file_name)}}"
                     class="lazyload fade-up"
                     alt=""
                   />

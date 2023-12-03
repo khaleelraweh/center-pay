@@ -2,36 +2,38 @@
 
 namespace App\Http\Controllers\Backend;
 
-use illuminate\support\Str;
 use Intervention\Image\Facades\Image;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\CardRequest;
+use App\Models\Product;
 use App\Models\ProductCategory;
+use App\Models\Tag;
 use DateTimeImmutable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
-class CardController extends Controller
+class cardController extends Controller
 {
-   
+
     public function index()
     {
         if(!auth()->user()->ability('admin','manage_cards , show_cards')){
             return redirect('admin/index');
         }
 
-        $categories = ProductCategory::withCount('products')->where('section',2)
+        $cards = Product::with('category','tags','firstMedia')
+        ->ActiveCategory()
+        ->CardCategory()
         ->when(\request()->keyword != null , function($query){
-            // $query->where('name','like','%'.\request()->keyword .'%');
             $query->search(\request()->keyword);
         })
         ->when(\request()->status != null , function($query){
             $query->where('status',\request()->status);
         })
-        ->orderBy(\request()->sort_by ?? 'published_on' , \request()->order_by ?? 'desc')
+        ->orderBy(\request()->sort_by ?? 'id' , \request()->order_by ?? 'desc')
         ->paginate(\request()->limit_by ?? 10);
         
-        return view('backend.cards.index',compact('categories'));
+        return view('backend.cards.index',compact('cards'));
         
     }
 
@@ -40,33 +42,49 @@ class CardController extends Controller
         if(!auth()->user()->ability('admin','create_cards')){
             return redirect('admin/index');
         }
+        
+        // get all categories that are active to choose one of them to be parent of product
+        $categories =ProductCategory::whereStatus(1)->whereSection(2)->get(['id','name']);
+        // get all tags to add some of them to product 
+        $tags = Tag::whereStatus(1)->get(['id','name']);
 
-        return view('backend.cards.create');
+        return view('backend.cards.create',compact('categories','tags'));
     }
 
     public function store(CardRequest $request)
     {
+     
         if(!auth()->user()->ability('admin','create_cards')){
             return redirect('admin/index');
         }
 
-        $input['name'] = $request->name;
-        $input['description'] = $request->description;
-        $input['views'] = 0;
-        $input['created_by'] = auth()->user()->full_name;
-        $input['section'] = 2;
-        $input['featured'] = $request->featured;
+        // get Input from create.blade.php form request using CardRequest to validate fields
+        $input['name']                  =   $request->name;
+        $input['description']           =   $request->description;
+        $input['quantity']              =   $request->quantity;
+        $input['price']                 =   $request->price;
+        $input['offer_price']           =   $request->offer_price;
+        $input['offer_ends']            =   $request->offer_ends;
+        $input['sku']                   =   $request->sku;
+        $input['max_order']             =   $request->max_order;
+        $input['product_category_id']   =   $request->product_category_id;
+        $input['featured']              =   $request->featured;
 
-        $input['status']            =   $request->status;
-        $input['updated_by']        =   auth()->user()->full_name;
+
+        $input['status']                =   $request->status;
+        $input['created_by']            =   auth()->user()->full_name;
 
         $published_on = $request->published_on.' '.$request->published_on_time;
         $published_on = new DateTimeImmutable($published_on);
         $input['published_on'] = $published_on;
 
-        $productCategory = ProductCategory::create($input);
+        //Add product to db with save instance of it in $card to use it later 
+        $card = Product::create($input);
+        
+        // make relation between this product with tags choosed using tags()->attach(tags_id)
+        $card->tags()->attach($request->tags); 
 
-        // add images to media db and to path : public/assets/products
+        // add images to photos db and to path : public/assets/products
         if($request->images && count( $request->images) > 0){
 
             $i = 1; // $i is used for making sort to image 
@@ -74,18 +92,18 @@ class CardController extends Controller
             foreach ($request->images as $image) {
                 
                 // $file_name = Str::slug($request->name).".".$image->getClientOriginalExtension(); // will not used because product already created to db and slug is there by steps upove
-                $file_name = $productCategory->slug. '_' . time() . $i . '.' . $image->getClientOriginalExtension(); // time() and $id used to avoid repeating image name 
+                $file_name = $card->slug. '_' . time() . $i . '.' . $image->getClientOriginalExtension(); // time() and $id used to avoid repeating image name 
                 $file_size = $image->getSize();
                 $file_type = $image->getMimeType();
-                $path = public_path('assets/product_categories/' . $file_name);
+                $path = public_path('assets/cards/' . $file_name);
                 
                 // get the real path of this image then resize its width to 500 and height let it aspect it with width
                 Image::make($image->getRealPath())->resize(500,null,function($constraint){
                     $constraint->aspectRatio();
                 })->save($path,100);//then make copy of this image in new path as $path say with new name as $file_name say with clear 100%
 
-                // add this media to db using media relational function
-                $productCategory->photo()->create([
+                // add this photos to db using photos relational function
+                $card->photos()->create([
                     'file_name' =>$file_name,
                     'file_size' =>$file_size,
                     'file_type' =>$file_type,
@@ -98,46 +116,56 @@ class CardController extends Controller
         }
 
         return redirect()->route('admin.cards.index')->with([
-            'message' => 'تم الانشاء بنجاح',
-            'alert-type' => 'success'
+            'message' => 'تمت الاضافة بنجاح',
+            'alert-type' =>'success'
         ]);
+
     }
-    
+
     public function show($id)
     {
         if(!auth()->user()->ability('admin','display_cards')){
             return redirect('admin/index');
         }
+
         return view('backend.cards.show');
     }
 
-  
-    public function edit($id)
+    public function edit(Product $card)
     {
+        
         if(!auth()->user()->ability('admin','update_cards')){
             return redirect('admin/index');
         }
-        $productCategory = ProductCategory::findOrFail($id);
 
-        return view('backend.cards.edit',compact('productCategory'));
+        
+
+        // get all categories that are active to choose one of them to be parent of product
+        $categories =ProductCategory::whereStatus(1)->whereSection(2)->get(['id','name']);
+        // get all tags to add some of them to product 
+        $tags = Tag::whereStatus(1)->get(['id','name']); 
+
+        return view('backend.cards.edit',compact('categories' , 'tags' ,'card'));
     }
-    
-    public function update(CardRequest $request, ProductCategory $card)
+
+    public function update(CardRequest $request, Product $card)
     {
         if(!auth()->user()->ability('admin','update_cards')){
             return redirect('admin/index');
         }
-        
-        $productCategory = $card;
 
-        
-        $input['name'] = $request->name;
-        $input['parent_id'] = $request->parent_id;
-        $input['description'] = $request->description;
-        $input['views'] = 0;
-        $input['updated_by'] = auth()->user()->full_name;
-        $input['section'] = 2;
-        $input['featured'] = $request->featured;
+
+         // get Input from create.blade.php form request using CardRequest to validate fields
+        $input['name']                  =   $request->name;
+        $input['description']           =   $request->description;
+        $input['quantity']              =   $request->quantity;
+        $input['price']                 =   $request->price;
+        $input['offer_price']           =   $request->offer_price;
+        $input['offer_ends']            =   $request->offer_ends;
+        $input['sku']                   =   $request->sku;
+        $input['max_order']             =   $request->max_order;
+        $input['product_category_id']   =   $request->product_category_id;
+        $input['featured']              =   $request->featured;
 
         $input['status']            =   $request->status;
         $input['updated_by']        =   auth()->user()->full_name;
@@ -145,31 +173,34 @@ class CardController extends Controller
         $published_on = $request->published_on.' '.$request->published_on_time;
         $published_on = new DateTimeImmutable($published_on);
         $input['published_on'] = $published_on;
-
-        $productCategory->update($input);
-       
         
+         //Add product to db with save instance of it in $card to use it later 
+         $card->update($input);
+         
+        //  دالة السينك اذا كان في جديد ستضيفة فوق الاول اذا كان شي محذوف ستحذفة من الاول
+         $card->tags()->sync($request->tags);
 
-        // edit images in media db and in path : public/assets/products
+
+        // edit images in photos db and in path : public/assets/products
         if($request->images && count( $request->images) > 0){
 
-            $i = $productCategory->photo()->count() + 1; // $i is used for making sort to image 
+            $i = $card->photos->count() + 1; // $i is used for making sort to image 
 
             foreach ($request->images as $image) {
                 
                 // $file_name = Str::slug($request->name).".".$image->getClientOriginalExtension(); // will not used because product already created to db and slug is there by steps upove
-                $file_name = $productCategory->slug. '_' . time() . $i . '.' . $image->getClientOriginalExtension(); // time() and $id used to avoid repeating image name 
+                $file_name = $card->slug. '_' . time() . $i . '.' . $image->getClientOriginalExtension(); // time() and $id used to avoid repeating image name 
                 $file_size = $image->getSize();
                 $file_type = $image->getMimeType();
-                $path = public_path('assets/product_categories/' . $file_name);
+                $path = public_path('assets/cards/' . $file_name);
                 
                 // get the real path of this image then resize its width to 500 and height let it aspect it with width
                 Image::make($image->getRealPath())->resize(500,null,function($constraint){
                     $constraint->aspectRatio();
                 })->save($path,100);//then make copy of this image in new path as $path say with new name as $file_name say with clear 100%
 
-                // add this media to db using media relational function
-                $productCategory->photo()->create([
+                // add this photos to db using photos relational function
+                $card->photos()->create([
                     'file_name' =>$file_name,
                     'file_size' =>$file_size,
                     'file_type' =>$file_type,
@@ -183,38 +214,30 @@ class CardController extends Controller
 
         return redirect()->route('admin.cards.index')->with([
             'message' => 'تم التعديل بنجاح',
-            'alert-type' => 'success'
+            'alert-type' =>'success'
         ]);
+
     }
-    
-   
 
-    public function destroy(ProductCategory $card)
+    public function destroy(Product $card)
     {
-        $productCategory  = $card;
-
         if(!auth()->user()->ability('admin','delete_cards')){
             return redirect('admin/index');
         }
 
-        if($productCategory->photo()->count() > 0){
-            foreach($productCategory->photo() as $photo){
-                
-                if(File::exists('assets/product_categories/' . $photo->file_name)){
-                    unlink('assets/product_categories/' . $photo->file_name);
+        if($card->photos->count() > 0){
+            foreach($card->photos as $photo){
+                if(File::exists('assets/cards/' . $photo->file_name)){
+                    unlink('assets/cards/' . $photo->file_name);
                 }
-                
                 $photo->delete();
             }
         }
 
-        $productCategory->views = 0;
-        $productCategory->deleted_by = auth()->user()->full_name;
-        $productCategory->save();
-        $productCategory->delete();
+        $card->delete();
 
         return redirect()->route('admin.cards.index')->with([
-            'message' => 'تم الحذف بنجاح',
+            'message' => 'Deleted successfully',
             'alert-type' => 'success'
         ]);
     }
@@ -225,19 +248,22 @@ class CardController extends Controller
             return redirect('admin/index');
         }
 
-        // dd($request);
+        
 
-        $category = ProductCategory::findOrFail($request->product_category_id);
+        //find product from product table 
+         $card = Product::findOrFail($request->product_id);
 
-         //find media image from media table 
-         $image = $category->photo()->whereId($request->image_id)->first();
+         //find photos image from photos table 
+         $image = $card->photos()->where('id',$request->image_id)->first();
 
-        if(File::exists('assets/product_categories/' . $image->file_name)){
-            unlink('assets/product_categories/' . $image->file_name);
-        }
+         if(File::exists('assets/cards/' . $image->file_name)){
+            // delete image from path 
+             unlink('assets/cards/' . $image->file_name);
+         }
+            //delete image from db
+            $image->delete();
 
-        $image->delete();
+         return true;
 
-        return true;
     }
 }
