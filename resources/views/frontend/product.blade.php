@@ -112,10 +112,10 @@
 											<span class="prd-img">
 												<img
 													src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-													data-src="{{asset('assets/products/' . $photo->file_name)}}"
+													data-src="{{asset('assets/cards/' . $photo->file_name)}}"
 													class="lazyload fade-up elzoom" 
 													alt="{{$card_product->name}}"
-													data-zoom-image="{{asset('assets/products/' . $photo->file_name)}}" 
+													data-zoom-image="{{asset('assets/cards/' . $photo->file_name)}}" 
 												/>
 											</span>
 										</div>
@@ -140,7 +140,7 @@
 										<span class="prd-img">
 											<img
 												src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-												data-src="{{asset('assets/products/'. $photo->file_name)}}"
+												data-src="{{asset('assets/cards/'. $photo->file_name)}}"
 												class="lazyload fade-up"
 												alt="" 
 											/>
@@ -159,7 +159,7 @@
 				{{-- description part  --}}
 				<div class="col-md-7 col-lg-7 col-xl-7 mt-1 mt-md-0">
 					<div class="prd-block_info prd-block_info--style1"
-						data-prd-handle="/products/copy-of-suede-leather-mini-skirt">
+						data-prd-handle="/cards/copy-of-suede-leather-mini-skirt">
 						<div class="prd-block_info-top prd-block_info_item order-0 order-md-2">
 							<div class="prd-block_price prd-block_price--style2">
 								<div class="prd-block_price--actual">${{$card_product->price - $card_product->offer_price}}</div>
@@ -538,7 +538,7 @@
 								{{-- image area --}}
 								<a href="{{route('frontend.product',$relatedProduct->slug)}}" class="prd-img image-hover-scale image-container">
 									<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-										data-src="{{asset('assets/products/'. $relatedProduct->firstMedia->file_name)}}"
+										data-src="{{asset('assets/cards/'. $relatedProduct->firstMedia->file_name)}}"
 										alt="Midi Dress with Belt" class="js-prd-img lazyload fade-up">
 									<div class="foxic-loader"></div>
 									<div class="prd-big-squared-labels">
@@ -562,13 +562,13 @@
 
 									@foreach ($relatedProduct->photos as $photo)
 
-										<li data-image="{{asset('assets/products/' . $photo->file_name)}}"
+										<li data-image="{{asset('assets/cards/' . $photo->file_name)}}"
 											class="{{ $loop->first ? 'active': null}}"
 										>
 											<a href="#" class="js-color-toggle" data-toggle="tooltip" data-placement="right" title="{{$relatedProduct->name}}">
 												<img
 													src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-													data-src="{{asset('assets/products/' . $photo->file_name)}}"
+													data-src="{{asset('assets/cards/' . $photo->file_name)}}"
 													class="lazyload fade-up" 
 													alt="{{$relatedProduct->name}}"
 												>
@@ -602,7 +602,7 @@
 										<form action="#">
 											<button class="btn js-prd-addtocart"
 												data-product='{"name": "Midi Dress with Belt", "path":"{{asset('
-												frontend/assests/images/skins/fashion/products/product-06-1.webp')}}", "url"
+												frontend/assests/images/skins/fashion/cards/product-06-1.webp')}}", "url"
 												:"product.html", "aspect_ratio" :0.778}'>Add
 												To Cart</button>
 										</form>
@@ -627,7 +627,7 @@
 											<form action="#">
 												<button class="btn js-prd-addtocart"
 													data-product='{"name": "Midi Dress with Belt", "path":"{{asset('
-													frontend/assests/images/skins/fashion/products/product-06-1.webp')}}", "url"
+													frontend/assests/images/skins/fashion/cards/product-06-1.webp')}}", "url"
 													:"product.html", "aspect_ratio" :0.778}'>Add
 													To Cart</button>
 											</form>
