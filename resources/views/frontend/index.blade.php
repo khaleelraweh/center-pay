@@ -280,14 +280,14 @@
                 {{-- first image  --}}
                 <img
                   src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                  data-src="{{asset('assets/products/'.$featured_product_card->firstMedia->file_name)}}"
+                  data-src="{{asset('assets/cards/'.$featured_product_card->firstMedia->file_name)}}"
                   alt="بطائق الدفع"
                   class="js-prd-img lazyload fade-up"
                 />
                 {{-- second image in the same product card the other side  --}}
                 <img
                   src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                  data-src="{{asset('assets/products/'.$featured_product_card->lastMedia->file_name)}}"
+                  data-src="{{asset('assets/cards/'.$featured_product_card->lastMedia->file_name)}}"
                   alt="بطائق الدفع"
                   class="js-prd-img lazyload fade-up"
                 />
@@ -379,7 +379,7 @@
                     <form action="#">
                       <button
                         class="btn js-prd-addtocart"
-                        data-product='{"name": "{{$featured_product_card->name}}", "path":"{{asset('assets/products/'.$featured_product_card->firstMedia->file_name)}}", "url":"{{route('frontend.product',$featured_product_card->slug)}}", "aspect_ratio":0.778}'
+                        data-product='{"name": "{{$featured_product_card->name}}", "path":"{{asset('assets/cards/'.$featured_product_card->firstMedia->file_name)}}", "url":"{{route('frontend.product',$featured_product_card->slug)}}", "aspect_ratio":0.778}'
                       >
                         اضافة للسلة
                       </button>
@@ -414,18 +414,18 @@
                 <a href="{{route('frontend.product',$random_product_card->slug)}}" class="prd-img image-container">
                   <img
                     src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                    data-src="{{asset('assets/products/'.$random_product_card->firstMedia->file_name)}}"
+                    data-src="{{asset('assets/cards/'.$random_product_card->firstMedia->file_name)}}"
                     alt="بطائق الدفع"
                     class="js-prd-img lazyload fade-up"
                   />
                   <img
                     src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                    data-src="{{asset('assets/products/'.$random_product_card->lastMedia->file_name)}}"
+                    data-src="{{asset('assets/cards/'.$random_product_card->lastMedia->file_name)}}"
                     alt="بطائق الدفع"
                     class="js-prd-img lazyload fade-up"
                   />
                   <div class="foxic-loader"></div>
-                  <div class="prd-big-circle-labels">
+                  <div class="prd-big-circle-labels"> 
                     <div class="label-sale">
                       <span>-{{$random_product_card->offer_price}}% <span class="sale-text">تخفيض</span></span>
                       <div class="countdown-circle">
@@ -512,7 +512,7 @@
                       <form action="#">
                         <button
                           class="btn js-prd-addtocart"
-                          data-product='{"name": "{{$random_product_card->name}}", "path":"{{asset('assets/products/'.$random_product_card->lastMedia->file_name)}}", "url":"product.html", "aspect_ratio":0.778}'
+                          data-product='{"name": "{{$random_product_card->name}}", "path":"{{asset('assets/cards/'.$random_product_card->lastMedia->file_name)}}", "url":"product.html", "aspect_ratio":0.778}'
                         >
                           اضافة للسلة
                         </button>
@@ -583,7 +583,7 @@
                     </a>
                     {{-- <button
                       class="btn js-prd-addtocart"
-                      data-product='{"name": "بطائق الدفع", "path":"{{asset('frontend/images/games/products/product-07-1.webp')}}", "url":"product.html", "aspect_ratio":0.778}'
+                      data-product='{"name": "بطائق الدفع", "path":"{{asset('frontend/images/games/cards/product-07-1.webp')}}", "url":"product.html", "aspect_ratio":0.778}'
                     >
                        عرض الباقات
                     </button> --}}
