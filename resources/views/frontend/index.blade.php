@@ -189,12 +189,14 @@
                   <div
                     class="bnr-text3 mt-0 order-1"
                     style="
-                      font-size: 0.15em;
+                      font-size: 0.25em;
                       font-weight: 700;
                       line-height: 1em;
+                      letter-spacing: 3px;
                     "
                   >
-                    2 0 2 0
+                    
+                    {{$adv_slider->published_on->format('Y')}}
                   </div>
                   <div
                     class="bnr-text3 mt-xs order-2"
