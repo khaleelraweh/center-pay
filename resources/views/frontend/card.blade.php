@@ -51,9 +51,7 @@
 		<div class="container js-prd-gallery" id="prdGallery">
 			<div class="row prd-block prd-block-under prd-block--prv-bottom">
 
-				@foreach ($reviews as $review)
-					{{-- {{dd($review)}} --}}
-				@endforeach
+				
 
 				{{-- <h1>This is my title</h1> {{dd($card->reviews )}} <br> --}}
 				<h3>rating is </h3>{{$card->reviews_avg_rating}}
