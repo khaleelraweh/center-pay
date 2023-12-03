@@ -29,9 +29,9 @@
 
       {{-- {{dd($main_sliders)}} --}}
       {{-- {{dd($adv_sliders)}} --}}
-      {{-- {{dd($featured_product_cards)}} --}}
+      {{-- {{dd($featured_cards)}} --}}
       {{-- {{dd($card_categories)}} --}}
-      {{-- {{dd($random_product_cards)}} --}}
+      {{-- {{dd($random_cards)}} --}}
       {{-- {{dd($common_questions)}} --}}
 
       {{-- {{dd($news)}} --}}
@@ -272,11 +272,11 @@
         class="prd-grid prd-carousel js-prd-carousel slick-arrows-aside-simple slick-arrows-mobile-lg data-to-show-4 data-to-show-md-3 data-to-show-sm-3 data-to-show-xs-2"
         data-slick='{"slidesToShow": 5, "slidesToScroll": 2, "responsive": [{"breakpoint": 992,"settings": {"slidesToShow": 3, "slidesToScroll": 1}},{"breakpoint": 768,"settings": {"slidesToShow": 2, "slidesToScroll": 1}},{"breakpoint": 480,"settings": {"slidesToShow": 2, "slidesToScroll": 1}}]}'
       >
-      @forelse ($featured_product_cards as $featured_product_card)
+      @forelse ($featured_cards as $featured_product_card)
         <div class=" prd prd--style2 prd-labels--max prd-labels-shadow">
           <div class="prd-inside">
             <div class="prd-img-area">
-              <a href="{{route('frontend.product',$featured_product_card->slug)}}" class="prd-img image-container">
+              <a href="{{route('frontend.card',$featured_product_card->slug)}}" class="prd-img image-container">
                 {{-- first image  --}}
                 <img
                   src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
@@ -379,7 +379,7 @@
                     <form action="#">
                       <button
                         class="btn js-prd-addtocart"
-                        data-product='{"name": "{{$featured_product_card->name}}", "path":"{{asset('assets/cards/'.$featured_product_card->firstMedia->file_name)}}", "url":"{{route('frontend.product',$featured_product_card->slug)}}", "aspect_ratio":0.778}'
+                        data-product='{"name": "{{$featured_product_card->name}}", "path":"{{asset('assets/cards/'.$featured_product_card->firstMedia->file_name)}}", "url":"{{route('frontend.card',$featured_product_card->slug)}}", "aspect_ratio":0.778}'
                       >
                         اضافة للسلة
                       </button>
@@ -407,11 +407,11 @@
 
       <div class="row prd-grid text-center align-center">
 
-        @forelse ($random_product_cards as $random_product_card)
+        @forelse ($random_cards as $random_product_card)
           <div class="py-4 col-xl-3 col-lg-4 col-sm-6 prd prd--style2 prd-labels--max prd-labels-shadow">
             <div class="prd-inside">
               <div class="prd-img-area">
-                <a href="{{route('frontend.product',$random_product_card->slug)}}" class="prd-img image-container">
+                <a href="{{route('frontend.card',$random_product_card->slug)}}" class="prd-img image-container">
                   <img
                     src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
                     data-src="{{asset('assets/cards/'.$random_product_card->firstMedia->file_name)}}"
@@ -549,7 +549,7 @@
               <div class="prd-img-area">
                 <a href="{{route('frontend.card_category',$card_category->slug)}}" class="image-hover-scale">
                   <img
-                    src="{{asset('assets//card_categories//'.$card_category->firstMedia->file_name)}}"
+                    src="{{asset('assets/card_categories/'.$card_category->firstMedia->file_name)}}"
                     alt="{{$card_category->name}}"
                     class="js-prd-img"
                   />

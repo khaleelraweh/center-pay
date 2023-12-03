@@ -94,6 +94,10 @@ class ProductCategory extends Model
         return $this->hasMany(Product::class);
     }
 
+    public function cards (){
+        return $this->hasMany(Product::class);
+    }
+
     
 
     // product category has only one photo in photo table so relationship is morphone

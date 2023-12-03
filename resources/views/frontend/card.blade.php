@@ -55,9 +55,9 @@
 					{{-- {{dd($review)}} --}}
 				@endforeach
 
-				{{-- <h1>This is my title</h1> {{dd($card_product->reviews )}} <br> --}}
-				<h3>rating is </h3>{{$card_product->reviews_avg_rating}}
-				@foreach ($card_product->reviews as $review)
+				{{-- <h1>This is my title</h1> {{dd($card->reviews )}} <br> --}}
+				<h3>rating is </h3>{{$card->reviews_avg_rating}}
+				@foreach ($card->reviews as $review)
 				
 				@endforeach
 				
@@ -69,9 +69,9 @@
 								
 
 								{{-- need:to check and fix reviews --}}
-								@if ( round($card_product->reviews_avg_rating)  != '')
+								@if ( round($card->reviews_avg_rating)  != '')
 									@for ($i = 0; $i < 5; $i++)
-										<i class="{{$card_product->reviews_avg_rating <= $i ? 'icon-star' : 'icon-star-fill fill'}}"></i>
+										<i class="{{$card->reviews_avg_rating <= $i ? 'icon-star' : 'icon-star-fill fill'}}"></i>
 									@endfor
 								@else
 									<i class="icon-star"></i>
@@ -86,7 +86,7 @@
 									</a>
 								</span>
 							</div>
-							<h1 class="prd-block_title">{{$card_product->name}}</h1>
+							<h1 class="prd-block_title">{{$card->name}}</h1>
 						</div>
 					</div>
 				</div>
@@ -106,7 +106,7 @@
 								{{-- main images in the frame  --}}
 								<div class="product-main-carousel js-product-main-carousel" data-zoom-position="inner">
 
-									@foreach ($card_product->photos as $photo)
+									@foreach ($card->photos as $photo)
 									
 										<div data-value="Beige">
 											<span class="prd-img">
@@ -114,7 +114,7 @@
 													src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
 													data-src="{{asset('assets/cards/' . $photo->file_name)}}"
 													class="lazyload fade-up elzoom" 
-													alt="{{$card_product->name}}"
+													alt="{{$card->name}}"
 													data-zoom-image="{{asset('assets/cards/' . $photo->file_name)}}" 
 												/>
 											</span>
@@ -135,7 +135,7 @@
 
 							<div class="product-previews-carousel js-product-previews-carousel">
 
-								@foreach ($card_product->photos as $photo)
+								@foreach ($card->photos as $photo)
 									<a href="#" data-value="Beige">
 										<span class="prd-img">
 											<img
@@ -162,10 +162,10 @@
 						data-prd-handle="/cards/copy-of-suede-leather-mini-skirt">
 						<div class="prd-block_info-top prd-block_info_item order-0 order-md-2">
 							<div class="prd-block_price prd-block_price--style2">
-								<div class="prd-block_price--actual">${{$card_product->price - $card_product->offer_price}}</div>
+								<div class="prd-block_price--actual">${{$card->price - $card->offer_price}}</div>
 								<div class="prd-block_price-old-wrap">
-									<span class="prd-block_price--old">${{$card_product->price}}</span>
-									<span class="prd-block_price--text">حافظت على : ${{$card_product->offer_price}} (%)</span>
+									<span class="prd-block_price--old">${{$card->price}}</span>
+									<span class="prd-block_price--text">حافظت على : ${{$card->offer_price}} (%)</span>
 								</div>
 							</div>
 							<div class="prd-block_viewed-wrap d-none d-md-flex">
@@ -178,7 +178,7 @@
 						<div class="prd-block_description prd-block_info_item ">
 							<h3>وصف قصير</h3>
 							<p>
-								{!! $card_product->description !!}
+								{!! $card->description !!}
 							</p>
 							<div class="mt-1"></div>
 							{{-- نصائح الاستخدام --}}
@@ -457,9 +457,9 @@
 			</ul>
 			<div class="tab-content">
 				<div role="tabpanel" class="tab-pane fade" id="Tab1">
-					{{-- <h4 class="mb-15">{!!$card_product->name!!}</h4> --}}
+					{{-- <h4 class="mb-15">{!!$card->name!!}</h4> --}}
 
-					<p>{!! $card_product->description !!}</p>
+					<p>{!! $card->description !!}</p>
 					
 				</div>
 				
@@ -531,14 +531,14 @@
 			<div class="prd-grid prd-carousel js-prd-carousel slick-arrows-aside-simple slick-arrows-mobile-lg data-to-show-4 data-to-show-md-3 data-to-show-sm-3 data-to-show-xs-2"
 				data-slick='{"slidesToShow": 4, "slidesToScroll": 2, "responsive": [{"breakpoint": 992,"settings": {"slidesToShow": 3, "slidesToScroll": 1}},{"breakpoint": 768,"settings": {"slidesToShow": 2, "slidesToScroll": 1}},{"breakpoint": 480,"settings": {"slidesToShow": 2, "slidesToScroll": 1}}]}'>
 				
-				@forelse ($relatedProducts as $relatedProduct)
+				@forelse ($related_cards as $related_card)
 					<div class="prd prd--style2 prd-labels--max prd-labels-shadow ">
 						<div class="prd-inside">
 							<div class="prd-img-area">
 								{{-- image area --}}
-								<a href="{{route('frontend.product',$relatedProduct->slug)}}" class="prd-img image-hover-scale image-container">
+								<a href="{{route('frontend.card',$related_card->slug)}}" class="prd-img image-hover-scale image-container">
 									<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-										data-src="{{asset('assets/cards/'. $relatedProduct->firstMedia->file_name)}}"
+										data-src="{{asset('assets/cards/'. $related_card->firstMedia->file_name)}}"
 										alt="Midi Dress with Belt" class="js-prd-img lazyload fade-up">
 									<div class="foxic-loader"></div>
 									<div class="prd-big-squared-labels">
@@ -560,17 +560,17 @@
 								{{-- color style switcher  --}}
 								<ul class="list-options color-swatch">
 
-									@foreach ($relatedProduct->photos as $photo)
+									@foreach ($related_card->photos as $photo)
 
 										<li data-image="{{asset('assets/cards/' . $photo->file_name)}}"
 											class="{{ $loop->first ? 'active': null}}"
 										>
-											<a href="#" class="js-color-toggle" data-toggle="tooltip" data-placement="right" title="{{$relatedProduct->name}}">
+											<a href="#" class="js-color-toggle" data-toggle="tooltip" data-placement="right" title="{{$related_card->name}}">
 												<img
 													src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
 													data-src="{{asset('assets/cards/' . $photo->file_name)}}"
 													class="lazyload fade-up" 
-													alt="{{$relatedProduct->name}}"
+													alt="{{$related_card->name}}"
 												>
 											</a>
 										</li>

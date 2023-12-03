@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 
 class FrontendController extends Controller
 {
+
     public function index(){
         // $main_slider = Slider::whereStatus(1)->whereNull('parent_id')->get();
         
@@ -20,9 +21,8 @@ class FrontendController extends Controller
             ->MainSliders()
             // ->inRandomOrder()
             ->orderBy('published_on','desc')
-           
             ->Active()
-            ->take(8)
+            ->take(5)
         ->get();
 
         $adv_sliders = Slider::with('firstMedia')
@@ -33,7 +33,8 @@ class FrontendController extends Controller
             ->take(3)
         ->get();
 
-        $featured_product_cards = Product::with('firstMedia')
+
+        $featured_cards = Product::with('firstMedia' , 'lastMedia' ,'photos' )
             ->CardCategory()
             ->orderBy('published_on','desc') // to show only the last product card added 
             // ->inRandomOrder()
@@ -44,7 +45,9 @@ class FrontendController extends Controller
             ->take(8)
         ->get();
 
-        $random_product_cards = Product::with('firstMedia')
+        //note random_product_cards = random_cards
+
+        $random_cards = Product::with('firstMedia', 'lastMedia' , 'photos')
             ->CardCategory()
             ->inRandomOrder()
             ->Active()
@@ -62,45 +65,46 @@ class FrontendController extends Controller
 
         $common_questions = CommonQuestion::query()->active()->take(3)->get();
 
-
         $news = News::query()->active()->take(3)->get();
 
 
-        return view('frontend.index',compact('main_sliders','adv_sliders','featured_product_cards','card_categories','random_product_cards','common_questions' ,'news'));
+        return view('frontend.index',compact('main_sliders','adv_sliders','featured_cards','card_categories','random_cards','common_questions' ,'news'));
     }
 
  
-    public function product($slug){
+    public function card($slug){
+        //get choisen card 
+        $card  = Product::with('category','tags','photos','reviews')->withAvg('reviews','rating')->whereSlug($slug)->Active()->HasQuantity()->ActiveCategory()->firstOrFail();
 
-        $card_product  = Product::with('category','tags','photos','reviews')->withAvg('reviews','rating')->whereSlug($slug)->Active()->HasQuantity()->ActiveCategory()->firstOrFail();
-        $reviews = ProductReview::with('user', 'product')->get();
+        //get all related card that are the same of card_category of the card choisen
+        $related_cards = Product::with('firstMedia','photos')->whereHas('category', function ($query) use ($card){
+            $query->whereId($card->product_category_id)->whereStatus(true);
+        })->inRandomOrder()->Active()->HasQuantity()->take(4)->get(); // get in random order  only card which is active and has quantity :and take from them 4 card 
 
-
-        // releated card_product = get card_product with first Media where has relation category 
-        $relatedProducts = Product::with('firstMedia','photos')->whereHas('category', function ($query) use ($card_product){
-            // where this category id is equal to $card_product->product_category_id where its status is true :means active
-            $query->whereId($card_product->product_category_id)->whereStatus(true);
-        })->inRandomOrder()->Active()->HasQuantity()->take(4)->get(); // get in random order  only card_product which is active and has quantity :and take from them 4 card_product 
-
-        return view('frontend.product',compact('card_product','relatedProducts' , 'reviews'));
+        return view('frontend.card',compact('card','related_cards' , 'reviews'));
     }
 
     public function card_category($slug = null){
 
-        $card_category = ProductCategory::withCount('products')
+        // This is the specific category chosen
+        $card_category = ProductCategory::withCount('cards')
                             ->whereSlug($slug)
                             ->whereStatus(true)
         ->first();
 
+        //notes card_products = cards
         
-        $card_products = Product::with('firstMedia' , 'photos');
-        $card_products = $card_products->with('category')->whereHas('category', function ($query) use ($slug) {
+        // get all cards related to category chosen
+        $cards = Product::with('firstMedia' , 'photos');
+        $cards = $cards->with('category')->whereHas('category', function ($query) use ($slug) {
             $query->where([
                 'slug' => $slug,
                 'status'   => true
             ]);
         })->get();
 
+
+        //get all card categories to show them of more choice 
         $card_categories = ProductCategory::with('firstMedia')
             ->Active()
             ->RootCategory()
@@ -109,7 +113,7 @@ class FrontendController extends Controller
             ->where('slug' , '!=',$slug)
         ->get();
 
-        return view('frontend.card_category',compact('slug' ,'card_category' , 'card_products' , 'card_categories'));
+        return view('frontend.card_category',compact('card_category' , 'cards' , 'card_categories'));
     }
 
    

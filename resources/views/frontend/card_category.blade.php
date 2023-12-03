@@ -39,7 +39,7 @@
 	{{-- @foreach ($product_card as $item)
 		{{dd($item)}}
 	@endforeach --}}
-	{{-- {{dd($card_products)}} --}}
+	{{-- {{dd($cards)}} --}}
 	
 
 	<div class="holder breadcrumbs-wrap mt-0">
@@ -96,10 +96,10 @@
 											<span class="prd-img">
 												<img
 													src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-													data-src="{{asset('assets//card_categories//' . $photo->file_name)}}"
+													data-src="{{asset('assets/card_categories/' . $photo->file_name)}}"
 													class="lazyload fade-up elzoom" 
 													alt="{{$card_category->name}}"
-													data-zoom-image="{{asset('assets//card_categories//' . $photo->file_name)}}" 
+													data-zoom-image="{{asset('assets/card_categories/' . $photo->file_name)}}" 
 												/>
 											</span>
 										</div>
@@ -123,7 +123,7 @@
 										<span class="prd-img">
 											<img
 												src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-												data-src="{{asset('assets//card_categories//'. $photo->file_name)}}"
+												data-src="{{asset('assets/card_categories/'. $photo->file_name)}}"
 												class="lazyload fade-up"
 												alt="" 
 											/>
@@ -141,21 +141,21 @@
 
 				<div class="col-md-7 col-lg-7 col-xl-7 mt-1 mt-md-0">
 					<div class="prd-block_info prd-block_info--style1"
-						data-prd-handle="//card_categories//copy-of-suede-leather-mini-skirt">
+						data-prd-handle="/card_categories/copy-of-suede-leather-mini-skirt">
 						
 
 						<div class="prd-grid prd-carousel js-prd-carousel slick-arrows-aside-simple slick-arrows-mobile-lg data-to-show-3 data-to-show-md-2 data-to-show-sm-2 data-to-show-xs-2"
 							 {{-- data-slick='{"slidesToShow": 2, "slidesToScroll": 2, "responsive": [{"breakpoint": 992,"settings": {"slidesToShow": 3, "slidesToScroll": 1}},{"breakpoint": 768,"settings": {"slidesToShow": 2, "slidesToScroll": 1}},{"breakpoint": 480,"settings": {"slidesToShow": 2, "slidesToScroll": 1}}]}' --}}
 						>
 
-							@forelse ($card_products as $card_product)
+							@forelse ($cards as $card_product)
 
 							  <div class=" prd prd--style2 prd-labels--max prd-labels-shadow"
  
 							  >
 								<div class="prd-inside">
 								  <div class="prd-img-area">
-									<a href="{{route('frontend.product',$card_product->slug)}}" class="prd-img image-container">
+									<a href="{{route('frontend.card',$card_product->slug)}}" class="prd-img image-container">
 									  <img
 										src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
 										data-src="{{asset('assets/products/'.$card_product->firstMedia->file_name)}}"
@@ -388,7 +388,7 @@
 				  <div class="prd-img-area">
 					<a href="{{route('frontend.card_category',$card_category->slug)}}" class="image-hover-scale">
 					  <img
-						src="{{asset('assets//card_categories//'.$card_category->firstMedia->file_name)}}"
+						src="{{asset('assets/card_categories/'.$card_category->firstMedia->file_name)}}"
 						alt="{{$card_category->name}}"
 						class="js-prd-img"
 					  />
