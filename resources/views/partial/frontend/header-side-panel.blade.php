@@ -331,22 +331,22 @@
                     <ul>
                       <li class="active">
                         <a href="#"
-                          ><img src="{{asset('frontend/assests/images/flags/en.webp')}}" alt="" />الانجليزية</a
+                          ><img src="{{asset('frontend/images/flags/en.webp')}}" alt="" />الانجليزية</a
                         >
                       </li>
                       <li>
                         <a href="#"
-                          ><img src="{{asset('frontend/assests/images/flags/sp.webp')}}" alt="" />الاسبانية</a
+                          ><img src="{{asset('frontend/images/flags/sp.webp')}}" alt="" />الاسبانية</a
                         >
                       </li>
                       <li>
                         <a href="#"
-                          ><img src="{{asset('frontend/assests/images/flags/de.webp')}}" alt="" />الالمانية</a
+                          ><img src="{{asset('frontend/images/flags/de.webp')}}" alt="" />الالمانية</a
                         >
                       </li>
                       <li>
                         <a href="#"
-                          ><img src="{{asset('frontend/assests/images/flags/fr.webp')}}" alt="" />الفرنسية</a
+                          ><img src="{{asset('frontend/images/flags/fr.webp')}}" alt="" />الفرنسية</a
                         >
                       </li>
                     </ul>
@@ -416,7 +416,7 @@
                 ><img
                   class="lazyload fade-up"
                   src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                  data-src="{{asset('frontend/assests/images/skins/fashion/products/product-01-1.webp')}}"
+                  data-src="{{asset('frontend/images/skins/fashion/products/product-01-1.webp')}}"
                   alt=""
               /></a>
             </div>
@@ -446,7 +446,7 @@
                 ><img
                   class="lazyload fade-up"
                   src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                  data-src="{{asset('frontend/assests/images/skins/fashion/products/product-16-1.webp')}}"
+                  data-src="{{asset('frontend/images/skins/fashion/products/product-16-1.webp')}}"
                   alt=""
               /></a>
             </div>

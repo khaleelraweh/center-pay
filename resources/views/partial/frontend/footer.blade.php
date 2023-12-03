@@ -9,7 +9,7 @@
                   ><img
                     class="lazyload fade-up"
                     src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                    data-srcset="{{asset('frontend/assests/images/skins/games/logo-games.webp')}} 1x, {{asset('frontend/assests/images/skins/games/logo-games2x.webp')}} 2x"
+                    data-srcset="{{asset('frontend/images/games/logo-games.webp')}} 1x, {{asset('frontend/images/games/logo-games2x.webp')}} 2x"
                     alt="Logo"
                 /></a>
               </div>
@@ -161,7 +161,7 @@
           <div class="col-auto sticky-addcart_image">
             <a href="product.html">
               <img
-                src="{{asset('frontend/assests/images/skins/fashion/products/product-01-1.webp')}}"
+                src="{{asset('frontend/images/skins/fashion/products/product-01-1.webp')}}"
                 alt=""
               />
             </a>
@@ -228,7 +228,7 @@
           <div class="col-auto popup-addedtocart_logo">
             <img
               src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-              data-src="{{asset('frontend/assests/images/logo-white-sm.webp')}}"
+              data-src="{{asset('frontend/images/logo-white-sm.webp')}}"
               class="lazyload fade-up"
               alt=""
             />
@@ -238,7 +238,7 @@
               <a href="product.html" class="col-auto popup-addedtocart_image">
                 <span class="image-container w-100">
                   <img
-                    src="{{asset('frontend/assests/images/skins/fashion/products/product-01-1.webp')}}"
+                    src="{{asset('frontend/images/skins/fashion/products/product-01-1.webp')}}"
                     alt=""
                   />
                 </span>
@@ -358,7 +358,7 @@
           <div class="payment-notification-container">
             <a href="#" class="payment-notification-image js-pn-link">
               <img
-                src="{{asset('frontend/assests/images/products/product-01.webp')}}"
+                src="{{asset('frontend/images/products/product-01.webp')}}"
                 class="js-pn-image"
                 alt=""
               />

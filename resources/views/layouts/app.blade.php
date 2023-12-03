@@ -15,7 +15,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     
     <!-- Favicon-->
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('frontend/assests/images/favicon.ico')}}" />
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('frontend/images/favicon.ico')}}" />
 
     <!-- Scripts -->
     {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
@@ -41,25 +41,25 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     
     
-    <link rel="stylesheet" href="{{asset('frontend/assests/css/vendor/bootstrap.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('frontend/css/vendor/bootstrap.min.css')}}" />
 
-    <link href="{{asset('frontend/assests/css/vendor/bootstrap.min-rtl.css')}}" rel="stylesheet"  />
+    <link href="{{asset('frontend/css/vendor/bootstrap.min-rtl.css')}}" rel="stylesheet"  />
 
-    <link href="{{asset('frontend/assests/css/vendor/vendor.min.css')}}" rel="stylesheet" />
+    <link href="{{asset('frontend/css/vendor/vendor.min.css')}}" rel="stylesheet" />
 
     
     <link href=" https://cdn.jsdelivr.net/npm/glyphicons-halflings@1.9.1/css/glyphicons-halflings.min.css " rel="stylesheet">
 
-    <link href="{{asset('frontend/assests/css/style-games.css')}}" rel="stylesheet" />
+    <link href="{{asset('frontend/css/style-games.css')}}" rel="stylesheet" />
 
     {{-- <link href="css/style.css" rel="stylesheet"> --}}
 
     {{-- <link href="fonts/icomoon/icons.css" rel="stylesheet"> --}}
 
-    <link rel="stylesheet" href="{{asset('frontend/assests/css/style-rtl.css')}}" class="languages" />
-    {{-- <link rel="stylesheet" href="{{asset('frontend/assests/css/style.css')}}" class="languages" /> --}}
+    <link rel="stylesheet" href="{{asset('frontend/css/style-rtl.css')}}" class="languages" />
+    {{-- <link rel="stylesheet" href="{{asset('frontend/css/style.css')}}" class="languages" /> --}}
 
-    <link href="{{asset('frontend/assests/css/icons.css')}}" rel="stylesheet" />
+    <link href="{{asset('frontend/css/icons.css')}}" rel="stylesheet" />
     <livewire:styles />
     @yield('style')
     
@@ -88,13 +88,13 @@
     </div>
 
     <!-- JavaScript files-->
-    <script src="{{asset('frontend/assests/js/vendor-special/lazysizes.min.js')}}"></script>
-    <script src="{{asset('frontend/assests/js/vendor-special/ls.bgset.min.js')}}"></script>
-    <script src="{{asset('frontend/assests/js/vendor-special/ls.aspectratio.min.js')}}"></script>
-    <script src="{{asset('frontend/assests/js/vendor-special/jquery.min.js')}}"></script>
-    <script src="{{asset('frontend/assests/js/vendor-special/jquery.ez-plus.js')}}"></script>
-    <script src="{{asset('frontend/assests/js/vendor/vendor.min.js')}}"></script>
-    <script src="{{asset('frontend/assests/js/app-html.js')}}"></script>
+    <script src="{{asset('frontend/js/vendor-special/lazysizes.min.js')}}"></script>
+    <script src="{{asset('frontend/js/vendor-special/ls.bgset.min.js')}}"></script>
+    <script src="{{asset('frontend/js/vendor-special/ls.aspectratio.min.js')}}"></script>
+    <script src="{{asset('frontend/js/vendor-special/jquery.min.js')}}"></script>
+    <script src="{{asset('frontend/js/vendor-special/jquery.ez-plus.js')}}"></script>
+    <script src="{{asset('frontend/js/vendor/vendor.min.js')}}"></script>
+    <script src="{{asset('frontend/js/app-html.js')}}"></script>
     <!-- <script src="assests/js/styleswitcher.js"></script> -->
     @yield('script')
     <livewire:scripts />

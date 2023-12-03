@@ -583,7 +583,7 @@
                     </a>
                     {{-- <button
                       class="btn js-prd-addtocart"
-                      data-product='{"name": "بطائق الدفع", "path":"{{asset('frontend/assests/images/skins/games/products/product-07-1.webp')}}", "url":"product.html", "aspect_ratio":0.778}'
+                      data-product='{"name": "بطائق الدفع", "path":"{{asset('frontend/images/games/products/product-07-1.webp')}}", "url":"product.html", "aspect_ratio":0.778}'
                     >
                        عرض الباقات
                     </button> --}}
@@ -688,7 +688,7 @@
               >
                 <img
                   src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                  data-src="{{asset('frontend/assests/images/skins/games/blog/game-blog-01.webp')}}"
+                  data-src="{{asset('frontend/images/games/blog/game-blog-01.webp')}}"
                   class="lazyload fade-up"
                   alt="Blog Title"
                 />
@@ -725,7 +725,7 @@
               >
                 <img
                   src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                  data-src="{{asset('frontend/assests/images/skins/games/blog/game-blog-03.webp')}}"
+                  data-src="{{asset('frontend/images/games/blog/game-blog-03.webp')}}"
                   class="lazyload fade-up"
                   alt="Blog Title"
                 />
@@ -762,7 +762,7 @@
               >
                 <img
                   src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                  data-src="{{asset('frontend/assests/images/skins/games/blog/game-blog-02.webp')}}"
+                  data-src="{{asset('frontend/images/games/blog/game-blog-02.webp')}}"
                   class="lazyload fade-up"
                   alt="Blog Title"
                 />

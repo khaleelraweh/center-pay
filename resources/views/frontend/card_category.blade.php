@@ -423,7 +423,7 @@
 					  <div class="prd-action">
 						<button
 						  class="btn js-prd-addtocart"
-						  {{-- data-product='{"name": "بطائق الدفع", "path":"{{asset('frontend/assests/images/skins/games/products/product-07-1.webp')}}", "url":"product.html", "aspect_ratio":0.778}' --}}
+						  {{-- data-product='{"name": "بطائق الدفع", "path":"{{asset('frontend/images/games/products/product-07-1.webp')}}", "url":"product.html", "aspect_ratio":0.778}' --}}
 						>
 						   عرض الباقات
 						</button>

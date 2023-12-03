@@ -13,8 +13,8 @@
             <a href="index.html" class="logo"
               ><img
                 srcset="
-                  {{asset('frontend/assests/images/skins/games/logo-games.webp')}}   1x,
-                  {{asset('frontend/assests/images/skins/games/logo-games2x.webp')}} 2x
+                  {{asset('frontend/images/games/logo-games.webp')}}   1x,
+                  {{asset('frontend/images/games/logo-games2x.webp')}} 2x
                 "
                 alt="Logo"
             /></a>
@@ -92,8 +92,8 @@
               <a href="{{route('frontend.index')}}" class="logo"
                 ><img
                   srcset="
-                    {{asset('frontend/assests/images/skins/games/logo-games.webp ')}}  1x,
-                    {{asset('frontend/assests/images/skins/games/logo-games2x.webp')}} 2x
+                    {{asset('frontend/images/games/logo-games.webp ')}}  1x,
+                    {{asset('frontend/images/games/logo-games2x.webp')}} 2x
                   "
                   alt="سنتر باي"
               /></a>
@@ -262,7 +262,7 @@
                             >
                               <img
                                 src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                data-srcset="{{asset('frontend/assests/images/skins/games/megamenu-game-banner.webp')}}"
+                                data-srcset="{{asset('frontend/images/games/megamenu-game-banner.webp')}}"
                                 class="lazyload fade-up"
                                 alt="Banner"
                               />
@@ -463,20 +463,20 @@
                         <ul>
                           <li >
                             <a href="#eng" data-reload class="mylang" onclick="setLanguageStyle('english');" title="english">
-                                <img src="{{asset('frontend/assests/images/flags/en.webp')}}" alt="" />
+                                <img src="{{asset('frontend/images/flags/en.webp')}}" alt="" />
                                 الانجليزية
                               </a>
                           </li>
                           <li >
                             <a href="#ar" data-reload class="mylang" onclick="setLanguageStyle('arabic');" title="arabic">
-                              <img src="{{asset('frontend/assests/images/flags/ar.webp')}}" alt=""/>
+                              <img src="{{asset('frontend/images/flags/ar.webp')}}" alt=""/>
                               العربية
                             </a>
                           </li>
                           <li>
                             <a href="#"
                               ><img
-                                src="{{asset('frontend/assests/images/flags/sp.webp')}}"
+                                src="{{asset('frontend/images/flags/sp.webp')}}"
                                 alt=""
                               />الاسبانية</a
                             >
@@ -484,7 +484,7 @@
                           <li>
                             <a href="#"
                               ><img
-                                src="{{asset('frontend/assests/images/flags/de.webp')}}"
+                                src="{{asset('frontend/images/flags/de.webp')}}"
                                 alt=""
                               />الالمانية</a
                             >
@@ -492,7 +492,7 @@
                           <li>
                             <a href="#"
                               ><img
-                                src="{{asset('frontend/assests/images/flags/fr.webp')}}"
+                                src="{{asset('frontend/images/flags/fr.webp')}}"
                                 alt=""
                               />الفرنسية</a
                             >
