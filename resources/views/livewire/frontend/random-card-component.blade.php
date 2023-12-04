@@ -41,6 +41,7 @@
                     <div class="prd-circle-labels">
                       <a
                         href="#"
+                        wire:click.prevent="addToWishList('{{$random_product_card->id}}')" 
                         class="circle-label-compare circle-label-wishlist--add js-add-wishlist mt-0"
                         title="Add To Wishlist"
                         ><i class="icon-heart-stroke"></i></a
