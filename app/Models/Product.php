@@ -78,6 +78,7 @@ class Product extends Model
         return $this->belongsTo(ProductCategory::class, 'product_category_id', 'id');
     }
 
+
     // to get only first one media elemet
     public function firstMedia(): MorphOne{
         return $this->MorphOne(Photo::class, 'imageable')->orderBy('file_sort','asc');
