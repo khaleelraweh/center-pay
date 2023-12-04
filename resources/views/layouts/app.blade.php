@@ -100,10 +100,8 @@
     <livewire:scripts />
 
     {{-- livewire alert  --}}
-    <script src="{{ asset('vendor/livewire-alert/livewire-alert.js') }}"></script> 
-    <x-livewire-alert::flash />
-    <x-livewire-alert::flash />
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <x-livewire-alert::scripts />
 
-    
 </body>
 </html> 

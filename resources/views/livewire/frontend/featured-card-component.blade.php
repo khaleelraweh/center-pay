@@ -1,4 +1,4 @@
-<div>
+<div wire:ignore>
     <div class="holder">
         <div class="container">
           <div class="title-wrap text-center">
@@ -116,6 +116,7 @@
                         <form action="#">
                           <button
                             class="btn js-prd-addtocart"
+                            wire:click.prevent="addToCart('{{$featured_card->id}}')"
                             data-product='{"name": "{{$featured_card->name}}", "path":"{{asset('assets/cards/'.$featured_card->firstMedia->file_name)}}", "url":"{{route('frontend.card',$featured_card->slug)}}", "aspect_ratio":0.778}'
                           >
                             اضافة للسلة

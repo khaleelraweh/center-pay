@@ -1,4 +1,4 @@
-<div>
+<div wire:ignore>
     <div class="holder">
         <div class="container">
           <div class="title-wrap text-center">
@@ -113,6 +113,7 @@
                           <form action="#">
                             <button
                               class="btn js-prd-addtocart"
+                              wire:click.prevent="addToCart('{{$random_product_card->id}}')"
                               data-product='{"name": "{{$random_product_card->name}}", "path":"{{asset('assets/cards/'.$random_product_card->lastMedia->file_name)}}", "url":"product.html", "aspect_ratio":0.778}'
                             >
                               اضافة للسلة
