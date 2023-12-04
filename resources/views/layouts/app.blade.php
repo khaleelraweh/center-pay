@@ -99,6 +99,11 @@
     @yield('script')
     <livewire:scripts />
 
+    {{-- livewire alert  --}}
+    <script src="{{ asset('vendor/livewire-alert/livewire-alert.js') }}"></script> 
+    <x-livewire-alert::flash />
+    <x-livewire-alert::flash />
+
     
 </body>
 </html> 

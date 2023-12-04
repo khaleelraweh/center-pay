@@ -34,19 +34,6 @@ class FrontendController extends Controller
         ->get();
 
 
-        $featured_cards = Product::with('firstMedia' , 'lastMedia' ,'photos' )
-            ->CardCategory()
-            ->orderBy('published_on','desc') // to show only the last product card added 
-            // ->inRandomOrder()
-            ->Featured()
-            ->Active()
-            ->HasQuantity()
-            ->ActiveCategory()
-            ->take(8)
-        ->get();
-
-        //note random_product_cards = random_cards
-
         $random_cards = Product::with('firstMedia', 'lastMedia' , 'photos')
             ->CardCategory()
             ->inRandomOrder()
@@ -68,7 +55,7 @@ class FrontendController extends Controller
         $news = News::query()->active()->take(3)->get();
 
 
-        return view('frontend.index',compact('main_sliders','adv_sliders','featured_cards','card_categories','random_cards','common_questions' ,'news'));
+        return view('frontend.index',compact('main_sliders','adv_sliders','card_categories','random_cards','common_questions' ,'news'));
     }
 
  
