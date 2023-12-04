@@ -54,7 +54,7 @@ class FrontendController extends Controller
 
         $news = News::query()->active()->take(3)->get();
 
-
+ 
         return view('frontend.index',compact('main_sliders','adv_sliders','card_categories','random_cards','common_questions' ,'news'));
     }
 

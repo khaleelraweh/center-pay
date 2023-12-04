@@ -88,6 +88,7 @@
                       <div>
                         <a
                           href="#"
+                          wire:click.prevent="addToWishList('{{$featured_card->id}}')" 
                           class="circle-label-compare circle-label-wishlist--add js-add-wishlist mt-0"
                           title="Add To Wishlist"
                           ><i class="icon-heart-stroke"></i></a
