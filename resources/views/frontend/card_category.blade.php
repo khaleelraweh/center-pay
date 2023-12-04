@@ -50,11 +50,12 @@
     </div>
 
     <div class="holder">
-      <div class="container">
+      <div class="container" >
         
         <div class="page-title text-center">
           <h1>{{$card_category->name}}</</h1>
         </div>
+        
         <div class="filter-row">
           <div class="row">
             <div class="items-count">35 item(s)</div>
