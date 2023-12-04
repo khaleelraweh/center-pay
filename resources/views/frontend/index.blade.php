@@ -298,7 +298,7 @@
     </div>
   </div>
 
-  {{-- product cards news --}}
+  {{--  cards news --}}
   <div class="holder holder-mt-medium">
     <div class="container">
       <div class="title-with-arrows">
@@ -360,172 +360,7 @@
     </div>
   </div>
   
-  {{-- <div class="holder holder-mt-medium">
-    <div class="container">
-      <div class="title-with-arrows">
-        <h2 class="h1-style">
-          <a href="blog.html" title="View all">أحر أخبار الألعاب</a>
-        </h2>
-        <div class="carousel-arrows"></div>
-      </div>
-      <div
-        class="post-prws post-prws-carousel post-prws-carousel--single js-post-prws-carousel"
-        data-slick='{"slidesToShow": 2, "responsive": [{"breakpoint": 1200,"settings": {"slidesToShow": 2}},{"breakpoint": 768,"settings": {"slidesToShow": 1}},{"breakpoint": 480,"settings": {"slidesToShow": 1}}]}'
-      >
-        <div class="post-prw">
-          <div class="row vert-margin-middle">
-            <div class="post-prw-img col-sm-6">
-              <a
-                href="blog-post.html"
-                class="d-block image-container"
-                style="padding-bottom: 88.92%"
-              >
-                <img
-                  src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                  data-src="{{asset('frontend/images/games/blog/game-blog-01.webp')}}"
-                  class="lazyload fade-up"
-                  alt="Blog Title"
-                />
-              </a>
-            </div>
-            <div class="post-prw-text col-sm-6">
-              <h4 class="post-prw-title">
-                <a href="#">لقطات هذا الأسبوع</a>
-              </h4>
-              <div class="post-prw-links">
-                <div class="post-prw-date">
-                  <i class="icon-calendar1"></i
-                  ><span>November 17, 2020</span>
-                </div>
-              </div>
-              <div class="post-prw-teaser">
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                sed diam nonummy nibh euismod tincidunt ut laoreet dolore
-                magna
-              </div>
-              <div class="post-prw-btn">
-                <a href="#" class="btn btn--md">اقرأ المزيد</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="post-prw">
-          <div class="row vert-margin-middle">
-            <div class="post-prw-img col-sm-6">
-              <a
-                href="blog-post.html"
-                class="d-block image-container"
-                style="padding-bottom: 88.92%"
-              >
-                <img
-                  src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                  data-src="{{asset('frontend/images/games/blog/game-blog-03.webp')}}"
-                  class="lazyload fade-up"
-                  alt="Blog Title"
-                />
-              </a>
-            </div>
-            <div class="post-prw-text col-sm-6">
-              <h4 class="post-prw-title">
-                <a href="#">البعثات الجديدة عبر الإنترنت</a>
-              </h4>
-              <div class="post-prw-links">
-                <div class="post-prw-date">
-                  <i class="icon-calendar1"></i
-                  ><span>November 17, 2020</span>
-                </div>
-              </div>
-              <div class="post-prw-teaser">
-                Nullam quis hendrerit nisi. Donec porta hendrerit
-                sollicitudin. Vestibulum elit tortor, commodo in iaculis
-                quis, imperdiet non eros
-              </div>
-              <div class="post-prw-btn">
-                <a href="#" class="btn btn--md">اقرأ المزيد</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="post-prw">
-          <div class="row vert-margin-middle">
-            <div class="post-prw-img col-sm-6">
-              <a
-                href="blog-post.html"
-                class="d-block image-container"
-                style="padding-bottom: 88.92%"
-              >
-                <img
-                  src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                  data-src="{{asset('frontend/images/games/blog/game-blog-02.webp')}}"
-                  class="lazyload fade-up"
-                  alt="Blog Title"
-                />
-              </a>
-            </div>
-            <div class="post-prw-text col-sm-6">
-              <h4 class="post-prw-title">
-                <a href="#"
-                  >Fusce erat arcu, rhoncus sit amet convallis eu, laoreet
-                  ut libero. Quisque dictum ante ac lectus iaculis, ac
-                  aliquet libero commodo</a
-                >
-              </h4>
-              <div class="post-prw-links">
-                <div class="post-prw-date">
-                  <i class="icon-calendar1"></i
-                  ><span>December 19, 2020</span>
-                </div>
-              </div>
-              <div class="post-prw-btn">
-                <a href="#" class="btn btn--md">اقرأ المزيد</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> --}}
-
-  {{-- get discount by login --}}
-  {{-- <div class="holder holder-subscribe-full mt-0" style="background-color: transparent">
-    <div class="container">
-      <div class="row">
-        <div class="col-auto">
-          <div class="subscribe-form-title-md">
-            احصل على <span class="custom-color">20%</span> تخفيض
-          </div>
-          <div class="subscribe-form-title-sm">اشترك الآن!</div>
-        </div>
-        <div class="col">
-          <div class="subscribe-form">
-            <form action="#">
-              <div class="form-inline">
-                <div class="form-control-wrap">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="ادخل الايميل..."
-                  />
-                  <svg preserveAspectRatio="none">
-                    <rect
-                      x="2"
-                      y="2"
-                      rx="6"
-                      height="100%"
-                      width="100%"
-                    ></rect>
-                  </svg>
-                  <span class="bottom"></span>
-                </div>
-                <button type="submit" class="btn btn--lg">اشترك</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> --}}
-
+  {{-- common question --}}
   <div class="holder holder-subscribe-full mt-0" id="questions"  style="background-color: transparent" >
     <div class="container">
       <div class="title-wrap text-center">
@@ -563,7 +398,7 @@
     </div>
   </div>
 
-
+  {{-- get discount by create account --}}
   <div class="holder holder-subscribe-full mt-0" style="background-color: transparent">
     <div class="container">
       <div class="row">
@@ -603,6 +438,7 @@
     </div>
   </div>
 
+  {{-- info --}}
   <div class="holder mt-0">
     <div class="container">
       <div

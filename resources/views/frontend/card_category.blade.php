@@ -29,6 +29,9 @@
 		font-weight: bold;
 		font-size: 14px;
 	}
+	.breadcrumbs li a{
+		text-decoration: none;
+	}
 
 </style>
 @endsection
@@ -36,15 +39,13 @@
 @section('content')
 <div class="container">
 	
-	{{-- {{dd($cards)}} --}}
 	
 
 	<div class="holder breadcrumbs-wrap mt-0">
 		<div class="container">
 			<ul class="breadcrumbs">
-				<li><a href="index.html">Home</a></li>
-				<li><a href="category.html">Women</a></li>
-				<li><span>Leather Pegged Pants</span></li>
+				<li><a href="{{route('frontend.index')}}">الرئيسية</a></li>
+				<li><a href="{{route('frontend.card_category',$card_category->slug)}}">{{$card_category->name}}</a></li>
 			</ul>
 		</div>
 	</div>
@@ -65,7 +66,8 @@
 									</a>
 								</span>
 							</div>
-							<h1 class="prd-block_title">{{$card_category->name}} : <span> <small> ({{$card_category->cards_count}}) باقة/ باقات </small></span></h1>
+							<h1 class="prd-block_title"><span>إسم الفئة : </span> {{$card_category->name}} </h1>
+							<span> عدد الباقات :  <small> ({{$card_category->cards_count}})</small></span>
 							
 						</div>
 					</div>
