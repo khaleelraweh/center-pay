@@ -30,7 +30,7 @@ class FrontendController extends Controller
             // ->inRandomOrder()
             ->orderBy('published_on','desc')
             ->Active()
-            ->take(5)
+            ->take(3)
         ->get();
 
 
