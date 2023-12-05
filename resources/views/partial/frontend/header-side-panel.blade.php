@@ -440,9 +440,11 @@
                     </div>
                 </div>
                 <div class="minicart-drop-actions">
-                    <a href="cart.html" class="btn btn--md btn--grey"><i class="icon-basket"></i><span>سلة
+                    <a href="{{ route('frontend.cart') }}" class="btn btn--md btn--grey"><i
+                            class="icon-basket"></i><span>سلة
                             المشتريات</span></a>
-                    <a href="checkout.html" class="btn btn--md"><i class="icon-checkout"></i><span>عملية
+                    <a href="{{ route('frontend.checkout') }}" class="btn btn--md"><i
+                            class="icon-checkout"></i><span>عملية
                             الدفع</span></a>
                 </div>
                 <ul class="payment-link mb-2">
