@@ -104,7 +104,17 @@ class FrontendController extends Controller
     }
 
     public function cart(){
-        return view('frontend.cart');
+
+        $random_cards = Product::with('firstMedia', 'lastMedia' , 'photos')
+            ->CardCategory()
+            ->inRandomOrder()
+            ->Active()
+            ->HasQuantity()
+            ->ActiveCategory()
+            ->take(8)
+        ->get();
+
+        return view('frontend.cart', compact('random_cards'));
     }
 
     public function wishlist(){

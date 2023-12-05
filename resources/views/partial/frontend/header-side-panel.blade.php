@@ -1,4 +1,5 @@
 <div class="header-side-panel">
+    {{-- navigation par  --}}
     <div class="mobilemenu js-push-mbmenu">
         <div class="mobilemenu-content">
             <div class="mobilemenu-close mobilemenu-toggle">اغلاق</div>
@@ -298,6 +299,8 @@
             </div>
         </div>
     </div>
+
+    {{-- login section  --}}
     <div class="dropdn-content account-drop" id="dropdnAccount">
         <div class="dropdn-content-block">
             <div class="dropdn-close">
@@ -332,6 +335,8 @@
         </div>
         <div class="drop-overlay js-dropdn-close"></div>
     </div>
+
+    {{-- cart short show  --}}
     <div class="dropdn-content minicart-drop" id="dropdnMinicart">
         <div class="dropdn-content-block">
             <div class="dropdn-close">
