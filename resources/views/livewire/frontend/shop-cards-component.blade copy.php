@@ -2,7 +2,7 @@
     <div class="prd-grid-wrap">
         <div class="filter-row">
             <div class="row">
-                <div class="items-count"> عدد العناصر: </div>
+                <div class="items-count"> عدد العناصر: 5</div>
                 <div class="select-wrap d-none d-md-flex">
                     <div class="select-label">ترتيب:</div>
                     <div class="select-wrapper select-wrapper-xxs">

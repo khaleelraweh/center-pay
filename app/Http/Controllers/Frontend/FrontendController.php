@@ -103,6 +103,18 @@ class FrontendController extends Controller
         return view('frontend.card_category',compact('card_category' , 'cards' , 'card_categories'));
     }
 
+    public function cart(){
+        return view('frontend.cart');
+    }
+
+    public function wishlist(){
+        return view('frontend.wishlist');
+    }
+
+    public function checkout(){
+        return view('frontend.checkout');
+    }
+
    
 
 
