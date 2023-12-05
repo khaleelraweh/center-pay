@@ -447,6 +447,7 @@
                             class="icon-checkout"></i><span>عملية
                             الدفع</span></a>
                 </div>
+
                 <ul class="payment-link mb-2">
                     <li><i class="icon-amazon-logo"></i></li>
                     <li><i class="icon-visa-pay-logo"></i></li>
