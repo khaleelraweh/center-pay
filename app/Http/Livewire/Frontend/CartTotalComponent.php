@@ -11,7 +11,6 @@ class CartTotalComponent extends Component
     public $cart_subtotal;
     public $cart_discount;
     public $cart_tax;
-    public $cart_shipping; 
     public $cart_total;
 
     // to update subtotal and total every time we update using increment function and decrement funtion in ..
@@ -20,13 +19,6 @@ class CartTotalComponent extends Component
     ];
 
     public function mount(){
-
-        // $this->cart_subtotal = getNumbers()->get('subtotal');
-        // $this->cart_discount = getNumbers()->get('discount');
-        // $this->cart_tax = getNumbers()->get('productTaxes');
-        // $this->cart_shipping = getNumbers()->get('shipping');
-        // $this->cart_total = getNumbers()->get('total');
-
         $this->cart_subtotal = Cart::instance('default')->subtotal();
         $this->cart_tax = Cart::Instance('default')->tax();
         $this->cart_total = Cart::Instance('default')->total();

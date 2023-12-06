@@ -53,14 +53,7 @@
                     @forelse (Cart::content() as $item)
                         {{--  show item in cart using livewire --}}
                         @livewire('frontend.cart-item-component', ['itemRowId' => $item->rowId])
-
-                        <div class="text-center mt-1"><a href="#"
-                                class="btn btn--grey js-remove-all-product rounded-pill">الغاء
-                                السلة</a>
-                        </div>
-
                     @empty
-
                         {{-- سلة الشراء فارغة  --}}
                         <div class="cart">
                             <div class="card-body bg-transparent">
@@ -81,8 +74,12 @@
                         </div>
                     @endforelse
 
-
-
+                    @if (Cart::instance('default')->count() > 0)
+                        <div class="text-center mt-1"><a href="#"
+                                class="btn btn--grey js-remove-all-product rounded-pill">الغاء
+                                السلة</a>
+                        </div>
+                    @endif
 
                     {{-- wanted more section  --}}
                     <div class="d-none d-lg-block">

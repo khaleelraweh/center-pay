@@ -3,21 +3,21 @@
         <div class="card-body bg-transparent">
             <div class="cart-item">
                 <div class="item-body product">
-                    <a class="item-img" href="{{ route('frontend.card', $cartItem->model->slug) }}">
-                        <img src="{{ asset('assets/cards/' . $cartItem->model->firstMedia->file_name) }}"
-                            class="img-fluid" alt="{{ $cartItem->model->name }}">
+                    <a class="item-img" href="{{ route('frontend.card', $cartItem->model?->slug) }}">
+                        <img src="{{ asset('assets/cards/' . $cartItem->model?->firstMedia->file_name) }}"
+                            class="img-fluid" alt="{{ $cartItem->model?->name }}">
                     </a>
                     <div class="item-text">
                         <h3 class="item-name">
-                            <a class="item-name-anchor" href="{{ route('frontend.card', $cartItem->model->slug) }}">
-                                {{ $cartItem->model->name }} </a>
+                            <a class="item-name-anchor" href="{{ route('frontend.card', $cartItem->model?->slug) }}">
+                                {{ $cartItem->model?->name }} </a>
                         </h3>
                         {{-- <a class="item-category" href="javascrip:void(0);">
                             شدات ببجي </a> --}}
                         <div class="cart-item-prices">
                             <span class="item-price" style="display: flex; align-items: center;">
                                 السعر:
-                                ${{ $cartItem->model->price }}<span
+                                ${{ $cartItem->model?->price }}<span
                                     style="color: rgb(181, 181, 181); text-decoration: line-through; margin: 0px 5px;"></span>
                             </span>
 
@@ -43,7 +43,7 @@
                             </div>
                         </div>
 
-                        <div class="final-price" id="final-price-2">${{ $cartItem->qty * $cartItem->model->price }}
+                        <div class="final-price" id="final-price-2">${{ $cartItem->qty * $cartItem->model?->price }}
                         </div>
                     </div>
                 </div>

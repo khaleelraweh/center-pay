@@ -1,4 +1,5 @@
 <header class="hdr-wrap {{ request()->routeIs('frontend.index') ? 'hdr-transparent' : null }}">
+
     <div class="hdr-content hdr-content-sticky">
         <div class="container">
             <div class="row">
@@ -42,19 +43,15 @@
                                 data-panel="#dropdnAccount"><i class="icon-user"></i><span
                                     class="dropdn-link-txt">حسابي</span></a>
                         </div>
-                        <div class="dropdn dropdn_fullheight minicart">
-                            <a href="#" class="dropdn-link js-dropdn-link minicart-link only-icon"
-                                data-panel="#dropdnMinicart">
-                                <i class="icon-basket"></i>
-                                <span class="minicart-qty">3</span>
-                                <span class="minicart-total hide-mobile">$34.99</span>
-                            </a>
-                        </div>
+                        {{-- call to cart component livewire for cart and wishlist counter --}}
+                        @livewire('frontend.cart-component')
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <div class="hdr hdr-style5">
         <div class="hdr-content">
             <div class="container">
@@ -442,18 +439,13 @@
                                     data-panel="#dropdnAccount"><i class="icon-user"></i><span
                                         class="dropdn-link-txt">حسابي</span></a>
                             </div>
-                            <div class="dropdn dropdn_fullheight minicart">
-                                <a href="#" class="dropdn-link js-dropdn-link minicart-link only-icon"
-                                    data-panel="#dropdnMinicart">
-                                    <i class="icon-basket"></i>
-                                    <span class="minicart-qty">3</span>
-                                    <span class="minicart-total hide-mobile">$34.99</span>
-                                </a>
-                            </div>
+                            {{-- call to cart component livewire for cart and wishlist counter --}}
+                            @livewire('frontend.cart-component')
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 </header>

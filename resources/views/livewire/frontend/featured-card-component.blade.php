@@ -35,7 +35,10 @@
                                 <div class="prd-circle-labels">
                                     <a href="#" wire:click.prevent="addToWishList('{{ $featured_card->id }}')"
                                         class="circle-label-compare circle-label-wishlist--add js-add-wishlist mt-0"
-                                        title="Add To Wishlist"><i class="icon-heart-stroke"></i></a><a href="#"
+                                        title="Add To Wishlist">
+                                        <i class="icon-heart-stroke"></i>
+                                    </a>
+                                    <a href="#"
                                         class="circle-label-compare circle-label-wishlist--off js-remove-wishlist mt-0"
                                         title="Remove From Wishlist"><i class="icon-heart-hover"></i></a>
                                     <a href="#" class="circle-label-qview js-prd-quickview prd-hide-mobile"
