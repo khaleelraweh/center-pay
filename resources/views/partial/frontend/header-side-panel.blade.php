@@ -345,53 +345,28 @@
             <div wire:ignore class="minicart-drop-content js-dropdn-content-scroll">
 
                 {{-- show cart item  --}}
-                @foreach (Cart::instance('default')->content() as $item)
-                    <div class="minicart-prd row">
-                        {{-- image part  --}}
-                        <div class="minicart-prd-image image-hover-scale-circle col">
-                            <a href="{{ route('frontend.card', $item->model->slug) }}"><img class="lazyload fade-up"
-                                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                    data-src="{{ asset('assets/cards/' . $item->model?->firstMedia->file_name) }}"
-                                    alt="{{ $item->model->name }}" /></a>
-                        </div>
-                        {{-- content part --}}
-                        <div class="minicart-prd-info col">
-                            <div class="minicart-prd-tag"><a
-                                    href="{{ route('frontend.card_category', $item->model->category->slug) }}">{{ $item->model->category->name }}</a>
-                            </div>
-                            <h2 class="minicart-prd-name">
-                                <a href="{{ route('frontend.card', $item->model->slug) }}">{{ $item->model->name }}
-                                </a>
-                            </h2>
-                            <div class="minicart-prd-qty">
-                                <span class="minicart-prd-qty-label">الكمية:</span><span
-                                    class="minicart-prd-qty-value">{{ $item->qty }}</span>
-                            </div>
-                            <div class="minicart-prd-price prd-price">
-                                <div class="price-old">$200.00</div>
-                                <div class="price-new">{{ $item->model->price * $item->qty }}</div>
+                @forelse (Cart::instance('default')->content() as $item)
+                    @livewire('frontend.cart-asidebar-item-component', ['itemRowId' => $item->rowId])
+                @empty
+                    {{-- سلة الشراء فارغة  --}}
+                    <div class="cart">
+                        <div class="card-body bg-transparent">
+                            <div class="minicart-empty-icon">
+                                <i class="icon-shopping-bag" style="font-size: 100px;"></i>
+                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                                    viewBox="0 0 306 262" style="enable-background:new 0 0 306 262;"
+                                    xml:space="preserve">
+                                    <path class="st0"
+                                        d="M78.1,59.5c0,0-37.3,22-26.7,85s59.7,237,142.7,283s193,56,313-84s21-206-69-240s-249.4-67-309-60C94.6,47.6,78.1,59.5,78.1,59.5z">
+                                    </path>
+                                </svg>
                             </div>
                         </div>
-                        {{-- trash part --}}
-                        <div class="minicart-prd-action">
-                            <a href="#" class="js-product-remove" data-line-number="1"><i
-                                    class="icon-recycle"></i></a>
-                        </div>
+                        <h2 class="text-center">السلة فارغة</h2>
                     </div>
-                @endforeach
+                @endforelse
 
 
-                <div class="minicart-empty js-minicart-empty d-none">
-                    <div class="minicart-empty-text">السلة فارغة</div>
-                    <div class="minicart-empty-icon">
-                        <i class="icon-shopping-bag"></i>
-                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 306 262"
-                            style="enable-background: new 0 0 306 262" xml:space="preserve">
-                            <path class="st0"
-                                d="M78.1,59.5c0,0-37.3,22-26.7,85s59.7,237,142.7,283s193,56,313-84s21-206-69-240s-249.4-67-309-60C94.6,47.6,78.1,59.5,78.1,59.5z" />
-                        </svg>
-                    </div>
-                </div>
                 <a href="#" class="minicart-drop-countdown mt-3">
                     <div class="countdown-box-full">
                         <div class="row no-gutters align-items-center">

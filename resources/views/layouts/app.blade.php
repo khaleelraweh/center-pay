@@ -66,6 +66,7 @@
     <livewire:styles />
     @yield('style')
 
+
 </head>
 
 <body

@@ -6,10 +6,9 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
-class CartItemComponent extends Component
+class CartAsidebarItemComponent extends Component
 {
     use LivewireAlert;
-    
     public $itemRowId; // every item in the cart has special rowId as key 
     public $item_quantity = 1; 
 
@@ -43,11 +42,10 @@ class CartItemComponent extends Component
          $this->emit('removeFromCart' , $rowId );
          return redirect(request()->header('Referer'));
     }
-
-
+    
     public function render()
     {
-        return view('livewire.frontend.cart-item-component' , [
+        return view('livewire.frontend.cart-asidebar-item-component', [
             'cartItem' =>Cart::instance('default')->get($this->itemRowId)
         ]);
     }
