@@ -439,8 +439,10 @@
                                     data-panel="#dropdnAccount"><i class="icon-user"></i><span
                                         class="dropdn-link-txt">حسابي</span></a>
                             </div>
+
                             {{-- call to cart component livewire for cart and wishlist counter --}}
                             @livewire('frontend.cart-component')
+
                         </div>
                     </div>
                 </div>
