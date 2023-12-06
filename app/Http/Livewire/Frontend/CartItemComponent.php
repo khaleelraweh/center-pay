@@ -38,6 +38,7 @@ class CartItemComponent extends Component
 
     public function removeFromCart($rowId){
          $this->emit('removeFromCart' , $rowId );
+         return redirect(request()->header('Referer'));
     }
 
 

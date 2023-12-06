@@ -342,59 +342,45 @@
             <div class="dropdn-close">
                 <span class="js-dropdn-close">اغلاق</span>
             </div>
-            <div class="minicart-drop-content js-dropdn-content-scroll">
-                <div class="minicart-prd row">
-                    <div class="minicart-prd-image image-hover-scale-circle col">
-                        <a href="product.html"><img class="lazyload fade-up"
-                                src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                data-src="{{ asset('frontend/images/skins/fashion/products/product-01-1.webp') }}"
-                                alt="" /></a>
-                    </div>
-                    <div class="minicart-prd-info col">
-                        <div class="minicart-prd-tag">بطاقة بابجي</div>
-                        <h2 class="minicart-prd-name">
-                            <a href="#">البطاقة الاولى</a>
-                        </h2>
-                        <div class="minicart-prd-qty">
-                            <span class="minicart-prd-qty-label">الكمية:</span><span
-                                class="minicart-prd-qty-value">1</span>
+            <div wire:ignore class="minicart-drop-content js-dropdn-content-scroll">
+
+                {{-- show cart item  --}}
+                @foreach (Cart::instance('default')->content() as $item)
+                    <div class="minicart-prd row">
+                        {{-- image part  --}}
+                        <div class="minicart-prd-image image-hover-scale-circle col">
+                            <a href="{{ route('frontend.card', $item->model->slug) }}"><img class="lazyload fade-up"
+                                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                                    data-src="{{ asset('assets/cards/' . $item->model?->firstMedia->file_name) }}"
+                                    alt="{{ $item->model->name }}" /></a>
                         </div>
-                        <div class="minicart-prd-price prd-price">
-                            <div class="price-old">$200.00</div>
-                            <div class="price-new">$180.00</div>
+                        {{-- content part --}}
+                        <div class="minicart-prd-info col">
+                            <div class="minicart-prd-tag"><a
+                                    href="{{ route('frontend.card_category', $item->model->category->slug) }}">{{ $item->model->category->name }}</a>
+                            </div>
+                            <h2 class="minicart-prd-name">
+                                <a href="{{ route('frontend.card', $item->model->slug) }}">{{ $item->model->name }}
+                                </a>
+                            </h2>
+                            <div class="minicart-prd-qty">
+                                <span class="minicart-prd-qty-label">الكمية:</span><span
+                                    class="minicart-prd-qty-value">{{ $item->qty }}</span>
+                            </div>
+                            <div class="minicart-prd-price prd-price">
+                                <div class="price-old">$200.00</div>
+                                <div class="price-new">{{ $item->model->price * $item->qty }}</div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="minicart-prd-action">
-                        <a href="#" class="js-product-remove" data-line-number="1"><i
-                                class="icon-recycle"></i></a>
-                    </div>
-                </div>
-                <div class="minicart-prd row">
-                    <div class="minicart-prd-image image-hover-scale-circle col">
-                        <a href="product.html"><img class="lazyload fade-up"
-                                src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                data-src="{{ asset('frontend/images/skins/fashion/products/product-16-1.webp') }}"
-                                alt="" /></a>
-                    </div>
-                    <div class="minicart-prd-info col">
-                        <div class="minicart-prd-tag">بطاقة نتفلكس</div>
-                        <h2 class="minicart-prd-name">
-                            <a href="#">البطاقة الثانية</a>
-                        </h2>
-                        <div class="minicart-prd-qty">
-                            <span class="minicart-prd-qty-label">الكمية:</span><span
-                                class="minicart-prd-qty-value">1</span>
-                        </div>
-                        <div class="minicart-prd-price prd-price">
-                            <div class="price-old">$200.00</div>
-                            <div class="price-new">$180.00</div>
+                        {{-- trash part --}}
+                        <div class="minicart-prd-action">
+                            <a href="#" class="js-product-remove" data-line-number="1"><i
+                                    class="icon-recycle"></i></a>
                         </div>
                     </div>
-                    <div class="minicart-prd-action">
-                        <a href="#" class="js-product-remove" data-line-number="2"><i
-                                class="icon-recycle"></i></a>
-                    </div>
-                </div>
+                @endforeach
+
+
                 <div class="minicart-empty js-minicart-empty d-none">
                     <div class="minicart-empty-text">السلة فارغة</div>
                     <div class="minicart-empty-icon">
@@ -441,7 +427,7 @@
                         الاجمالي
                     </div>
                     <div class="minicart-drop-total-price col" data-header-cart-total="">
-                        $340
+                        {{ Cart::total() }}
                     </div>
                 </div>
                 <div class="minicart-drop-actions">

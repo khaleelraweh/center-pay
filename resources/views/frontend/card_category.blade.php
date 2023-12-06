@@ -60,8 +60,6 @@
                     <h1>{{ $card_category->name }}</< /h1>
                 </div>
 
-
-
                 <div class="row prd-block prd-block--prv-bottom">
                     <div class="col-md-5 col-lg-5 col-xl-5 aside--sticky js-sticky-collision">
                         <div class="aside-content">

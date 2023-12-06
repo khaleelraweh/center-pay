@@ -12,8 +12,8 @@
                             <a class="item-name-anchor" href="{{ route('frontend.card', $cartItem->model?->slug) }}">
                                 {{ $cartItem->model?->name }} </a>
                         </h3>
-                        {{-- <a class="item-category" href="javascrip:void(0);">
-                            شدات ببجي </a> --}}
+                        <a class="item-category" href="javascrip:void(0);">
+                            {{ $cartItem->model?->category->name }} </a>
                         <div class="cart-item-prices">
                             <span class="item-price" style="display: flex; align-items: center;">
                                 السعر:

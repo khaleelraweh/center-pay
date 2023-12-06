@@ -1,6 +1,6 @@
 <div wire:ignore class="col-lg aside">
     <div class="prd-grid-wrap">
-        <div class="filter-row">
+        {{-- <div class="filter-row">
             <div class="row">
                 <div class="items-count"> عدد العناصر: </div>
                 <div class="select-wrap d-none d-md-flex">
@@ -31,7 +31,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <div class="prd-grid product-listing data-to-show-3 data-to-show-md-3 data-to-show-sm-2 js-category-grid"
             data-grid-tab-content>
 
