@@ -2,8 +2,10 @@
 @section('style')
     <style>
         .footer-shop-info,
-        .footer-shop-info .row {
-            background: #23232D !important;
+        .footer-shop-info .row,
+        .panel-heading {
+            /* background: #23232D !important; */
+            background: #1E171B !important;
         }
 
         .qty-changer button,
@@ -12,15 +14,18 @@
             background-color: transparent;
         }
 
-        .cart-table-prd-price .price-new {
-            color: white !important;
+        .quantity-choice {
+            /* width: 100px; */
+            border: 1px solid #ecedf6 !important;
+            border-radius: 22.5px;
+            color: #fff !important;
+            font-size: 14px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            padding: 0 10px;
+            border: none;
         }
-
-        .cart-table-prd-price .price-old {
-            color: gray !important;
-        }
-
-        .btn.btn--grey {}
     </style>
 @endsection
 @section('content')
@@ -38,121 +43,48 @@
             <div class="page-title text-center">
                 <h1> سلة التسوق</h1>
             </div>
+
+
             <div class="row">
-                <div class="col-sm-12 col-md-8">
 
-                    {{-- show element cart section  --}}
-                    <div class="cart-table">
-                        <div class="cart-table-prd cart-table-prd--head py-1 d-none d-md-flex">
-                            <div class="cart-table-prd-image text-center">
-                                الصورة
-                            </div>
-                            <div class="cart-table-prd-content-wrap">
-                                <div class="cart-table-prd-info">الاسم</div>
-                                <div class="cart-table-prd-qty">الكمية</div>
-                                <div class="cart-table-prd-price">السعر</div>
-                                <div class="cart-table-prd-action">&nbsp;</div>
-                            </div>
-                        </div>
-                        <div class="cart-table-prd">
-                            <div class="cart-table-prd-image">
-                                <a href="product.html" class="prd-img"><img class="lazyload fade-up"
-                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                        data-src="{{ asset('frontend/images/temp/1.webp') }}" alt=""></a>
-                            </div>
-                            <div class="cart-table-prd-content-wrap">
-                                <div class="cart-table-prd-info">
-                                    <div class="cart-table-prd-price">
-                                        <div class="price-old">$200.00</div>
-                                        <div class="price-new">$180.00</div>
-                                    </div>
-                                    <h2 class="cart-table-prd-name"><a href="product.html">Leather Pegged
-                                            Pants</a></h2>
-                                </div>
-                                <div class="cart-table-prd-qty">
-                                    <div class="qty qty-changer">
-                                        <button class="decrease"></button>
-                                        <input type="text" class="qty-input" value="2" data-min="0"
-                                            data-max="1000">
-                                        <button class="increase"></button>
-                                    </div>
-                                </div>
-                                <div class="cart-table-prd-price-total">
-                                    $360.00
-                                </div>
-                            </div>
-                            <div class="cart-table-prd-action">
-                                <a href="#" class="cart-table-prd-remove" data-tooltip="Remove Product"><i
-                                        class="icon-recycle"></i></a>
-                            </div>
-                        </div>
-                        <div class="cart-table-prd">
-                            <div class="cart-table-prd-image">
-                                <a href="product.html" class="prd-img"><img class="lazyload fade-up"
-                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                        data-src="{{ asset('frontend/images/temp/8.webp') }}" alt=""></a>
-                            </div>
-                            <div class="cart-table-prd-content-wrap">
-                                <div class="cart-table-prd-info">
-                                    <div class="cart-table-prd-price">
-                                        <div class="price-new">$220.00</div>
-                                    </div>
-                                    <h2 class="cart-table-prd-name"><a href="product.html">Cascade Casual
-                                            Shirt</a></h2>
-                                </div>
-                                <div class="cart-table-prd-qty">
-                                    <div class="qty qty-changer">
-                                        <button class="decrease"></button>
-                                        <input type="text" class="qty-input" value="2" data-min="0"
-                                            data-max="1000">
-                                        <button class="increase"></button>
-                                    </div>
-                                </div>
-                                <div class="cart-table-prd-price-total">
-                                    $360.00
-                                </div>
-                            </div>
-                            <div class="cart-table-prd-action">
-                                <a href="#" class="cart-table-prd-remove" data-tooltip="Remove Product"><i
-                                        class="icon-recycle"></i></a>
-                            </div>
-                        </div>
-                        <div class="cart-table-prd">
-                            <div class="cart-table-prd-image">
-                                <a href="product.html" class="prd-img"><img class="lazyload fade-up"
-                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                        data-src="{{ asset('frontend/images/temp/1.webp') }}" alt=""></a>
-                            </div>
-                            <div class="cart-table-prd-content-wrap">
-                                <div class="cart-table-prd-info">
-                                    <div class="cart-table-prd-price">
-                                        <div class="price-new">$75.00</div>
-                                    </div>
-                                    <h2 class="cart-table-prd-name"><a href="product.html">Oversize Cotton
-                                            Dress</a></h2>
-                                </div>
-                                <div class="cart-table-prd-qty">
-                                    <div class="qty qty-changer">
-                                        <button class="decrease"></button>
-                                        <input type="text" class="qty-input" value="2" data-min="0"
-                                            data-max="1000">
-                                        <button class="increase"></button>
-                                    </div>
-                                </div>
-                                <div class="cart-table-prd-price-total">
-                                    $360.00
-                                </div>
-                            </div>
-                            <div class="cart-table-prd-action">
-                                <a href="#" class="cart-table-prd-remove" data-tooltip="Remove Product"><i
-                                        class="icon-recycle"></i></a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-md-8 js-hide-empty">
 
-                    {{-- clear cart  --}}
-                    <div class="text-center mt-1"><a href="#" class="btn btn--grey">افراغ المفضلة </a>
-                    </div>
+                    {{-- عناصر سلة التسوق  --}}
+                    @forelse (Cart::content() as $item)
+                        {{--  show item in cart using livewire --}}
+                        @livewire('frontend.cart-item-component', ['itemRowId' => $item->rowId])
+
+                        <div class="text-center mt-1"><a href="#"
+                                class="btn btn--grey js-remove-all-product rounded-pill">الغاء
+                                السلة</a>
+                        </div>
+
+                    @empty
+
+                        {{-- سلة الشراء فارغة  --}}
+                        <div class="cart">
+                            <div class="card-body bg-transparent">
+                                <div class="minicart-empty-text text-center">
+                                    <h1>سلة الشراء فارغة</h1>
+                                </div>
+                                <div class="minicart-empty-icon">
+                                    <i class="icon-shopping-bag"></i>
+                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                                        viewBox="0 0 306 262" style="enable-background:new 0 0 306 262;"
+                                        xml:space="preserve">
+                                        <path class="st0"
+                                            d="M78.1,59.5c0,0-37.3,22-26.7,85s59.7,237,142.7,283s193,56,313-84s21-206-69-240s-249.4-67-309-60C94.6,47.6,78.1,59.5,78.1,59.5z">
+                                        </path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    @endforelse
+
+
+
+                    {{-- random cards --}}
+                    {{-- <livewire:frontend.random-card-component :random_cards="$random_cards" /> --}}
 
                     {{-- wanted more section  --}}
                     <div class="d-none d-lg-block">
@@ -772,127 +704,23 @@
 
                 </div>
 
-                {{-- left side bar  --}}
-                <div class="col-sm-12 col-md-4 mt-3 mt-md-0">
-                    {{-- advertisor  --}}
-                    <div class="cart-promo-banner">
-                        <div class="cart-promo-banner-inside">
-                            <div class="txt1">Save 50%</div>
-                            <div class="txt2">فقط اليوم!</div>
-                        </div>
+                <div class="col-md-4 mt-3 mt-md-0 js-hide-empty">
+
+                    <div class="text-center">
+                        <h2>الإجمالي</h2>
                     </div>
 
-                    {{-- cart total part  --}}
-                    <div class="card-total">
-                        <div class="text-right">
-                            <button class="btn btn--grey"><span>تحديث المفضلة</span><i class="icon-refresh"></i></button>
-                        </div>
-                        <div class="row d-flex">
-                            <div class="col card-total-txt">الاجمالي</div>
-                            <div class="col-auto card-total-price text-right">$ 475.00</div>
-                        </div>
-                        <button class="btn btn--full btn--lg"><span>دفع</span></button>
+                    {{-- call to card total panel --}}
+                    @livewire('frontend.cart-total-component')
 
-                    </div>
-
-                    {{-- shipping company and discount code part  --}}
-                    <div class="mt-2"></div>
-                    <div class="panel-group  prd-block_accordion" id="productAccordion">
-                        <div class=" panel panel-default">
-                            <div class="panel-heading active">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#productAccordion" href="#collapse1">خيارات
-                                        الشحن
-                                    </a>
-                                    <span class="toggle-arrow"><span></span><span></span></span>
-                                </h4>
-                            </div>
-                            <div id="collapse1" class="panel-collapse collapse show">
-                                <div class="panel-body">
-                                    <label>الدولة:</label>
-                                    <div class="form-group select-wrapper select-wrapper-sm">
-                                        <select class="form-control form-control--sm">
-                                            <option value="United States">الولايات المتحدة</option>
-                                            <option value="Canada">كنداء</option>
-                                            <option value="China">China</option>
-                                            <option value="India">India</option>
-                                            <option value="Italy">Italy</option>
-                                            <option value="Mexico">Mexico</option>
-                                        </select>
-                                    </div>
-                                    <label>المقاطعة:</label>
-                                    <div class="form-group select-wrapper select-wrapper-sm">
-                                        <select class="form-control form-control--sm">
-                                            <option value="AL">الباما</option>
-                                            <option value="AK">Alaska</option>
-                                            <option value="AZ">Arizona</option>
-                                            <option value="AR">Arkansas</option>
-                                            <option value="CA">California</option>
-                                            <option value="CO">Colorado</option>
-                                            <option value="CT">Connecticut</option>
-                                            <option value="DE">Delaware</option>
-                                            <option value="DC">District Of Columbia</option>
-                                            <option value="FL">Florida</option>
-                                            <option value="GA">Georgia</option>
-                                            <option value="HI">Hawaii</option>
-                                            <option value="ID">Idaho</option>
-                                            <option value="IL">Illinois</option>
-                                            <option value="IN">Indiana</option>
-                                            <option value="IA">Iowa</option>
-                                            <option value="KS">Kansas</option>
-                                            <option value="KY">Kentucky</option>
-                                            <option value="LA">Louisiana</option>
-                                        </select>
-                                    </div>
-                                    <label>Zip/Postal code:</label>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control form-control--sm">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel">
-                            <div class="panel-heading ">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#productAccordion" href="#collapse2">كود الخصم
-                                    </a>
-                                    <span class="toggle-arrow"><span></span><span></span></span>
-                                </h4>
-                            </div>
-                            <div id="collapse2" class="panel-collapse collapse ">
-                                <div class="panel-body">
-                                    <p>حصلت على الرمز الترويجي؟ ثم تكون على بعد بضعة خطوات وحروف مجمعة بشكل عشوائي
-                                        من التوفير الرائع!</p>
-                                    <div class="form-inline mt-2">
-                                        <input type="text" class="form-control form-control--sm"
-                                            placeholder="Promotion/Discount Code">
-                                        <button type="submit" class="btn">Apply</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel">
-                            <div class="panel-heading ">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#productAccordion" href="#collapse3">ملاحضات
-                                        للبائع
-                                    </a>
-                                    <span class="toggle-arrow"><span></span><span></span></span>
-                                </h4>
-                            </div>
-                            <div id="collapse3" class="panel-collapse collapse ">
-                                <div class="panel-body">
-                                    <textarea class="form-control form-control--sm textarea--height-100" placeholder="Text here"></textarea>
-                                    <div class="card-text-info mt-2">
-                                        <p>* تشمل التوفيرات العروض الترويجية، والكوبونات، وrueBUCKS، والشحن (إذا
-                                            ملائم).</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
+
+
+
             </div>
+
+
+
         </div>
     </div>
 

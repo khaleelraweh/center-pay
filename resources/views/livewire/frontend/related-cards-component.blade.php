@@ -14,6 +14,7 @@
                     <div class="prd prd--style2 prd-labels--max prd-labels-shadow ">
                         <div class="prd-inside">
                             <div class="prd-img-area">
+
                                 {{-- image area --}}
                                 <a href="{{ route('frontend.card', $related_card->slug) }}"
                                     class="prd-img image-hover-scale image-container">
@@ -24,6 +25,7 @@
                                     <div class="prd-big-squared-labels">
                                     </div>
                                 </a>
+
                                 {{-- top control area  --}}
                                 <div class="prd-circle-labels">
                                     <a href="#" wire:click.prevent="addToWishList('{{ $related_card->id }}')"
@@ -39,13 +41,11 @@
                                     <a href="#" class="circle-label-qview js-prd-quickview prd-hide-mobile"
                                         data-src="ajax/ajax-quickview.html">
                                         <i class="icon-eye"></i>
-                                        <span>QUICK VIEW</span>
+                                        <span>استعراض سريع</span>
                                     </a>
-
-
-
                                 </div>
-                                {{-- color style switcher  --}}
+
+                                {{-- Link style switcher  --}}
                                 <ul class="list-options color-swatch">
 
                                     @foreach ($related_card->photos as $photo)
@@ -61,6 +61,7 @@
                                     @endforeach
 
                                 </ul>
+
                             </div>
 
                             {{-- button info --}}
@@ -86,7 +87,7 @@
                                             <button class="btn js-prd-addtocart"
                                                 wire:click.prevent="addToCart('{{ $related_card->id }}')"
                                                 data-product='{"name": "Midi Dress with Belt", "path":"{{ asset('
-                                                												frontend/assests/images/skins/fashion/cards/product-06-1.webp') }}", "url"
+                                                                                                                                                												frontend/assests/images/skins/fashion/cards/product-06-1.webp') }}", "url"
 												:"product.html", "aspect_ratio" :0.778}'>
                                                 Add To Cart
                                             </button>
@@ -115,7 +116,7 @@
                                                 <button class="btn js-prd-addtocart"
                                                     wire:click.prevent="addToCart('{{ $related_card->id }}')"
                                                     data-product='{"name": "Midi Dress with Belt", "path":"{{ asset('
-                                                    													frontend/assests/images/skins/fashion/cards/product-06-1.webp') }}", "url"
+                                                                                                                                                            													frontend/assests/images/skins/fashion/cards/product-06-1.webp') }}", "url"
 													:"product.html", "aspect_ratio" :0.778}'>Add
                                                     To Cart</button>
                                             </form>

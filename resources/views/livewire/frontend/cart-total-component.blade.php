@@ -90,8 +90,19 @@
                     الدفع</span></a>
         @endif
     @else
-        <li class="d-flex align-items-center justify-content-between mb-4">
-            <span>Your Cart is empty</span>
-        </li>
+        {{-- سلة الشراء فارغة  --}}
+        <div class="cart">
+            <div class="card-body bg-transparent">
+                <div class="minicart-empty-icon">
+                    <i class="icon-shopping-bag" style="font-size: 100px;"></i>
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 306 262"
+                        style="enable-background:new 0 0 306 262;" xml:space="preserve">
+                        <path class="st0"
+                            d="M78.1,59.5c0,0-37.3,22-26.7,85s59.7,237,142.7,283s193,56,313-84s21-206-69-240s-249.4-67-309-60C94.6,47.6,78.1,59.5,78.1,59.5z">
+                        </path>
+                    </svg>
+                </div>
+            </div>
+        </div>
     @endif
 </div>
