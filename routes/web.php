@@ -12,6 +12,7 @@ use App\Http\Controllers\Backend\CustomerAddressController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\MainSliderController;
 use App\Http\Controllers\Backend\NewsController;
+use App\Http\Controllers\Backend\PaymentCategoriesController;
 use App\Http\Controllers\Backend\PaymentMethodController;
 use App\Http\Controllers\Backend\ProductCategoriesController;
 use App\Http\Controllers\Backend\ProductController;
@@ -118,6 +119,10 @@ Route::group(['prefix'=>'admin' , 'as' =>'admin.'],function(){
 
         Route::post('news/remove-image', [NewsController::class, 'remove_image'])->name('news.remove_image');
         Route::resource('news',NewsController::class);
+
+        Route::post('payment_categories/remove-image', [PaymentCategoriesController::class, 'remove_image'])->name('payment_categories.remove_image');
+        Route::resource('payment_categories', PaymentCategoriesController::class);
+        
 
 
 

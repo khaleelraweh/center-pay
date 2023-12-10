@@ -337,6 +337,18 @@ class EntrustSeeder extends Seeder
        $updateNews  =  Permission::create(['name' => 'update_news'   , 'display_name'     => 'تحديث خبر'       , 'route' => 'news/{news}/edit'  , 'module' => 'news' , 'as' => 'news.edit'     , 'icon' => null              , 'parent' => $manageNews->id , 'parent_original' => $manageNews->id ,'parent_show' => $manageNews->id , 'sidebar_link' => '0' , 'appear' => '0'] );
        $deleteNews =  Permission::create(['name'  => 'delete_news'    , 'display_name'    => 'حذف خبر'       , 'route' => 'news/{news}'       , 'module' => 'news' , 'as' => 'news.destroy'  , 'icon' => null              , 'parent' => $manageNews->id , 'parent_original' => $manageNews->id ,'parent_show' => $manageNews->id , 'sidebar_link' => '0' , 'appear' => '0'] );
 
+
+
+       //Procuct Categories
+       $managePaymentCategories = Permission::create(['name' => 'manage_payment_categories', 'display_name' => 'إدارة تصنيف طرق الدفع' , 'route' => 'payment_categories' , 'module' => 'payment_categories' , 'as' => 'payment_categories.index' , 'icon' => 'fas fa-file-archive' , 'parent' => '0' , 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '110',] );
+       $managePaymentCategories->parent_show = $managePaymentCategories->id; $managePaymentCategories->save();
+
+       $showPaymentCategories    =  Permission::create(['name' => 'show_payment_categories'    ,  'display_name' => 'تصنيف طرق الدفع'      , 'route' => 'payment_categories' , 'module' => 'payment_categories' , 'as' => 'payment_categories.index'    , 'icon' => 'fas fa-file-archive' , 'parent' => $managePaymentCategories->id , 'parent_original' => $managePaymentCategories->id ,'parent_show' => $managePaymentCategories->id , 'sidebar_link' => '1' , 'appear' => '1'] );
+       $createPaymentCategories  =  Permission::create(['name' => 'create_payment_categories'  , 'display_name'  => 'إضافة تصنيف' , 'route' => 'payment_categories' , 'module' => 'payment_categories' , 'as' => 'payment_categories.create'   , 'icon' => null                  , 'parent' => $managePaymentCategories->id , 'parent_original' => $managePaymentCategories->id ,'parent_show' => $managePaymentCategories->id , 'sidebar_link' => '0' , 'appear' => '0'] );
+       $displayPaymentCategories =  Permission::create(['name' => 'display_payment_categories' , 'display_name'  => 'عرض تصنيف'   , 'route' => 'payment_categories' , 'module' => 'payment_categories' , 'as' => 'payment_categories.show'     , 'icon' => null                  , 'parent' => $managePaymentCategories->id , 'parent_original' => $managePaymentCategories->id ,'parent_show' => $managePaymentCategories->id , 'sidebar_link' => '0' , 'appear' => '0'] );
+       $updatePaymentCategories  =  Permission::create(['name' => 'update_payment_categories'  , 'display_name'  => 'تعديل تصنيف' , 'route' => 'payment_categories' , 'module' => 'payment_categories' , 'as' => 'payment_categories.edit'     , 'icon' => null                  , 'parent' => $managePaymentCategories->id , 'parent_original' => $managePaymentCategories->id ,'parent_show' => $managePaymentCategories->id , 'sidebar_link' => '0' , 'appear' => '0'] );
+       $deletePaymentCategories  =  Permission::create(['name' => 'delete_payment_categories'  , 'display_name'  => 'حذف تصنيف' , 'route' => 'payment_categories' , 'module' => 'payment_categories' , 'as' => 'payment_categories.destroy'  , 'icon' => null                  , 'parent' => $managePaymentCategories->id , 'parent_original' => $managePaymentCategories->id ,'parent_show' => $managePaymentCategories->id , 'sidebar_link' => '0' , 'appear' => '0'] );
+       
         
     }
 }
