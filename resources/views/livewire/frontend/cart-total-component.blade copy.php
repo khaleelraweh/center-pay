@@ -40,9 +40,8 @@
             <div id="collapse2" class="panel-collapse collapse show">
                 <div class="panel-body">
 
-                    <form wire:submit.prevent="applyDiscount()">
-                        <div class="form-inline mt-2">
-
+                    <div class="form-inline mt-2">
+                        <form wire:submit.prevent="applyDiscount()">
                             @if (!session()->has('coupon'))
                                 <input type="text" wire:model="coupon_code"
                                     class="form-control form-control--sm col-md-12 card-discount-txt rounded-pill"
@@ -51,8 +50,7 @@
 
                             @if (session()->has('coupon'))
                                 <button type="button" wire:click.prevent="removeCoupon()"
-                                    class="btn btn--full btn--md rounded-pill">
-
+                                    class="btn col-4 col-sm-4 card-discount-btn rounded-pill">
                                     حذف
                                 </button>
                             @else
@@ -60,18 +58,29 @@
                                     تطبيق
                                 </button>
                             @endif
-                        </div>
-                    </form>
+                        </form>
+
+                        {{-- <button type="submit" class="btn col-4 col-sm-4 card-discount-btn rounded-pill">تطبيق</button> --}}
+                    </div>
+
+
+
+
+
+
+
+
+
+
 
 
                     @if (session()->has('coupon'))
                         <div class="d-flex mt-2">
-                            <div class="col">اجمالي الخصم للكوبون (
-                                <small>{{ getNumbers()->get('discount_code') }}</small>
-                                )
-                            </div>
+                            <div class="col">اجمالي الخصم</div>
+                            <strong class="small fw-bold">Discount <small>( {{ getNumbers()->get('discount_code') }}
+                                    )</small></strong>
 
-                            <div class="col-auto  card-discount-price text-right"> ${{ $cart_discount }}</div>
+                            <div class="col-auto  card-discount-price text-right">- ${{ $cart_discount }}</div>
                         </div>
                     @endif
 
