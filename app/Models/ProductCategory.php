@@ -88,7 +88,7 @@ class ProductCategory extends Model
             ->whereStatus(true)
             ->orderBy('id', 'asc')
             ->get();
-    }
+    } 
 
     public function products (){
         return $this->hasMany(Product::class);

@@ -339,7 +339,7 @@ class EntrustSeeder extends Seeder
 
 
 
-       //Procuct Categories
+       //payment Categories
        $managePaymentCategories = Permission::create(['name' => 'manage_payment_categories', 'display_name' => 'إدارة تصنيف طرق الدفع' , 'route' => 'payment_categories' , 'module' => 'payment_categories' , 'as' => 'payment_categories.index' , 'icon' => 'fas fa-file-archive' , 'parent' => '0' , 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '110',] );
        $managePaymentCategories->parent_show = $managePaymentCategories->id; $managePaymentCategories->save();
 
@@ -348,6 +348,18 @@ class EntrustSeeder extends Seeder
        $displayPaymentCategories =  Permission::create(['name' => 'display_payment_categories' , 'display_name'  => 'عرض تصنيف'   , 'route' => 'payment_categories' , 'module' => 'payment_categories' , 'as' => 'payment_categories.show'     , 'icon' => null                  , 'parent' => $managePaymentCategories->id , 'parent_original' => $managePaymentCategories->id ,'parent_show' => $managePaymentCategories->id , 'sidebar_link' => '0' , 'appear' => '0'] );
        $updatePaymentCategories  =  Permission::create(['name' => 'update_payment_categories'  , 'display_name'  => 'تعديل تصنيف' , 'route' => 'payment_categories' , 'module' => 'payment_categories' , 'as' => 'payment_categories.edit'     , 'icon' => null                  , 'parent' => $managePaymentCategories->id , 'parent_original' => $managePaymentCategories->id ,'parent_show' => $managePaymentCategories->id , 'sidebar_link' => '0' , 'appear' => '0'] );
        $deletePaymentCategories  =  Permission::create(['name' => 'delete_payment_categories'  , 'display_name'  => 'حذف تصنيف' , 'route' => 'payment_categories' , 'module' => 'payment_categories' , 'as' => 'payment_categories.destroy'  , 'icon' => null                  , 'parent' => $managePaymentCategories->id , 'parent_original' => $managePaymentCategories->id ,'parent_show' => $managePaymentCategories->id , 'sidebar_link' => '0' , 'appear' => '0'] );
+       
+
+
+       //payment methodOffline
+       $managePaymentMethodOfflines = Permission::create(['name' => 'manage_payment_method_offlines', 'display_name' => '  طرق الدفع' , 'route' => 'payment_method_offlines' , 'module' => 'payment_method_offlines' , 'as' => 'payment_method_offlines.index' , 'icon' => 'fas fa-file-archive' , 'parent' => $managePaymentCategories->id , 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '115',] );
+       $managePaymentMethodOfflines->parent_show = $managePaymentMethodOfflines->id; $managePaymentMethodOfflines->save();
+
+       $showPaymentMethodOfflines    =  Permission::create(['name' => 'show_payment_method_offlines'    ,  'display_name' => ' طرق الدفع'      , 'route' => 'payment_method_offlines' , 'module' => 'payment_method_offlines' , 'as' => 'payment_method_offlines.index'    , 'icon' => 'fas fa-file-archive' , 'parent' => $managePaymentMethodOfflines->id , 'parent_original' => $managePaymentMethodOfflines->id ,'parent_show' => $managePaymentMethodOfflines->id , 'sidebar_link' => '1' , 'appear' => '1'] );
+       $createPaymentMethodOfflines  =  Permission::create(['name' => 'create_payment_method_offlines'  , 'display_name'  => 'إضافة طريقة دفع جديدة' , 'route' => 'payment_method_offlines' , 'module' => 'payment_method_offlines' , 'as' => 'payment_method_offlines.create'   , 'icon' => null                  , 'parent' => $managePaymentMethodOfflines->id , 'parent_original' => $managePaymentMethodOfflines->id ,'parent_show' => $managePaymentMethodOfflines->id , 'sidebar_link' => '0' , 'appear' => '0'] );
+       $displayPaymentMethodOfflines =  Permission::create(['name' => 'display_payment_method_offlines' , 'display_name'  => 'عرض طريقة دفع'   , 'route' => 'payment_method_offlines' , 'module' => 'payment_method_offlines' , 'as' => 'payment_method_offlines.show'     , 'icon' => null                  , 'parent' => $managePaymentMethodOfflines->id , 'parent_original' => $managePaymentMethodOfflines->id ,'parent_show' => $managePaymentMethodOfflines->id , 'sidebar_link' => '0' , 'appear' => '0'] );
+       $updatePaymentMethodOfflines  =  Permission::create(['name' => 'update_payment_method_offlines'  , 'display_name'  => 'تعديل طريقة الدفع' , 'route' => 'payment_method_offlines' , 'module' => 'payment_method_offlines' , 'as' => 'payment_method_offlines.edit'     , 'icon' => null                  , 'parent' => $managePaymentMethodOfflines->id , 'parent_original' => $managePaymentMethodOfflines->id ,'parent_show' => $managePaymentMethodOfflines->id , 'sidebar_link' => '0' , 'appear' => '0'] );
+       $deletePaymentMethodOfflines  =  Permission::create(['name' => 'delete_payment_method_offlines'  , 'display_name'  => 'حذف طريقة الدفع' , 'route' => 'payment_method_offlines' , 'module' => 'payment_method_offlines' , 'as' => 'payment_method_offlines.destroy'  , 'icon' => null                  , 'parent' => $managePaymentMethodOfflines->id , 'parent_original' => $managePaymentMethodOfflines->id ,'parent_show' => $managePaymentMethodOfflines->id , 'sidebar_link' => '0' , 'appear' => '0'] );
        
         
     }
