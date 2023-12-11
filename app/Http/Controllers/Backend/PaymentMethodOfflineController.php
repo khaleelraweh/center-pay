@@ -9,6 +9,9 @@ use App\Models\PaymentMethod;
 use App\Models\PaymentMethodOffline;
 use DateTimeImmutable;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Intervention\Image\Facades\Image;
+
 
 class PaymentMethodOfflineController extends Controller
 { 
@@ -57,49 +60,52 @@ class PaymentMethodOfflineController extends Controller
         }
 
         // get Input from create.blade.php form request using PaymentMethodOfflineRequest to validate fields
-        $input['name']                  =   $request->name;
-        $input['description']           =   $request->description;
-        $input['quantity']              =   $request->quantity;
-        $input['price']                 =   $request->price;
-        $input['offer_price']           =   $request->offer_price;
-        $input['offer_ends']            =   $request->offer_ends;
-        $input['sku']                   =   $request->sku;
-        $input['max_order']             =   $request->max_order;
-        $input['product_category_id']   =   $request->product_category_id;
-        $input['featured']              =   $request->featured;
-        $input['status']                =   $request->status;
-        $input['created_by']            =   auth()->user()->full_name;
+        
+
+        $input['method_name']               =       $request->method_name ;
+        $input['method_description']        =       $request->method_description ;
+        $input['payment_category_id']       =       $request->payment_category_id ;
+
+        $input['owner_account_name']        =       $request->owner_account_name ;
+        $input['owner_account_number']      =       $request->owner_account_number ;
+        $input['owner_account_country']     =       $request->owner_account_country ;
+        $input['owner_account_phone']       =       $request->owner_account_phone ;
+
+        $input['customer_account_name']     =       $request->customer_account_name ;
+        $input['customer_account_number']   =       $request->customer_account_number ;
+        $input['customer_account_country']  =       $request->customer_account_country ;
+        $input['customer_account_phone']    =       $request->customer_account_phone ;
+
+
+        $input['status']                    =       $request->status ;
+        $input['created_by']                =       auth()->user()->full_name;
+        
 
         $published_on = $request->published_on.' '.$request->published_on_time;
-         $published_on = new DateTimeImmutable($published_on);
-         $input['published_on'] = $published_on;
+        $published_on = new DateTimeImmutable($published_on);
+        $input['published_on'] = $published_on;
 
-        //Add product to db with save instance of it in $product to use it later 
-        $product = Product::create($input);
+        //Add payment method  to db with save instance of it in $payment_method to use it later 
+        $payment_method = PaymentMethodOffline::create($input);
         
-        // make relation between this product with tags choosed using tags()->attach(tags_id)
-        $product->tags()->attach($request->tags); 
 
-        // add images to photos db and to path : public/assets/products
+        // add images to photos db and to path : public/assets/payment_methods
         if($request->images && count( $request->images) > 0){
 
-            $i = 1; // $i is used for making sort to image 
+            $i = 1; 
 
             foreach ($request->images as $image) {
                 
-                // $file_name = Str::slug($request->name).".".$image->getClientOriginalExtension(); // will not used because product already created to db and slug is there by steps upove
-                $file_name = $product->slug. '_' . time() . $i . '.' . $image->getClientOriginalExtension(); // time() and $id used to avoid repeating image name 
+                $file_name = $payment_method->slug. '_' . time() . $i . '.' . $image->getClientOriginalExtension(); // time() and $id used to avoid repeating image name 
                 $file_size = $image->getSize();
                 $file_type = $image->getMimeType();
-                $path = public_path('assets/products/' . $file_name);
+                $path = public_path('assets/payment_method_offlines/' . $file_name);
                 
-                // get the real path of this image then resize its width to 500 and height let it aspect it with width
                 Image::make($image->getRealPath())->resize(500,null,function($constraint){
                     $constraint->aspectRatio();
-                })->save($path,100);//then make copy of this image in new path as $path say with new name as $file_name say with clear 100%
+                })->save($path,100);
 
-                // add this photos to db using photos relational function
-                $product->photos()->create([
+                $payment_method->photos()->create([
                     'file_name' =>$file_name,
                     'file_size' =>$file_size,
                     'file_type' =>$file_type,
@@ -107,7 +113,7 @@ class PaymentMethodOfflineController extends Controller
                     'file_sort' =>$i,
                 ]); 
 
-                $i++; // step ahead by one for sort new image 
+                $i++; 
             }
         }
 
@@ -115,7 +121,6 @@ class PaymentMethodOfflineController extends Controller
             'message' => 'تمت الاضافة بنجاح',
             'alert-type' =>'success'
         ]);
-
     }
 
     public function show($id)
@@ -127,71 +132,66 @@ class PaymentMethodOfflineController extends Controller
         return view('backend.payment_method_offlines.show');
     }
 
-    public function edit(Product $product)
+    public function edit(PaymentMethodOffline $paymentMethodOffline)
     {
         if(!auth()->user()->ability('admin','update_payment_method_offlines')){
             return redirect('admin/index');
         }
 
         // get all categories that are active to choose one of them to be parent of product
-        $categories =ProductCategory::whereStatus(1)->get(['id','name']);
-        // get all tags to add some of them to product 
-        $tags = Tag::whereStatus(1)->get(['id','name']); 
-
-        return view('backend.payment_method_offlines.edit',compact('categories' , 'tags' ,'product'));
+        $categories =PaymentCategory::whereStatus(1)->get(['id','name_ar']);
+        
+        return view('backend.payment_method_offlines.edit',compact('categories'  ,'paymentMethodOffline'));
     }
 
-    public function update(PaymentMethodOfflineRequest $request, Product $product)
+    public function update(PaymentMethodOfflineRequest $request, PaymentMethodOffline $paymentMethodOffline)
     {
         if(!auth()->user()->ability('admin','update_payment_method_offlines')){
             return redirect('admin/index');
         }
 
-         // get Input from create.blade.php form request using PaymentMethodOfflineRequest to validate fields
-        $input['name']                  =   $request->name;
-        $input['description']           =   $request->description;
-        $input['quantity']              =   $request->quantity;
-        $input['price']                 =   $request->price;
-        $input['offer_price']           =   $request->offer_price;
-        $input['offer_ends']            =   $request->offer_ends;
-        $input['sku']                   =   $request->sku;
-        $input['max_order']             =   $request->max_order;
-        $input['product_category_id']   =   $request->product_category_id;
-        $input['featured']              =   $request->featured;
-        $input['status']                =   $request->status;
-        $input['updated_by']            =   auth()->user()->full_name;
 
+        $input['method_name']               =       $request->method_name ;
+        $input['method_description']        =       $request->method_description ;
+        $input['payment_category_id']       =       $request->payment_category_id ;
+
+        $input['owner_account_name']        =       $request->owner_account_name ;
+        $input['owner_account_number']      =       $request->owner_account_number ;
+        $input['owner_account_country']     =       $request->owner_account_country ;
+        $input['owner_account_phone']       =       $request->owner_account_phone ;
+
+        $input['customer_account_name']     =       $request->customer_account_name ;
+        $input['customer_account_number']   =       $request->customer_account_number ;
+        $input['customer_account_country']  =       $request->customer_account_country ;
+        $input['customer_account_phone']    =       $request->customer_account_phone ;
+
+
+        $input['status']                    =       $request->status ;
+        $input['updated_by']                =       auth()->user()->full_name;
+        
         $published_on = $request->published_on.' '.$request->published_on_time;
-         $published_on = new DateTimeImmutable($published_on);
-         $input['published_on'] = $published_on;
+        $published_on = new DateTimeImmutable($published_on);
+        $input['published_on'] = $published_on;
  
-         //Add product to db with save instance of it in $product to use it later 
-         $product->update($input);
+        //Add product to db with save instance of it in $product to use it later 
+        $paymentMethodOffline->update($input);
          
-        //  دالة السينك اذا كان في جديد ستضيفة فوق الاول اذا كان شي محذوف ستحذفة من الاول
-         $product->tags()->sync($request->tags);
-
-
-        // edit images in photos db and in path : public/assets/products
         if($request->images && count( $request->images) > 0){
 
-            $i = $product->photos->count() + 1; // $i is used for making sort to image 
+            $i = $paymentMethodOffline->photos->count() + 1; 
 
             foreach ($request->images as $image) {
                 
-                // $file_name = Str::slug($request->name).".".$image->getClientOriginalExtension(); // will not used because product already created to db and slug is there by steps upove
-                $file_name = $product->slug. '_' . time() . $i . '.' . $image->getClientOriginalExtension(); // time() and $id used to avoid repeating image name 
+                $file_name = $paymentMethodOffline->slug. '_' . time() . $i . '.' . $image->getClientOriginalExtension(); // time() and $id used to avoid repeating image name 
                 $file_size = $image->getSize();
                 $file_type = $image->getMimeType();
-                $path = public_path('assets/products/' . $file_name);
+                $path = public_path('assets/payment_method_offlines/' . $file_name);
                 
-                // get the real path of this image then resize its width to 500 and height let it aspect it with width
                 Image::make($image->getRealPath())->resize(500,null,function($constraint){
                     $constraint->aspectRatio();
-                })->save($path,100);//then make copy of this image in new path as $path say with new name as $file_name say with clear 100%
+                })->save($path,100);
 
-                // add this photos to db using photos relational function
-                $product->photos()->create([
+                $paymentMethodOffline->photos()->create([
                     'file_name' =>$file_name,
                     'file_size' =>$file_size,
                     'file_type' =>$file_type,
@@ -199,7 +199,7 @@ class PaymentMethodOfflineController extends Controller
                     'file_sort' =>$i,
                 ]); 
 
-                $i++; // step ahead by one for sort new image 
+                $i++;  
             }
         }
 
@@ -210,25 +210,25 @@ class PaymentMethodOfflineController extends Controller
 
     }
 
-    public function destroy(Product $product)
+    public function destroy(PaymentMethodOffline $paymentMethodOffline)
     {
         if(!auth()->user()->ability('admin','delete_payment_method_offlines')){
             return redirect('admin/index');
         }
 
-        if($product->photos->count() > 0){
-            foreach($product->photos as $photo){
-                if(File::exists('assets/products/' . $photo->file_name)){
-                    unlink('assets/products/' . $photo->file_name);
+        if($paymentMethodOffline->photos->count() > 0){
+            foreach($paymentMethodOffline->photos as $photo){
+                if(File::exists('assets/payment_method_offlines/' . $photo->file_name)){
+                    unlink('assets/payment_method_offlines/' . $photo->file_name);
                 }
                 $photo->delete();
             }
         }
 
-        $product->delete();
+        $paymentMethodOffline->delete();
 
         return redirect()->route('admin.payment_method_offlines.index')->with([
-            'message' => 'Deleted successfully',
+            'message' => 'تم الحذف بنجاح',
             'alert-type' => 'success'
         ]);
     }
@@ -240,14 +240,14 @@ class PaymentMethodOfflineController extends Controller
         }
 
         //find product from product table 
-         $product = Product::findOrFail($request->product_id);
+         $PaymentMethodOffline = PaymentMethodOffline::findOrFail($request->payment_method_offline_id);
 
          //find photos image from photos table 
-         $image = $product->photos()->where('id',$request->image_id)->first();
+         $image = $PaymentMethodOffline->photos()->where('id',$request->image_id)->first();
 
-         if(File::exists('assets/products/' . $image->file_name)){
+         if(File::exists('assets/payment_method_offlines/' . $image->file_name)){
             // delete image from path 
-             unlink('assets/products/' . $image->file_name);
+             unlink('assets/payment_method_offlines/' . $image->file_name);
          }
             //delete image from db
             $image->delete();

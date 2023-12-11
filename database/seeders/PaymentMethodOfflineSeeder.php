@@ -42,13 +42,14 @@ class PaymentMethodOfflineSeeder extends Seeder
             // For customer account 
             'customer_account_name'         =>      'ali hamod',
             'customer_account_number'       =>      '235146',
-            'customer_account_coutry'       =>      'Yemen',
+            'customer_account_country'       =>      'Yemen',
             'customer_account_phone'        =>      '711131459',
             // End for cuatomer account 
 
             'payment_category_id'           =>      2, 
             'status'                        =>      true,
             'published_on'                  =>      Carbon::now(),
+            'created_by'                    =>      'admin'
 
         ]);
         PaymentMethodOffline::create([
@@ -64,7 +65,7 @@ class PaymentMethodOfflineSeeder extends Seeder
             // For customer account 
             'customer_account_name'         =>      'salem hamod',
             'customer_account_number'       =>      '235146',
-            'customer_account_coutry'       =>      'Yemen',
+            'customer_account_country'       =>      'Yemen',
             'customer_account_phone'        =>      '711131459',
             // End for cuatomer account 
 

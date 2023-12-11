@@ -92,8 +92,13 @@
                     </li>
 
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link" id="pricing-tab" data-toggle="tab" href="#pricing" role="tab"
-                            aria-controls="pricing" aria-selected="false">بيانات التسعيرة</a>
+                        <a class="nav-link" id="account-tab" data-toggle="tab" href="#account" role="tab"
+                            aria-controls="account" aria-selected="false">بيانات مالك الحساب البنكي</a>
+                    </li>
+
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="customer-tab" data-toggle="tab" href="#customer" role="tab"
+                            aria-controls="customer" aria-selected="false">بيانات حساب العميل </a>
                     </li>
 
                     <li class="nav-item" role="presentation">
@@ -116,15 +121,16 @@
                         <div class="row">
                             {{-- البيانات الاساسية --}}
                             <div class="col-md-7 col-sm-12 ">
+
                                 {{-- category name  field --}}
                                 <div class="row pt-4">
                                     <div class="col-12 ">
                                         <label for="category_id">تصنيف المنتج</label>
-                                        <select name="product_category_id" class="form-control">
+                                        <select name="payment_category_id" class="form-control">
                                             <option value="">---</option>
                                             @forelse ($categories as $category)
                                                 <option value="{{ $category->id }}"
-                                                    {{ old('product_category_id') == $category->id ? 'selected' : null }}>
+                                                    {{ old('payment_category_id') == $category->id ? 'selected' : null }}>
                                                     {{ $category->name_ar }}</option>
                                             @empty
                                             @endforelse
@@ -132,26 +138,27 @@
                                     </div>
                                 </div>
 
-                                {{-- product name field --}}
+                                {{-- payment method_name field --}}
                                 <div class="row pt-4">
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label for="name">العنوان</label>
-                                            <input type="text" id="name" name="name" value="{{ old('name') }}"
-                                                class="form-control" placeholder="name">
-                                            @error('name')
+                                            <label for="method_name">اسم طريقة الدفع</label>
+                                            <input type="text" id="method_name" name="method_name"
+                                                value="{{ old('method_name') }}" class="form-control"
+                                                placeholder="method_name">
+                                            @error('method_name')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
                                 </div>
 
-                                {{-- product description field --}}
+                                {{-- product method_description field --}}
                                 <div class="row pt-4">
                                     <div class="col-12">
-                                        <label for="description">Description</label>
-                                        <textarea name="description" rows="10" class="form-control summernote">
-                                            {!! old('description') !!}
+                                        <label for="method_description">method_description</label>
+                                        <textarea name="method_description" rows="10" class="form-control summernote">
+                                            {!! old('method_description') !!}
                                         </textarea>
                                     </div>
                                 </div>
@@ -178,141 +185,123 @@
                         </div>
                     </div>
 
-                    {{-- Pricing Tab --}}
-                    <div class="tab-pane fade" id="pricing" role="tabpanel" aria-labelledby="pricing-tab">
-                        {{-- skeu and quantity fields --}}
+                    {{-- account Tab --}}
+                    <div class="tab-pane fade" id="account" role="tabpanel" aria-labelledby="account-tab">
+
+                        {{-- owner name and owner number fields --}}
                         <div class="row">
-                            {{-- quantity field --}}
+
+                            {{-- owner name field --}}
                             <div class="col-md-6 col-sm-12 pt-4">
-                                <label for="sku">رمز المنتج sku</label>
-                                <input type="text" name="sku" id="sku" value="{{ old('sku') }}"
-                                    class="form-control" placeholder="sku..">
-                                @error('sku')
+                                <label for="owner_account_name"> اسم الحساب</label>
+                                <input type="text" name="owner_account_name" id="owner_account_name"
+                                    value="{{ old('owner_account_name') }}" class="form-control"
+                                    placeholder="owner_account_name..">
+                                @error('owner_account_name')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
 
-                            {{-- quantity field --}}
+                            {{-- owner_account_number field --}}
                             <div class="col-md-6 col-sm-12 pt-4">
-                                <label for="quantity">الكمية</label>
-                                <input type="number" name="quantity" id="quantity" value="{{ old(0, 'quantity') }}"
-                                    min="0" class="form-control" placeholder="quantity"
-                                    data-parsley-range="[-1,1000]" data-parsley-required-message="هذا الحقل مطلوب."
-                                    placeholder="0" data-parsley-range="[-1,1000]"
-                                    data-parsley-range-message="قيمة هذا الحقل بين [0,999].">
-                                @error('quantity')
+                                <label for="owner_account_number">رقم الحساب</label>
+                                <input type="text" name="owner_account_number" id="owner_account_number"
+                                    value="{{ old('owner_account_number') }}" class="form-control"
+                                    placeholder="owner_account_number">
+                                @error('owner_account_number')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
 
-                                <div class="col-md-12 col-sm-12 ">
-                                    <label class="col-form-label col-md-12 col-sm-12 ">
-                                        <input name="Quantity_Unlimited" type="checkbox" class="flat"
-                                            onclick="enableDisable(this.checked, 'quantity')"
-                                            data-parsley-multiple="Quantity_Unlimited"> الكمية غير محدودة
-                                        <script language="javascript">
-                                            function enableDisable(bEnable, textBoxID) {
-                                                document.getElementById(textBoxID).readOnly = bEnable
-                                            }
-                                        </script>
-                                    </label>
-                                </div>
                             </div>
                         </div>
 
-                        {{-- product price and offer_price fields --}}
+                        {{-- owner country and  phone fields --}}
                         <div class="row">
                             <div class="col-md-6 col-sm-12 pt-3">
-                                <label for="price">السعر المنتج </label>
-                                <input type="text" name="price" id="price" value="{{ old('price') }}"
-                                    class="form-control" placeholder="price">
-                                @error('price')
+                                <label for="owner_account_country">الدولة</label>
+                                <input type="text" name="owner_account_country" id="owner_account_country"
+                                    value="{{ old('owner_account_country') }}" class="form-control"
+                                    placeholder="owner_account_country">
+                                @error('owner_account_country')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
 
                             <div class="col-md-6 col-sm-12 pt-3">
-                                <label for="offer_price">سعر التخفيض </label>
-                                <input type="text" name="offer_price" id="offer_price"
-                                    value="{{ old('offer_price') }}" class="form-control" placeholder="offer_price">
-                                @error('offer_price')
+                                <label for="owner_account_phone">رقم هاتف التواصل</label>
+                                <input type="text" name="owner_account_phone" id="owner_account_phone"
+                                    value="{{ old('owner_account_phone') }}" class="form-control"
+                                    placeholder="owner_account_phone">
+                                @error('owner_account_phone')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
+                    </div>
 
-                        {{-- offer_ends for price --}}
+                    {{-- customer Tab --}}
+                    <div class="tab-pane fade" id="customer" role="tabpanel" aria-labelledby="customer-tab">
+
+                        {{-- owner name and owner number fields --}}
                         <div class="row">
-                            <div class="col-md-6 com-sm-12 pt-4">
-                                <label for="offer_ends" class="control-label"><span>اخر موعد للتخفيض </span><span
-                                        class="require red">*</span></label>
-                                <div class="form-group">
-                                    <input type="text" id="offer_ends" name="offer_ends"
-                                        value="{{ old('offer_ends', now()->format('Y-m-d')) }}" class="form-control">
-                                    @error('offer_ends')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
+
+                            {{-- owner name field --}}
+                            <div class="col-md-6 col-sm-12 pt-4">
+                                <label for="customer_account_name"> اسم الحساب</label>
+                                <input type="text" name="customer_account_name" id="customer_account_name"
+                                    value="{{ old('customer_account_name') }}" class="form-control"
+                                    placeholder="customer_account_name..">
+                                @error('customer_account_name')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
 
-                            {{-- max quentify accepted field --}}
+                            {{-- customer_account_number field --}}
                             <div class="col-md-6 col-sm-12 pt-4">
-                                <label for="max_order">اعلى كمية يمكن طلبها </label>
-                                <input type="number" name="max_order" id="max_order" value="{{ old(0, 'max_order') }}"
-                                    min="0" class="form-control" placeholder="0" data-parsley-range="[-1,1000]"
-                                    data-parsley-required-message="هذا الحقل مطلوب." placeholder="0"
-                                    data-parsley-range="[-1,1000]"
-                                    data-parsley-range-message="قيمة هذا الحقل بين [0,999].">
-                                @error('max_order')
+                                <label for="customer_account_number">رقم الحساب</label>
+                                <input type="text" name="customer_account_number" id="customer_account_number"
+                                    value="{{ old('customer_account_number') }}" class="form-control"
+                                    placeholder="customer_account_number">
+                                @error('customer_account_number')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
 
-                                <div class="col-md-12 col-sm-12 ">
-                                    <label class="col-form-label col-md-12 col-sm-12 ">
-                                        <input name="Quantity_Unlimited" type="checkbox" class="flat"
-                                            onclick="enableDisable(this.checked, 'max_order')"
-                                            data-parsley-multiple="Quantity_Unlimited"> الكمية غير محدودة
-                                        <script language="javascript">
-                                            function enableDisable(bEnable, textBoxID) {
-                                                document.getElementById(textBoxID).readOnly = bEnable
-                                            }
-                                        </script>
-                                    </label>
-                                </div>
+                            </div>
+                        </div>
+
+                        {{-- owner country and  phone fields --}}
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12 pt-3">
+                                <label for="customer_account_country">الدولة</label>
+                                <input type="text" name="customer_account_country" id="customer_account_country"
+                                    value="{{ old('customer_account_country') }}" class="form-control"
+                                    placeholder="customer_account_country">
+                                @error('customer_account_country')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                            <div class="col-md-6 col-sm-12 pt-3">
+                                <label for="customer_account_phone">رقم هاتف التواصل</label>
+                                <input type="text" name="customer_account_phone" id="customer_account_phone"
+                                    value="{{ old('customer_account_phone') }}" class="form-control"
+                                    placeholder="customer_account_phone">
+                                @error('customer_account_phone')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                     </div>
 
                     {{-- Publish Tab --}}
                     <div class="tab-pane fade" id="publish" role="tabpanel" aria-labelledby="publish-tab">
-                        {{-- status and featured field --}}
-                        <div class="row">
-                            <div class="col-6 pt-4">
-                                <label for="status">الحالة</label>
-                                <select name="status" class="form-control">
-                                    <option value="1" {{ old('status') == '1' ? 'selected' : null }}>مفعل</option>
-                                    <option value="0" {{ old('status') == '0' ? 'selected' : null }}>غير مفعل
-                                    </option>
-                                </select>
-                                @error('status')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
 
-                            <div class="col-6 pt-4">
-                                <label for="featured">عرض في المفضلة</label>
-                                <select name="featured" class="form-control">
-                                    <option value="1" {{ old('featured') == '1' ? 'selected' : null }}>نعم</option>
-                                    <option value="0" {{ old('featured') == '0' ? 'selected' : null }}>لا</option>
-                                </select>
-                                @error('featured')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
+
 
                         {{-- publish_start publish time field --}}
                         <div class="row">
-                            <div class="col-sm-12 col-md-6 pt-4">
+
+                            <div class="col-sm-12 col-md-12 pt-4">
                                 <div class="form-group">
                                     <label for="published_on">تاريخ النشر</label>
                                     <input type="text" id="published_on" name="published_on"
@@ -322,8 +311,10 @@
                                     @enderror
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="col-sm-12 col-md-6 pt-4">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 pt-4">
                                 <div class="form-group">
                                     <label for="published_on_time">وقت النشر</label>
                                     <input type="text" id="published_on_time" name="published_on_time"
@@ -334,11 +325,22 @@
                                     @enderror
                                 </div>
                             </div>
-
                         </div>
 
-
-
+                        {{-- status and featured field --}}
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 pt-4">
+                                <label for="status">الحالة</label>
+                                <select name="status" class="form-control">
+                                    <option value="1" {{ old('status') == '1' ? 'selected' : null }}>مفعل</option>
+                                    <option value="0" {{ old('status') == '0' ? 'selected' : null }}>غير مفعل
+                                    </option>
+                                </select>
+                                @error('status')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
 
                     <div class="tab-pane fade" id="seo" role="tabpanel" aria-labelledby="seo-tab">
@@ -346,7 +348,7 @@
                     </div>
 
                     <div class="form-group pt-4">
-                        <button type="submit" name="submit" class="btn btn-primary">Add Product</button>
+                        <button type="submit" name="submit" class="btn btn-primary">إضافة طريقة الدفع</button>
                     </div>
 
                 </div>

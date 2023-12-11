@@ -29,6 +29,8 @@ class PaymentMethodOffline extends Model
         'columns' => [
             'payment_method_offlines.owner_account_name' => 10,
             'payment_method_offlines.customer_account_name' => 10,
+            'payment_method_offlines.method_name' => 10,
+            'payment_method_offlines.method_description' => 10,
         ]
     ];
 

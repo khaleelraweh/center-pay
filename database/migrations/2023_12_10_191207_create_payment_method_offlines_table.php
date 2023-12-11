@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('method_name'); // bank name
             $table->string('slug')->unique();
+            $table->string('method_description'); //description of method name
 
 
             $table->string('owner_account_name'); 
@@ -26,7 +27,7 @@ return new class extends Migration
 
             $table->string('customer_account_name'); 
             $table->string('customer_account_number'); 
-            $table->string('customer_account_coutry'); 
+            $table->string('customer_account_country'); 
             $table->string('customer_account_phone'); 
 
             $table->foreignId('payment_category_id')->constrained()->cascadeOnDelete();
