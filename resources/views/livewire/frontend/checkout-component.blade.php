@@ -132,8 +132,6 @@
                                                                         {{-- <option value="987654321">مصرف الكريمي</option> --}}
 
                                                                     </select>
-
-
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -142,12 +140,6 @@
                                                 </div>
                                             @endif
 
-
-
-                                            {{-- @forelse ($payment_method_details as $payment_method_detail)
-                                                {{ $payment_method_detail->method_name }}
-                                            @empty
-                                            @endforelse --}}
 
                                             @forelse ($payment_method_details as $payment_method_detail)
                                                 {{-- {{ $payment_method_detail->method_name }} --}}
