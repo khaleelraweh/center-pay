@@ -30,6 +30,7 @@
         {{-- كود الخصم --}}
         <div class="panel">
             <div class="panel-heading active ">
+
                 <h4 class="panel-title">
                     <a data-toggle="collapse" data-parent="#productAccordion" href="#collapse2">كود
                         الخصم
