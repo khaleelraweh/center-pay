@@ -90,41 +90,40 @@
 
                                                         @forelse ($payment_categories as $payment_category)
                                                             <option value="{{ $payment_category->id }}"
-                                                                wire:click="updatePaymentMethodOffline()"
-                                                                {{ old('payment_category_id', $payment_category_id) == $payment_category->id ? 'selected' : null }}>
+                                                                wire:click="updatePaymentCategory()">
                                                                 {{ $payment_category->name_ar }}
                                                             </option>
                                                         @empty
                                                         @endforelse
 
+
+
                                                     </select>
                                                 </div>
                                             </div>
 
-
-                                            @if ($payment_category_id != '')
-
+                                            @if (count($payment_methods) > 0)
                                                 <div class="payment-details mt-3">
                                                     <div class="payment-type-1 js-bank">
-                                                        <h3 class="custom-color">بيانات التحويل عبر الحساب البنكي
+                                                        <h3 class="custom-color">بيانات التحويل عبر
+                                                            {{ $payment_category_name_ar }}
                                                         </h3>
                                                         <div class="row">
                                                             <div class="col-sm-12">
-                                                                <label>الحساب البنكي</label>
+                                                                <label> {{ $payment_category_name_ar }}</label>
                                                                 <div class="form-group select-wrapper">
 
 
                                                                     <select
                                                                         class="form-control js-banks form-control--sm rounded-pill"
                                                                         wire:model="payment_method_id">
-                                                                        <option value="">اختبر نو ع الحساب
-                                                                            البنكي
-                                                                            الذي تم التحويل اليه</option>
+                                                                        <option value="">اختر نوع
+                                                                            {{ $payment_category_name_ar }} الذي تم/ يتم
+                                                                            التحويل بواسطته</option>
+
 
                                                                         @forelse ($payment_methods as $payment_method)
-                                                                            <option value="{{ $payment_method->id }}"
-                                                                                wire:click=""
-                                                                                {{ old('payment_method_id', $payment_method_id) == $payment_method->id ? 'selected' : null }}>
+                                                                            <option value="{{ $payment_method->id }}">
                                                                                 {{ $payment_method->method_name }}
                                                                             </option>
                                                                         @empty
@@ -141,65 +140,16 @@
                                                     </div>
 
                                                 </div>
-
                                             @endif
 
 
 
+                                            @forelse ($payment_method_details as $payment_method_detail)
+                                                {{ $payment_method_detail->method_name }}
+                                            @empty
+                                            @endforelse
 
 
-
-
-
-                                            <div class="payment-details d-none">
-                                                <label>Cart Number</label>
-                                                <div class="form-group">
-                                                    <input type="text"
-                                                        class="form-control form-control--sm rounded-pill">
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-sm-6">
-                                                        <label>Month:</label>
-                                                        <div class="form-group select-wrapper">
-                                                            <select class="form-control form-control--sm rounded-pill">
-                                                                <option selected="" value="1">January
-                                                                </option>
-                                                                <option value="2">February</option>
-                                                                <option value="3">March</option>
-                                                                <option value="4">April</option>
-                                                                <option value="5">May</option>
-                                                                <option value="6">June</option>
-                                                                <option value="7">July</option>
-                                                                <option value="8">August</option>
-                                                                <option value="9">September</option>
-                                                                <option value="10">October</option>
-                                                                <option value="11">November</option>
-                                                                <option value="12">December</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-6">
-                                                        <label>Year:</label>
-                                                        <div class="form-group select-wrapper">
-                                                            <select class="form-control form-control--sm rounded-pill">
-                                                                <option value="2019">2019</option>
-                                                                <option value="2020">2020</option>
-                                                                <option value="2021">2021</option>
-                                                                <option value="2022">2022</option>
-                                                                <option value="2023">2023</option>
-                                                                <option value="2024">2024</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="mt-2">
-                                                    <label>CVV Code</label>
-                                                    <div class="form-group">
-                                                        <input type="text"
-                                                            class="form-control form-control--sm rounded-pill">
-                                                    </div>
-                                                </div>
-                                            </div>
 
                                         </div>
                                     </div>
@@ -211,6 +161,61 @@
 
 
 
+                                    <div class="banks-details row mt-3">
+                                                                  
+                                <div class="bank-info-987654321 col-sm-12 mb-3 d-none">
+                                  <div class="d-sm-flex flex-sm-row">
+                                    <div class="col-md-4 col-sm-12">
+                                      <img src="uploads/banks/2023100207080521.jpg" alt="مصرف الكريمي" class=" img-fluid rounded">
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                      <h2 class="">بيانات التحويل عبر الحساب البنكي</h2>
+                                      <h3 class="custom-color">مصرف الكريمي</h3>
+                                      <label>رقم الحساب البنكي:</label>
+                                      <div class="form-group">
+                                      987654321                                      </div>
+                                      <label>اسم الحساب البنكي:</label>
+                                      <div class="form-group">
+                                      محمد هطيف                                      </div>
+                                    </div>
+                                  </div>
+                                  <input type="hidden" id="bank-987654321" name="bank" class="form-control form-control--sm rounded-pill " value="5">
+                                </div>
+                                                                  
+                                <div class="bank-info-123456789 col-sm-12 mb-3">
+                                  <div class="d-sm-flex flex-sm-row">
+                                    <div class="col-md-4 col-sm-12">
+                                      <img src="uploads/banks/2023100207055011.png" alt="بنك التضامن" class=" img-fluid rounded">
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                      <h2 class="">بيانات التحويل عبر الحساب البنكي</h2>
+                                      <h3 class="custom-color">بنك التضامن</h3>
+                                      <label>رقم الحساب البنكي:</label>
+                                      <div class="form-group">
+                                      123456789                                      </div>
+                                      <label>اسم الحساب البنكي:</label>
+                                      <div class="form-group">
+                                      محمد هطيف                                      </div>
+                                    </div>
+                                  </div>
+                                  <input type="hidden" id="bank-123456789" name="bank" class="form-control form-control--sm rounded-pill " value="4">
+                                </div>
+                                                                  <div class="col-md-6 col-sm-12">
+                                    <label>رقم الحساب البنكي للعميل</label>
+                                    <div class="form-group">
+                                        <input type="text" name="bankAccNumber" class="form-control form-control--sm rounded-pill" placeholder="رقم الحساب البنكي للعميل">
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6 col-sm-12">
+                                    <label>صورة وصل التحويل</label>
+                                    <div class="form-group">
+                                        <input type="file" name="bankReceipt" id="bankReceipt" class="form-control form-control--sm rounded-pill">
+                                    </div>
+                                  </div>
+                                  <div class="col-sm-12 mt-5">
+                                    <button class="btn btn--full btn--md rounded-pill js-save-order"><span>اكمال عملية الشراء</span></button>
+                                  </div>
+                              </div>
 
 
 

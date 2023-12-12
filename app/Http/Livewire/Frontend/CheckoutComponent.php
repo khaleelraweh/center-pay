@@ -29,16 +29,12 @@ class CheckoutComponent extends Component
 
     public $payment_categories;
     public $payment_methods = [];
-
-    public $countries;
-    public $states = [];
+    public $payment_method_details = [];
 
 
     public $payment_category_id;
     public $payment_method_id;
-
-    public $country_id;
-    public $state_id;
+    public $payment_method_detail_id;
 
     public $payment_category_name_ar;
        
@@ -121,27 +117,24 @@ class CheckoutComponent extends Component
 
 
     public function updatePaymentCategory(){
-        
         $payment_category = PaymentCategory::whereId($this->payment_category_id)->first();
         $this->payment_category_name_ar = $payment_category->name_ar;
-
     } 
 
 
     public function render()
     {
         
-        $this->countries = Country::whereStatus(true)->get();
         $this->payment_categories = PaymentCategory::whereStatus(true)->get();
-
-        $this->states = $this->country_id != '' ? State::whereStatus(true)->whereCountryId($this->country_id)->get() : [];
         $this->payment_methods = $this->payment_category_id != '' ? PaymentMethodOffline::whereStatus(true)->wherePaymentCategoryId($this->payment_category_id)->get() : [] ; 
+        $this->payment_method_details = $this->payment_method_id != '' ? PaymentMethodOffline::whereStatus(true)->whereId($this->payment_method_id)->get() : [];
+
 
         return view('livewire.frontend.checkout-component',[
-            'countries' => $this->countries,
             'payment_categories' => $this->payment_categories,
-            'states' => $this->states,
             'payment_methods' => $this->payment_methods,
+            'payment_method_details' => $this->payment_method_details,
+
         ]);
     }
 }

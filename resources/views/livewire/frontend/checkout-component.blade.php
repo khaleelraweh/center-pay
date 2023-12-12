@@ -144,29 +144,72 @@
 
 
 
+                                            {{-- @forelse ($payment_method_details as $payment_method_detail)
+                                                {{ $payment_method_detail->method_name }}
+                                            @empty
+                                            @endforelse --}}
+
+                                            @forelse ($payment_method_details as $payment_method_detail)
+                                                {{-- {{ $payment_method_detail->method_name }} --}}
+
+                                                <div class="banks-details row mt-3">
+                                                    <div class="bank-info-123456789 col-sm-12 mb-3">
+                                                        <div class="d-sm-flex flex-sm-row">
+                                                            <div class="col-md-4 col-sm-12">
+                                                                <img src="{{ asset('assets/payment_method_offlines/' . $payment_method_detail->firstMedia->file_name) }}"
+                                                                    alt="{{ $payment_method_detail->name }}"
+                                                                    class=" img-fluid rounded">
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-12">
+                                                                <h2 class="">بيانات التحويل عبر
+                                                                    {{ $payment_method_detail->method_name }} </h2>
+                                                                <h3 class="custom-color">
+                                                                    {{ $payment_method_detail->name }}</h3>
+                                                                <label>رقم {{ $payment_category_name_ar }}:</label>
+                                                                <div class="form-group">
+                                                                    {{-- need to be change to number of bank --}}
+                                                                    {{ $payment_method_detail->id }} </div>
+                                                                <label>اسم {{ $payment_category_name_ar }}:</label>
+                                                                <div class="form-group">
+                                                                    {{ $payment_method_detail->owner_account_name }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <input type="hidden" id="bank-123456789" name="bank"
+                                                            class="form-control form-control--sm rounded-pill "
+                                                            value="4">
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <label>رقم الحساب البنكي للعميل</label>
+                                                        <div class="form-group">
+                                                            <input type="text" name="bankAccNumber"
+                                                                class="form-control form-control--sm rounded-pill"
+                                                                placeholder="رقم الحساب البنكي للعميل">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <label>صورة وصل التحويل</label>
+                                                        <div class="form-group">
+                                                            <input type="file" name="bankReceipt" id="bankReceipt"
+                                                                class="form-control form-control--sm rounded-pill">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 mt-5">
+                                                        <button
+                                                            class="btn btn--full btn--md rounded-pill js-save-order"><span>اكمال
+                                                                عملية الشراء</span></button>
+                                                    </div>
+                                                </div>
+
+                                            @empty
+                                            @endforelse
 
 
 
                                         </div>
                                     </div>
 
-
-
                                     {{-- end --}}
-
-
-
-
-
-
-
-
-
-                                    <div class="mt-2"></div>
-                                    <div class="clearfix mt-2">
-                                        <button type="submit" class="btn btn--lg w-100"> اكمل عملية الدفع عبر
-                                        </button>
-                                    </div>
 
 
                                 </div>
