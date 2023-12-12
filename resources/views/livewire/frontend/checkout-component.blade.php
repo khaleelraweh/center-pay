@@ -89,7 +89,8 @@
                                                         <option value="">اختر طريقة الدفع</option>
 
                                                         @forelse ($payment_categories as $payment_category)
-                                                            <option value="{{ $payment_category->id }}">
+                                                            <option value="{{ $payment_category->id }}"
+                                                                wire:click="updatePaymentCategory()">
                                                                 {{ $payment_category->name_ar }}
                                                             </option>
                                                         @empty
@@ -104,20 +105,21 @@
                                             @if (count($payment_methods) > 0)
                                                 <div class="payment-details mt-3">
                                                     <div class="payment-type-1 js-bank">
-                                                        <h3 class="custom-color">بيانات التحويل عبر الحساب البنكي
+                                                        <h3 class="custom-color">بيانات التحويل عبر
+                                                            {{ $payment_category_name_ar }}
                                                         </h3>
                                                         <div class="row">
                                                             <div class="col-sm-12">
-                                                                <label>الحساب البنكي</label>
+                                                                <label> {{ $payment_category_name_ar }}</label>
                                                                 <div class="form-group select-wrapper">
 
 
                                                                     <select
                                                                         class="form-control js-banks form-control--sm rounded-pill"
                                                                         wire:model="payment_method_id">
-                                                                        <option value="">اختبر نو ع الحساب
-                                                                            البنكي
-                                                                            الذي تم التحويل اليه</option>
+                                                                        <option value="">اختر نوع
+                                                                            {{ $payment_category_name_ar }} الذي تم/ يتم
+                                                                            التحويل بواسطته</option>
 
 
                                                                         @forelse ($payment_methods as $payment_method)

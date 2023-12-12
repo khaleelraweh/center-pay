@@ -39,6 +39,8 @@ class CheckoutComponent extends Component
 
     public $country_id;
     public $state_id;
+
+    public $payment_category_name_ar;
        
 
  
@@ -116,6 +118,14 @@ class CheckoutComponent extends Component
         $this->emit('updateCart');
         $this->alert('success','Coupon is removed');
     }
+
+
+    public function updatePaymentCategory(){
+        
+        $payment_category = PaymentCategory::whereId($this->payment_category_id)->first();
+        $this->payment_category_name_ar = $payment_category->name_ar;
+
+    } 
 
 
     public function render()
