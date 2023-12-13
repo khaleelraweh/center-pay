@@ -22,6 +22,7 @@ use App\Http\Controllers\Backend\ShippingCompanyController;
 use App\Http\Controllers\Backend\StateController;
 use App\Http\Controllers\Backend\SupervisorController;
 use App\Http\Controllers\Backend\TagController;
+use App\Http\Controllers\Frontend\CustomerController as FrontendCustomerController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\OrderController;
 use App\Models\News;
@@ -43,10 +44,34 @@ Route::get('/wishlist',[FrontendController::class,'wishlist'])->name('frontend.w
 Route::get('/checkout',[FrontendController::class,'checkout'])->name('frontend.checkout');
 
 
+// this routes is only for customers whom are loged  in my websige 
+Route::group(['middleware'=>['roles','role:customer']],function(){
+
+
+    //route for customer profile 
+    Route::get('/dashboard',[FrontendCustomerController::class,'dashboard'])->name('customer.dashboard');
+    Route::get('/profile',[FrontendCustomerController::class,'profile'])->name('customer.profile');
+    Route::patch('/profile',[FrontendCustomerController::class,'update_profile'])->name('customer.update_profile');
+    Route::get('/profile/remove-image',[FrontendCustomerController::class,'remove_profile_image'])->name('customer.remove_profile_image');
+    Route::get('/addresses',[FrontendCustomerController::class,'addresses'])->name('customer.addresses');
+    
+    Route::get('/orders',[FrontendCustomerController::class,'orders'])->name('customer.orders');
+  
+  
+    // route for pay using omnipay
+    //use middleware check_cart to check if user is loged in and cart count is bigger than zero
+    // Route::group(['middleware' => 'check_cart'] ,function () {
+    //   Route::get('/checkout',[Frontend\PaymentController::class,'checkout'])->name('frontend.checkout');
+    //   Route::post('/checkout/payment',[Frontend\PaymentController::class,'checkout_now'])->name('checkout.payment');
+    //   Route::get('/checkout/{order_id}/cancelled',[Frontend\PaymentController::class,'cancelled'])->name('checkout.cancel');
+    //   Route::get('/checkout/{order_id}/completed',[Frontend\PaymentController::class,'completed'])->name('checkout.complete');
+    //   Route::get('/checkout/webhook/{order?}/{env?}',[Frontend\PaymentController::class,'webhook'])->name('checkout.webhook.ipn');
+    // });
+    
+  });
+
 
 //Backend
-
-
 Route::group(['prefix'=>'admin' , 'as' =>'admin.'],function(){
     
     //guest to website 
