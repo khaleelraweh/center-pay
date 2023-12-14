@@ -20,6 +20,8 @@ class CartAsidebarItemComponent extends Component
  
     public function mount(){
 
+
+
         $this->item_quantity = Cart::instance('default')->get($this->itemRowId)->qty ?? 1;
         
         $this->cart_subtotal = Cart::instance('default')->subtotal();
@@ -28,16 +30,11 @@ class CartAsidebarItemComponent extends Component
     }
  
     // to update subtotal and total every time we update using increment function and decrement funtion in ..
-    protected $listeners = [
-        'updateCart'=>'mount'
-    ]; 
+    // protected $listeners = [
+    //     'updateCart'=>'mount'
+    // ]; 
  
-    public function mountUpdate(){
-
-        $this->cart_subtotal = Cart::instance('default')->subtotal();
-        $this->cart_tax = Cart::Instance('default')->tax();
-        $this->cart_total = Cart::Instance('default')->total();
-    }
+   
 
     public function decreaseQuantity($rowId){
 
@@ -46,7 +43,6 @@ class CartAsidebarItemComponent extends Component
             Cart::instance('default')->update($rowId, $this->item_quantity);
             $this->emit('updateCart');
         }
-
     } 
 
     public function increaseQuantity($rowId){
@@ -60,14 +56,17 @@ class CartAsidebarItemComponent extends Component
     }
 
     public function removeFromCart($rowId){
-         $this->emit('removeFromCart' , $rowId );
-         return redirect(request()->header('Referer'));
-    }
+        $this->emit('removeFromCart' , $rowId );
+   }
+
    
     public function render()
     {
+        
+            
         return view('livewire.frontend.cart-asidebar-item-component', [
-            'cartItem' =>Cart::instance('default')->get($this->itemRowId)
+            
+            'cartItem' =>  Cart::instance('default')->get($this->itemRowId) ,
         ]);
     }
 }

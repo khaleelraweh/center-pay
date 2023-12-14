@@ -1,13 +1,15 @@
-<div>
+<div x-data="{ open: true }" x-show="open">
     <div class="minicart-prd row">
-        {{-- image part  --}}
+
+        <!-- image part  -->
         <div class="minicart-prd-image image-hover-scale-circle col">
             <a href="{{ route('frontend.card', $cartItem->model->slug) }}"><img class="lazyload fade-up"
                     src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
                     data-src="{{ asset('assets/cards/' . $cartItem->model?->firstMedia->file_name) }}"
                     alt="{{ $cartItem->model->name }}" /></a>
         </div>
-        {{-- content part --}}
+
+        <!-- content part part  -->
         <div class="minicart-prd-info col">
             <div class="minicart-prd-tag"><a
                     href="{{ route('frontend.card_category', $cartItem->model->category->slug) }}">{{ $cartItem->model->category->name }}</a>
@@ -18,9 +20,9 @@
             </h2>
             <div class="minicart-prd-qty">
                 <span class="minicart-prd-qty-label">الكمية:</span>
-                {{-- <span
+                <!-- <span
                         class="minicart-prd-qty-value">{{ $cartItem->qty }}
-                    </span> --}}
+                    </span> -->
                 <div class="quantity">
                     <strong> الكمية </strong>
                     <div class="quantity-choice">
@@ -44,9 +46,13 @@
                 <div class="price-new">{{ $cartItem->model->price * $cartItem->qty }}</div>
             </div>
         </div>
-        {{-- trash part --}}
+
+        <!-- Trash part  -->
         <div class="minicart-prd-action">
-            <a href="#" class="js-product-remove" data-line-number="1"><i class="icon-recycle"></i></a>
+            <a wire:click.prevent="removeFromCart('{{ $cartItem->rowId }}')" x-on:click="open = ! open"
+                class="js-product-remove" title="حذف من السلة" style="cursor: pointer">
+                <i class="icon-recycle"></i>
+            </a>
         </div>
     </div>
 

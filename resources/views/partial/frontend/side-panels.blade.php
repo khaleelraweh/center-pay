@@ -302,92 +302,179 @@
     </div>
 
     {{-- القائمة الجانبية تسجيل الدخول   --}}
-    <div class="dropdn-content account-drop" id="dropdnAccount">
-        <div class="dropdn-content-block">
-            <div class="dropdn-close">
-                <span class="js-dropdn-close">اغلاق</span>
-            </div>
-            <ul>
-                <li>
-                    <div class="mb-4">
-                        <img srcset="
+    @guest
+        {{-- القائمة الجانبية تسجيل الدخول   --}}
+        <div class="dropdn-content account-drop" id="dropdnAccount">
+            <div class="dropdn-content-block">
+                <div class="dropdn-close">
+                    <span class="js-dropdn-close">اغلاق</span>
+                </div>
+                <ul>
+                    <li>
+                        <div class="mb-4">
+                            <img srcset="
                                     {{ asset('frontend/images/games/logo-games.webp') }} 1x,
                                     {{ asset('frontend/images/games/logo-games2x.webp') }} 2x "
-                            alt="سنتر باي" width="200">
-                    </div>
-                </li>
-                <li>
-                    {{-- <a href="account-create.html"> --}}
-                    <h5>
-                        <i class="icon-login custom-color"></i>
-                        <span>تسجيل الدخول</span>
-                    </h5>
-                    {{-- </a> --}}
-                </li>
-                <li>
-                    <h6 class="small-body-subtitle">
-                        مستخدم جديد ؟
-                        <a href="#" class="dropdn-link js-dropdn-link js-dropdn-link only-icon custom-color"
-                            data-panel="#dropdnSignUp">
-                            {{-- <i class="icon-user"></i> --}}
-                            <span>انشاء حساب جديد الان</span>
-                        </a>
-                    </h6>
-                </li>
-                <li>
-                    {{-- <a href="checkout.html"><span>الدفع</span><i class="icon-card"></i></a> --}}
-                </li>
-            </ul>
-            <div class="dropdn-form-wrapper">
-
-                <h5>دخول سريع</h5>
-
-                <form method="POST" action="{{ route('login') }}">
-                    @csrf
-                    <div class="form-group">
-                        <input type="text" name="username" value="{{ old('username') }}" required
-                            autocomplete="username" class="form-control form-control--sm js_email_fe rounded-pill"
-                            placeholder="ادخل اسم المستخدم" />
-
-                        @error('username')
-                            <span class="invalid-feedback text-danger" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-
-                        {{-- <div class="invalid-feedback">لا يكون الحقل فارغ</div> --}}
-                    </div>
-
-                    <div class="form-group">
-                        <input type="password" name="password" required autocomplete="current-password"
-                            class="form-control form-control--sm js_email_fe rounded-pill"
-                            placeholder="ادخل كلمة المرور" />
-
-                        @error('password')
-                            <span class="invalid-feedback text-danger" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-
-                        {{-- <div class="invalid-feedback">لا يكون الحقل فارغ</div> --}}
-                    </div>
-
-                    <button type="submit" class="btn mt-3 col-sm-12 rounded-pill js-login-btn">تسجل الدخول</button>
-
-                    <div class="mt-3">
-                        @if (Route::has('password.request'))
-                            <a class="  " href="{{ route('password.request') }}">
-                                {{ __('نسيت كلمة المرور ؟') }}
+                                alt="سنتر باي" width="200">
+                        </div>
+                    </li>
+                    <li>
+                        {{-- <a href="account-create.html"> --}}
+                        <h5>
+                            <i class="icon-login custom-color"></i>
+                            <span>تسجيل الدخول</span>
+                        </h5>
+                        {{-- </a> --}}
+                    </li>
+                    <li>
+                        <h6 class="small-body-subtitle">
+                            مستخدم جديد ؟
+                            <a href="#" class="dropdn-link js-dropdn-link js-dropdn-link only-icon custom-color"
+                                data-panel="#dropdnSignUp">
+                                {{-- <i class="icon-user"></i> --}}
+                                <span>انشاء حساب جديد الان</span>
                             </a>
-                        @endif
-                    </div>
+                        </h6>
+                    </li>
+                    <li>
+                        {{-- <a href="checkout.html"><span>الدفع</span><i class="icon-card"></i></a> --}}
+                    </li>
+                </ul>
+                <div class="dropdn-form-wrapper">
+
+                    <h5>دخول سريع</h5>
+
+                    <form method="POST" action="{{ route('login') }}">
+                        @csrf
+                        <div class="form-group">
+                            <input type="text" name="username" value="{{ old('username') }}" required
+                                autocomplete="username" class="form-control form-control--sm js_email_fe rounded-pill"
+                                placeholder="ادخل اسم المستخدم" />
+
+                            @error('username')
+                                <span class="invalid-feedback text-danger" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+
+                            {{-- <div class="invalid-feedback">لا يكون الحقل فارغ</div> --}}
+                        </div>
+
+                        <div class="form-group">
+                            <input type="password" name="password" required autocomplete="current-password"
+                                class="form-control form-control--sm js_email_fe rounded-pill"
+                                placeholder="ادخل كلمة المرور" />
+
+                            @error('password')
+                                <span class="invalid-feedback text-danger" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+
+                            {{-- <div class="invalid-feedback">لا يكون الحقل فارغ</div> --}}
+                        </div>
+
+                        <button type="submit" class="btn mt-3 col-sm-12 rounded-pill js-login-btn">تسجل الدخول</button>
+
+                        <div class="mt-3">
+                            @if (Route::has('password.request'))
+                                <a class="  " href="{{ route('password.request') }}">
+                                    {{ __('نسيت كلمة المرور ؟') }}
+                                </a>
+                            @endif
 
 
-                </form>
+                        </div>
+
+
+
+
+                    </form>
+                </div>
             </div>
+            <div class="drop-overlay js-dropdn-close"></div>
         </div>
-        <div class="drop-overlay js-dropdn-close"></div>
-    </div>
+    @else
+        <div class="dropdn-content account-drop" id="dropdnAccount">
+            <div class="dropdn-content-block">
+                <div class="dropdn-close">
+                    <span class="js-dropdn-close">اغلاق</span>
+                </div>
+                <ul>
+                    <li>
+                        <div class="mb-4">
+                            <img srcset="
+                                {{ asset('frontend/images/games/logo-games.webp') }} 1x,
+                                {{ asset('frontend/images/games/logo-games2x.webp') }} 2x "
+                                alt="سنتر باي" width="200">
+                        </div>
+                    </li>
+                    <li>
+                        <h5>
+                            <i class="icon-user"></i>
+                            <span>الملف الشخصي </span>
+                        </h5>
+                    </li>
+
+                    <li>
+                        <h6>
+                            <span>مرحبا : </span>
+                            @if (auth()->user()->full_name != null)
+                                <span class="custom-color">{{ auth()->user()?->full_name }}</span>
+                            @endif
+                        </h6>
+                    </li>
+                    <li>
+                        <div class="card border-0 rounded-0 p-lg-4 pref">
+                            <div class="card-body">
+                                <h5 class="text-uppercase mb-4">تصفح</h5>
+
+                                <div
+                                    class=" pref-link {{ Route::currentRouteName() == 'customer.dashboard' ? 'active text-white' : 'p ?>' }}  ">
+                                    <a href="{{ route('customer.dashboard') }}">
+                                        <strong class="small text-uppercase font-weight-bold">لوحة التحكم الرئيسية</strong>
+                                    </a>
+                                </div>
+                                <div
+                                    class=" pref-link {{ Route::currentRouteName() == 'customer.profile' ? 'active text-white' : '' }} ">
+                                    <a href="{{ route('customer.profile') }}">
+                                        <strong class="small text-uppercase font-weight-bold">الملف الشخصي</strong>
+                                    </a>
+                                </div>
+                                <div
+                                    class=" pref-link {{ Route::currentRouteName() == 'customer.addresses' ? 'active text-white' : '' }} ">
+                                    <a href="{{ route('customer.addresses') }}">
+                                        <strong class="small text-uppercase font-weight-bold">العناوين</strong>
+                                    </a>
+                                </div>
+                                <div
+                                    class=" pref-link {{ Route::currentRouteName() == 'customer.orders' ? 'active text-white' : '' }} ">
+                                    <a href="{{ route('customer.orders') }}">
+                                        <strong class="small text-uppercase font-weight-bold">طلباتي</strong>
+                                    </a>
+                                </div>
+                                <div class=" pref-link">
+                                    <a href="javascript:void(0);"
+                                        onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                        <strong class="small text-uppercase font-weight-bold">تسجيل الخروج</strong>
+                                    </a>
+                                    <form action="{{ route('logout') }}" method="POST" id="logout-form"
+                                        class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </li>
+                </ul>
+
+            </div>
+            <div class="drop-overlay js-dropdn-close"></div>
+        </div>
+    @endguest
 
     {{-- القائمة الجانبية إنشاء حساب جديد --}}
     <div class="dropdn-content signup-drop " id="dropdnSignUp">

@@ -21,7 +21,8 @@
         "mindscms/entrust": "^2.6",
         "mindscms/laravelshoppingcart": "^2.1",
         "nicolaslopezj/searchable": "^1.13",
-        "predis/predis": "^2.2"
+        "predis/predis": "^2.2",
+        "realrashid/sweet-alert": "^7.1"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

@@ -44,7 +44,7 @@
                                     class="dropdn-link-txt">حسابي</span></a>
                         </div>
                         {{-- call to cart component livewire for cart and wishlist counter --}}
-                        @livewire('frontend.cart-component')
+                        <livewire:frontend.cart-component />
 
                     </div>
                 </div>
@@ -434,6 +434,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="dropdn dropdn_account dropdn_fullheight">
                                 <a href="#" class="dropdn-link js-dropdn-link js-dropdn-link only-icon"
                                     data-panel="#dropdnAccount"><i class="icon-user"></i><span
@@ -441,7 +442,7 @@
                             </div>
 
                             {{-- call to cart component livewire for cart and wishlist counter --}}
-                            @livewire('frontend.cart-component')
+                            <livewire:frontend.cart-component />
 
                         </div>
                     </div>

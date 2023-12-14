@@ -1,4 +1,4 @@
-<div>
+<div x-data="{ open: true }" x-show="open">
     <div class="cart">
         <div class="card-body bg-transparent">
             <div class="cart-item">
@@ -25,9 +25,12 @@
                     </div>
                 </div>
                 <div class="item-footer">
-                    <button wire:click.prevent="removeFromCart('{{ $cartItem->rowId }}')" type="button" id="2"
-                        class="item-delete js-item-delete" data-toggle="modal" data-target="#deleteConfirm"
-                        title="حذف من السلة"><i class="icon-recycle"></i></button>
+
+                    <a wire:click.prevent="removeFromCart('{{ $cartItem->rowId }}')" x-on:click="open = ! open"
+                        class="item-delete js-item-delete" title="حذف من السلة">
+                        <i class="icon-recycle"></i>
+                    </a>
+
                     <div class="item-tools">
                         <div class="quantity">
                             <strong> الكمية </strong>

@@ -83,7 +83,7 @@
         @include('partial.frontend.header')
 
         {{-- main header --}}
-        @include('partial.frontend.header-side-panel')
+        @include('partial.frontend.side-panels')
 
         <div class=" page-content ">
             @yield('content')
@@ -102,7 +102,9 @@
     <script src="{{ asset('frontend/js/vendor-special/jquery.ez-plus.js') }}"></script>
     <script src="{{ asset('frontend/js/vendor/vendor.min.js') }}"></script>
     <script src="{{ asset('frontend/js/app-html.js') }}"></script>
-    <!-- <script src="assests/js/styleswitcher.js"></script> -->
+
+    <script src="//unpkg.com/alpinejs" defer></script>
+
     @yield('script')
     <livewire:scripts />
 

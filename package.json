@@ -2,7 +2,7 @@
     "private": true,
     "scripts": {
         "dev": "vite",
-         "build": "vite build",
+        "build": "vite build",
         "development": "mix",
         "watch": "mix watch",
         "watch-poll": "mix watch -- --watch-options-poll=1000",
@@ -20,5 +20,8 @@
         "postcss": "^8.1.14",
         "sass": "^1.56.1",
         "vite": "^4.5.0"
+    },
+    "dependencies": {
+        "alpinejs": "^3.13.3"
     }
 }

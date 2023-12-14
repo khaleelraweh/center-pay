@@ -52,7 +52,7 @@
                     {{-- عناصر سلة التسوق  --}}
                     @forelse (Cart::content('default') as $item)
                         {{--  show item in cart using livewire --}}
-                        @livewire('frontend.cart-item-component', ['itemRowId' => $item->rowId])
+                        <livewire:frontend.cart-item-component :item="$item->rowId" />
                     @empty
                         {{-- سلة الشراء فارغة  --}}
                         <div class="cart">

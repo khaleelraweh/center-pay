@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Frontend;
 
-use App\Models\Product as Card;
+use App\Models\Product ;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
@@ -15,9 +15,6 @@ class CartComponent extends Component
     public $cartCount;
     public $wishListCount;
 
-    
-
-
     // is used to run and operate event updateCart in all pages to update carts and wishlistcarts with there counts from carts fussades in real time
     protected $listeners = [
         'updateCart' => 'update_cart',
@@ -25,8 +22,6 @@ class CartComponent extends Component
         'removeFromWishList' => 'remove_from_wish_list',
         'moveToCart' => 'move_to_cart'
     ];
-
-
 
     public function mount(){
         $this->cartCount = Cart::instance('default')->count();
@@ -42,13 +37,21 @@ class CartComponent extends Component
 
     public function remove_from_cart($rowId){
         
-        Cart::instance('default')->remove($rowId);
-        $this->emit('updateCart');
-        $this->alert('success','Item removed from your cart! ');
 
-        if(cart::instance('default')->count() == 0){
-            return redirect()->route('frontend.cart');
-        }
+            $cart = Cart::content()->where('rowId',$rowId);
+            if($cart->isNotEmpty()){
+                Cart::remove($rowId);
+            }
+             // Cart::instance('default')->remove($rowId);
+             $this->emit('updateCart');
+             $this->alert('success','Item removed from your cart! ');
+     
+             if(cart::instance('default')->count() == 0){
+                 return redirect()->route('frontend.cart');
+             }
+        
+
+       
 
     }
 
@@ -75,13 +78,13 @@ class CartComponent extends Component
         if($duplicates->isNotEmpty()){
 
             Cart::instance('wishlist')->remove($rowId);
-            $this->alert('error','Card already exist!');
+            $this->alert('error','Product already exist!');
         }else{
-            Cart:: instance('default')->add($item->id , $item->name, 1, $item->price)->associate(Card::class);
+            Cart:: instance('default')->add($item->id , $item->name, 1, $item->price)->associate(Product::class);
             Cart::instance('wishlist')->remove($rowId);
             $this->emit('updateCart');
 
-            $this->alert('success','Card added in your wishlist cart successfully');
+            $this->alert('success','Product added in your wishlist cart successfully');
         }
 
         if(cart::instance('wishlist')->count() == 0){
@@ -91,9 +94,11 @@ class CartComponent extends Component
         
     }
 
-
     public function render()
     {
+        $this->cartCount = Cart::instance('default')->count();
+        $this->wishListCount = Cart::instance('wishlist')->count();
+
         return view('livewire.frontend.cart-component');
     }
 }

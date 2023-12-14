@@ -1,6 +1,4 @@
 <div>
-
-
     <div class="d-flex">
         {{-- wishlist part  --}}
         <div class="dropdn dropdn_fullheight minicart">
