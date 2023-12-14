@@ -15,6 +15,8 @@ class CartComponent extends Component
     public $cartCount;
     public $wishListCount;
 
+    
+
 
     // is used to run and operate event updateCart in all pages to update carts and wishlistcarts with there counts from carts fussades in real time
     protected $listeners = [
@@ -23,6 +25,8 @@ class CartComponent extends Component
         'removeFromWishList' => 'remove_from_wish_list',
         'moveToCart' => 'move_to_cart'
     ];
+
+
 
     public function mount(){
         $this->cartCount = Cart::instance('default')->count();

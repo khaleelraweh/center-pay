@@ -1,74 +1,63 @@
 <header class="hdr-wrap {{ request()->routeIs('frontend.index') ? 'hdr-transparent' : null }}">
 
+    {{-- تنسيق المتصفحات  --}}
     <div class="hdr-content hdr-content-sticky">
         <div class="container">
             <div class="row">
+
+                {{-- toggler showed in mobile  --}}
                 <div class="col-auto show-mobile">
                     <div class="menu-toggle">
-                        <a href="#" class="mobilemenu-toggle"><i class="icon-menu"></i></a>
+                        <a href="#" class="mobilemenu-toggle">
+                            <i class="icon-menu"></i>
+                        </a>
                     </div>
                 </div>
-                <div class="col-auto hdr-logo">
-                    <a href="index.html" class="logo"><img
-                            srcset="
-                  {{ asset('frontend/images/games/logo-games.webp') }}   1x,
-                  {{ asset('frontend/images/games/logo-games2x.webp') }} 2x
-                "
-                            alt="Logo" /></a>
-                </div>
-                <div class="hdr-nav hide-mobile nav-holder-s"></div>
-                <div class="hdr-links-wrap col-auto ml-auto">
-                    <div class="hdr-inline-link">
-                        <div class="search_container_desktop">
-                            <div class="dropdn dropdn_search dropdn_fullwidth">
-                                <a href="#" class="dropdn-link js-dropdn-link only-icon"><i
-                                        class="icon-search"></i><span class="dropdn-link-txt">بحث عن</span></a>
-                                <div class="dropdn-content">
-                                    <div class="container">
-                                        <form method="get" action="#" class="search search-off-popular">
-                                            <input name="search" type="text" class="search-input input-empty"
-                                                placeholder="ما الذي تريد البحث عنه؟" />
-                                            <button type="submit" class="search-button">
-                                                <i class="icon-search"></i>
-                                            </button>
-                                            <a href="#" class="search-close js-dropdn-close"><i
-                                                    class="icon-close-thin"></i></a>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="dropdn dropdn_account dropdn_fullheight">
-                            <a href="#" class="dropdn-link js-dropdn-link js-dropdn-link only-icon"
-                                data-panel="#dropdnAccount"><i class="icon-user"></i><span
-                                    class="dropdn-link-txt">حسابي</span></a>
-                        </div>
-                        {{-- call to cart component livewire for cart and wishlist counter --}}
-                        @livewire('frontend.cart-component')
 
-                    </div>
+                {{-- logog  --}}
+                <div class="col-auto hdr-logo">
+                    <a href="index.html" class="logo">
+                        <img srcset="
+                                    {{ asset('frontend/images/games/logo-games.webp') }}   1x,
+                                    {{ asset('frontend/images/games/logo-games2x.webp') }} 2x"
+                            alt="Logo" />
+                    </a>
+                </div>
+
+                <div class="hdr-nav hide-mobile nav-holder-s"></div>
+
+                {{-- left navagation  --}}
+                <div class="hdr-links-wrap col-auto ml-auto">
+                    @livewire('frontend.cart-component')
                 </div>
             </div>
         </div>
     </div>
 
+    {{-- تنسيق اجهزة الموبايل  --}}
     <div class="hdr hdr-style5">
         <div class="hdr-content">
             <div class="container">
                 <div class="row">
+
+                    {{-- toggler  show in mobile --}}
                     <div class="col-auto show-mobile">
                         <div class="menu-toggle">
                             <a href="#" class="mobilemenu-toggle"><i class="icon-menu"></i></a>
                         </div>
                     </div>
+
+                    {{-- logo --}}
                     <div class="col-auto hdr-logo">
-                        <a href="{{ route('frontend.index') }}" class="logo"><img
-                                srcset="
-                    {{ asset('frontend/images/games/logo-games.webp ') }}  1x,
-                    {{ asset('frontend/images/games/logo-games2x.webp') }} 2x
-                  "
-                                alt="سنتر باي" /></a>
+                        <a href="{{ route('frontend.index') }}" class="logo">
+                            <img srcset="
+                                        {{ asset('frontend/images/games/logo-games.webp ') }}  1x,
+                                        {{ asset('frontend/images/games/logo-games2x.webp') }} 2x"
+                                alt="سنتر باي" />
+                        </a>
                     </div>
+
+                    {{-- right navagation main nav  --}}
                     <div class="hdr-nav hide-mobile nav-holder">
                         <ul class="mmenu mmenu-js">
                             <li class="mmenu-item--simple">
@@ -193,8 +182,7 @@
                                 </div>
                             </li>
                             <li class="mmenu-item--mega">
-                                <a href="collections.html"><span>الكروت<span
-                                            class="menu-label">الشحن</span></span></a>
+                                <a href="collections.html"><span>الكروت<span class="menu-label">الشحن</span></span></a>
                                 <div class="mmenu-submenu mmenu-submenu--has-bottom">
                                     <div class="mmenu-submenu-inside">
                                         <div class="container">
@@ -348,103 +336,12 @@
                             </li>
                         </ul>
                     </div>
+
+                    {{-- left navagation   --}}
                     <div class="hdr-links-wrap col-auto ml-auto">
-                        <div class="hdr-group-link hide-mobile">
-                            <div class="hdr-inline-link">
-                                <div class="dropdn_language">
-                                    <div class="dropdn dropdn_language dropdn_language--noimg dropdn_caret">
-                                        <a href="#" class="dropdn-link js-dropdn-link"><span
-                                                class="js-dropdn-select-current mainBtnLang">اللغة</span><i
-                                                class="icon-angle-down"></i></a>
-                                        <div class="dropdn-content">
-                                            <ul>
-                                                <li>
-                                                    <a href="#eng" data-reload class="mylang"
-                                                        onclick="setLanguageStyle('english');" title="english">
-                                                        <img src="{{ asset('frontend/images/flags/en.webp') }}"
-                                                            alt="" />
-                                                        الانجليزية
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#ar" data-reload class="mylang"
-                                                        onclick="setLanguageStyle('arabic');" title="arabic">
-                                                        <img src="{{ asset('frontend/images/flags/ar.webp') }}"
-                                                            alt="" />
-                                                        العربية
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><img
-                                                            src="{{ asset('frontend/images/flags/sp.webp') }}"
-                                                            alt="" />الاسبانية</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><img
-                                                            src="{{ asset('frontend/images/flags/de.webp') }}"
-                                                            alt="" />الالمانية</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><img
-                                                            src="{{ asset('frontend/images/flags/fr.webp') }}"
-                                                            alt="" />الفرنسية</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="dropdn_currency">
-                                    <div class="dropdn dropdn_caret">
-                                        <a href="#" class="dropdn-link js-dropdn-link">دولار امريكي<i
-                                                class="icon-angle-down"></i></a>
-                                        <div class="dropdn-content">
-                                            <ul>
-                                                <li class="active">
-                                                    <a href="#"><span>دولار امريكي</span></a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><span>يورو</span></a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><span>باوند بريطاني</span></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="hdr-inline-link">
-                            <div class="search_container_desktop">
-                                <div class="dropdn dropdn_search dropdn_fullwidth">
-                                    <a href="#" class="dropdn-link js-dropdn-link only-icon"><i
-                                            class="icon-search"></i><span class="dropdn-link-txt">بحث عن</span></a>
-                                    <div class="dropdn-content">
-                                        <div class="container">
-                                            <form method="get" action="#" class="search search-off-popular">
-                                                <input name="search" type="text" class="search-input input-empty"
-                                                    placeholder="ما الذي تريد البحث عنه؟" />
-                                                <button type="submit" class="search-button">
-                                                    <i class="icon-search"></i>
-                                                </button>
-                                                <a href="#" class="search-close js-dropdn-close"><i
-                                                        class="icon-close-thin"></i></a>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="dropdn dropdn_account dropdn_fullheight">
-                                <a href="#" class="dropdn-link js-dropdn-link js-dropdn-link only-icon"
-                                    data-panel="#dropdnAccount"><i class="icon-user"></i><span
-                                        class="dropdn-link-txt">حسابي</span></a>
-                            </div>
-
-                            {{-- call to cart component livewire for cart and wishlist counter --}}
-                            @livewire('frontend.cart-component')
-
-                        </div>
+                        @livewire('frontend.cart-component')
                     </div>
+
                 </div>
             </div>
         </div>
