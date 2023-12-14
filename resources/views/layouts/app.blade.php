@@ -63,6 +63,8 @@
 
     <link rel="stylesheet" href="{{ asset('frontend/css/style-rtl.css') }}" class="languages" />
     <link href="{{ asset('frontend/css/icons.css') }}" rel="stylesheet" />
+
+    <link href="{{ asset('frontend/css/custom.css') }}" rel="stylesheet" />
     <livewire:styles />
     @yield('style')
 

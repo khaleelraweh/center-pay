@@ -1,0 +1,31 @@
+.pref{
+    background-color: #1E171B;
+    padding: 20px;
+}
+
+.pref-link a{
+    background-color: transparent;
+    display: block;
+    padding: 8px;
+    margin-bottom: 8px;
+    border: none;
+    border-radius: 20px;
+}
+
+.pref-link.active{
+    background-color: #DC3C01;
+    border: none;
+    border-radius: 20px;
+}
+
+.pref-link:hover  {
+    background-color: white;
+    color: #DC3C01;
+    border: none;
+    border-radius: 20px;
+}
+.pref-link:hover a{
+    color: #DC3C01; 
+}
+
+
