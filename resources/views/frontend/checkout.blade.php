@@ -1,17 +1,6 @@
 @extends('layouts.app')
 
-@section('style')
-    <style>
-        .card.checkout {
-            background-color: #23232D;
-        }
 
-        .qty-changer input[type='number'],
-        .qty-changer input[type='text'] {
-            background: transparent;
-        }
-    </style>
-@endsection
 
 
 @section('content')
@@ -26,7 +15,7 @@
         </div>
 
         <div class="holder">
-            @livewire('frontend.checkout-component')
+            <livewire:frontend.checkout.checkout-component />
         </div>
     </div>
 @endsection

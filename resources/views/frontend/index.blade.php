@@ -160,20 +160,15 @@
                 @empty
                 @endforelse
 
-
-
-
-
-
             </div>
         </div>
     </div>
 
     {{-- featured cards livewire component --}}
-    <livewire:frontend.featured-card-component />
+    <livewire:frontend.home.featured-card-component />
 
     {{-- random cards --}}
-    <livewire:frontend.random-card-component :random_cards="$random_cards" />
+    <livewire:frontend.home.random-card-component :random_cards="$random_cards" />
 
     {{-- card categories  --}}
     <div class="holder global_width">

@@ -57,7 +57,13 @@ class CartComponent extends Component
 
     public function remove_from_wish_list($rowId){
 
-        Cart::instance('wishlist')->remove($rowId);
+
+        $cart = Cart::content()->where('rowId',$rowId);
+            if($cart->isNotEmpty()){
+                Cart::instance('wishlist')->remove($rowId);
+            }
+
+        // Cart::instance('wishlist')->remove($rowId);
         $this->emit('updateCart');
         $this->alert('success','Item removed from your wishlist! ');
 
@@ -69,12 +75,13 @@ class CartComponent extends Component
 
     public function move_to_cart($rowId){
 
+
         $item = Cart::instance('wishlist')->get($rowId);
 
         $duplicates = Cart::instance('default')->search(function ($cartItem , $rId ) use($rowId) {
             return $rId === $rowId;
         });
- 
+
         if($duplicates->isNotEmpty()){
 
             Cart::instance('wishlist')->remove($rowId);
@@ -91,6 +98,7 @@ class CartComponent extends Component
             return redirect()->route('frontend.wishlist');
         }
 
+            
         
     }
 

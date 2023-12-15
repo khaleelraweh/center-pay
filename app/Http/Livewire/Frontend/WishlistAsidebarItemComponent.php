@@ -21,29 +21,29 @@ class WishlistAsidebarItemComponent extends Component
     public $cart_total;
 
 
-    public function mount(){
+    // public function mount(){
 
-        $this->item_quantity = Cart::instance('wishlist')->get($this->itemRowId)->qty ?? 1;
+    //     $this->item_quantity = Cart::instance('wishlist')->get($this->itemRowId)->qty ?? 1;
         
-        $this->cart_subtotal = Cart::instance('wishlist')->subtotal();
-        $this->cart_tax = Cart::Instance('wishlist')->tax();
-        $this->cart_total = Cart::Instance('wishlist')->total();
-    }
+    //     $this->cart_subtotal = Cart::instance('wishlist')->subtotal();
+    //     $this->cart_tax = Cart::Instance('wishlist')->tax();
+    //     $this->cart_total = Cart::Instance('wishlist')->total();
+    // }
  
 
     
 
     // to update subtotal and total every time we update using increment function and decrement funtion in ..
-    protected $listeners = [
-        'updateCart'=>'mount'
-    ]; 
+    // protected $listeners = [
+    //     'updateCart'=>'mount'
+    // ]; 
  
-    public function mountUpdate(){
+    // public function mountUpdate(){
 
-        $this->cart_subtotal = Cart::instance('wishlist')->subtotal();
-        $this->cart_tax = Cart::Instance('wishlist')->tax();
-        $this->cart_total = Cart::Instance('wishlist')->total();
-    }
+    //     $this->cart_subtotal = Cart::instance('wishlist')->subtotal();
+    //     $this->cart_tax = Cart::Instance('wishlist')->tax();
+    //     $this->cart_total = Cart::Instance('wishlist')->total();
+    // }
 
     public function decreaseQuantity($rowId){
 

@@ -1,36 +1,6 @@
 @extends('layouts.app')
 
-@section('style')
-    <style>
-        .panel-group--style2 .panel-body {
-            padding: 20px;
-            color: #fff;
-            background: inherit;
-        }
 
-        .panel-group--style2 .panel-heading {
-            padding: 0;
-            border-bottom: 0;
-            border-radius: 0;
-            background-color: inherit;
-        }
-
-        .prd-block_links-wrap-bg {
-            background-color: inherit;
-        }
-
-        .prd-block_info-box,
-        .prd-block .prd-block_qty .qty {
-            background-color: inherit;
-        }
-
-        .tags-list li a {
-            color: black;
-            font-weight: bold;
-            font-size: 14px;
-        }
-    </style>
-@endsection
 
 @section('content')
     <div class="container">
@@ -53,7 +23,7 @@
 
 
                     {{-- <h1>This is my title</h1> {{dd($card->reviews )}} <br> --}}
-                    <h3>rating is </h3>{{ $card->reviews_avg_rating }}
+                    {{-- {{ $card->reviews_avg_rating }} --}}
                     @foreach ($card->reviews as $review)
                     @endforeach
 
@@ -223,7 +193,7 @@
                                             arrives</a></div>
                                 </div>
                             </div>
-                            <div class="prd-block_info-box prd-block_info_item">
+                            <div class="prd-block_info-box prd-block_info_item bg-transparent">
                                 <div class="two-column">
                                     <p>Availability:
                                         <span class="prd-in-stock" data-stock-status="">In stock</span>
@@ -240,7 +210,7 @@
                             </div>
 
                             {{-- quentity , add to card , add to wishlist part using livewire  --}}
-                            <livewire:frontend.show-card-component :card="$card" />
+                            <livewire:frontend.card.update-qty-component :card="$card" />
 
                             <div class="prd-block_info_item">
                                 <ul class="prd-block_links list-unstyled">
@@ -388,7 +358,7 @@
         </div>
 
         <div class="holder prd-block_links-wrap-bg d-none d-md-block">
-            <div class="prd-block_links-wrap prd-block_info_item container mt-2 mt-md-5 py-1">
+            <div class="prd-block_links-wrap prd-block_info_item container mt-2 mt-md-5 py-1 pref">
                 <div class="prd-block_link"><span><i class="icon-call-center"></i>24/7 الدعم</span></div>
                 <div class="prd-block_link">
                     <span>انشي حساب في center pay لتحصل على تخفيض 15 %</span>
@@ -421,10 +391,10 @@
 
                     <div role="tabpanel" class="tab-pane fade" id="Tab4">
                         <ul class="tags-list">
-                            <li><a href="#">Jeans</a></li>
-                            <li><a href="#">St.Valentine’s gift</a></li>
-                            <li><a href="#">Sunglasses</a></li>
-                            <li><a href="#">Discount</a></li>
+                            <li><a class="pref-link active" href="#">Jeans</a></li>
+                            <li><a class="pref-link active" href="#">St.Valentine’s gift</a></li>
+                            <li><a class="pref-link active" href="#">Sunglasses</a></li>
+                            <li><a class="pref-link active" href="#">Discount</a></li>
 
                         </ul>
                         <h3>اضف كلماتك المفتاحية على المنتج</h3>
@@ -434,6 +404,8 @@
                             <button class="btn btn--md">Submit Tag</button>
                             <div class="required-text">* Required Fields</div>
                         </form>
+
+
                     </div>
                     <div role="tabpanel" class="tab-pane fade" id="Tab5">
                         <div id="productReviews">
@@ -476,7 +448,7 @@
             </div>
         </div>
         {{-- related cards with livewire note: $related_cards came from FrontendController#card --}}
-        <livewire:frontend.related-cards-component :related_cards="$related_cards" />
+        <livewire:frontend.card.related-cards-component :related_cards="$related_cards" />
     </div>
 
 

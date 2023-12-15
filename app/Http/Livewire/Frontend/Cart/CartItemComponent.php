@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Frontend;
+namespace App\Http\Livewire\Frontend\Cart;
 
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
@@ -45,8 +45,9 @@ class CartItemComponent extends Component
 
     public function render()
     {
-        return view('livewire.frontend.cart-item-component' , [
+        return view('livewire.frontend.cart.cart-item-component' , [
             'cartItem' =>Cart::instance('default')->get($this->item)
         ]);
     }
 }
+

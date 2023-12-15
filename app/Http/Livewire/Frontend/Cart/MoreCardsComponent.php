@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Frontend;
+namespace App\Http\Livewire\Frontend\Cart;
 
 use App\Models\Product as Card;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -53,6 +53,6 @@ class MoreCardsComponent extends Component
 
     public function render()
     {
-        return view('livewire.frontend.more-cards-component');
+        return view('livewire.frontend.cart.more-cards-component');
     }
 }

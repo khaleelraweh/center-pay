@@ -122,7 +122,7 @@
                                 <div class="bank-info-123456789 col-sm-12 mb-3">
                                     <div class="d-sm-flex flex-sm-row">
                                         <div class="col-md-4 col-sm-12">
-                                            <img src="{{ asset('assets/payment_method_offlines/' . $payment_method_detail->firstMedia->file_name) }}"
+                                            <img src="{{ asset('assets/payment_method_offlines/' . $payment_method_detail->firstMedia?->file_name) }}"
                                                 alt="{{ $payment_method_detail->name }}" class=" img-fluid rounded">
                                         </div>
                                         <div class="col-md-6 col-sm-12">
@@ -185,7 +185,7 @@
                                 <a href="{{ route('frontend.card', $item->model?->slug) }}" class="prd-img"><img
                                         class="lazyload fade-up"
                                         src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                        data-src="{{ asset('assets/cards/' . $item->model?->firstMedia->file_name) }}"
+                                        data-src="{{ asset('assets/cards/' . $item->model?->firstMedia?->file_name) }}"
                                         alt="{{ $item->model?->name }}"></a>
                             </div>
                             <div class="cart-table-prd-content-wrap">
@@ -197,8 +197,7 @@
                                 </div>
                                 <div class="cart-table-prd-qty">
                                     <div class="qty qty-changer">
-                                        <input type="text" class="qty-input disabled" value="{{ $item->qty }}"
-                                            data-min="0" data-max="1000">
+                                        <span>{{ $item->qty }}</span>
                                     </div>
                                 </div>
                                 <div class="cart-table-prd-price-total">
@@ -212,7 +211,7 @@
 
                 {{-- coupon part  --}}
                 <div class="mt-2"></div>
-                <div class="card checkout">
+                <div class="card checkout pref">
                     <div class="card-body">
                         <form class="col-md-12" wire:submit.prevent="applyDiscount()">
                             <div class="form-inline mt-2">

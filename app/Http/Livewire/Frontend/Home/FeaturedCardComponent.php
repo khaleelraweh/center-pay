@@ -1,18 +1,15 @@
 <?php
 
-namespace App\Http\Livewire\Frontend;
+namespace App\Http\Livewire\Frontend\Home;
 
 use App\Models\Product as Card;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
-class ShopCardsComponent extends Component
+class FeaturedCardComponent extends Component
 {
-
     use LivewireAlert;
-
-    public $cards;
 
     public function addToCart($id){ 
 
@@ -53,8 +50,19 @@ class ShopCardsComponent extends Component
 
     }
 
+    
     public function render()
     {
-        return view('livewire.frontend.shop-cards-component');
+        return view('livewire.frontend.home.featured-card-component', [
+            'featured_cards'    =>  Card::with('firstMedia' , 'lastMedia' ,'photos' )
+                                            ->CardCategory()
+                                            ->orderBy('published_on','desc') 
+                                            ->Featured()
+                                            ->Active()
+                                            ->HasQuantity()
+                                            ->ActiveCategory()
+                                            ->take(8)
+                                            ->get()
+        ]);
     }
 }

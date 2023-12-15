@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Frontend;
+namespace App\Http\Livewire\Frontend\CardCategory;
 
 use App\Models\Product as Card;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -8,15 +8,15 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
 class RelatedCardsComponent extends Component
-{ 
+{
+
     use LivewireAlert;
 
-    public $related_cards;
-
+    public $cards;
 
     public function addToCart($id){ 
 
-        $card = card::whereId($id)->Active()->HasQuantity()->ActiveCategory()->firstOrFail();
+        $card = Card::whereId($id)->Active()->HasQuantity()->ActiveCategory()->firstOrFail();
         
         // check if card is already exist in the default cart
         $duplicates = Cart::instance('default')->search(function($cartItem,$rowId) use($card) {
@@ -55,6 +55,7 @@ class RelatedCardsComponent extends Component
 
     public function render()
     {
-        return view('livewire.frontend.related-cards-component');
+        return view('livewire.frontend.card-category.related-cards-component');
     }
 }
+

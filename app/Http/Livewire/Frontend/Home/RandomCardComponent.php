@@ -1,19 +1,20 @@
 <?php
 
-namespace App\Http\Livewire\Frontend;
+namespace App\Http\Livewire\Frontend\Home;
 
 use App\Models\Product as Card;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
-class FeaturedCardComponent extends Component
-{
+class RandomCardComponent extends Component
+{ 
     use LivewireAlert;
 
+    
     public function addToCart($id){ 
 
-        $card = Card::whereId($id)->Active()->HasQuantity()->ActiveCategory()->firstOrFail();
+        $card = card::whereId($id)->Active()->HasQuantity()->ActiveCategory()->firstOrFail();
         
         // check if card is already exist in the default cart
         $duplicates = Cart::instance('default')->search(function($cartItem,$rowId) use($card) {
@@ -50,19 +51,10 @@ class FeaturedCardComponent extends Component
 
     }
 
-    
+    public $random_cards;
+
     public function render()
     {
-        return view('livewire.frontend.featured-card-component', [
-            'featured_cards'    =>  Card::with('firstMedia' , 'lastMedia' ,'photos' )
-                                            ->CardCategory()
-                                            ->orderBy('published_on','desc') 
-                                            ->Featured()
-                                            ->Active()
-                                            ->HasQuantity()
-                                            ->ActiveCategory()
-                                            ->take(8)
-                                            ->get()
-        ]);
+        return view('livewire.frontend.home.random-card-component');
     }
 }

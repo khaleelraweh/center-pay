@@ -52,7 +52,7 @@
                     {{-- عناصر سلة التسوق  --}}
                     @forelse (Cart::content('default') as $item)
                         {{--  show item in cart using livewire --}}
-                        <livewire:frontend.cart-item-component :item="$item->rowId" />
+                        <livewire:frontend.cart.cart-item-component :item="$item->rowId" />
                     @empty
                         {{-- سلة الشراء فارغة  --}}
                         <div class="cart">
@@ -91,7 +91,7 @@
                                     <div class="carousel-arrows carousel-arrows--center"></div>
                                 </div>
                                 {{-- may want more   --}}
-                                @livewire('frontend.more-cards-component', ['more_cards' => $more_cards])
+                                <livewire:frontend.cart.more-cards-component , :more_cards="$more_cards" />
 
                             </div>
                         </div>
@@ -106,7 +106,7 @@
                     </div>
 
                     {{-- call to card total panel --}}
-                    @livewire('frontend.cart-total-component')
+                    <livewire:frontend.cart.cart-total-component />
 
                 </div>
 

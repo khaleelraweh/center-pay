@@ -1,7 +1,7 @@
 <div class="header-side-panel">
 
-    {{-- القائمة الجانبية عرض روابط الصفحة في الموبايل   --}}
-    <div class="mobilemenu js-push-mbmenu">
+    <!-- القائمة الجانبية عرض روابط الصفحة في الموبايل   -->
+    {{-- <div class="mobilemenu js-push-mbmenu">
         <div class="mobilemenu-content">
             <div class="mobilemenu-close mobilemenu-toggle">اغلاق</div>
             <div class="mobilemenu-scroll">
@@ -299,12 +299,12 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
-    {{-- القائمة الجانبية تسجيل الدخول   --}}
+    <!-- القائمة الجانبية تسجيل الدخول   -->
     @guest
-        {{-- القائمة الجانبية تسجيل الدخول   --}}
-        <div class="dropdn-content account-drop" id="dropdnAccount">
+        <!-- القائمة الجانبية تسجيل الدخول   -->
+        {{-- <div class="dropdn-content account-drop" id="dropdnAccount">
             <div class="dropdn-content-block">
                 <div class="dropdn-close">
                     <span class="js-dropdn-close">اغلاق</span>
@@ -319,25 +319,25 @@
                         </div>
                     </li>
                     <li>
-                        {{-- <a href="account-create.html"> --}}
+                        <!-- <a href="account-create.html"> -->
                         <h5>
                             <i class="icon-login custom-color"></i>
                             <span>تسجيل الدخول</span>
                         </h5>
-                        {{-- </a> --}}
+                        <!-- </a> -->
                     </li>
                     <li>
                         <h6 class="small-body-subtitle">
                             مستخدم جديد ؟
                             <a href="#" class="dropdn-link js-dropdn-link js-dropdn-link only-icon custom-color"
                                 data-panel="#dropdnSignUp">
-                                {{-- <i class="icon-user"></i> --}}
+                                <!-- <i class="icon-user"></i> -->
                                 <span>انشاء حساب جديد الان</span>
                             </a>
                         </h6>
                     </li>
                     <li>
-                        {{-- <a href="checkout.html"><span>الدفع</span><i class="icon-card"></i></a> --}}
+                        <!-- <a href="checkout.html"><span>الدفع</span><i class="icon-card"></i></a> -->
                     </li>
                 </ul>
                 <div class="dropdn-form-wrapper">
@@ -357,7 +357,7 @@
                                 </span>
                             @enderror
 
-                            {{-- <div class="invalid-feedback">لا يكون الحقل فارغ</div> --}}
+                            <!-- <div class="invalid-feedback">لا يكون الحقل فارغ</div> -->
                         </div>
 
                         <div class="form-group">
@@ -371,7 +371,7 @@
                                 </span>
                             @enderror
 
-                            {{-- <div class="invalid-feedback">لا يكون الحقل فارغ</div> --}}
+                            <!-- <div class="invalid-feedback">لا يكون الحقل فارغ</div> -->
                         </div>
 
                         <button type="submit" class="btn mt-3 col-sm-12 rounded-pill js-login-btn">تسجل الدخول</button>
@@ -393,9 +393,9 @@
                 </div>
             </div>
             <div class="drop-overlay js-dropdn-close"></div>
-        </div>
+        </div> --}}
     @else
-        <div class="dropdn-content account-drop" id="dropdnAccount">
+        {{-- <div class="dropdn-content account-drop" id="dropdnAccount">
             <div class="dropdn-content-block">
                 <div class="dropdn-close">
                     <span class="js-dropdn-close">اغلاق</span>
@@ -473,11 +473,11 @@
 
             </div>
             <div class="drop-overlay js-dropdn-close"></div>
-        </div>
+        </div> --}}
     @endguest
 
-    {{-- القائمة الجانبية إنشاء حساب جديد --}}
-    <div class="dropdn-content signup-drop " id="dropdnSignUp">
+    <!-- القائمة الجانبية إنشاء حساب جديد -->
+    {{-- <div class="dropdn-content signup-drop " id="dropdnSignUp">
         <div class="dropdn-content-block">
             <div class="dropdn-close"><span class="js-dropdn-close">اغلاق</span></div>
             <div id="js_signup_panel" class="dropdn-form-wrapper">
@@ -670,21 +670,21 @@
             </div>
         </div>
         <div class="drop-overlay js-dropdn-close"></div>
-    </div>
+    </div> --}}
 
-    {{-- القائمة الجانبية قائمة المفضلات --}}
-    <div class="dropdn-content minicart-drop" id="dropdnMiniwishlist">
+    <!-- القائمة الجانبية قائمة المفضلات -->
+    {{-- <div class="dropdn-content minicart-drop" id="dropdnMiniwishlist">
         <div class="dropdn-content-block">
             <div class="dropdn-close">
                 <span class="js-dropdn-close">اغلاق</span>
             </div>
             <div wire:ignore class="minicart-drop-content js-dropdn-content-scroll">
 
-                {{-- show cart item  --}}
+                <!-- show cart item  -->
                 @forelse (Cart::instance('wishlist')->content() as $item)
                     @livewire('frontend.wishlist-asidebar-item-component', ['itemRowId' => $item->rowId])
                 @empty
-                    {{-- سلة الشراء فارغة  --}}
+                    <!-- سلة الشراء فارغة  -->
                     <div class="cart">
                         <div class="card-body bg-transparent">
                             <div class="minicart-empty-icon">
@@ -761,11 +761,11 @@
             </div>
         </div>
         <div class="drop-overlay js-dropdn-close"></div>
-    </div>
-    {{-- wishlist short show  end --}}
+    </div> --}}
+    <!-- wishlist short show  end -->
 
 
-    {{-- القائمة الجانبية سلة الشراء  --}}
+    <!-- القائمة الجانبية سلة الشراء  -->
     <div class="dropdn-content minicart-drop" id="dropdnMinicart">
         <div class="dropdn-content-block">
             <div class="dropdn-close">
@@ -773,11 +773,11 @@
             </div>
             <div wire:ignore class="minicart-drop-content js-dropdn-content-scroll">
 
-                {{-- show cart item  --}}
+                <!-- show cart item  -->
                 @forelse (Cart::instance('default')->content() as $item)
                     @livewire('frontend.cart-asidebar-item-component', ['itemRowId' => $item->rowId])
                 @empty
-                    {{-- سلة الشراء فارغة  --}}
+                    <!-- سلة الشراء فارغة  -->
                     <div class="cart">
                         <div class="card-body bg-transparent">
                             <div class="minicart-empty-icon">
@@ -855,7 +855,7 @@
         </div>
         <div class="drop-overlay js-dropdn-close"></div>
     </div>
-    {{-- cart short show end --}}
+    <!-- cart short show end -->
 
 
 </div>

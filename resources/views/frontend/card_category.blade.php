@@ -1,44 +1,6 @@
 @extends('layouts.app')
 
-@section('style')
-    <style>
-        .panel-group--style2 .panel-body {
-            padding: 20px;
-            color: #fff;
-            background: inherit;
-        }
 
-        .panel-group--style2 .panel-heading {
-            padding: 0;
-            border-bottom: 0;
-            border-radius: 0;
-            background-color: inherit;
-        }
-
-        .prd-block_links-wrap-bg {
-            background-color: inherit;
-        }
-
-        .prd-block_info-box,
-        .prd-block .prd-block_qty .qty {
-            background-color: inherit;
-        }
-
-        .tags-list li a {
-            color: black;
-            font-weight: bold;
-            font-size: 14px;
-        }
-
-        .breadcrumbs li a {
-            text-decoration: none;
-        }
-
-        .filter-row .row {
-            justify-content: flex-start;
-        }
-    </style>
-@endsection
 
 @section('content')
     <div class="container">
@@ -112,7 +74,7 @@
                     </div>
 
                     {{-- cards of the above card category  --}}
-                    <livewire:frontend.shop-cards-component :cards="$cards" />
+                    <livewire:frontend.card-category.related-cards-component :cards="$cards" />
 
 
                 </div>
