@@ -29,7 +29,7 @@ class UserAddressSeeder extends Seeder
 
         $khaleel    = User::whereUsername('khaleel')->first();
         $ksa        = Country::with('states')->whereId(194)->first();
-        $state      = $ksa->states->random()->id;
+        $state      = $ksa->states()->random()->id;
         $city       = City::whereStateId($state)->inRandomOrder()->first()->id;
 
         $khaleel->addresses()->create([
