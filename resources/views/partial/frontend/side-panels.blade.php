@@ -1,7 +1,7 @@
 <div class="header-side-panel">
 
     <!-- القائمة الجانبية عرض روابط الصفحة في الموبايل   -->
-    {{-- <div class="mobilemenu js-push-mbmenu">
+    <div class="mobilemenu js-push-mbmenu">
         <div class="mobilemenu-content">
             <div class="mobilemenu-close mobilemenu-toggle">اغلاق</div>
             <div class="mobilemenu-scroll">
@@ -299,12 +299,12 @@
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
 
     <!-- القائمة الجانبية تسجيل الدخول   -->
     @guest
         <!-- القائمة الجانبية تسجيل الدخول   -->
-        {{-- <div class="dropdn-content account-drop" id="dropdnAccount">
+        <div class="dropdn-content account-drop" id="dropdnAccount">
             <div class="dropdn-content-block">
                 <div class="dropdn-close">
                     <span class="js-dropdn-close">اغلاق</span>
@@ -393,9 +393,9 @@
                 </div>
             </div>
             <div class="drop-overlay js-dropdn-close"></div>
-        </div> --}}
+        </div>
     @else
-        {{-- <div class="dropdn-content account-drop" id="dropdnAccount">
+        <div class="dropdn-content account-drop" id="dropdnAccount">
             <div class="dropdn-content-block">
                 <div class="dropdn-close">
                     <span class="js-dropdn-close">اغلاق</span>
@@ -426,7 +426,7 @@
                     </li>
                     <li>
                         <div class="card border-0 rounded-0 p-lg-4 pref">
-                            <div class="card-body">
+                            <div class="card-body" style="background: #261F23">
                                 <h5 class="text-uppercase mb-4">تصفح</h5>
 
                                 <div
@@ -473,11 +473,11 @@
 
             </div>
             <div class="drop-overlay js-dropdn-close"></div>
-        </div> --}}
+        </div>
     @endguest
 
     <!-- القائمة الجانبية إنشاء حساب جديد -->
-    {{-- <div class="dropdn-content signup-drop " id="dropdnSignUp">
+    <div class="dropdn-content signup-drop " id="dropdnSignUp">
         <div class="dropdn-content-block">
             <div class="dropdn-close"><span class="js-dropdn-close">اغلاق</span></div>
             <div id="js_signup_panel" class="dropdn-form-wrapper">
@@ -670,10 +670,10 @@
             </div>
         </div>
         <div class="drop-overlay js-dropdn-close"></div>
-    </div> --}}
+    </div>
 
     <!-- القائمة الجانبية قائمة المفضلات -->
-    {{-- <div class="dropdn-content minicart-drop" id="dropdnMiniwishlist">
+    <div class="dropdn-content minicart-drop" id="dropdnMiniwishlist">
         <div class="dropdn-content-block">
             <div class="dropdn-close">
                 <span class="js-dropdn-close">اغلاق</span>
@@ -761,7 +761,7 @@
             </div>
         </div>
         <div class="drop-overlay js-dropdn-close"></div>
-    </div> --}}
+    </div>
     <!-- wishlist short show  end -->
 
 

@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('ref_id')->nullable();
             $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
-            $table->foreignId('user_address_id')->nullable()->constrained()->nullOnDelete();
-            $table->foreignId('shipping_company_id')->nullable()->constrained()->nullOnDelete();
+            // $table->foreignId('user_address_id')->nullable()->constrained()->nullOnDelete();
+            // $table->foreignId('shipping_company_id')->nullable()->constrained()->nullOnDelete();
             $table->foreignId('payment_method_id')->nullable()->constrained()->nullOnDelete();
 
             $table->double('subtotal')->default(0.00);

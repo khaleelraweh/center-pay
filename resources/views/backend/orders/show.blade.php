@@ -2,9 +2,9 @@
 @section('content')
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">مرجع الطلب : ({{$order->ref_id}})</h6>
+            <h6 class="m-0 font-weight-bold text-primary">مرجع الطلب : ({{ $order->ref_id }})</h6>
             <div class="ml-auto">
-                <form action="{{route('admin.orders.update',$order->id)}}" method="post">
+                <form action="{{ route('admin.orders.update', $order->id) }}" method="post">
                     @csrf
                     @method('PUT')
                     <div class="form-row align-items-center">
@@ -13,17 +13,18 @@
                             <div class="input-group-prepend">
                                 <div class="input-group-text">حالة الطلب</div>
                             </div>
-                            <select name="order_status" style="outline-style:none;" onchange="this.form.submit()"  class="form-control">
-                                
+                            <select name="order_status" style="outline-style:none;" onchange="this.form.submit()"
+                                class="form-control">
+
                                 {{-- To show only the option above the option in the order table to move the transaction to the new step  --}}
                                 <option value="">إختر الحدث المناسب </option>
-                                @foreach ($order_status_array as $key => $value )
+                                @foreach ($order_status_array as $key => $value)
                                     <option value="{{ $key }}"> {{ $value }}</option>
                                 @endforeach
 
                             </select>
                         </div>
-                        
+
                     </div>
                 </form>
             </div>
@@ -37,13 +38,14 @@
                                 <th>مرجع الطلب</th>
                                 <td>{{ $order->ref_id }}</td>
                                 <th>العميل</th>
-                                <td><a href="{{route('admin.customers.show' , $order->user_id)}}"> {{ $order->user->full_name }}</a></td>
+                                <td><a href="{{ route('admin.customers.show', $order->user_id) }}">
+                                        {{ $order->user->full_name }}</a></td>
                             </tr>
                             <tr>
-                                <th>عنوان العميل</th>
-                                <td><a href="{{ route('admin.customer_addresses.show', $order->user_address_id) }}">{{ $order->user_address->address_title }}</a></td>
-                                <th>شركة الشحن</th>
-                                <td>{{ $order->shipping_company->name . '(' . $order->shipping_company->code . ')' }}</td>
+                                {{-- <th>عنوان العميل</th> --}}
+                                {{-- <td><a href="{{ route('admin.customer_addresses.show', $order->user_address_id) }}">{{ $order->user_address->address_title }}</a></td> --}}
+                                {{-- <th>شركة الشحن</th> --}}
+                                {{-- <td>{{ $order->shipping_company->name . '(' . $order->shipping_company->code . ')' }}</td> --}}
                             </tr>
                             <tr>
                                 <th>تاريخ الانشاء </th>
@@ -64,7 +66,7 @@
                                 <td>{{ $order->currency() . $order->subtotal }}</td>
                             </tr>
                             <tr>
-                                <th>كود الخصم  </th>
+                                <th>كود الخصم </th>
                                 <td>{{ $order->discount_code }}</td>
                             </tr>
                             <tr>
@@ -140,7 +142,7 @@
                 <tbody>
                     @forelse ($order->products as $product)
                         <tr>
-                            <td><a href="{{route('admin.products.show',$product->id)}}">{{ $product->name }}</a></td>
+                            <td><a href="{{ route('admin.products.show', $product->id) }}">{{ $product->name }}</a></td>
                             <td>{{ $product->pivot->quantity }}</td>
                         </tr>
                     @empty

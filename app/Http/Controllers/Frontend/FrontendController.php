@@ -121,10 +121,7 @@ class FrontendController extends Controller
         return view('frontend.wishlist');
     }
 
-    public function checkout(){
-        
-        return view('frontend.checkout');
-    }
+    
 
    
 

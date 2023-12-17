@@ -33,8 +33,8 @@ class OrderSeeder extends Seeder
         // Create Order 
         $order = $khaleelUser->orders()->create([
             'ref_id'    =>  Str::random(15),
-            'user_address_id'   =>  1,
-            'shipping_company_id'   =>  1,
+            // 'user_address_id'   =>  1,
+            // 'shipping_company_id'   =>  1,
             'payment_method_id' =>  1,
             'subtotal'  =>  $subTotalValue,
             'discount_code' =>  'fiftyfifty',

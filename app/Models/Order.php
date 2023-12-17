@@ -24,24 +24,25 @@ class Order extends Model
             'users.email'                   =>  10,
             'users.mobile'                  =>  10,
 
-            'user_addresses.address_title'  =>  10,
-            'user_addresses.first_name'     =>  10,
-            'user_addresses.last_name'      =>  10,
-            'user_addresses.email'          =>  10,
-            'user_addresses.mobile'         =>  10,
-            'user_addresses.address'        =>  10,
-            'user_addresses.address2'      =>  10,
-            'user_addresses.zip_code'       =>  10,
-            'user_addresses.po_box'         =>  10,
+            // 'user_addresses.address_title'  =>  10,
+            // 'user_addresses.first_name'     =>  10,
+            // 'user_addresses.last_name'      =>  10,
+            // 'user_addresses.email'          =>  10,
+            // 'user_addresses.mobile'         =>  10,
+            // 'user_addresses.address'        =>  10,
+            // 'user_addresses.address2'      =>  10,
+            // 'user_addresses.zip_code'       =>  10,
+            // 'user_addresses.po_box'         =>  10,
 
-            'shipping_companies.name'       =>  10,
-            'shipping_companies.code'       =>  10,
-        ],
-        'joins' => [
-            'users'  =>  ['users.id' ,'orders.user_id'],
-            'user_addresses'  =>  ['user_addresses.id' ,'orders.user_address_id'],
-            'shipping_companies'  =>  ['shipping_companies.id' ,'orders.shipping_company_id'],
-        ],
+            // 'shipping_companies.name'       =>  10,
+            // 'shipping_companies.code'       =>  10,
+        ]
+        // ,
+        // 'joins' => [
+        //     'users'  =>  ['users.id' ,'orders.user_id'],
+        //     'user_addresses'  =>  ['user_addresses.id' ,'orders.user_address_id'],
+        //     'shipping_companies'  =>  ['shipping_companies.id' ,'orders.shipping_company_id'],
+        // ],
     ];
 
 

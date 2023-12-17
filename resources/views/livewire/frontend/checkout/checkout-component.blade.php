@@ -47,8 +47,8 @@
 
                     <div class="card-body">
 
-                        <h2>الدفع بواسطة </h2>
-                        <form>
+                        {{-- <h2>الدفع بواسطة </h2> --}}
+                        {{-- <form>
                             <div class="payment-method__tabs is-hidden-phone mt-2">
                                 <button class="paypal_btn" name="payment_key" type="submit">
                                     <div class="payment-method__tab-inner">
@@ -57,10 +57,10 @@
                                     </div>
                                 </button>
                             </div>
-                        </form>
+                        </form> --}}
 
                         <div class=" payment-method mt-3">
-                            <h2>طرق دفع اخري </h2>
+                            <h2>طرق الدفع </h2>
                             <div class="form-group select-wrapper">
                                 <select class="form-control js-payment-type form-control--sm rounded-pill"
                                     wire:model="payment_category_id">
@@ -118,51 +118,75 @@
                         @forelse ($payment_method_details as $payment_method_detail)
                             {{-- {{ $payment_method_detail->method_name }} --}}
 
-                            <div class="banks-details row mt-3">
-                                <div class="bank-info-123456789 col-sm-12 mb-3">
-                                    <div class="d-sm-flex flex-sm-row">
-                                        <div class="col-md-4 col-sm-12">
-                                            <img src="{{ asset('assets/payment_method_offlines/' . $payment_method_detail->firstMedia?->file_name) }}"
-                                                alt="{{ $payment_method_detail->name }}" class=" img-fluid rounded">
-                                        </div>
-                                        <div class="col-md-6 col-sm-12">
-                                            <h2 class="">بيانات التحويل عبر
-                                                {{ $payment_method_detail->method_name }} </h2>
-                                            <h3 class="custom-color">
-                                                {{ $payment_method_detail->name }}</h3>
-                                            <label>رقم حسابنا في {{ $payment_method_detail->method_name }} :</label>
-                                            <div class="form-group">
-                                                {{-- need to be change to number of bank --}}
-                                                {{ $payment_method_detail->owner_account_number }} </div>
-                                            <label>اسم الحساب في {{ $payment_method_detail->method_name }}:</label>
-                                            <div class="form-group">
-                                                {{ $payment_method_detail->owner_account_name }}
+                            @if ($payment_method_detail->name = 'paypal')
+                                <form action="{{ route('checkout.payment') }}" method="POST">
+                                    @csrf
+
+                                    {{-- <input type="hidden" name="customer_address_id"
+                                        value="{{ old('customer_address_id', 0) }}" class="form-control">
+                                    <input type="hidden" name="shipping_company_id"
+                                        value="{{ old('shipping_company_id', 0) }}" class="form-control"> --}}
+
+                                    <input type="hidden" name="payment_method_id"
+                                        value="{{ old('payment_method_id', 1) }}" class="form-control">
+
+                                    <div class="col-sm-12 mt-5">
+                                        <button type="submit" name="submit"
+                                            class="btn btn--full btn--md rounded-pill js-save-order"><span>اكمال
+                                                عملية الشراء عبر paypal</span></button>
+                                    </div>
+
+                                </form>
+                            @else
+                                <div class="banks-details row mt-3">
+                                    <div class="bank-info-123456789 col-sm-12 mb-3">
+                                        <div class="d-sm-flex flex-sm-row">
+                                            <div class="col-md-4 col-sm-12">
+                                                <img src="{{ asset('assets/payment_method_offlines/' . $payment_method_detail->firstMedia?->file_name) }}"
+                                                    alt="{{ $payment_method_detail->name }}"
+                                                    class=" img-fluid rounded">
+                                            </div>
+                                            <div class="col-md-6 col-sm-12">
+                                                <h2 class="">بيانات التحويل عبر
+                                                    {{ $payment_method_detail->method_name }} </h2>
+                                                <h3 class="custom-color">
+                                                    {{ $payment_method_detail->name }}</h3>
+                                                <label>رقم حسابنا في {{ $payment_method_detail->method_name }}
+                                                    :</label>
+                                                <div class="form-group">
+                                                    {{-- need to be change to number of bank --}}
+                                                    {{ $payment_method_detail->owner_account_number }} </div>
+                                                <label>اسم الحساب في {{ $payment_method_detail->method_name }}:</label>
+                                                <div class="form-group">
+                                                    {{ $payment_method_detail->owner_account_name }}
+                                                </div>
                                             </div>
                                         </div>
+                                        <input type="hidden" id="bank-123456789" name="bank"
+                                            class="form-control form-control--sm rounded-pill " value="4">
                                     </div>
-                                    <input type="hidden" id="bank-123456789" name="bank"
-                                        class="form-control form-control--sm rounded-pill " value="4">
-                                </div>
-                                <div class="col-md-6 col-sm-12">
-                                    <label>رقم الحساب البنكي للعميل</label>
-                                    <div class="form-group">
-                                        <input type="text" name="bankAccNumber"
-                                            class="form-control form-control--sm rounded-pill"
-                                            placeholder="رقم الحساب البنكي للعميل">
+                                    <div class="col-md-6 col-sm-12">
+                                        <label>رقم الحساب البنكي للعميل</label>
+                                        <div class="form-group">
+                                            <input type="text" name="bankAccNumber"
+                                                class="form-control form-control--sm rounded-pill"
+                                                placeholder="رقم الحساب البنكي للعميل">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <label>صورة وصل التحويل</label>
+                                        <div class="form-group">
+                                            <input type="file" name="bankReceipt" id="bankReceipt"
+                                                class="form-control form-control--sm rounded-pill">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 mt-5">
+                                        <button class="btn btn--full btn--md rounded-pill js-save-order"><span>اكمال
+                                                عملية الشراء</span></button>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-sm-12">
-                                    <label>صورة وصل التحويل</label>
-                                    <div class="form-group">
-                                        <input type="file" name="bankReceipt" id="bankReceipt"
-                                            class="form-control form-control--sm rounded-pill">
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 mt-5">
-                                    <button class="btn btn--full btn--md rounded-pill js-save-order"><span>اكمال
-                                            عملية الشراء</span></button>
-                                </div>
-                            </div>
+                            @endif
+
 
                         @empty
                         @endforelse
