@@ -65,7 +65,7 @@ class PaymentMethodOffline extends Model
     } 
 
     public function paymentCategory(){
-        return $this->belongsTo(paymentCategory::class, 'payment_category_id', 'id');
+        return $this->belongsTo(PaymentCategory::class, 'payment_category_id', 'id');
     }
     
     
