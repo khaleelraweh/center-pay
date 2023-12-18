@@ -6,10 +6,10 @@
                 <div class="carousel-arrows"></div>
             </div>
 
-            <div class="row prd-grid text-center align-center">
+            <div class="prd-grid product-listing data-to-show-4 data-to-show-md-3 data-to-show-sm-2 js-category-grid">
 
                 @forelse ($random_cards as $random_product_card)
-                    <div class="py-4 col-xl-3 col-lg-4 col-sm-6 prd prd--style2 prd-labels--max prd-labels-shadow">
+                    <div class="prd prd--style2 prd-labels--max prd-labels-shadow prd-w-xxs">
                         <div class="prd-inside">
                             <div class="prd-img-area">
                                 <a href="{{ route('frontend.card', $random_product_card->slug) }}"

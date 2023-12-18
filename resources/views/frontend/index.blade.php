@@ -240,7 +240,7 @@
                             <div class="post-prw-img col-sm-6">
                                 <a href="blog-post.html" class="d-block image-container" style="padding-bottom: 88.92%">
                                     <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                        data-src="{{ asset('assets/news/' . $newsItem->firstMedia->file_name) }}"
+                                        data-src="{{ asset('assets/news/' . $newsItem->firstMedia?->file_name) }}"
                                         class="lazyload fade-up" alt="Blog Title" />
                                 </a>
                             </div>
@@ -264,10 +264,6 @@
                     </div>
                 @empty
                 @endforelse
-
-
-
-
 
             </div>
         </div>
@@ -314,7 +310,7 @@
     </div>
 
     {{-- get discount by create account --}}
-    <div class="holder holder-subscribe-full mt-0" style="background-color: transparent">
+    {{-- <div class="holder holder-subscribe-full mt-0" style="background-color: transparent">
         <div class="container">
             <div class="row">
                 <div class="col-auto">
@@ -341,10 +337,10 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     {{-- info --}}
-    <div class="holder mt-0">
+    {{-- <div class="holder mt-0">
         <div class="container">
             <div class="text-icn-blocks-row text-icn-blocks-row--nodivider justify-content-center">
                 <div class="text-icn-block-hor">
@@ -390,6 +386,45 @@
                     <div class="text">
                         <h4>100%% SECURE</h4>
                         <p>Faster & More Secure Online Gaming Payments</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> --}}
+
+    <div class="holder mt-0">
+        <div class="container">
+            <div class="text-icn-blocks-row text-icn-blocks-row--nodivider justify-content-center">
+                <div class="col-md-3 text-icn-block-hor">
+                    <div class="icn testimonials-carousel-simple-name" style="color: #dc3c01">
+                        <i class="icon-tag "></i>
+                    </div>
+                    <div class="text">
+                        <h4>أسعارنا الأفضل</h4>
+                    </div>
+                </div>
+                <div class="col-md-3 text-icn-block-hor">
+                    <div class="icn" style="color: #dc3c01">
+                        <i class="icon-shopping"></i>
+                    </div>
+                    <div class="text">
+                        <h4>عروضنا الأقوى</h4>
+                    </div>
+                </div>
+                <div class="col-md-3 text-icn-block-hor">
+                    <div class="icn" style="color: #dc3c01">
+                        <i class="icon-call-center"></i>
+                    </div>
+                    <div class="text">
+                        <h4>خدمة عملاء متميزة</h4>
+                    </div>
+                </div>
+                <div class="col-md-3 text-icn-block-hor">
+                    <div class="icn" style="color: #dc3c01">
+                        <i class="icon-shopping-1"></i>
+                    </div>
+                    <div class="text">
+                        <h4>منتجات تناسب احتياجك</h4>
                     </div>
                 </div>
             </div>

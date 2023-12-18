@@ -5,7 +5,7 @@
                 <div class="col-lg-4 col-xl-3 last-mobile">
                     <div class="footer-block">
                         <div class="footer-logo">
-                            <a href="index.html"><img class="lazyload fade-up"
+                            <a href="{{ route('frontend.index') }}"><img class="lazyload fade-up"
                                     src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
                                     data-srcset="{{ asset('frontend/images/games/logo-games.webp') }} 1x, {{ asset('frontend/images/games/logo-games2x.webp') }} 2x"
                                     alt="Logo" /></a>
@@ -193,7 +193,7 @@
             </div>
         </div>
     </div>
-    <div class="popup-addedtocart js-popupAddToCart closed" data-close="50000">
+    <div class="popup-addedtocart js-popupAddToCart closed" data-close="90000">
         <div class="container">
             <div class="row">
                 <div class="popup-addedtocart-close js-popupAddToCart-close">
@@ -217,24 +217,24 @@
                         </a>
                         <div class="col popup-addedtocart_text">
                             <a href="product.html" class="popup-addedtocart_title"></a>
-                            <span class="popup-addedtocart_message">Added to
-                                <a href="cart.html" class="underline">Cart</a></span>
+                            <span class="popup-addedtocart_message">تمت إضافتها إلى
+                                <a href="{{ route('frontend.cart') }}" class="underline">سلة التسوق</a></span>
                             <span class="popup-addedtocart_error_message"></span>
                         </div>
                     </div>
                 </div>
                 <div class="col-auto popup-addedtocart_actions">
-                    <span>You can continue</span>
-                    <a href="#" class="btn btn--grey btn--sm js-open-drop" data-panel="#dropdnMinicart"><i
-                            class="icon-basket"></i><span>Check Cart</span></a>
-                    <span>or</span>
-                    <a href="checkout.html" class="btn btn--invert btn--sm"><i
-                            class="icon-envelope-1"></i><span>Check out</span></a>
+                    <span>يمكنك الاستمرار</span>
+                    <a href="{{ route('frontend.cart') }}" class="btn btn--grey btn--sm js-open-drop"
+                        data-panel="#dropdnMinicart"><i class="icon-basket"></i><span>فحص سلة التسوق</span></a>
+                    <span>او</span>
+                    <a href="{{ route('frontend.checkout') }}" class="btn btn--invert btn--sm"><i
+                            class="icon-envelope-1"></i><span>إكمال عملية الشراء</span></a>
                 </div>
             </div>
         </div>
     </div>
-    <div class="sticky-addcart popup-selectoptions js-popupSelectOptions closed" data-close="500000">
+    <div class="sticky-addcart popup-selectoptions js-popupSelectOptions closed" data-close="300000">
         <div class="container">
             <div class="row">
                 <div class="popup-selectoptions-close js-popupSelectOptions-close">

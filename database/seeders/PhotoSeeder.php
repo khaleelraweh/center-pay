@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\News;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\Slider;
@@ -45,6 +46,11 @@ class PhotoSeeder extends Seeder
             //slider photo faker 
             Slider::all()->each(function ($slider) use ($images) {
                 $slider->photos()->createMany(Arr::random($images, rand(2, 3)));
+            });
+
+            //slider photo faker 
+            News::all()->each(function ($slider) use ($images) {
+                $slider->photos()->createMany(Arr::random($images, rand(1, 2)));
             });
         }
     }
