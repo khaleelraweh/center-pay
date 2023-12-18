@@ -1,5 +1,6 @@
 <div x-data="{ open: true }" x-show="open">
-    <div class="cart">
+    {{-- <div class="cart"> --}}
+    <div class="cart-table-prd">
         <div class="card-body bg-transparent">
             <div class="cart-item">
                 <div class="item-body product">
@@ -46,11 +47,15 @@
                             </div>
                         </div>
 
-                        <div class="final-price" id="final-price-2">${{ $cartItem->qty * $cartItem->model?->price }}
+                        <div class="final-price" id="final-price-2">
+                            ${{ $cartItem->qty * $cartItem->model?->price }}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+
+
 </div>

@@ -19,6 +19,7 @@ class CartComponent extends Component
     protected $listeners = [
         'updateCart' => 'update_cart',
         'removeFromCart' => 'remove_from_cart',
+        'removeAll' => 'remove_all',
         'removeFromWishList' => 'remove_from_wish_list',
         'moveToCart' => 'move_to_cart'
     ];
@@ -37,7 +38,6 @@ class CartComponent extends Component
 
     public function remove_from_cart($rowId){
         
-
             $cart = Cart::content()->where('rowId',$rowId);
             if($cart->isNotEmpty()){
                 Cart::remove($rowId);
@@ -52,6 +52,19 @@ class CartComponent extends Component
         
 
        
+
+    }
+
+    public function remove_all(){
+        Cart::instance('default')->destroy();
+
+        // Cart::instance('default')->remove($rowId);
+        $this->emit('updateCart');
+        $this->alert('success','All Items removed from your cart! ');
+
+        if(cart::instance('default')->count() == 0){
+            return redirect()->route('frontend.cart');
+        }
 
     }
 

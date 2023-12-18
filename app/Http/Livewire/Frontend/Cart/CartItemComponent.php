@@ -43,6 +43,7 @@ class CartItemComponent extends Component
          $this->emit('removeFromCart' , $rowId );
     }
 
+
     public function render()
     {
         return view('livewire.frontend.cart.cart-item-component' , [

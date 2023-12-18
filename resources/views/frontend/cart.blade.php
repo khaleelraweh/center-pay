@@ -49,37 +49,41 @@
 
                 <div class="col-md-8 js-hide-empty">
 
-                    {{-- عناصر سلة التسوق  --}}
-                    @forelse (Cart::content('default') as $item)
-                        {{--  show item in cart using livewire --}}
-                        <livewire:frontend.cart.cart-item-component :item="$item->rowId" />
-                    @empty
-                        {{-- سلة الشراء فارغة  --}}
-                        <div class="cart">
-                            <div class="card-body bg-transparent">
-                                <div class="minicart-empty-text text-center">
-                                    <h1>سلة الشراء فارغة</h1>
-                                </div>
-                                <div class="minicart-empty-icon">
-                                    <i class="icon-shopping-bag"></i>
-                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-                                        viewBox="0 0 306 262" style="enable-background:new 0 0 306 262;"
-                                        xml:space="preserve">
-                                        <path class="st0"
-                                            d="M78.1,59.5c0,0-37.3,22-26.7,85s59.7,237,142.7,283s193,56,313-84s21-206-69-240s-249.4-67-309-60C94.6,47.6,78.1,59.5,78.1,59.5z">
-                                        </path>
-                                    </svg>
+                    <div
+                        class="prd-grid product-listing data-to-show-2 data-to-show-md-2 data-to-show-sm-1 js-category-grid">
+
+                        {{-- عناصر سلة التسوق  --}}
+                        @forelse (Cart::content('default') as $item)
+                            {{--  show item in cart using livewire --}}
+
+                            <div class="prd prd--style2 prd-labels--max prd-labels-shadow prd-w-xxs">
+
+                                <livewire:frontend.cart.cart-item-component :item="$item->rowId" />
+                            </div>
+
+                        @empty
+                            {{-- سلة الشراء فارغة  --}}
+                            <div class="cart">
+                                <div class="card-body bg-transparent">
+                                    <div class="minicart-empty-text text-center">
+                                        <h1>سلة الشراء فارغة</h1>
+                                    </div>
+                                    <div class="minicart-empty-icon">
+                                        <i class="icon-shopping-bag"></i>
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                                            viewBox="0 0 306 262" style="enable-background:new 0 0 306 262;"
+                                            xml:space="preserve">
+                                            <path class="st0"
+                                                d="M78.1,59.5c0,0-37.3,22-26.7,85s59.7,237,142.7,283s193,56,313-84s21-206-69-240s-249.4-67-309-60C94.6,47.6,78.1,59.5,78.1,59.5z">
+                                            </path>
+                                        </svg>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforelse
+                        @endforelse
+                    </div>
 
-                    @if (Cart::instance('default')->count() > 0)
-                        <div class="text-center mt-1"><a href="#"
-                                class="btn btn--grey js-remove-all-product rounded-pill">الغاء
-                                السلة</a>
-                        </div>
-                    @endif
+                    <livewire:frontend.cart.destroy-cart-items-component />
 
                     {{-- wanted more section  --}}
                     <div class="d-none d-lg-block">
@@ -91,7 +95,8 @@
                                     <div class="carousel-arrows carousel-arrows--center"></div>
                                 </div>
                                 {{-- may want more   --}}
-                                <livewire:frontend.cart.more-cards-component , :more_cards="$more_cards" />
+                                <livewire:frontend.cart.more-cards-component :more_cards="$more_cards" />
+
 
                             </div>
                         </div>
