@@ -45,8 +45,9 @@ Route::get('/wishlist',[FrontendController::class,'wishlist'])->name('frontend.w
 // Route::get('/checkout',[FrontendController::class,'checkout'])->name('frontend.checkout');
 
 
-// this routes is only for customers whom are loged  in my websige 
-Route::group(['middleware'=>['roles','role:customer']],function(){
+// this routes is only for customers whom are loged  in my websige
+// we add middlewire verified to prefent user to enter his profile and orders before verification email 
+Route::group(['middleware'=>['roles','role:customer' , 'verified']],function(){
 
 
     //route for customer profile 
@@ -62,13 +63,14 @@ Route::group(['middleware'=>['roles','role:customer']],function(){
         Route::get('/checkout',[PaymentController::class,'checkout'])->name('frontend.checkout');
         Route::post('/checkout/payment',[PaymentController::class,'checkout_now'])->name('checkout.payment');
         
-          Route::get('/checkout/{order_id}/cancelled',[PaymentController::class,'cancelled'])->name('checkout.cancel');
-          Route::get('/checkout/{order_id}/completed',[PaymentController::class,'completed'])->name('checkout.complete');
-          Route::get('/checkout/webhook/{order?}/{env?}',[PaymentController::class,'webhook'])->name('checkout.webhook.ipn');
-
+        Route::get('/checkout/{order_id}/cancelled',[PaymentController::class,'cancelled'])->name('checkout.cancel');
+        Route::get('/checkout/{order_id}/completed',[PaymentController::class,'completed'])->name('checkout.complete');
+        Route::get('/checkout/webhook/{order?}/{env?}',[PaymentController::class,'webhook'])->name('checkout.webhook.ipn');
+        
+        Route::post('/checkout/paymentIn',[PaymentController::class,'checkout_in'])->name('checkout.payment_in');
     });
     
-  });
+});
 
 
 //Backend

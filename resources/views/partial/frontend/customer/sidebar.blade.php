@@ -1,10 +1,10 @@
-<div class="card border-0 rounded-0 p-lg-4 pref">
-    <div class="card-body">
-        <h5 class="text-uppercase mb-4">تصفح</h5>
-
+<div class="card border-0 rounded-0 p-lg-2 pref" style="padding: 0px">
+    <div class="card-body" style="background: #261F23; border-radius: 5px 40px 5px 40px;">
+        <h5 class="text-uppercase mb-4">المحتوي</h5>
         <div class=" pref-link {{ Route::currentRouteName() == 'customer.dashboard' ? 'active text-white' : 'p ?>' }}  ">
             <a href="{{ route('customer.dashboard') }}">
-                <strong class="small text-uppercase font-weight-bold">لوحة التحكم الرئيسية</strong>
+                <strong class="small text-uppercase font-weight-bold">لوحة التحكم
+                    الرئيسية</strong>
             </a>
         </div>
         <div class=" pref-link {{ Route::currentRouteName() == 'customer.profile' ? 'active text-white' : '' }} ">

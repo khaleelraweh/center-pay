@@ -19,10 +19,14 @@
                 <div class="col-md-6 offset-md-3">
                     <h2 class="h5 text-uppercase mb-3">{{ __('إعادة تعيين كلمة المرور') }}</h2>
                     @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+                        <div class="alert alert-success"
+                            style="margin-bottom: 5px ; background-color:rgba(200 , 100 , 100,0.3) ; border-radius: 10px"
+                            role="alert">
+                            <div class="d-none">{{ session('status') }}</div>
+                            تم ارسال رابط اعادة تعيين كلمة المرور الى بريدك الالكتروني
                         </div>
                     @endif
+
 
                     <form method="POST" action="{{ route('password.email') }}">
                         @csrf
@@ -53,12 +57,13 @@
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-2">
                                 <button type="submit" class="btn mt-3 col-sm-12 rounded-pill ">إرسال رابط إعادة
-                                    تعيين كلمة السر
+                                    التعيين
                                 </button>
 
                             </div>
                         </div>
                     </form>
+
 
                 </div>
             </div>

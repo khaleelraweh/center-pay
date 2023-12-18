@@ -422,53 +422,97 @@
                             @if (auth()->user()->full_name != null)
                                 <span class="custom-color">{{ auth()->user()?->full_name }}</span>
                             @endif
-                        </h6>
-                    </li>
-                    <li>
-                        <div class="card border-0 rounded-0 p-lg-4 pref">
-                            <div class="card-body" style="background: #261F23">
-                                <h5 class="text-uppercase mb-4">تصفح</h5>
 
-                                <div
-                                    class=" pref-link {{ Route::currentRouteName() == 'customer.dashboard' ? 'active text-white' : 'p ?>' }}  ">
-                                    <a href="{{ route('customer.dashboard') }}">
-                                        <strong class="small text-uppercase font-weight-bold">لوحة التحكم الرئيسية</strong>
-                                    </a>
-                                </div>
-                                <div
-                                    class=" pref-link {{ Route::currentRouteName() == 'customer.profile' ? 'active text-white' : '' }} ">
-                                    <a href="{{ route('customer.profile') }}">
-                                        <strong class="small text-uppercase font-weight-bold">الملف الشخصي</strong>
-                                    </a>
-                                </div>
-                                <div
-                                    class=" pref-link {{ Route::currentRouteName() == 'customer.addresses' ? 'active text-white' : '' }} ">
-                                    <a href="{{ route('customer.addresses') }}">
-                                        <strong class="small text-uppercase font-weight-bold">العناوين</strong>
-                                    </a>
-                                </div>
-                                <div
-                                    class=" pref-link {{ Route::currentRouteName() == 'customer.orders' ? 'active text-white' : '' }} ">
-                                    <a href="{{ route('customer.orders') }}">
-                                        <strong class="small text-uppercase font-weight-bold">طلباتي</strong>
-                                    </a>
-                                </div>
-                                <div class=" pref-link">
-                                    <a href="javascript:void(0);"
-                                        onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                        <strong class="small text-uppercase font-weight-bold">تسجيل الخروج</strong>
-                                    </a>
-                                    <form action="{{ route('logout') }}" method="POST" id="logout-form"
-                                        class="d-none">
+                            @if (auth()->user()->email_verified_at != null)
+                            @else
+                                {{-- <div class="mt-2">
+                                    من فضلك , قم بتفعيل حسابك لدينا عبر النقر على رسالة التاكيد الى ارسلناها الي بريدك
+                                    الالكتروني
+                                </div> --}}
+
+                                <div class="mt-4">
+
+                                    <h5 class=" mb-3">تاكيد عنوان البريد الإلكتروني</h5>
+
+                                    @if (session('resent'))
+                                        <div class="alert alert-success" role="alert"
+                                            style="margin-bottom: 5px ; background-color:rgba(200 , 100 , 100,0.3) ; border-radius: 10px">
+                                            تم إرسال رابط تحقق جديد إلى عنوان بريدك الإلكتروني.
+                                        </div>
+                                    @endif
+
+                                    {{ __('قبل المتابعة، يرجى التحقق من بريدك الإلكتروني للحصول على رابط التحقق.') }}
+                                    <br> <br>
+                                    {{ __('إذا لم تتلق البريد الإلكتروني') }},
+
+                                    <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
                                         @csrf
+                                        <button type="submit" class="btn btn-link p-0 px-1 py-1 m-0 align-baseline"
+                                            style="border-radius: 5px">{{ __('انقر هنا لطلب آخر') }}</button>.
                                     </form>
                                 </div>
+                            @endif
 
-                            </div>
-                        </div>
-
-
+                        </h6>
                     </li>
+
+                    @if (auth()->user()->email_verified_at != null)
+                        {{-- <li>
+                            <h5>
+                                <i class="icon-user"></i>
+                                <span>الملف الشخصي </span>
+                            </h5>
+                        </li> --}}
+                        <li>
+                            <div class="card border-0 rounded-0 p-lg-2 pref" style="padding: 0px">
+                                <div class="card-body" style="background: #261F23; border-radius: 5px 40px 5px 40px;">
+                                    <h5 class="text-uppercase mb-4">المحتوي</h5>
+                                    <div
+                                        class=" pref-link {{ Route::currentRouteName() == 'customer.dashboard' ? 'active text-white' : 'p ?>' }}  ">
+                                        <a href="{{ route('customer.dashboard') }}">
+                                            <strong class="small text-uppercase font-weight-bold">لوحة التحكم
+                                                الرئيسية</strong>
+                                        </a>
+                                    </div>
+                                    <div
+                                        class=" pref-link {{ Route::currentRouteName() == 'customer.profile' ? 'active text-white' : '' }} ">
+                                        <a href="{{ route('customer.profile') }}">
+                                            <strong class="small text-uppercase font-weight-bold">الملف الشخصي</strong>
+                                        </a>
+                                    </div>
+                                    <div
+                                        class=" pref-link {{ Route::currentRouteName() == 'customer.addresses' ? 'active text-white' : '' }} ">
+                                        <a href="{{ route('customer.addresses') }}">
+                                            <strong class="small text-uppercase font-weight-bold">العناوين</strong>
+                                        </a>
+                                    </div>
+                                    <div
+                                        class=" pref-link {{ Route::currentRouteName() == 'customer.orders' ? 'active text-white' : '' }} ">
+                                        <a href="{{ route('customer.orders') }}">
+                                            <strong class="small text-uppercase font-weight-bold">طلباتي</strong>
+                                        </a>
+                                    </div>
+                                    <div class=" pref-link">
+                                        <a href="javascript:void(0);"
+                                            onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                            <strong class="small text-uppercase font-weight-bold">تسجيل الخروج</strong>
+                                        </a>
+                                        <form action="{{ route('logout') }}" method="POST" id="logout-form"
+                                            class="d-none">
+                                            @csrf
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        </li>
+                    @else
+                    @endif
+
+
+
                 </ul>
 
             </div>

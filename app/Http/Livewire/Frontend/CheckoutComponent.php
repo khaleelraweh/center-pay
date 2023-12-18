@@ -32,9 +32,9 @@ class CheckoutComponent extends Component
     public $payment_method_details = [];
 
 
-    public $payment_category_id;
-    public $payment_method_id;
-    public $payment_method_detail_id;
+    public $payment_category_id = '' ;
+    public $payment_method_id = '';
+    public $payment_method_detail_id = '' ;
 
     public $payment_category_name_ar;
        
@@ -47,8 +47,6 @@ class CheckoutComponent extends Component
     ];
 
     public function mount(){
-
-
         // access all addresses related to customer
         $this->cart_subtotal    = getNumbers()->get('subtotal');
         $this->cart_tax         = getNumbers()->get('productTaxes');
@@ -119,6 +117,9 @@ class CheckoutComponent extends Component
     public function updatePaymentCategory(){
         $payment_category = PaymentCategory::whereId($this->payment_category_id)->first();
         $this->payment_category_name_ar = $payment_category->name_ar;
+        $this->payment_method_id= '';
+        $this->payment_methods = [];
+        $this->payment_method_details = [];
     } 
 
 

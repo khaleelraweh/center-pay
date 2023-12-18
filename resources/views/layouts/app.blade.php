@@ -105,12 +105,15 @@
 
     <script src="//unpkg.com/alpinejs" defer></script>
 
-    @yield('script')
     <livewire:scripts />
 
     {{-- livewire alert  --}}
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <x-livewire-alert::scripts />
+
+    {{-- realrished sweat aleart for front side  --}}
+    @include('sweetalert::alert', ['cdn' => 'https://cdn.jsdelivr.net/npm/sweetalert2@9'])
+    @yield('script')
 
 </body>
 

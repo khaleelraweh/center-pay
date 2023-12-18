@@ -19,7 +19,6 @@ class OrderService{
             'user_id'               => auth()->id(),
             // 'user_address_id'       => $request['customer_address_id'],
             // 'shipping_company_id'   => $request['shipping_company_id'],
-            // 'payment_method_id'     => $request['payment_method_id'],
             'payment_method_id'     => $request['payment_method_id'],
             'subtotal'              => getNumbers()->get('subtotal'),
             'discount_code'         => session()->has('coupon') ? session()->get('coupon')['code'] : null,

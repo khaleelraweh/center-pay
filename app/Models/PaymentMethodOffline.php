@@ -5,6 +5,7 @@ namespace App\Models;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -66,6 +67,10 @@ class PaymentMethodOffline extends Model
 
     public function paymentCategory(){
         return $this->belongsTo(PaymentCategory::class, 'payment_category_id', 'id');
+    }
+
+    public function orders():HasMany{
+        return $this->hasMany(Order::class);
     }
     
     

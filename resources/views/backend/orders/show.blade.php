@@ -111,7 +111,7 @@
                     @forelse ($order->transactions  as $transaction)
                         <tr>
                             <td>{{ $transaction->status() }}</td>
-                            <td>{{ $transaction->transaction == 0 ? $order->payment_method->name : null }}</td>
+                            <td>{{ $transaction->transaction == 0 ? $order->payment_method?->name : null }}</td>
                             <td>{{ $transaction->transaction_number }}</td>
                             <td>{{ $transaction->payment_result }}</td>
                             <td>{{ $transaction->created_at->format('Y-m-d h:i a') }}</td>

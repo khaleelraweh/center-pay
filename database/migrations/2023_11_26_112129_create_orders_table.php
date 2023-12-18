@@ -12,7 +12,7 @@ return new class extends Migration
      * @return void
      */
     public function up()
-    {
+    { 
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->string('ref_id')->nullable();
@@ -27,8 +27,11 @@ return new class extends Migration
             $table->double('shipping')->default(0.00);
             $table->double('tax')->default(0.00); 
             $table->double('total')->default(0.00);
-            $table->string('currency')->default('USD');
+            $table->string('currency')->default('USD'); 
 
+            $table->string('bankAccNumber')->nullable();
+            $table->string('bankReceipt')->nullable();
+ 
             $table->unsignedTinyInteger('order_status')->default(0);
             $table->timestamps();
         });
