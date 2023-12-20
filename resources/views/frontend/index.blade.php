@@ -186,14 +186,14 @@
                                     class="image-hover-scale">
                                     <img src="{{ asset('assets/card_categories/' . $card_category->firstMedia->file_name) }}"
                                         alt="{{ $card_category->name }}" class="js-prd-img" />
-                                    <div class="prd-big-circle-labels">
+                                    {{-- <div class="prd-big-circle-labels">
                                         <div class="label-sale">
                                             <span>-false <span class="sale-text">Sale</span></span>
                                             <div class="countdown-circle">
                                                 <div class="countdown js-countdown" data-countdown="2021/07/01"></div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </a>
                             </div>
                             <div class="prd-info text-center">
