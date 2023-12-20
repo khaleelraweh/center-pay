@@ -226,10 +226,14 @@
     @if (count($news) > 0)
         <div class="holder holder-mt-medium">
             <div class="container">
-                <div class="title-with-arrows">
+                {{-- <div class="title-with-arrows">
                     <h2 class="h1-style">
                         <a href="#" title="View all"> المدونة</a>
                     </h2>
+                    <div class="carousel-arrows"></div>
+                </div> --}}
+                <div class="title-wrap text-center">
+                    <h2 class="h1-style">المدونة</h2>
                     <div class="carousel-arrows"></div>
                 </div>
                 <div class="post-prws post-prws-carousel post-prws-carousel--single js-post-prws-carousel"

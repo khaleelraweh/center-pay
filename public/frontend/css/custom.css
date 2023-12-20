@@ -76,12 +76,12 @@
 
 
 
-.discount-circle-info{
+.label-sale{
     font-size: 20px;
     font-weight: bold;
 }
 
-.discount-circle .circle-text{
-    font-size: 12px;
+.sale-text{
+    font-size: 12px !important;
     font-weight: normal;
 }

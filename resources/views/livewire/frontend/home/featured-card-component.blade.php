@@ -7,8 +7,9 @@
             </div>
             <div class="prd-grid prd-carousel js-prd-carousel slick-arrows-aside-simple slick-arrows-mobile-lg data-to-show-4 data-to-show-md-3 data-to-show-sm-3 data-to-show-xs-2"
                 data-slick='{"slidesToShow": 5, "slidesToScroll": 2, "responsive": [{"breakpoint": 992,"settings": {"slidesToShow": 3, "slidesToScroll": 1}},{"breakpoint": 768,"settings": {"slidesToShow": 2, "slidesToScroll": 1}},{"breakpoint": 480,"settings": {"slidesToShow": 2, "slidesToScroll": 1}}]}'>
+
                 @forelse ($featured_cards as $featured_card)
-                    <div class=" prd prd--style2 prd-labels--max prd-labels-shadow">
+                    <div class=" prd prd--style2 prd-labels--max prd-labels-shadow ">
                         <div class="prd-inside">
                             <div class="prd-img-area">
                                 <a href="{{ route('frontend.card', $featured_card->slug) }}"
@@ -27,9 +28,11 @@
                                         <div class="foxic-loader"></div>
                                         <div class="prd-big-circle-labels">
                                             <div class="label-sale">
-                                                <span class="discount-circle-info">
+                                                <span>
                                                     {{ number_format(($featured_card->offer_price / $featured_card->price) * 100, 0, '.', ',') }}%-
-                                                    {{-- <span class="sale-text circle-text">تخفيض</span> --}}
+                                                    {{-- <span class="sale-text">
+                                                        <small>تخفيض</small>
+                                                    </span> --}}
                                                 </span>
                                                 <div class="countdown-circle">
                                                     <div class="countdown js-countdown" data-countdown="2021/07/01">
@@ -39,9 +42,8 @@
                                         </div>
                                     @endif
 
-
-
                                 </a>
+
                                 <div class="prd-circle-labels">
                                     <a href="#" wire:click.prevent="addToWishList('{{ $featured_card->id }}')"
                                         class="circle-label-compare circle-label-wishlist--add js-add-wishlist mt-0"

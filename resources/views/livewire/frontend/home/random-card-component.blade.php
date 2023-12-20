@@ -14,6 +14,7 @@
                             <div class="prd-img-area">
                                 <a href="{{ route('frontend.card', $random_product_card->slug) }}"
                                     class="prd-img image-container">
+
                                     <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
                                         data-src="{{ asset('assets/cards/' . $random_product_card->firstMedia->file_name) }}"
                                         alt="بطائق الدفع" class="js-prd-img lazyload fade-up" />
@@ -26,10 +27,10 @@
                                         <div class="prd-big-circle-labels">
                                             <div class="label-sale">
                                                 <span>
-                                                    {{ number_format(($random_product_card->offer_price / $random_product_card->price) * 100, 0, '.', ',') }}%
-                                                    <span class="sale-text">
-                                                        تخفيض
-                                                    </span>
+                                                    {{ number_format(($random_product_card->offer_price / $random_product_card->price) * 100, 0, '.', ',') }}%-
+                                                    {{-- <span class="sale-text">
+                                                        <small>تخفيض</small>
+                                                    </span> --}}
                                                 </span>
                                                 <div class="countdown-circle">
                                                     <div class="countdown js-countdown" data-countdown="2021/07/01">
@@ -43,7 +44,10 @@
                                     <a href="#"
                                         wire:click.prevent="addToWishList('{{ $random_product_card->id }}')"
                                         class="circle-label-compare circle-label-wishlist--add js-add-wishlist mt-0"
-                                        title="Add To Wishlist"><i class="icon-heart-stroke"></i></a><a href="#"
+                                        title="Add To Wishlist">
+                                        <i class="icon-heart-stroke"></i>
+                                    </a>
+                                    <a href="#"
                                         class="circle-label-compare circle-label-wishlist--off js-remove-wishlist mt-0"
                                         title="Remove From Wishlist"><i class="icon-heart-hover"></i></a>
 
@@ -90,8 +94,6 @@
 
                                     </div>
                                     <div class="prd-price">
-
-
                                         @if ($random_product_card->offer_price > 0)
                                             <div class="price-old">$ {{ $random_product_card->price }}</div>
                                             <div class="price-new">
