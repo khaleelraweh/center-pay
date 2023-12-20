@@ -27,8 +27,10 @@
                                         <div class="foxic-loader"></div>
                                         <div class="prd-big-circle-labels">
                                             <div class="label-sale">
-                                                <span>{{ number_format(($featured_card->offer_price / $featured_card->price) * 100, 0, '.', ',') }}%
-                                                    <span class="sale-text">تخفيض</span></span>
+                                                <span>
+                                                    {{ number_format(($featured_card->offer_price / $featured_card->price) * 100, 0, '.', ',') }}%
+                                                    <span class="sale-text">تخفيض</span>
+                                                </span>
                                                 <div class="countdown-circle">
                                                     <div class="countdown js-countdown" data-countdown="2021/07/01">
                                                     </div>
@@ -56,6 +58,15 @@
                             </div>
                             <div class="prd-info">
                                 <div class="prd-info-wrap">
+
+                                    <div class="prd-info-top">
+                                        <div class="prd-tag">
+                                            <a
+                                                href="{{ route('frontend.card_category', $featured_card->category->slug) }}">
+                                                {{ $featured_card->category->name }}
+                                            </a>
+                                        </div>
+                                    </div>
 
                                     {{-- <div class="prd-rating justify-content-center">
                                         <i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i
