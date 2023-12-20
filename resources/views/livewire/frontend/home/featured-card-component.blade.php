@@ -22,9 +22,9 @@
                                         data-src="{{ asset('assets/cards/' . $featured_card->lastMedia->file_name) }}"
                                         alt="بطائق الدفع" class="js-prd-img lazyload fade-up" />
 
+                                    {{-- rounded circle discount --}}
                                     @if ($featured_card->offer_price > 0)
                                         <div class="foxic-loader"></div>
-
                                         <div class="prd-big-circle-labels">
                                             <div class="label-sale">
                                                 <span>{{ number_format(($featured_card->offer_price / $featured_card->price) * 100, 0, '.', ',') }}%
@@ -49,9 +49,9 @@
                                     <a href="#"
                                         class="circle-label-compare circle-label-wishlist--off js-remove-wishlist mt-0"
                                         title="Remove From Wishlist"><i class="icon-heart-hover"></i></a>
-                                    <a href="#" class="circle-label-qview js-prd-quickview prd-hide-mobile"
+                                    {{-- <a href="#" class="circle-label-qview js-prd-quickview prd-hide-mobile"
                                         data-src="ajax/ajax-quickview.html"><i class="icon-eye"></i><span>استعراض
-                                            سريع</span></a>
+                                            سريع</span></a> --}}
                                 </div>
                             </div>
                             <div class="prd-info">
@@ -101,6 +101,9 @@
                                             <div class="price-old">$ {{ $featured_card->price }}</div>
                                             <div class="price-new">$
                                                 {{ $featured_card->price - $featured_card->offer_price }}</div>
+                                        @else
+                                            <div class="price-new">$
+                                                {{ $featured_card->price }}</div>
                                         @endif
 
 
