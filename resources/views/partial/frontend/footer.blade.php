@@ -110,7 +110,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-xl-3">
+                {{-- <div class="col-lg-4 col-xl-3">
                     <div class="footer-block collapsed-mobile">
                         <div class="title">
                             <h4>عن سنتر باي</h4>
@@ -137,7 +137,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
@@ -179,8 +179,7 @@
                         <span class="option-label">الكمية:</span>
                         <div class="qty qty-changer">
                             <button class="decrease"></button>
-                            <input type="number" class="qty-input" value="1" data-min="1"
-                                data-max="1000" />
+                            <input type="number" class="qty-input" value="1" data-min="1" data-max="1000" />
                             <button class="increase"></button>
                         </div>
                     </div>
