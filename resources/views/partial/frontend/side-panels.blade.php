@@ -748,7 +748,7 @@
                 @endforelse
 
 
-                <a href="#" class="minicart-drop-countdown mt-3">
+                {{-- <a href="#" class="minicart-drop-countdown mt-3">
                     <div class="countdown-box-full">
                         <div class="row no-gutters align-items-center">
                             <div class="col-auto">
@@ -762,8 +762,8 @@
                             </div>
                         </div>
                     </div>
-                </a>
-                <div class="minicart-drop-info d-none d-md-block">
+                </a> --}}
+                {{-- <div class="minicart-drop-info d-none d-md-block">
                     <div class="shop-feature-single row no-gutters align-items-center">
                         <div class="shop-feature-icon col-auto">
                             <i class="icon-truck"></i>
@@ -772,27 +772,35 @@
                             <b>تسوق!</b> واصل التسوق واحصل على توصيل مجاني خلال فترة اسبوع
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
+
             <div class="minicart-drop-fixed js-hide-empty">
                 <div class="loader-horizontal-sm js-loader-horizontal-sm" data-loader-horizontal="">
                     <span></span>
                 </div>
-                <div class="minicart-drop-total js-minicart-drop-total row no-gutters align-items-center">
+                {{-- <div class="minicart-drop-total js-minicart-drop-total row no-gutters align-items-center">
                     <div class="minicart-drop-total-txt col-auto heading-font">
                         الاجمالي
                     </div>
                     <div class="minicart-drop-total-price col" data-header-cart-total="">
                         {{ Cart::total() }}
                     </div>
-                </div>
+                </div> --}}
                 <div class="minicart-drop-actions">
-                    <a href="{{ route('frontend.cart') }}" class="btn btn--md btn--grey"><i
-                            class="icon-basket"></i><span>سلة
-                            المشتريات</span></a>
-                    <a href="{{ route('frontend.checkout') }}" class="btn btn--md"><i
-                            class="icon-checkout"></i><span>عملية
-                            الدفع</span></a>
+                    <a href="{{ route('frontend.wishlist') }}" class="btn btn--md btn--grey">
+                        <i class="icon-heart-stroke"></i>
+                        <span>
+                            استعراض المفضلة
+                        </span>
+                    </a>
+
+                    {{-- <a href="{{ route('frontend.checkout') }}" class="btn btn--md">
+                        <i class="icon-basket"></i>
+                        <span>
+                            نقل الكل للسلة
+                        </span>
+                    </a> --}}
                 </div>
 
                 <ul class="payment-link mb-2">
