@@ -87,7 +87,7 @@
                                             <button class="btn js-prd-addtocart"
                                                 wire:click.prevent="addToCart('{{ $related_card->id }}')"
                                                 data-product='{"name": "Midi Dress with Belt", "path":"{{ asset('
-                                                                                                                                                												frontend/assests/images/skins/fashion/cards/product-06-1.webp') }}", "url"
+                                                                                                                                                                                                												frontend/assests/images/skins/fashion/cards/product-06-1.webp') }}", "url"
 												:"product.html", "aspect_ratio" :0.778}'>
                                                 Add To Cart
                                             </button>
@@ -116,7 +116,7 @@
                                                 <button class="btn js-prd-addtocart"
                                                     wire:click.prevent="addToCart('{{ $related_card->id }}')"
                                                     data-product='{"name": "Midi Dress with Belt", "path":"{{ asset('
-                                                                                                                                                            													frontend/assests/images/skins/fashion/cards/product-06-1.webp') }}", "url"
+                                                                                                                                                                                                                													frontend/assests/images/skins/fashion/cards/product-06-1.webp') }}", "url"
 													:"product.html", "aspect_ratio" :0.778}'>Add
                                                     To Cart</button>
                                             </form>

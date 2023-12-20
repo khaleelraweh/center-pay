@@ -27,10 +27,9 @@
                                         <div class="foxic-loader"></div>
                                         <div class="prd-big-circle-labels">
                                             <div class="label-sale">
-                                                <span style="font-size: 18px;">
-                                                    {{ number_format(($featured_card->offer_price / $featured_card->price) * 100, 0, '.', ',') }}%
-                                                    <span class="sale-text"
-                                                        style="font-size: 10px; font-weight: normal">تخفيض</span>
+                                                <span class="discount-circle-info">
+                                                    {{ number_format(($featured_card->offer_price / $featured_card->price) * 100, 0, '.', ',') }}%-
+                                                    {{-- <span class="sale-text circle-text">تخفيض</span> --}}
                                                 </span>
                                                 <div class="countdown-circle">
                                                     <div class="countdown js-countdown" data-countdown="2021/07/01">
