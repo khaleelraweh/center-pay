@@ -48,18 +48,26 @@
                             </div>
                             <div class="prd-info">
                                 <div class="prd-info-wrap">
-                                    <div class="prd-info-top">
-                                        <div class="prd-tag"><a href="#">القسم</a></div>
-                                    </div>
-                                    <div class="prd-rating justify-content-center">
+
+                                    {{-- <div class="prd-rating justify-content-center">
                                         <i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i
                                             class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i
                                             class="icon-star-fill fill"></i>
+                                    </div> --}}
+
+                                    <div class="prd-tag">
+                                        <a href="{{ route('frontend.card_category', $featured_card->category->slug) }}">
+                                            {{ $featured_card->category->name }}
+                                        </a>
                                     </div>
-                                    <div class="prd-tag"><a href="#">القسم</a></div>
-                                    <h2 class="prd-title">
-                                        <a href="product.html">{{ $featured_card->category->name }}</a>
+
+                                    <h2 class="prd-title"><a
+                                            href="{{ route('frontend.card', $featured_card->slug) }}">{{ $featured_card->name }}</a>
                                     </h2>
+
+                                    {{-- <h2 class="prd-title">
+                                        <a href="product.html">{{ $featured_card->category->name }}</a>
+                                    </h2> --}}
                                     <div class="prd-description">
                                         Quisque volutpat condimentum velit. Class aptent taciti
                                         sociosqu ad litora torquent per conubia nostra, per
