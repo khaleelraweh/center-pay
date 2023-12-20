@@ -14,10 +14,11 @@
                     </div>
                     <ul class="nav nav-level-1">
                         <li>
-                            <a href="index.html">تخطيط<span class="menu-label menu-label--color1">الصفحات</span><span
-                                    class="arrow"><i class="icon-angle-right"></i></span></a>
+                            <a href="{{ route('frontend.index') }}">تخطيط<span
+                                    class="menu-label menu-label--color1">الصفحات</span><span class="arrow"><i
+                                        class="icon-angle-right"></i></span></a>
                             <ul class="nav-level-2">
-                                <li><a href="index.html">Fashion (Default) Skin</a></li>
+                                <li><a href="{{ route('frontend.index') }}">Fashion (Default) Skin</a></li>
                                 <li><a href="index-sport.html">Sport Skin</a></li>
                                 <li><a href="index-helloween.html">Halloween Skin</a></li>
                                 <li><a href="index-medical.html">Medical Skin</a></li>
