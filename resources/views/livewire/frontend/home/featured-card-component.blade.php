@@ -21,16 +21,24 @@
                                     <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
                                         data-src="{{ asset('assets/cards/' . $featured_card->lastMedia->file_name) }}"
                                         alt="بطائق الدفع" class="js-prd-img lazyload fade-up" />
-                                    <div class="foxic-loader"></div>
-                                    <div class="prd-big-circle-labels">
-                                        <div class="label-sale">
-                                            <span>{{ $featured_card->offer_price }}% <span
-                                                    class="sale-text">تخفيض</span></span>
-                                            <div class="countdown-circle">
-                                                <div class="countdown js-countdown" data-countdown="2021/07/01"></div>
+
+                                    @if ($featured_card->offer_price > 0)
+                                        <div class="foxic-loader"></div>
+
+                                        <div class="prd-big-circle-labels">
+                                            <div class="label-sale">
+                                                <span>{{ number_format(($featured_card->offer_price / $featured_card->price) * 100, 0, '.', ',') }}%
+                                                    <span class="sale-text">تخفيض</span></span>
+                                                <div class="countdown-circle">
+                                                    <div class="countdown js-countdown" data-countdown="2021/07/01">
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    @endif
+
+
+
                                 </a>
                                 <div class="prd-circle-labels">
                                     <a href="#" wire:click.prevent="addToWishList('{{ $featured_card->id }}')"
@@ -64,10 +72,6 @@
                                     <h2 class="prd-title"><a
                                             href="{{ route('frontend.card', $featured_card->slug) }}">{{ $featured_card->name }}</a>
                                     </h2>
-
-                                    {{-- <h2 class="prd-title">
-                                        <a href="product.html">{{ $featured_card->category->name }}</a>
-                                    </h2> --}}
                                     <div class="prd-description">
                                         Quisque volutpat condimentum velit. Class aptent taciti
                                         sociosqu ad litora torquent per conubia nostra, per
@@ -85,16 +89,21 @@
                                                 class="circle-label-compare circle-label-wishlist--off js-remove-wishlist mt-0"
                                                 title="Remove From Wishlist"><i class="icon-heart-hover"></i></a>
                                         </div>
-                                        <div>
+                                        {{-- <div>
                                             <a href="#"
                                                 class="circle-label-qview prd-hide-mobile js-prd-quickview"
                                                 data-src="ajax/ajax-quickview.html"><i
                                                     class="icon-eye"></i><span>استعراض سريع</span></a>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     <div class="prd-price">
-                                        <div class="price-old">$ 200</div>
-                                        <div class="price-new">$ {{ $featured_card->price }}</div>
+                                        @if ($featured_card->offer_price > 0)
+                                            <div class="price-old">$ {{ $featured_card->price }}</div>
+                                            <div class="price-new">$
+                                                {{ $featured_card->price - $featured_card->offer_price }}</div>
+                                        @endif
+
+
                                     </div>
                                     <div class="prd-action">
                                         <div class="prd-action-left">
