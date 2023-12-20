@@ -26,7 +26,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-xl-2">
+                <div class="col-lg-3 col-xl-3">
                     <div class="footer-block collapsed-mobile">
                         <div class="title">
                             <h4>حول سنترباي</h4>
@@ -45,7 +45,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-xl-2">
+                <div class="col-lg-3 col-xl-3">
                     <div class="footer-block collapsed-mobile">
                         <div class="title">
                             <h4>منصات التواصل الاجتماعية</h4>
@@ -95,7 +95,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-xl-2">
+                <div class="col-lg-3 col-xl-3">
                     <div class="footer-block collapsed-mobile">
                         <div class="title">
                             <h4>وسائل الدفع</h4>
