@@ -112,34 +112,6 @@
                 </div>
 
 
-                {{-- <div class="col-lg-4 col-xl-3">
-                    <div class="footer-block collapsed-mobile">
-                        <div class="title">
-                            <h4>عن سنتر باي</h4>
-                            <span class="toggle-arrow"><span></span><span></span></span>
-                        </div>
-                        <div class="collapsed-content">
-                            <p>Store - worldwide fashion store<br />since 2015.</p>
-                            <p>We sell over 5000+ branded products</p>
-                        </div>
-                    </div>
-                    <div class="footer-block collapsed-mobile">
-                        <div class="title">
-                            <h4>Vouchers & Discounts</h4>
-                            <span class="toggle-arrow"><span></span><span></span></span>
-                        </div>
-                        <div class="collapsed-content">
-                            <div class="box-coupon">
-                                <div class="box-coupon-icon">
-                                    <i class="icon-scissors"></i>
-                                </div>
-                                <div class="box-coupon-text">
-                                    <span class="custom-color">FOXIC</span> THEME
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
 
 
             </div>
