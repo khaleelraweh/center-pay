@@ -105,6 +105,7 @@
                                                 <i class="icon-heart-hover"></i>
                                             </a>
                                         </div>
+
                                         {{-- <div>
                                             <a href="#"
                                                 class="circle-label-qview prd-hide-mobile js-prd-quickview"
@@ -112,6 +113,7 @@
                                                     class="icon-eye"></i><span>استعراض سريع</span></a>
                                         </div> --}}
                                     </div>
+
                                     <div class="prd-price">
                                         @if ($featured_card->offer_price > 0)
                                             <div class="price-old">$ {{ $featured_card->price }}</div>
@@ -135,6 +137,7 @@
                                             </form>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
