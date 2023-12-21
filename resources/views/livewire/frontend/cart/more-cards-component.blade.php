@@ -15,9 +15,26 @@
                             <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
                                 data-src="{{ asset('assets/cards/' . $more_card->firstMedia->file_name) }}"
                                 alt="Midi Dress with Belt" class="js-prd-img lazyload fade-up">
-                            <div class="foxic-loader"></div>
-                            <div class="prd-big-squared-labels">
-                            </div>
+
+                            {{-- rounded circle discount --}}
+                            @if ($more_card->offer_price > 0)
+                                <div class="foxic-loader"></div>
+                                <div class="prd-big-circle-labels">
+                                    <div class="label-sale">
+                                        <span>
+                                            {{ number_format(($more_card->offer_price / $more_card->price) * 100, 0, '.', ',') }}%-
+                                            {{-- <span class="sale-text">
+                                                <small>تخفيض</small>
+                                            </span> --}}
+                                        </span>
+                                        <div class="countdown-circle">
+                                            <div class="countdown js-countdown" data-countdown="2021/07/01">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+
                         </a>
 
                         {{-- top control area  --}}
@@ -61,35 +78,31 @@
                     {{-- button info --}}
                     <div class="prd-info">
                         <div class="prd-info-wrap">
-                            <div class="prd-info-top">
-                                <div class="prd-rating"><i class="icon-star-fill fill"></i><i
-                                        class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i
-                                        class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i>
-                                </div>
+
+
+                            <div class="prd-tag">
+                                <a href="{{ route('frontend.card_category', $more_card->category->slug) }}">
+                                    {{ $more_card->category->name }}
+                                </a>
                             </div>
-                            <div class="prd-rating justify-content-center"><i class="icon-star-fill fill"></i><i
-                                    class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i
-                                    class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i></div>
-                            <div class="prd-tag"><a href="#">Seiko</a></div>
-                            <h2 class="prd-title"><a href="product.html">Midi Dress with
-                                    Belt</a></h2>
-                            <div class="prd-description">
-                                Quisque volutpat condimentum velit. Class aptent taciti sociosqu
-                                ad litora
-                                torquent per conubia nostra, per inceptos himenaeos. Nam nec
-                                ante sed lacinia.
-                            </div>
+
+                            <h2 class="prd-title">
+                                <a href="{{ route('frontend.card', $more_card->slug) }}">
+                                    {{ $more_card->name }}
+                                </a>
+                            </h2>
+
+
                             <div class="prd-action">
                                 <form action="#">
-                                    <button class="btn js-prd-addtocart"
+                                    <button class="btn js-prd-addtocart rounded-pill"
                                         wire:click.prevent="addToCart('{{ $more_card->id }}')"
-                                        data-product='{"name": "Midi Dress with Belt", "path":"{{ asset('
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    frontend/assests/images/skins/fashion/cards/product-06-1.webp') }}", "url"
-                                                                :"product.html", "aspect_ratio" :0.778}'>
+                                        data-product='{"name": "{{ $more_card->name }}", "path":"{{ asset('assets/cards/' . $more_card->firstMedia->file_name) }}", "url":"{{ route('frontend.card', $more_card->slug) }}", "aspect_ratio":0.778}'>
                                         اضافة للسلة
                                     </button>
                                 </form>
                             </div>
+
                         </div>
                         <div class="prd-hovers">
                             <div class="prd-circle-labels">
@@ -98,26 +111,33 @@
                                         title="Add To Wishlist"><i class="icon-heart-stroke"></i></a><a href="#"
                                         class="circle-label-compare circle-label-wishlist--off js-remove-wishlist mt-0"
                                         title="Remove From Wishlist"><i class="icon-heart-hover"></i></a></div>
-                                <div class="prd-hide-mobile"><a href="#"
-                                        class="circle-label-qview js-prd-quickview"
-                                        data-src="ajax/ajax-quickview.html"><i class="icon-eye"></i><span>QUICK
-                                            VIEW</span></a></div>
+
                             </div>
+
                             <div class="prd-price">
-                                <div class="price-new">$ 180</div>
+                                @if ($more_card->offer_price > 0)
+                                    <div class="price-old">$ {{ $more_card->price }}</div>
+                                    <div class="price-new">$
+                                        {{ $more_card->price - $more_card->offer_price }}</div>
+                                @else
+                                    <div class="price-new">$
+                                        {{ $more_card->price }}</div>
+                                @endif
+
                             </div>
+
                             <div class="prd-action">
                                 <div class="prd-action-left">
                                     <form action="#">
-                                        <button class="btn js-prd-addtocart"
+                                        <button class="btn js-prd-addtocart rounded-pill"
                                             wire:click.prevent="addToCart('{{ $more_card->id }}')"
-                                            data-product='{"name": "Midi Dress with Belt", "path":"{{ asset('
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            frontend/assests/images/skins/fashion/cards/product-06-1.webp') }}", "url"
-                                                                    :"product.html", "aspect_ratio" :0.778}'>Add
-                                            To Cart</button>
+                                            data-product='{"name": "{{ $more_card->name }}", "path":"{{ asset('assets/cards/' . $more_card->firstMedia->file_name) }}", "url":"{{ route('frontend.card', $more_card->slug) }}", "aspect_ratio":0.778}'>
+                                            اضافة للسلة
+                                        </button>
                                     </form>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>

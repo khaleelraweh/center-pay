@@ -131,7 +131,9 @@
                                     <div class="prd-block_price-old-wrap">
                                         <span class="prd-block_price--old">${{ $card->price }}</span>
                                         <span class="prd-block_price--text">حافظت على : ${{ $card->offer_price }}
-                                            (%)</span>
+                                            (
+                                            {{ number_format(($card->offer_price / $card->price) * 100, 0, '.', ',') }}%
+                                            )</span>
                                     </div>
                                 </div>
                                 <div class="prd-block_viewed-wrap d-none d-md-flex">

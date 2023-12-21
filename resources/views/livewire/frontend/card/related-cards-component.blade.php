@@ -21,9 +21,26 @@
                                     <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
                                         data-src="{{ asset('assets/cards/' . $related_card->firstMedia->file_name) }}"
                                         alt="Midi Dress with Belt" class="js-prd-img lazyload fade-up">
-                                    <div class="foxic-loader"></div>
-                                    <div class="prd-big-squared-labels">
-                                    </div>
+
+                                    {{-- rounded circle discount --}}
+                                    @if ($related_card->offer_price > 0)
+                                        <div class="foxic-loader"></div>
+                                        <div class="prd-big-circle-labels">
+                                            <div class="label-sale">
+                                                <span>
+                                                    {{ number_format(($related_card->offer_price / $related_card->price) * 100, 0, '.', ',') }}%-
+                                                    {{-- <span class="sale-text">
+                                                    <small>تخفيض</small>
+                                                </span> --}}
+                                                </span>
+                                                <div class="countdown-circle">
+                                                    <div class="countdown js-countdown" data-countdown="2021/07/01">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endif
+
                                 </a>
 
                                 {{-- top control area  --}}
@@ -82,7 +99,7 @@
                                             <button class="btn js-prd-addtocart rounded-pill"
                                                 wire:click.prevent="addToCart('{{ $related_card->id }}')"
                                                 data-product='{"name": "Midi Dress with Belt", "path":"{{ asset('
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                												frontend/assests/images/skins/fashion/cards/product-06-1.webp') }}", "url"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                												frontend/assests/images/skins/fashion/cards/product-06-1.webp') }}", "url"
 												:"product.html", "aspect_ratio" :0.778}'>
                                                 اضافة للسلة
                                             </button>

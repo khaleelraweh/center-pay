@@ -47,8 +47,26 @@
                                 <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
                                     data-src="{{ asset('assets/cards/' . $card->firstMedia->file_name) }}"
                                     alt="{{ $card->name }}" class="js-prd-img lazyload fade-up" />
-                                <div class="foxic-loader"></div>
-                                <div class="prd-big-squared-labels"></div>
+
+                                {{-- rounded circle discount --}}
+                                @if ($card->offer_price > 0)
+                                    <div class="foxic-loader"></div>
+                                    <div class="prd-big-circle-labels">
+                                        <div class="label-sale">
+                                            <span>
+                                                {{ number_format(($card->offer_price / $card->price) * 100, 0, '.', ',') }}%-
+                                                {{-- <span class="sale-text">
+                                                        <small>تخفيض</small>
+                                                    </span> --}}
+                                            </span>
+                                            <div class="countdown-circle">
+                                                <div class="countdown js-countdown" data-countdown="2021/07/01">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+
                             </a>
 
                             {{-- add to wisth list and view prefiew info --}}
@@ -58,9 +76,6 @@
                                     title="Add To Wishlist"><i class="icon-heart-stroke"></i></a><a href="#"
                                     class="circle-label-compare circle-label-wishlist--off js-remove-wishlist mt-0"
                                     title="Remove From Wishlist"><i class="icon-heart-hover"></i></a>
-                                <a href="#" class="circle-label-qview js-prd-quickview prd-hide-mobile"
-                                    data-src="ajax/ajax-quickview.html"><i class="icon-eye"></i><span>استعراض سريع
-                                    </span></a>
 
                             </div>
 
@@ -82,24 +97,20 @@
                         </div>
                         <div class="prd-info">
                             <div class="prd-info-wrap">
-                                <div class="prd-info-top">
-                                    <div class="prd-rating">
-                                        <i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i
-                                            class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i
-                                            class="icon-star-fill fill"></i>
-                                    </div>
+
+                                <div class="prd-tag">
+                                    <a href="{{ route('frontend.card_category', $card->category->slug) }}">
+                                        {{ $card->category->name }}
+                                    </a>
                                 </div>
-                                <div class="prd-rating justify-content-center">
-                                    <i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i
-                                        class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i
-                                        class="icon-star-fill fill"></i>
-                                </div>
+
                                 <h2 class="prd-title">
-                                    <a href="{{ route('frontend.card', $card->slug) }}">{{ $card->name }}</a>
+                                    <a href="{{ route('frontend.card', $card->slug) }}">
+                                        {{ $card->name }}
+                                    </a>
                                 </h2>
-                                <div class="prd-description">
-                                    {{ $card->description }}
-                                </div>
+
+
                                 <div class="prd-action">
                                     <form action="#">
                                         <button class="btn js-prd-addtocart"
@@ -120,22 +131,28 @@
                                             class="circle-label-compare circle-label-wishlist--off js-remove-wishlist mt-0"
                                             title="Remove From Wishlist"><i class="icon-heart-hover"></i></a>
                                     </div>
-                                    <div class="prd-hide-mobile">
-                                        <a href="#" class="circle-label-qview js-prd-quickview"
-                                            data-src="ajax/ajax-quickview.html"><i class="icon-eye"></i><span>QUICK
-                                                VIEW</span></a>
-                                    </div>
+
                                 </div>
+
                                 <div class="prd-price">
-                                    <div class="price-new">$ {{ $card->price }}</div>
+                                    @if ($card->offer_price > 0)
+                                        <div class="price-old">$ {{ $card->price }}</div>
+                                        <div class="price-new">$
+                                            {{ $card->price - $card->offer_price }}</div>
+                                    @else
+                                        <div class="price-new">$
+                                            {{ $card->price }}</div>
+                                    @endif
+
                                 </div>
+
                                 <div class="prd-action">
                                     <div class="prd-action-left">
                                         <form action="#">
                                             <button class="btn js-prd-addtocart"
                                                 wire:click.prevent="addToCart('{{ $card->id }}')"
                                                 data-product='{"name": "{{ $card->name }}", "path":"{{ asset('assets/cards/' . $card->firstMedia->file_name) }}", "url":"{{ route('frontend.card', $card->slug) }}", "aspect_ratio":0.778}'>
-                                                Add To Cart
+                                                اضافة للسلة
                                             </button>
                                         </form>
                                     </div>
