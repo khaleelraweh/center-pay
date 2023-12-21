@@ -38,11 +38,7 @@
                                         title="Remove From Wishlist">
                                         <i class="icon-heart-hover"></i>
                                     </a>
-                                    <a href="#" class="circle-label-qview js-prd-quickview prd-hide-mobile"
-                                        data-src="ajax/ajax-quickview.html">
-                                        <i class="icon-eye"></i>
-                                        <span>استعراض سريع</span>
-                                    </a>
+
                                 </div>
 
                                 {{-- Link style switcher  --}}
@@ -67,29 +63,28 @@
                             {{-- button info --}}
                             <div class="prd-info">
                                 <div class="prd-info-wrap">
-                                    <div class="prd-info-top">
-                                        <div class="prd-rating"><i class="icon-star-fill fill"></i><i
-                                                class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i
-                                                class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i>
-                                        </div>
+
+
+                                    <div class="prd-tag">
+                                        <a href="{{ route('frontend.card_category', $related_card->category->slug) }}">
+                                            {{ $related_card->category->name }}
+                                        </a>
                                     </div>
-                                    <div class="prd-rating justify-content-center"><i class="icon-star-fill fill"></i><i
-                                            class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i
-                                            class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i></div>
-                                    <div class="prd-tag"><a href="#">Seiko</a></div>
-                                    <h2 class="prd-title"><a href="product.html">Midi Dress with Belt</a></h2>
-                                    <div class="prd-description">
-                                        Quisque volutpat condimentum velit. Class aptent taciti sociosqu ad litora
-                                        torquent per conubia nostra, per inceptos himenaeos. Nam nec ante sed lacinia.
-                                    </div>
+
+                                    <h2 class="prd-title">
+                                        <a href="{{ route('frontend.card', $related_card->slug) }}">
+                                            {{ $related_card->name }}
+                                        </a>
+                                    </h2>
+
                                     <div class="prd-action">
                                         <form action="#">
-                                            <button class="btn js-prd-addtocart"
+                                            <button class="btn js-prd-addtocart rounded-pill"
                                                 wire:click.prevent="addToCart('{{ $related_card->id }}')"
                                                 data-product='{"name": "Midi Dress with Belt", "path":"{{ asset('
-                                                                                                                                                                                                												frontend/assests/images/skins/fashion/cards/product-06-1.webp') }}", "url"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                												frontend/assests/images/skins/fashion/cards/product-06-1.webp') }}", "url"
 												:"product.html", "aspect_ratio" :0.778}'>
-                                                Add To Cart
+                                                اضافة للسلة
                                             </button>
                                         </form>
                                     </div>
@@ -98,30 +93,42 @@
                                     <div class="prd-circle-labels">
                                         <div><a href="#"
                                                 class="circle-label-compare circle-label-wishlist--add js-add-wishlist mt-0"
-                                                title="Add To Wishlist"><i class="icon-heart-stroke"></i></a><a
-                                                href="#"
+                                                title="Add To Wishlist">
+                                                <i class="icon-heart-stroke"></i>
+                                            </a>
+                                            <a href="#"
                                                 class="circle-label-compare circle-label-wishlist--off js-remove-wishlist mt-0"
-                                                title="Remove From Wishlist"><i class="icon-heart-hover"></i></a></div>
-                                        <div class="prd-hide-mobile"><a href="#"
-                                                class="circle-label-qview js-prd-quickview"
-                                                data-src="ajax/ajax-quickview.html"><i class="icon-eye"></i><span>QUICK
-                                                    VIEW</span></a></div>
+                                                title="Remove From Wishlist">
+                                                <i class="icon-heart-hover"></i>
+                                            </a>
+                                        </div>
+
                                     </div>
+
                                     <div class="prd-price">
-                                        <div class="price-new">$ 180</div>
+                                        @if ($related_card->offer_price > 0)
+                                            <div class="price-old">$ {{ $related_card->price }}</div>
+                                            <div class="price-new">$
+                                                {{ $related_card->price - $related_card->offer_price }}</div>
+                                        @else
+                                            <div class="price-new">$
+                                                {{ $related_card->price }}</div>
+                                        @endif
+
                                     </div>
+
                                     <div class="prd-action">
                                         <div class="prd-action-left">
                                             <form action="#">
-                                                <button class="btn js-prd-addtocart"
+                                                <button class="btn js-prd-addtocart rounded-pill"
                                                     wire:click.prevent="addToCart('{{ $related_card->id }}')"
-                                                    data-product='{"name": "Midi Dress with Belt", "path":"{{ asset('
-                                                                                                                                                                                                                													frontend/assests/images/skins/fashion/cards/product-06-1.webp') }}", "url"
-													:"product.html", "aspect_ratio" :0.778}'>Add
-                                                    To Cart</button>
+                                                    data-product='{"name": "{{ $related_card->name }}", "path":"{{ asset('assets/cards/' . $related_card->firstMedia->file_name) }}", "url":"{{ route('frontend.card', $related_card->slug) }}", "aspect_ratio":0.778}'>
+                                                    اضافة للسلة
+                                                </button>
                                             </form>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>

@@ -32,11 +32,11 @@
                                 title="Remove From Wishlist">
                                 <i class="icon-heart-hover"></i>
                             </a>
-                            <a href="#" class="circle-label-qview js-prd-quickview prd-hide-mobile"
+                            {{-- <a href="#" class="circle-label-qview js-prd-quickview prd-hide-mobile"
                                 data-src="ajax/ajax-quickview.html">
                                 <i class="icon-eye"></i>
                                 <span>استعراض سريع</span>
-                            </a>
+                            </a> --}}
                         </div>
 
                         {{-- Link style switcher  --}}
@@ -84,7 +84,7 @@
                                     <button class="btn js-prd-addtocart"
                                         wire:click.prevent="addToCart('{{ $more_card->id }}')"
                                         data-product='{"name": "Midi Dress with Belt", "path":"{{ asset('
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            frontend/assests/images/skins/fashion/cards/product-06-1.webp') }}", "url"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    frontend/assests/images/skins/fashion/cards/product-06-1.webp') }}", "url"
                                                                 :"product.html", "aspect_ratio" :0.778}'>
                                         اضافة للسلة
                                     </button>
@@ -112,7 +112,7 @@
                                         <button class="btn js-prd-addtocart"
                                             wire:click.prevent="addToCart('{{ $more_card->id }}')"
                                             data-product='{"name": "Midi Dress with Belt", "path":"{{ asset('
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                frontend/assests/images/skins/fashion/cards/product-06-1.webp') }}", "url"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            frontend/assests/images/skins/fashion/cards/product-06-1.webp') }}", "url"
                                                                     :"product.html", "aspect_ratio" :0.778}'>Add
                                             To Cart</button>
                                     </form>

@@ -5,12 +5,29 @@
 @section('content')
     <div class="container">
 
-        <div class="holder breadcrumbs-wrap mt-0">
+
+        <div class="holder mt-0">
             <div class="container">
-                <ul class="breadcrumbs">
-                    <li><a href="{{ route('frontend.index') }}">Home</a></li>
-                    <li><a href="category.html">Women</a></li>
-                    <li><span>Leather Pegged Pants</span></li>
+                <ul class="breadcrumb pref">
+                    <li>
+                        <a href="{{ route('frontend.index') }}">
+                            الرئيسية
+                        </a>
+                        <i class="fa fa-solid fa-chevron-left chevron"></i>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('frontend.card_category', $card->category->slug) }}">
+                            {{ $card->category->name }}
+                        </a>
+                        <i class="fa fa-solid fa-chevron-left chevron"></i>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('frontend.card', $card->slug) }}" class="active">
+                            {{ $card->name }}
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -20,22 +37,14 @@
             <div class="container js-prd-gallery" id="prdGallery">
                 <div class="row prd-block prd-block-under prd-block--prv-bottom">
 
-
-
-                    {{-- <h1>This is my title</h1> {{dd($card->reviews )}} <br> --}}
-                    {{-- {{ $card->reviews_avg_rating }} --}}
-                    @foreach ($card->reviews as $review)
-                    @endforeach
-
                     {{-- rating and  review part --}}
                     <div class="col">
                         <div class="js-prd-d-holder">
                             <div class="prd-block_title-wrap">
-                                <div class="prd-block_reviews" data-toggle="tooltip" data-placement="top"
+
+                                {{-- <div class="prd-block_reviews" data-toggle="tooltip" data-placement="top"
                                     title="Scroll To Reviews">
 
-
-                                    {{-- need:to check and fix reviews --}}
                                     @if (round($card->reviews_avg_rating) != '')
                                         @for ($i = 0; $i < 5; $i++)
                                             <i
@@ -53,8 +62,8 @@
                                             (17 reviews)
                                         </a>
                                     </span>
-                                </div>
-                                <h1 class="prd-block_title">{{ $card->name }}</h1>
+                                </div> --}}
+
                             </div>
                         </div>
                     </div>
@@ -86,12 +95,8 @@
                                         @endforeach
 
                                     </div>
-                                    <div class="prd-block_label-sale-squared justify-content-center align-items-center">
-                                        <span>Sale</span>
-                                    </div>
+
                                 </div>
-
-
                             </div>
 
                             {{-- images link views --}}
@@ -125,7 +130,8 @@
                                     <div class="prd-block_price--actual">${{ $card->price - $card->offer_price }}</div>
                                     <div class="prd-block_price-old-wrap">
                                         <span class="prd-block_price--old">${{ $card->price }}</span>
-                                        <span class="prd-block_price--text">حافظت على : ${{ $card->offer_price }} (%)</span>
+                                        <span class="prd-block_price--text">حافظت على : ${{ $card->offer_price }}
+                                            (%)</span>
                                     </div>
                                 </div>
                                 <div class="prd-block_viewed-wrap d-none d-md-flex">
@@ -214,142 +220,115 @@
 
                             <div class="prd-block_info_item">
                                 <ul class="prd-block_links list-unstyled">
-                                    <li><i class="icon-size-guide"></i><a href="#" data-fancybox
-                                            class="modal-info-link" data-src="#sizeGuide">Size Guide</a></li>
-                                    <li><i class="icon-delivery-1"></i><a href="#" data-fancybox
-                                            class="modal-info-link" data-src="#deliveryInfo">Delivery and Return</a></li>
-                                    <li><i class="icon-email-1"></i><a href="#" data-fancybox
-                                            class="modal-info-link" data-src="#contactModal">Ask about this product</a>
+
+                                    <li>
+                                        <i class="icon-delivery-1"></i>
+                                        <a href="#" data-fancybox class="modal-info-link" data-src="#deliveryInfo">
+                                            التسليم واعادة الطلب
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <i class="icon-email-1"></i>
+                                        <a href="#" data-fancybox class="modal-info-link" data-src="#contactModal">
+                                            اسأل عن هذا المنتج
+                                        </a>
                                     </li>
                                 </ul>
 
-                                <div id="sizeGuide" style="display: none;"
-                                    class="modal-info-content modal-info-content-lg">
-                                    <div class="modal-info-heading">
-                                        <div class="mb-1"><i class="icon-size-guide"></i></div>
-                                        <h2>Size Guide</h2>
-                                    </div>
-                                    <div class="table-responsive">
-                                        <table class="table table-striped table-borderless text-center">
-                                            <thead>
-                                                <tr>
-                                                    <th>USA</th>
-                                                    <th>UK</th>
-                                                    <th>France</th>
-                                                    <th>Japanese</th>
-                                                    <th>Bust</th>
-                                                    <th>Waist</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>4</td>
-                                                    <td>8</td>
-                                                    <td>36</td>
-                                                    <td>7</td>
-                                                    <td>32"</td>
-                                                    <td>61 cm</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>6</td>
-                                                    <td>10</td>
-                                                    <td>38</td>
-                                                    <td>11</td>
-                                                    <td>34"</td>
-                                                    <td>67 cm</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>8</td>
-                                                    <td>12</td>
-                                                    <td>40</td>
-                                                    <td>15</td>
-                                                    <td>36"</td>
-                                                    <td>74 cm</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>10</td>
-                                                    <td>14</td>
-                                                    <td>42</td>
-                                                    <td>17</td>
-                                                    <td>38"</td>
-                                                    <td>79 cm</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>12</td>
-                                                    <td>16</td>
-                                                    <td>44</td>
-                                                    <td>21</td>
-                                                    <td>40"</td>
-                                                    <td>84 cm</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
+
+
                                 <div id="deliveryInfo" style="display: none;"
                                     class="modal-info-content modal-info-content-lg">
+
                                     <div class="modal-info-heading">
-                                        <div class="mb-1"><i class="icon-delivery-1"></i></div>
-                                        <h2>Delivery and Return</h2>
+                                        <div class="mb-1">
+                                            <i class="icon-delivery-1"></i>
+                                        </div>
+                                        <h2>
+                                            التسليم واعادة الطلب
+                                        </h2>
                                     </div>
                                     <br>
-                                    <h5>Our parcel courier service</h5>
-                                    <p>Foxic is proud to offer an exceptional international parcel shipping service. It
-                                        is straightforward and very easy to organise international parcel shipping. Our
-                                        customer service team works around the clock to make sure that you receive high
-                                        quality courier service from start to finish.</p>
-                                    <p>Sending a parcel with us is simple. To start the process you will first need to
-                                        get a quote using our free online quotation service. From this, you’ll be able
-                                        to navigate through the online form to book a collection date for your parcel,
-                                        selecting a shipping day suitable for you.</p>
+                                    <h5>لدينا خدمة البريد السريع الطرود</h5>
+                                    <p>
+                                        تفتخر شركة Foxic بتقديم خدمة شحن الطرود الدولية الاستثنائية. هو - هي
+                                        من السهل جدًا تنظيم شحن الطرود الدولية. ملكنا
+                                        يعمل فريق خدمة العملاء على مدار الساعة للتأكد من حصولك على جودة عالية
+                                        خدمة البريد السريع الجودة من البداية إلى النهاية.
+                                    </p>
+                                    <p>
+                                        إرسال الطرود معنا أمر بسيط. لبدء العملية، ستحتاج أولاً إلى ذلك
+                                        احصل على عرض أسعار باستخدام خدمة عرض الأسعار المجانية عبر الإنترنت. من هذا، سوف تكون
+                                        قادرًا
+                                        للتنقل عبر النموذج عبر الإنترنت لحجز تاريخ استلام الطرود الخاصة بك،
+                                        اختيار يوم الشحن المناسب لك.
+                                    </p>
                                     <br>
-                                    <h5>Shipping Time</h5>
-                                    <p>The shipping time is based on the shipping method you chose.<br>
-                                        EMS takes about 5-10 working days for delivery.<br>
-                                        DHL takes about 2-5 working days for delivery.<br>
-                                        DPEX takes about 2-8 working days for delivery.<br>
-                                        JCEX takes about 3-7 working days for delivery.<br>
-                                        China Post Registered Mail takes 20-40 working days for delivery.</p>
+                                    <h5>وقت الشحن</h5>
+                                    <p>
+                                        يعتمد وقت الشحن على طريقة الشحن التي اخترتها.
+                                        <br>
+                                        EMS يستغرق حوالي 5-10 أيام عمل للتسليم.
+                                        <br>
+                                        DHL يستغرق حوالي 2-5 أيام عمل للتسليم.
+                                        <br>
+                                        DPEX يستغرق حوالي 2-8 أيام عمل للتسليم.
+                                        <br>
+                                        JCEX يستغرق حوالي 3-7 أيام عمل للتسليم.
+                                        <br>
+                                        يستغرق البريد الصيني المسجل 20-40 يوم عمل للتسليم.
+                                    </p>
+
                                 </div>
 
                                 <div id="contactModal" style="display: none;"
                                     class="modal-info-content modal-info-content-sm">
+
                                     <div class="modal-info-heading">
-                                        <div class="mb-1"><i class="icon-envelope"></i></div>
-                                        <h2>Have a question?</h2>
+                                        <div class="mb-1">
+                                            <i class="icon-envelope"></i>
+                                        </div>
+                                        <h2>
+                                            لدي سؤال؟
+                                        </h2>
                                     </div>
                                     <form method="post" action="#" id="contactForm" class="contact-form">
                                         <div class="form-group">
                                             <input type="text" name="contact[name]"
-                                                class="form-control form-control--sm" placeholder="Name">
+                                                class="form-control form-control--sm" placeholder="الاسم">
                                         </div>
                                         <div class="form-group">
                                             <input type="text" name="contact[email]"
-                                                class="form-control form-control--sm" placeholder="Email" required="">
+                                                class="form-control form-control--sm" placeholder="الايميل"
+                                                required="">
                                         </div>
                                         <div class="form-group">
                                             <input type="text" name="contact[phone]"
-                                                class="form-control form-control--sm" placeholder="Phone Number">
+                                                class="form-control form-control--sm" placeholder="رقم التلفون">
                                         </div>
                                         <div class="form-group">
-                                            <textarea class="form-control textarea--height-170" name="contact[body]" placeholder="Message" required="">Hi! I need next info about the "Oversize Cotton Dress":</textarea>
+                                            <textarea class="form-control textarea--height-170" name="contact[body]" placeholder="Message" required=""></textarea>
                                         </div>
-                                        <button class="btn" type="submit">Ask our consultant</button>
-                                        <p class="p--small mt-15 mb-0">and we will contact you soon</p><input
-                                            name="recaptcha-v3-token" type="hidden"
+                                        <button class="btn" type="submit">
+                                            اسأل مستشارنا
+                                        </button>
+                                        <p class="p--small mt-15 mb-0">
+                                            وسوف نتواصل بك قريبا
+                                        </p>
+                                        <input name="recaptcha-v3-token" type="hidden"
                                             value="03AGdBq27T8WvzvZu79QsHn8lp5GhjNX-w3wkcpVJgCH15Ehh0tu8c9wTKj4aNXyU0OLM949jTA4cDxfznP9myOBw9m-wggkfcp1Cv_vhsi-TQ9E_EbeLl33dqRhp2sa5tKBOtDspTgwoEDODTHAz3nuvG28jE7foIFoqGWiCqdQo5iEphqtGTvY1G7XgWPAkNPnD0B9V221SYth9vMazf1mkYX3YHAj_g_6qhikdQDsgF2Sa2wOcoLKWiTBMF6L0wxdwhIoGFz3k3VptYem75sxPM4lpS8Y_UAxfvF06fywFATA0nNH0IRnd5eEPnnhJuYc5LYsV6Djg7_S4wLBmOzYnahC-S60MHvQFf-scQqqhPWOtgEKPihUYiGFBJYRn2p1bZwIIhozAgveOtTNQQi7FGqmlbKkRWCA">
                                     </form>
                                 </div>
                             </div>
+
+                            {{-- طرق الدفع --}}
                             <div class="prd-block_info_item">
                                 <img class="img-responsive lazyload d-none d-sm-block"
                                     src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                    data-src="{{ asset('frontend/assests/images/payment/safecheckout.webp') }}"
-                                    alt="">
+                                    data-src="{{ asset('frontend/images/payment/safecheckout.webp') }}" alt="">
                                 <img class="img-responsive lazyload d-sm-none"
                                     src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                    data-src="{{ asset('frontend/assests/images/payment/safecheckout-m.webp') }}"
-                                    alt="">
+                                    data-src="{{ asset('frontend/images/payment/safecheckout-m.webp') }}" alt="">
                             </div>
                         </div>
                     </div>
@@ -357,7 +336,7 @@
             </div>
         </div>
 
-        <div class="holder prd-block_links-wrap-bg d-none d-md-block">
+        {{-- <div class="holder prd-block_links-wrap-bg d-none d-md-block">
             <div class="prd-block_links-wrap prd-block_info_item container mt-2 mt-md-5 py-1 pref">
                 <div class="prd-block_link"><span><i class="icon-call-center"></i>24/7 الدعم</span></div>
                 <div class="prd-block_link">
@@ -365,91 +344,197 @@
                 </div>
                 <div class="prd-block_link"><span><i class="icon-delivery-truck"></i> استجابة سريعة</span></div>
             </div>
-        </div>
+        </div> --}}
 
-        <div class="holder mt-3 mt-md-5">
+        <div class="holder mt-3 mt-md-5 card-accordion">
             <div class="container">
                 <ul class="nav nav-tabs product-tab">
-                    <li class="nav-item"><a href="#Tab1" class="nav-link" data-toggle="tab">الوصف
-                            <span class="toggle-arrow"><span></span><span></span></span>
-                        </a></li>
-                    <li class="nav-item"><a href="#Tab4" class="nav-link" data-toggle="tab">كلمات مفتاحية مخصصة
-                            <span class="toggle-arrow"><span></span><span></span></span>
-                        </a></li>
-                    <li class="nav-item"><a href="#Tab5" class="nav-link" data-toggle="tab">التعليقات
-                            <span class="toggle-arrow"><span></span><span></span></span>
-                        </a></li>
+                    <li class="nav-item">
+                        <a href="#Tab1" class="nav-link" data-toggle="tab">
+                            الوصف
+                            <span class="toggle-arrow">
+                                <span></span>
+                                <span></span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#Tab4" class="nav-link" data-toggle="tab">
+                            كلمات مفتاحية مخصصة
+                            <span class="toggle-arrow">
+                                <span></span>
+                                <span></span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#Tab5" class="nav-link" data-toggle="tab">
+                            التعليقات
+                            <span class="toggle-arrow">
+                                <span></span>
+                                <span></span>
+                            </span>
+                        </a>
+                    </li>
                 </ul>
+
+
                 <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane fade" id="Tab1">
+
+                    <div role="tabpanel" class="tab-pane fade bg-transparent" id="Tab1">
                         {{-- <h4 class="mb-15">{!!$card->name!!}</h4> --}}
-
-                        <p>{!! $card->description !!}</p>
-
+                        <p class="bg-transparent">{!! $card->description !!}</p>
                     </div>
-
 
                     <div role="tabpanel" class="tab-pane fade" id="Tab4">
                         <ul class="tags-list">
-                            <li><a class="pref-link active" href="#">Jeans</a></li>
-                            <li><a class="pref-link active" href="#">St.Valentine’s gift</a></li>
-                            <li><a class="pref-link active" href="#">Sunglasses</a></li>
-                            <li><a class="pref-link active" href="#">Discount</a></li>
+                            <li>
+                                <a class="pref-link active" href="#">
+                                    Jeans
+                                </a>
+                            </li>
+                            <li>
+                                <a class="pref-link active" href="#">
+                                    St.Valentine’s gift
+                                </a>
+                            </li>
+                            <li>
+                                <a class="pref-link active" href="#">
+                                    Sunglasses
+                                </a>
+                            </li>
+                            <li>
+                                <a class="pref-link active" href="#">
+                                    Discount
+                                </a>
+                            </li>
 
                         </ul>
+
                         <h3>اضف كلماتك المفتاحية على المنتج</h3>
                         <form class="form--simple" action="#">
-                            <label>كلمة مفتاحية<span class="required">*</span></label>
-                            <input class="form-control form-control--sm">
-                            <button class="btn btn--md">Submit Tag</button>
-                            <div class="required-text">* Required Fields</div>
+                            <label>
+                                كلمة مفتاحية
+                                <span class="required">*</span>
+                            </label>
+                            <input class="form-control form-control--sm tag-input">
+                            <button class="btn btn--md">
+                                ارسال التاج
+                            </button>
+                            <div class="required-text">
+                                * حقل مطلوب
+                            </div>
                         </form>
 
 
                     </div>
+
                     <div role="tabpanel" class="tab-pane fade" id="Tab5">
                         <div id="productReviews">
                             <div class="row align-items-center">
                                 <div class="col">
                                     <h2>تعليقات العملاء</h2>
                                 </div>
-                                <div class="col-18 col-md-auto mb-3 mb-md-0"><a href="#"
-                                        class="review-write-link"><i class="icon-pencil"></i>إكتب تعليق</a></div>
+                                <div class="col-18 col-md-auto mb-3 mb-md-0">
+                                    <a href="#" class="review-write-link">
+                                        <i class="icon-pencil"></i>
+                                        إكتب تعليق
+                                    </a>
+                                </div>
                             </div>
                             <div id="productReviewsBottom">
                                 <div class="review-item">
                                     <div class="review-item_rating">
-                                        <i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i
-                                            class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i
-                                            class="icon-star-fill fill"></i>
+                                        <i class="icon-star-fill fill"></i>
+                                        <i class="icon-star-fill fill"></i>
+                                        <i class="icon-star-fill fill"></i>
+                                        <i class="icon-star-fill fill"></i>
+                                        <i class="icon-star-fill fill"></i>
                                     </div>
                                     <div class="review-item_top row align-items-center">
                                         <div class="col">
-                                            <h5 class="review-item_author">Jaden Ngo on May 25, 2018</h5>
+                                            <h5 class="review-item_author">
+                                                جادن نجو في 25 مايو 2018
+                                            </h5>
                                         </div>
-                                        <div class="col-auto"><a href="#" class="review-item_report">Report as
-                                                Inappropriate</a></div>
+                                        <div class="col-auto">
+                                            <a href="#" class="review-item_report">
+                                                لإبلاغ كغير لائق
+                                            </a>
+                                        </div>
                                     </div>
                                     <div class="review-item_content">
-                                        <h4>Good ball and company</h4>
-                                        <p>I recently bought this ball and this is the first ball that I actually buy
-                                            based on quality and material, I always been playing my friend ball and one
-                                            of them recommended me this, read some review online and decided to buy it,
-                                            the ball feel sticky at first but quality is nice and the hand wrote letter
-                                            was awesome because it shows how much season creator actually care about
-                                            their customers.</p>
+                                        <h4>كرة جيدة وشركة</h4>
+                                        <p>
+                                            لقد اشتريت هذه الكرة مؤخرًا وهذه هي الكرة الأولى التي أشتريها بالفعل
+                                            بناءً على الجودة والمواد، كنت دائمًا ألعب الكرة مع صديقي وواحد
+                                            منهم من نصحني بهذا، وقرأت بعض التقييمات عبر الإنترنت وقررت شراءه،
+                                            تبدو الكرة لزجة في البداية ولكن الجودة جيدة والخط مكتوب بخط اليد
+                                            كان رائعًا لأنه يوضح مدى اهتمام منشئ الموسم فعليًا
+                                            زبائنهم.
+                                        </p>
                                     </div>
                                 </div>
 
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
+
+
         {{-- related cards with livewire note: $related_cards came from FrontendController#card --}}
         <livewire:frontend.card.related-cards-component :related_cards="$related_cards" />
     </div>
 
+    <div class="holder">
+        <div class="footer-shop-info">
+            <div class="container">
+                <div class="text-icn-blocks-bg-row">
+                    <div class="text-icn-block-footer">
+                        <div class="icn">
+                            <i class="icon-tag "></i>
+                        </div>
+                        <div class="text">
+                            <h4>أسعارنا الأفضل</h4>
+                            {{-- <p>
+                                سيتم تسليم طلبك خلال 3-5 أيام عمل بعد كل ذلك
+                                العناصر الخاصة بك متاحة
+                            </p> --}}
+                        </div>
+                    </div>
 
+                    <div class="text-icn-block-footer">
+                        <div class="icn">
+                            <i class="icon-shopping"></i>
+                        </div>
+                        <div class="text">
+                            <h4>عروضنا الأقوى</h4>
+                        </div>
+                    </div>
+
+                    <div class="text-icn-block-footer">
+                        <div class="icn">
+                            <i class="icon-call-center"></i>
+                        </div>
+                        <div class="text">
+                            <h4>خدمة عملاء متميزة</h4>
+
+                        </div>
+                    </div>
+                    <div class="text-icn-block-footer">
+                        <div class="icn">
+                            <i class="icon-shopping-1"></i>
+                        </div>
+                        <div class="text">
+                            <h4>منتجات تناسب احتياجك</h4>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

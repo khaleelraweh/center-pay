@@ -400,41 +400,52 @@
     </div> --}}
 
     <div class="holder mt-0">
-        <div class="container">
-            <div class="text-icn-blocks-row text-icn-blocks-row--nodivider justify-content-center">
-                <div class="col-md-3 text-icn-block-hor">
-                    <div class="icn testimonials-carousel-simple-name" style="color: #dc3c01">
-                        <i class="icon-tag "></i>
+        <div class="footer-shop-info">
+            <div class="container">
+                <div class="text-icn-blocks-bg-row">
+                    <div class="text-icn-block-footer">
+                        <div class="icn">
+                            <i class="icon-tag "></i>
+                        </div>
+                        <div class="text">
+                            <h4>أسعارنا الأفضل</h4>
+                            {{-- <p>
+                                سيتم تسليم طلبك خلال 3-5 أيام عمل بعد كل ذلك
+                                العناصر الخاصة بك متاحة
+                            </p> --}}
+                        </div>
                     </div>
-                    <div class="text">
-                        <h4>أسعارنا الأفضل</h4>
+
+                    <div class="text-icn-block-footer">
+                        <div class="icn">
+                            <i class="icon-shopping"></i>
+                        </div>
+                        <div class="text">
+                            <h4>عروضنا الأقوى</h4>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-3 text-icn-block-hor">
-                    <div class="icn" style="color: #dc3c01">
-                        <i class="icon-shopping"></i>
+
+                    <div class="text-icn-block-footer">
+                        <div class="icn">
+                            <i class="icon-call-center"></i>
+                        </div>
+                        <div class="text">
+                            <h4>خدمة عملاء متميزة</h4>
+
+                        </div>
                     </div>
-                    <div class="text">
-                        <h4>عروضنا الأقوى</h4>
-                    </div>
-                </div>
-                <div class="col-md-3 text-icn-block-hor">
-                    <div class="icn" style="color: #dc3c01">
-                        <i class="icon-call-center"></i>
-                    </div>
-                    <div class="text">
-                        <h4>خدمة عملاء متميزة</h4>
-                    </div>
-                </div>
-                <div class="col-md-3 text-icn-block-hor">
-                    <div class="icn" style="color: #dc3c01">
-                        <i class="icon-shopping-1"></i>
-                    </div>
-                    <div class="text">
-                        <h4>منتجات تناسب احتياجك</h4>
+                    <div class="text-icn-block-footer">
+                        <div class="icn">
+                            <i class="icon-shopping-1"></i>
+                        </div>
+                        <div class="text">
+                            <h4>منتجات تناسب احتياجك</h4>
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 @endsection

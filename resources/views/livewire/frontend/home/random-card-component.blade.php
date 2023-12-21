@@ -107,7 +107,7 @@
                                     <div class="prd-action">
                                         <div class="prd-action-left">
                                             <form action="#">
-                                                <button class="btn js-prd-addtocart"
+                                                <button class="btn js-prd-addtocart rounded-pill"
                                                     wire:click.prevent="addToCart('{{ $random_product_card->id }}')"
                                                     data-product='{"name": "{{ $random_product_card->name }}", "path":"{{ asset('assets/cards/' . $random_product_card->lastMedia->file_name) }}", "url":"product.html", "aspect_ratio":0.778}'>
                                                     اضافة للسلة

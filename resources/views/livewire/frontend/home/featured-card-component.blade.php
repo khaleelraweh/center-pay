@@ -82,14 +82,13 @@
                                         </a>
                                     </div>
 
-                                    <h2 class="prd-title"><a
-                                            href="{{ route('frontend.card', $featured_card->slug) }}">{{ $featured_card->name }}</a>
+                                    <h2 class="prd-title">
+                                        <a href="{{ route('frontend.card', $featured_card->slug) }}">
+                                            {{ $featured_card->name }}
+                                        </a>
                                     </h2>
-                                    <div class="prd-description">
-                                        Quisque volutpat condimentum velit. Class aptent taciti
-                                        sociosqu ad litora torquent per conubia nostra, per
-                                        inceptos himenaeos. Nam nec ante sed lacinia.
-                                    </div>
+
+
                                 </div>
                                 <div class="prd-hovers">
                                     <div class="prd-circle-labels">
@@ -97,10 +96,14 @@
                                             <a href="#"
                                                 wire:click.prevent="addToWishList('{{ $featured_card->id }}')"
                                                 class="circle-label-compare circle-label-wishlist--add js-add-wishlist mt-0"
-                                                title="Add To Wishlist"><i class="icon-heart-stroke"></i></a><a
-                                                href="#"
+                                                title="Add To Wishlist">
+                                                <i class="icon-heart-stroke"></i>
+                                            </a>
+                                            <a href="#"
                                                 class="circle-label-compare circle-label-wishlist--off js-remove-wishlist mt-0"
-                                                title="Remove From Wishlist"><i class="icon-heart-hover"></i></a>
+                                                title="Remove From Wishlist">
+                                                <i class="icon-heart-hover"></i>
+                                            </a>
                                         </div>
                                         {{-- <div>
                                             <a href="#"
@@ -119,12 +122,12 @@
                                                 {{ $featured_card->price }}</div>
                                         @endif
 
-
                                     </div>
+
                                     <div class="prd-action">
                                         <div class="prd-action-left">
                                             <form action="#">
-                                                <button class="btn js-prd-addtocart"
+                                                <button class="btn js-prd-addtocart rounded-pill"
                                                     wire:click.prevent="addToCart('{{ $featured_card->id }}')"
                                                     data-product='{"name": "{{ $featured_card->name }}", "path":"{{ asset('assets/cards/' . $featured_card->firstMedia->file_name) }}", "url":"{{ route('frontend.card', $featured_card->slug) }}", "aspect_ratio":0.778}'>
                                                     اضافة للسلة

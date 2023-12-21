@@ -1,33 +1,5 @@
 @extends('layouts.app')
-@section('style')
-    <style>
-        .footer-shop-info,
-        .footer-shop-info .row,
-        .panel-heading {
-            /* background: #23232D !important; */
-            background: #1E171B !important;
-        }
 
-        .qty-changer button,
-        .qty-changer input[type='number'],
-        .qty-changer input[type='text'] {
-            background-color: transparent;
-        }
-
-        .quantity-choice {
-            /* width: 100px; */
-            border: 1px solid #ecedf6 !important;
-            border-radius: 22.5px;
-            color: #fff !important;
-            font-size: 14px;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            padding: 0 10px;
-            border: none;
-        }
-    </style>
-@endsection
 @section('content')
     <div class="holder breadcrumbs-wrap mt-0">
         <div class="container">
@@ -130,38 +102,42 @@
                 <div class="text-icn-blocks-bg-row">
                     <div class="text-icn-block-footer">
                         <div class="icn">
-                            <i class="icon-trolley"></i>
+                            <i class="icon-tag "></i>
                         </div>
                         <div class="text">
-                            <h4>تسليم سريع للغاية</h4>
-                            <p>
+                            <h4>أسعارنا الأفضل</h4>
+                            {{-- <p>
                                 سيتم تسليم طلبك خلال 3-5 أيام عمل بعد كل ذلك
                                 العناصر الخاصة بك متاحة
-                            </p>
+                            </p> --}}
+                        </div>
+                    </div>
+
+                    <div class="text-icn-block-footer">
+                        <div class="icn">
+                            <i class="icon-shopping"></i>
+                        </div>
+                        <div class="text">
+                            <h4>عروضنا الأقوى</h4>
+                        </div>
+                    </div>
+
+                    <div class="text-icn-block-footer">
+                        <div class="icn">
+                            <i class="icon-call-center"></i>
+                        </div>
+                        <div class="text">
+                            <h4>خدمة عملاء متميزة</h4>
+
                         </div>
                     </div>
                     <div class="text-icn-block-footer">
                         <div class="icn">
-                            <i class="icon-currency"></i>
+                            <i class="icon-shopping-1"></i>
                         </div>
                         <div class="text">
-                            <h4>افضل سعر</h4>
-                            <p>
-                                سنقوم بمطابقة أسعار المنتجات الرئيسية عبر الإنترنت والمحلية
-                                المنافسين على الفور
-                            </p>
-                        </div>
-                    </div>
-                    <div class="text-icn-block-footer">
-                        <div class="icn">
-                            <i class="icon-diplom"></i>
-                        </div>
-                        <div class="text">
-                            <h4>يضمن</h4>
-                            <p>
-                                إذا كان العنصر الذي تريده متاحًا، فيمكننا معالجة عملية الإرجاع
-                                ووضع طلب جديد
-                            </p>
+                            <h4>منتجات تناسب احتياجك</h4>
+
                         </div>
                     </div>
                 </div>

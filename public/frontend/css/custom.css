@@ -85,3 +85,128 @@
     font-size: 12px !important;
     font-weight: normal;
 }
+
+/* cart page style  */
+
+.footer-shop-info,
+        .footer-shop-info .row,
+        .panel-heading {
+            /* background: #23232D !important; */
+            /* background: #1E171B !important; */
+            background-color: transparent;
+        }
+
+        .qty-changer button,
+        .qty-changer input[type='number'],
+        .qty-changer input[type='text'] {
+            background-color: transparent;
+        }
+
+        .quantity-choice {
+            width: 100px;
+            border: 1px solid #ecedf6 !important;
+            border-radius: 22.5px;
+            color: #fff !important;
+            font-size: 14px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            padding: 0 10px;
+            border: none;
+        }
+
+        .btn, 
+        button{
+            border-radius: 4px !important;
+        }
+
+        /* style footer advertisaor   */
+        .footer-shop-info{
+            background-color: transparent !important;
+        }
+        .text-icn-block-footer .icn{
+            color: #dc3c01;
+            font-size: 44px;
+
+        }
+
+
+
+        /* style slider view show in card  */
+
+        /* .fancybox-container *{ */
+         .modal-info-content{
+            text-align: right;
+        }
+
+        /* style card panel  */
+        .card-accordion .panel-heading{
+            background-color: #DC3C01;
+            color: white;
+            border-radius: 4px;
+        }
+
+        .card-accordion .panel-body{
+        background-color: transparent;
+      }
+
+      .card-accordion .tag-input{
+        background: transparent !important;
+        color: white;
+        border-bottom: 1px solid #DC3C01;
+        border-radius: 4px;
+        transition: all 0.5s ease-in-out;
+
+      }
+
+      .card-accordion .tag-input:focus{
+        border: 1px solid #DC3C01;
+      }
+
+      .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{
+        background-color: transparent;
+      }
+
+
+/* Style the list of breadcrumb in card page  */
+ul.breadcrumb {
+    padding: 10px 16px;
+    list-style: none;
+    background-color: #1E171B;
+  }
+  
+  /* Display list items side by side */
+  ul.breadcrumb li {
+    display: inline;
+    font-size: 18px;
+  }
+  
+  /* Add a slash symbol (/) before/behind each list item */
+  ul.breadcrumb li+li:before {
+    /* padding: 8px;
+    color: black;
+    content: "/\00a0"; */
+  
+  }
+  
+  /* Add a color to all links inside the list */
+  ul.breadcrumb li a {
+    color: white;
+    text-decoration: none;
+  }
+  ul.breadcrumb li a.active{
+    color: #DC3C01;
+    text-decoration: underline;
+  }
+  
+  /* Add a color on mouse-over */
+  ul.breadcrumb li a:hover {
+    color: #DC3C01;
+    text-decoration: underline;
+  }
+
+  ul.breadcrumb li .chevron{
+    padding-left: 10px ;
+    padding-right: 10px;
+
+  }

@@ -6,6 +6,7 @@
                 {{-- <div class="col-lg-4 col-xl-3 last-mobile"> --}}
 
                 <div class="col-lg-3 col-xl-3 last-mobile">
+
                     <div class="footer-block">
                         <div class="footer-logo">
                             <a href="{{ route('frontend.index') }}"><img class="lazyload fade-up"
@@ -297,13 +298,16 @@
     </div>
 </div>
 
-<div class="footer-sticky">
+
+{{-- notification footer --}}
+{{-- <div class="footer-sticky">
     <div class="payment-notification-wrap js-pn" data-visible-time="3000" data-hidden-time="3000" data-delay="500"
         data-from="Aberdeen,Bakersfield,Birmingham,Cambridge,Youngstown"
         data-products='[{"productname":"Leather Pegged Pants", "productlink":"product.html","productimage":"assests/images/skins/fashion/products/product-01-1.webp"},{"productname":"Black Fabric Backpack", "productlink":"product.html","productimage":"assests/images/skins/fashion/products/product-28-1.webp"},{"productname":"Combined Chunky Sneakers", "productlink":"product.html","productimage":"assests/images/skins/fashion/products/product-23-1.webp"}]'>
         <div class="payment-notification payment-notification--squared">
             <div class="payment-notification-inside">
                 <div class="payment-notification-container">
+                    <!-- <div class="{{route('frontend.index')}}"> -->
                     <a href="#" class="payment-notification-image js-pn-link">
                         <img src="{{ asset('frontend/images/products/product-01.webp') }}" class="js-pn-image"
                             alt="" />
@@ -334,4 +338,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
