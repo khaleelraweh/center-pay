@@ -12,6 +12,7 @@ use App\Http\Controllers\Backend\CustomerAddressController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\MainSliderController;
 use App\Http\Controllers\Backend\NewsController;
+use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\PaymentCategoriesController;
 use App\Http\Controllers\Backend\PaymentMethodController;
 use App\Http\Controllers\Backend\PaymentMethodOfflineController;
@@ -22,11 +23,11 @@ use App\Http\Controllers\Backend\ShippingCompanyController;
 use App\Http\Controllers\Backend\StateController;
 use App\Http\Controllers\Backend\SupervisorController;
 use App\Http\Controllers\Backend\TagController;
+use App\Http\Controllers\Backend\WebMenuController;
+use App\Http\Controllers\Backend\WebMenuHelpController;
 use App\Http\Controllers\Frontend\CustomerController as FrontendCustomerController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\PaymentController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\WebMenusController;
 use App\Models\News;
 use Illuminate\Support\Facades\auth;
 use Illuminate\Support\Facades\Route;
@@ -158,7 +159,8 @@ Route::group(['prefix'=>'admin' , 'as' =>'admin.'],function(){
         
 
 
-        Route::resource('web_menus', WebMenusController::class);
+        Route::resource('web_menus', WebMenuController::class);
+        Route::resource('web_menu_helps', WebMenuHelpController::class);
 
 
     });

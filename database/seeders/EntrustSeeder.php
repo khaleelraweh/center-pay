@@ -139,15 +139,25 @@ class EntrustSeeder extends Seeder
         $manageWebMenus = Permission::create(['name' => 'manage_web_menus', 'display_name' => 'إدارة القوائم' , 'route' => 'web_menus' , 'module' => 'web_menus' , 'as' => 'web_menus.index' , 'icon' => 'fa fa-list-ul' , 'parent' => '0' , 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '5',] );
         $manageWebMenus->parent_show = $manageWebMenus->id; $manageWebMenus->save();
 
-        $showWebMenus    =  Permission::create(['name' => 'show_web_menus'    ,  'display_name' => 'تصنيف القوائم'      , 'route' => 'web_menus' , 'module' => 'web_menus' , 'as' => 'web_menus.index'    , 'icon' => 'fa fa-list-ul' , 'parent' => $manageWebMenus->id , 'parent_original' => $manageWebMenus->id ,'parent_show' => $manageWebMenus->id , 'sidebar_link' => '1' , 'appear' => '1'] );
+        $showWebMenus    =  Permission::create(['name' => 'show_web_menus'    ,  'display_name' => 'إدارة القوائم الرئيسية'      , 'route' => 'web_menus' , 'module' => 'web_menus' , 'as' => 'web_menus.index'    , 'icon' => 'fa fa-list-ul' , 'parent' => $manageWebMenus->id , 'parent_original' => $manageWebMenus->id ,'parent_show' => $manageWebMenus->id , 'sidebar_link' => '1' , 'appear' => '1'] );
         $createWebMenus  =  Permission::create(['name' => 'create_web_menus'  , 'display_name'  => 'إضافة تصنيف' , 'route' => 'web_menus' , 'module' => 'web_menus' , 'as' => 'web_menus.create'   , 'icon' => null                  , 'parent' => $manageWebMenus->id , 'parent_original' => $manageWebMenus->id ,'parent_show' => $manageWebMenus->id , 'sidebar_link' => '0' , 'appear' => '0'] );
         $displayWebMenus =  Permission::create(['name' => 'display_web_menus' , 'display_name'  => 'عرض تصنيف'   , 'route' => 'web_menus' , 'module' => 'web_menus' , 'as' => 'web_menus.show'     , 'icon' => null                  , 'parent' => $manageWebMenus->id , 'parent_original' => $manageWebMenus->id ,'parent_show' => $manageWebMenus->id , 'sidebar_link' => '0' , 'appear' => '0'] );
         $updateWebMenus  =  Permission::create(['name' => 'update_web_menus'  , 'display_name'  => 'تعديل تصنيف' , 'route' => 'web_menus' , 'module' => 'web_menus' , 'as' => 'web_menus.edit'     , 'icon' => null                  , 'parent' => $manageWebMenus->id , 'parent_original' => $manageWebMenus->id ,'parent_show' => $manageWebMenus->id , 'sidebar_link' => '0' , 'appear' => '0'] );
         $deleteWebMenus  =  Permission::create(['name' => 'delete_web_menus'  , 'display_name'  => 'حذف تصنيف' , 'route' => 'web_menus' , 'module' => 'web_menus' , 'as' => 'web_menus.destroy'  , 'icon' => null                  , 'parent' => $manageWebMenus->id , 'parent_original' => $manageWebMenus->id ,'parent_show' => $manageWebMenus->id , 'sidebar_link' => '0' , 'appear' => '0'] );
+        
+        //web menu helper
+        $manageWebMenuHelps = Permission::create(['name' => 'manage_web_menu_helps', 'display_name' => 'إدارة قوائم المساعدة' , 'route' => 'web_menu_helps' , 'module' => 'web_menu_helps' , 'as' => 'web_menu_helps.index' , 'icon' => 'fa fa-list-ul' , 'parent' => $manageWebMenus->id , 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '10',] );
+        $manageWebMenuHelps->parent_show = $manageWebMenuHelps->id; $manageWebMenuHelps->save();
+
+        $showWebMenuHelps    =  Permission::create(['name' => 'show_web_menu_helps'    ,  'display_name' => 'تصنيف قوائم المساعدة'      , 'route' => 'web_menu_helps' , 'module' => 'web_menu_helps' , 'as' => 'web_menu_helps.index'    , 'icon' => 'fa fa-list-ul' , 'parent' => $manageWebMenuHelps->id , 'parent_original' => $manageWebMenuHelps->id ,'parent_show' => $manageWebMenuHelps->id , 'sidebar_link' => '1' , 'appear' => '1'] );
+        $createWebMenuHelps  =  Permission::create(['name' => 'create_web_menu_helps'  , 'display_name'  => 'إضافة تصنيف' , 'route' => 'web_menu_helps' , 'module' => 'web_menu_helps' , 'as' => 'web_menu_helps.create'   , 'icon' => null                  , 'parent' => $manageWebMenuHelps->id , 'parent_original' => $manageWebMenuHelps->id ,'parent_show' => $manageWebMenuHelps->id , 'sidebar_link' => '0' , 'appear' => '0'] );
+        $displayWebMenuHelps =  Permission::create(['name' => 'display_web_menu_helps' , 'display_name'  => 'عرض تصنيف'   , 'route' => 'web_menu_helps' , 'module' => 'web_menu_helps' , 'as' => 'web_menu_helps.show'     , 'icon' => null                  , 'parent' => $manageWebMenuHelps->id , 'parent_original' => $manageWebMenuHelps->id ,'parent_show' => $manageWebMenuHelps->id , 'sidebar_link' => '0' , 'appear' => '0'] );
+        $updateWebMenuHelps  =  Permission::create(['name' => 'update_web_menu_helps'  , 'display_name'  => 'تعديل تصنيف' , 'route' => 'web_menu_helps' , 'module' => 'web_menu_helps' , 'as' => 'web_menu_helps.edit'     , 'icon' => null                  , 'parent' => $manageWebMenuHelps->id , 'parent_original' => $manageWebMenuHelps->id ,'parent_show' => $manageWebMenuHelps->id , 'sidebar_link' => '0' , 'appear' => '0'] );
+        $deleteWebMenuHelps  =  Permission::create(['name' => 'delete_web_menu_helps'  , 'display_name'  => 'حذف تصنيف' , 'route' => 'web_menu_helps' , 'module' => 'web_menu_helps' , 'as' => 'web_menu_helps.destroy'  , 'icon' => null                  , 'parent' => $manageWebMenuHelps->id , 'parent_original' => $manageWebMenuHelps->id ,'parent_show' => $manageWebMenuHelps->id , 'sidebar_link' => '0' , 'appear' => '0'] );
 
 
         //main sliders
-        $manageMainSliders = Permission::create(['name' => 'manage_main_sliders', 'display_name' => 'إدارة عارض الشرائح' , 'route' => 'main_sliders' , 'module' => 'main_sliders' , 'as' => 'main_sliders.index' , 'icon' => 'fas fa-sliders-h' , 'parent' => '0' , 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '10',] );
+        $manageMainSliders = Permission::create(['name' => 'manage_main_sliders', 'display_name' => 'إدارة عارض الشرائح' , 'route' => 'main_sliders' , 'module' => 'main_sliders' , 'as' => 'main_sliders.index' , 'icon' => 'fas fa-sliders-h' , 'parent' => '0' , 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '15',] );
         $manageMainSliders->parent_show = $manageMainSliders->id; $manageMainSliders->save();
 
         $showMainSliders    =  Permission::create(['name' => 'show_main_sliders'    , 'display_name' => 'عارض الشرائح الرئيسي'     , 'route' => 'main_sliders' , 'module' => 'main_sliders' , 'as' => 'main_sliders.index'    , 'icon' => 'fas  fa-sliders-h' , 'parent' => $manageMainSliders->id , 'parent_original' => $manageMainSliders->id ,'parent_show' => $manageMainSliders->id , 'sidebar_link' => '1' , 'appear' => '1'] );
@@ -158,7 +168,7 @@ class EntrustSeeder extends Seeder
         
 
         //Advertisor sliders
-        $manageAdvertisorSliders = Permission::create(['name' => 'manage_advertisor_sliders', 'display_name' => ' عارض شرائح الإعلانات' , 'route' => 'advertisor_sliders' , 'module' => 'advertisor_sliders' , 'as' => 'advertisor_sliders.index' , 'icon' => 'fas fa-sliders-h' , 'parent' => $manageMainSliders->id , 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '15',] );
+        $manageAdvertisorSliders = Permission::create(['name' => 'manage_advertisor_sliders', 'display_name' => ' عارض شرائح الإعلانات' , 'route' => 'advertisor_sliders' , 'module' => 'advertisor_sliders' , 'as' => 'advertisor_sliders.index' , 'icon' => 'fas fa-sliders-h' , 'parent' => $manageMainSliders->id , 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '20',] );
         $manageAdvertisorSliders->parent_show = $manageAdvertisorSliders->id; $manageAdvertisorSliders->save();
 
         $showAdvertisorSliders    =  Permission::create(['name' => 'show_advertisor_sliders'    , 'display_name' => 'عارض شرائح الإعلانات'     , 'route' => 'advertisor_sliders' , 'module' => 'advertisor_sliders' , 'as' => 'advertisor_sliders.index'    , 'icon' => 'fas  fa-sliders-h' , 'parent' => $manageAdvertisorSliders->id , 'parent_original' => $manageAdvertisorSliders->id ,'parent_show' => $manageAdvertisorSliders->id , 'sidebar_link' => '1' , 'appear' => '1'] );
@@ -170,7 +180,7 @@ class EntrustSeeder extends Seeder
 
 
         //Procuct Categories
-        $manageProductCategories = Permission::create(['name' => 'manage_product_categories', 'display_name' => 'إدارة المنتجات' , 'route' => 'product_categories' , 'module' => 'product_categories' , 'as' => 'product_categories.index' , 'icon' => 'fas fa-file-archive' , 'parent' => '0' , 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '20',] );
+        $manageProductCategories = Permission::create(['name' => 'manage_product_categories', 'display_name' => 'إدارة المنتجات' , 'route' => 'product_categories' , 'module' => 'product_categories' , 'as' => 'product_categories.index' , 'icon' => 'fas fa-file-archive' , 'parent' => '0' , 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '25',] );
         $manageProductCategories->parent_show = $manageProductCategories->id; $manageProductCategories->save();
 
         $showProductCategories    =  Permission::create(['name' => 'show_product_categories'    ,  'display_name' => 'تصنيف المنتجات'      , 'route' => 'product_categories' , 'module' => 'product_categories' , 'as' => 'product_categories.index'    , 'icon' => 'fas fa-file-archive' , 'parent' => $manageProductCategories->id , 'parent_original' => $manageProductCategories->id ,'parent_show' => $manageProductCategories->id , 'sidebar_link' => '1' , 'appear' => '1'] );
@@ -181,7 +191,7 @@ class EntrustSeeder extends Seeder
         
 
         //Products 
-        $manageProducts = Permission::create(['name' => 'manage_products', 'display_name' => 'المنتجات' , 'route' => 'products' , 'module' => 'products' , 'as' => 'products.index' , 'icon' => 'fas fa-file-archive' , 'parent' => $manageProductCategories->id , 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '25',] );
+        $manageProducts = Permission::create(['name' => 'manage_products', 'display_name' => 'المنتجات' , 'route' => 'products' , 'module' => 'products' , 'as' => 'products.index' , 'icon' => 'fas fa-file-archive' , 'parent' => $manageProductCategories->id , 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '30',] );
         $manageProducts->parent_show = $manageProducts->id; $manageProducts->save();
         $showProducts    =  Permission::create(['name' => 'show_products'    ,  'display_name' => 'المنتجات'       , 'route' => 'products' , 'module' => 'products' , 'as' => 'products.index'    , 'icon' => 'fas fa-file-archive'  , 'parent' => $manageProducts->id , 'parent_original' => $manageProducts->id ,'parent_show' => $manageProducts->id , 'sidebar_link' => '1' , 'appear' => '1'] );
         $createProducts  =  Permission::create(['name' => 'create_products'  , 'display_name'  => 'إضافة منتج'    , 'route' => 'products' , 'module' => 'products' , 'as' => 'products.create'   , 'icon' => null           , 'parent' => $manageProducts->id , 'parent_original' => $manageProducts->id ,'parent_show' => $manageProducts->id , 'sidebar_link' => '1' , 'appear' => '0'] );
@@ -190,7 +200,7 @@ class EntrustSeeder extends Seeder
         $deleteProducts  =  Permission::create(['name' => 'delete_products'  , 'display_name'  => 'حذف منتج'            , 'route' => 'products' , 'module' => 'products' , 'as' => 'products.destroy'  , 'icon' => null           , 'parent' => $manageProducts->id , 'parent_original' => $manageProducts->id ,'parent_show' => $manageProducts->id , 'sidebar_link' => '0' , 'appear' => '0'] );
 
          //manage card categories
-         $manageCardCategories = Permission::create(['name' => 'manage_card_categories', 'display_name' => 'إدارة البطائق' , 'route' => 'card_categories' , 'module' => 'card_categories' , 'as' => 'card_categories.index' , 'icon' => 'fas fa-file-archive' , 'parent' => '0', 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '30',] );
+         $manageCardCategories = Permission::create(['name' => 'manage_card_categories', 'display_name' => 'إدارة البطائق' , 'route' => 'card_categories' , 'module' => 'card_categories' , 'as' => 'card_categories.index' , 'icon' => 'fas fa-file-archive' , 'parent' => '0', 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '35',] );
          $manageCardCategories->parent_show = $manageCardCategories->id; $manageCardCategories->save();
  
          $showcard_categories    =  Permission::create(['name' => 'show_card_categories'    , 'display_name'  => 'تصنيف البطائق'        ,   'route' => 'card_categories' , 'module' => 'card_categories' , 'as' => 'card_categories.index'    , 'icon' => 'fas fa-file-archive' , 'parent' => $manageCardCategories->id , 'parent_original' => $manageCardCategories->id ,'parent_show' => $manageCardCategories->id , 'sidebar_link' => '1' , 'appear' => '1'] );
@@ -201,7 +211,7 @@ class EntrustSeeder extends Seeder
  
 
         //Manage cards 
-        $manageCards = Permission::create(['name' => 'manage_cards', 'display_name' => 'الباقات' , 'route' => 'cards' , 'module' => 'cards' , 'as' => 'cards.index' , 'icon' => 'fas fa-file-archive' , 'parent' => $manageCardCategories->id , 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '35',] );
+        $manageCards = Permission::create(['name' => 'manage_cards', 'display_name' => 'الباقات' , 'route' => 'cards' , 'module' => 'cards' , 'as' => 'cards.index' , 'icon' => 'fas fa-file-archive' , 'parent' => $manageCardCategories->id , 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '40',] );
         $manageCards->parent_show = $manageCards->id; $manageCards->save();
         $showCards   =  Permission::create(['name' => 'show_cards'    ,   'display_name'    => 'عرض الباقات'         ,   'route'     => 'cards'   , 'module'   => 'cards' , 'as' =>  'cards.index'    , 'icon' => 'fas fa-file-archive'  , 'parent' => $manageCards->id , 'parent_original' => $manageCards->id ,'parent_show' => $manageCards->id , 'sidebar_link' => '1' , 'appear' => '1'] );
         $createCards =  Permission::create(['name' => 'create_cards'  ,   'display_name'    => 'إضافة باقة جديدة'  ,   'route'     => 'cards'    , 'module'  => 'cards' , 'as' =>   'cards.create'   , 'icon' => null           , 'parent' => $manageCards->id , 'parent_original' => $manageCards->id ,'parent_show' => $manageCards->id , 'sidebar_link' => '1' , 'appear' => '0'] );
@@ -212,7 +222,7 @@ class EntrustSeeder extends Seeder
         
 
         //Product Tags
-        $manageTags = Permission::create(['name' => 'manage_tags', 'display_name' => 'إدارة الكلمات المفتاحية' , 'route' => 'tags' , 'module' => 'tags' , 'as' => 'tags.index' , 'icon' => 'fas fa-tags' , 'parent' => '0' , 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '40',] );
+        $manageTags = Permission::create(['name' => 'manage_tags', 'display_name' => 'إدارة الكلمات المفتاحية' , 'route' => 'tags' , 'module' => 'tags' , 'as' => 'tags.index' , 'icon' => 'fas fa-tags' , 'parent' => '0' , 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '45',] );
         $manageTags->parent_show = $manageTags->id; $manageTags->save();
         $showTags    =  Permission::create(['name' => 'show_tags'    ,  'display_name' => 'عرض الكلمات المفتاحية'       , 'route' => 'tags' , 'module' => 'tags' , 'as' => 'tags.index'    , 'icon' => 'fas fa-tags'  , 'parent' => $manageTags->id , 'parent_original' => $manageTags->id ,'parent_show' => $manageTags->id , 'sidebar_link' => '1' , 'appear' => '1'] );
         $createTags  =  Permission::create(['name' => 'create_tags'  , 'display_name'  => 'إضافة كلمة مفتاحية' , 'route' => 'tags' , 'module' => 'tags' , 'as' => 'tags.create'   , 'icon' => null           , 'parent' => $manageTags->id , 'parent_original' => $manageTags->id ,'parent_show' => $manageTags->id , 'sidebar_link' => '1' , 'appear' => '0'] );
@@ -222,7 +232,7 @@ class EntrustSeeder extends Seeder
 
 
         //Coupons
-        $manageCoupons = Permission::create(['name' => 'manage_coupons', 'display_name' => 'إدارة كوبونات الخصم' , 'route' => 'coupons' , 'module' => 'coupons' , 'as' => 'coupons.index' , 'icon' => 'fas fa-percent' , 'parent' => '0' , 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '45',] );
+        $manageCoupons = Permission::create(['name' => 'manage_coupons', 'display_name' => 'إدارة كوبونات الخصم' , 'route' => 'coupons' , 'module' => 'coupons' , 'as' => 'coupons.index' , 'icon' => 'fas fa-percent' , 'parent' => '0' , 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '50',] );
         $manageCoupons->parent_show = $manageCoupons->id; $manageCoupons->save();
         $showProductCoupons    =  Permission::create(['name' => 'show_coupons'    ,  'display_name'  => 'كوبونات الخصم'       , 'route' => 'coupons' , 'module' => 'coupons' , 'as' => 'coupons.index'    , 'icon' => 'fas fa-percent'  , 'parent' => $manageCoupons->id , 'parent_original' => $manageCoupons->id ,'parent_show' => $manageCoupons->id , 'sidebar_link' => '1' , 'appear' => '1'] );
         $createProductCoupons  =  Permission::create(['name' => 'create_coupons'  , 'display_name'   => 'إنشاء كوبون ' , 'route' => 'coupons' , 'module' => 'coupons' , 'as' => 'coupons.create'   , 'icon' => null              , 'parent' => $manageCoupons->id , 'parent_original' => $manageCoupons->id ,'parent_show' => $manageCoupons->id , 'sidebar_link' => '1' , 'appear' => '0'] );
@@ -234,7 +244,7 @@ class EntrustSeeder extends Seeder
         
 
          //Customers
-         $manageCustomers = Permission::create(['name' => 'manage_customers', 'display_name' => 'إدارة العملاء' , 'route' => 'customers' , 'module' => 'customers' , 'as' => 'customers.index' , 'icon' => 'fas fa-user' , 'parent' => '0' , 'parent_original' => '0' ,  'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '50',] );
+         $manageCustomers = Permission::create(['name' => 'manage_customers', 'display_name' => 'إدارة العملاء' , 'route' => 'customers' , 'module' => 'customers' , 'as' => 'customers.index' , 'icon' => 'fas fa-user' , 'parent' => '0' , 'parent_original' => '0' ,  'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '55',] );
          $manageCustomers->parent_show = $manageCustomers->id; $manageCustomers->save();
          $showCustomers   =  Permission::create(['name'  => 'show_customers'      , 'display_name'    => 'العملاء'             , 'route' => 'customers' , 'module' => 'customers' , 'as' => 'customers.index'    , 'icon' => 'fas fa-user'     , 'parent' => $manageCustomers->id , 'parent_original' => $manageCustomers->id ,'parent_show' => $manageCustomers->id , 'sidebar_link' => '1' , 'appear' => '1'] );
          $createCustomers =  Permission::create(['name'  => 'create_customers'    , 'display_name'    => 'إضافة عميل'       , 'route' => 'customers' , 'module' => 'customers' , 'as' => 'customers.create'   , 'icon' => null              , 'parent' => $manageCustomers->id , 'parent_original' => $manageCustomers->id ,'parent_show' => $manageCustomers->id , 'sidebar_link' => '1' , 'appear' => '0'] );
@@ -244,7 +254,7 @@ class EntrustSeeder extends Seeder
 
 
          //Supervisor // we can hide suppervisor not to be in sidebar linke by  making in manage_supervisors 'sidebar_link' => '0'
-        $manageSupervisors = Permission::create(['name' => 'manage_supervisors', 'display_name' => 'المشرفين' , 'route' => 'supervisors' , 'module' => 'supervisors' , 'as' => 'supervisors.index' , 'icon' => 'fas fa-user' , 'parent' => $manageCustomers->id , 'parent_original' => '0' , 'parent_show' => $manageCustomers->id  , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '55',] );
+        $manageSupervisors = Permission::create(['name' => 'manage_supervisors', 'display_name' => 'المشرفين' , 'route' => 'supervisors' , 'module' => 'supervisors' , 'as' => 'supervisors.index' , 'icon' => 'fas fa-user' , 'parent' => $manageCustomers->id , 'parent_original' => '0' , 'parent_show' => $manageCustomers->id  , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '60',] );
         $manageSupervisors->parent_show = $manageSupervisors->id; $manageSupervisors->save();
         $showSupervisors   =  Permission::create(['name' => 'show_supervisors'      , 'display_name'    => 'المشرفين'       , 'route' => 'supervisors' , 'module' => 'supervisors' , 'as' => 'supervisors.index'    , 'icon' => 'fas fa-user'     , 'parent' => $manageSupervisors->id , 'parent_original' => $manageSupervisors->id ,'parent_show' => $manageSupervisors->id , 'sidebar_link' => '1' , 'appear' => '1'] );
         $createSupervisors =  Permission::create(['name' => 'create_supervisors'    , 'display_name'    => 'إضافة مشرف جديد' , 'route' => 'supervisors' , 'module' => 'supervisors' , 'as' => 'supervisors.create'   , 'icon' => null              , 'parent' => $manageSupervisors->id , 'parent_original' => $manageSupervisors->id ,'parent_show' => $manageSupervisors->id , 'sidebar_link' => '1' , 'appear' => '0'] );
@@ -253,7 +263,7 @@ class EntrustSeeder extends Seeder
         $deleteSupervisors =  Permission::create(['name' => 'delete_supervisors'    , 'display_name'    => 'حذف مشرف' , 'route' => 'supervisors' , 'module' => 'supervisors' , 'as' => 'supervisors.destroy'  , 'icon' => null              , 'parent' => $manageSupervisors->id , 'parent_original' => $manageSupervisors->id ,'parent_show' => $manageSupervisors->id , 'sidebar_link' => '0' , 'appear' => '0'] );
 
          //userAddresses
-        $manageCustomerAddresses = Permission::create(['name' => 'manage_customer_addresses', 'display_name' => 'إدارة عناوين العملاء ' , 'route' => 'customer_addresses' , 'module' => 'customer_addresses' , 'as' => 'customer_addresses.index' , 'icon' => 'fas fa-map-marked-alt' , 'parent' => '0' , 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '60',] );
+        $manageCustomerAddresses = Permission::create(['name' => 'manage_customer_addresses', 'display_name' => 'إدارة عناوين العملاء ' , 'route' => 'customer_addresses' , 'module' => 'customer_addresses' , 'as' => 'customer_addresses.index' , 'icon' => 'fas fa-map-marked-alt' , 'parent' => '0' , 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '65',] );
         $manageCustomerAddresses->parent_show = $manageCustomerAddresses->id; $manageCustomerAddresses->save();
         $showCustomerAddresses   =  Permission::create(['name'  => 'show_customer_addresses'      , 'display_name'    => 'عناوين العملاء'             , 'route' => 'customer_addresses' , 'module' => 'customer_addresses' , 'as' => 'customer_addresses.index'    , 'icon' => 'fas fa-map-marked-alt'     , 'parent' => $manageCustomerAddresses->id , 'parent_original' => $manageCustomerAddresses->id ,'parent_show' => $manageCustomerAddresses->id , 'sidebar_link' => '1' , 'appear' => '1'] );
         $createCustomerAddresses =  Permission::create(['name'  => 'create_customer_addresses'    , 'display_name'    => 'إنشاء عنوان جديد'       , 'route' => 'customer_addresses' , 'module' => 'customer_addresses' , 'as' => 'customer_addresses.create'   , 'icon' => null              , 'parent' => $manageCustomerAddresses->id , 'parent_original' => $manageCustomerAddresses->id ,'parent_show' => $manageCustomerAddresses->id , 'sidebar_link' => '1' , 'appear' => '0'] );
@@ -263,7 +273,7 @@ class EntrustSeeder extends Seeder
 
 
         //Countries
-        $manageCountries = Permission::create(  ['name' => 'manage_countries', 'display_name' => 'إدارة البلدان' , 'route' => 'countries' , 'module' => 'countries' , 'as' => 'countries.index' , 'icon' => 'fas fa-globe' , 'parent' => '0' , 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '65',] );
+        $manageCountries = Permission::create(  ['name' => 'manage_countries', 'display_name' => 'إدارة البلدان' , 'route' => 'countries' , 'module' => 'countries' , 'as' => 'countries.index' , 'icon' => 'fas fa-globe' , 'parent' => '0' , 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '70',] );
         $manageCountries->parent_show = $manageCountries->id; $manageCountries->save();
         $showCountries   =  Permission::create( ['name'     => 'show_countries'    , 'display_name'  => 'الدول'       , 'route' => 'countries' , 'module' => 'countries' , 'as' => 'countries.index'    , 'icon' => 'fas fa-globe'    , 'parent' => $manageCountries->id , 'parent_original' => $manageCountries->id ,  'parent_show' => $manageCountries->id , 'sidebar_link' => '1' , 'appear' => '1'] );
         $createCountries =  Permission::create( ['name'     => 'create_countries'  , 'display_name'  => 'إضافة دولة'  , 'route' => 'countries' , 'module' => 'countries' , 'as' => 'countries.create'   , 'icon' => null              , 'parent' => $manageCountries->id , 'parent_original' => $manageCountries->id ,  'parent_show' => $manageCountries->id , 'sidebar_link' => '1' , 'appear' => '0'] );
@@ -273,7 +283,7 @@ class EntrustSeeder extends Seeder
 
 
         //States
-        $manageStates = Permission::create(['name' => 'manage_states', 'display_name' => 'المحافظات' , 'route' => 'states' , 'module' => 'states' , 'as' => 'states.index' , 'icon' => 'fas fa-map-marker-alt' , 'parent' =>  $manageCountries->id , 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '70',] );
+        $manageStates = Permission::create(['name' => 'manage_states', 'display_name' => 'المحافظات' , 'route' => 'states' , 'module' => 'states' , 'as' => 'states.index' , 'icon' => 'fas fa-map-marker-alt' , 'parent' =>  $manageCountries->id , 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '75',] );
         $manageStates->parent_show = $manageStates->id; $manageStates->save();
         $showStates     =  Permission::create(['name' => 'show_states'     , 'display_name'    => 'المحافظات'             , 'route' => 'states' , 'module' => 'states' , 'as' => 'states.index'    , 'icon' => 'fas fa-map-marker-alt'   , 'parent' => $manageStates->id , 'parent_original' => $manageStates->id ,'parent_show' => $manageStates->id , 'sidebar_link' => '1' , 'appear' => '1'] );
         $createStates   =  Permission::create(['name' => 'create_states'   , 'display_name'    => 'إضافة محافظة'       , 'route' => 'states' , 'module' => 'states' , 'as' => 'states.create'   , 'icon' => null              , 'parent' => $manageStates->id , 'parent_original' => $manageStates->id ,'parent_show' => $manageStates->id , 'sidebar_link' => '1' , 'appear' => '0'] );
@@ -283,7 +293,7 @@ class EntrustSeeder extends Seeder
 
 
         //Cities
-        $manageCities = Permission::create(['name' => 'manage_cities', 'display_name' => 'المدن' , 'route' => 'cities' , 'module' => 'cities' , 'as' => 'cities.index' , 'icon' => 'fas fa-university' , 'parent' =>  $manageCountries->id , 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '75',] );
+        $manageCities = Permission::create(['name' => 'manage_cities', 'display_name' => 'المدن' , 'route' => 'cities' , 'module' => 'cities' , 'as' => 'cities.index' , 'icon' => 'fas fa-university' , 'parent' =>  $manageCountries->id , 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '80',] );
         $manageCities->parent_show = $manageCities->id; $manageCities->save();
         $showCities     =  Permission::create(['name' => 'show_cities'     , 'display_name'    => 'المدن'             , 'route' => 'cities' , 'module' => 'cities' , 'as' => 'cities.index'    , 'icon' => 'fas fa-university'   , 'parent' => $manageCities->id , 'parent_original' => $manageCities->id ,'parent_show' => $manageCities->id , 'sidebar_link' => '1' , 'appear' => '1'] );
         $createCities   =  Permission::create(['name' => 'create_cities'   , 'display_name'    => 'إذافة مدينة'       , 'route' => 'cities' , 'module' => 'cities' , 'as' => 'cities.create'   , 'icon' => null              , 'parent' => $manageCities->id , 'parent_original' => $manageCities->id ,'parent_show' => $manageCities->id , 'sidebar_link' => '1' , 'appear' => '0'] );
@@ -293,7 +303,7 @@ class EntrustSeeder extends Seeder
 
  
         //Shipping Companies
-       $manageShippingCompanies = Permission::create(['name' => 'manage_shipping_companies', 'display_name' => 'إدارة شركات الشحن' , 'route' => 'shipping_companies' , 'module' => 'shipping_companies' , 'as' => 'shipping_companies.index' , 'icon' => 'fas fa-map-marked-alt' , 'parent' => '0' , 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '80',] );
+       $manageShippingCompanies = Permission::create(['name' => 'manage_shipping_companies', 'display_name' => 'إدارة شركات الشحن' , 'route' => 'shipping_companies' , 'module' => 'shipping_companies' , 'as' => 'shipping_companies.index' , 'icon' => 'fas fa-map-marked-alt' , 'parent' => '0' , 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '85',] );
        $manageShippingCompanies->parent_show = $manageShippingCompanies->id; $manageShippingCompanies->save();
        $showShippingCompanies   =  Permission::create(['name'  => 'show_shipping_companies'      , 'display_name'    => 'شركات الشحن'            , 'route' => 'shipping_companies' , 'module' => 'shipping_companies' , 'as' => 'shipping_companies.index'    , 'icon' => 'fas fa-map-marked-alt'     , 'parent' => $manageShippingCompanies->id , 'parent_original' => $manageShippingCompanies->id ,'parent_show' => $manageShippingCompanies->id , 'sidebar_link' => '1' , 'appear' => '1'] );
        $createShippingCompanies =  Permission::create(['name'  => 'create_shipping_companies'    , 'display_name'    => 'إضافة شركة شحن جديدة'       , 'route' => 'shipping_companies' , 'module' => 'shipping_companies' , 'as' => 'shipping_companies.create'   , 'icon' => null              , 'parent' => $manageShippingCompanies->id , 'parent_original' => $manageShippingCompanies->id ,'parent_show' => $manageShippingCompanies->id , 'sidebar_link' => '1' , 'appear' => '0'] );
@@ -303,7 +313,7 @@ class EntrustSeeder extends Seeder
        
 
         //Product Reviews
-        $manageProductReviews = Permission::create(['name' => 'manage_product_reviews', 'display_name' => 'إدارة التعليقات' , 'route' => 'product_reviews' , 'module' => 'product_reviews' , 'as' => 'product_reviews.index' , 'icon' => 'fas fa-comment' , 'parent' => '0' , 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '85',] );
+        $manageProductReviews = Permission::create(['name' => 'manage_product_reviews', 'display_name' => 'إدارة التعليقات' , 'route' => 'product_reviews' , 'module' => 'product_reviews' , 'as' => 'product_reviews.index' , 'icon' => 'fas fa-comment' , 'parent' => '0' , 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '90',] );
         $manageProductReviews->parent_show = $manageProductReviews->id; $manageProductReviews->save();
         $showProductReviews   =  Permission::create(['name' => 'show_product_reviews'    ,  'display_name'  => 'التعليقات'       , 'route' => 'product_reviews' , 'module' => 'product_reviews' , 'as' => 'product_reviews.index'    , 'icon' => 'fas fa-comment'  , 'parent' => $manageProductReviews->id , 'parent_original' => $manageProductReviews->id ,'parent_show' => $manageProductReviews->id , 'sidebar_link' => '1' , 'appear' => '1'] );
         $createProductReviews =  Permission::create(['name' => 'create_product_reviews'  , 'display_name'   => 'إضافة تعليق' , 'route' => 'product_reviews' , 'module' => 'product_reviews' , 'as' => 'product_reviews.create'   , 'icon' => null              , 'parent' => $manageProductReviews->id , 'parent_original' => $manageProductReviews->id ,'parent_show' => $manageProductReviews->id , 'sidebar_link' => '1' , 'appear' => '0'] );
@@ -313,7 +323,7 @@ class EntrustSeeder extends Seeder
 
 
         //Payment Methods
-       $managePaymentMethods = Permission::create(['name' => 'manage_payment_methods', 'display_name' => 'إدارة شركات الدفع' , 'route' => 'payment_methods' , 'module' => 'payment_methods' , 'as' => 'payment_methods.index' , 'icon' => 'fas fa-dollar-sign' , 'parent' => '0' , 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '90',] );
+       $managePaymentMethods = Permission::create(['name' => 'manage_payment_methods', 'display_name' => 'إدارة شركات الدفع' , 'route' => 'payment_methods' , 'module' => 'payment_methods' , 'as' => 'payment_methods.index' , 'icon' => 'fas fa-dollar-sign' , 'parent' => '0' , 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '95',] );
        $managePaymentMethods->parent_show = $managePaymentMethods->id; $managePaymentMethods->save();
        $showPaymentMethods   =  Permission::create(['name'  => 'show_payment_methods'      , 'display_name'    => 'شركات الدفع'             , 'route' => 'payment_methods' , 'module' => 'payment_methods' , 'as' => 'payment_methods.index'    , 'icon' => 'fas fa-dollar-sign'     , 'parent' => $managePaymentMethods->id , 'parent_original' => $managePaymentMethods->id ,'parent_show' => $managePaymentMethods->id , 'sidebar_link' => '1' , 'appear' => '1'] );
        $createPaymentMethods =  Permission::create(['name'  => 'create_payment_methods'    , 'display_name'    => 'إضافة شركة دفع'       , 'route' => 'payment_methods/create' , 'module' => 'payment_methods' , 'as' => 'payment_methods.create'   , 'icon' => null              , 'parent' => $managePaymentMethods->id , 'parent_original' => $managePaymentMethods->id ,'parent_show' => $managePaymentMethods->id , 'sidebar_link' => '1' , 'appear' => '0'] );

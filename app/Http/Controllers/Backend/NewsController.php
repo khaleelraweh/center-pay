@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\NewsRequest;
+use App\Http\Requests\Backend\NewsRequest;
 use App\Models\News;
 use DateTimeImmutable;
 use Illuminate\Http\Request;

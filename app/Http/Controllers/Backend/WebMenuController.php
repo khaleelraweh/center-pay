@@ -1,16 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
-use App\Http\Requests\Frontend\WebMenuRequest;
-use App\Models\WebMenu;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Backend\WebMenuRequest;
 use Illuminate\Http\Request;
+use App\Models\WebMenu;
 use illuminate\support\Str;
 use Intervention\Image\Facades\Image;
 use DateTimeImmutable;
 use Illuminate\Support\Facades\File;
 
-class WebMenusController extends Controller
+class WebMenuController extends Controller
 {
    
     public function index()

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Frontend;
+namespace App\Http\Requests\Backend;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class WebMenuRequest extends FormRequest
+class WebMenuHelpRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -30,7 +30,6 @@ class WebMenuRequest extends FormRequest
                     'name_ar'       =>  'required|max:255|unique:web_menus',
                     'name_en'       =>  'required|max:255|unique:web_menus',
                     'link'          =>  'nullable',
-                    'parent_id'     =>  'nullable',
                     'section'       =>  'nullable',
 
 
@@ -49,10 +48,9 @@ class WebMenuRequest extends FormRequest
             case 'PATCH':
             {
                 return [ 
-                    'name_ar'          =>   'required|max:255|unique:web_menus,name_ar,'.$this->route()->web_menu->id,
-                    'name_en'          =>   'required|max:255|unique:web_menus,name_en,'.$this->route()->web_menu->id,
+                    'name_ar'          =>   'required|max:255|unique:web_menus,name_ar,'.$this->route()->web_menu_help->id,
+                    'name_en'          =>   'required|max:255|unique:web_menus,name_en,'.$this->route()->web_menu_help->id,
                     'link'              =>  'nullable',
-                    'parent_id'         =>  'nullable',
                     'section'           =>  'nullable',
 
 
