@@ -26,6 +26,7 @@ use App\Http\Controllers\Frontend\CustomerController as FrontendCustomerControll
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\PaymentController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\WebMenusController;
 use App\Models\News;
 use Illuminate\Support\Facades\auth;
 use Illuminate\Support\Facades\Route;
@@ -97,6 +98,7 @@ Route::group(['prefix'=>'admin' , 'as' =>'admin.'],function(){
         Route::post('product_categories/remove-image', [ProductCategoriesController::class, 'remove_image'])->name('product_categories.remove_image');
         Route::resource('product_categories', ProductCategoriesController::class);
         
+        
         Route::post('products/remove-image', [ProductController::class, 'remove_image'])->name('products.remove_image');
         Route::resource('products', ProductController::class);
         
@@ -155,6 +157,8 @@ Route::group(['prefix'=>'admin' , 'as' =>'admin.'],function(){
         Route::resource('payment_method_offlines', PaymentMethodOfflineController::class);
         
 
+
+        Route::resource('web_menus', WebMenusController::class);
 
 
     });
