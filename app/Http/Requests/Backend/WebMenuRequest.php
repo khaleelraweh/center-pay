@@ -49,11 +49,11 @@ class WebMenuRequest extends FormRequest
             case 'PATCH':
             {
                 return [ 
-                    'name_ar'          =>   'required|max:255|unique:web_menus,name_ar,'.$this->route()->web_menu->id,
-                    'name_en'          =>   'required|max:255|unique:web_menus,name_en,'.$this->route()->web_menu->id,
-                    'link'              =>  'nullable',
-                    'parent_id'         =>  'nullable',
-                    'section'           =>  'nullable',
+                    'name_ar'           =>   'required|max:255|unique:web_menus,name_ar,'.$this->route()->web_menu->id,
+                    'name_en'           =>   'required|max:255|unique:web_menus,name_en,'.$this->route()->web_menu->id,
+                    'link'              =>   'nullable',
+                    'parent_id'         =>   'nullable',
+                    'section'           =>   'nullable',
 
 
                     // used always 
