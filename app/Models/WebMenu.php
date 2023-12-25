@@ -30,6 +30,7 @@ class WebMenu extends Model
         'columns' => [
             'web_menus.name_ar' => 10,
             'web_menus.name_en' => 10,
+            'web_menus.link' => 10,
         ]
     ];
 
@@ -49,7 +50,6 @@ class WebMenu extends Model
     public function scopeMainMenu($query){
         return $query->whereSection(1);  
     }
-
   
 
 
@@ -77,38 +77,22 @@ class WebMenu extends Model
         return static::with(implode('.', array_fill(0, $level, 'children')))
             ->whereNull('parent_id')
             ->whereStatus(true)
+            ->where('section' , 1)
             ->orderBy('id', 'asc')
             ->get();
     } 
 
-    // public function products (){
-    //     return $this->hasMany(Product::class);
-    // }
-
-    // public function cards (){
-    //     return $this->hasMany(Product::class);
-    // }
-
-    // product category has only one photo in photo table so relationship is morphone
-    public function photo():MorphOne
+    // for calling help menu in the footer 
+    public static function helpTree( $level = 1 )
     {
-        return $this->morphOne(Photo::class, 'imageable');
-    }
+        return static::with(implode('.', array_fill(0, $level, 'children')))
+            ->whereNull('parent_id')
+            ->whereStatus(true)
+            ->where('section' , 2)
+            ->orderBy('id', 'asc')
+            ->get();
+    } 
 
-    // to get only first one media elemet
-    public function firstMedia(): MorphOne{
-        return $this->MorphOne(Photo::class, 'imageable')->orderBy('file_sort','asc');
-    }
-
-    public function lastMedia(): MorphOne{
-        return $this->MorphOne(Photo::class, 'imageable')->orderBy('file_sort','desc');
-    }
-    
-    // one product may have more than one photo
-    public function photos():MorphMany
-    {
-        return $this->morphMany(Photo::class, 'imageable');
-    }
 
 
 }

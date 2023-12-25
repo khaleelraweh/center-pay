@@ -18,8 +18,10 @@ return new class extends Migration
             $table->string('name_ar');
             $table->string('slug')->unique();
             $table->string('name_en');
-            
+
             $table->string('link')->nullable();
+            
+            // $table->string('mylink')->nullable();
 
             $table->unsignedBigInteger('parent_id')->nullable();
             $table->foreign('parent_id')->references('id')->on('product_categories')->nullOnDelete();

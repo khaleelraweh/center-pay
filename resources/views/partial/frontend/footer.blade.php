@@ -35,13 +35,14 @@
                         </div>
                         <div class="collapsed-content">
                             <ul>
-                                <li><a href="about.html">عن سنترباي</a></li>
-                                <li><a href="contact.html">اتصل بنا</a></li>
-                                <li><a href="typography.html">السياسات والشروط</a></li>
-                                <li><a href="typography.html">Returns & Exchanges</a></li>
-                                <li><a href="typography.html">Shipping & Delivery</a></li>
-                                <li><a href="gallery.html">Our Portfolio</a></li>
+
+                                @foreach ($helps_menu as $menu)
+                                    @if (count($menu->appearedChildren) == false)
+                                        <li><a href="{{ url($menu->link) }}">{{ $menu->name_ar }}</a></li>
+                                    @endif
+                                @endforeach
                             </ul>
+
                         </div>
                     </div>
                 </div>
