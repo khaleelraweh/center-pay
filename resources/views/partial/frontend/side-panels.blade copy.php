@@ -10,59 +10,242 @@
                     <div class="nav-toggle">
                         <span class="nav-back"><i class="icon-angle-left"></i></span>
                         <span class="nav-title"></span>
-                        {{-- <a href="#" class="nav-viewall">عرض الكل</a> --}}
+                        <a href="#" class="nav-viewall">عرض الكل</a>
                     </div>
-
-
                     <ul class="nav nav-level-1">
-                        @foreach ($user_side_menu as $menu)
-
-                            @if (count($menu->appearedChildren) == false)
-                                {{-- عرض العنصر الرئيسي الذي ليس له ابناء  --}}
+                        <li>
+                            <a href="{{ route('frontend.index') }}">تخطيط<span
+                                    class="menu-label menu-label--color1">الصفحات</span><span class="arrow"><i
+                                        class="icon-angle-right"></i></span></a>
+                            <ul class="nav-level-2">
+                                <li><a href="{{ route('frontend.index') }}">Fashion (Default) Skin</a></li>
+                                <li><a href="index-sport.html">Sport Skin</a></li>
+                                <li><a href="index-helloween.html">Halloween Skin</a></li>
+                                <li><a href="index-medical.html">Medical Skin</a></li>
+                                <li><a href="index-food.html">Food Market Skin</a></li>
+                                <li><a href="index-cosmetics.html">Cosmetics Skin</a></li>
+                                <li><a href="index-fishing.html">Fishing Skin</a></li>
                                 <li>
-                                    <a href="{{ $menu->link != null ? url($menu->link) : '#' }}">
-                                        {{ $menu->name_ar }}
-                                    </a>
+                                    <a href="#">Books Skin<span class="menu-label menu-label--color1">Coming
+                                            Soon</span></a>
                                 </li>
-                            @else
-                                {{-- عرض العنصر الرئيسي الذي لديه ابناء  --}}
                                 <li>
-                                    <a href="javascript: void(0);">
-                                        {{ $menu->name_ar }}
-
-                                        <span class="arrow">
-                                            {{-- <i class="icon-angle-right"></i><!-- right in english  --> --}}
-                                            <i class="icon-angle-left"></i>
-                                        </span>
-                                    </a>
-
-                                    @if ($menu->appearedChildren !== null && count($menu->appearedChildren) > 0)
-                                        <ul class="nav-level-2">
-                                            @foreach ($menu->appearedChildren as $sub_menu)
-                                                <li>
-                                                    <a
-                                                        href="{{ $sub_menu->link != null ? url($sub_menu->link) : '#' }}">
-                                                        {{ $sub_menu->name_ar }}
-                                                    </a>
-                                                </li>
-                                            @endforeach
-                                        </ul>
-                                    @endif
-
-
+                                    <a href="#">Electronics Skin<span class="menu-label menu-label--color2">Coming
+                                            Soon</span></a>
                                 </li>
-                            @endif
-                        @endforeach
-
+                                <li>
+                                    <a href="#">Games Skin<span class="menu-label menu-label--color3">Coming
+                                            Soon</span></a>
+                                </li>
+                                <li>
+                                    <a href="#">Vaping Skin<span class="menu-label">Coming Soon</span></a>
+                                </li>
+                                <li><a href="index-02.html">Home page 2</a></li>
+                                <li><a href="index-03.html">Home page 3</a></li>
+                                <li><a href="index-04.html">Home page 4</a></li>
+                                <li><a href="index-05.html">Home page 5</a></li>
+                                <li><a href="index-06.html">Home page 6</a></li>
+                                <li><a href="index-07.html">Home page 7</a></li>
+                                <li><a href="index-08.html">Home page 8</a></li>
+                                <li><a href="index-09.html">Home page 9</a></li>
+                                <li><a href="index-10.html">Home page 10</a></li>
+                                <li><a href="index-rtl.html">Home page RTL</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">الاقسام<span class="arrow"><i class="icon-angle-right"></i></span></a>
+                            <ul class="nav-level-2">
+                                <li>
+                                    <a href="product.html">Product page<span class="arrow"><i
+                                                class="icon-angle-right"></i></span></a>
+                                    <ul class="nav-level-3">
+                                        <li>
+                                            <a href="product.html">Product page variant 1<span
+                                                    class="menu-label menu-label--color3">Popular</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="product-2.html">Product page variant 2</a>
+                                        </li>
+                                        <li>
+                                            <a href="product-3.html">Product page variant 3</a>
+                                        </li>
+                                        <li>
+                                            <a href="product-4.html">Product page variant 4</a>
+                                        </li>
+                                        <li>
+                                            <a href="product-5.html">Product page variant 5</a>
+                                        </li>
+                                        <li>
+                                            <a href="product-6.html">Product page variant 6</a>
+                                        </li>
+                                        <li>
+                                            <a href="product-7.html">Product page variant 7</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="category.html">Category page<span class="arrow"><i
+                                                class="icon-angle-right"></i></span></a>
+                                    <ul class="nav-level-3">
+                                        <li>
+                                            <a href="category.html">Left sidebar filters</a>
+                                        </li>
+                                        <li>
+                                            <a href="category-closed-filter.html">Closed filters</a>
+                                        </li>
+                                        <li>
+                                            <a href="category-horizontal-filter.html">Horizontal filters</a>
+                                        </li>
+                                        <li>
+                                            <a href="category-listview.html">Listing View</a>
+                                        </li>
+                                        <li>
+                                            <a href="category-empty.html">Empty category</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="cart.html">Cart & Checkout<span class="arrow"><i
+                                                class="icon-angle-right"></i></span></a>
+                                    <ul class="nav-level-3">
+                                        <li><a href="cart.html">Cart Page</a></li>
+                                        <li><a href="cart-empty.html">Empty cart</a></li>
+                                        <li><a href="checkout.html">Checkout variant 1</a></li>
+                                        <li>
+                                            <a href="checkout-2.html">Checkout variant 2</a>
+                                        </li>
+                                        <li>
+                                            <a href="checkout-3.html">Checkout variant 3</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="account-create.html">Account<span class="arrow"><i
+                                                class="icon-angle-right"></i></span></a>
+                                    <ul class="nav-level-3">
+                                        <li><a href="account-create.html">Login</a></li>
+                                        <li>
+                                            <a href="account-create.html">Create account</a>
+                                        </li>
+                                        <li>
+                                            <a href="account-details.html">Account details</a>
+                                        </li>
+                                        <li>
+                                            <a href="account-addresses.html">Account addresses</a>
+                                        </li>
+                                        <li>
+                                            <a href="account-history.html">Order History</a>
+                                        </li>
+                                        <li><a href="account-wishlist.html">Wishlist</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="blog.html">Blog<span class="arrow"><i
+                                                class="icon-angle-right"></i></span></a>
+                                    <ul class="nav-level-3">
+                                        <li><a href="blog.html">Right sidebar</a></li>
+                                        <li>
+                                            <a href="blog-left-sidebar.html">Left sidebar</a>
+                                        </li>
+                                        <li>
+                                            <a href="blog-without-sidebar.html">No sidebar</a>
+                                        </li>
+                                        <li>
+                                            <a href="blog-sticky-sidebar.html">Sticky sidebar</a>
+                                        </li>
+                                        <li><a href="blog-grid.html">Grid</a></li>
+                                        <li><a href="blog-post.html">Blog post</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="gallery.html">Gallery</a></li>
+                                <li><a href="faq.html">Faq</a></li>
+                                <li><a href="about.html">About Us</a></li>
+                                <li><a href="contact.html">Contact Us</a></li>
+                                <li><a href="404.html">404 Page</a></li>
+                                <li><a href="typography.html">Typography</a></li>
+                                <li>
+                                    <a href="coming-soon.html" target="_blank">Coming soon</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="category.html">الاخبار<span class="arrow"><i
+                                        class="icon-angle-right"></i></span></a>
+                            <ul class="nav-level-2">
+                                <li>
+                                    <a href="category.html">Shoes<span class="arrow"><i
+                                                class="icon-angle-right"></i></span></a>
+                                    <ul class="nav-level-3">
+                                        <li><a href="category.html">Heels</a></li>
+                                        <li><a href="category.html">Boots</a></li>
+                                        <li><a href="category.html">Flats</a></li>
+                                        <li>
+                                            <a href="category.html">Sneakers &amp; Athletic</a>
+                                        </li>
+                                        <li><a href="category.html">Clogs &amp; Mules</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="category.html">Tops<span class="arrow"><i
+                                                class="icon-angle-right"></i></span></a>
+                                    <ul class="nav-level-3">
+                                        <li><a href="category.html">Dresses</a></li>
+                                        <li><a href="category.html">Shirts &amp; Tops</a></li>
+                                        <li>
+                                            <a href="category.html">Coats &amp; Outerwear</a>
+                                        </li>
+                                        <li><a href="category.html">Sweaters</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="category.html">Shoes<span class="arrow"><i
+                                                class="icon-angle-right"></i></span></a>
+                                    <ul class="nav-level-3">
+                                        <li><a href="category.html">Heels</a></li>
+                                        <li><a href="category.html">Boots</a></li>
+                                        <li><a href="category.html">Flats</a></li>
+                                        <li>
+                                            <a href="category.html">Sneakers &amp; Athletic</a>
+                                        </li>
+                                        <li><a href="category.html">Clogs &amp; Mules</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="category.html">Bottoms<span class="arrow"><i
+                                                class="icon-angle-right"></i></span></a>
+                                    <ul class="nav-level-3">
+                                        <li><a href="category.html">Jeans</a></li>
+                                        <li><a href="category.html">Pants</a></li>
+                                        <li><a href="category.html">slippers</a></li>
+                                        <li><a href="category.html">suits</a></li>
+                                        <li><a href="category.html">socks</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="category.html">Accessories<span class="arrow"><i
+                                                class="icon-angle-right"></i></span></a>
+                                    <ul class="nav-level-3">
+                                        <li><a href="category.html">Sunglasses</a></li>
+                                        <li><a href="category.html">Hats</a></li>
+                                        <li><a href="category.html">Watches</a></li>
+                                        <li><a href="category.html">Jewelry</a></li>
+                                        <li><a href="category.html">Belts</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="category.html">Bags<span class="arrow"><i
+                                                class="icon-angle-right"></i></span></a>
+                                    <ul class="nav-level-3">
+                                        <li><a href="category.html">Handbags</a></li>
+                                        <li><a href="category.html">Backpacks</a></li>
+                                        <li><a href="category.html">Luggage</a></li>
+                                        <li><a href="category.html">wallets</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
-
-
-
-
-
-
                 </div>
-
                 <div class="mobilemenu-bottom">
                     <div class="mobilemenu-currency">
                         <div class="dropdn_currency">
@@ -122,7 +305,8 @@
     <!-- القائمة الجانبية تسجيل الدخول   -->
     @guest
         <!-- القائمة الجانبية تسجيل الدخول   -->
-        <div class="dropdn-content account-drop {{ request()->routeIs('login') ? 'is-opened' : null }}" id="dropdnAccount">
+        <div class="dropdn-content account-drop {{ request()->routeIs('login') ? 'is-opened' : null }}"
+            id="dropdnAccount">
             <div class="dropdn-content-block">
                 <div class="dropdn-close">
                     <span class="js-dropdn-close">اغلاق</span>

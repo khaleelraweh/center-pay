@@ -72,6 +72,7 @@
 
                     {{-- links in the head of the index page frontend section  --}}
                     <div class="hdr-nav hide-mobile nav-holder">
+
                         <ul class="mmenu mmenu-js">
 
                             {{-- start test --}}
@@ -116,17 +117,9 @@
                                 @endif
                             @endforeach
                             {{-- end test --}}
-
-
-
-
-
-
-
-
                         </ul>
-                    </div>
 
+                    </div>
 
 
                     <div class="hdr-links-wrap col-auto ml-auto">

@@ -90,10 +90,12 @@
 
 .footer-shop-info,
 .footer-shop-info .row,
-.panel-heading {
+.panel-heading { 
       /* background: #23232D !important; */
-      background: #1E171B !important;
       /* background-color: transparent; */
+
+      background: #1E171B !important;
+     
   }
 
   .qty-changer button,
@@ -209,4 +211,13 @@ ul.breadcrumb li .chevron{
   padding-left: 10px ;
   padding-right: 10px;
 
+}
+
+/* style the main menu in mobile  */
+.mobilemenu ul.nav li a{
+  display: flex;
+}
+.mobilemenu ul.nav li .arrow{
+  display: block;
+  margin: 0px 3px;
 }
