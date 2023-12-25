@@ -354,8 +354,17 @@ class EntrustSeeder extends Seeder
         $deletePaymentMethodOfflines  =  Permission::create(['name' => 'delete_payment_method_offlines'  , 'display_name'  => 'حذف طريقة الدفع' , 'route' => 'payment_method_offlines' , 'module' => 'payment_method_offlines' , 'as' => 'payment_method_offlines.destroy'  , 'icon' => null                  , 'parent' => $managePaymentMethodOfflines->id , 'parent_original' => $managePaymentMethodOfflines->id ,'parent_show' => $managePaymentMethodOfflines->id , 'sidebar_link' => '0' , 'appear' => '0'] );
 
 
-       
-       
+        //Site Settings
+        $manageSiteSettings = Permission::create(['name' => 'manage_site_settings', 'display_name' => 'الاعدادات العامة' , 'route' => 'site_settings' , 'module' => 'site_settings' , 'as' => 'site_settings.index' , 'icon' => 'fa fa-cog' , 'parent' => '0' , 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '120',] );
+        $manageSiteSettings->parent_show = $manageSiteSettings->id; $manageSiteSettings->save();
+
+        $showSiteSettings    =  Permission::create(['name' => 'show_site_settings'    ,  'display_name' => 'الاعدادات العامة'      , 'route' => 'site_settings' , 'module' => 'site_settings' , 'as' => 'site_settings.index'    , 'icon' => 'fa fa-cog' , 'parent' => $manageSiteSettings->id , 'parent_original' => $manageSiteSettings->id ,'parent_show' => $manageSiteSettings->id , 'sidebar_link' => '1' , 'appear' => '1'] );
+        $createSiteSettings  =  Permission::create(['name' => 'create_site_settings'  , 'display_name'  => 'إضافة تصنيف' , 'route' => 'site_settings' , 'module' => 'site_settings' , 'as' => 'site_settings.create'   , 'icon' => null                  , 'parent' => $manageSiteSettings->id , 'parent_original' => $manageSiteSettings->id ,'parent_show' => $manageSiteSettings->id , 'sidebar_link' => '0' , 'appear' => '0'] );
+        $displaySiteSettings =  Permission::create(['name' => 'display_site_settings' , 'display_name'  => 'عرض تصنيف'   , 'route' => 'site_settings' , 'module' => 'site_settings' , 'as' => 'site_settings.show'     , 'icon' => null                  , 'parent' => $manageSiteSettings->id , 'parent_original' => $manageSiteSettings->id ,'parent_show' => $manageSiteSettings->id , 'sidebar_link' => '0' , 'appear' => '0'] );
+        $updateSiteSettings  =  Permission::create(['name' => 'update_site_settings'  , 'display_name'  => 'تعديل تصنيف' , 'route' => 'site_settings' , 'module' => 'site_settings' , 'as' => 'site_settings.edit'     , 'icon' => null                  , 'parent' => $manageSiteSettings->id , 'parent_original' => $manageSiteSettings->id ,'parent_show' => $manageSiteSettings->id , 'sidebar_link' => '0' , 'appear' => '0'] );
+        $deleteSiteSettings  =  Permission::create(['name' => 'delete_site_settings'  , 'display_name'  => 'حذف تصنيف' , 'route' => 'site_settings' , 'module' => 'site_settings' , 'as' => 'site_settings.destroy'  , 'icon' => null                  , 'parent' => $manageSiteSettings->id , 'parent_original' => $manageSiteSettings->id ,'parent_show' => $manageSiteSettings->id , 'sidebar_link' => '0' , 'appear' => '0'] );
+
+
         
     }
 }

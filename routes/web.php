@@ -20,6 +20,7 @@ use App\Http\Controllers\Backend\ProductCategoriesController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ProductReviewController;
 use App\Http\Controllers\Backend\ShippingCompanyController;
+use App\Http\Controllers\Backend\SiteSettingsController;
 use App\Http\Controllers\Backend\StateController;
 use App\Http\Controllers\Backend\SupervisorController;
 use App\Http\Controllers\Backend\TagController;
@@ -161,6 +162,9 @@ Route::group(['prefix'=>'admin' , 'as' =>'admin.'],function(){
 
         Route::resource('web_menus', WebMenuController::class);
         Route::resource('web_menu_helps', WebMenuHelpController::class);
+
+
+        Route::resource('site_settings' , SiteSettingsController::class);
 
 
     });
