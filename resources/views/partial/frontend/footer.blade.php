@@ -38,7 +38,10 @@
 
                                 @foreach ($helps_menu as $menu)
                                     @if (count($menu->appearedChildren) == false)
-                                        <li><a href="{{ url($menu->link) }}">{{ $menu->name_ar }}</a></li>
+                                        {{-- <li><a href="{{ url($menu->link) }}">{{ $menu->name_ar }}</a></li> --}}
+                                        <li><a
+                                                href="{{ $menu->link != null ? url($menu->link) : '#' }}">{{ $menu->name_ar }}</a>
+                                        </li>
                                     @endif
                                 @endforeach
                             </ul>

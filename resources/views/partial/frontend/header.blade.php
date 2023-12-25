@@ -80,7 +80,7 @@
                                 {{-- check if the link is single link  --}}
                                 @if (count($menu->appearedChildren) == false)
                                     <li class="mmenu-item--simple">
-                                        <a href="{{ url($menu->link) }}" class="active">
+                                        <a href="{{ $menu->link != null ? url($menu->link) : '#' }}" class="active">
                                             {{-- {{ dd($user_side_menu) }} --}}
                                             <span>{{ $menu->name_ar }}</span>
                                         </a>
@@ -98,8 +98,11 @@
 
                                                     @foreach ($menu->appearedChildren as $sub_menu)
                                                         <li>
+                                                            {{-- <a href="{{ url($sub_menu->link) }}"> --}}
                                                             <a
-                                                                href="{{ url($sub_menu->link) }}">{{ $sub_menu->name_ar }}</a>
+                                                                href="{{ $sub_menu->link != null ? url($sub_menu->link) : '#' }}">
+                                                                {{ $sub_menu->name_ar }}
+                                                            </a>
 
                                                         </li>
                                                     @endforeach
