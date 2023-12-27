@@ -7,11 +7,15 @@
         <div class="container">
 
 
+
             <div class="bnslider-wrapper">
                 <div class="bnslider bnslider--lg keep-scale" id="bnslider-001" data-slick='{"arrows": true, "dots": false}'
                     data-autoplay="true" data-speed="5000" data-start-width="1920" data-start-height="880"
                     data-start-mwidth="1550" data-start-mheight="1000">
 
+                    {{-- {{ print_r($site_setting) }} --}}
+
+                    {{-- {{ array_key_exists('site_twitter', $site_setting) ? $site_setting['site_twitter'] : '' }} --}}
                     @forelse ($main_sliders as $main_slider)
                         @if ($loop->first)
                             {{-- slider slid  --}}
@@ -409,10 +413,7 @@
                         </div>
                         <div class="text">
                             <h4>أسعارنا الأفضل</h4>
-                            {{-- <p>
-                                سيتم تسليم طلبك خلال 3-5 أيام عمل بعد كل ذلك
-                                العناصر الخاصة بك متاحة
-                            </p> --}}
+
                         </div>
                     </div>
 

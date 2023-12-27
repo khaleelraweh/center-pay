@@ -8,6 +8,7 @@ use App\Models\News;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\ProductReview;
+use App\Models\SiteSetting;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 
@@ -54,8 +55,12 @@ class FrontendController extends Controller
 
         $news = News::query()->active()->take(3)->get();
 
+        $site_setting = SiteSetting::whereNotNull('value')
+        // ->where('section',3)
+        ->pluck('value','name')->toArray();
+
  
-        return view('frontend.index',compact('main_sliders','adv_sliders','card_categories','random_cards','common_questions' ,'news'));
+        return view('frontend.index',compact('main_sliders','adv_sliders','card_categories','random_cards','common_questions' ,'news','site_setting'));
     }
 
  

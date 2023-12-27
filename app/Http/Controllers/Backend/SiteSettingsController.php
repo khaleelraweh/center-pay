@@ -170,6 +170,41 @@ class SiteSettingsController extends Controller
     }
 // =============== end meta site ===============//
 
+// =============== start payment method site ===============//
+    public function payment_method_index(){
+
+        $site_payment_setting = SiteSetting::whereNotNull('value')
+        ->where('section',5)
+        ->pluck('value','name')->toArray();
+
+        return view('backend.site_payment_methods.index' , compact('site_payment_setting'));
+    }
+
+    public function payment_method_update(Request $request , $id)
+    {
+
+        // dd($request);
+
+        $data = $request->except('_token','submit');
+
+        foreach ($data as $key => $value) {
+            $site = SiteSetting::where('name', $key)
+            ->where('section',$id)
+            ->get()
+            ->first()
+            ->update([
+                'value' => $value
+            ]); 
+        }
+
+        return redirect()->route('admin.site_payment_methods.payment_method_index')->with([
+            'message' => 'تم تعديل البيانات بنجاح',
+            'alert-type' => 'success'
+        ]);
+
+    }
+// =============== end payment method site ===============//
+
 
     
 

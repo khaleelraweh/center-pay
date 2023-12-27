@@ -40,13 +40,32 @@ class SiteSettingSeeder extends Seeder
         SiteSetting::create(['name'    =>  'site_twitter'       ,   'value' =>  'Center.twitter.com'        ,   'status'    =>  true  ,   'section'   =>  3   ,   'published_on'  =>  $faker->dateTime()  ]);
         SiteSetting::create(['name'    =>  'site_youtube'       ,   'value' =>  'Center.youtube.com'        ,   'status'    =>  true  ,   'section'   =>  3   ,   'published_on'  =>  $faker->dateTime()  ]);
         SiteSetting::create(['name'    =>  'site_snapchat'       ,   'value' =>  'Center.snapchat.com'        ,   'status'    =>  true  ,   'section'   =>  3   ,   'published_on'  =>  $faker->dateTime()  ]);
-        SiteSetting::create(['name'    =>  'site_instagram'     ,   'value' =>  'Center.instegram.com'      ,   'status'    =>  true  ,   'section'   =>  3   ,   'published_on'  =>  $faker->dateTime()  ]);
+        SiteSetting::create(['name'    =>  'site_instagram'     ,   'value' =>  'Center.instagram.com'      ,   'status'    =>  true  ,   'section'   =>  3   ,   'published_on'  =>  $faker->dateTime()  ]);
+        SiteSetting::create(['name'    =>  'site_google'        ,   'value' =>  'Center.google.com'      ,   'status'    =>  true  ,   'section'   =>  3   ,   'published_on'  =>  $faker->dateTime()  ]);
+        SiteSetting::create(['name'    =>  'site_vimeo'        ,   'value' =>  'Center.vimeo.com'      ,   'status'    =>  true  ,   'section'   =>  3   ,   'published_on'  =>  $faker->dateTime()  ]);
+        SiteSetting::create(['name'    =>  'site_pinterest'        ,   'value' =>  'Center.pinterest.com'      ,   'status'    =>  true  ,   'section'   =>  3   ,   'published_on'  =>  $faker->dateTime()  ]);
 
         // site seo
         SiteSetting::create(['name'    =>  'site_name_meta'             ,   'value' =>  'Center Pay'                ,   'status'    =>  true  ,   'section'   =>  4   ,   'published_on'  =>  $faker->dateTime()  ]);
         SiteSetting::create(['name'    =>  'site_description_meta'      ,   'value' =>  'Center Pay description'    ,   'status'    =>  true  ,   'section'   =>  4   ,   'published_on'  =>  $faker->dateTime()  ]);
         SiteSetting::create(['name'    =>  'site_link_meta'             ,   'value' =>  'Center Pay links here'     ,   'status'    =>  true  ,   'section'   =>  4   ,   'published_on'  =>  $faker->dateTime()  ]);
         SiteSetting::create(['name'    =>  'site_keywords_meta'         ,   'value' =>  'cards , products'          ,   'status'    =>  true  ,   'section'   =>  4   ,   'published_on'  =>  $faker->dateTime()  ]);
+
+
+        //site pay method 
+
+        SiteSetting::create(['name'    =>  'site_pay_amazon'             ,   'value' =>  'amazon'                ,   'status'    =>  true  ,   'section'   =>  5   ,   'published_on'  =>  $faker->dateTime()  ]);
+        SiteSetting::create(['name'    =>  'site_pay_visa_card'      ,   'value' =>  'visa-card'    ,   'status'    =>  true  ,   'section'   =>  5   ,   'published_on'  =>  $faker->dateTime()  ]);
+        SiteSetting::create(['name'    =>  'site_pay_skrill'      ,   'value' =>  'skrill'    ,   'status'    =>  true  ,   'section'   =>  5   ,   'published_on'  =>  $faker->dateTime()  ]);
+        SiteSetting::create(['name'    =>  'site_pay_master_card'      ,   'value' =>  'master-card'    ,   'status'    =>  true  ,   'section'   =>  5   ,   'published_on'  =>  $faker->dateTime()  ]);
+        SiteSetting::create(['name'    =>  'site_pay_paypal'      ,   'value' =>  'paypal'    ,   'status'    =>  true  ,   'section'   =>  5   ,   'published_on'  =>  $faker->dateTime()  ]);
+        SiteSetting::create(['name'    =>  'site_pay_apple_pay'      ,   'value' =>  'apple-pay'    ,   'status'    =>  true  ,   'section'   =>  5   ,   'published_on'  =>  $faker->dateTime()  ]);
+        SiteSetting::create(['name'    =>  'site_pay_klarna'      ,   'value' =>  'klarna'    ,   'status'    =>  true  ,   'section'   =>  5   ,   'published_on'  =>  $faker->dateTime()  ]);
+        SiteSetting::create(['name'    =>  'site_pay_payoneer'      ,   'value' =>  'payoneer'    ,   'status'    =>  true  ,   'section'   =>  5   ,   'published_on'  =>  $faker->dateTime()  ]);
+        SiteSetting::create(['name'    =>  'site_pay_bpay'      ,   'value' =>  'bpay'    ,   'status'    =>  true  ,   'section'   =>  5   ,   'published_on'  =>  $faker->dateTime()  ]);
+
+
+
       
     }
 }

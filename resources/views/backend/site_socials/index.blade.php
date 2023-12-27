@@ -150,6 +150,76 @@
 
                         </div>
 
+                        <div class="row">
+
+                            <div class="col-md-12 col-sm-12 pt-3">
+                                @php
+                                    $site = SiteSetting::where('name', 'site_google')
+                                        ->get()
+                                        ->first();
+                                @endphp
+                                <div class="form-group">
+                                    <label for="{{ $site->name }}">
+                                        google <i class="fab fa-google"></i>
+                                        :</label>
+                                    <input type="text" id="{{ $site->name }}" name="{{ $site->name }}"
+                                        value="{{ old($site->name, $site->value) }}" class="form-control"
+                                        placeholder="{{ $site->name }}">
+                                    @error('{{ $site->name }}')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 pt-3">
+                                @php
+                                    $site = SiteSetting::where('name', 'site_vimeo')
+                                        ->get()
+                                        ->first();
+                                @endphp
+                                <div class="form-group">
+                                    <label for="{{ $site->name }}">
+                                        vimeo <i class="fab fa-vimeo"></i>
+                                        :</label>
+                                    <input type="text" id="{{ $site->name }}" name="{{ $site->name }}"
+                                        value="{{ old($site->name, $site->value) }}" class="form-control"
+                                        placeholder="{{ $site->name }}">
+                                    @error('{{ $site->name }}')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-12 col-sm-12 pt-3">
+                                @php
+                                    $site = SiteSetting::where('name', 'site_pinterest')
+                                        ->get()
+                                        ->first();
+                                @endphp
+                                <div class="form-group">
+                                    <label for="{{ $site->name }}">
+                                        pinterest <i class="fab fa-pinterest"></i>
+                                        :</label>
+                                    <input type="text" id="{{ $site->name }}" name="{{ $site->name }}"
+                                        value="{{ old($site->name, $site->value) }}" class="form-control"
+                                        placeholder="{{ $site->name }}">
+                                    @error('{{ $site->name }}')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
+                            </div>
+
+                        </div>
 
                     </div>
 

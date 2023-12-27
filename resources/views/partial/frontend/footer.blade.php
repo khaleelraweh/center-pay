@@ -1,3 +1,8 @@
+@php
+    use App\Models\SiteSetting;
+@endphp
+
+
 <footer class="page-footer {{ !request()->routeIs('frontend.product') ? 'footer-style-1' : 'footer-style-6' }}">
     <div class="footer-top">
         <div class="container">
@@ -7,6 +12,7 @@
 
                 <div class="col-lg-3 col-xl-3 last-mobile">
 
+
                     <div class="footer-block">
                         <div class="footer-logo">
                             <a href="{{ route('frontend.index') }}"><img class="lazyload fade-up"
@@ -15,14 +21,40 @@
                                     alt="Logo" /></a>
                         </div>
                         <ul>
-                            <li>Phone: +01 234 567 89</li>
-                            <li>
-                                E-mail:
-                                <a href="mailto:CenterPay@gmail.com">CenterPay@gmail.com</a>
-                            </li>
-                            <li>Hours: 10:00 - 18:00, Mon - Fri</li>
-                            <li><a href="#">Video Presentation</a></li>
-                            <li><a href="#" class="link-special">Online Support</a></li>
+
+                            @if (array_key_exists('site_phone', $site_setting))
+                                <li>
+                                    تلفون: {{ $site_setting['site_phone'] }}
+                                </li>
+                            @endif
+
+                            @if (array_key_exists('site_email1', $site_setting))
+                                <li>
+                                    ايميل:
+                                    <a href="mailto:{{ $site_setting['site_email1'] }}">
+                                        {{ $site_setting['site_email1'] }}
+                                    </a>
+                                </li>
+                            @endif
+
+                            @if (array_key_exists('site_fax', $site_setting))
+                                <li>
+                                    فاكس: {{ $site_setting['site_fax'] }}
+                                </li>
+                            @endif
+
+                            @if (array_key_exists('site_po_box', $site_setting))
+                                <li>
+                                    الصندوق البريدي: {{ $site_setting['site_po_box'] }}
+                                </li>
+                            @endif
+
+                            @if (array_key_exists('site_workTime', $site_setting))
+                                <li>
+                                    وقت العمل: {{ $site_setting['site_workTime'] }}
+                                </li>
+                            @endif
+
                         </ul>
                     </div>
                 </div>
@@ -58,46 +90,95 @@
                         </div>
                         <div class="collapsed-content">
                             <ul class="social-list-circle-sm">
-                                <li>
-                                    <a href="#"><i class="icon-facebook"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="icon-twitter"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="icon-google"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="icon-instagram"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="icon-fancy"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="icon-vimeo"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="icon-youtube"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="icon-pinterest"></i></a>
-                                </li>
+
+                                @if (array_key_exists('site_facebook', $site_setting))
+                                    <li>
+                                        <a href="{{ $site_setting['site_facebook'] }}">
+                                            <i class="icon-facebook"></i>
+                                        </a>
+                                    </li>
+                                @endif
+
+                                @if (array_key_exists('site_twitter', $site_setting))
+                                    <li>
+                                        <a href="{{ $site_setting['site_twitter'] }}">
+                                            <i class="icon-twitter"></i>
+                                        </a>
+                                    </li>
+                                @endif
+
+                                @if (array_key_exists('site_google', $site_setting))
+                                    <li>
+                                        <a href="{{ $site_setting['site_google'] }}">
+                                            <i class="icon-google"></i>
+                                        </a>
+                                    </li>
+                                @endif
+
+                                @if (array_key_exists('site_instagram', $site_setting))
+                                    <li>
+                                        <a href="{{ $site_setting['site_instagram'] }}">
+                                            <i class="icon-instagram"></i>
+                                        </a>
+                                    </li>
+                                @endif
+
+
+                                @if (array_key_exists('site_fancy', $site_setting))
+                                    <li>
+                                        <a href="{{ $site_setting['site_fancy'] }}">
+                                            <i class="icon-fancy"></i>
+                                        </a>
+                                    </li>
+                                @endif
+
+                                @if (array_key_exists('site_vimeo', $site_setting))
+                                    <li>
+                                        <a href="{{ $site_setting['site_vimeo'] }}">
+                                            <i class="icon-vimeo"></i>
+                                        </a>
+                                    </li>
+                                @endif
+
+
+                                @if (array_key_exists('site_youtube', $site_setting))
+                                    <li>
+                                        <a href="{{ $site_setting['site_youtube'] }}">
+                                            <i class="icon-youtube"></i>
+                                        </a>
+                                    </li>
+                                @endif
+
+                                @if (array_key_exists('site_pinterest', $site_setting))
+                                    <li>
+                                        <a href="{{ $site_setting['site_pinterest'] }}">
+                                            <i class="icon-pinterest"></i>
+                                        </a>
+                                    </li>
+                                @endif
+
                             </ul>
                         </div>
                     </div>
-                    <div class="footer-block collapsed-mobile">
-                        <div class="title">
-                            <h4>اذا كان لديك سؤال</h4>
-                            <span class="toggle-arrow"><span></span><span></span></span>
+
+                    @if (array_key_exists('site_mobile', $site_setting))
+                        <div class="footer-block collapsed-mobile">
+                            <div class="title">
+                                <h4>اذا كان لديك سؤال</h4>
+                                <span class="toggle-arrow"><span></span><span></span></span>
+                            </div>
+                            <div class="collapsed-content">
+                                <ul class="list-icon-lg">
+                                    <li>
+                                        <i class="icon-phone"></i><a
+                                            href="tel_3A#">{{ $site_setting['site_mobile'] }}</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="collapsed-content">
-                            <ul class="list-icon-lg">
-                                <li>
-                                    <i class="icon-phone"></i><a href="tel_3A#">+ 7 555 35 305</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    @endif
+
+
                 </div>
 
                 <div class="col-lg-3 col-xl-3">
@@ -108,15 +189,43 @@
                         </div>
                         <div class="collapsed-content">
                             <ul class="payment-link">
-                                <li><i class="icon-amazon-logo"></i></li>
-                                <li><i class="icon-visa-pay-logo"></i></li>
-                                <li><i class="icon-skrill-logo"></i></li>
-                                <li><i class="icon-master-card-logo"></i></li>
-                                <li><i class="icon-paypal-logo"></i></li>
-                                <li><i class="icon-apple-pay-logo"></i></li>
-                                <li><i class="icon-klarna-logo"></i></li>
-                                <li><i class="icon-payoneer-logo"></i></li>
-                                <li><i class="icon-bpay-logo"></i></li>
+
+                                @if (array_key_exists('site_pay_amazon', $site_setting) && $site_setting['site_pay_amazon'] != 0)
+                                    <li><i class="icon-amazon-logo"></i></li>
+                                @endif
+                                @if (array_key_exists('site_pay_visa_card', $site_setting) && $site_setting['site_pay_visa_card'] != 0)
+                                    <li><i class="icon-visa-pay-logo"></i></li>
+                                @endif
+
+                                @if (array_key_exists('site_pay_skrill', $site_setting) && $site_setting['site_pay_skrill'] != 0)
+                                    <li><i class="icon-skrill-logo"></i></li>
+                                @endif
+
+                                @if (array_key_exists('site_pay_master_card', $site_setting) && $site_setting['site_pay_master_card'] != 0)
+                                    <li><i class="icon-master-card-logo"></i></li>
+                                @endif
+
+                                @if (array_key_exists('site_pay_paypal', $site_setting) && $site_setting['site_pay_paypal'] != 0)
+                                    <li><i class="icon-paypal-logo"></i></li>
+                                @endif
+
+                                @if (array_key_exists('site_pay_apple_pay', $site_setting) && $site_setting['site_pay_apple_pay'] != 0)
+                                    <li><i class="icon-apple-pay-logo"></i></li>
+                                @endif
+
+                                @if (array_key_exists('site_pay_klarna', $site_setting) && $site_setting['site_pay_klarna'] != 0)
+                                    <li><i class="icon-klarna-logo"></i></li>
+                                @endif
+
+                                @if (array_key_exists('site_pay_payoneer', $site_setting) && $site_setting['site_pay_payoneer'] != 0)
+                                    <li><i class="icon-payoneer-logo"></i></li>
+                                @endif
+
+                                @if (array_key_exists('site_pay_bpay', $site_setting) && $site_setting['site_pay_bpay'] != 0)
+                                    <li><i class="icon-bpay-logo"></i></li>
+                                @endif
+
+
                             </ul>
                         </div>
                     </div>

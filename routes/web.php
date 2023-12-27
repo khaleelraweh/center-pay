@@ -180,6 +180,10 @@ Route::group(['prefix'=>'admin' , 'as' =>'admin.'],function(){
         Route::get('site_setting/site_metas' , [SiteSettingsController::class , 'meta_index'])->name('site_metas.meta_index');
         Route::post('site_setting/update_site_meta/{id?}' , [SiteSettingsController::class , 'meta_update'])->name('site_metas.update');
 
+        Route::get('site_setting/site_payment_methods' , [SiteSettingsController::class , 'payment_method_index'])->name('site_payment_methods.payment_method_index');
+        Route::post('site_setting/update_site_payment_method/{id?}' , [SiteSettingsController::class , 'payment_method_update'])->name('site_payment_methods.update');
+
+
 
 
     });
