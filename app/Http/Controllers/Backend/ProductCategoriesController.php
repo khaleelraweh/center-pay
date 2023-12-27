@@ -148,7 +148,6 @@ class ProductCategoriesController extends Controller
 
         $productCategory->update($input);
        
-        
 
         // edit images in media db and in path : public/assets/products
         if($request->images && count( $request->images) > 0){

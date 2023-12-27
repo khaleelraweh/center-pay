@@ -38,6 +38,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PaymentMethodOfflineSeeder::class);
         $this->call(NewsSeeder::class);
         $this->call(WebMenuSeeder::class);
+        $this->call(SiteSettingSeeder::class);
         
     }
 }

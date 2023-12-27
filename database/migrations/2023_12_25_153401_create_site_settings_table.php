@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('value')->nullable();
             $table->string('slug')->unique();
-
+            $table->unsignedBigInteger('section')->default(1); // one means it related to any category except cards
 
             // will be use always
             $table->boolean('status')->default(true);

@@ -52,7 +52,7 @@ class ShippingCompanyController extends Controller
             $shipping_company->countries()->attach(array_values($request->countries));
             
             return redirect()->route('admin.shipping_companies.index')->with([
-                'message' => 'created successfully',
+                'message' => 'تم انشاء البيانات بنجاح',
                 'alert-type' => 'success'
             ]);
         
@@ -98,13 +98,13 @@ class ShippingCompanyController extends Controller
             $shipping_company->countries()->sync(array_values($request->countries));
             
             return redirect()->route('admin.shipping_companies.index')->with([
-                'message' => 'Updated Successfully',
+                'message' => 'تم التعديل بنجاح',
                 'alert-type' => 'success'
             ]);
         
         }else{
             return redirect()->route('admin.shipping_companies.index')->with([
-                'message' => 'Something Wrong',
+                'message' => 'حدث شيئ ماء خطاء ',
                 'alert-type' => 'danger'
             ]);
         }
@@ -113,7 +113,7 @@ class ShippingCompanyController extends Controller
         
 
         return redirect()->route('admin.shipping_companies.index')->with([
-            'message' => 'Updated successfully',
+            'message' => 'تم تعديل البيانات بنجاح',
             'alert-type' => 'success'
         ]);
     }
@@ -127,7 +127,7 @@ class ShippingCompanyController extends Controller
         $shipping_company->delete();
 
         return redirect()->route('admin.shipping_companies.index')->with([
-            'message' => 'Deleted successfully',
+            'message' => 'تم الحذف بنجاح',
             'alert-type' => 'success'
         ]);
     }

@@ -164,7 +164,22 @@ Route::group(['prefix'=>'admin' , 'as' =>'admin.'],function(){
         Route::resource('web_menu_helps', WebMenuHelpController::class);
 
 
-        Route::resource('site_settings' , SiteSettingsController::class);
+        // Route::resource('site_infos' , SiteSettingsController::class);
+
+        Route::get('site_setting/site_infos' , [SiteSettingsController::class , 'info_index'])->name('site_infos.info_index');
+        Route::post('site_setting/update_site_info/{id?}' , [SiteSettingsController::class , 'info_update'])->name('site_infos.update');
+        Route::post('site_setting/site_infos/remove-image', [SiteSettingsController::class, 'remove_image'])->name('site_infos.remove_image');
+
+
+        Route::get('site_setting/site_contacts' , [SiteSettingsController::class , 'contact_index'])->name('site_contacts.contact_index');
+        Route::post('site_setting/update_site_contact/{id?}' , [SiteSettingsController::class , 'contact_update'])->name('site_contacts.update');
+
+        Route::get('site_setting/site_socials' , [SiteSettingsController::class , 'social_index'])->name('site_socials.social_index');
+        Route::post('site_setting/update_site_social/{id?}' , [SiteSettingsController::class , 'social_update'])->name('site_socials.update');
+
+        Route::get('site_setting/site_metas' , [SiteSettingsController::class , 'meta_index'])->name('site_metas.meta_index');
+        Route::post('site_setting/update_site_meta/{id?}' , [SiteSettingsController::class , 'meta_update'])->name('site_metas.update');
+
 
 
     });
