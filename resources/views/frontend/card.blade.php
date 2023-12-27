@@ -150,7 +150,7 @@
                                 </p>
                                 <div class="mt-1"></div>
                                 {{-- نصائح الاستخدام --}}
-                                <div class="row vert-margin-less">
+                                {{-- <div class="row vert-margin-less">
                                     <div class="col-sm">
                                         <ul class="list-marker">
                                             <li>100% Polyester</li>
@@ -163,9 +163,9 @@
                                             <li>Only non-chlorine</li>
                                         </ul>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
-                            <div class="prd-progress prd-block_info_item" data-left-in-stock="">
+                            {{-- <div class="prd-progress prd-block_info_item" data-left-in-stock="">
                                 <div class="prd-progress-text">
                                     اسرع اكثر ! تبقى <span class="prd-progress-text-left js-stock-left">26</span> في المخزون
                                 </div>
@@ -174,8 +174,8 @@
                                     <div class="prd-progress-bar progress-bar active"
                                         data-stock="50, 10, 30, 25, 1000, 15000" style="width: 53%;"></div>
                                 </div>
-                            </div>
-                            <div class="prd-block_countdown js-countdown-wrap prd-block_info_item countdown-init">
+                            </div> --}}
+                            {{-- <div class="prd-block_countdown js-countdown-wrap prd-block_info_item countdown-init">
                                 <div class="countdown-box-full-text w-md">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col-sm-auto text-center">
@@ -186,34 +186,42 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="prd-block_order-info prd-block_info_item " data-order-time="" data-locale="en">
+                            </div> --}}
+
+                            {{-- <div class="prd-block_order-info prd-block_info_item " data-order-time="" data-locale="en">
                                 <i class="icon-box-2"></i>
                                 <div>Order in the next <span class="prd-block_order-info-time countdownCircleTimer"
                                         data-time="8:00:00, 15:30:00, 23:59:59"><span><span>04</span>:</span><span><span>46</span>:</span><span><span>24</span></span></span>
                                     to get it by <span data-date="">Tuesday, September 08, 2020</span></div>
-                            </div>
-                            <div class="prd-block_info_item prd-block_info-when-arrives d-none" data-when-arrives>
+                            </div> --}}
+                            {{-- <div class="prd-block_info_item prd-block_info-when-arrives d-none" data-when-arrives>
                                 <div class="prd-block_links prd-block_links m-0 d-inline-flex">
                                     <i class="icon-email-1"></i>
                                     <div><a href="#" data-follow-up="" data-name="Oversize Cotton Dress"
                                             class="prd-in-stock" data-src="#whenArrives">Inform me when the item
                                             arrives</a></div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="prd-block_info-box prd-block_info_item bg-transparent">
                                 <div class="two-column">
-                                    <p>Availability:
-                                        <span class="prd-in-stock" data-stock-status="">In stock</span>
+                                    <p>التوفر :
+                                        <span class="prd-in-stock" data-stock-status="">هذه البطاقة متوفرة</span>
                                     </p>
-                                    <p class="prd-taxes">Tax Info:
-                                        <span>Tax included.</span>
+                                    <p class="prd-taxes">المعلومات الضريبية :
+                                        <span>شامل الضريبة.</span>
                                     </p>
-                                    <p>Collection: <span> <a href="collections.html" data-toggle="tooltip"
-                                                data-placement="top" data-original-title="View all">Women</a></span></p>
-                                    <p>Sku: <span data-sku="">FOXic-45812</span></p>
-                                    <p>Vendor: <span>Banita</span></p>
-                                    <p>Barcode: <span>314363563</span></p>
+                                    <p>التصنيف :
+                                        <span>
+                                            <a href="{{ route('frontend.card_category', $card->category->slug) }}"
+                                                data-toggle="tooltip" data-placement="top"
+                                                data-original-title="View all">{{ $card->category->name }}
+                                            </a>
+
+                                        </span>
+                                    </p>
+                                    <p>رمز sku : <span data-sku="">{{ $card->sku }}</span></p>
+                                    <p>المزود : <span>سنتر باي</span></p>
+                                    <p>الباركود : <span>314363563</span></p>
                                 </div>
                             </div>
 
@@ -296,8 +304,8 @@
                                     </div>
                                     <form method="post" action="#" id="contactForm" class="contact-form">
                                         <div class="form-group">
-                                            <input type="text" name="contact[name]"
-                                                class="form-control form-control--sm" placeholder="الاسم">
+                                            <input type="text" name="contact[name]" class="form-control form-control--sm"
+                                                placeholder="الاسم">
                                         </div>
                                         <div class="form-group">
                                             <input type="text" name="contact[email]"
