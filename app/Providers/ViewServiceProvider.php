@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Permission;
+use App\Models\SiteSetting;
 use App\Models\WebMenu;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\ServiceProvider;
@@ -99,6 +100,36 @@ class ViewServiceProvider extends ServiceProvider
             
 
         }
+
+        //check if request is not admin to call help menu 
+        if(!request()->is('admin/*')){ 
+
+            //send cache to every view under admin 
+            View()->composer('*', function ($view) {
+
+                if(!Cache::has('site_setting')){
+                    //make cache with  main permition come from permission model tree function
+                    Cache::forever('site_setting', SiteSetting::whereNotNull('value')
+                    // ->where('section',3)
+                    ->pluck('value','name')->toArray());
+                }
+    
+                $site_setting = Cache::get('site_setting');
+                $view->with(
+                    [
+                        //send admin side menu cache as varaible to view page
+                        'site_setting'=>$site_setting
+                    ]
+                );
+            });
+
+            
+
+        }
+
+        // $site_setting = SiteSetting::whereNotNull('value')
+        // // ->where('section',3)
+        // ->pluck('value','name')->toArray();
         
 
     }

@@ -54,13 +54,8 @@ class FrontendController extends Controller
         $common_questions = CommonQuestion::query()->active()->take(3)->get();
 
         $news = News::query()->active()->take(3)->get();
-
-        $site_setting = SiteSetting::whereNotNull('value')
-        // ->where('section',3)
-        ->pluck('value','name')->toArray();
-
  
-        return view('frontend.index',compact('main_sliders','adv_sliders','card_categories','random_cards','common_questions' ,'news','site_setting'));
+        return view('frontend.index',compact('main_sliders','adv_sliders','card_categories','random_cards','common_questions' ,'news'));
     }
 
  
