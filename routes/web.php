@@ -182,6 +182,9 @@ Route::group(['prefix'=>'admin' , 'as' =>'admin.'],function(){
 
         Route::get('site_setting/site_payment_methods' , [SiteSettingsController::class , 'payment_method_index'])->name('site_payment_methods.payment_method_index');
         Route::post('site_setting/update_site_payment_method/{id?}' , [SiteSettingsController::class , 'payment_method_update'])->name('site_payment_methods.update');
+        
+        Route::get('site_setting/site_counters' , [SiteSettingsController::class , 'counter_index'])->name('site_counters.counter_index');
+        Route::post('site_setting/update_site_counter/{id?}' , [SiteSettingsController::class , 'counter_update'])->name('site_counters.update');
 
 
 

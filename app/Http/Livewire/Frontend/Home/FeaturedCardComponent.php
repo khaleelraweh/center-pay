@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Frontend\Home;
 
 use App\Models\Product as Card;
+use App\Models\SiteSetting;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
@@ -61,7 +62,11 @@ class FeaturedCardComponent extends Component
                                             ->Active()
                                             ->HasQuantity()
                                             ->ActiveCategory()
-                                            ->take(8)
+                                            ->take(
+                                                SiteSetting::whereNotNull('value')
+                                                    ->pluck('value','name')
+                                                    ->toArray()['site_featured_cards']
+                                            )
                                             ->get()
         ]);
     }

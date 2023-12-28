@@ -53,7 +53,6 @@ class SiteSettingSeeder extends Seeder
 
 
         //site pay method 
-
         SiteSetting::create(['name'    =>  'site_pay_amazon'             ,   'value' =>  'amazon'                ,   'status'    =>  true  ,   'section'   =>  5   ,   'published_on'  =>  $faker->dateTime()  ]);
         SiteSetting::create(['name'    =>  'site_pay_visa_card'      ,   'value' =>  'visa-card'    ,   'status'    =>  true  ,   'section'   =>  5   ,   'published_on'  =>  $faker->dateTime()  ]);
         SiteSetting::create(['name'    =>  'site_pay_skrill'      ,   'value' =>  'skrill'    ,   'status'    =>  true  ,   'section'   =>  5   ,   'published_on'  =>  $faker->dateTime()  ]);
@@ -64,6 +63,18 @@ class SiteSettingSeeder extends Seeder
         SiteSetting::create(['name'    =>  'site_pay_payoneer'      ,   'value' =>  'payoneer'    ,   'status'    =>  true  ,   'section'   =>  5   ,   'published_on'  =>  $faker->dateTime()  ]);
         SiteSetting::create(['name'    =>  'site_pay_bpay'      ,   'value' =>  'bpay'    ,   'status'    =>  true  ,   'section'   =>  5   ,   'published_on'  =>  $faker->dateTime()  ]);
 
+
+        // site counters 
+        SiteSetting::create(['name'    =>  'site_main_sliders'             ,   'value' =>  3                ,   'status'    =>  true  ,   'section'   =>  6   ,   'published_on'  =>  $faker->dateTime()  ]);
+        SiteSetting::create(['name'    =>  'site_advertisor_sliders'             ,   'value' =>  3                ,   'status'    =>  true  ,   'section'   =>  6   ,   'published_on'  =>  $faker->dateTime()  ]);
+        SiteSetting::create(['name'    =>  'site_card_categories'             ,   'value' =>  3                ,   'status'    =>  true  ,   'section'   =>  6   ,   'published_on'  =>  $faker->dateTime()  ]);
+        SiteSetting::create(['name'    =>  'site_featured_cards'             ,   'value' =>  3                ,   'status'    =>  true  ,   'section'   =>  6   ,   'published_on'  =>  $faker->dateTime()  ]);
+        SiteSetting::create(['name'    =>  'site_random_cards'             ,   'value' =>  3                ,   'status'    =>  true  ,   'section'   =>  6   ,   'published_on'  =>  $faker->dateTime()  ]);
+        SiteSetting::create(['name'    =>  'site_related_cards'             ,   'value' =>  3                ,   'status'    =>  true  ,   'section'   =>  6   ,   'published_on'  =>  $faker->dateTime()  ]);
+        SiteSetting::create(['name'    =>  'site_more_like_cards'             ,   'value' =>  3                ,   'status'    =>  true  ,   'section'   =>  6   ,   'published_on'  =>  $faker->dateTime()  ]);
+        SiteSetting::create(['name'    =>  'site_bogs'             ,   'value' =>  3                ,   'status'    =>  true  ,   'section'   =>  6   ,   'published_on'  =>  $faker->dateTime()  ]);
+        SiteSetting::create(['name'    =>  'site_questions'             ,   'value' =>  3                ,   'status'    =>  true  ,   'section'   =>  6   ,   'published_on'  =>  $faker->dateTime()  ]);
+        
 
 
       

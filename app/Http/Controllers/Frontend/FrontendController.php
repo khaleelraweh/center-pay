@@ -15,15 +15,27 @@ use Illuminate\Http\Request;
 class FrontendController extends Controller
 {
 
+    
+
+
     public function index(){
         // $main_slider = Slider::whereStatus(1)->whereNull('parent_id')->get();
         
+        
+
+       
+
+
        $main_sliders = Slider::with('firstMedia')
             ->MainSliders()
             // ->inRandomOrder()
             ->orderBy('published_on','desc')
             ->Active()
-            ->take(5)
+            ->take( 
+                SiteSetting::whereNotNull('value')
+                    ->pluck('value','name')
+                    ->toArray()['site_main_sliders']
+             )
         ->get();
 
         $adv_sliders = Slider::with('firstMedia')
@@ -31,7 +43,11 @@ class FrontendController extends Controller
             // ->inRandomOrder()
             ->orderBy('published_on','desc')
             ->Active()
-            ->take(3)
+            ->take(
+                SiteSetting::whereNotNull('value')
+                    ->pluck('value','name')
+                    ->toArray()['site_advertisor_sliders']
+            )
         ->get();
 
 
@@ -41,7 +57,11 @@ class FrontendController extends Controller
             ->Active()
             ->HasQuantity()
             ->ActiveCategory()
-            ->take(8)
+            ->take(
+                SiteSetting::whereNotNull('value')
+                    ->pluck('value','name')
+                    ->toArray()['site_random_cards']
+            )
         ->get();
 
         $card_categories = ProductCategory::with('firstMedia')
@@ -49,11 +69,30 @@ class FrontendController extends Controller
             ->RootCategory()
             ->CardCategory()
             ->HasProducts()
+            ->take(
+                SiteSetting::whereNotNull('value')
+                    ->pluck('value','name')
+                    ->toArray()['site_card_categories']
+            )
         ->get();
 
-        $common_questions = CommonQuestion::query()->active()->take(3)->get();
+        $common_questions = CommonQuestion::query()
+        ->active()
+        ->take(
+            SiteSetting::whereNotNull('value')
+                    ->pluck('value','name')
+                    ->toArray()['site_questions']
+        )
+        ->get();
 
-        $news = News::query()->active()->take(3)->get();
+        $news = News::query()
+        ->active()
+        ->take(
+            SiteSetting::whereNotNull('value')
+                    ->pluck('value','name')
+                    ->toArray()['site_bogs']
+        )
+        ->get();
  
         return view('frontend.index',compact('main_sliders','adv_sliders','card_categories','random_cards','common_questions' ,'news'));
     }
@@ -66,7 +105,15 @@ class FrontendController extends Controller
         //get all related card that are the same of card_category of the card choisen
         $related_cards = Product::with('firstMedia','photos')->whereHas('category', function ($query) use ($card){
             $query->whereId($card->product_category_id)->whereStatus(true);
-        })->inRandomOrder()->Active()->HasQuantity()->take(4)->get(); // get in random order  only card which is active and has quantity :and take from them 4 card 
+        })->inRandomOrder()
+        ->Active()
+        ->HasQuantity()
+        ->take(
+            SiteSetting::whereNotNull('value')
+                    ->pluck('value','name')
+                    ->toArray()['site_related_cards']
+        )
+        ->get(); // get in random order  only card which is active and has quantity :and take from them 4 card 
 
         return view('frontend.card',compact('card','related_cards'));
     }
@@ -111,7 +158,11 @@ class FrontendController extends Controller
             ->Active()
             ->HasQuantity()
             ->ActiveCategory()
-            ->take(8)
+            ->take(
+                SiteSetting::whereNotNull('value')
+                    ->pluck('value','name')
+                    ->toArray()['site_more_like_cards']
+            )
         ->get();
 
         return view('frontend.cart', compact('more_cards'));
