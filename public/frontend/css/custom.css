@@ -222,13 +222,6 @@ ul.breadcrumb li .chevron{
   margin: 0px 3px;
 }
 
-
-/* .prd-img,
-a.image-hover-scale {
-  border-radius: 1.5rem !important;
-} */
-
-
 body.equal-height .prd-img:not(.prd-img--noequal) img{
   border-radius: 1.5rem !important;
 }
@@ -236,6 +229,8 @@ body.equal-height .prd-img:not(.prd-img--noequal) img{
 a.image-hover-scale{
   border-radius: 1.5rem;
 }
-/* .image-hover-scale > .bnr-img, .image-hover-scale > img, .image-hover-scale > .placeholder-svg svg, .image-hover-scale .collection-grid-3-item-img > img{
-  border-radius: 1.5rem;
+
+
+/* .prd .prd-action .btn, .prd .prd-action .btn:active, .prd .prd-action .btn:active:focus, .prd .prd-action .btn:visited, .prd .prd-action .btn:focus{
+  background-color: #F1B93E;
 } */
