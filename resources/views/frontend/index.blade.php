@@ -57,6 +57,7 @@
                                                     <div class="btn-wrap text-center order-3 mt-lg" data-animation="fadeIn"
                                                         data-animation-delay="2000" style="opacity: 1">
                                                         <a href="{{ $main_slider->url != null ? url($main_slider->url) : '#' }}"
+                                                            target="{{ $main_slider->target }}"
                                                             class="btn btn--invert btn--lg">تسوق الان</a>
                                                     </div>
                                                 </div>
@@ -96,7 +97,8 @@
                                                     <div class="btn-wrap text-center order-3 mt-lg" data-animation="fadeIn"
                                                         data-animation-delay="2000" style="opacity: 1">
                                                         <a href="{{ $main_slider->url != null ? url($main_slider->url) : '#' }}"
-                                                            class="btn btn--invert btn--lg">تسوق الان</a>
+                                                            class="btn btn--invert btn--lg"
+                                                            target="{{ $main_slider->target }}">تسوق الان</a>
                                                     </div>
                                                 </div>
                                             </div>

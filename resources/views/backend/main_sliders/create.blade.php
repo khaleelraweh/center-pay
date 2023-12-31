@@ -9,7 +9,7 @@
         {{-- menu part  --}}
         <div class="card-header py-3 d-flex justify-content-between">
             <div class="card-naving">
-                <h3 class="m-0 font-weight-bold text-primary">
+                <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-plus-square"></i>
                     إضافة شريحة عرض جديدة
                 </h3>
@@ -71,11 +71,6 @@
                     <li class="nav-item" role="presentation">
                         <a class="nav-link" id="publish-tab" data-toggle="tab" href="#publish" role="tab"
                             aria-controls="publish" aria-selected="false">بيانات النشر</a>
-                    </li>
-
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link" id="seo-tab" data-toggle="tab" href="#seo" role="tab"
-                            aria-controls="seo" aria-selected="false">بيانات SEO</a>
                     </li>
 
                 </ul>
@@ -237,10 +232,6 @@
                         </div>
                     </div>
 
-                    {{-- seo tab  --}}
-                    <div class="tab-pane fade" id="seo" role="tabpanel" aria-labelledby="seo-tab">
-                        later work...
-                    </div>
 
                     <div class="form-group pt-4">
                         <button type="submit" name="submit" class="btn btn-primary">إنشاء المحتوي</button>
@@ -298,9 +289,6 @@
             });
 
             // ======= End pickadate codeing ===========
-
-
-
             $('.summernote').summernote({
                 tabSize: 2,
                 height: 120,

@@ -5,7 +5,7 @@
         {{-- menu part  --}}
         <div class="card-header py-3 d-flex justify-content-between">
             <div class="card-naving">
-                <h3 class="m-0 font-weight-bold text-primary">
+                <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-folder"></i>
                     عارض الشرائح
                 </h3>
@@ -47,8 +47,8 @@
                         <th>الصورة</th>
                         <th>العنوان</th>
                         {{-- <th>Tags</th> --}}
-                        <th>الكاتب</th>
-                        <th>تاريخ الانشاء </th>
+                        <th class="d-none d-md-block">الكاتب</th>
+                        <th class="d-none d-md-block">تاريخ الانشاء </th>
                         <th>الحالة</th>
                         <th class="text-center" style="width:30px;">الاعدادات</th>
                     </tr>
@@ -70,8 +70,8 @@
                             </td>
                             <td>{{ $slider->title }}</td>
                             {{-- <td>{{$slider->tags->pluck('name')->join(',')}}</td> --}}
-                            <td>{{ $slider->created_by }}</td>
-                            <td>{{ $slider->created_at }}</td>
+                            <td class="d-none d-md-block">{{ $slider->created_by }}</td>
+                            <td class="d-none d-md-block">{{ $slider->created_at }}</td>
                             <td>{{ $slider->status() }}</td>
                             <td>
 

@@ -7,15 +7,35 @@
 
         {{-- menu part  --}}
         <div class="card-header py-3 d-flex justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">تعديل شريحة العرض : {{ $mainSlider->title }}</h6>
-            <div class="ml-auto">
+
+            <div class="card-naving">
+                <h3 class="font-weight-bold text-primary">
+                    <i class="fa fa-plus-square"></i>
+                    تعديل شريحة العرض : ({{ $mainSlider->title }})
+                </h3>
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="{{ route('admin.index') }}">
+                            الرئيسية
+                        </a>
+                        <i class="fa fa-solid fa-chevron-left chevron"></i>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.main_sliders.index') }}">
+                            عارض الشرائح الرئيسي
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            {{-- <div class="ml-auto">
                 <a href="{{ route('admin.main_sliders.index') }}" class="btn btn-primary">
                     <span class="icon text-white-50">
                         <i class="fa fa-home"></i>
                     </span>
                     <span class="text">إدارة عارض الشرائح الرئيسية</span>
                 </a>
-            </div>
+            </div> --}}
         </div>
 
         {{-- body part  --}}
@@ -53,11 +73,6 @@
                     <li class="nav-item" role="presentation">
                         <a class="nav-link" id="publish-tab" data-toggle="tab" href="#publish" role="tab"
                             aria-controls="publish" aria-selected="false">بيانات النشر</a>
-                    </li>
-
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link" id="seo-tab" data-toggle="tab" href="#seo" role="tab"
-                            aria-controls="seo" aria-selected="false">بيانات SEO</a>
                     </li>
 
                 </ul>
@@ -181,7 +196,7 @@
 
                         {{-- published_on and published_on_time  --}}
                         <div class="row">
-                            <div class="col-sm-12 col-md-6 pt-4">
+                            <div class="col-sm-12 col-md-12 pt-4">
                                 <div class="form-group">
                                     <label for="published_on">تاريخ النشر</label>
                                     <input type="text" id="published_on" name="published_on"
@@ -192,8 +207,10 @@
                                     @enderror
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="col-sm-12 col-md-6 pt-4">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 pt-4">
                                 <div class="form-group">
                                     <label for="published_on_time">وقت النشر</label>
                                     <input type="text" id="published_on_time" name="published_on_time"
@@ -225,12 +242,6 @@
                         </div>
 
                     </div>
-
-                    {{-- seo tab  --}}
-                    <div class="tab-pane fade" id="seo" role="tabpanel" aria-labelledby="seo-tab">
-                        later work...
-                    </div>
-
 
 
                     <div class="form-group pt-4">

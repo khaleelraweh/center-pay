@@ -1,13 +1,13 @@
 <div class="card-body">
     <form action="{{ route('admin.main_sliders.index') }}" method="get">
         <div class="row">
-            <div class="col-2">
+            <div class="col-8 col-sm-4 col-md-2">
                 <div class="form-group">
                     <input type="text" name="keyword" value="{{ old('keyword', request()->input('keyword')) }}"
                         class="form-control" placeholder="ابحث هنا">
                 </div>
             </div>
-            <div class="col-2">
+            <div class="col-md-2 d-none d-md-block">
                 <div class="form-group">
                     <select name="status" class="form-control">
                         {{-- <option value="">---</option> --}}
@@ -18,7 +18,7 @@
                     </select>
                 </div>
             </div>
-            <div class="col-2">
+            <div class="d-none d-sm-block col-sm-4 col-md-2">
                 <div class="form-group">
                     <select name="sort_by" class="form-control">
                         {{-- <option value="">---</option> --}}
@@ -39,7 +39,7 @@
                     </select>
                 </div>
             </div>
-            <div class="col-2">
+            <div class="col-md-2 d-none d-md-block">
                 <div class="form-group">
                     <select name="order_by" class="form-control">
                         {{-- <option value="">---</option> --}}
@@ -52,7 +52,7 @@
                     </select>
                 </div>
             </div>
-            <div class="col-1">
+            <div class="col-md-1 d-none d-md-block">
                 <div class="form-group">
                     <select name="limit_by" class="form-control">
                         {{-- <option value="">---</option> --}}
@@ -67,9 +67,9 @@
                     </select>
                 </div>
             </div>
-            <div class="col-2">
+            <div class="col-2 col-sm-2 col-md-2 ">
             </div>
-            <div class="col-1">
+            <div class="col-2 col-sm-2 col-md-1">
                 <div class="form-group">
                     <button type="submit" name="submit" class="btn btn-link">بحث</button>
                 </div>
