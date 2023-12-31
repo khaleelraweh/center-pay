@@ -137,8 +137,10 @@
     </div>
 
     {{-- Advertisor menu --}}
-    <div class="holder mt-0">
-        <div class="container-fluid px-0">
+    {{-- <div class="holder mt-0"> --}}
+    <div class="holder mt-3">
+        {{-- <div class="container-fluid px-0"> --}}
+        <div class="page-content px-0">
             <div class="row bnr-grid no-gutters">
 
                 @forelse ($adv_sliders as $adv_slider)
