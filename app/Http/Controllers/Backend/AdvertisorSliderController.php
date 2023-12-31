@@ -58,15 +58,15 @@ class AdvertisorSliderController extends Controller
         $input['url']               =   $request->url;
         $input['target']            =   $request->target;
         $input['section']           =   2;
-        $input['start_date']        =   $request->start_date;
-        $input['expire_date']       =   $request->expire_date;
 
-         $input['status']            =   $request->status;
-         $input['created_by']        =   auth()->user()->full_name;
+        $input['showInfo']            =   $request->showInfo;
 
-         $published_on = $request->published_on.' '.$request->published_on_time;
-         $published_on = new DateTimeImmutable($published_on);
-         $input['published_on'] = $published_on;
+        $input['status']            =   $request->status;
+        $input['created_by']        =   auth()->user()->full_name;
+
+        $published_on = $request->published_on.' '.$request->published_on_time;
+        $published_on = new DateTimeImmutable($published_on);
+        $input['published_on'] = $published_on;
 
         
         $advertisor_slider = Slider::create($input);
@@ -140,19 +140,19 @@ class AdvertisorSliderController extends Controller
          $input['url']                  =   $request->url;
          $input['target']               =   $request->target;
          $input['section']              =   2;
-         $input['start_date']           =   $request->start_date;
-         $input['expire_date']          =   $request->expire_date;
 
-         $input['status']            =   $request->status;
-         $input['updated_by']        =   auth()->user()->full_name;
+        $input['showInfo']            =   $request->showInfo;
 
-         $published_on = $request->published_on.' '.$request->published_on_time;
-         $published_on = new DateTimeImmutable($published_on);
-         $input['published_on'] = $published_on;
+        $input['status']            =   $request->status;
+        $input['updated_by']        =   auth()->user()->full_name;
 
-         $advertisorSlider->update($input);
+        $published_on = $request->published_on.' '.$request->published_on_time;
+        $published_on = new DateTimeImmutable($published_on);
+        $input['published_on'] = $published_on;
+
+        $advertisorSlider->update($input);
          
-         $advertisorSlider->tags()->sync($request->tags);
+        $advertisorSlider->tags()->sync($request->tags);
 
 
         if($request->images && count( $request->images) > 0){

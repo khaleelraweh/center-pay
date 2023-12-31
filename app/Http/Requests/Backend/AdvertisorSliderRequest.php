@@ -32,9 +32,7 @@ class AdvertisorSliderRequest extends FormRequest
                     'url'           =>  'nullable', 
                     'target'        =>  'required', 
                     'section'       =>  'nullable', 
-                    'start_date'    => 'nullable|date_format:Y-m-d',
-                    'expire_date'   => 'required_with:start_date|date|date_format:Y-m-d',
-                    'tags.*'        =>  'required', 
+                    'showInfo'      =>  'required',
                     'images'        =>  'required',   
                     'images.*'      =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',  
                     
@@ -59,9 +57,7 @@ class AdvertisorSliderRequest extends FormRequest
                     'url'               =>  'nullable',
                     'target'            =>  'required',
                     'section'           =>  'nullable',
-                    'start_date'        => 'nullable|date_format:Y-m-d',
-                    'expire_date'       => 'required_with:start_date|date|date_format:Y-m-d',
-                    'tags.*'            =>  'required', 
+                    'showInfo'      =>  'required',
                     'images'            =>  'nullable',
                     'images.*'          =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
 

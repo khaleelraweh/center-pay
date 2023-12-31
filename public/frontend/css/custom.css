@@ -221,3 +221,10 @@ ul.breadcrumb li .chevron{
   display: block;
   margin: 0px 3px;
 }
+
+
+.prd-img,
+a.image-hover-scale {
+  border-radius: 1.5rem !important;
+}
+

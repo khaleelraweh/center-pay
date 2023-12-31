@@ -6,7 +6,7 @@
     {{-- main holder page  --}}
     <div class="card shadow mb-4">
 
-        {{-- menu part  --}}
+        {{-- breadcrumb part  --}}
         <div class="card-header py-3 d-flex justify-content-between">
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
@@ -98,7 +98,7 @@
                                     </div>
                                 </div>
 
-                                {{-- product content field --}}
+                                {{--  content field --}}
                                 <div class="row">
                                     <div class="col-sm-12 col-md-12 pt-4">
                                         <label for="content">الوصف</label>

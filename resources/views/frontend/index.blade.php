@@ -140,34 +140,41 @@
                                         srcset="{{ asset('assets/advertisor_sliders/' . $adv_slider->firstMedia?->file_name) }}"
                                         class="lazyload fade-up" alt="" />
                                 </div>
-                                <div class="bnr-caption" style="padding: 4% 4%; width: 100%">
-                                    <div class="bnr-text3 mt-0 order-1"
-                                        style="
-                      font-size: 0.20em;
-                      font-weight: 700;
-                      line-height: 1em;
-                      letter-spacing: 3px;
-                    ">
 
-                                        {{ $adv_slider->published_on->format('Y') }}
+                                @if ($adv_slider->showInfo == true)
+                                    <div class="bnr-caption" style="padding: 4% 4%; width: 100%">
+                                        <div class="bnr-text3 mt-0 order-1"
+                                            style="
+                                            font-size: 0.20em;
+                                            font-weight: 700;
+                                            line-height: 1em;
+                                            letter-spacing: 3px;
+                                        ">
+
+                                            {{ $adv_slider->published_on->format('Y') }}
+                                        </div>
+                                        <div class="bnr-text3 mt-xs order-2"
+                                            style="
+                                                font-size: 0.4em;
+                                                font-weight: 800;
+                                                line-height: 1em;
+                                        ">
+                                            {{ $adv_slider->title }}
+                                        </div>
+
+                                        <div class="bnr-text3 mt-xs order-2"
+                                            style="
+                                                font-size: 0.2em;
+                                                font-weight: 500;
+                                                line-height: 1em;
+                                        ">
+                                            {!! $adv_slider->content !!}
+                                        </div>
+
                                     </div>
-                                    <div class="bnr-text3 mt-xs order-2"
-                                        style="
-                      font-size: 0.4em;
-                      font-weight: 800;
-                      line-height: 1em;
-                    ">
-                                        {{ $adv_slider->title }}
-                                    </div>
-                                    <div class="bnr-text3 mt-xs order-2"
-                                        style="
-                      font-size: 0.2em;
-                      font-weight: 500;
-                      line-height: 1em;
-                    ">
-                                        {!! $adv_slider->content !!}
-                                    </div>
-                                </div>
+                                @endif
+
+
                             </div>
                         </div>
                     </div>

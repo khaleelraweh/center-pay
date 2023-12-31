@@ -5,12 +5,12 @@
     {{-- main holder page  --}}
     <div class="card shadow mb-4">
 
-        {{-- menu part  --}}
+        {{-- breadcrumb part  --}}
         <div class="card-header py-3 d-flex justify-content-between">
 
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
-                    <i class="fa fa-plus-square"></i>
+                    <i class="fa fa-edit"></i>
                     تعديل شريحة العرض : ({{ $mainSlider->title }})
                 </h3>
                 <ul class="breadcrumb">
@@ -175,11 +175,11 @@
                                 <label for="target"> مكان العرض </label>
                                 <select name="target" class="form-control">
                                     <option value="_self"
-                                        {{ old('target', $mainSlider->target) == '1' ? 'selected' : null }}>علي نفس
+                                        {{ old('target', $mainSlider->target) == '_self' ? 'selected' : null }}>علي نفس
                                         الصفحة
                                     </option>
                                     <option value="_blanck"
-                                        {{ old('target', $mainSlider->target) == '0' ? 'selected' : null }}>في صفحة
+                                        {{ old('target', $mainSlider->target) == '_blanck' ? 'selected' : null }}>في صفحة
                                         اخري
                                     </option>
                                 </select>
@@ -188,6 +188,7 @@
                                 @enderror
                             </div>
                         </div>
+
                     </div>
 
 

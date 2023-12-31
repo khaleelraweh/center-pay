@@ -2,7 +2,7 @@
 @section('content')
     <div class="card shadow mb-4">
 
-        {{-- menu part  --}}
+        {{-- breadcrumb part  --}}
         <div class="card-header py-3 d-flex justify-content-between">
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
@@ -23,7 +23,7 @@
             </div>
 
             <div class="ml-auto">
-                @ability('admin', 'create_cards')
+                @ability('admin', 'create_main_sliders')
                     <a href="{{ route('admin.main_sliders.create') }}" class="btn btn-primary">
                         <span class="icon text-white-50">
                             <i class="fa fa-plus-square"></i>
