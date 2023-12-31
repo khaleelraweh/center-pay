@@ -115,11 +115,9 @@
 
 
                     </div>
-                    {{-- <div class="bnslider-arrows container-fluid">
-                    <div></div>
-                </div>
 
-                <div class="bnslider-dots container-fluid"></div> --}}
+
+
 
 
                     <div class="bnslider-arrows container-fluid">
@@ -130,6 +128,7 @@
 
 
                 </div>
+
 
             </div>
 
