@@ -223,8 +223,12 @@ ul.breadcrumb li .chevron{
 }
 
 
-.prd-img,
+/* .prd-img,
 a.image-hover-scale {
   border-radius: 1.5rem !important;
-}
+} */
 
+
+body.equal-height .prd-img:not(.prd-img--noequal) img{
+  border-radius: 1.5rem !important;
+}
