@@ -45,7 +45,7 @@
                             <a href="{{ route('frontend.card', $card->slug) }}"
                                 class="prd-img image-hover-scale image-container">
                                 <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                    data-src="{{ asset('assets/cards/' . $card->firstMedia->file_name) }}"
+                                    data-src="{{ asset('assets/cards/' . $card->firstMedia?->file_name) }}"
                                     alt="{{ $card->name }}" class="js-prd-img lazyload fade-up" />
 
                                 {{-- rounded circle discount --}}
@@ -83,12 +83,12 @@
                             <ul class="list-options color-swatch">
 
                                 @foreach ($card->photos as $photo)
-                                    <li data-image="{{ asset('assets/cards/' . $photo->file_name) }}"
+                                    <li data-image="{{ asset('assets/cards/' . $photo?->file_name) }}"
                                         class="{{ $loop->first ? 'active' : null }}">
                                         <a href="#" class="js-color-toggle" data-toggle="tooltip"
                                             data-placement="right" title="{{ $card->name }}">
                                             <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                                data-src="{{ asset('assets/cards/' . $photo->file_name) }}"
+                                                data-src="{{ asset('assets/cards/' . $photo?->file_name) }}"
                                                 class="lazyload fade-up" alt="{{ $card->name }}">
                                         </a>
                                     </li>
@@ -115,7 +115,7 @@
                                     <form action="#">
                                         <button class="btn js-prd-addtocart"
                                             wire:click.prevent="addToCart('{{ $card->id }}')"
-                                            data-product='{"name": "{{ $card->name }}", "path":"{{ asset('assets/cards/' . $card->firstMedia->file_name) }}", "url":"{{ route('frontend.card', $card->slug) }}", "aspect_ratio":0.778}'>
+                                            data-product='{"name": "{{ $card->name }}", "path":"{{ asset('assets/cards/' . $card->firstMedia?->file_name) }}", "url":"{{ route('frontend.card', $card->slug) }}", "aspect_ratio":0.778}'>
                                             إضافة للسلة
                                         </button>
                                     </form>
@@ -151,7 +151,7 @@
                                         <form action="#">
                                             <button class="btn js-prd-addtocart"
                                                 wire:click.prevent="addToCart('{{ $card->id }}')"
-                                                data-product='{"name": "{{ $card->name }}", "path":"{{ asset('assets/cards/' . $card->firstMedia->file_name) }}", "url":"{{ route('frontend.card', $card->slug) }}", "aspect_ratio":0.778}'>
+                                                data-product='{"name": "{{ $card->name }}", "path":"{{ asset('assets/cards/' . $card->firstMedia?->file_name) }}", "url":"{{ route('frontend.card', $card->slug) }}", "aspect_ratio":0.778}'>
                                                 اضافة للسلة
                                             </button>
                                         </form>
