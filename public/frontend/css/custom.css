@@ -232,3 +232,10 @@ a.image-hover-scale {
 body.equal-height .prd-img:not(.prd-img--noequal) img{
   border-radius: 1.5rem !important;
 }
+
+a.image-hover-scale{
+  border-radius: 1.5rem;
+}
+/* .image-hover-scale > .bnr-img, .image-hover-scale > img, .image-hover-scale > .placeholder-svg svg, .image-hover-scale .collection-grid-3-item-img > img{
+  border-radius: 1.5rem;
+} */
