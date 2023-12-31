@@ -307,7 +307,7 @@
                             <div class="prd-img-area">
                                 <a href="{{ route('frontend.card_category', $card_category->slug) }}"
                                     class="image-hover-scale">
-                                    <img src="{{ asset('assets/card_categories/' . $card_category->firstMedia->file_name) }}"
+                                    <img src="{{ asset('assets/card_categories/' . $card_category->firstMedia?->file_name) }}"
                                         alt="{{ $card_category->name }}" class="js-prd-img" />
                                     {{-- <div class="prd-big-circle-labels">
                                         <div class="label-sale">
