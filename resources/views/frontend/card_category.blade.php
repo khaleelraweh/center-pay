@@ -115,23 +115,15 @@
                                 </div>
                                 <div class="prd-info text-center">
                                     <h2 class="prd-title"><a href="product.html">{{ $card_category->name }}</a></h2>
-                                    {{-- <div class="prd-rating">
-              <i class="icon-star-fill fill"></i
-              ><i class="icon-star-fill fill"></i
-              ><i class="icon-star-fill fill"></i
-              ><i class="icon-star-fill fill"></i
-              ><i class="icon-star-fill fill"></i>
-              <span></span>
-            </div> --}}
+
                                     <div class="prd-hover">
-                                        {{-- <div class="prd-price">
-              <div class="price-old">$ 200</div>
-              <div class="price-new">$ 180</div>
-              </div> --}}
+
                                         <div class="prd-action">
-                                            <button class="btn js-prd-addtocart" {{-- data-product='{"name": "بطائق الدفع", "path":"{{asset('frontend/images/games/cards/product-07-1.webp')}}", "url":"product.html", "aspect_ratio":0.778}' --}}>
+                                            <a class="btn js-prd-addtocart"
+                                                href="{{ route('frontend.card_category', $card_category->slug) }}">
                                                 عرض الباقات
-                                            </button>
+                                            </a>
+
                                         </div>
                                     </div>
                                 </div>
@@ -140,16 +132,9 @@
                     @empty
                     @endforelse
 
-
-
-
-
                 </div>
             </div>
         </div>
-
-
-
 
     </div>
 

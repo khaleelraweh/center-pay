@@ -231,6 +231,14 @@ a.image-hover-scale{
 }
 
 
-/* .prd .prd-action .btn, .prd .prd-action .btn:active, .prd .prd-action .btn:active:focus, .prd .prd-action .btn:visited, .prd .prd-action .btn:focus{
-  background-color: #F1B93E;
-} */
+.page-content{
+
+  width: 98%;
+  margin: auto;
+
+}
+
+
+.slick-initialized .bnslider-image, .slick-initialized .bnslider-image-mobile, .no-js .bnslider-image{
+  border-radius: 25px;
+}

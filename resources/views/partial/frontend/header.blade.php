@@ -1,4 +1,5 @@
-<header class="hdr-wrap {{ request()->routeIs('frontend.index') ? 'hdr-transparent' : null }}">
+{{-- <header class="hdr-wrap {{ request()->routeIs('frontend.index') ? 'hdr-transparent' : null }}"> --}}
+<header class="hdr-wrap">
 
     <div class="hdr-content hdr-content-sticky">
         <div class="container">
