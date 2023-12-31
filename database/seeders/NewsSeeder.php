@@ -18,7 +18,7 @@ class NewsSeeder extends Seeder
     public function run()
     {
         $faker = Factory::create('ar_JO');
-        for( $i = 1; $i <= 5; $i++ ){
+        for( $i = 1; $i <= 3; $i++ ){
             News::create([
                 'name'          =>  $faker->realTextBetween(10,12),
                 'description'   =>  $faker->realText(50),

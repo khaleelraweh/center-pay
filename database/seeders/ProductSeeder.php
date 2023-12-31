@@ -24,7 +24,7 @@ class ProductSeeder extends Seeder
         //this will return all product categories id where it is submain categories 
         $categories = ProductCategory::whereNotNull('parent_id')->pluck('id');
 
-        for( $i = 1; $i <= 200; $i++ ){
+        for( $i = 1; $i <= 50; $i++ ){
             //انشاء مصفوفة لتخزين الف منتج فيها لاضافتها الي قاعدة البيانات
 
             $products [] = [

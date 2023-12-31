@@ -28,7 +28,7 @@ class ProductCardSeeder extends Seeder
         
         // whereNotNull('parent_id')->pluck('id');
 
-        for( $i = 1; $i <= 10; $i++ ){
+        for( $i = 1; $i <= 5; $i++ ){
             //انشاء مصفوفة لتخزين الف منتج فيها لاضافتها الي قاعدة البيانات
 
             $products [] = [

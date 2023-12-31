@@ -18,14 +18,14 @@ class CardCategorySeeder extends Seeder
     {
         $faker = Factory::create();
 
-        $colthes = ProductCategory::create(['name' => 'بوبجي'      ,   'description' =>  $faker->paragraph()  ,    'status' => true  ,  'section' => 2  , 'published_on' => $faker->dateTime()  ,  'parent_id' => null]);
+        $popgy = ProductCategory::create(['name' => 'بوبجي'      ,   'description' =>  $faker->paragraph()  ,    'status' => true  ,  'section' => 2  , 'published_on' => $faker->dateTime()  ,  'parent_id' => null]);
        
 
-        $shose = ProductCategory::create(['name' => 'حرب النجوم'  ,  'description' =>  $faker->paragraph() , 'status' => true  ,  'section' => 2  ,  'published_on'  =>  $faker->dateTime()  ,   'parent_id' => null]);
+        $starWar = ProductCategory::create(['name' => 'حرب النجوم'  ,  'description' =>  $faker->paragraph() , 'status' => true  ,  'section' => 2  ,  'published_on'  =>  $faker->dateTime()  ,   'parent_id' => null]);
        
-        $watches = ProductCategory::create(['name' => 'الاسطورة' ,   'description' =>  $faker->paragraph() , 'status' => true  ,  'section' => 2  ,  'published_on'  =>  $faker->dateTime()        ,  'parent_id' => null]);
+        $legends = ProductCategory::create(['name' => 'الاسطورة' ,   'description' =>  $faker->paragraph() , 'status' => true  ,  'section' => 2  ,  'published_on'  =>  $faker->dateTime()        ,  'parent_id' => null]);
         
-        $electronies = ProductCategory::create(['name' => 'القرون الوسطي'  ,  'description' =>  $faker->paragraph() , 'status' => true  ,  'section' => 2  ,  'published_on'   =>  $faker->dateTime()   ,  'parent_id' => null]);
+        $middleCentery = ProductCategory::create(['name' => 'القرون الوسطي'  ,  'description' =>  $faker->paragraph() , 'status' => true  ,  'section' => 2  ,  'published_on'   =>  $faker->dateTime()   ,  'parent_id' => null]);
        
     }
 }

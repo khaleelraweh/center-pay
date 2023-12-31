@@ -22,7 +22,7 @@ class SliderSeeder extends Seeder
         $target = ['_self' , '_blank'];
 
 
-        for( $i = 1; $i <= 15; $i++ ){
+        for( $i = 1; $i <= 5; $i++ ){
             $sliders [] = [
                 'title'         =>  $faker->realTextBetween(10,12),
                 'slug'          =>  $faker->unique()->slug(3),

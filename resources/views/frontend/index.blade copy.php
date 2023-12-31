@@ -38,33 +38,30 @@
                                     data-bgset="{{ asset('assets/main_sliders/' . $main_slider->firstMedia?->file_name) }}"
                                     style="opacity: 0"></div>
 
-                                @if ($main_slider->showInfo == true)
-                                    <div class="bnslider-text-wrap bnslider-overlay">
-                                        <div class="bnslider-text-content txt-middle txt-center">
-                                            <div class="bnslider-text-content-flex">
-                                                <div class="bnslider-vert w-s-60 w-ms-100">
-                                                    <div class="bnslider-text order-1 mt-sm bnslider-text--xl text-center heading-font"
-                                                        data-animation="fadeInUp" data-animation-delay="500"
-                                                        data-fontcolor="#fff" data-fontweight="900">
-                                                        {{ $main_slider->title }}
+                                <div class="bnslider-text-wrap bnslider-overlay">
+                                    <div class="bnslider-text-content txt-middle txt-center">
+                                        <div class="bnslider-text-content-flex">
+                                            <div class="bnslider-vert w-s-60 w-ms-100">
+                                                <div class="bnslider-text order-1 mt-sm bnslider-text--xl text-center heading-font"
+                                                    data-animation="fadeInUp" data-animation-delay="500"
+                                                    data-fontcolor="#fff" data-fontweight="900">
+                                                    {{ $main_slider->title }}
 
-                                                    </div>
-                                                    <div class="bnslider-text order-2 mt-sm bnslider-text--sm text-center heading-font"
-                                                        data-animation="fadeInUp" data-animation-delay="1000"
-                                                        data-fontcolor="#fff" data-fontweight="900">
-                                                        {!! $main_slider->content !!}
-                                                    </div>
-                                                    <div class="btn-wrap text-center order-3 mt-lg" data-animation="fadeIn"
-                                                        data-animation-delay="2000" style="opacity: 1">
-                                                        <a href="{{ $main_slider->url != null ? url($main_slider->url) : '#' }}"
-                                                            class="btn btn--invert btn--lg">تسوق الان</a>
-                                                    </div>
+                                                </div>
+                                                <div class="bnslider-text order-2 mt-sm bnslider-text--sm text-center heading-font"
+                                                    data-animation="fadeInUp" data-animation-delay="1000"
+                                                    data-fontcolor="#fff" data-fontweight="900">
+                                                    {!! $main_slider->content !!}
+                                                </div>
+                                                <div class="btn-wrap text-center order-3 mt-lg" data-animation="fadeIn"
+                                                    data-animation-delay="2000" style="opacity: 1">
+                                                    <a href="../../../https@bit.ly/3iLAAEp"
+                                                        class="btn btn--invert btn--lg">تسوق الان</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                @endif
-
+                                </div>
                             </div>
                         @else
                             {{-- slider slid  --}}
@@ -73,38 +70,33 @@
                                     data-bgset="{{ asset('assets/main_sliders/' . $main_slider->firstMedia?->file_name) }}">
                                 </div>
 
-
                                 <div class="bnslider-image lazyload"
                                     data-bgset="{{ asset('assets/main_sliders/' . $main_slider->firstMedia?->file_name) }}">
                                 </div>
 
-                                @if ($main_slider->showInfo == true)
-                                    <div class="bnslider-text-wrap bnslider-overlay">
-                                        <div class="bnslider-text-content txt-middle txt-center">
-                                            <div class="bnslider-text-content-flex">
-                                                <div class="bnslider-vert w-s-60 w-ms-100">
-                                                    <div class="bnslider-text order-1 mt-sm bnslider-text--xl text-center heading-font"
-                                                        data-animation="fadeInUp" data-animation-delay="500"
-                                                        data-fontcolor="#fff" data-fontweight="900">
-                                                        {{ $main_slider->title }}
-                                                    </div>
-                                                    <div class="bnslider-text order-2 mt-sm bnslider-text--sm text-center heading-font"
-                                                        data-animation="fadeInUp" data-animation-delay="1000"
-                                                        data-fontcolor="#fff" data-fontweight="900">
-                                                        {!! $main_slider->content !!}
-                                                    </div>
-                                                    <div class="btn-wrap text-center order-3 mt-lg" data-animation="fadeIn"
-                                                        data-animation-delay="2000" style="opacity: 1">
-                                                        <a href="{{ $main_slider->url != null ? url($main_slider->url) : '#' }}"
-                                                            class="btn btn--invert btn--lg">تسوق الان</a>
-                                                    </div>
+                                <div class="bnslider-text-wrap bnslider-overlay">
+                                    <div class="bnslider-text-content txt-middle txt-center">
+                                        <div class="bnslider-text-content-flex">
+                                            <div class="bnslider-vert w-s-60 w-ms-100">
+                                                <div class="bnslider-text order-1 mt-sm bnslider-text--xl text-center heading-font"
+                                                    data-animation="fadeInUp" data-animation-delay="500"
+                                                    data-fontcolor="#fff" data-fontweight="900">
+                                                    {{ $main_slider->title }}
+                                                </div>
+                                                <div class="bnslider-text order-2 mt-sm bnslider-text--sm text-center heading-font"
+                                                    data-animation="fadeInUp" data-animation-delay="1000"
+                                                    data-fontcolor="#fff" data-fontweight="900">
+                                                    {!! $main_slider->content !!}
+                                                </div>
+                                                <div class="btn-wrap text-center order-3 mt-lg" data-animation="fadeIn"
+                                                    data-animation-delay="2000" style="opacity: 1">
+                                                    <a href="../../../https@bit.ly/3iLAAEp"
+                                                        class="btn btn--invert btn--lg">Shop now</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                @endif
-
-
+                                </div>
                             </div>
                         @endif
 
@@ -175,108 +167,6 @@
             </div>
         </div>
     </div>
-
-    {{-- start alyamina adv --}}
-    {{-- <div class="holder holder-mt-medium m-0">
-        <div class="container">
-
-            <div
-                class="prd-grid prd-promo-carousel data-to-show-3 data-to-show-md-2 data-to-show-sm-1 data-to-show-xs-1 js-prd-promo-carousel slick-initialized slick-slider slick-dotted">
-
-
-
-
-
-
-
-
-
-
-                <div class="slick-list">
-                    <div class="slick-track" style="opacity: 1; width: 1152px; transform: translate3d(-288px, 0px, 0px);">
-                        <div class="col-18 col-sm-4 prd prd--style2 prd-labels--max prd-labels-shadow m-0 p-0 slick-slide prd-w-xl"
-                            tabindex="-1" role="tabpanel" id="slick-slide10" aria-describedby="slick-slide-control10"
-                            style="width: 288px;" data-slick-index="0" aria-hidden="true">
-                            <div class="bnr-wrap d-flex align-items-center h-100 bnr-1586628920521-0">
-
-                                <div class="bnr custom-caption image-hover-scale image-hover-scale--slow bnr--middle bnr--center fontratio-calc"
-                                    data-fontratio="5.9" style="font-size: 48.8136px;">
-                                    <div class="bnr-img image-container" style="padding-bottom: 38.933%">
-                                        <img src="https://demo.mudhila.com/uploads/slideshow/2023100512162334.jpg"
-                                            class="fade-up ls-is-cached lazyloaded" alt="">
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-18 col-sm-4 prd prd--style2 prd-labels--max prd-labels-shadow m-0 p-0 slick-slide slick-current slick-active prd-w-xl"
-                            tabindex="0" role="tabpanel" id="slick-slide11" aria-describedby="slick-slide-control11"
-                            style="width: 288px;" data-slick-index="1" aria-hidden="false">
-                            <div class="bnr-wrap d-flex align-items-center h-100 bnr-1586628920521-0">
-
-                                <div class="bnr custom-caption image-hover-scale image-hover-scale--slow bnr--middle bnr--center fontratio-calc"
-                                    data-fontratio="5.9" style="font-size: 48.8136px;">
-                                    <div class="bnr-img image-container" style="padding-bottom: 38.933%">
-                                        <img src="https://demo.mudhila.com/uploads/slideshow/2023092312415991.jpg"
-                                            class="fade-up ls-is-cached lazyloaded" alt="">
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-18 col-sm-4 prd prd--style2 prd-labels--max prd-labels-shadow m-0 p-0 slick-slide slick-active prd-w-xl"
-                            tabindex="0" role="tabpanel" id="slick-slide12" aria-describedby="slick-slide-control12"
-                            style="width: 288px;" data-slick-index="2" aria-hidden="false">
-                            <div class="bnr-wrap d-flex align-items-center h-100 bnr-1586628920521-0">
-
-                                <div class="bnr custom-caption image-hover-scale image-hover-scale--slow bnr--middle bnr--center fontratio-calc"
-                                    data-fontratio="5.9" style="font-size: 48.8136px;">
-                                    <div class="bnr-img image-container" style="padding-bottom: 38.933%">
-                                        <img src="https://demo.mudhila.com/uploads/slideshow/2023092312413217.jpg"
-                                            class="fade-up ls-is-cached lazyloaded" alt="">
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-18 col-sm-4 prd prd--style2 prd-labels--max prd-labels-shadow m-0 p-0 slick-slide slick-active prd-w-xl"
-                            tabindex="0" role="tabpanel" id="slick-slide13" aria-describedby="slick-slide-control13"
-                            style="width: 288px;" data-slick-index="3" aria-hidden="false">
-                            <div class="bnr-wrap d-flex align-items-center h-100 bnr-1586628920521-0">
-
-                                <div class="bnr custom-caption image-hover-scale image-hover-scale--slow bnr--middle bnr--center fontratio-calc"
-                                    data-fontratio="5.9" style="font-size: 48.8136px;">
-                                    <div class="bnr-img image-container" style="padding-bottom: 38.933%">
-                                        <img src="https://demo.mudhila.com/uploads/slideshow/2023092312410316.jpg"
-                                            class="fade-up ls-is-cached lazyloaded" alt="">
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <ul class="slick-dots" style="" role="tablist">
-                    <li class="" role="presentation"><button type="button" role="tab"
-                            id="slick-slide-control10" aria-controls="slick-slide10" aria-label="1 of 2"
-                            tabindex="-1">1</button></li>
-                    <li class="slick-active" role="presentation"><button type="button" role="tab"
-                            id="slick-slide-control11" aria-controls="slick-slide11" aria-label="2 of 2" tabindex="0"
-                            aria-selected="true">2</button></li>
-                </ul>
-
-            </div>
-            <div class="title-wrap text-center mt-3">
-                <div class="carousel-arrows"></div>
-            </div>
-        </div>
-    </div> --}}
-    {{-- end alyamina adv --}}
 
     {{-- featured cards livewire component --}}
     <livewire:frontend.home.featured-card-component />

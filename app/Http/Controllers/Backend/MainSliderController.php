@@ -59,9 +59,10 @@ class MainSliderController extends Controller
         $input['url']            =   $request->url;
         $input['target']         =   $request->target;
         $input['section']        =   1;
-        $input['start_date']        =   $request->start_date;
-        $input['expire_date']       =   $request->expire_date;
+        // $input['start_date']        =   $request->start_date;
+        // $input['expire_date']       =   $request->expire_date;
 
+         $input['showInfo']            =   $request->showInfo;
          $input['status']            =   $request->status;
          $input['created_by']        =   auth()->user()->full_name;
 
@@ -141,9 +142,10 @@ class MainSliderController extends Controller
          $input['url']            =   $request->url;
          $input['target']         =   $request->target;
          $input['section']        =   1;
-         $input['start_date']        =   $request->start_date;
-         $input['expire_date']       =   $request->expire_date;
+        //  $input['start_date']        =   $request->start_date;
+        //  $input['expire_date']       =   $request->expire_date;
 
+         $input['showInfo']            =   $request->showInfo;
          $input['status']            =   $request->status;
          $input['updated_by']        =   auth()->user()->full_name;
 

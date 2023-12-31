@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('url')->nullable();
             $table->string('target')->default('_self');
             $table->unsignedBigInteger('section')->default(1); 
-            $table->dateTime('start_date')->nullable()->default(now());
-            $table->dateTime('expire_date')->nullable()->default(now());
+
+            $table->boolean('showInfo')->default(true); // عرض العنوان والتصفاصيل 
 
             // will be use always
             $table->boolean('status')->default(true);

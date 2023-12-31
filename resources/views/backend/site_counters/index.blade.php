@@ -32,7 +32,7 @@
                                     <div class="form-group">
                                         <label for="{{ $key }}">
                                             عدد العناصر في
-                                            {{ implode(' ', [explode('_', $key)[1], explode('_', $key)[2]]) }} :
+                                            {{ implode(' ', [explode('_', $key)[1], explode('_', $key)[2] ?? '']) }} :
                                         </label>
 
                                         <input type="number" name="{{ $key }}" id="{{ $key }}"

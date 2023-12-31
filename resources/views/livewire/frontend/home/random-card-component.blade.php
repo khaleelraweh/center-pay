@@ -6,7 +6,7 @@
                 <div class="carousel-arrows"></div>
             </div>
 
-            <div class="prd-grid product-listing data-to-show-4 data-to-show-md-3 data-to-show-sm-2 js-category-grid">
+            <div class="prd-grid product-listing data-to-show-5 data-to-show-md-3 data-to-show-sm-2 js-category-grid">
 
                 @forelse ($random_cards as $random_product_card)
                     <div class="prd prd--style2 prd-labels--max prd-labels-shadow prd-w-xxs">
