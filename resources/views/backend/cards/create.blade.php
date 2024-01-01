@@ -78,11 +78,6 @@
                             aria-controls="publish" aria-selected="false">بيانات النشر</a>
                     </li>
 
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link" id="seo-tab" data-toggle="tab" href="#seo" role="tab"
-                            aria-controls="seo" aria-selected="false">بيانات SEO</a>
-                    </li>
-
                 </ul>
 
                 {{-- contents of links tabs  --}}
@@ -172,28 +167,25 @@
                             {{-- quantity field --}}
                             <div class="col-md-6 col-sm-12 pt-4">
                                 <label for="quantity">الكمية</label>
-                                <input type="number" name="quantity" id="quantity" value="{{ old(0, 'quantity') }}"
-                                    min="0" class="form-control" data-parsley-range="[-1,1000]"
-                                    data-parsley-required-message="هذا الحقل مطلوب." data-parsley-range="[-1,1000]"
-                                    data-parsley-range-message="قيمة هذا الحقل بين [0,999].">
+                                <input type="number" name="quantity" id="quantity" value="{{ old('quantity') }}"
+                                    min="0" class="form-control child">
                                 @error('quantity')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
-
+                                {{-- child class is used to make disabled and enabled to select part --}}
                                 <div class="col-md-12 col-sm-12 ">
                                     <label class="col-form-label col-md-12 col-sm-12 ">
-                                        <input name="Quantity_Unlimited" type="checkbox" class="flat"
-                                            onclick="enableDisable(this.checked, 'quantity')"
-                                            data-parsley-multiple="Quantity_Unlimited" value="-1"> الكمية غير
-                                        محدودة
-                                        <script language="javascript">
-                                            function enableDisable(bEnable, textBoxID) {
-                                                document.getElementById(textBoxID).readOnly = bEnable
-                                            }
-                                        </script>
+                                        <input class='child' type='checkbox' name="Quantity_Unlimited"
+                                            id="Quantity_Unlimited" value="-1"
+                                            {{ old('Quantity_Unlimited') ? 'checked' : '' }} />
+                                        الكمية غير محدودة
                                     </label>
                                 </div>
+
+
+
                             </div>
+
                         </div>
 
                         {{-- product price and offer_price fields --}}
@@ -234,27 +226,26 @@
                             {{-- max quentify accepted field --}}
                             <div class="col-md-6 col-sm-12 pt-4">
                                 <label for="max_order">اعلى كمية يمكن طلبها </label>
-                                <input type="number" name="max_order" id="max_order" value="{{ old(0, 'max_order') }}"
-                                    min="0" class="form-control" data-parsley-range="[-1,1000]"
-                                    data-parsley-required-message="هذا الحقل مطلوب." data-parsley-range="[-1,1000]"
-                                    data-parsley-range-message="قيمة هذا الحقل بين [0,999].">
+                                <input type="number" name="max_order" id="max_order" value="{{ old('max_order') }}"
+                                    min="0" class="form-control child2">
                                 @error('max_order')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
 
+                                {{-- child class is used to make disabled and enabled to select part --}}
                                 <div class="col-md-12 col-sm-12 ">
                                     <label class="col-form-label col-md-12 col-sm-12 ">
-                                        <input name="Quantity_Unlimited" type="checkbox" class="flat"
-                                            onclick="enableDisable(this.checked, 'max_order')"
-                                            data-parsley-multiple="Quantity_Unlimited"> الكمية غير محدودة
-                                        <script language="javascript">
-                                            function enableDisable(bEnable, textBoxID) {
-                                                document.getElementById(textBoxID).readOnly = bEnable
-                                            }
-                                        </script>
+                                        <input class='child2' type='checkbox' name="Quantity_Unlimited_max_order"
+                                            id="Quantity_Unlimited_max_order" value="-1"
+                                            {{ old('Quantity_Unlimited_max_order') ? 'checked' : '' }} />
+                                        الكمية غير محدودة
                                     </label>
                                 </div>
+
+
+
                             </div>
+
                         </div>
                     </div>
 
@@ -323,12 +314,8 @@
 
                     </div>
 
-                    <div class="tab-pane fade" id="seo" role="tabpanel" aria-labelledby="seo-tab">
-                        later work...
-                    </div>
-
                     <div class="form-group pt-4">
-                        <button type="submit" name="submit" class="btn btn-primary">Add Product</button>
+                        <button type="submit" name="submit" class="btn btn-primary">إضافة الباقة</button>
                     </div>
 
                 </div>
@@ -466,6 +453,43 @@
                 matcher: matchStart
             });
 
+        });
+    </script>
+
+
+    {{-- is related to select permision disable and enable by child class --}}
+    <script language="javascript">
+        var $cbox = $('.child').change(function() {
+            if (this.checked) {
+                $cbox.not(this).attr('disabled', 'disabled');
+            } else {
+                $cbox.removeAttr('disabled');
+            }
+        });
+
+        var $cbox2 = $('.child2').change(function() {
+            if (this.checked) {
+                $cbox2.not(this).attr('disabled', 'disabled');
+            } else {
+                $cbox2.removeAttr('disabled');
+            }
+        });
+    </script>
+
+
+    <script>
+        $(document).ready(function() {
+
+            if ($("#Quantity_Unlimited").attr("checked"))
+                $("#quantity").attr('disabled', 'disabled');
+            else
+                $("#quantity").removeAttr('disabled');
+
+
+            if ($("#Quantity_Unlimited_max_order").attr("checked"))
+                $("#max_order").attr('disabled', 'disabled');
+            else
+                $("#max_order").removeAttr('disabled');
         });
     </script>
 @endsection

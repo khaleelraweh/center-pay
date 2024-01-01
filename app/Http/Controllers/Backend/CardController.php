@@ -78,7 +78,14 @@ class CardController extends Controller
         $input['offer_price']           =   $request->offer_price;
         $input['offer_ends']            =   $request->offer_ends;
         $input['sku']                   =   $request->sku;
-        $input['max_order']             =   $request->max_order;
+
+        if(isset($request->Quantity_Unlimited)){
+                $input['quantity']      =   $request->Quantity_Unlimited;
+        }
+        else {
+                $input['quantity']      =   $request->quantity;
+        }
+
         $input['product_category_id']   =   $request->product_category_id;
         $input['featured']              =   $request->featured;
 
@@ -183,7 +190,14 @@ class CardController extends Controller
         $input['offer_price']           =   $request->offer_price;
         $input['offer_ends']            =   $request->offer_ends;
         $input['sku']                   =   $request->sku;
-        $input['max_order']             =   $request->max_order;
+
+        if(isset($request->Quantity_Unlimited_max_order)){
+            $input['max_order']          =   $request->Quantity_Unlimited_max_order;
+        }
+        else {
+            $input['max_order']          =   $request->max_order;
+        }
+
         $input['product_category_id']   =   $request->product_category_id;
         $input['featured']              =   $request->featured;
 

@@ -22,11 +22,18 @@ class UpdateQtyComponent extends Component
     } 
       
     public function increaseQuantity(){
-        if(  $this->card->quantity  >  $this->quantity  ){
+
+        if($this->card->quantity == -1 ){
             $this->quantity++;
         }else{
-            $this->alert('warning','This is maximum quantity you can add!');
+            if(  $this->card->quantity  >  $this->quantity  ){
+                $this->quantity++;
+            }else{
+                $this->alert('warning','هذه هي الكمية القصوى التي يمكنك إضافتها!');
+            }
         }
+
+        
     }
 
     public function addToCart(){

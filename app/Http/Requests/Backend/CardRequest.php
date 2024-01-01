@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Backend;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Lang;
 
 class CardRequest extends FormRequest
 {
@@ -30,11 +31,17 @@ class CardRequest extends FormRequest
                     'name'                  =>  'required|max:255', 
                     'description'           =>  'nullable',
                     'quantity'              =>  'nullable|numeric',
-                    'price'                 =>  'required|numeric',
-                    'offer_price'           =>  'nullable|numeric',
+
+
+                    'price' => 'required|integer|min:1|digits_between: 1,5',
+                    'offer_price' => 'nullable|integer|lte:price|digits_between:1,5',
+
+                    // 'offer_price' => 'required_with:price|integer|lte:price|digits_between:1,5',
+
+
                     'offer_ends'            =>  'nullable|date_format:Y-m-d',
                     'sku'                   =>  'nullable',
-                    'max_order'             =>  'nullable|numeric',
+                    // 'max_order'             =>  'nullable|numeric',
                     'product_category_id'   =>  'required',
                     'tags.*'                =>  'required',
                     'featured'              =>  'required',
@@ -59,11 +66,13 @@ class CardRequest extends FormRequest
                     'name'                  =>  'required|max:255', 
                     'description'           =>  'nullable',
                     'quantity'              =>  'nullable|numeric',
-                    'price'                 =>  'required|numeric',
-                    'offer_price'           =>  'nullable|numeric',
+
+                    'price' => 'required|integer|min:1|digits_between: 1,5',
+                    'offer_price' => 'nullable|integer|lte:price|digits_between:1,5',
+
                     'offer_ends'            =>  'nullable|date_format:Y-m-d',
                     'sku'                   =>  'nullable',
-                    'max_order'             =>  'nullable|numeric',
+                    'max_order' => 'nullable|numeric',
                     'product_category_id'   =>  'required',
                     'tags.*'                =>  'required', 
                     'featured'              =>  'required',
@@ -86,4 +95,15 @@ class CardRequest extends FormRequest
                 
         }
     }
+
+
+    public function messages()
+         {
+     // use trans instead on Lang 
+             return [
+                //   'username.required' => Lang::get('userpasschange.usernamerequired'),
+                     'images.required' => 'مطلوب اختيار صورة',
+         
+             ];
+         }
 }

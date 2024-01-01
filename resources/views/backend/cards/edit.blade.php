@@ -2,38 +2,7 @@
 
 @section('style')
     <link rel="stylesheet" href="{{ asset('backend/vendor/select2/css/select2.min.css') }}">
-
-    {{-- pickadate calling css --}}
-    <link rel="stylesheet" href="{{ asset('backend/vendor/datepicker/themes/classic.css') }}">
-    <link rel="stylesheet" href="{{ asset('backend/vendor/datepicker/themes/classic.date.css') }}">
-
-    {{-- is used to make tab-content --}}
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
-        integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous">
-    </script>
-
     <style>
-        .picker__select--month,
-        .picker__select--year {
-            padding: 0 !important;
-        }
-
-        .picker__list {
-            list-style-type: none;
-        }
-
-        .x-title {
-            border-bottom: 2px solid #E6E9ED;
-            padding: 1px 5px 6px;
-            margin-bottom: 10px;
-        }
-
         .select2-container {
             display: block !important;
         }
@@ -41,10 +10,6 @@
         .note-editor.note-airframe,
         .note-editor.note-frame {
             margin-bottom: 0;
-        }
-
-        .require.red {
-            color: red;
         }
     </style>
 @endsection
@@ -54,17 +19,31 @@
     {{-- main holder page  --}}
     <div class="card shadow mb-4">
 
-        {{-- menu part  --}}
+
+
+        {{-- breadcrumb part  --}}
         <div class="card-header py-3 d-flex justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">تعديل البيانات {{ $card->name }}</h6>
-            <div class="ml-auto">
-                <a href="{{ route('admin.cards.index') }}" class="btn btn-primary">
-                    <span class="icon text-white-50">
-                        <i class="fa fa-home"></i>
-                    </span>
-                    <span class="text">إدارة البيانات</span>
-                </a>
+
+            <div class="card-naving">
+                <h3 class="font-weight-bold text-primary">
+                    <i class="fa fa-edit"></i>
+                    تعديل باقة : ({{ $card->name }})
+                </h3>
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="{{ route('admin.index') }}">
+                            الرئيسية
+                        </a>
+                        <i class="fa fa-solid fa-chevron-left chevron"></i>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.cards.index') }}">
+                            إدارة الباقات
+                        </a>
+                    </li>
+                </ul>
             </div>
+
         </div>
 
         {{-- body part  --}}
@@ -103,11 +82,6 @@
                             aria-controls="publish" aria-selected="false">بيانات النشر</a>
                     </li>
 
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link" id="seo-tab" data-toggle="tab" href="#seo" role="tab"
-                            aria-controls="seo" aria-selected="false">بيانات SEO</a>
-                    </li>
-
                 </ul>
 
                 {{-- contents of links tabs  --}}
@@ -118,9 +92,10 @@
                         <div class="row">
                             {{-- البيانات الاساسية --}}
                             <div class="col-md-7 col-sm-12 ">
+
                                 {{-- category name  field --}}
-                                <div class="row pt-4">
-                                    <div class="col-12 ">
+                                <div class="row ">
+                                    <div class="col-12 pt-4">
                                         <label for="category_id">تصنيف المنتج</label>
                                         <select name="product_category_id" class="form-control">
                                             <option value="">---</option>
@@ -135,13 +110,12 @@
                                 </div>
 
                                 {{-- product name field --}}
-                                <div class="row pt-4">
-                                    <div class="col-12">
+                                <div class="row">
+                                    <div class="col-12 pt-4">
                                         <div class="form-group">
                                             <label for="name">العنوان</label>
                                             <input type="text" id="name" name="name"
-                                                value="{{ old('name', $card->name) }}" class="form-control"
-                                                placeholder="name">
+                                                value="{{ old('name', $card->name) }}" class="form-control">
                                             @error('name')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
@@ -150,9 +124,9 @@
                                 </div>
 
                                 {{-- product description field --}}
-                                <div class="row pt-4">
-                                    <div class="col-12">
-                                        <label for="description">Description</label>
+                                <div class="row">
+                                    <div class="col-12 pt-4">
+                                        <label for="description">الوصف</label>
                                         <textarea name="description" rows="10" class="form-control summernote">
                                             {!! old('description', $card->description) !!}
                                         </textarea>
@@ -163,8 +137,8 @@
                             {{-- مرفق الصور  --}}
                             <div class="col-md-5 col-sm-12 ">
 
-                                <div class="row pt-4">
-                                    <div class="col-12">
+                                <div class="row">
+                                    <div class="col-12 pt-4">
                                         <label for="images">الصورة/ الصور</label>
                                         <br>
                                         <div class="file-loading">
@@ -189,38 +163,34 @@
                             <div class="col-md-6 col-sm-12 pt-4">
                                 <label for="sku">رمز المنتج sku</label>
                                 <input type="text" name="sku" id="sku" value="{{ old('sku', $card->sku) }}"
-                                    class="form-control" placeholder="sku..">
+                                    class="form-control">
                                 @error('sku')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
 
+
                             {{-- quantity field --}}
                             <div class="col-md-6 col-sm-12 pt-4">
                                 <label for="quantity">الكمية</label>
                                 <input type="number" name="quantity" id="quantity"
-                                    value="{{ old('quantity', $card->quantity) }}" class="form-control" placeholder="-1"
-                                    data-parsley-range="[-1,1000]" data-parsley-required-message="هذا الحقل مطلوب."
-                                    placeholder="0" data-parsley-range="[-1,1000]"
-                                    data-parsley-range-message="قيمة هذا الحقل بين [0,999].">
+                                    value="{{ old('quantity', $card->quantity == -1 ? '' : $card->quantity) }}"
+                                    min="0" class="form-control child">
                                 @error('quantity')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
-
+                                {{-- child class is used to make disabled and enabled to select part --}}
                                 <div class="col-md-12 col-sm-12 ">
                                     <label class="col-form-label col-md-12 col-sm-12 ">
-                                        <input id="checkIn" name="Quantity_Unlimited" type="checkbox" class="flat"
-                                            onclick="enableDisable(this.checked, 'quantity')"
-                                            data-parsley-multiple="Quantity_Unlimited"
-                                            {{ $card->quantity == null ? 'checked' : '' }} value="-1"> الكمية غير
-                                        محدودة
-                                        <script language="javascript">
-                                            function enableDisable(bEnable, textBoxID) {
-                                                document.getElementById(textBoxID).readOnly = bEnable
-                                            }
-                                        </script>
+                                        <input class='child' type='checkbox' name="Quantity_Unlimited"
+                                            id="Quantity_Unlimited" value="-1"
+                                            {{ old('Quantity_Unlimited') || $card->quantity == -1 ? 'checked' : '' }} />
+                                        الكمية غير محدودة
                                     </label>
                                 </div>
+
+
+
                             </div>
                         </div>
 
@@ -229,7 +199,7 @@
                             <div class="col-md-6 col-sm-12 pt-3">
                                 <label for="price">السعر المنتج </label>
                                 <input type="text" name="price" id="price"
-                                    value="{{ old('price', $card->price) }}" class="form-control" placeholder="price">
+                                    value="{{ old('price', $card->price) }}" class="form-control">
                                 @error('price')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -238,8 +208,7 @@
                             <div class="col-md-6 col-sm-12 pt-3">
                                 <label for="offer_price">سعر التخفيض </label>
                                 <input type="text" id="offer_price" name="offer_price"
-                                    value="{{ old('offer_price', $card->offer_price) }}" class="form-control"
-                                    placeholder="offer_price">
+                                    value="{{ old('offer_price', $card->offer_price) }}" class="form-control">
                                 @error('offer_price')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -260,31 +229,30 @@
                                 </div>
                             </div>
 
+
+
                             {{-- max quentify accepted field --}}
                             <div class="col-md-6 col-sm-12 pt-4">
                                 <label for="max_order">اعلى كمية يمكن طلبها </label>
                                 <input type="number" name="max_order" id="max_order"
-                                    value="{{ old('max_order', $card->max_order) }}" min="0" class="form-control"
-                                    placeholder="0" data-parsley-range="[-1,1000]"
-                                    data-parsley-required-message="هذا الحقل مطلوب." placeholder="0"
-                                    data-parsley-range="[-1,1000]"
-                                    data-parsley-range-message="قيمة هذا الحقل بين [0,999].">
+                                    value="{{ old('max_order', $card->max_order == -1 ? '' : $card->max_order) }}"
+                                    min="0" class="form-control child2">
                                 @error('max_order')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
 
+                                {{-- child class is used to make disabled and enabled to select part --}}
                                 <div class="col-md-12 col-sm-12 ">
                                     <label class="col-form-label col-md-12 col-sm-12 ">
-                                        <input name="Quantity_Unlimited" type="checkbox" class="flat"
-                                            onclick="enableDisable(this.checked, 'max_order')"
-                                            data-parsley-multiple="Quantity_Unlimited"> الكمية غير محدودة
-                                        <script language="javascript">
-                                            function enableDisable(bEnable, textBoxID) {
-                                                document.getElementById(textBoxID).readOnly = bEnable
-                                            }
-                                        </script>
+                                        <input class='child2' type='checkbox' name="Quantity_Unlimited_max_order"
+                                            id="Quantity_Unlimited_max_order" value="-1"
+                                            {{ old('Quantity_Unlimited_max_order') | ($card->max_order == -1) ? 'checked' : '' }} />
+                                        الكمية غير محدودة
                                     </label>
                                 </div>
+
+
+
                             </div>
                         </div>
                     </div>
@@ -308,7 +276,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-sm-12 col-md-6 pt-4">
+                            <div class="col-sm-12  pt-4">
                                 <div class="form-group">
                                     <label for="published_on">تاريخ النشر</label>
                                     <input type="text" id="published_on" name="published_on"
@@ -320,7 +288,11 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-12 col-md-6 pt-4">
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-sm-12  pt-4">
                                 <div class="form-group">
                                     <label for="published_on_time">وقت النشر</label>
                                     <input type="text" id="published_on_time" name="published_on_time"
@@ -358,7 +330,7 @@
                     </div>
 
                     <div class="form-group pt-4">
-                        <button type="submit" name="submit" class="btn btn-primary">تعديل المنتج</button>
+                        <button type="submit" name="submit" class="btn btn-primary">تعديل الباقة</button>
                     </div>
 
                 </div>
@@ -441,7 +413,7 @@
                 colseOnSelect: true // Close Upon Selecting a date
             });
             var publishedOn = $('#published_on').pickadate(
-            'picker'); // set startdate in the picker to the start date in the #start_date elemet
+                'picker'); // set startdate in the picker to the start date in the #start_date elemet
             $('#published_on').change(function() {
                 selected_ci_date = "";
                 selected_ci_date = now() // make selected start date in picker = start_date value  
@@ -464,21 +436,22 @@
             });
 
             var startdate = $('#offer_ends').pickadate(
-            'picker'); // set startdate in the picker to the start date in the #publish_date elemet
+                'picker'); // set startdate in the picker to the start date in the #publish_date elemet
 
 
             // when change date 
             $('#offer_ends').change(function() {
                 selected_ci_date = "";
                 selected_ci_date = $('#publish_date')
-            .val(); // make selected start date in picker = publish_date value
+                    .val(); // make selected start date in picker = publish_date value
                 if (selected_ci_date != null) {
                     var cidate = new Date(
-                    selected_ci_date); // make cidate(start date ) = current date you selected in selected ci date (selected start date )
+                        selected_ci_date
+                    ); // make cidate(start date ) = current date you selected in selected ci date (selected start date )
                     min_codate = "";
                     min_codate = new Date();
                     min_codate.setDate(cidate.getDate() +
-                    1); // minimum selected date to be expired shoud be current date plus one 
+                        1); // minimum selected date to be expired shoud be current date plus one 
                     enddate.set('min', min_codate);
                 }
 
@@ -542,6 +515,42 @@
                 matcher: matchStart
             });
 
+        });
+    </script>
+
+    {{-- is related to select permision disable and enable by child class --}}
+    <script language="javascript">
+        var $cbox = $('.child').change(function() {
+            if (this.checked) {
+                $cbox.not(this).attr('disabled', 'disabled');
+            } else {
+                $cbox.removeAttr('disabled');
+            }
+        });
+
+        var $cbox2 = $('.child2').change(function() {
+            if (this.checked) {
+                $cbox2.not(this).attr('disabled', 'disabled');
+            } else {
+                $cbox2.removeAttr('disabled');
+            }
+        });
+    </script>
+
+
+    <script>
+        $(document).ready(function() {
+
+            if ($("#Quantity_Unlimited").attr("checked"))
+                $("#quantity").attr('disabled', 'disabled');
+            else
+                $("#quantity").removeAttr('disabled');
+
+
+            if ($("#Quantity_Unlimited_max_order").attr("checked"))
+                $("#max_order").attr('disabled', 'disabled');
+            else
+                $("#max_order").removeAttr('disabled');
         });
     </script>
 @endsection
