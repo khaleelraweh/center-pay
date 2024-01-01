@@ -1,9 +1,9 @@
 @extends('layouts.admin')
 
 @section('style')
-    <link rel="stylesheet" href="{{asset('backend/vendor/select2/css/select2.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('backend/vendor/select2/css/select2.min.css') }}">
     <style>
-        .select2-container{
+        .select2-container {
             width: 100% !important;
         }
     </style>
@@ -18,14 +18,14 @@
         <div class="card-header py-3 d-flex justify-content-between">
             <h6 class="m-0 font-weight-bold text-primary">إنشاء حساب مشرف جديد</h6>
             <div class="ml-auto">
-                <a href="{{route('admin.supervisors.index')}}" class="btn btn-primary">
+                <a href="{{ route('admin.supervisors.index') }}" class="btn btn-primary">
                     <span class="icon text-white-50">
                         <i class="fa fa-home"></i>
                     </span>
                     <span class="text">إدارة المشرفين</span>
                 </a>
             </div>
-        </div> 
+        </div>
 
 
         {{-- body part  --}}
@@ -43,23 +43,25 @@
             @endif
 
             {{-- enctype used cause we will save images  --}}
-            <form action="{{route('admin.supervisors.store',)}}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('admin.supervisors.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
 
                 {{-- links of tabs --}}
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link active" id="content-tab" data-toggle="tab" href="#content" role="tab" aria-controls="content" aria-selected="true">بيانات الشريحة</a>
+                        <a class="nav-link active" id="content-tab" data-toggle="tab" href="#content" role="tab"
+                            aria-controls="content" aria-selected="true">بيانات الشريحة</a>
                     </li>
 
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link" id="seo-tab" data-toggle="tab" href="#seo" role="tab" aria-controls="seo" aria-selected="false">بيانات SEO</a>
+                        <a class="nav-link" id="seo-tab" data-toggle="tab" href="#seo" role="tab"
+                            aria-controls="seo" aria-selected="false">بيانات SEO</a>
                     </li>
 
                 </ul>
 
                 <div class="tab-content" id="myTabContent">
-                
+
                     {{-- content tab --}}
                     <div class="tab-pane fade active show" id="content" role="tabpanel" aria-labelledby="content-tab">
                         <div class="row">
@@ -71,15 +73,21 @@
                                     <div class="col-sm-12 col-md-6 pt-3">
                                         <div class="form-group">
                                             <label for="first_name">الاسم الاول</label>
-                                            <input type="text" id="first_name" name="first_name" value="{{old('first_name')}}" class="form-control" placeholder="">
-                                            @error('first_name') <span class="text-danger">{{$message}}</span> @enderror
+                                            <input type="text" id="first_name" name="first_name"
+                                                value="{{ old('first_name') }}" class="form-control" placeholder="">
+                                            @error('first_name')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-6 pt-3">
                                         <div class="form-group">
                                             <label for="last_name">اللقب</label>
-                                            <input type="text" id="last_name" name="last_name" value="{{old('last_name')}}" class="form-control" placeholder="">
-                                            @error('last_name') <span class="text-danger">{{$message}}</span> @enderror
+                                            <input type="text" id="last_name" name="last_name"
+                                                value="{{ old('last_name') }}" class="form-control" placeholder="">
+                                            @error('last_name')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -88,15 +96,21 @@
                                     <div class="col-sm-12 col-md-6 pt-3">
                                         <div class="form-group">
                                             <label for="username">اسم المستخدم</label>
-                                            <input type="text" id="username" name="username" value="{{old('username')}}" class="form-control" placeholder="">
-                                            @error('username') <span class="text-danger">{{$message}}</span> @enderror
+                                            <input type="text" id="username" name="username"
+                                                value="{{ old('username') }}" class="form-control" placeholder="">
+                                            @error('username')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-6 pt-3">
                                         <div class="form-group">
                                             <label for="email">الايميل</label>
-                                            <input type="text" id="email" name="email" value="{{old('email')}}" class="form-control" placeholder="">
-                                            @error('email') <span class="text-danger">{{$message}}</span> @enderror
+                                            <input type="text" id="email" name="email" value="{{ old('email') }}"
+                                                class="form-control" placeholder="">
+                                            @error('email')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -105,16 +119,22 @@
                                     <div class="col-sm-12 col-md-6 pt-3">
                                         <div class="form-group">
                                             <label for="mobile">رقم الجوال</label>
-                                            <input type="text" id="mobile" name="mobile" value="{{old('mobile')}}" class="form-control" placeholder="">
-                                            @error('mobile') <span class="text-danger">{{$message}}</span> @enderror
+                                            <input type="text" id="mobile" name="mobile" value="{{ old('mobile') }}"
+                                                class="form-control" placeholder="">
+                                            @error('mobile')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
-                
+
                                     <div class="col-sm-12 col-md-6 pt-3">
                                         <div class="form-group">
                                             <label for="password">كلمة المرور</label>
-                                            <input type="text" id="password" name="password" value="{{old('password')}}" class="form-control" placeholder="">
-                                            @error('password') <span class="text-danger">{{$message}}</span> @enderror
+                                            <input type="text" id="password" name="password"
+                                                value="{{ old('password') }}" class="form-control" placeholder="">
+                                            @error('password')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -124,23 +144,30 @@
                                     <div class="col-sm-12 col-md-6 pt-3">
                                         <label for="status">حالة الحسباب</label>
                                         <select name="status" class="form-control">
-                                            <option value="1" {{ old('status') == '1' ? 'selected' : null}}>مفعل</option>
-                                            <option value="0" {{ old('status') == '0' ? 'selected' : null}}>مقفل</option>
+                                            <option value="1" {{ old('status') == '1' ? 'selected' : null }}>مفعل
+                                            </option>
+                                            <option value="0" {{ old('status') == '0' ? 'selected' : null }}>مقفل
+                                            </option>
                                         </select>
-                                        @error('status')<span class="text-danger">{{$message}}</span>@enderror
+                                        @error('status')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
-                                    
+
                                 </div>
 
-                                {{-- permission row--}}
+                                {{-- permission row --}}
                                 <div class="row pt-4">
 
                                     <div class="col-md-12 col-sm-12 ">
 
                                         <label for="permissions">الصلاحيات</label>
-                                        <select name="permissions[]" class="form-control select2 child" multiple="multiple">
+                                        <select name="permissions[]" class="form-control select2 child"
+                                            multiple="multiple">
                                             @forelse ($permissions as $permission)
-                                                <option value="{{$permission->id}}"  {{ in_array($permission->id,old('permissions',[])) ? 'selected' : null }}>{{$permission->display_name}}</option>
+                                                <option value="{{ $permission->id }}"
+                                                    {{ in_array($permission->id, old('permissions', [])) ? 'selected' : null }}>
+                                                    {{ $permission->display_name }}</option>
                                             @empty
                                             @endforelse
                                         </select>
@@ -148,8 +175,9 @@
                                         {{-- child class is used to make disabled and enabled to select part --}}
                                         <div class="col-md-12 col-sm-12 ">
                                             <label class="col-form-label col-md-12 col-sm-12 ">
-                                                <input class='child' type='checkbox' name="all_permissions" value="ok" />
-                                                 منح كل الصلاحيات
+                                                <input class='child' type='checkbox' name="all_permissions"
+                                                    value="ok" />
+                                                منح كل الصلاحيات
                                             </label>
                                         </div>
 
@@ -166,9 +194,12 @@
                                         <label for="user_image">Use Image</label>
                                         <br>
                                         <div class="file-loading">
-                                            <input type="file" name="user_image" id="supervisor-image"  class="file-input-overview ">
+                                            <input type="file" name="user_image" id="supervisor-image"
+                                                class="file-input-overview ">
                                             <span class="form-text text-muted">Image width should be 500px x 500px </span>
-                                            @error('user_image')<span class="text-danger">{{$message}}</span>@enderror
+                                            @error('user_image')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -192,83 +223,81 @@
 
             </form>
         </div>
-        
+
     </div>
 
 @endsection
 
 @section('script')
     {{-- Call select2 plugin --}}
-    <script src="{{asset('backend/vendor/select2/js/select2.full.min.js')}}"></script>
-<script>
+    <script src="{{ asset('backend/vendor/select2/js/select2.full.min.js') }}"></script>
+    <script>
         //select2: code to search in data 
         function matchStart(params, data) {
-                    // If there are no search terms, return all of the data
-                    if ($.trim(params.term) === '') {
-                        return data;
-                    }
+            // If there are no search terms, return all of the data
+            if ($.trim(params.term) === '') {
+                return data;
+            }
 
-                    // Skip if there is no 'children' property
-                    if (typeof data.children === 'undefined') {
-                        return null;
-                    }
+            // Skip if there is no 'children' property
+            if (typeof data.children === 'undefined') {
+                return null;
+            }
 
-                    // `data.children` contains the actual options that we are matching against
-                    var filteredChildren = [];
-                    $.each(data.children, function (idx, child) {
-                        if (child.text.toUpperCase().indexOf(params.term.toUpperCase()) == 0) {
-                        filteredChildren.push(child);
-                        }
-                    });
+            // `data.children` contains the actual options that we are matching against
+            var filteredChildren = [];
+            $.each(data.children, function(idx, child) {
+                if (child.text.toUpperCase().indexOf(params.term.toUpperCase()) == 0) {
+                    filteredChildren.push(child);
+                }
+            });
 
-                    // If we matched any of the timezone group's children, then set the matched children on the group
-                    // and return the group object
-                    if (filteredChildren.length) {
-                        var modifiedData = $.extend({}, data, true);
-                        modifiedData.children = filteredChildren;
+            // If we matched any of the timezone group's children, then set the matched children on the group
+            // and return the group object
+            if (filteredChildren.length) {
+                var modifiedData = $.extend({}, data, true);
+                modifiedData.children = filteredChildren;
 
-                        // You can return modified objects from here
-                        // This includes matching the `children` how you want in nested data sets
-                        return modifiedData;
-                    }
+                // You can return modified objects from here
+                // This includes matching the `children` how you want in nested data sets
+                return modifiedData;
+            }
 
-                    // Return `null` if the term should not be displayed
-                    return null;
+            // Return `null` if the term should not be displayed
+            return null;
         }
 
         // select2 : .select2 : is  identifier used with element to be effected
         $(".select2").select2({
-            tags:true,
-            colseOnSelect:false,
+            tags: true,
+            colseOnSelect: false,
             minimumResultsForSearch: Infinity,
             matcher: matchStart
         });
-        
-        
-        $(function(){
+
+
+        $(function() {
             $("#supervisor-image").fileinput({
-                theme:"fa5",
-                maxFileCount: 1 ,
+                theme: "fa5",
+                maxFileCount: 1,
                 allowedFileTypes: ['image'],
                 showCancel: true,
                 showRemove: false,
                 showUpload: false,
-                overwriteInitial:false
+                overwriteInitial: false
             })
         });
     </script>
 
     {{-- is related to select permision disable and enable by child class --}}
     <script language="javascript">
-                                                        
         var $cbox = $('.child').change(function() {
-        
-            if(this.checked) {
-                $cbox.not(this).attr('disabled','disabled');
+
+            if (this.checked) {
+                $cbox.not(this).attr('disabled', 'disabled');
             } else {
-                $cbox.removeAttr('disabled'); 
+                $cbox.removeAttr('disabled');
             }
         });
     </script>
-    
 @endsection

@@ -10,7 +10,7 @@
             <div class="col-md-2 d-none d-md-block">
                 <div class="form-group">
                     <select name="status" class="form-control">
-                        {{-- <option value="">---</option> --}}
+                        <option value="">عرض الكل</option>
                         <option value="1" {{ old('status', request()->input('status')) == '1' ? 'selected' : '' }}>
                             مفعل</option>
                         <option value="0" {{ old('status', request()->input('status')) == '0' ? 'selected' : '' }}>

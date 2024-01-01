@@ -1,45 +1,35 @@
 @extends('layouts.admin')
 
-
-@section('style')
-    <style>
-        .picker__select--month,
-        .picker__select--year {
-            padding: 0 !important;
-        }
-
-        .picker__list {
-            list-style-type: none;
-        }
-
-        .x-title {
-            border-bottom: 2px solid #E6E9ED;
-            padding: 1px 5px 6px;
-            margin-bottom: 10px;
-        }
-
-        .require.red {
-            color: red;
-        }
-    </style>
-@endsection
-
 @section('content')
 
     {{-- main holder page  --}}
     <div class="card shadow mb-4">
 
-        {{-- menu part  --}}
+
+
+        {{-- breadcrumb part  --}}
         <div class="card-header py-3 d-flex justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">إضافة رابط جديد</h6>
-            <div class="ml-auto">
-                <a href="{{ route('admin.web_menus.index') }}" class="btn btn-primary">
-                    <span class="icon text-white-50">
-                        <i class="fa fa-home"></i>
-                    </span>
-                    <span class="text">روابط القائمة الرئيسية</span>
-                </a>
+            <div class="card-naving">
+                <h3 class="font-weight-bold text-primary">
+                    <i class="fa fa-plus-square"></i>
+                    إضفافة رابط جديد
+                </h3>
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="{{ route('admin.index') }}">
+                            الرئيسية
+                        </a>
+                        <i class="fa fa-solid fa-chevron-left chevron"></i>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.web_menus.index') }}">
+                            القائمة الرئيسية
+                        </a>
+                    </li>
+                </ul>
             </div>
+
+
         </div>
 
         {{-- body part  --}}
@@ -58,7 +48,6 @@
 
             <form action="{{ route('admin.web_menus.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
-
                 {{-- links of tabs --}}
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
@@ -71,10 +60,6 @@
                             aria-controls="publish" aria-selected="false">بيانات النشر</a>
                     </li>
 
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link" id="other-tab" data-toggle="tab" href="#other" role="tab"
-                            aria-controls="other" aria-selected="false">اخري</a>
-                    </li>
                 </ul>
 
                 {{-- contents of links tabs  --}}
@@ -84,12 +69,12 @@
                     <div class="tab-pane fade active show" id="content" role="tabpanel" aria-labelledby="content-tab">
 
                         {{-- تصنيفات القائمة --}}
-                        <div class="row pt-4">
-                            <label for="parent_id" class="control-label col-md-2 col-sm-12 ">
-                                التصنيف
-                                <span class="require red">*</span>
-                            </label>
-                            <div class="col-md-10 col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-12 Pt-4">
+                                <label for="parent_id" class="control-label">
+                                    التصنيف
+                                    <span class="require red">*</span> :
+                                </label>
                                 <select name="parent_id" class="form-control">
                                     <option value="">تصنيف رئيسي__</option>
                                     @forelse ($main_menus as $main_menu)
@@ -103,12 +88,12 @@
                         </div>
 
                         {{-- عنوان الرابط عربي  --}}
-                        <div class="row pt-4">
-                            <label for="name_ar" class="control-label col-md-2 col-sm-12 ">
-                                العنوان (عربي) :
-                                <span class="require red">*</span>
-                            </label>
-                            <div class="col-md-10 col-sm-12">
+                        <div class="row ">
+                            <div class="col-sm-12 pt-4">
+                                <label for="name_ar" class="control-label col-sm-12 ">
+                                    العنوان (عربي)
+                                    <span class="require red">*</span> :
+                                </label>
                                 <div class="form-group">
                                     <input type="text" id="name_ar" name="name_ar" value="{{ old('name_ar') }}"
                                         class="form-control">
@@ -120,12 +105,12 @@
                         </div>
 
                         {{-- عنوان الرابط انجليزي  --}}
-                        <div class="row pt-4">
-                            <label for="name_en" class="control-label col-md-2 col-sm-12 ">
-                                العنوان (انجليزي) :
-                                <span class="require red">*</span>
-                            </label>
-                            <div class="col-md-10 col-sm-12">
+                        <div class="row ">
+                            <div class="col-sm-12 pt-4">
+                                <label for="name_en" class="control-label col-sm-12 ">
+                                    العنوان (انجليزي)
+                                    <span class="require red">*</span> :
+                                </label>
                                 <div class="form-group">
                                     <input type="text" id="name_en" name="name_en" value="{{ old('name_en') }}"
                                         class="form-control">
@@ -137,12 +122,12 @@
                         </div>
 
                         {{--  الرابط --}}
-                        <div class="row pt-4">
-                            <label for="link" class="control-label col-md-2 col-sm-12 ">
-                                الرابط :
-                                <span class="require red">*</span>
-                            </label>
-                            <div class="col-md-10 col-sm-12">
+                        <div class="row ">
+                            <div class="col-sm-12 pt-4">
+                                <label for="link" class="control-label col-sm-12 ">
+                                    الرابط
+                                    <span class="require red">*</span> :
+                                </label>
                                 <div class="form-group">
                                     <input type="text" id="link" name="link" value="{{ old('link') }}"
                                         class="form-control">
@@ -155,12 +140,8 @@
 
                     </div>
 
-
                     {{-- تاب بيانات النشر --}}
                     <div class="tab-pane fade" id="publish" role="tabpanel" aria-labelledby="publish-tab">
-
-
-
 
                         {{-- publish_start publish time field --}}
                         <div class="row">
@@ -213,17 +194,12 @@
 
                     </div>
 
-                    {{-- تاب لاي شي جديد --}}
-                    <div class="tab-pane fade" id="other" role="tabpanel" aria-labelledby="other-tab">
-                        any think you want
-                    </div>
-
                 </div>
 
                 {{-- submit part --}}
                 <div class="row">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-11">
+
+                    <div class="col-md-12">
                         <div class="form-group pt-3 mx-3">
                             <button type="submit" name="submit" class="btn btn-primary">حفظ البيانات</button>
                         </div>

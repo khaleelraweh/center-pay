@@ -221,7 +221,8 @@
                                     </p>
                                     <p>رمز sku : <span data-sku="">{{ $card->sku }}</span></p>
                                     <p>المزود : <span>سنتر باي</span></p>
-                                    <p>الباركود : <span>314363563</span></p>
+                                    <p>الكمية :
+                                        <span>{{ $card->quantity >= 0 ? $card->quantity : 'الكمية غير محدودة' }}</span></p>
                                 </div>
                             </div>
 

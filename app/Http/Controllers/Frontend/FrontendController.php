@@ -100,7 +100,13 @@ class FrontendController extends Controller
  
     public function card($slug){
         //get choisen card 
-        $card  = Product::with('category','tags','photos','reviews')->withAvg('reviews','rating')->whereSlug($slug)->Active()->HasQuantity()->ActiveCategory()->firstOrFail();
+        $card  = Product::with('category','tags','photos','reviews')
+        ->withAvg('reviews','rating')
+        ->whereSlug($slug)
+        ->Active()
+        // ->HasQuantity()
+        ->ActiveCategory()
+        ->firstOrFail();
 
         //get all related card that are the same of card_category of the card choisen
         $related_cards = Product::with('firstMedia','photos')->whereHas('category', function ($query) use ($card){

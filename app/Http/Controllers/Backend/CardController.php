@@ -58,10 +58,22 @@ class CardController extends Controller
             return redirect('admin/index');
         }
 
+        // dd($request);
+
         // get Input from create.blade.php form request using CardRequest to validate fields
         $input['name']                  =   $request->name;
         $input['description']           =   $request->description;
-        $input['quantity']              =   $request->quantity;
+        // $input['quantity']              =   $request->quantity;
+
+
+        if(isset($request->Quantity_Unlimited)){
+            $input['quantity']          =   $request->Quantity_Unlimited;
+        }
+        else {
+            $input['quantity']          =   $request->quantity;
+        }
+
+
         $input['price']                 =   $request->price;
         $input['offer_price']           =   $request->offer_price;
         $input['offer_ends']            =   $request->offer_ends;
@@ -158,7 +170,15 @@ class CardController extends Controller
          // get Input from create.blade.php form request using CardRequest to validate fields
         $input['name']                  =   $request->name;
         $input['description']           =   $request->description;
-        $input['quantity']              =   $request->quantity;
+        // $input['quantity']              =   $request->quantity;
+
+        if(isset($request->Quantity_Unlimited)){
+            $input['quantity']          =   $request->Quantity_Unlimited;
+        }
+        else {
+            $input['quantity']          =   $request->quantity;
+        }
+
         $input['price']                 =   $request->price;
         $input['offer_price']           =   $request->offer_price;
         $input['offer_ends']            =   $request->offer_ends;

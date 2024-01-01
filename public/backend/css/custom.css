@@ -68,3 +68,8 @@
         font-size: 12px;
     }
 }
+
+
+.require.red {
+    color: red;
+}

@@ -1,63 +1,46 @@
 @extends('layouts.admin')
-{{-- @section('style')
-
-    <!-- DataTables -->
-    <link href="{{asset('backend/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css')}}" />
-    <link href="{{asset('backend/libs/datatables.net-select-bs4/css//select.bootstrap4.min.css" rel="stylesheet" type="text/css')}}" />
-
-    <!-- Responsive datatable examples -->
-    <link href="{{asset('backend/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />         
-
-@endsection --}}
 
 @section('content')
 
-
-    <!-- start page title -->
-    <div class="row">
-        <div class="col-12">
-            <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                <h4 class="mb-sm-0">تصنيف المنتجات</h4>
-
-                <div class="page-title-right">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('admin.card_categories.index') }}">إدارة البطائق</a>
-                            </li>
-                            <li class="breadcrumb-item active" aria-current="page">عرض</li>
-                        </ol>
-                    </nav>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <!-- end page title -->
-
-
-
-    {{-- save is  --}}
     <div class="row">
         <div class="col-12">
             <div class="card">
-                {{-- menu part  --}}
+
+                {{-- breadcrumb part  --}}
                 <div class="card-header py-3 d-flex justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">تصنيف المنتجات</h6>
+                    <div class="card-naving">
+                        <h3 class="font-weight-bold text-primary">
+                            <i class="fa fa-folder"></i>
+                            إدارة البطائق
+                        </h3>
+                        <ul class="breadcrumb">
+                            <li>
+                                <a href="{{ route('admin.index') }}">
+                                    الرئيسية
+                                </a>
+                                <i class="fa fa-solid fa-chevron-left chevron"></i>
+                            </li>
+                            <li>
+                                إدارة البطائق
+                            </li>
+                        </ul>
+                    </div>
+
                     <div class="ml-auto">
-                        @ability('admin', 'create_cards')
+                        @ability('admin', 'create_card_categories')
                             <a href="{{ route('admin.card_categories.create') }}" class="btn btn-primary">
                                 <span class="icon text-white-50">
-                                    <i class="fa fa-plus"></i>
+                                    <i class="fa fa-plus-square"></i>
                                 </span>
-                                <span class="text">إضافة محتوي جديد</span>
+                                <span class="text">إضافة محتوى جديد</span>
                             </a>
                         @endability
                     </div>
+
                 </div>
 
 
                 <div class="card-body">
-
                     {{-- filter form part  --}}
                     @include('backend.card_categories.filter.filter')
 
@@ -70,10 +53,10 @@
                                     <th>الصورة</th>
                                     <th>اسم الصنف</th>
                                     <th>عدد الباقات</th>
-                                    <th>الكاتب</th>
-                                    <th>Status</th>
-                                    <th>Created at</th>
-                                    <th class="text-center" style="width:30px;">Actions</th>
+                                    <th class="d-none d-sm-table-cell">الكاتب</th>
+                                    <th class="d-none d-sm-table-cell">الحالة</th>
+                                    <th class="d-none d-sm-table-cell">تاريخ الانشاء</th>
+                                    <th class="text-center" style="width:30px;">الإعدادات</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -96,11 +79,11 @@
                                             {{ $category->name }}
                                         </td>
                                         <td>{{ $category->products_count }}</td>
-                                        <td>{{ $category->created_by }}</td>
-                                        <td><span
+                                        <td class="d-none d-sm-table-cell">{{ $category->created_by }}</td>
+                                        <td class="d-none d-sm-table-cell"><span
                                                 class="btn btn-round  rounded-pill btn-success btn-xs">{{ $category->status() }}</span>
                                         </td>
-                                        <td>{{ $category->created_at }}</td>
+                                        <td class="d-none d-sm-table-cell">{{ $category->created_at }}</td>
                                         <td>
 
                                             <div class="btn-group btn-group-sm">
@@ -144,23 +127,7 @@
             </div>
         </div> <!-- end col -->
     </div>
-    <!-- end row -->
 
 
 
 @endsection
-
-{{-- @section('script')
-      <!-- Buttons examples -->
-      <script src="{{asset('backend/libs/datatables.net-buttons/js/dataTables.buttons.min.js')}}"></script>
-      <script src="{{asset('backend/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js')}}"></script>
-      <script src="{{asset('backend/libs/jszip/jszip.min.js')}}"></script>
-      <script src="{{asset('backend/libs/pdfmake/build/pdfmake.min.js')}}"></script>
-      <script src="{{asset('backend/libs/pdfmake/build/vfs_fonts.js')}}"></script>
-      <script src="{{asset('backend/libs/datatables.net-buttons/js/buttons.html5.min.js')}}"></script>
-      <script src="{{asset('backend/libs/datatables.net-buttons/js/buttons.print.min.js')}}"></script>
-      <script src="{{asset('backend/libs/datatables.net-buttons/js/buttons.colVis.min.js')}}"></script>
-
-      <script src="{{asset('backend/libs/datatables.net-keytable/js/dataTables.keyTable.min.js')}}"></script>
-      <script src="{{asset('backend/libs/datatables.net-select/js/dataTables.select.min.js')}}"></script>
-@endsection --}}

@@ -46,9 +46,8 @@
                     <tr>
                         <th>الصورة</th>
                         <th>العنوان</th>
-                        {{-- <th>Tags</th> --}}
-                        <th class="d-none d-md-block">الكاتب</th>
-                        <th class="d-none d-md-block">تاريخ الانشاء </th>
+                        <th class="d-none d-sm-table-cell">الكاتب</th>
+                        <th class="d-none d-sm-table-cell">تاريخ الانشاء </th>
                         <th>الحالة</th>
                         <th class="text-center" style="width:30px;">الاعدادات</th>
                     </tr>
@@ -56,8 +55,6 @@
                 <tbody>
                     @forelse ($mainSliders as $slider)
                         <tr>
-
-                            {{-- To make code better by making laravel cal only first media using relation shap to low querys --}}
                             <td>
                                 @if ($slider->firstMedia)
                                     <img src="{{ asset('assets/main_sliders/' . $slider->firstMedia->file_name) }}"
@@ -69,9 +66,8 @@
 
                             </td>
                             <td>{{ $slider->title }}</td>
-                            {{-- <td>{{$slider->tags->pluck('name')->join(',')}}</td> --}}
-                            <td class="d-none d-md-block">{{ $slider->created_by }}</td>
-                            <td class="d-none d-md-block">{{ $slider->created_at }}</td>
+                            <td class="d-none d-sm-table-cell">{{ $slider->created_by }}</td>
+                            <td class="d-none d-sm-table-cell">{{ $slider->created_at }}</td>
                             <td>{{ $slider->status() }}</td>
                             <td>
 

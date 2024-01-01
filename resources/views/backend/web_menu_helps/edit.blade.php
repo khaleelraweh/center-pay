@@ -1,48 +1,30 @@
 @extends('layouts.admin')
 
-@section('style')
-    {{-- pickadate calling css --}}
-    <link rel="stylesheet" href="{{ asset('backend/vendor/datepicker/themes/classic.css') }}">
-    <link rel="stylesheet" href="{{ asset('backend/vendor/datepicker/themes/classic.date.css') }}">
-
-
-    <style>
-        .picker__select--month,
-        .picker__select--year {
-            padding: 0 !important;
-        }
-
-        .picker__list {
-            list-style-type: none;
-        }
-
-        .x-title {
-            border-bottom: 2px solid #E6E9ED;
-            padding: 1px 5px 6px;
-            margin-bottom: 10px;
-        }
-
-        .require.red {
-            color: red;
-        }
-    </style>
-@endsection
-
 @section('content')
     {{-- main holder page  --}}
     <div class="card shadow mb-4">
 
-
-        {{-- menu part  --}}
+        {{-- breadcrumb part  --}}
         <div class="card-header py-3 d-flex justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">تعديل محتوي {{ $webMenuHelp->name_ar }}</h6>
-            <div class="ml-auto">
-                <a href="{{ route('admin.web_menu_helps.index') }}" class="btn btn-primary">
-                    <span class="icon text-white-50">
-                        <i class="fa fa-home"></i>
-                    </span>
-                    <span class="text">تصنيف الروابط</span>
-                </a>
+
+            <div class="card-naving">
+                <h3 class="font-weight-bold text-primary">
+                    <i class="fa fa-edit"></i>
+                    تعديل رابط
+                </h3>
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="{{ route('admin.index') }}">
+                            الرئيسية
+                        </a>
+                        <i class="fa fa-solid fa-chevron-left chevron"></i>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.web_menu_helps.index') }}">
+                            قائمة المساعدة
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
 
@@ -64,11 +46,6 @@
                         <a class="nav-link" id="publish-tab" data-toggle="tab" href="#publish" role="tab"
                             aria-controls="publish" aria-selected="false">بيانات النشر</a>
                     </li>
-
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link" id="other-tab" data-toggle="tab" href="#other" role="tab"
-                            aria-controls="other" aria-selected="false">اخري</a>
-                    </li>
                 </ul>
 
                 {{-- contents of links tabs  --}}
@@ -77,14 +54,13 @@
                     {{-- تاب بيانات المحتوي --}}
                     <div class="tab-pane fade active show" id="content" role="tabpanel" aria-labelledby="content-tab">
 
-
                         {{-- عنوان الرابط عربي  --}}
-                        <div class="row pt-4">
-                            <label for="name_ar" class="control-label col-md-3 col-sm-12 ">
-                                العنوان (عربي):
-                                <span class="require red">*</span>
-                            </label>
-                            <div class="col-md-9 col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-12 pt-4">
+                                <label for="name_ar" class="control-label">
+                                    العنوان (عربي)
+                                    <span class="require red">*</span>
+                                </label>
                                 <div class="form-group">
                                     <input type="text" id="name_ar" name="name_ar"
                                         value="{{ old('name_ar', $webMenuHelp->name_ar) }}" class="form-control"
@@ -97,12 +73,12 @@
                         </div>
 
                         {{-- عنوان الرابط أنجليزي  --}}
-                        <div class="row pt-4">
-                            <label for="name_en" class="control-label col-md-3 col-sm-12 ">
-                                العنوان (انجليزي):
-                                <span class="require red">*</span>
-                            </label>
-                            <div class="col-md-9 col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-12 pt-4">
+                                <label for="name_en" class="control-label">
+                                    العنوان (انجليزي)
+                                    <span class="require red">*</span>
+                                </label>
                                 <div class="form-group">
                                     <input type="text" id="name_en" name="name_en"
                                         value="{{ old('name_en', $webMenuHelp->name_en) }}" class="form-control"
@@ -116,12 +92,12 @@
 
 
                         {{--  الرابط   --}}
-                        <div class="row pt-4">
-                            <label for="link" class="control-label col-md-3 col-sm-12 ">
-                                الرابط:
-                                <span class="require red">*</span>
-                            </label>
-                            <div class="col-md-9 col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-12 pt-4">
+                                <label for="link" class="control-label">
+                                    الرابط
+                                    <span class="require red">*</span>
+                                </label>
                                 <div class="form-group">
                                     <input type="text" id="link" name="link"
                                         value="{{ old('link', $webMenuHelp->link) }}" class="form-control"
@@ -132,15 +108,10 @@
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
-
 
                     {{-- تاب بيانات النشر --}}
                     <div class="tab-pane fade" id="publish" role="tabpanel" aria-labelledby="publish-tab">
-
-
                         <div class="row">
                             <div class="col-sm-12  pt-4">
                                 <div class="form-group">
@@ -174,7 +145,7 @@
                         <div class="row ">
 
                             <div class="col-md-12 col-sm-12 pt-4">
-                                <label for="status" class="control-label col-md-3 col-sm-12 ">
+                                <label for="status" class="control-label">
                                     <span>الحالة</span>
                                     <span class="require red">*</span>
                                 </label>
@@ -206,8 +177,7 @@
 
                 {{-- submit part --}}
                 <div class="row">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-11">
+                    <div class="col-md-12">
                         <div class="form-group pt-3 mx-3">
                             <button type="submit" name="submit" class="btn btn-primary">تعديل البيانات</button>
                         </div>

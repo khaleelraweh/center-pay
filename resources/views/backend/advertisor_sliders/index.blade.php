@@ -42,14 +42,14 @@
         @include('backend.advertisor_sliders.filter.filter')
 
         <div class="table-responsive">
-            <table class="table table-hover">
+            <table class="table table-hover ">
                 <thead>
                     <tr>
                         <th>الصورة</th>
                         <th>العنوان</th>
-                        <th>الكاتب</th>
-                        <th>تاريخ النشر </th>
-                        <th>عدد المشاهدات </th>
+                        <th class="d-none d-sm-table-cell">الكاتب</th>
+                        <th class="d-none d-sm-table-cell">تاريخ النشر </th>
+                        <th>الحالة</th>
                         <th class="text-center" style="width:30px;">الاعدادات</th>
                     </tr>
                 </thead>
@@ -68,8 +68,8 @@
 
                             </td>
                             <td>{{ $slider->title }}</td>
-                            <td>{{ $slider->created_by }}</td>
-                            <td>{{ $slider->published_on->Format('Y-m-d h:i A') }}</td>
+                            <td class="d-none d-sm-table-cell">{{ $slider->created_by }}</td>
+                            <td class="d-none d-sm-table-cell">{{ $slider->published_on->Format('Y-m-d h:i A') }}</td>
                             <td>{{ $slider->status() }}</td>
                             <td>
 
