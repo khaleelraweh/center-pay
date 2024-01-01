@@ -52,7 +52,7 @@ class Product extends Model
     }
 
     public function scopeHasQuantity($query){
-        return $query->where('quantity','>',0);
+        return $query->where('quantity','>=',-1);
     }
 
     public function scopeActiveCategory($query){

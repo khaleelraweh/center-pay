@@ -23,7 +23,7 @@ return new class extends Migration
             $table->double('offer_price')->nullable()->default(0.0); // سعر العرض
             $table->date('offer_ends')->nullable(); // تاريخ انتهاء العرض 
             $table->string('sku')->nullable();
-            $table->integer('max_order')->nullable()->default(-1);
+            $table->integer('max_order')->nullable()->default(-1); // اعلي كمية يمكن حجزها 
             $table->boolean('featured')->default(false);
             $table->foreignId('product_category_id')->constrained()->cascadeOnDelete();
             $table->integer('views')->default(0);

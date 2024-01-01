@@ -71,7 +71,7 @@
 
                             </td>
                             <td>{{ $card->name }}</td>
-                            <td>{{ $card->quantity }}</td>
+                            <td>{{ $card->quantity >= 0 ? $card->quantity : 'غير محدودة' }}</td>
                             <td>{{ $card->price }}</td>
                             <td class="d-none d-sm-table-cell">{{ $card->created_by }}</td>
                             <td class="d-none d-sm-table-cell">{{ $card->created_at }}</td>

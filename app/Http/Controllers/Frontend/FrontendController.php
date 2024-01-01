@@ -104,7 +104,7 @@ class FrontendController extends Controller
         ->withAvg('reviews','rating')
         ->whereSlug($slug)
         ->Active()
-        // ->HasQuantity()
+        ->HasQuantity()
         ->ActiveCategory()
         ->firstOrFail();
 
