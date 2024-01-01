@@ -8,8 +8,12 @@
         <div class="holder fullwidth fullwidth full-nopad mt-0 ">
             <div class="container">
                 <div class="bnslider-wrapper">
-                    <div class="bnslider bnslider--lg keep-scale" id="bnslider-001" data-slick='{"arrows": true, "dots": true}'
+                    {{-- <div class="bnslider bnslider--lg keep-scale" id="bnslider-001" data-slick='{"arrows": true, "dots": true}'
                         data-autoplay="true" data-speed="5000" data-start-width="1920" data-start-height="880"
+                        data-start-mwidth="1550" data-start-mheight="1000"> --}}
+
+                    <div class="bnslider bnslider--lg keep-scale" id="bnslider-001" data-slick='{"arrows": true, "dots": true}'
+                        data-autoplay="true" data-speed="5000" data-start-width="1920" data-start-height="750"
                         data-start-mwidth="1550" data-start-mheight="1000">
 
 
