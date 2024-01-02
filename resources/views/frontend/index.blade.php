@@ -143,7 +143,7 @@
     @if (count($adv_sliders) > 0)
         <div class="holder mt-3">
             {{-- <div class="container-fluid px-0"> --}}
-            <div class="page-content px-0">
+            <div class="page-content px-0" style="min-height: auto">
                 {{-- <div class="row bnr-grid no-gutters"> --}}
                 {{-- <div class="prd-grid prd-promo-carousel  data-to-show-3   js-prd-promo-carousel"> --}}
                 <div class="prd-grid prd-promo-carousel  js-prd-promo-carousel  data-to-show-3 data-to-show-md-3 data-to-show-sm-3 data-to-show-xs-2"
@@ -155,7 +155,7 @@
                         <div class="prd prd--style2 prd-labels--max prd-labels-shadow ">
 
                             {{-- <div class="bnr-wrap d-flex align-items-center h-100 bnr-1586628920521-0 "> --}}
-                            <div class="bnr-wrap d-flex align-items-center  bnr-1586628920521-0 ">
+                            <div class="bnr-wrap d-flex align-items-center h-100 bnr-1586628920521-0 ">
                                 <div class="bnr custom-caption  image-hover-scale image-hover-scale--slow bnr--middle bnr--center my_adv_custom_style"
                                     data-fontratio="5.9">
                                     <div class="bnr-img image-container" style="padding-bottom: 38.933%">
