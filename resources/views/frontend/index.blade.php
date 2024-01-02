@@ -145,9 +145,9 @@
             {{-- <div class="container-fluid px-0"> --}}
             <div class="page-content px-0" style="min-height: 100px !important;">
                 {{-- <div class="row bnr-grid no-gutters"> --}}
-                {{-- <div class="prd-grid prd-promo-carousel  data-to-show-3   js-prd-promo-carousel"> --}}
-                <div class="prd-grid prd-promo-carousel  js-prd-promo-carousel  data-to-show-3 data-to-show-md-3 data-to-show-sm-3 data-to-show-xs-2"
-                    data-slick='{"slidesToShow": 3, "slidesToScroll": 2, "responsive": [{"breakpoint": 992,"settings": {"slidesToShow": 3, "slidesToScroll": 1}},{"breakpoint": 768,"settings": {"slidesToShow": 2, "slidesToScroll": 1}},{"breakpoint": 480,"settings": {"slidesToShow": 2, "slidesToScroll": 1}}]}'>
+                <div class="prd-grid prd-promo-carousel  data-to-show-3   js-prd-promo-carousel">
+                    {{-- <div class="prd-grid prd-promo-carousel  js-prd-promo-carousel  data-to-show-3 data-to-show-md-3 data-to-show-sm-3 data-to-show-xs-2"
+                    data-slick='{"slidesToShow": 3, "slidesToScroll": 2, "responsive": [{"breakpoint": 992,"settings": {"slidesToShow": 3, "slidesToScroll": 1}},{"breakpoint": 768,"settings": {"slidesToShow": 2, "slidesToScroll": 1}},{"breakpoint": 480,"settings": {"slidesToShow": 2, "slidesToScroll": 1}}]}'> --}}
 
                     @forelse ($adv_sliders as $adv_slider)
                         {{-- <div class="col-12 col-sm-4"> --}}
