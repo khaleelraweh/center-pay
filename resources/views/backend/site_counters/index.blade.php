@@ -36,7 +36,7 @@
                                         </label>
 
                                         <input type="number" name="{{ $key }}" id="{{ $key }}"
-                                            value="{{ old($key, $value) }}" class="form-control" min="1">
+                                            value="{{ old($key, $value) }}" class="form-control" min="0">
 
                                         @error($key)
                                             <span class="text-danger">{{ $message }}</span>

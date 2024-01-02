@@ -4,202 +4,204 @@
 @section('content')
 
     {{-- Main slider part  --}}
-    <div class="page-content">
-        <div class="holder fullwidth fullwidth full-nopad mt-0 ">
-            <div class="container">
-                <div class="bnslider-wrapper">
-                    {{-- <div class="bnslider bnslider--lg keep-scale" id="bnslider-001" data-slick='{"arrows": true, "dots": true}'
+    @if (count($main_sliders) > 0)
+        <div class="page-content">
+            <div class="holder fullwidth fullwidth full-nopad mt-0 ">
+                <div class="container">
+                    <div class="bnslider-wrapper">
+                        {{-- <div class="bnslider bnslider--lg keep-scale" id="bnslider-001" data-slick='{"arrows": true, "dots": true}'
                         data-autoplay="true" data-speed="5000" data-start-width="1920" data-start-height="880"
                         data-start-mwidth="1550" data-start-mheight="1000"> --}}
 
-                    <div class="bnslider bnslider--lg keep-scale" id="bnslider-001" data-slick='{"arrows": true, "dots": true}'
-                        data-autoplay="true" data-speed="5000" data-start-width="1920" data-start-height="750"
-                        data-start-mwidth="1550" data-start-mheight="1000">
+                        <div class="bnslider bnslider--lg keep-scale" id="bnslider-001"
+                            data-slick='{"arrows": true, "dots": true}' data-autoplay="true" data-speed="5000"
+                            data-start-width="1920" data-start-height="750" data-start-mwidth="1550"
+                            data-start-mheight="1000">
 
 
-                        {{-- {{ array_key_exists('site_twitter', $site_setting) ? $site_setting['site_twitter'] : '' }} --}}
-                        @forelse ($main_sliders as $main_slider)
-                            @if ($loop->first)
-                                {{-- slider slid  --}}
-                                <div class="bnslider-slide">
-                                    {{-- for desktop --}}
-                                    <div class="bnslider-image-mobile lazyload fade-up"
-                                        data-bgset="{{ asset('assets/main_sliders/' . $main_slider->firstMedia?->file_name) }}">
-                                    </div>
+                            {{-- {{ array_key_exists('site_twitter', $site_setting) ? $site_setting['site_twitter'] : '' }} --}}
+                            @forelse ($main_sliders as $main_slider)
+                                @if ($loop->first)
+                                    {{-- slider slid  --}}
+                                    <div class="bnslider-slide">
+                                        {{-- for desktop --}}
+                                        <div class="bnslider-image-mobile lazyload fade-up"
+                                            data-bgset="{{ asset('assets/main_sliders/' . $main_slider->firstMedia?->file_name) }}">
+                                        </div>
 
-                                    {{-- for mobile --}}
-                                    <div class="bnslider-image-mobile lazyload bnslider-lightning bnslider-flashit"
-                                        data-bgset="{{ asset('assets/main_sliders/' . $main_slider->firstMedia?->file_name) }}"
-                                        style="opacity: 0"></div>
+                                        {{-- for mobile --}}
+                                        <div class="bnslider-image-mobile lazyload bnslider-lightning bnslider-flashit"
+                                            data-bgset="{{ asset('assets/main_sliders/' . $main_slider->firstMedia?->file_name) }}"
+                                            style="opacity: 0"></div>
 
-                                    <div class="bnslider-image lazyload fade-up"
-                                        data-bgset="{{ asset('assets/main_sliders/' . $main_slider->firstMedia?->file_name) }}">
-                                    </div>
+                                        <div class="bnslider-image lazyload fade-up"
+                                            data-bgset="{{ asset('assets/main_sliders/' . $main_slider->firstMedia?->file_name) }}">
+                                        </div>
 
-                                    <div class="bnslider-image lazyload bnslider-lightning bnslider-flashit"
-                                        data-bgset="{{ asset('assets/main_sliders/' . $main_slider->firstMedia?->file_name) }}"
-                                        style="opacity: 0"></div>
+                                        <div class="bnslider-image lazyload bnslider-lightning bnslider-flashit"
+                                            data-bgset="{{ asset('assets/main_sliders/' . $main_slider->firstMedia?->file_name) }}"
+                                            style="opacity: 0"></div>
 
-                                    @if ($main_slider->showInfo == true)
-                                        <div class="bnslider-text-wrap bnslider-overlay">
-                                            <div class="bnslider-text-content txt-middle txt-center">
-                                                <div class="bnslider-text-content-flex">
-                                                    <div class="bnslider-vert w-s-60 w-ms-100">
-                                                        <div class="bnslider-text order-1 mt-sm bnslider-text--xl text-center heading-font"
-                                                            data-animation="fadeInUp" data-animation-delay="500"
-                                                            data-fontcolor="#fff" data-fontweight="900">
-                                                            {{ $main_slider->title }}
+                                        @if ($main_slider->showInfo == true)
+                                            <div class="bnslider-text-wrap bnslider-overlay">
+                                                <div class="bnslider-text-content txt-middle txt-center">
+                                                    <div class="bnslider-text-content-flex">
+                                                        <div class="bnslider-vert w-s-60 w-ms-100">
+                                                            <div class="bnslider-text order-1 mt-sm bnslider-text--xl text-center heading-font"
+                                                                data-animation="fadeInUp" data-animation-delay="500"
+                                                                data-fontcolor="#fff" data-fontweight="900">
+                                                                {{ $main_slider->title }}
 
-                                                        </div>
-                                                        <div class="bnslider-text order-2 mt-sm bnslider-text--sm text-center heading-font"
-                                                            data-animation="fadeInUp" data-animation-delay="1000"
-                                                            data-fontcolor="#fff" data-fontweight="900">
-                                                            {!! $main_slider->content !!}
-                                                        </div>
-                                                        <div class="btn-wrap text-center order-3 mt-lg"
-                                                            data-animation="fadeIn" data-animation-delay="2000"
-                                                            style="opacity: 1">
-                                                            <a href="{{ $main_slider->url != null ? url($main_slider->url) : '#' }}"
-                                                                target="{{ $main_slider->target }}"
-                                                                class="btn btn--invert btn--lg">تسوق الان</a>
+                                                            </div>
+                                                            <div class="bnslider-text order-2 mt-sm bnslider-text--sm text-center heading-font"
+                                                                data-animation="fadeInUp" data-animation-delay="1000"
+                                                                data-fontcolor="#fff" data-fontweight="900">
+                                                                {!! $main_slider->content !!}
+                                                            </div>
+                                                            <div class="btn-wrap text-center order-3 mt-lg"
+                                                                data-animation="fadeIn" data-animation-delay="2000"
+                                                                style="opacity: 1">
+                                                                <a href="{{ $main_slider->url != null ? url($main_slider->url) : '#' }}"
+                                                                    target="{{ $main_slider->target }}"
+                                                                    class="btn btn--invert btn--lg">تسوق الان</a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                        @endif
+
+                                    </div>
+                                @else
+                                    {{-- slider slid  --}}
+                                    <div class="bnslider-slide">
+                                        <div class="bnslider-image-mobile lazyload"
+                                            data-bgset="{{ asset('assets/main_sliders/' . $main_slider->firstMedia?->file_name) }}">
                                         </div>
-                                    @endif
-
-                                </div>
-                            @else
-                                {{-- slider slid  --}}
-                                <div class="bnslider-slide">
-                                    <div class="bnslider-image-mobile lazyload"
-                                        data-bgset="{{ asset('assets/main_sliders/' . $main_slider->firstMedia?->file_name) }}">
-                                    </div>
 
 
-                                    <div class="bnslider-image lazyload"
-                                        data-bgset="{{ asset('assets/main_sliders/' . $main_slider->firstMedia?->file_name) }}">
-                                    </div>
+                                        <div class="bnslider-image lazyload"
+                                            data-bgset="{{ asset('assets/main_sliders/' . $main_slider->firstMedia?->file_name) }}">
+                                        </div>
 
-                                    @if ($main_slider->showInfo == true)
-                                        <div class="bnslider-text-wrap bnslider-overlay">
-                                            <div class="bnslider-text-content txt-middle txt-center">
-                                                <div class="bnslider-text-content-flex">
-                                                    <div class="bnslider-vert w-s-60 w-ms-100">
-                                                        <div class="bnslider-text order-1 mt-sm bnslider-text--xl text-center heading-font"
-                                                            data-animation="fadeInUp" data-animation-delay="500"
-                                                            data-fontcolor="#fff" data-fontweight="900">
-                                                            {{ $main_slider->title }}
-                                                        </div>
-                                                        <div class="bnslider-text order-2 mt-sm bnslider-text--sm text-center heading-font"
-                                                            data-animation="fadeInUp" data-animation-delay="1000"
-                                                            data-fontcolor="#fff" data-fontweight="900">
-                                                            {!! $main_slider->content !!}
-                                                        </div>
-                                                        <div class="btn-wrap text-center order-3 mt-lg"
-                                                            data-animation="fadeIn" data-animation-delay="2000"
-                                                            style="opacity: 1">
-                                                            <a href="{{ $main_slider->url != null ? url($main_slider->url) : '#' }}"
-                                                                class="btn btn--invert btn--lg"
-                                                                target="{{ $main_slider->target }}">تسوق الان</a>
+                                        @if ($main_slider->showInfo == true)
+                                            <div class="bnslider-text-wrap bnslider-overlay">
+                                                <div class="bnslider-text-content txt-middle txt-center">
+                                                    <div class="bnslider-text-content-flex">
+                                                        <div class="bnslider-vert w-s-60 w-ms-100">
+                                                            <div class="bnslider-text order-1 mt-sm bnslider-text--xl text-center heading-font"
+                                                                data-animation="fadeInUp" data-animation-delay="500"
+                                                                data-fontcolor="#fff" data-fontweight="900">
+                                                                {{ $main_slider->title }}
+                                                            </div>
+                                                            <div class="bnslider-text order-2 mt-sm bnslider-text--sm text-center heading-font"
+                                                                data-animation="fadeInUp" data-animation-delay="1000"
+                                                                data-fontcolor="#fff" data-fontweight="900">
+                                                                {!! $main_slider->content !!}
+                                                            </div>
+                                                            <div class="btn-wrap text-center order-3 mt-lg"
+                                                                data-animation="fadeIn" data-animation-delay="2000"
+                                                                style="opacity: 1">
+                                                                <a href="{{ $main_slider->url != null ? url($main_slider->url) : '#' }}"
+                                                                    class="btn btn--invert btn--lg"
+                                                                    target="{{ $main_slider->target }}">تسوق الان</a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    @endif
+                                        @endif
 
 
-                                </div>
-                            @endif
+                                    </div>
+                                @endif
 
-                        @empty
-                        @endforelse
+                            @empty
+                            @endforelse
 
+
+                        </div>
+
+                        <div class="bnslider-arrows container-fluid">
+                            <div></div>
+                        </div>
+                        <div class="bnslider-dots container-fluid"></div>
 
                     </div>
-
-
-
-
-
-                    <div class="bnslider-arrows container-fluid">
-                        <div></div>
-                    </div>
-                    <div class="bnslider-dots container-fluid"></div>
-
 
 
                 </div>
 
-
             </div>
-
         </div>
-    </div>
+    @endif
+
+
 
     {{-- Advertisor menu --}}
     {{-- <div class="holder mt-0"> --}}
-    <div class="holder mt-3">
-        {{-- <div class="container-fluid px-0"> --}}
-        <div class="page-content px-0">
-            <div class="row bnr-grid no-gutters">
+    @if (count($adv_sliders) > 0)
+        <div class="holder mt-3">
+            {{-- <div class="container-fluid px-0"> --}}
+            <div class="page-content px-0">
+                <div class="row bnr-grid no-gutters">
 
-                @forelse ($adv_sliders as $adv_slider)
-                    <div class="col-12 col-sm-4">
-                        <div class="bnr-wrap d-flex align-items-center h-100 bnr-1586628920521-0">
-                            <div class="bnr custom-caption image-hover-scale image-hover-scale--slow bnr--middle bnr--center"
-                                data-fontratio="5.9">
-                                <div class="bnr-img image-container" style="padding-bottom: 38.933%">
-                                    <img data
-                                        srcset="{{ asset('assets/advertisor_sliders/' . $adv_slider->firstMedia?->file_name) }}"
-                                        class="lazyload fade-up" alt="" />
-                                </div>
+                    @forelse ($adv_sliders as $adv_slider)
+                        <div class="col-12 col-sm-4">
+                            <div class="bnr-wrap d-flex align-items-center h-100 bnr-1586628920521-0">
+                                <div class="bnr custom-caption image-hover-scale image-hover-scale--slow bnr--middle bnr--center"
+                                    data-fontratio="5.9">
+                                    <div class="bnr-img image-container" style="padding-bottom: 38.933%">
+                                        <img data
+                                            srcset="{{ asset('assets/advertisor_sliders/' . $adv_slider->firstMedia?->file_name) }}"
+                                            class="lazyload fade-up" alt="" />
+                                    </div>
 
-                                @if ($adv_slider->showInfo == true)
-                                    <div class="bnr-caption" style="padding: 4% 4%; width: 100%">
-                                        <div class="bnr-text3 mt-0 order-1"
-                                            style="
+                                    @if ($adv_slider->showInfo == true)
+                                        <div class="bnr-caption" style="padding: 4% 4%; width: 100%">
+                                            <div class="bnr-text3 mt-0 order-1"
+                                                style="
                                             font-size: 0.20em;
                                             font-weight: 700;
                                             line-height: 1em;
                                             letter-spacing: 3px;
                                         ">
 
-                                            {{ $adv_slider->published_on->format('Y') }}
-                                        </div>
-                                        <div class="bnr-text3 mt-xs order-2"
-                                            style="
+                                                {{ $adv_slider->published_on->format('Y') }}
+                                            </div>
+                                            <div class="bnr-text3 mt-xs order-2"
+                                                style="
                                                 font-size: 0.4em;
                                                 font-weight: 800;
                                                 line-height: 1em;
                                         ">
-                                            {{ $adv_slider->title }}
-                                        </div>
+                                                {{ $adv_slider->title }}
+                                            </div>
 
-                                        <div class="bnr-text3 mt-xs order-2"
-                                            style="
+                                            <div class="bnr-text3 mt-xs order-2"
+                                                style="
                                                 font-size: 0.2em;
                                                 font-weight: 500;
                                                 line-height: 1em;
                                         ">
-                                            {!! $adv_slider->content !!}
+                                                {!! $adv_slider->content !!}
+                                            </div>
+
                                         </div>
-
-                                    </div>
-                                @endif
+                                    @endif
 
 
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @empty
-                @endforelse
+                    @empty
+                    @endforelse
 
+                </div>
             </div>
         </div>
-    </div>
+    @endif
+
 
     {{-- start alyamina adv --}}
     {{-- <div class="holder holder-mt-medium m-0">
@@ -310,22 +312,24 @@
     <livewire:frontend.home.random-card-component :random_cards="$random_cards" />
 
     {{-- card categories  --}}
-    <div class="holder global_width">
-        <div class="container">
-            <div class="title-wrap text-center">
-                <h2 class="h1-style">اختر البطاقة المناسبة لك</h2>
-            </div>
-            <div class="prd-grid prd-promo-carousel data-to-show-4 js-prd-promo-carousel">
 
-                @forelse ($card_categories as $card_category)
-                    <div class="prd-promo prd-promo--lg prd-has-loader">
-                        <div class="prd-inside">
-                            <div class="prd-img-area">
-                                <a href="{{ route('frontend.card_category', $card_category->slug) }}"
-                                    class="image-hover-scale">
-                                    <img src="{{ asset('assets/card_categories/' . $card_category->firstMedia?->file_name) }}"
-                                        alt="{{ $card_category->name }}" class="js-prd-img" />
-                                    {{-- <div class="prd-big-circle-labels">
+    @if (count($card_categories) > 0)
+        <div class="holder global_width">
+            <div class="container">
+                <div class="title-wrap text-center">
+                    <h2 class="h1-style">اختر البطاقة المناسبة لك</h2>
+                </div>
+                <div class="prd-grid prd-promo-carousel data-to-show-4 js-prd-promo-carousel">
+
+                    @forelse ($card_categories as $card_category)
+                        <div class="prd-promo prd-promo--lg prd-has-loader">
+                            <div class="prd-inside">
+                                <div class="prd-img-area">
+                                    <a href="{{ route('frontend.card_category', $card_category->slug) }}"
+                                        class="image-hover-scale">
+                                        <img src="{{ asset('assets/card_categories/' . $card_category->firstMedia?->file_name) }}"
+                                            alt="{{ $card_category->name }}" class="js-prd-img" />
+                                        {{-- <div class="prd-big-circle-labels">
                                         <div class="label-sale">
                                             <span>-false <span class="sale-text">Sale</span></span>
                                             <div class="countdown-circle">
@@ -333,35 +337,35 @@
                                             </div>
                                         </div>
                                     </div> --}}
-                                </a>
-                            </div>
-                            <div class="prd-info text-center">
-                                <h2 class="prd-title"><a
-                                        href="{{ route('frontend.card_category', $card_category->slug) }}">{{ $card_category->name }}</a>
-                                </h2>
-                                <div class="prd-hover">
-                                    <div class="prd-action">
-                                        <a href="{{ route('frontend.card_category', $card_category->slug) }}"
-                                            class="btn js-prd-addtocart">
-                                            عرض الباقات
-                                        </a>
+                                    </a>
+                                </div>
+                                <div class="prd-info text-center">
+                                    <h2 class="prd-title"><a
+                                            href="{{ route('frontend.card_category', $card_category->slug) }}">{{ $card_category->name }}</a>
+                                    </h2>
+                                    <div class="prd-hover">
+                                        <div class="prd-action">
+                                            <a href="{{ route('frontend.card_category', $card_category->slug) }}"
+                                                class="btn js-prd-addtocart">
+                                                عرض الباقات
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                @empty
-                @endforelse
+                    @empty
+                    @endforelse
 
-
-
-
-
+                </div>
             </div>
         </div>
-    </div>
+    @endif
+
+
 
     {{--  cards news --}}
+
     @if (count($news) > 0)
         <div class="holder holder-mt-medium">
             <div class="container">
@@ -416,44 +420,47 @@
     @endif
 
     {{-- common question --}}
-    <div class="holder holder-subscribe-full mt-0" id="questions" style="background-color: transparent">
-        <div class="container">
-            <div class="title-wrap text-center">
-                <h3 class="h2-style testimonials-carousel-simple-name">الإستفسارات</h3>
-                <h2 class="h1-style">الاسئلة الشائعة</h2>
-            </div>
-            <div class="row p-5">
-                <div class="col-md-12">
-                    <div class="wrapper center-block">
-                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    @if (count($common_questions) > 0)
+        <div class="holder holder-subscribe-full mt-0" id="questions" style="background-color: transparent">
+            <div class="container">
+                <div class="title-wrap text-center">
+                    <h3 class="h2-style testimonials-carousel-simple-name">الإستفسارات</h3>
+                    <h2 class="h1-style">الاسئلة الشائعة</h2>
+                </div>
+                <div class="row p-5">
+                    <div class="col-md-12">
+                        <div class="wrapper center-block">
+                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
-                            @forelse ($common_questions as $question)
-                                <div class="panel panel-default">
-                                    <div class="panel-heading" role="tab" id="{{ $question->id }}">
-                                        <h4 class="panel-title">
-                                            <a class="collapsed" role="button" data-toggle="collapse"
-                                                data-parent="#accordion" href="#collapse{{ $question->id }}"
-                                                aria-expanded="false" aria-controls="collapse{{ $question->id }}">
-                                                {{ $question->title }}
-                                            </a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapse{{ $question->id }}" class="panel-collapse collapse"
-                                        role="tabpanel" aria-labelledby="{{ $question->id }}">
-                                        <div class="panel-body">
-                                            {!! $question->content !!}
+                                @forelse ($common_questions as $question)
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading" role="tab" id="{{ $question->id }}">
+                                            <h4 class="panel-title">
+                                                <a class="collapsed" role="button" data-toggle="collapse"
+                                                    data-parent="#accordion" href="#collapse{{ $question->id }}"
+                                                    aria-expanded="false" aria-controls="collapse{{ $question->id }}">
+                                                    {{ $question->title }}
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapse{{ $question->id }}" class="panel-collapse collapse"
+                                            role="tabpanel" aria-labelledby="{{ $question->id }}">
+                                            <div class="panel-body">
+                                                {!! $question->content !!}
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            @empty
-                            @endforelse
+                                @empty
+                                @endforelse
 
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    @endif
+
 
     {{-- get discount by create account --}}
     {{-- <div class="holder holder-subscribe-full mt-0" style="background-color: transparent">
