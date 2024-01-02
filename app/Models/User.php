@@ -57,7 +57,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     public function status(){
-        return $this->status ? 'Active' : "Inactive";
+        return $this->status ? 'مفعل' : "مقفل";
     }
 
     public function addresses():HasMany {

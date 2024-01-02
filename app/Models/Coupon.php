@@ -17,8 +17,8 @@ class Coupon extends Model
     protected $searchable = [
         'columns' => [
             
-            'product_coupons.code' => 10,
-            'product_coupons.description' => 10,
+            'coupons.code' => 10,
+            'coupons.description' => 10,
         ]
     ];
 

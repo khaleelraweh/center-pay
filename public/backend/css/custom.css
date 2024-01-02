@@ -73,3 +73,18 @@
 .require.red {
     color: red;
 }
+
+/* for image show  */
+.file-preview{
+    overflow: hidden;
+}
+
+/* for pignation setting */
+
+@media (max-width:560px
+    /* write what you need, for me it's 560px */
+) {
+    ul.pagination li:not(.show-mobile) {
+        display: none;
+    }
+}

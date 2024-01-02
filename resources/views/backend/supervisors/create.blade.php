@@ -14,17 +14,29 @@
     {{-- main holder page  --}}
     <div class="card shadow mb-4">
 
-        {{-- menu part  --}}
+        {{-- breadcrumb part  --}}
         <div class="card-header py-3 d-flex justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">إنشاء حساب مشرف جديد</h6>
-            <div class="ml-auto">
-                <a href="{{ route('admin.supervisors.index') }}" class="btn btn-primary">
-                    <span class="icon text-white-50">
-                        <i class="fa fa-home"></i>
-                    </span>
-                    <span class="text">إدارة المشرفين</span>
-                </a>
+            <div class="card-naving">
+                <h3 class="font-weight-bold text-primary">
+                    <i class="fa fa-plus-square"></i>
+                    إضفافة حساب جديد
+                </h3>
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="{{ route('admin.index') }}">
+                            الرئيسية
+                        </a>
+                        <i class="fa fa-solid fa-chevron-left chevron"></i>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.supervisors.index') }}">
+                            إدارة حسابات المشرفين
+                        </a>
+                    </li>
+                </ul>
             </div>
+
+
         </div>
 
 
@@ -51,11 +63,6 @@
                     <li class="nav-item" role="presentation">
                         <a class="nav-link active" id="content-tab" data-toggle="tab" href="#content" role="tab"
                             aria-controls="content" aria-selected="true">بيانات الشريحة</a>
-                    </li>
-
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link" id="seo-tab" data-toggle="tab" href="#seo" role="tab"
-                            aria-controls="seo" aria-selected="false">بيانات SEO</a>
                     </li>
 
                 </ul>
@@ -191,7 +198,7 @@
                             <div class="col-sm-12 col-md-4">
                                 <div class="row pt-3">
                                     <div class="col-12">
-                                        <label for="user_image">Use Image</label>
+                                        <label for="user_image">صورة الحساب</label>
                                         <br>
                                         <div class="file-loading">
                                             <input type="file" name="user_image" id="supervisor-image"
@@ -206,11 +213,6 @@
 
                             </div>
                         </div>
-                    </div>
-
-                    {{-- seo tab  --}}
-                    <div class="tab-pane fade" id="seo" role="tabpanel" aria-labelledby="seo-tab">
-                        <div class="row pt-3">Later work...</div>
                     </div>
 
                     <div class="row pt-3">
