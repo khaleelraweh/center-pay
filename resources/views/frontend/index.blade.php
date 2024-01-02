@@ -143,7 +143,7 @@
     @if (count($adv_sliders) > 0)
         <div class="holder mt-3">
             {{-- <div class="container-fluid px-0"> --}}
-            <div class="page-content px-0" style="min-height: auto">
+            <div class="page-content px-0" style="min-height: 100px !important;">
                 {{-- <div class="row bnr-grid no-gutters"> --}}
                 {{-- <div class="prd-grid prd-promo-carousel  data-to-show-3   js-prd-promo-carousel"> --}}
                 <div class="prd-grid prd-promo-carousel  js-prd-promo-carousel  data-to-show-3 data-to-show-md-3 data-to-show-sm-3 data-to-show-xs-2"
