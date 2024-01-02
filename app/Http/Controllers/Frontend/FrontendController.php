@@ -21,11 +21,6 @@ class FrontendController extends Controller
     public function index(){
         // $main_slider = Slider::whereStatus(1)->whereNull('parent_id')->get();
         
-        
-
-       
-
-
        $main_sliders = Slider::with('firstMedia')
             ->MainSliders()
             // ->inRandomOrder()
@@ -132,7 +127,7 @@ class FrontendController extends Controller
                             ->whereStatus(true)
         ->first();
 
-        //notes card_products = cards
+        
         
         // get all cards related to category chosen
         $cards = Product::with('firstMedia' , 'photos');
@@ -145,15 +140,20 @@ class FrontendController extends Controller
 
 
         //get all card categories to show them of more choice 
-        $card_categories = ProductCategory::with('firstMedia')
+        $more_categories = ProductCategory::with('firstMedia')
             ->Active()
             ->RootCategory()
             ->CardCategory()
             ->HasProducts()
+            ->take(
+                SiteSetting::whereNotNull('value')
+                    ->pluck('value','name')
+                    ->toArray()['site_more_categories']
+            )
             ->where('slug' , '!=',$slug)
         ->get();
 
-        return view('frontend.card_category',compact('card_category' , 'cards' , 'card_categories'));
+        return view('frontend.card_category',compact('card_category' , 'cards' , 'more_categories'));
     }
 
     public function cart(){

@@ -58,21 +58,23 @@
                     <livewire:frontend.cart.destroy-cart-items-component />
 
                     {{-- wanted more section  --}}
-                    <div class="d-none d-lg-block">
-                        <div class="mt-4"></div>
-                        <div class="holder">
-                            <div class="container">
-                                <div class="title-wrap text-center">
-                                    <h2 class="h1-style">قد يعجبك ايضا</h2>
-                                    <div class="carousel-arrows carousel-arrows--center"></div>
+                    @if (count($more_cards) > 0)
+                        <div class="d-none d-lg-block">
+                            <div class="mt-4"></div>
+                            <div class="holder">
+                                <div class="container">
+                                    <div class="title-wrap text-center">
+                                        <h2 class="h1-style">قد يعجبك ايضا</h2>
+                                        <div class="carousel-arrows carousel-arrows--center"></div>
+                                    </div>
+                                    {{-- may want more   --}}
+                                    <livewire:frontend.cart.more-cards-component :more_cards="$more_cards" />
+
                                 </div>
-                                {{-- may want more   --}}
-                                <livewire:frontend.cart.more-cards-component :more_cards="$more_cards" />
-
-
                             </div>
                         </div>
-                    </div>
+                    @endif
+
 
                 </div>
 

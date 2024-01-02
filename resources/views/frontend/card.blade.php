@@ -222,7 +222,8 @@
                                     <p>رمز sku : <span data-sku="">{{ $card->sku }}</span></p>
                                     <p>المزود : <span>سنتر باي</span></p>
                                     <p>الكمية :
-                                        <span>{{ $card->quantity >= 0 ? $card->quantity : 'الكمية غير محدودة' }}</span></p>
+                                        <span>{{ $card->quantity >= 0 ? $card->quantity : 'الكمية غير محدودة' }}</span>
+                                    </p>
                                 </div>
                             </div>
 
@@ -497,7 +498,10 @@
 
 
         {{-- related cards with livewire note: $related_cards came from FrontendController#card --}}
-        <livewire:frontend.card.related-cards-component :related_cards="$related_cards" />
+        @if (count($related_cards) > 0)
+            <livewire:frontend.card.related-cards-component :related_cards="$related_cards" />
+        @endif
+
     </div>
 
     <div class="holder">
