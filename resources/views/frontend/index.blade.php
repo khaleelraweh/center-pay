@@ -143,72 +143,71 @@
     @if (count($adv_sliders) > 0)
         <div class="holder mt-3">
             {{-- <div class="container-fluid px-0"> --}}
-            <div class="page-content px-0" style="min-height: 100.562px !important;" data-start-height="10"
-                data-start-mheight="10">
-                {{-- <div class="row bnr-grid no-gutters"> --}}
-                {{-- <div class="prd-grid prd-promo-carousel  data-to-show-3   js-prd-promo-carousel"> --}}
 
-                <div class="prd-grid no-gutters prd-promo-carousel  js-prd-promo-carousel  data-to-show-3 data-to-show-md-3 data-to-show-sm-3 data-to-show-xs-2"
-                    data-slick='{"slidesToShow": 3, "slidesToScroll": 2, "responsive": [{"breakpoint": 992,"settings": {"slidesToShow": 3, "slidesToScroll": 1}},{"breakpoint": 768,"settings": {"slidesToShow": 2, "slidesToScroll": 1}},{"breakpoint": 480,"settings": {"slidesToShow": 2, "slidesToScroll": 1}}]}'>
+            {{-- <div class="row bnr-grid no-gutters"> --}}
+            {{-- <div class="prd-grid prd-promo-carousel  data-to-show-3   js-prd-promo-carousel"> --}}
 
-                    @forelse ($adv_sliders as $adv_slider)
-                        {{-- <div class="col-12 col-sm-4"> --}}
-                        {{-- <div class="prod-promo prd-promo--lg prd-has-loader "> --}}
-                        <div class="prd prd--style2 prd-labels--max prd-labels-shadow " data-start-height="10"
-                            data-start-mheight="10">
+            <div class="prd-grid no-gutters prd-promo-carousel  js-prd-promo-carousel  data-to-show-3 data-to-show-md-3 data-to-show-sm-3 data-to-show-xs-2"
+                data-slick='{"slidesToShow": 3, "slidesToScroll": 2, "responsive": [{"breakpoint": 992,"settings": {"slidesToShow": 3, "slidesToScroll": 1}},{"breakpoint": 768,"settings": {"slidesToShow": 2, "slidesToScroll": 1}},{"breakpoint": 480,"settings": {"slidesToShow": 2, "slidesToScroll": 1}}]}'>
 
-                            {{-- <div class="bnr-wrap d-flex align-items-center h-100 bnr-1586628920521-0 "> --}}
-                            <div class="bnr-wrap d-flex align-items-center h-100 bnr-1586628920521-0 ">
-                                <div class="bnr custom-caption  image-hover-scale image-hover-scale--slow bnr--middle bnr--center my_adv_custom_style"
-                                    data-fontratio="5.9">
-                                    <div class="bnr-img image-container" style="padding-bottom: 38.933%">
-                                        <img data
-                                            srcset="{{ asset('assets/advertisor_sliders/' . $adv_slider->firstMedia?->file_name) }}"
-                                            class="lazyload fade-up" alt="" />
-                                    </div>
+                @forelse ($adv_sliders as $adv_slider)
+                    {{-- <div class="col-12 col-sm-4"> --}}
+                    {{-- <div class="prod-promo prd-promo--lg prd-has-loader "> --}}
+                    <div class="prd prd--style2 prd-labels--max prd-labels-shadow " data-start-height="10"
+                        data-start-mheight="10">
 
-                                    @if ($adv_slider->showInfo == true)
-                                        <div class="bnr-caption" style="padding: 4% 4%; width: 100%">
-                                            <div class="bnr-text3 mt-0 order-1"
-                                                style="
+                        {{-- <div class="bnr-wrap d-flex align-items-center h-100 bnr-1586628920521-0 "> --}}
+                        <div class="bnr-wrap d-flex align-items-center h-100 bnr-1586628920521-0 ">
+                            <div class="bnr custom-caption  image-hover-scale image-hover-scale--slow bnr--middle bnr--center my_adv_custom_style"
+                                data-fontratio="5.9">
+                                <div class="bnr-img image-container" style="padding-bottom: 38.933%">
+                                    <img data
+                                        srcset="{{ asset('assets/advertisor_sliders/' . $adv_slider->firstMedia?->file_name) }}"
+                                        class="lazyload fade-up" alt="" />
+                                </div>
+
+                                @if ($adv_slider->showInfo == true)
+                                    <div class="bnr-caption" style="padding: 4% 4%; width: 100%">
+                                        <div class="bnr-text3 mt-0 order-1"
+                                            style="
                                             font-size: 0.20em;
                                             font-weight: 700;
                                             line-height: 1em;
                                             letter-spacing: 3px;
                                         ">
 
-                                                {{ $adv_slider->published_on->format('Y') }}
-                                            </div>
-                                            <div class="bnr-text3 mt-xs order-2"
-                                                style="
+                                            {{ $adv_slider->published_on->format('Y') }}
+                                        </div>
+                                        <div class="bnr-text3 mt-xs order-2"
+                                            style="
                                                 font-size: 0.4em;
                                                 font-weight: 800;
                                                 line-height: 1em;
                                         ">
-                                                {{ $adv_slider->title }}
-                                            </div>
+                                            {{ $adv_slider->title }}
+                                        </div>
 
-                                            <div class="bnr-text3 mt-xs order-2"
-                                                style="
+                                        <div class="bnr-text3 mt-xs order-2"
+                                            style="
                                                 font-size: 0.2em;
                                                 font-weight: 500;
                                                 line-height: 1em;
                                         ">
-                                                {!! $adv_slider->content !!}
-                                            </div>
-
+                                            {!! $adv_slider->content !!}
                                         </div>
-                                    @endif
+
+                                    </div>
+                                @endif
 
 
-                                </div>
                             </div>
                         </div>
-                    @empty
-                    @endforelse
-                </div>
-
+                    </div>
+                @empty
+                @endforelse
             </div>
+
+
         </div>
     @endif
 
