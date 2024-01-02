@@ -252,3 +252,10 @@ a.image-hover-scale{
 ul.breadcrumb li .chevron {
   font-size: 12px;
 }
+
+/* my adv custom styline  */
+
+.my_adv_custom_style{
+  border-radius: 22px;
+
+}
