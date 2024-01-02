@@ -147,7 +147,7 @@
                 {{-- <div class="row bnr-grid no-gutters"> --}}
                 {{-- <div class="prd-grid prd-promo-carousel  data-to-show-3   js-prd-promo-carousel"> --}}
 
-                <div class=" bnr-grid no-gutters prd-promo-carousel  js-prd-promo-carousel  data-to-show-3 data-to-show-md-3 data-to-show-sm-3 data-to-show-xs-2"
+                <div class="prd-grid no-gutters prd-promo-carousel  js-prd-promo-carousel  data-to-show-3 data-to-show-md-3 data-to-show-sm-3 data-to-show-xs-2"
                     data-slick='{"slidesToShow": 3, "slidesToScroll": 2, "responsive": [{"breakpoint": 992,"settings": {"slidesToShow": 3, "slidesToScroll": 1}},{"breakpoint": 768,"settings": {"slidesToShow": 2, "slidesToScroll": 1}},{"breakpoint": 480,"settings": {"slidesToShow": 2, "slidesToScroll": 1}}]}'>
 
                     @forelse ($adv_sliders as $adv_slider)
@@ -156,7 +156,7 @@
                         <div class="prd prd--style2 prd-labels--max prd-labels-shadow ">
 
                             {{-- <div class="bnr-wrap d-flex align-items-center h-100 bnr-1586628920521-0 "> --}}
-                            <div class="bnr-wrap d-flex align-items-center h-100 bnr-1586628920521-0 ">
+                            <div class="bnr-wrap d-flex  h-100 bnr-1586628920521-0 ">
                                 <div class="bnr custom-caption  image-hover-scale image-hover-scale--slow bnr--middle bnr--center my_adv_custom_style"
                                     data-fontratio="5.9">
                                     <div class="bnr-img image-container" style="padding-bottom: 38.933%">
