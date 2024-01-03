@@ -33,7 +33,7 @@
                     @empty
                         <tr>
                             <td colspan="5">
-                                <p class="text-center">No orders found.</p>
+                                <p class="text-center">لا يوجد طلبات الى الان.</p>
                             </td>
                         </tr>
                     @endforelse
@@ -47,11 +47,11 @@
                     <thead class="bg-light">
                         <tr>
                             <th class="border-0" scope="col"><strong
-                                    class="text-small text-uppercase">Product</strong></th>
+                                    class="text-small text-uppercase">الباقة</strong></th>
                             <th class="border-0" scope="col"><strong class="text-small text-uppercase">Price</strong>
                             </th>
                             <th class="border-0" scope="col"><strong
-                                    class="text-small text-uppercase">Quantity</strong></th>
+                                    class="text-small text-uppercase">الكمية</strong></th>
                             <th class="border-0" scope="col"><strong class="text-small text-uppercase">Total</strong>
                             </th>
                         </tr>
@@ -71,23 +71,23 @@
                             @endforeach
 
                             <tr>
-                                <td colspan="3" style="text-align: right"><strong>Subtotal</strong> </td>
+                                <td colspan="3" style="text-align: right"><strong>المجموع</strong> </td>
                                 <td>{{ $order->currency() . ' ' . number_format($order_show->subtotal, 2) }}</td>
                             </tr>
                             @if (!is_null($order->discount_code))
                                 <tr>
-                                    <td colspan="3" style="text-align: right"><strong>Discount
+                                    <td colspan="3" style="text-align: right"><strong>تخفيض
                                             ({{ $order->discount_code }})</strong> </td>
                                     <td>{{ $order->currency() . ' ' . number_format($order_show->discount, 2) }}
                                     </td>
                                 </tr>
                             @endif
                             <tr>
-                                <td colspan="3" style="text-align: right"><strong>Tax</strong> </td>
+                                <td colspan="3" style="text-align: right"><strong>ضريبة</strong> </td>
                                 <td>{{ $order->currency() . ' ' . number_format($order_show->tax, 2) }}</td>
                             </tr>
                             <tr>
-                                <td colspan="3" style="text-align: right"><strong>Amount</strong> </td>
+                                <td colspan="3" style="text-align: right"><strong>المجموع الكلي</strong> </td>
                                 <td>{{ $order->currency() . ' ' . number_format($order_show->total, 2) }}</td>
                             </tr>
                         @endif
@@ -97,15 +97,17 @@
             </div>
 
             <!-- Transactions Table  -->
-            <h2 class="h5 text-uppercase">Transactions</h2>
+            <h2 class="h5 text-uppercase">العمليات</h2>
 
             <div class="table-responsive mb-4">
                 <table class="table">
                     <thead class="bg-light">
                         <tr>
                             <th class="border-0" scope="col"><strong
-                                    class="text-small text-uppercase">Transaction</strong></th>
-                            <th class="border-0" scope="col"><strong class="text-small text-uppercase">Date</strong>
+                                    class="text-small text-uppercase">الحركة</strong>
+                            </th>
+                            <th class="border-0" scope="col"><strong
+                                    class="text-small text-uppercase">التاريخ</strong>
                             </th>
                             {{-- <th class="border-0" scope="col"><strong class="text-small text-uppercase">Days</strong></th> --}}
                             <th></th>
@@ -127,8 +129,8 @@
                                             <button type="button"
                                                 wire:click="requestReturnOrder('{{ $order->id }}')"
                                                 class="btn btn-link text-right">
-                                                you can return order in
-                                                {{ 5 - $transaction->created_at->diffInDays() }} days
+                                                يمكنك استعادة الطلب خلال
+                                                {{ 5 - $transaction->created_at->diffInDays() }} ايام
                                             </button>
                                         @endif
                                     </td>
