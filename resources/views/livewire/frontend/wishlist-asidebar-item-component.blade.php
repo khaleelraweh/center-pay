@@ -2,18 +2,18 @@
     <div class="minicart-prd row">
         {{-- image part  --}}
         <div class="minicart-prd-image image-hover-scale-circle col">
-            <a href="{{ route('frontend.card', $cartItem->model->slug) }}"><img class="lazyload fade-up"
+            <a href="{{ route('frontend.card', $cartItem->model?->slug) }}"><img class="lazyload fade-up"
                     src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
                     data-src="{{ asset('assets/cards/' . $cartItem->model?->firstMedia->file_name) }}"
-                    alt="{{ $cartItem->model->name }}" /></a>
+                    alt="{{ $cartItem->model?->name }}" /></a>
         </div>
         {{-- content part --}}
         <div class="minicart-prd-info col">
             <div class="minicart-prd-tag"><a
-                    href="{{ route('frontend.card_category', $cartItem->model->category->slug) }}">{{ $cartItem->model->category->name }}</a>
+                    href="{{ route('frontend.card_category', $cartItem->model?->category?->slug) }}">{{ $cartItem->model?->category?->name }}</a>
             </div>
             <h2 class="minicart-prd-name">
-                <a href="{{ route('frontend.card', $cartItem->model->slug) }}">{{ $cartItem->model->name }}
+                <a href="{{ route('frontend.card', $cartItem->model?->slug) }}">{{ $cartItem->model?->name }}
                 </a>
             </h2>
             <div class="minicart-prd-qty">
@@ -41,7 +41,7 @@
             </div>
             <div class="minicart-prd-price prd-price">
                 <div class="price-old">$200.00</div>
-                <div class="price-new">{{ $cartItem->model->price * $cartItem->qty }}</div>
+                <div class="price-new">{{ $cartItem->model?->price * $cartItem?->qty }}</div>
             </div>
         </div>
         {{-- trash part --}}
