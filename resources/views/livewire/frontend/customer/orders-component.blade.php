@@ -48,11 +48,12 @@
                         <tr>
                             <th class="border-0" scope="col"><strong
                                     class="text-small text-uppercase">الباقة</strong></th>
-                            <th class="border-0" scope="col"><strong class="text-small text-uppercase">Price</strong>
+                            <th class="border-0" scope="col"><strong class="text-small text-uppercase">السعر</strong>
                             </th>
                             <th class="border-0" scope="col"><strong
                                     class="text-small text-uppercase">الكمية</strong></th>
-                            <th class="border-0" scope="col"><strong class="text-small text-uppercase">Total</strong>
+                            <th class="border-0" scope="col"><strong
+                                    class="text-small text-uppercase">المجموع</strong>
                             </th>
                         </tr>
                     </thead>
