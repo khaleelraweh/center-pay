@@ -3,48 +3,44 @@
 
 @section('content')
 
-    <!-- start page title -->
     <div class="row">
+
         <div class="col-12">
-            <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                <h4 class="mb-sm-0">تصنيف طرق الدفع</h4>
 
-                <div class="page-title-right">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('admin.payment_categories.index') }}">التصنيفات</a>
-                            </li>
-                            <li class="breadcrumb-item active" aria-current="page">عرض</li>
-                        </ol>
-                    </nav>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <!-- end page title -->
-
-
-
-    {{-- save is  --}}
-    <div class="row">
-        <div class="col-12">
             <div class="card">
-                {{-- menu part  --}}
+
+                {{-- breadcrumb part  --}}
                 <div class="card-header py-3 d-flex justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">تصنيف طرق الدفع</h6>
+                    <div class="card-naving">
+                        <h3 class="font-weight-bold text-primary">
+                            <i class="fa fa-folder"></i>
+                            تصنيف طرق الدقع
+                        </h3>
+                        <ul class="breadcrumb">
+                            <li>
+                                <a href="{{ route('admin.index') }}">
+                                    الرئيسية
+                                </a>
+                                <i class="fa fa-solid fa-chevron-left chevron"></i>
+                            </li>
+                            <li>
+                                إدارة تصنيفات طرق الدفع
+                            </li>
+                        </ul>
+                    </div>
+
                     <div class="ml-auto">
                         @ability('admin', 'create_product_categories')
                             <a href="{{ route('admin.payment_categories.create') }}" class="btn btn-primary">
                                 <span class="icon text-white-50">
-                                    <i class="fa fa-plus"></i>
+                                    <i class="fa fa-plus-square"></i>
                                 </span>
-                                <span class="text">إضافة تصنيف جديد</span>
+                                <span class="text">إضافة محتوى جديد</span>
                             </a>
                         @endability
                     </div>
-                </div>
 
+                </div>
 
                 <div class="card-body">
 
@@ -59,9 +55,9 @@
                                 <tr>
                                     <th>اسم الصنف</th>
                                     <th>الكاتب</th>
-                                    <th>Status</th>
-                                    <th>تاريخ النشر</th>
-                                    <th class="text-center" style="width:30px;">Actions</th>
+                                    <th>الحالة</th>
+                                    <th class="d-none d-sm-table-cell">تاريخ النشر</th>
+                                    <th class="text-center" style="width:30px;">الإعدادات</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -75,7 +71,7 @@
                                         <td><span
                                                 class="btn btn-round  rounded-pill btn-success btn-xs">{{ $category->status() }}</span>
                                         </td>
-                                        <td>{{ $category->published_on }}</td>
+                                        <td class="d-none d-sm-table-cell">{{ $category->published_on }}</td>
                                         <td>
                                             <div class="btn-group btn-group-sm">
                                                 <a href="{{ route('admin.payment_categories.edit', $category->id) }}"
@@ -119,8 +115,5 @@
             </div>
         </div> <!-- end col -->
     </div>
-    <!-- end row -->
-
-
 
 @endsection

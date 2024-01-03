@@ -24,11 +24,11 @@ class PaymentMethod extends Model
     ]; 
 
     public function status():string{
-        return $this->status ? 'Active' : 'Inactive';
+        return $this->status ? 'مفعل' : 'غير مفعل';
     }
 
     public function sandbox():string{
-        return $this->sandbox ? 'Sandbox' : 'Live';
+        return $this->sandbox ? 'تجريبي' : 'حقيقي';
     }
 
     // one product may have more than one photo

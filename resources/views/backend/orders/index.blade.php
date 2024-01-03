@@ -2,9 +2,28 @@
 @section('content')
     <div class="card shadow mb-4">
 
-        {{-- menu part  --}}
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Orders</h6>
+        {{-- breadcrumb part  --}}
+        <div class="card-header py-3 d-flex justify-content-between">
+            <div class="card-naving">
+                <h3 class="font-weight-bold text-primary">
+                    <i class="fa fa-folder"></i>
+                    الطلبات
+                </h3>
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="{{ route('admin.index') }}">
+                            الرئيسية
+                        </a>
+                        <i class="fa fa-solid fa-chevron-left chevron"></i>
+                    </li>
+                    <li>
+                        إدارة الطلبات
+                    </li>
+                </ul>
+            </div>
+
+
+
         </div>
 
         {{-- filter form part  --}}
@@ -16,24 +35,24 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>رقم المرجع</th>
+                        <th class="d-none d-sm-table-cell">رقم المرجع</th>
                         <th>إسم العميل</th>
                         <th>طريقة الدفع</th>
                         <th>الكمية</th>
                         <th>الحالة</th>
-                        <th>تاريخ الانشاء</th>
-                        <th class="text-center" style="width:30px;">العمليات</th>
+                        <th class="d-none d-sm-table-cell">تاريخ الانشاء</th>
+                        <th class="text-center" style="width:30px;">الإعدادات</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($orders as $order)
                         <tr>
-                            <td>{{ $order->ref_id }}</td>
+                            <td class="d-none d-sm-table-cell">{{ $order->ref_id }}</td>
                             <td>{{ $order->user->full_name }}</td>
                             <td>{{ $order->payment_method?->name }}</td>
                             <td>{{ $order->currency() . $order->total }}</td>
                             <td>{!! $order->statusWithLabel() !!}</td>
-                            <td>{{ $order->created_at->format('Y-m-d h:i a') }}</td>
+                            <td class="d-none d-sm-table-cell">{{ $order->created_at->format('Y-m-d h:i a') }}</td>
                             <td>
                                 <div class="btn-group btn-group-sm">
                                     <a href="{{ route('admin.orders.show', $order->id) }}" class="btn btn-primary">

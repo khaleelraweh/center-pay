@@ -1,49 +1,33 @@
 @extends('layouts.admin')
 
-@section('style')
-    {{-- pickadate calling css --}}
-    <link rel="stylesheet" href="{{ asset('backend/vendor/datepicker/themes/classic.css') }}">
-    <link rel="stylesheet" href="{{ asset('backend/vendor/datepicker/themes/classic.date.css') }}">
-
-
-    <style>
-        .picker__select--month,
-        .picker__select--year {
-            padding: 0 !important;
-        }
-
-        .picker__list {
-            list-style-type: none;
-        }
-
-        .x-title {
-            border-bottom: 2px solid #E6E9ED;
-            padding: 1px 5px 6px;
-            margin-bottom: 10px;
-        }
-
-        .require.red {
-            color: red;
-        }
-    </style>
-@endsection
 
 @section('content')
     {{-- main holder page  --}}
     <div class="card shadow mb-4">
 
-
-        {{-- menu part  --}}
+        {{-- breadcrumb part  --}}
         <div class="card-header py-3 d-flex justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">تعديل محتوي {{ $paymentCategory->name }}</h6>
-            <div class="ml-auto">
-                <a href="{{ route('admin.payment_categories.index') }}" class="btn btn-primary">
-                    <span class="icon text-white-50">
-                        <i class="fa fa-home"></i>
-                    </span>
-                    <span class="text">الاصناف</span>
-                </a>
+
+            <div class="card-naving">
+                <h3 class="font-weight-bold text-primary">
+                    <i class="fa fa-edit"></i>
+                    تعديل بيانات التصنيف
+                </h3>
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="{{ route('admin.index') }}">
+                            الرئيسية
+                        </a>
+                        <i class="fa fa-solid fa-chevron-left chevron"></i>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.payment_categories.index') }}">
+                            إدارة تصنيفات طرق الدفع
+                        </a>
+                    </li>
+                </ul>
             </div>
+
         </div>
 
         {{-- body part  --}}
@@ -64,11 +48,6 @@
                         <a class="nav-link" id="publish-tab" data-toggle="tab" href="#publish" role="tab"
                             aria-controls="publish" aria-selected="false">بيانات النشر</a>
                     </li>
-
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link" id="other-tab" data-toggle="tab" href="#other" role="tab"
-                            aria-controls="other" aria-selected="false">اخري</a>
-                    </li>
                 </ul>
 
                 {{-- contents of links tabs  --}}
@@ -82,32 +61,15 @@
                             {{-- البيانات الاساسية --}}
                             <div class="col-md-7 col-sm-12 ">
 
-                                {{-- تصنيفات المنتجات --}}
-                                {{-- <div class="row pt-4">
-                                    <label for="parent_id" class="control-label col-md-3 col-sm-12 ">
-                                        تصنيف المنتجات
-                                        <span class="require red">*</span>
-                                    </label>
-                                    <div class="col-md-9 col-sm-12">
-                                        <select name="parent_id" class="form-control">
-                                            <option value="">التصنيف الرئيسي_</option>
-                                            @forelse ($main_categories as $main_category)
-                                                <option value="{{ $main_category->id }}"
-                                                    {{ old('parent_id', $paymentCategory->parent_id) == $main_category->id ? 'selected' : null }}>
-                                                    {{ $main_category->name }}</option>
-                                            @empty
-                                            @endforelse
-                                        </select>
-                                    </div>
-                                </div> --}}
-
                                 {{-- عنوان التصنيف  --}}
-                                <div class="row pt-4">
-                                    <label for="name_ar" class="control-label col-md-3 col-sm-12 ">
-                                        العنوان ar
-                                        <span class="require red">*</span>
-                                    </label>
-                                    <div class="col-md-9 col-sm-12">
+                                <div class="row">
+
+                                    <div class="col-sm-12 pt-4">
+                                        <label for="name_ar" class="control-label col-md-3 col-sm-12 ">
+                                            العنوان ar
+                                            <span class="require red">*</span>
+                                        </label>
+
                                         <div class="form-group">
                                             <input type="text" id="name_ar" name="name_ar"
                                                 value="{{ old('name_ar', $paymentCategory->name_ar) }}" class="form-control"
@@ -118,13 +80,15 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 {{-- عنوان التصنيف  --}}
-                                <div class="row pt-4">
-                                    <label for="name_en" class="control-label col-md-3 col-sm-12 ">
-                                        العنوان en
-                                        <span class="require red">*</span>
-                                    </label>
-                                    <div class="col-md-9 col-sm-12">
+                                <div class="row">
+
+                                    <div class="col-sm-12 pt-4">
+                                        <label for="name_en" class="control-label col-md-3 col-sm-12 ">
+                                            العنوان en
+                                            <span class="require red">*</span>
+                                        </label>
                                         <div class="form-group">
                                             <input type="text" id="name_en" name="name_en"
                                                 value="{{ old('name_en', $paymentCategory->name_en) }}" class="form-control"
@@ -137,12 +101,12 @@
                                 </div>
 
                                 {{-- الوصف  --}}
-                                <div class="row pt-4">
-                                    <label for="description_ar" class="control-label col-md-3 col-sm-12 ">
-                                        <span>التفاصيل</span>
-                                        <span class="require red">*</span>
-                                    </label>
-                                    <div class="col-md-9 col-sm-12">
+                                <div class="row">
+                                    <div class="col-sm-12 pt-4">
+                                        <label for="description_ar" class="control-label col-md-3 col-sm-12 ">
+                                            <span>التفاصيل</span>
+                                            <span class="require red">*</span>
+                                        </label>
                                         <div class="form-group">
                                             <textarea name="description_ar" rows="3" class="form-control summernote">
                                                 {!! old('description_ar', $paymentCategory->description_ar) !!}
@@ -154,12 +118,13 @@
                                     </div>
                                 </div>
                                 {{-- الوصف  --}}
-                                <div class="row pt-4">
-                                    <label for="description_en" class="control-label col-md-3 col-sm-12 ">
-                                        <span>التفاصيل</span>
-                                        <span class="require red">*</span>
-                                    </label>
-                                    <div class="col-md-9 col-sm-12">
+                                <div class="row">
+                                    <div class="col-sm-12 pt-4">
+                                        <label for="description_en" class="control-label col-md-3 col-sm-12 ">
+                                            <span>التفاصيل</span>
+                                            <span class="require red">*</span>
+                                        </label>
+
                                         <div class="form-group">
                                             <textarea name="description_en" rows="3" class="form-control summernote">
                                                 {!! old('description_en', $paymentCategory->description_en) !!}
@@ -175,14 +140,16 @@
 
                             {{-- مرفق الصورة --}}
                             <div class="col-md-5 col-sm-12 ">
-
                                 {{-- الصورة  --}}
-                                <div class="row pt-4">
-                                    <label for="images" class="control-label col-md-3 col-sm-12 ">
-                                        <span>صورة</span>
-                                        <span class="require red">*</span>
-                                    </label>
-                                    <div class="col-md-9 col-sm-12">
+                                <div class="row">
+
+                                    <div class="col-sm-12 pt-4">
+
+                                        <label for="images" class="control-label col-md-3 col-sm-12 ">
+                                            <span>صورة</span>
+                                            <span class="require red">*</span>
+                                        </label>
+
                                         <div class="file-loading">
                                             <input type="file" name="images[]" id="product_images"
                                                 class="file-input-overview" multiple="multiple">
@@ -203,10 +170,8 @@
                     {{-- تاب بيانات النشر --}}
                     <div class="tab-pane fade" id="publish" role="tabpanel" aria-labelledby="publish-tab">
 
-
-
                         <div class="row">
-                            <div class="col-sm-12 col-md-6 pt-4">
+                            <div class="col-sm-12 pt-4">
                                 <div class="form-group">
                                     <label for="published_on">تاريخ النشر</label>
                                     <input type="text" id="published_on" name="published_on"
@@ -218,7 +183,11 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-12 col-md-6 pt-4">
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-sm-12 pt-4">
                                 <div class="form-group">
                                     <label for="published_on_time">وقت النشر</label>
                                     <input type="text" id="published_on_time" name="published_on_time"
@@ -256,15 +225,6 @@
                             </div>
                         </div>
 
-
-
-
-
-                    </div>
-
-                    {{-- تاب لاي شي جديد --}}
-                    <div class="tab-pane fade" id="other" role="tabpanel" aria-labelledby="other-tab">
-                        any think you want
                     </div>
 
                 </div>
@@ -272,8 +232,7 @@
 
                 {{-- submit part --}}
                 <div class="row">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-11">
+                    <div class="col-md-12">
                         <div class="form-group pt-3 mx-3">
                             <button type="submit" name="submit" class="btn btn-primary">تعديل البيانات</button>
                         </div>

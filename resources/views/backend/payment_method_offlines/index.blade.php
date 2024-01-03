@@ -3,19 +3,37 @@
 
     <div class="card shadow mb-4">
 
-        {{-- menu part  --}}
+        {{-- breadcrumb part  --}}
         <div class="card-header py-3 d-flex justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">طرق الدفع</h6>
+            <div class="card-naving">
+                <h3 class="font-weight-bold text-primary">
+                    <i class="fa fa-folder"></i>
+                    طرق الدفع
+                </h3>
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="{{ route('admin.index') }}">
+                            الرئيسية
+                        </a>
+                        <i class="fa fa-solid fa-chevron-left chevron"></i>
+                    </li>
+                    <li>
+                        إدارة طرق الدفع
+                    </li>
+                </ul>
+            </div>
+
             <div class="ml-auto">
-                @ability('admin', 'create_products')
+                @ability('admin', 'create_payment_method_offlines')
                     <a href="{{ route('admin.payment_method_offlines.create') }}" class="btn btn-primary">
                         <span class="icon text-white-50">
-                            <i class="fa fa-plus"></i>
+                            <i class="fa fa-plus-square"></i>
                         </span>
-                        <span class="text">إضافة طريقة دفع جديد</span>
+                        <span class="text">إضافة محتوى جديد</span>
                     </a>
                 @endability
             </div>
+
         </div>
 
         {{-- filter form part  --}}

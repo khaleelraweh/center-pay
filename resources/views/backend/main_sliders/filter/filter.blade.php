@@ -21,7 +21,7 @@
             <div class="d-none d-sm-block col-sm-4 col-md-2">
                 <div class="form-group">
                     <select name="sort_by" class="form-control">
-                        {{-- <option value="">---</option> --}}
+                        <option value="">بحث حسب</option>
                         <option value="id"
                             {{ old('sort_by', request()->input('sort_by')) == 'id' ? 'selected' : '' }}>رقم الحقل
                         </option>
@@ -42,7 +42,7 @@
             <div class="col-md-2 d-none d-md-block">
                 <div class="form-group">
                     <select name="order_by" class="form-control">
-                        {{-- <option value="">---</option> --}}
+                        <option value="">ترتيب حسب</option>
                         <option value="asc"
                             {{ old('order_by', request()->input('order_by')) == 'asc' ? 'selected' : '' }}>تصاعدي
                         </option>
@@ -55,7 +55,7 @@
             <div class="col-md-1 d-none d-md-block">
                 <div class="form-group">
                     <select name="limit_by" class="form-control">
-                        {{-- <option value="">---</option> --}}
+                        <option value="">عدد</option>
                         <option value="10"
                             {{ old('limit_by', request()->input('limit_by')) == '10' ? 'selected' : '' }}>10</option>
                         <option value="20"

@@ -223,7 +223,7 @@
 
                     <div class="row pt-3">
                         <div class="form-group ">
-                            <button type="submit" name="submit" class="btn btn-primary">إضافة حساب</button>
+                            <button type="submit" name="submit" class="btn btn-primary">تعديل الحساب</button>
                         </div>
                     </div>
 

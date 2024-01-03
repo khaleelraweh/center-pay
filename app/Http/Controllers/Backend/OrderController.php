@@ -27,6 +27,7 @@ class OrderController extends Controller
         ->orderBy(\request()->sort_by ?? 'id' , \request()->order_by ?? 'desc')
         ->paginate(\request()->limit_by ?? 10);
         
+        
         return view('backend.orders.index',compact('orders'));
         
     }

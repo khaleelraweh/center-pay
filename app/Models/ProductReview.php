@@ -33,6 +33,6 @@ class ProductReview extends Model
     }
 
     public function status():string{
-        return $this->status ? 'Active' : 'Inactive';
+        return $this->status ? 'مفعل' : 'غير مفعل';
     }
 }

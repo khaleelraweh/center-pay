@@ -31,7 +31,7 @@ class News extends Model
 
     protected $searchable = [
         'columns' => [
-            'products.name' => 10,
+            'news.name' => 10,
         ]
     ]; 
 

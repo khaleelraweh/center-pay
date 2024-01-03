@@ -24,25 +24,24 @@ class Order extends Model
             'users.email'                   =>  10,
             'users.mobile'                  =>  10,
 
-            // 'user_addresses.address_title'  =>  10,
-            // 'user_addresses.first_name'     =>  10,
-            // 'user_addresses.last_name'      =>  10,
-            // 'user_addresses.email'          =>  10,
-            // 'user_addresses.mobile'         =>  10,
-            // 'user_addresses.address'        =>  10,
-            // 'user_addresses.address2'      =>  10,
-            // 'user_addresses.zip_code'       =>  10,
-            // 'user_addresses.po_box'         =>  10,
+            'user_addresses.address_title'  =>  10,
+            'user_addresses.first_name'     =>  10,
+            'user_addresses.last_name'      =>  10,
+            'user_addresses.email'          =>  10,
+            'user_addresses.mobile'         =>  10,
+            'user_addresses.address'        =>  10,
+            'user_addresses.address2'      =>  10,
+            'user_addresses.zip_code'       =>  10,
+            'user_addresses.po_box'         =>  10,
 
-            // 'shipping_companies.name'       =>  10,
-            // 'shipping_companies.code'       =>  10,
-        ]
-        // ,
-        // 'joins' => [
-        //     'users'  =>  ['users.id' ,'orders.user_id'],
-        //     'user_addresses'  =>  ['user_addresses.id' ,'orders.user_address_id'],
-        //     'shipping_companies'  =>  ['shipping_companies.id' ,'orders.shipping_company_id'],
-        // ],
+            'shipping_companies.name'       =>  10,
+            'shipping_companies.code'       =>  10,
+        ],
+        'joins' => [
+            'users'  =>  ['users.id' ,'orders.user_id'],
+            'user_addresses'  =>  ['user_addresses.id' ,'orders.user_address_id'],
+            'shipping_companies'  =>  ['shipping_companies.id' ,'orders.shipping_company_id'],
+        ],
     ];
 
 
@@ -111,15 +110,15 @@ class Order extends Model
     public function statusWithLabel(){
 
         switch ($this->order_status) {
-            case 0: $result = '<label class="badge bg-success text-light"> New order </label>'; break;
-            case 1: $result = '<label class="badge bg-warning text-light"> Paid </label>'; break;
-            case 2: $result = '<label class="badge bg-warning text-light"> Under process </label>'; break;
-            case 3: $result = '<label class="badge bg-primary text-light"> Finished </label>'; break;
-            case 4: $result = '<label class="badge bg-danger text-light"> Rejected </label>'; break;
-            case 5: $result = '<label class="badge bg-dark text-light"> Canceled </label>'; break;
-            case 6: $result = '<label class="badge bg-dark text-light"> Refund requested </label>'; break;
-            case 7: $result = '<label class="badge bg-info text-dark"> Returned order </label>'; break;
-            case 8: $result = '<label class="badge bg-dark text-light"> Refunded </label>'; break;
+            case 0: $result = '<label class="badge bg-success text-light"> طلب جديد </label>'; break;
+            case 1: $result = '<label class="badge bg-warning text-light"> تم الدفع </label>'; break;
+            case 2: $result = '<label class="badge bg-warning text-light"> تحت المعالجة </label>'; break;
+            case 3: $result = '<label class="badge bg-primary text-light"> منتهي </label>'; break;
+            case 4: $result = '<label class="badge bg-danger text-light"> مرفوض </label>'; break;
+            case 5: $result = '<label class="badge bg-dark text-light"> ملغي </label>'; break;
+            case 6: $result = '<label class="badge bg-dark text-light"> طلب استرداد </label>'; break;
+            case 7: $result = '<label class="badge bg-info text-dark"> تم الاسترداد  </label>'; break;
+            case 8: $result = '<label class="badge bg-dark text-light"> تمت الاعادة </label>'; break;
 
         }
         return $result;
