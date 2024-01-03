@@ -122,7 +122,8 @@
     <!-- القائمة الجانبية تسجيل الدخول   -->
     @guest
         <!-- القائمة الجانبية تسجيل الدخول   -->
-        <div class="dropdn-content account-drop {{ request()->routeIs('login') ? 'is-opened' : null }}" id="dropdnAccount">
+        {{-- <div class="dropdn-content account-drop {{ request()->routeIs('login') ? 'is-opened' : null }}" id="dropdnAccount"> --}}
+        <div class="dropdn-content account-drop" id="dropdnAccount">
             <div class="dropdn-content-block">
                 <div class="dropdn-close">
                     <span class="js-dropdn-close">اغلاق</span>
