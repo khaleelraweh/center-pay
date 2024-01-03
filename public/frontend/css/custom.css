@@ -259,3 +259,9 @@ ul.breadcrumb li .chevron {
   border-radius: 15px;
 
 }
+
+/* setting of input  */
+
+input[type=text], input[type=email], input[type=password], textarea, .select-wrapper select, .select-wrapper-sm select{
+  border-radius: 4px !important;
+}

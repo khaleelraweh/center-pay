@@ -28,7 +28,7 @@
         <div class="moveToCart">
             <a wire:click.prevent="moveToCart('{{ $wishListItem->rowId }}')" x-on:click="open = ! open"
                 class="btn btn-link text-decoration-none reset-anchor animsition-link">
-                Move To Cart
+                نقل الى سلة التسوق
             </a>
         </div>
         </div>
