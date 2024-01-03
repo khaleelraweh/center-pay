@@ -32,14 +32,15 @@
 .pref-link.active{
     background-color: #DC3C01;
     border: none;
-    border-radius: 20px;
+    border-radius: 4px;
 }
 
 .pref-link.active:hover{
     background-color: white;
     color: #DC3C01;
     border: none;
-    border-radius: 20px;
+    /* border-radius: 20px; */
+    border-radius: 4px;
 }
 
 
@@ -47,7 +48,8 @@
     background-color: white;
     color: #DC3C01;
     border: none;
-    border-radius: 20px;
+    /* border-radius: 20px; */
+    border-radius: 4px;
 }
 .pref-link:hover a{
     color: #DC3C01; 
@@ -262,6 +264,6 @@ ul.breadcrumb li .chevron {
 
 /* setting of input  */
 
-input[type=text], input[type=email], input[type=password], textarea, .select-wrapper select, .select-wrapper-sm select{
+input[type=text], input[type=email], input[type=password], textarea,.select-wrapper, .select-wrapper select, .select-wrapper-sm select , .form-control{
   border-radius: 4px !important;
 }
