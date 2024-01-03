@@ -1,6 +1,6 @@
 <div x-data="{ showOrder: @entangle('showOrder') }">
     <div class="d-flex">
-        <h2 class="h5 text-uppercase mb-4">Orders</h2>
+        <h2 class="h5 text-uppercase mb-4">الطلبات</h2>
     </div>
 
 
