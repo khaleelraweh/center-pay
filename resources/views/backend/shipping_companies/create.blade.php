@@ -13,16 +13,26 @@
     {{-- main holder page  --}}
     <div class="card shadow mb-4">
 
-        {{-- menu part  --}}
+        {{-- breadcrumb part  --}}
         <div class="card-header py-3 d-flex justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">إضافة شركة شحن جديدة</h6>
-            <div class="ml-auto">
-                <a href="{{ route('admin.shipping_companies.index') }}" class="btn btn-primary">
-                    <span class="icon text-white-50">
-                        <i class="fa fa-home"></i>
-                    </span>
-                    <span class="text">إدارة شركات الشحن</span>
-                </a>
+            <div class="card-naving">
+                <h3 class="font-weight-bold text-primary">
+                    <i class="fa fa-plus-square"></i>
+                    إضافة شركة شحن جديدة
+                </h3>
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="{{ route('admin.index') }}">
+                            الرئيسية
+                        </a>
+                        <i class="fa fa-solid fa-chevron-left chevron"></i>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.shipping_companies.index') }}">
+                            إدارة شركات الشحن
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
 
