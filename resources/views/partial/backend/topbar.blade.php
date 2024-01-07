@@ -183,7 +183,8 @@
                 <a href="{{ route('frontend.index') }}"
                     class=" d-flex align-items-center btn btn-sm px-3 font-size-24 header-item waves-effect"
                     id="vertical-menu-btn" title="واجهة العملاء">
-                    <i class="ri-home-line align-middle"></i>
+                    {{-- <i class="ri-home-line align-middle"></i> --}}
+                    <i class="ri-home-wifi-line"></i>
                 </a>
 
             </div>
