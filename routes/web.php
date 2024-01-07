@@ -88,8 +88,8 @@ Route::group(['prefix'=>'admin' , 'as' =>'admin.'],function(){
 
     });
 
-    //uthenticate to website 
-    Route::group(['middleware'=>['roles','role:admin|supervisor']],function(){
+        //uthenticate to website 
+        Route::group(['middleware'=>['roles','role:admin|supervisor']],function(){
         Route::get('/', [BackendController::class,'index'])->name('index2');
         Route::get('/index', [BackendController::class,'index'])->name('index');
         

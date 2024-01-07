@@ -26,6 +26,12 @@
                 <i class="ri-menu-2-line align-middle"></i>
             </button>
 
+            {{-- <a href="{{ route('frontend.index') }}"
+                class=" d-flex align-items-center btn btn-sm px-3 font-size-24 header-item waves-effect"
+                id="vertical-menu-btn" title="واجهة العملاء">
+                <i class="ri-home-line align-middle"></i>
+            </a> --}}
+
             <!-- App Search-->
             <form class="app-search d-none d-lg-block">
                 <div class="position-relative">
@@ -166,9 +172,21 @@
 
                 </div>
             </div>
+
         </div>
 
         <div class="d-flex">
+
+
+            <div class="dropdown d-inline-block  ms-2">
+
+                <a href="{{ route('frontend.index') }}"
+                    class=" d-flex align-items-center btn btn-sm px-3 font-size-24 header-item waves-effect"
+                    id="vertical-menu-btn" title="واجهة العملاء">
+                    <i class="ri-home-line align-middle"></i>
+                </a>
+
+            </div>
 
             <div class="dropdown d-inline-block d-lg-none ms-2">
                 <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-search-dropdown"
@@ -231,6 +249,7 @@
                     aria-haspopup="true" aria-expanded="false">
                     <i class="ri-apps-2-line"></i>
                 </button>
+
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
                     <div class="px-lg-2">
                         <div class="row g-0">
@@ -276,6 +295,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
 
             <div class="dropdown d-none d-lg-inline-block ms-1">
