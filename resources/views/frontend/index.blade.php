@@ -373,9 +373,9 @@
 
 
 
-    {{--  cards news --}}
+    {{--  cards blog --}}
 
-    @if (count($news) > 0)
+    @if (count($blog) > 0)
         <div class="holder holder-mt-medium">
             <div class="container">
                 {{-- <div class="title-with-arrows">
@@ -391,33 +391,39 @@
                 <div class="post-prws post-prws-carousel post-prws-carousel--single js-post-prws-carousel"
                     data-slick='{"slidesToShow": 2, "responsive": [{"breakpoint": 1200,"settings": {"slidesToShow": 2}},{"breakpoint": 768,"settings": {"slidesToShow": 1}},{"breakpoint": 480,"settings": {"slidesToShow": 1}}]}'>
 
-                    @forelse ($news as $newsItem)
+                    @forelse ($blog as $post)
                         <div class="post-prw">
                             <div class="row vert-margin-middle">
+
                                 <div class="post-prw-img col-sm-6">
-                                    <a href="blog-post.html" class="d-block image-container"
-                                        style="padding-bottom: 88.92%">
+                                    <a href="{{ route('frontend.blog.post', $post->slug) }}"
+                                        class="d-block image-container" style="padding-bottom: 88.92%">
                                         <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                            data-src="{{ asset('assets/news/' . $newsItem->firstMedia?->file_name) }}"
+                                            data-src="{{ asset('assets/news/' . $post->firstMedia?->file_name) }}"
                                             class="lazyload fade-up" alt="Blog Title" />
                                     </a>
                                 </div>
+
                                 <div class="post-prw-text col-sm-6">
                                     <h4 class="post-prw-title">
-                                        <a href="#"> {{ $newsItem->name }} </a>
+                                        <a href="#"> {{ $post->name }} </a>
                                     </h4>
                                     <div class="post-prw-links">
                                         <div class="post-prw-date">
-                                            <i class="icon-calendar1"></i><span>{{ $newsItem->published_on }}</span>
+                                            <i class="icon-calendar1"></i><span>{{ $post->published_on }}</span>
                                         </div>
                                     </div>
                                     <div class="post-prw-teaser">
-                                        {!! $newsItem->description !!}
+                                        {{-- {!! $post->description !!} --}}
+
+                                        {!! Str::limit($post->description, 150, ' ...') !!}
                                     </div>
                                     <div class="post-prw-btn">
-                                        <a href="#" class="btn btn--md">اقرأ المزيد</a>
+                                        <a href="{{ route('frontend.blog.post', $post->slug) }}" class="btn btn--md">اقرأ
+                                            المزيد</a>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     @empty

@@ -26,6 +26,7 @@ use App\Http\Controllers\Backend\SupervisorController;
 use App\Http\Controllers\Backend\TagController;
 use App\Http\Controllers\Backend\WebMenuController;
 use App\Http\Controllers\Backend\WebMenuHelpController;
+use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\CustomerController as FrontendCustomerController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\PaymentController;
@@ -46,6 +47,9 @@ Route::get('/card/{slug?}',[FrontendController::class,'card'])->name('frontend.c
 Route::get('/cart',[FrontendController::class,'cart'])->name('frontend.cart');
 Route::get('/wishlist',[FrontendController::class,'wishlist'])->name('frontend.wishlist');
 // Route::get('/checkout',[FrontendController::class,'checkout'])->name('frontend.checkout');
+
+
+Route::get('/blog/post/{slug?}',[BlogController::class,'post'])->name('frontend.blog.post');
 
 
 // this routes is only for customers whom are loged  in my websige

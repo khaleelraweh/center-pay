@@ -164,6 +164,14 @@ background-color: transparent;
 
 }
 
+.tags-list li a{
+  color: black;
+
+}
+.post-prw-text{
+  padding: 15px 5px;
+}
+
 .card-accordion .tag-input:focus{
   border: 1px solid #DC3C01;
 }
@@ -198,6 +206,7 @@ ul.breadcrumb li+li:before {
 ul.breadcrumb li a {
   color: white;
   text-decoration: none;
+  font-size: 16px;
 }
 ul.breadcrumb li a.active{
   color: #DC3C01;
@@ -236,11 +245,22 @@ a.image-hover-scale{
 }
 
 /* blog style for border radius  */
-.post-prws-carousel--single .slick-slide .post-prw-img{
+/* .post-prws-carousel--single .slick-slide .post-prw-text{
+  padding: 0;
+} */
+.title-with-arrows:not(.title-with-arrows--center) > :last-child{
+  margin-left: auto;
+  margin-right: auto;
+}
+ /* .post-prw-img{
   border-radius: 0px 16px 16px 0px;
 }
-.has-sm-container .post-prws-carousel--single .slick-slide .post-prw-text{
+ .post-prw-text{
   border-radius: 16px 0px 0px 16px;
+} */
+
+.related-posts .post-prws{
+  background-color: transparent;
 }
 
 /* common question border radius  */

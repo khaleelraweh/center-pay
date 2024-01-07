@@ -80,7 +80,7 @@ class FrontendController extends Controller
         )
         ->get();
 
-        $news = News::query()
+        $blog = News::query()
         ->active()
         ->take(
             SiteSetting::whereNotNull('value')
@@ -89,7 +89,7 @@ class FrontendController extends Controller
         )
         ->get();
  
-        return view('frontend.index',compact('main_sliders','adv_sliders','card_categories','random_cards','common_questions' ,'news'));
+        return view('frontend.index',compact('main_sliders','adv_sliders','card_categories','random_cards','common_questions' ,'blog'));
     }
 
  

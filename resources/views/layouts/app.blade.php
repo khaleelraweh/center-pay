@@ -57,9 +57,13 @@
     <link href=" https://cdn.jsdelivr.net/npm/glyphicons-halflings@1.9.1/css/glyphicons-halflings.min.css "
         rel="stylesheet">
 
+
     <link href="{{ asset('frontend/css/style-games.css') }}" rel="stylesheet" />
 
     {{-- <link href="css/style.css" rel="stylesheet"> --}}
+    {{-- <link href="{{ asset('frontend/css/style.css') }}" rel="stylesheet"> --}}
+
+
 
     <link href="{{ asset('frontend/fonts/icomoon/icons.css') }}" rel="stylesheet">
 
