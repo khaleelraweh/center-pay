@@ -206,8 +206,8 @@
                                     <div class="row">
                                         <div class="col-auto">
                                             <div class="post-comment-author-img">
-                                                <img src="images/blog/comment-author-2.webp" alt=""
-                                                    class="rounded-circle">
+                                                <img src="{{ asset('frontend/images/blog/comment-author-2.webp') }}"
+                                                    alt="" class="rounded-circle">
                                             </div>
                                         </div>
                                         <div class="col">
