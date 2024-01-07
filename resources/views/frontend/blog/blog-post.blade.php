@@ -97,7 +97,7 @@
                                     <a href="#postComments" class="js-scroll-to"><i class="icon-chat"></i>15
                                         تعليق(ات)</a>
                                 </div>
-                                <div class="post-img image-container" style="padding-bottom: 54.44%">
+                                <div class="post-img image-container" style="padding-bottom: 50.95%">
                                     <img class="lazyload fade-up-fast"
                                         src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
                                         data-src="{{ asset('assets/news/' . $post->firstMedia?->file_name) }}"
