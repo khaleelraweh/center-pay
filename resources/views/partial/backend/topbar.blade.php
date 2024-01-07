@@ -185,6 +185,7 @@
                     id="vertical-menu-btn" title="واجهة العملاء">
                     {{-- <i class="ri-home-line align-middle"></i> --}}
                     <i class="ri-home-wifi-line"></i>
+
                 </a>
 
             </div>
