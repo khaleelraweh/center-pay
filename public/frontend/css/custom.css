@@ -172,6 +172,11 @@ background-color: transparent;
   padding: 15px 5px;
 }
 
+
+.post-full .post-img img{
+  max-height: 350px;
+}
+
 .card-accordion .tag-input:focus{
   border: 1px solid #DC3C01;
 }
