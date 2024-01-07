@@ -144,13 +144,13 @@
                                 @else
                                     <div class="banks-details row mt-3">
                                         <div class="bank-info-123456789 col-sm-12 mb-3">
-                                            <div class="d-sm-flex flex-sm-row">
-                                                <div class="col-md-4 col-sm-12">
+                                            <div class="d-lg-flex flex-lg-row">
+                                                <div class="col-lg-4 col-sm-12">
                                                     <img src="{{ asset('assets/payment_method_offlines/' . $payment_method_detail->firstMedia?->file_name) }}"
                                                         alt="{{ $payment_method_detail->name }}"
                                                         class=" img-fluid rounded">
                                                 </div>
-                                                <div class="col-md-6 col-sm-12">
+                                                <div class="col-lg-6 col-sm-12">
                                                     <h2 class="">بيانات التحويل عبر
                                                         {{ $payment_method_detail->method_name }} </h2>
                                                     <h3 class="custom-color">

@@ -6,6 +6,7 @@
 .pref{
     background-color: #1E171B;
     padding: 20px;
+    border-radius: 16px;
 }
 
 .pref-link a{
@@ -225,13 +226,32 @@ ul.breadcrumb li .chevron{
 }
 
 body.equal-height .prd-img:not(.prd-img--noequal) img{
-  border-radius: 1.5rem !important;
+  /* border-radius: 1.5rem !important; */
+  border-radius: 16px;
 }
 
 a.image-hover-scale{
-  border-radius: 1.5rem;
+  /* border-radius: 1.5rem; */
+  border-radius: 16px;
 }
 
+/* blog style for border radius  */
+.post-prws-carousel--single .slick-slide .post-prw-img{
+  border-radius: 0px 16px 16px 0px;
+}
+.has-sm-container .post-prws-carousel--single .slick-slide .post-prw-text{
+  border-radius: 16px 0px 0px 16px;
+}
+
+/* common question border radius  */
+.footer-shop-info, .footer-shop-info .row, .panel-heading{
+  border-radius: 6px;
+}
+
+/* cart border radius  */
+.card {
+  border-radius: 16px;
+}
 
 .page-content{
 
