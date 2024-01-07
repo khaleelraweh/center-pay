@@ -389,6 +389,13 @@ class EntrustSeeder extends Seeder
             $updateSiteCounters  =  Permission::create(['name' => 'update_site_counters'  , 'display_name'  => 'تعديل عدادات الموقع  ' , 'route' => 'site_counters' , 'module' => 'site_counters' , 'as' => 'site_counters.edit'     , 'icon' => null                  , 'parent' => $manageSiteSettings->id , 'parent_original' => $manageSiteSettings->id ,'parent_show' => $manageSiteSettings->id , 'sidebar_link' => '0' , 'appear' => '0'] );
 
             
+            // Account Settings
+            $manageAccountSettings = Permission::create(['name' => 'manage_account_settings', 'display_name' => 'إدارة الحسابات' , 'route' => 'account_settings' , 'module' => 'account_settings' , 'as' => 'account_settings' , 'icon' => 'fas fa-user' , 'parent' => '0', 'parent_original' => '0' , 'parent_show' => '0'  , 'sidebar_link' => '0' , 'appear' => '1' , 'ordering' => '1000',] );
+            $manageAccountSettings->parent_show = $manageAccountSettings->id; $manageAccountSettings->save();
+            $showAccountSettings    =  Permission::create(['name' => 'show_account_settings'    ,  'display_name' => 'إدارة الحساب'      , 'route' => 'account_settings' , 'module' => 'account_settings' , 'as' => 'account_settings'    , 'icon' => 'fas fa-calculator' , 'parent' => $manageAccountSettings->id , 'parent_original' => $manageAccountSettings->id ,'parent_show' => $manageAccountSettings->id , 'sidebar_link' => '1' , 'appear' => '1'] );
+            $displayAccountSettings =  Permission::create(['name' => 'display_account_settings' , 'display_name'  => 'عرض الحساب '   , 'route' => 'account_settings' , 'module' => 'account_settings' , 'as' => 'account_settings.show'     , 'icon' => null                  , 'parent' => $manageAccountSettings->id , 'parent_original' => $manageAccountSettings->id ,'parent_show' => $manageAccountSettings->id , 'sidebar_link' => '0' , 'appear' => '0'] );
+            $updateAccountSettings  =  Permission::create(['name' => 'update_account_settings'  , 'display_name'  => 'تعديل الحساب   ' , 'route' => 'account_settings' , 'module' => 'account_settings' , 'as' => 'update_account_settings'     , 'icon' => null                  , 'parent' => $manageAccountSettings->id , 'parent_original' => $manageAccountSettings->id ,'parent_show' => $manageAccountSettings->id , 'sidebar_link' => '0' , 'appear' => '0'] );
+
         
     }
 }

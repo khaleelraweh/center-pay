@@ -133,11 +133,11 @@
                 </div>
 
 
-                {{-- @ability('admin', 'update_site_counters') --}}
-                <div class="form-group pt-4">
-                    <button type="submit" name="submit" class="btn btn-primary">تحديث بيانات الحساب</button>
-                </div>
-                {{-- @endability --}}
+                @ability('admin', 'update_account_settings')
+                    <div class="form-group pt-4">
+                        <button type="submit" name="submit" class="btn btn-primary">تحديث بيانات الحساب</button>
+                    </div>
+                @endability
 
             </form>
         </div>
@@ -153,7 +153,7 @@
         $(function() {
             $("#admin_image").fileinput({
                 theme: "fa5",
-                maxFileCount: 1,
+                maxFileCount: 0,
                 allowedFileTypes: ['image'],
                 showCancel: true,
                 showRemove: false,
@@ -172,7 +172,9 @@
                             caption: "{{ auth()->user()->user_image }}",
                             size: '1111',
                             width: "120px",
-                            url: "{{ route('admin.remove_image', ['admin_id' => auth()->user()->id, '_token' => csrf_token()]) }}",
+                            @ability('admin', 'update_account_settings')
+                                url: "{{ route('admin.remove_image', ['admin_id' => auth()->user()->id, '_token' => csrf_token()]) }}",
+                            @endability
                             key: {{ auth()->user()->id }}
                         }
                     @endif

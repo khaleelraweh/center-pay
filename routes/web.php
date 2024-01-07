@@ -93,10 +93,13 @@ Route::group(['prefix'=>'admin' , 'as' =>'admin.'],function(){
         Route::get('/', [BackendController::class,'index'])->name('index2');
         Route::get('/index', [BackendController::class,'index'])->name('index');
         
+      
         Route::get('account_settings',[BackendController::class,'account_settings'])->name('account_settings');
         Route::post('admin/remove-image',[BackendController::class,'remove_image'])->name('remove_image');
         Route::patch('account_settings',[BackendController::class,'update_account_settings'])->name('update_account_settings');
-        
+
+
+       
         Route::post('product_categories/remove-image', [ProductCategoriesController::class, 'remove_image'])->name('product_categories.remove_image');
         Route::resource('product_categories', ProductCategoriesController::class);
         
@@ -165,7 +168,6 @@ Route::group(['prefix'=>'admin' , 'as' =>'admin.'],function(){
 
 
         // Route::resource('site_infos' , SiteSettingsController::class);
-
         Route::get('site_setting/site_infos' , [SiteSettingsController::class , 'info_index'])->name('site_infos.info_index');
         Route::post('site_setting/update_site_info/{id?}' , [SiteSettingsController::class , 'info_update'])->name('site_infos.update');
         Route::post('site_setting/site_infos/remove-image', [SiteSettingsController::class, 'remove_image'])->name('site_infos.remove_image');
@@ -185,8 +187,6 @@ Route::group(['prefix'=>'admin' , 'as' =>'admin.'],function(){
         
         Route::get('site_setting/site_counters' , [SiteSettingsController::class , 'counter_index'])->name('site_counters.counter_index');
         Route::post('site_setting/update_site_counter/{id?}' , [SiteSettingsController::class , 'counter_update'])->name('site_counters.update');
-
-
 
 
     });

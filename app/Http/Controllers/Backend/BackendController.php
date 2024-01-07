@@ -78,6 +78,8 @@ class BackendController extends Controller
 
     public function remove_image(Request $request){
         
+
+
         $user = auth()->user();
     
         if($user->user_image != ''){
