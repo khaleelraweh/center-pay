@@ -1,5 +1,36 @@
 @extends('layouts.app')
 
+@section('style')
+    <style>
+        .pagination>li>a,
+        .pagination>li>span {
+            background-color: white;
+            color: black;
+            border-color: white;
+        }
+
+        .pagination>li>a:hover,
+        .pagination>li>a:focus,
+        .pagination>li>span:hover,
+        .pagination>li>span:focus {
+            background: #dc3c01;
+            border-color: #dc3c01;
+            color: black;
+        }
+
+        .page-item.active .page-link,
+        .page-item.active .page-link:hover {
+            background: #dc3c01;
+            border-color: #dc3c01;
+            color: black;
+        }
+
+        .page-link:focus {
+            box-shadow: 0 0 0 0.2rem #dc3c01;
+        }
+    </style>
+@endsection
+
 @section('content')
     {{-- <div class="container"> --}}
 
@@ -162,16 +193,9 @@
 
 
 
+                        <!-- PAGINATION-->
+                        {!! $blog->appends(request()->all())->onEachSide(3)->links() !!}
 
-                        <div class="pagination-wrap d-flex mt-4">
-                            <ul class="pagination mt-0">
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                            </ul>
-                        </div>
                     </div>
 
 

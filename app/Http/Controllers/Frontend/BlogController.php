@@ -15,13 +15,14 @@ class BlogController extends Controller
 
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
-    public $paginationLimit = 12;
+    public $paginationLimit = 4;
     public $slug;
 
     public function blog(){
+
         $blog = News::query()
                     ->active()
-        ->get();
+        ->paginate($this->paginationLimit);
 
         $tags = Tag::query()->whereStatus(1)->where('section',3)->get();
 
