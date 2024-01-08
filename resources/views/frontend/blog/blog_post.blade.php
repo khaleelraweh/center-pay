@@ -84,9 +84,13 @@
                                                     class="post-prw-author">
                                                     {{ $rand_post->created_by ? 'بواسطة ' . $rand_post->created_by : '' }}
                                                 </a>
+
                                             </div>
-                                            {{-- <h4 class="post-prw-title"><a href="#">موضوع FOXic Shopify</a></h4>
-                                            <a href="#" class="post-prw-comments"><i class="icon-chat"></i>15
+                                            <h4 class="post-prw-title"><a
+                                                    href="{{ route('frontend.blog.post', $rand_post->slug) }}">موضوع
+                                                    {{ $rand_post->name }}
+                                                </a></h4>
+                                            {{-- <a href="#" class="post-prw-comments"><i class="icon-chat"></i>15
                                                 comments</a> --}}
                                         </div>
                                     @empty

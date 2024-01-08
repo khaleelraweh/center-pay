@@ -101,7 +101,9 @@
                                                     {{ $rand_post->created_by ? 'بواسطة ' . $rand_post->created_by : '' }}
                                                 </a>
                                             </div>
-                                            <h4 class="post-prw-title"><a href="#">موضوع {{ $rand_post->name }}</a>
+                                            <h4 class="post-prw-title"><a
+                                                    href="{{ route('frontend.blog.post', $rand_post->slug) }}">موضوع
+                                                    {{ $rand_post->name }}</a>
                                             </h4>
 
                                             {{-- <a href="#" class="post-prw-comments"><i class="icon-chat"></i>15
