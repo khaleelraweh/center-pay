@@ -403,7 +403,8 @@
 
                                 <div class="post-prw-text col-sm-6">
                                     <h4 class="post-prw-title">
-                                        <a href="#"> {{ $post->name }} </a>
+                                        <a href="{{ asset('assets/news/' . $post->firstMedia?->file_name) }}">
+                                            {{ $post->name }} </a>
                                     </h4>
                                     <div class="post-prw-links">
                                         <div class="post-prw-date">
