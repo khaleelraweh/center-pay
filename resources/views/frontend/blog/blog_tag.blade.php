@@ -19,20 +19,13 @@
                         المدونة
                     </li>
 
-                    {{-- <li>
-                        <a href="{{ route('frontend.card', $card->slug) }}" class="active">
-                            {{ $card->name }}
-                        </a>
-                    </li> --}}
                 </ul>
             </div>
         </div>
 
         <div class="holder">
             <div class="container">
-                {{-- <div class="page-title text-center">
-                    <h1>مدونتنا</h1>
-                </div> --}}
+
                 <div class="row ">
 
                     <div class="col-md-4 aside aside--sidebar aside--right aside--sticky js-sticky-collision">
@@ -54,9 +47,6 @@
                                     </ul>
                                 </div>
                             @endif
-
-
-
 
                             @if (count($random_posts) > 0)
                                 <div class="aside-block">
@@ -95,18 +85,6 @@
 
                                 </div>
                             @endif
-
-                            {{-- <div class="aside-block">
-                                <h2 class="text-uppercase">الارشيف
-
-                                </h2>
-                                <ul class="list list--nomarker">
-                                    <li><a href="#">January 2018</a></li>
-                                    <li><a href="#">February 2018</a></li>
-                                    <li><a href="#">March 2018</a></li>
-                                </ul>
-                            </div> --}}
-
                         </div>
                     </div>
 

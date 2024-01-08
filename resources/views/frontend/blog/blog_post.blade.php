@@ -53,7 +53,9 @@
                                     <ul class="tags-list">
 
                                         @foreach ($tags as $tag)
-                                            <li><a href="#">{{ $tag->name }}</a></li>
+                                            <li><a
+                                                    href="{{ route('frontend.blog_tag', $tag->slug) }}">{{ $tag->name }}</a>
+                                            </li>
                                         @endforeach
 
                                     </ul>
@@ -136,10 +138,12 @@
 
                                     <ul class="tags-list post-tags-list">
                                         @foreach ($post->tags as $tag)
-                                            <li><a href="#">{{ $tag->name }}</a></li>
+                                            <li><a
+                                                    href="{{ route('frontend.blog_tag', $tag->slug) }}">{{ $tag->name }}</a>
+                                            </li>
                                         @endforeach
                                     </ul>
-                                    <a href="#" class="post-share">
+                                    <a href="{{ route('frontend.blog_tag', $tag->slug) }}" class="post-share">
                                         <script src="../../../https@s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5d92f2937e44d337"></script>
                                         <div class="addthis_inline_share_toolbox"></div>
                                     </a>

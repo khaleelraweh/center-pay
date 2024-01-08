@@ -43,14 +43,21 @@ Route::get('/', [FrontendController::class,'index'])->name('frontend.index');
 Route::get('/index',[FrontendController::class,'index'])->name('frontend.index');
 Route::get('/card-category/{slug?}',[FrontendController::class,'card_category'])->name('frontend.card_category');
 Route::get('/card/{slug?}',[FrontendController::class,'card'])->name('frontend.card');
-// Route::get('/shop/tags/{slug}',[Frontend\FrontendController::class,'shop_tag'])->name('frontend.shop_tag');
 Route::get('/cart',[FrontendController::class,'cart'])->name('frontend.cart');
 Route::get('/wishlist',[FrontendController::class,'wishlist'])->name('frontend.wishlist');
+
 // Route::get('/checkout',[FrontendController::class,'checkout'])->name('frontend.checkout');
 
 
 Route::get('/blog',[BlogController::class,'blog'])->name('frontend.blog');
 Route::get('/blog/post/{slug?}',[BlogController::class,'post'])->name('frontend.blog.post');
+
+// start blog tag
+
+Route::get('/blog/tags/{slug?}',[BlogController::class,'blog_tag'])->name('frontend.blog_tag');
+
+// end blog tag 
+
 
 
 // this routes is only for customers whom are loged  in my websige
