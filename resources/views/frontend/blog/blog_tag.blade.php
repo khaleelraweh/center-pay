@@ -152,7 +152,7 @@
                                                 </a>
                                             </h4>
                                             <div class="post-prw-teaser">
-                                                {!! $post->description !!}
+                                                {!! Str::limit($post->description, 150, ' ...') !!}
                                             </div>
                                             <div class="post-prw-btn">
                                                 <a href="{{ route('frontend.blog.post', $post->slug) }}"
