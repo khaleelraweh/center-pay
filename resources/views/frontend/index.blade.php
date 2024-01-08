@@ -378,14 +378,11 @@
     @if (count($blog) > 0)
         <div class="holder holder-mt-medium">
             <div class="container">
-                {{-- <div class="title-with-arrows">
-                    <h2 class="h1-style">
-                        <a href="#" title="View all"> المدونة</a>
-                    </h2>
-                    <div class="carousel-arrows"></div>
-                </div> --}}
                 <div class="title-wrap text-center">
-                    <h2 class="h1-style">المدونة</h2>
+                    <a href="{{ route('frontend.blog') }}" class="h1-style">
+                        <i class="fas fa-blog "></i>
+                        المدونة
+                    </a>
                     <div class="carousel-arrows"></div>
                 </div>
                 <div class="post-prws post-prws-carousel post-prws-carousel--single js-post-prws-carousel"

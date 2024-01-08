@@ -16,6 +16,13 @@
                         </li>
 
                         <li>
+                            <a href="{{ route('frontend.blog') }}">
+                                المدونة
+                            </a>
+                            <i class="fa fa-solid fa-chevron-left chevron"></i>
+                        </li>
+
+                        <li class="active">
 
                             {{ $post->name }}
 
@@ -29,61 +36,78 @@
                     </ul>
                 </div>
             </div>
+
             <div class="holder">
                 <div class="container">
-                    <div class="page-title text-center">
+                    {{-- <div class="page-title text-center">
                         <h1>منشورات المدونة </h1>
-                    </div>
+                    </div> --}}
 
                     <div class="row flex-column-reverse flex-md-row">
 
                         <div class="col-md-4 aside aside--sidebar aside--right">
-                            <div class="aside-block">
-                                <h2 class="text-uppercase">الكلمات الشائعة</h2>
-                                <ul class="tags-list">
-                                    <li><a href="#">القرون الوسطي</a></li>
-                                    <li><a href="#">بوبجي</a></li>
-                                    <li><a href="#">بطائق الهدايا</a></li>
-                                    <li><a href="#">سنتر باي</a></li>
-                                    <li><a href="#">ايتونز</a></li>
-                                    <li><a href="#">ايفون</a></li>
-                                    <li><a href="#">حرب النجوم</a></li>
-                                </ul>
-                            </div>
-                            <div class="aside-block">
-                                <h2 class="text-uppercase">منشورات شائعة</h2>
-                                <div class="post-prw-simple-sm">
-                                    <a href="blog-post.html" class="post-prw-img">
-                                        <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                            data-src="{{ asset('frontend/images/blog/blog-05.webp') }}"
-                                            class="lazyload fade-up" alt="">
-                                    </a>
-                                    <div class="post-prw-links">
-                                        <div class="post-prw-date"><i class="icon-calendar"></i>August 27, 2020</div>
-                                        <a href="#" class="post-prw-author">by Jon Cock</a>
-                                    </div>
-                                    <h4 class="post-prw-title"><a href="#">موضوع FOXic Shopify</a></h4>
-                                    <a href="#" class="post-prw-comments"><i class="icon-chat"></i>15 comments</a>
+
+                            @if (count($tags) > 0)
+                                <div class="aside-block">
+                                    <h2 class="text-uppercase">الكلمات الشائعة</h2>
+                                    <ul class="tags-list">
+
+                                        @foreach ($tags as $tag)
+                                            <li><a href="#">{{ $tag->name }}</a></li>
+                                        @endforeach
+
+                                    </ul>
                                 </div>
-                            </div>
-                            <div class="aside-block">
-                                <h2 class="text-uppercase">Meta</h2>
-                                <ul class="list list--nomarker">
-                                    <li><a href="#">تسجيل الدخول</a></li>
-                                    <li><a href="#">إدخالات آر إس إس
-                                        </a></li>
-                                    <li><a href="#">تعليقات آر إس إس
-                                        </a></li>
-                                </ul>
-                            </div>
-                            <div class="aside-block">
+                            @endif
+
+
+                            @if (count($random_posts) > 0)
+                                <div class="aside-block">
+                                    <h2 class="text-uppercase">اخترنا لك </h2>
+
+                                    @forelse ($random_posts as $rand_post)
+                                        <div class="post-prw-simple-sm">
+                                            <a href="{{ route('frontend.blog.post', $rand_post->slug) }}"
+                                                class="post-prw-img">
+                                                <img style="height: 200px"
+                                                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                                                    data-src="{{ asset('assets/news/' . $rand_post->firstMedia?->file_name) }}"
+                                                    class="lazyload fade-up" alt="{{ $rand_post->name }}">
+                                            </a>
+                                            <div class="post-prw-links">
+                                                <div class="post-prw-date"><i class="icon-calendar"></i>
+                                                    {{ $rand_post->published_on->format('Y-F-d') }}
+                                                </div>
+                                                <a href="{{ route('frontend.blog.post', $rand_post->slug) }}"
+                                                    class="post-prw-author">
+                                                    {{ $rand_post->created_by ? 'بواسطة ' . $rand_post->created_by : '' }}
+                                                </a>
+                                            </div>
+                                            {{-- <h4 class="post-prw-title"><a href="#">موضوع FOXic Shopify</a></h4>
+                                            <a href="#" class="post-prw-comments"><i class="icon-chat"></i>15
+                                                comments</a> --}}
+                                        </div>
+                                    @empty
+                                    @endforelse
+
+
+
+
+
+                                </div>
+                            @endif
+
+
+
+                            {{-- <div class="aside-block">
                                 <h2 class="text-uppercase">الارشيف</h2>
                                 <ul class="list list--nomarker">
                                     <li><a href="#">January 2018</a></li>
                                     <li><a href="#">February 2018</a></li>
                                     <li><a href="#">March 2018</a></li>
                                 </ul>
-                            </div>
+                            </div> --}}
+
                         </div>
 
                         <div class="col-md-8 aside aside--content">
@@ -94,10 +118,10 @@
                                             class="icon-calendar"></i>{{ $post->published_on->format('Y-m-d') }}</div>
                                     <a href="#" class="post-link">
                                         {{ $post->created_by ? 'بواسطة ' . $post->created_by : '' }}</a>
-                                    <a href="#postComments" class="js-scroll-to"><i class="icon-chat"></i>15
-                                        تعليق(ات)</a>
+                                    {{-- <a href="#postComments" class="js-scroll-to"><i class="icon-chat"></i>15
+                                        تعليق(ات)</a> --}}
                                 </div>
-                                <div class="post-img image-container" style="padding-bottom: 50.95%">
+                                <div class="post-img image-container" style="padding-bottom: 60.95%">
                                     <img class="lazyload fade-up-fast"
                                         src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
                                         data-src="{{ asset('assets/news/' . $post->firstMedia?->file_name) }}"
@@ -107,14 +131,13 @@
 
                                     {!! $post->description !!}
 
-
                                 </div>
                                 <div class="post-bot">
+
                                     <ul class="tags-list post-tags-list">
-                                        <li><a href="#">جودوين</a></li>
-                                        <li><a href="#">سايكو</a></li>
-                                        <li><a href="#">بانيتا</a></li>
-                                        <li><a href="#">خطوات كبيرة</a></li>
+                                        @foreach ($post->tags as $tag)
+                                            <li><a href="#">{{ $tag->name }}</a></li>
+                                        @endforeach
                                     </ul>
                                     <a href="#" class="post-share">
                                         <script src="../../../https@s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5d92f2937e44d337"></script>
@@ -176,7 +199,8 @@
 
                                 </div>
                             </div>
-                            <div class="post-comments mt-3 mt-md-4" id="postComments">
+
+                            {{-- <div class="post-comments mt-3 mt-md-4" id="postComments">
                                 <h3 class="h2-style">اكتب تعليقا</h3>
                                 <div class="post-comment">
                                     <div class="row">
@@ -224,19 +248,20 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="post-comment-form mt-3 mt-md-4">
+                            </div> --}}
+
+                            {{-- <div class="post-comment-form mt-3 mt-md-4">
                                 <h3 class="h2-style">اترك تعليقك</h3>
                                 <form action="#" class="comment-form">
                                     <div class="form-group">
                                         <div class="row vert-margin-middle">
                                             <div class="col-lg">
-                                                <input type="text" name="name"
-                                                    class="form-control form-control--sm" placeholder="الاسم" required>
+                                                <input type="text" name="name" class="form-control form-control--sm"
+                                                    placeholder="الاسم" required>
                                             </div>
                                             <div class="col-lg">
-                                                <input type="text" name="email"
-                                                    class="form-control form-control--sm" placeholder="الايميل" required>
+                                                <input type="text" name="email" class="form-control form-control--sm"
+                                                    placeholder="الايميل" required>
                                             </div>
                                         </div>
                                     </div>
@@ -245,7 +270,8 @@
                                     </div>
                                     <button class="btn" type="submit">إرسال تعليق</button>
                                 </form>
-                            </div>
+                            </div> --}}
+
                         </div>
 
                     </div>

@@ -169,13 +169,28 @@ background-color: transparent;
 
 }
 .post-prw-text{
-  padding: 15px 5px;
+  padding: 15px 10px;
 }
 
 
 .post-full .post-img img{
   max-height: 95.98%;
 }
+
+
+/* custom blog  */
+
+/* .post-prws-listing > * + * {
+  margin-top: 30px;
+  height: 255px;
+  overflow: hidden;
+}
+.vert-margin-middle{
+  height: 100%;
+}
+.post-prw-img {
+  height: 100%;
+} */
 
 .card-accordion .tag-input:focus{
   border: 1px solid #DC3C01;

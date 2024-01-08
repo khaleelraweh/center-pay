@@ -1,5 +1,14 @@
 @extends('layouts.admin')
 
+@section('style')
+    <link rel="stylesheet" href="{{ asset('backend/vendor/select2/css/select2.min.css') }}">
+    <style>
+        .select2-container {
+            display: block !important;
+        }
+    </style>
+@endsection
+
 @section('content')
 
     {{-- main holder page  --}}
@@ -50,7 +59,7 @@
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
                         <a class="nav-link active" id="content-tab" data-toggle="tab" href="#content" role="tab"
-                            aria-controls="content" aria-selected="true">بيانات الخبر</a>
+                            aria-controls="content" aria-selected="true">بيانات المنشور</a>
                     </li>
 
                     <li class="nav-item" role="presentation">
@@ -72,9 +81,9 @@
 
                                 {{-- name and content content --}}
                                 <div class="row">
-                                    <div class="col-sm-12 col-md-12 pt-4">
+                                    <div class="col-sm-12 col-md-12 pt-3">
                                         <div class="form-group">
-                                            <label for="name">عنوان الخبر</label>
+                                            <label for="name">عنوان المنشور</label>
                                             <input type="text" id="name" name="name" value="{{ old('name') }}"
                                                 class="form-control">
                                             @error('name')
@@ -83,13 +92,30 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 {{-- description row --}}
                                 <div class="row">
-                                    <div class="col-12 pt-4">
-                                        <label for="description">وصف الخبر</label>
+                                    <div class="col-12 pt-3">
+                                        <label for="description">وصف المنشور</label>
                                         <textarea name="description" rows="10" class="form-control summernote">
                                             {!! old('description') !!}
                                         </textarea>
+                                    </div>
+                                </div>
+
+                                {{--  tags field --}}
+                                <div class="row ">
+                                    {{-- Tags field  --}}
+                                    <div class="col-md-12 col-sm-12 pt-3">
+                                        <label for="tags">الكلمات المفتاحية</label>
+                                        <select name="tags[]" class="form-control select2" multiple="multiple">
+                                            @forelse ($tags as $tag)
+                                                <option value="{{ $tag->id }}"
+                                                    {{ in_array($tag->id, old('tags', [])) ? 'selected' : null }}>
+                                                    {{ $tag->name }}</option>
+                                            @empty
+                                            @endforelse
+                                        </select>
                                     </div>
                                 </div>
 
@@ -97,7 +123,7 @@
 
                             {{-- image part  --}}
                             <div class="col-sm-12 col-md-5">
-                                <div class="row pt-4">
+                                <div class="row pt-3">
                                     <div class="col-12">
                                         <label for="images">الصورة/ الصور</label>
                                         <br>
@@ -123,7 +149,7 @@
 
                         {{-- publish_start publish time field --}}
                         <div class="row">
-                            <div class="col-sm-12 pt-4">
+                            <div class="col-sm-12 pt-3">
                                 <div class="form-group">
                                     <label for="published_on">تاريخ النشر</label>
                                     <input type="text" id="published_on" name="published_on"
@@ -136,11 +162,12 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-sm-12 pt-4">
+                            <div class="col-sm-12 pt-3">
                                 <div class="form-group">
                                     <label for="published_on_time">وقت النشر</label>
                                     <input type="text" id="published_on_time" name="published_on_time"
-                                        value="{{ old('published_on_time', now()->format('h:m A')) }}" class="form-control">
+                                        value="{{ old('published_on_time', now()->format('h:m A')) }}"
+                                        class="form-control">
                                     @error('published_on_time')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -151,7 +178,7 @@
 
                         {{-- status --}}
                         <div class="row">
-                            <div class="col-sm-12 col-md-12 pt-4">
+                            <div class="col-sm-12 col-md-12 pt-3">
                                 <label for="status">الحالة</label>
                                 <select name="status" class="form-control">
                                     <option value="1" {{ old('status') == '1' ? 'selected' : null }}>مفعل</option>
@@ -166,8 +193,8 @@
 
                     </div>
 
-                    <div class="form-group pt-4">
-                        <button type="submit" name="submit" class="btn btn-primary">إنشاء الخبر</button>
+                    <div class="form-group pt-3">
+                        <button type="submit" name="submit" class="btn btn-primary">حفظ المنشور</button>
                     </div>
                 </div>
 
@@ -179,8 +206,54 @@
 @endsection
 
 @section('script')
+    {{-- Call select2 plugin --}}
+    <script src="{{ asset('backend/vendor/select2/js/select2.full.min.js') }}"></script>
+
     <script>
         $(function() {
+
+            //select2: code to search in data 
+            function matchStart(params, data) {
+                // If there are no search terms, return all of the data
+                if ($.trim(params.term) === '') {
+                    return data;
+                }
+
+                // Skip if there is no 'children' property
+                if (typeof data.children === 'undefined') {
+                    return null;
+                }
+
+                // `data.children` contains the actual options that we are matching against
+                var filteredChildren = [];
+                $.each(data.children, function(idx, child) {
+                    if (child.text.toUpperCase().indexOf(params.term.toUpperCase()) == 0) {
+                        filteredChildren.push(child);
+                    }
+                });
+
+                // If we matched any of the timezone group's children, then set the matched children on the group
+                // and return the group object
+                if (filteredChildren.length) {
+                    var modifiedData = $.extend({}, data, true);
+                    modifiedData.children = filteredChildren;
+
+                    // You can return modified objects from here
+                    // This includes matching the `children` how you want in nested data sets
+                    return modifiedData;
+                }
+
+                // Return `null` if the term should not be displayed
+                return null;
+            }
+
+            // select2 : .select2 : is  identifier used with element to be effected
+            $(".select2").select2({
+                tags: true,
+                colseOnSelect: false,
+                minimumResultsForSearch: Infinity,
+                matcher: matchStart
+            });
 
             $("#product_images").fileinput({
                 theme: "fa5",
@@ -236,6 +309,11 @@
                     ['view', ['fullscreen', 'codeview', 'help']]
                 ]
             });
+
+
+
+
+
 
 
         });

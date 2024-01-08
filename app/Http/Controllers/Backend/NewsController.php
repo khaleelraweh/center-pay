@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\NewsRequest;
 use App\Models\News;
+use App\Models\Tag;
 use DateTimeImmutable;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
@@ -39,7 +40,10 @@ class NewsController extends Controller
         if(!auth()->user()->ability('admin','create_news')){
             return redirect('admin/index');
         }
-        return view('backend.news.create');
+
+        $tags = Tag::whereStatus(1)->where('section',3)->get(['id','name']);
+
+        return view('backend.news.create',compact('tags'));
     }
     
 
@@ -52,15 +56,15 @@ class NewsController extends Controller
         $input['name']              =   $request->name;
         $input['description']       =   $request->description;
       
-        // always added 
         $input['status']            =   $request->status;
         $input['created_by']        =   auth()->user()->full_name;
         $published_on = $request->published_on.' '.$request->published_on_time;
         $published_on = new DateTimeImmutable($published_on);
         $input['published_on'] = $published_on;
-        // end of always added 
       
         $news = News::create($input);
+
+        $news->tags()->attach($request->tags); 
 
         if($request->images && count( $request->images) > 0){
 
@@ -109,7 +113,9 @@ class NewsController extends Controller
             return redirect('admin/index');
         }
         
-        return view('backend.news.edit',compact( 'news'));
+        $tags = Tag::whereStatus(1)->where('section',3)->get(['id','name']);
+
+        return view('backend.news.edit',compact( 'news','tags'));
     }
     
     public function update(NewsRequest $request, News $news)
@@ -130,6 +136,8 @@ class NewsController extends Controller
         // end of always added 
       
        $news->update($input);
+
+       $news->tags()->sync($request->tags);
 
        if($request->images && count( $request->images) > 0){
             $i = $news->photos->count() + 1; 

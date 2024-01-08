@@ -42,16 +42,20 @@ class PhotoSeeder extends Seeder
                 $product->photos()->createMany(Arr::random($images, rand(2, 3)));
             });
 
+            //news photo faker 
+            News::all()->each(function ($news) use ($images) {
+                $news->photos()->createMany(Arr::random($images, rand(2, 3)));
+            });
 
             //slider photo faker 
             Slider::all()->each(function ($slider) use ($images) {
                 $slider->photos()->createMany(Arr::random($images, rand(2, 3)));
             });
 
-            //slider photo faker 
-            News::all()->each(function ($slider) use ($images) {
-                $slider->photos()->createMany(Arr::random($images, rand(1, 2)));
-            });
+
+            
+
+           
         }
     }
 }

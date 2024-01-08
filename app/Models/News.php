@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Nicolaslopezj\Searchable\SearchableTrait;
 
 class News extends Model
@@ -47,7 +48,7 @@ class News extends Model
     }
 
 
-    // to get only first one media elemet
+ 
     public function firstMedia(): MorphOne{
         return $this->MorphOne(Photo::class, 'imageable')->orderBy('file_sort','asc');
     }
@@ -55,11 +56,18 @@ class News extends Model
     public function lastMedia(): MorphOne{
         return $this->MorphOne(Photo::class, 'imageable')->orderBy('file_sort','desc');
     }
-
     
     // one product may have more than one photo
     public function photos():MorphMany
     {
         return $this->morphMany(Photo::class, 'imageable');
+    }
+
+    
+   
+
+    public function tags():MorphToMany
+    {
+        return $this->morphToMany(Tag::class, 'taggable');
     }
 }

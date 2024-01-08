@@ -1,5 +1,14 @@
 @extends('layouts.admin')
 
+@section('style')
+    <link rel="stylesheet" href="{{ asset('backend/vendor/select2/css/select2.min.css') }}">
+    <style>
+        .select2-container {
+            display: block !important;
+        }
+    </style>
+@endsection
+
 @section('content')
 
     {{-- main holder page  --}}
@@ -11,7 +20,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-edit"></i>
-                    تعديل الخبر
+                    تعديل المنشور
                 </h3>
                 <ul class="breadcrumb">
                     <li>
@@ -74,9 +83,9 @@
                             <div class="col-sm-12 col-md-7">
                                 {{-- name --}}
                                 <div class="row">
-                                    <div class="col-sm-12 col-md-12 pt-4">
+                                    <div class="col-sm-12 col-md-12 pt-3">
                                         <div class="form-group">
-                                            <label for="name">عنوان الخبر</label>
+                                            <label for="name">عنوان المنشور</label>
                                             <input type="text" id="name" name="name"
                                                 value="{{ old('name', $news->name) }}" class="form-control">
                                             @error('name')
@@ -88,19 +97,36 @@
 
                                 {{-- description row --}}
                                 <div class="row">
-                                    <div class="col-12 pt-4">
+                                    <div class="col-12 pt-3">
                                         <label for="description">الوصف</label>
                                         <textarea name="description" rows="10" class="form-control summernote">
                                             {!! old('description', $news->description) !!}
                                         </textarea>
                                     </div>
                                 </div>
+
+                                {{--  tags fields --}}
+                                <div class="row ">
+                                    {{-- Tags field  --}}
+                                    <div class="col-sm-12 pt-3">
+                                        <label for="tags">الكلمات المفتاحية</label>
+                                        <select name="tags[]" class="form-control select2" multiple="multiple">
+                                            @forelse ($tags as $tag)
+                                                <option value="{{ $tag->id }}"
+                                                    {{ in_array($tag->id, old('tags', $news->tags->pluck('id')->toArray())) ? 'selected' : null }}>
+                                                    {{ $tag->name }}</option>
+                                            @empty
+                                            @endforelse
+                                        </select>
+                                    </div>
+                                </div>
+
                             </div>
 
                             {{-- مرفق الصور  --}}
                             <div class="col-md-5 col-sm-12 ">
 
-                                <div class="row pt-4">
+                                <div class="row pt-3">
                                     <div class="col-12">
                                         <label for="images">الصورة/ الصور</label>
                                         <br>
@@ -127,7 +153,7 @@
 
                         {{-- published_on and published_on_time  --}}
                         <div class="row">
-                            <div class="col-sm-12  pt-4">
+                            <div class="col-sm-12  pt-3">
                                 <div class="form-group">
                                     <label for="published_on">تاريخ النشر</label>
                                     <input type="text" id="published_on" name="published_on"
@@ -142,7 +168,7 @@
 
 
                         <div class="row">
-                            <div class="col-sm-12  pt-4">
+                            <div class="col-sm-12  pt-3">
                                 <div class="form-group">
                                     <label for="published_on_time">وقت النشر</label>
                                     <input type="text" id="published_on_time" name="published_on_time"
@@ -158,7 +184,7 @@
 
                         {{-- status --}}
                         <div class="row">
-                            <div class="col-sm-12 col-md-12 pt-4">
+                            <div class="col-sm-12 col-md-12 pt-3">
                                 <label for="status">الحالة</label>
                                 <select name="status" class="form-control">
                                     <option value="1" {{ old('status', $news->status) == '1' ? 'selected' : null }}>
@@ -182,8 +208,8 @@
 
 
 
-                    <div class="form-group pt-4">
-                        <button type="submit" name="submit" class="btn btn-primary">تعديل الخبر </button>
+                    <div class="form-group pt-3">
+                        <button type="submit" name="submit" class="btn btn-primary">تعديل المنشور </button>
                     </div>
                 </div>
 
@@ -195,12 +221,55 @@
 @endsection
 
 @section('script')
-    {{-- pickadate calling js --}}
+    {{-- Call select2 plugin --}}
+    <script src="{{ asset('backend/vendor/select2/js/select2.full.min.js') }}"></script>
 
-    <script src="{{ asset('backend/vendor/datepicker/picker.js') }}"></script>
-    <script src="{{ asset('backend/vendor/datepicker/picker.date.js') }}"></script>
+
     <script>
         $(function() {
+
+            //select2: code to search in data 
+            function matchStart(params, data) {
+                // If there are no search terms, return all of the data
+                if ($.trim(params.term) === '') {
+                    return data;
+                }
+
+                // Skip if there is no 'children' property
+                if (typeof data.children === 'undefined') {
+                    return null;
+                }
+
+                // `data.children` contains the actual options that we are matching against
+                var filteredChildren = [];
+                $.each(data.children, function(idx, child) {
+                    if (child.text.toUpperCase().indexOf(params.term.toUpperCase()) == 0) {
+                        filteredChildren.push(child);
+                    }
+                });
+
+                // If we matched any of the timezone group's children, then set the matched children on the group
+                // and return the group object
+                if (filteredChildren.length) {
+                    var modifiedData = $.extend({}, data, true);
+                    modifiedData.children = filteredChildren;
+
+                    // You can return modified objects from here
+                    // This includes matching the `children` how you want in nested data sets
+                    return modifiedData;
+                }
+
+                // Return `null` if the term should not be displayed
+                return null;
+            }
+
+            // select2 : .select2 : is  identifier used with element to be effected
+            $(".select2").select2({
+                tags: true,
+                colseOnSelect: false,
+                minimumResultsForSearch: Infinity,
+                matcher: matchStart
+            });
 
             $("#product_images").fileinput({
                 theme: "fa5",

@@ -18,7 +18,7 @@
                         <i class="fa fa-solid fa-chevron-left chevron"></i>
                     </li>
                     <li>
-                        إدارة الاخبار
+                        إدارة المنشورات
                     </li>
                 </ul>
             </div>
@@ -49,8 +49,8 @@
                         <th>العنوان</th>
                         <th>الكاتب</th>
                         <th>الحالة</th>
+                        <th class="d-none d-sm-table-cell"> الوصف</th>
                         <th class="d-none d-sm-table-cell">تاريخ النشر </th>
-                        <th class="d-none d-sm-table-cell">تاريخ الانشاء </th>
                         <th class="text-center" style="width:30px;">الاعدادات</th>
                     </tr>
                 </thead>
@@ -72,8 +72,8 @@
                             </td>
                             <td>{{ $new->created_by }}</td>
                             <td>{{ $new->status() }}</td>
+                            <td class="d-none d-sm-table-cell">{!! Str::limit($new->description, 50, ' ...') !!}</td>
                             <td class="d-none d-sm-table-cell">{{ $new->published_on->format('Y-m-d h:i a') ?? '-' }}</td>
-                            <td class="d-none d-sm-table-cell">{{ $new->created_at->format('Y-m-d h:i a') }}</td>
                             <td>
                                 <div class="btn-group btn-group-sm">
                                     <a href="{{ route('admin.news.edit', $new->id) }}" class="btn btn-primary">
