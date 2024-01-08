@@ -11,6 +11,9 @@ use Illuminate\Http\Request;
 class BlogController extends Controller
 {
 
+    public function blog(){
+        return view('frontend.blog.blog-sticky-sidebar');
+    }
     
 
     public function post($slug):View{

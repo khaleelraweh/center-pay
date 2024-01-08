@@ -17,12 +17,17 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug')->unique();
-            $table->boolean('status')->default(false);
+            $table->unsignedBigInteger('section')->default(1);// tag:1= product , 2= card , 3 = blog
+
+            // will be use always
+            $table->boolean('status')->default(true);
+            $table->dateTime('published_on')->nullable(); 
             $table->string('created_by')->nullable(); 
             $table->string('updated_by')->nullable(); 
-            $table->string('deleted_by')->nullable(); 
+            $table->string('deleted_by')->nullable();
             $table->softDeletes();
             $table->timestamps();
+            // end of will be use always
         });
     }
 

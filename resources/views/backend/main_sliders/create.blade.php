@@ -259,6 +259,8 @@
                 overwriteInitial: false
             });
 
+
+            // ======= start pickadate codeing ===========
             $('#published_on').pickadate({
                 format: 'yyyy-mm-dd',
                 min: new Date(),
@@ -268,6 +270,7 @@
                 close: 'OK',
                 colseOnSelect: true // Close Upon Selecting a date
             });
+
             var publishedOn = $('#published_on').pickadate(
                 'picker'); // set startdate in the picker to the start date in the #start_date elemet
             // when change date 
@@ -287,8 +290,8 @@
             $('#published_on_time').pickatime({
                 clear: ''
             });
-
             // ======= End pickadate codeing ===========
+
             $('.summernote').summernote({
                 tabSize: 2,
                 height: 120,

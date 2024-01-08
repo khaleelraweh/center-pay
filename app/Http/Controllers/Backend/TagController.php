@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\TagRequest;
 use App\Models\Tag;
+use DateTimeImmutable;
 use Illuminate\Http\Request;
 
 class TagController extends Controller
@@ -43,9 +44,14 @@ class TagController extends Controller
             return redirect('admin/index');
         }
 
-        $input['name'] = $request->name;
-        $input['status'] = $request->status;
-        $input['created_by'] = auth()->user()->full_name;
+        $input['name']          =   $request->name;
+        $input['section']       =   $request->section;
+        $input['status']        =   $request->status;
+        $input['created_by']    =   auth()->user()->full_name;
+
+        $published_on = $request->published_on.' '.$request->published_on_time;
+        $published_on = new DateTimeImmutable($published_on);
+        $input['published_on'] = $published_on;
 
         Tag::create($input);
 
@@ -78,9 +84,13 @@ class TagController extends Controller
         }
 
         $input['name'] = $request->name;
-        $input['slug'] = null;
-        $input['status'] = $request->status;
-        $input['updated_by'] = auth()->user()->full_name;
+        $input['section']       =   $request->section;
+        $input['status']        =   $request->status;
+        $input['updated_by']    =   auth()->user()->full_name;
+
+        $published_on = $request->published_on.' '.$request->published_on_time;
+        $published_on = new DateTimeImmutable($published_on);
+        $input['published_on'] = $published_on;
 
         $tag->update($input);
 

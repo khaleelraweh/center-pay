@@ -23,6 +23,7 @@
                     </li>
                 </ul>
             </div>
+
             <div class="ml-auto">
                 @ability('admin', 'create_tags')
                     <a href="{{ route('admin.tags.create') }}" class="btn btn-primary">
@@ -79,7 +80,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="6" class="text-center">No Tags found</td>
+                            <td colspan="6" class="text-center">لم يتم العثور علي اي تاج</td>
                         </tr>
                     @endforelse
                 </tbody>

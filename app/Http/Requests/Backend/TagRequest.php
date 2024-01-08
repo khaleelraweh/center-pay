@@ -28,22 +28,35 @@ class TagRequest extends FormRequest
                 case 'POST':
                 {
                     return [
-                        'name'=>'required|max:255|unique:tags',
-                        'status'=>'required',
-                        'created_by' => 'nullable',
-                        'updated_by' => 'nullable',
-                        'deleted_by' => 'nullable',
+                        'name'          =>  'required|max:255|unique:tags',
+                        'section'       =>  'nullable', 
+                        
+                        // used always 
+                        'status'             =>  'required',
+                        'published_on'       =>  'nullable',
+                        'published_on_time'  =>  'nullable',
+                        'created_by'         =>  'nullable',
+                        'updated_by'         =>  'nullable',
+                        'deleted_by'         =>  'nullable',
+                        // end of used always 
                     ];
                 }
                 case 'PUT':
                 case 'PATCH':
                 {
                     return [
-                        'name'=>'required|max:255|unique:tags,name,'.$this->route()->tag->id,
-                        'status'=>'required',
-                        'created_by' => 'nullable',
-                        'updated_by' => 'nullable',
-                        'deleted_by' => 'nullable',
+                        'name'       => 'required|max:255|unique:tags,name,'.$this->route()->tag->id,
+                        'section'    => 'nullable', 
+                       
+                        // used always 
+                        'status'             =>  'required',
+                        'published_on'       =>  'nullable',
+                        'published_on_time'  =>  'nullable',
+                        'created_by'         =>  'nullable',
+                        'updated_by'         =>  'nullable',
+                        'deleted_by'         =>  'nullable',
+                        // end of used always 
+
                     ];
                 }
                 

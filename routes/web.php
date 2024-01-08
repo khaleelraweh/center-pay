@@ -49,6 +49,7 @@ Route::get('/wishlist',[FrontendController::class,'wishlist'])->name('frontend.w
 // Route::get('/checkout',[FrontendController::class,'checkout'])->name('frontend.checkout');
 
 
+Route::get('/blog',[BlogController::class,'blog'])->name('frontend.blog');
 Route::get('/blog/post/{slug?}',[BlogController::class,'post'])->name('frontend.blog.post');
 
 
