@@ -280,7 +280,7 @@
     {{--  cards blog --}}
 
     @if (count($blog) > 0)
-        <div class="holder holder-mt-medium">
+        <div class="holder holder-mt-medium blog">
             <div class="container">
                 <div class="title-wrap text-center">
                     <a href="{{ route('frontend.blog') }}" class="h1-style">
@@ -294,11 +294,11 @@
 
                     @forelse ($blog as $post)
                         <div class="post-prw">
-                            <div class="row vert-margin-middle">
+                            <div class="row vert-margin-middle d-flex -align-items-strech">
 
                                 <div class="post-prw-img col-sm-6">
                                     <a href="{{ route('frontend.blog.post', $post->slug) }}"
-                                        class="d-block image-container" style="padding-bottom: 88.92%">
+                                        class="d-block image-container" style="padding-bottom: 88.92%;height: 100%">
                                         <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
                                             data-src="{{ asset('assets/news/' . $post->firstMedia?->file_name) }}"
                                             class="lazyload fade-up" alt="Blog Title" />
@@ -318,7 +318,7 @@
                                     <div class="post-prw-teaser">
                                         {{-- {!! $post->description !!} --}}
 
-                                        {!! Str::limit($post->description, 90, ' ...') !!}
+                                        {!! Str::limit($post->description, 50, ' ...') !!}
                                     </div>
                                     <div class="post-prw-btn">
                                         <a href="{{ route('frontend.blog.post', $post->slug) }}" class="btn btn--md">اقرأ

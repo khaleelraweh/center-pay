@@ -161,7 +161,6 @@
                 </ul>
                 <div class="dropdn-form-wrapper">
 
-                    <h5>دخول سريع</h5>
 
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
