@@ -307,6 +307,28 @@ a.image-hover-scale{
   border-radius: 16px;
 }
 
+@media (max-width: 575px)
+{
+  .bnslider-text-content .bnslider-text--xl{
+    font-size: 0.6em;
+  }
+  .bnslider-text-content .bnslider-text--sm{
+    font-size: 0.3em;
+  }
+  .btn--lg{
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    padding: 10px 18px;
+  }
+
+  .bnslider-arrows .slick-prev::before, .bnslider-arrows .slick-next::before {
+    font-size: 12px;
+    width: 30px;
+    height: 30px;
+  }
+}
+
 .slick-dots li.slick-active button{
   border-radius: 50% !important;
   background-color: #dc3c01 !important;
