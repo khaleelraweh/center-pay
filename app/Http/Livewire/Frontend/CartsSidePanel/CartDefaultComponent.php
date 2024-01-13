@@ -93,9 +93,10 @@ class CartDefaultComponent extends Component
 
     public function removeFromCart($rowId){
         $this->emit('removeFromCart' , $rowId );
-        Cart::remove($rowId);
-        $this->emit('updateCart');
-        $this->alert('success','Item removed from your cart! ');
+
+        // Cart::remove($rowId);
+        // $this->emit('updateCart');
+        // $this->alert('success','Item removed from your cart! ');
 
    }
 
