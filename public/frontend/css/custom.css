@@ -204,6 +204,10 @@ display: flex;
 height: 100%;
 }
 
+.blog .post-prw-text > * + .post-prw-teaser{
+  font-weight: 300;
+  font-size: 13px;
+}
 .card-accordion .tag-input:focus{
 border: 1px solid #DC3C01;
 }
@@ -384,4 +388,9 @@ width: fit-content;
 
 .custom-header-color{
 color: #dc3c01 !important;
+}
+
+.common-question .panel-title>a, .panel-title>a:active{
+  letter-spacing: normal;
+  font-weight: 100;
 }

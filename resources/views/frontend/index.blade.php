@@ -318,7 +318,7 @@
                                     <div class="post-prw-teaser">
                                         {{-- {!! $post->description !!} --}}
 
-                                        {!! Str::limit($post->description, 50, ' ...') !!}
+                                        {!! Str::limit($post->description, 90, ' ...') !!}
                                     </div>
                                     <div class="post-prw-btn">
                                         <a href="{{ route('frontend.blog.post', $post->slug) }}" class="btn btn--md">اقرأ
@@ -338,7 +338,8 @@
 
     {{-- common question --}}
     @if (count($common_questions) > 0)
-        <div class="holder holder-subscribe-full mt-0" id="questions" style="background-color: transparent">
+        <div class="holder holder-subscribe-full mt-0 common-question" id="questions"
+            style="background-color: transparent">
             <div class="container">
                 <div class="title-wrap text-center">
                     <h3 class="h2-style testimonials-carousel-simple-name">الإستفسارات</h3>
