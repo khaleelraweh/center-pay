@@ -50,7 +50,7 @@ class CartComponent extends Component
             }
              // Cart::instance('default')->remove($rowId);
              $this->emit('updateCart');
-             $this->alert('success','Item removed from your cart! ');
+             $this->alert('success','تمت إزالة العنصر من سلة التسوق الخاصة بك !');
      
              if(cart::instance('default')->count() == 0){
                  return redirect()->route('frontend.cart');
@@ -66,7 +66,7 @@ class CartComponent extends Component
 
         // Cart::instance('default')->remove($rowId);
         $this->emit('updateCart');
-        $this->alert('success','All Items removed from your cart! ');
+        $this->alert('success','تمت إزالة جميع العناصر من سلة التسوق الخاصة بك!');
 
         if(cart::instance('default')->count() == 0){
             return redirect()->route('frontend.cart');
@@ -84,7 +84,7 @@ class CartComponent extends Component
 
         // Cart::instance('wishlist')->remove($rowId);
         $this->emit('updateCart');
-        $this->alert('success','Item removed from your wishlist! ');
+        $this->alert('success','تمت إزالة العنصر من قائمة أمنياتك!');
 
         if(cart::instance('wishlist')->count() == 0){
             return redirect()->route('frontend.wishlist');
@@ -104,13 +104,13 @@ class CartComponent extends Component
         if($duplicates->isNotEmpty()){
 
             Cart::instance('wishlist')->remove($rowId);
-            $this->alert('error','Product already exist!');
+            $this->alert('error','المنتج موجود بالفعل في سلة المفضلات!');
         }else{
             Cart:: instance('default')->add($item->id , $item->name, 1, $item->price)->associate(Product::class);
             Cart::instance('wishlist')->remove($rowId);
             $this->emit('updateCart');
 
-            $this->alert('success','Product added in your wishlist cart successfully');
+            $this->alert('success','تمت إضافة المنتج إلى سلة المفضلات الخاصة بك بنجاح');
         }
 
         if(cart::instance('wishlist')->count() == 0){
