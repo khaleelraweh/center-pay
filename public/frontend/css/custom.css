@@ -365,3 +365,11 @@ input[type=text], input[type=email], input[type=password], textarea,.select-wrap
   flex-direction: column;
   width: fit-content;
 }
+
+
+
+/* featured style  */
+
+.custom-header-color{
+  color: #dc3c01 !important;
+}

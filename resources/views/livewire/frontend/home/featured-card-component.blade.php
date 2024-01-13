@@ -4,7 +4,7 @@
         <div class="holder">
             <div class="container">
                 <div class="title-wrap text-center">
-                    <h2 class="h1-style">الباقات الجديدة</h2>
+                    <h2 class="h1-style custom-header-color">الباقات الجديدة</h2>
                     <div class="carousel-arrows"></div>
                 </div>
                 <div class="prd-grid prd-carousel js-prd-carousel slick-arrows-aside-simple slick-arrows-mobile-lg data-to-show-4 data-to-show-md-3 data-to-show-sm-3 data-to-show-xs-2"
@@ -121,10 +121,10 @@
                                         <div class="prd-price">
                                             @if ($featured_card->offer_price > 0)
                                                 <div class="price-old">$ {{ $featured_card->price }}</div>
-                                                <div class="price-new">$
+                                                <div class="price-new custom-header-color">$
                                                     {{ $featured_card->price - $featured_card->offer_price }}</div>
                                             @else
-                                                <div class="price-new">$
+                                                <div class="price-new custom-header-color">$
                                                     {{ $featured_card->price }}</div>
                                             @endif
 

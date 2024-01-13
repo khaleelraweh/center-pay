@@ -4,7 +4,7 @@
         <div class="holder">
             <div class="container">
                 <div class="title-wrap text-center">
-                    <h2 class="h1-style">باقات متنوعة</h2>
+                    <h2 class="h1-style custom-header-color">باقات متنوعة</h2>
                     <div class="carousel-arrows"></div>
                 </div>
 
@@ -99,12 +99,13 @@
                                         <div class="prd-price">
                                             @if ($random_product_card->offer_price > 0)
                                                 <div class="price-old">$ {{ $random_product_card->price }}</div>
-                                                <div class="price-new">
+                                                <div class="price-new custom-header-color">
                                                     $
                                                     {{ $random_product_card->price - $random_product_card->offer_price }}
                                                 </div>
                                             @else
-                                                <div class="price-new">$ {{ $random_product_card->price }}</div>
+                                                <div class="price-new custom-header-color">$
+                                                    {{ $random_product_card->price }}</div>
                                             @endif
 
                                         </div>
