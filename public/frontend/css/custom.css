@@ -121,7 +121,8 @@
 
 .btn, 
 button{
-    border-radius: 4px !important;
+    /* border-radius: 12px !important; */
+    border-radius: 1.5em !important;
 }
 
 /* style footer advertisaor   */
@@ -299,9 +300,11 @@ a.image-hover-scale{
 
 }
 
+/* main sliders */
 
 .slick-initialized .bnslider-image, .slick-initialized .bnslider-image-mobile, .no-js .bnslider-image{
-  border-radius: 25px;
+  /* border-radius: 25px; */
+  border-radius: 16px;
 }
 
 .slick-dots li.slick-active button{
@@ -324,7 +327,8 @@ ul.breadcrumb li .chevron {
 /* setting of input  */
 
 input[type=text], input[type=email], input[type=password], textarea,.select-wrapper, .select-wrapper select, .select-wrapper-sm select , .form-control{
-  border-radius: 4px !important;
+  /* border-radius: 16px !important; */
+  border-radius: 1.5em !important;
 }
 
 

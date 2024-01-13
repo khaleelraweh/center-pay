@@ -104,7 +104,8 @@
                                                                 style="opacity: 1">
                                                                 <a href="{{ $main_slider->url != null ? url($main_slider->url) : '#' }}"
                                                                     class="btn btn--invert btn--lg"
-                                                                    target="{{ $main_slider->target }}">تسوق الان</a>
+                                                                    target="{{ $main_slider->target }}">تسوق
+                                                                    الان</a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -142,6 +143,7 @@
     {{-- <div class="holder mt-0"> --}}
     @if (count($adv_sliders) > 0)
         <div class="holder mt-3">
+
             {{-- <div class="container-fluid px-0"> --}}
 
             {{-- <div class="row bnr-grid no-gutters"> --}}
@@ -206,7 +208,6 @@
                 @empty
                 @endforelse
             </div>
-
 
         </div>
     @endif
