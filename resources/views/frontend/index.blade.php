@@ -222,6 +222,7 @@
         <div class="holder global_width">
             <div class="container">
                 <div class="title-wrap text-center">
+                    <h3 class="h2-style testimonials-carousel-simple-name">بطاقاتنا</h3>
                     <h2 class="h1-style">اختر البطاقة المناسبة لك</h2>
                 </div>
                 <div class="prd-grid prd-promo-carousel data-to-show-4 js-prd-promo-carousel">
