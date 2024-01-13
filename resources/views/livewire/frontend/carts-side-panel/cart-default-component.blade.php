@@ -177,7 +177,7 @@
 
                     @if ($total_offer_price > 0)
                         {{-- <div class="price-old"><sub>${{ $total_original_price }}</sub> </div> --}}
-                        <div class="price-old mx-2"><sub>${{ Cart::total() }}</sub></div>
+                        <div class="price-old mx-2"><sub style="font-size: 14px">${{ Cart::total() }}</sub></div>
 
                         <div class="price-new">${{ $total_final_price }}</div>
                     @else
@@ -188,7 +188,8 @@
 
             </div>
             @if ($total_offer_price > 0)
-                <div class="minicart-drop-total js-minicart-drop-total row no-gutters align-items-center">
+                {{-- we made display none in the underline --}}
+                <div class="minicart-drop-total js-minicart-drop-total row no-gutters align-items-center d-none">
                     <div class="minicart-drop-total-txt col-auto heading-font" style="font-size: 12px">
                         حافظت على :
                     </div>
