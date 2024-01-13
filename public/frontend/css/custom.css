@@ -192,6 +192,13 @@ background-color: transparent;
   height: 100%;
 } */
 
+.slick-slider .slick-track, .slick-slider .slick-list{
+  display: flex;
+}
+.slick-slider .slick-slide{
+  display: flex;
+}
+
 .card-accordion .tag-input:focus{
   border: 1px solid #DC3C01;
 }

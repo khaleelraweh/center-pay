@@ -284,7 +284,7 @@
             <div class="container">
                 <div class="title-wrap text-center">
                     <a href="{{ route('frontend.blog') }}" class="h1-style">
-                        <i class="fas fa-blog "></i>
+                        <i class="fas fa-blog custom-header-color"></i>
                         المدونة
                     </a>
                     <div class="carousel-arrows"></div>
