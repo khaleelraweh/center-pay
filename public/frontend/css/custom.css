@@ -101,23 +101,22 @@
      
   }
 
-  .qty-changer button,
-  .qty-changer input[type='number'],
-  .qty-changer input[type='text'] {
-      background-color: transparent;
-  }
+
 
   .quantity-choice {
-      width: 100px;
-      border: 1px solid #ecedf6 !important;
-      border-radius: 22.5px;
-      color: #fff !important;
-      font-size: 14px;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-      padding: 0 10px;
-      border: none;
+    width: fit-content;
+    /* border: 1px solid #ecedf6 !important; */
+    border-radius: 4.5px;
+    color: #fff !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 0px 13px;
+    border: none;
+  }
+
+  .qty.qty-changer > * {
+    background-color: transparent;
   }
 
 .btn, 
@@ -326,4 +325,17 @@ ul.breadcrumb li .chevron {
 
 input[type=text], input[type=email], input[type=password], textarea,.select-wrapper, .select-wrapper select, .select-wrapper-sm select , .form-control{
   border-radius: 4px !important;
+}
+
+
+/* cart default component style  */
+
+.default_custom_price{
+  border: 1px solid #261F23;
+  padding: 5px 10px;
+  border-radius: 16px;
+  background: #261F23;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
 }

@@ -25,20 +25,16 @@ class CartComponent extends Component
     ];
 
     public function mount(){
-        
-        // السطرين التاليين سوف يعطينا العدداد للعناصر حتي اذا تم طلب المنتج اكثر من منرة سيعتبرة من ضمن عناصر العد
-        // $this->cartCount = Cart::instance('default')->count();
-        // $this->wishListCount = Cart::instance('wishlist')->count();
+        $this->cartCount = Cart::instance('default')->count();
+        $this->wishListCount = Cart::instance('wishlist')->count();
 
-        $this->cartCount = Cart::instance('default')->content()->count();
-        $this->wishListCount = Cart::instance('wishlist')->content()->count();
        
     }
 
     public function update_cart(){
 
-        $this->cartCount = Cart::instance('default')->content()->count();
-        $this->wishListCount = Cart::instance('wishlist')->content()->count();
+        $this->cartCount = Cart::instance('default')->count();
+        $this->wishListCount = Cart::instance('wishlist')->count();
 
     }
 
@@ -117,13 +113,14 @@ class CartComponent extends Component
             return redirect()->route('frontend.wishlist');
         }
 
+            
         
     }
 
     public function render()
     {
-        $this->cartCount = Cart::instance('default')->content()->count();
-        $this->wishListCount = Cart::instance('wishlist')->content()->count();
+        $this->cartCount = Cart::instance('default')->count();
+        $this->wishListCount = Cart::instance('wishlist')->count();
 
         return view('livewire.frontend.cart-component');
     }

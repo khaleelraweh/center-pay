@@ -1,4 +1,4 @@
-<div>
+{{-- <div>
     <div class="order-0 order-md-100">
         <form method="post" action="#">
 
@@ -13,7 +13,7 @@
                 <div class="btn-wrap">
                     <button class="btn btn--add-to-cart js-trigger-addtocart js-prd-addtocart" wire:click="addToCart()"
                         data-product='{"name":  "Leather Pegged Pants ",  "url ": "product.html",  "path ": "{{ asset('
-                        											frontend/assests/images/skins/fashion/product-page/product-01.webp') }}", "aspect_ratio "
+                                                											frontend/assests/images/skins/fashion/product-page/product-01.webp') }}", "aspect_ratio "
 											: "0.78" }'>Add
                         to cart</button>
                 </div>
@@ -34,4 +34,4 @@
                     service</a></label>
         </div>
     </div>
-</div>
+</div> --}}

@@ -39,8 +39,7 @@
                                 <div class="qty qty-changer">
                                     <button class="decrease"
                                         wire:click.prevent="decreaseQuantity('{{ $cartItem->rowId }}')"></button>
-                                    <input type="text" class="qty-input" value="{{ $item_quantity }} " data-min="0"
-                                        data-max="1000">
+                                    <div class="qty-input px-3">{{ $item_quantity }}</div>
                                     <button class="increase"
                                         wire:click="increaseQuantity('{{ $cartItem->rowId }}')"></button>
                                 </div>

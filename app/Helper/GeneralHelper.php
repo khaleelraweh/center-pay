@@ -29,9 +29,12 @@ function getNumbers(){
     $subtotal = Cart::instance('default')->subtotal();
 
     $discount = session()->has('coupon') ? session()->get('coupon')['discount'] : 0.00;
+
     $discount_code = session()->has('coupon') ? session()->get('coupon')['code'] : null;
 
-    $subtotal_after_discount = $subtotal - $discount ;
+    $admin_discount = session()->has('offer_discount') ? session()->get('offer_discount') : 0.00;
+
+    $subtotal_after_discount = $subtotal - $discount - $admin_discount  ;
 
     $tax = config('cart.tax') / 100;
     

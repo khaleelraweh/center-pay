@@ -9,6 +9,8 @@ use Livewire\Component;
 class CartAsidebarItemComponent extends Component
 {
     use LivewireAlert;
+
+    protected $listeners = ['refreshComponent'=>'$refresh'];
    
     public $itemRowId; // every item in the cart has special rowId as key 
     public $item_quantity = 1; 
@@ -19,8 +21,6 @@ class CartAsidebarItemComponent extends Component
     public $cart_total;
  
     public function mount(){
-
-
 
         $this->item_quantity = Cart::instance('default')->get($this->itemRowId)->qty ?? 1;
         

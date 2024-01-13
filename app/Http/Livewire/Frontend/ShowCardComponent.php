@@ -76,7 +76,6 @@ class ShowCardComponent extends Component
         }
     }
 
-
     public function render()
     {
         return view('livewire.frontend.show-card-component');

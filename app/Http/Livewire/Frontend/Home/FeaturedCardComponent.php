@@ -12,46 +12,23 @@ class FeaturedCardComponent extends Component
 {
     use LivewireAlert;
 
-    public function addToCart($id){ 
-
-        $card = Card::whereId($id)->Active()->HasQuantity()->ActiveCategory()->firstOrFail();
+    public function store($instance,$card_id, $card_name , $card_quentity, $card_price){
         
-        // check if card is already exist in the default cart
-        $duplicates = Cart::instance('default')->search(function($cartItem,$rowId) use($card) {
-            return $cartItem->id === $card->id;
+        $duplicates = Cart::instance($instance)->search(function($cartItem,$rowId) use($card_id) {
+            return $cartItem->id === $card_id;
         });
 
         if($duplicates->isNotEmpty()){
             $this->alert('error','الباقة  مضافة مسبقا!!');
         }else{
-            Cart:: instance('default')->add($card->id, $card->name, 1, $card->price)->associate(Card::class);
-            //This event is used to update cart and withlist count on success adding to cart in all pages 
+            Cart:: instance($instance)->add($card_id , $card_name , $card_quentity , $card_price )->associate(Card::class);
             $this->emit('updateCart');
-            $this->alert('success','تم إضافة الباقة الي السلة بنجاح!');
+            $this->alert('success',' تم ضافة الباقة الى ' . $instance . ' بنجاح');
+        
         }
-
+        
     }
 
-    public function addToWishList($id){
-        
-        $card = Card::whereId($id)->Active()->HasQuantity()->ActiveCategory()->firstOrFail();
-        
-        $duplicates = Cart::instance('wishlist')->search(function($cartItem,$rowId) use($card) {
-            return $cartItem->id === $card->id;
-        });
-
-        if($duplicates->isNotEmpty()){
-            $this->alert('error','الباقة مضافة مسبقا');
-        }else{
-            Cart:: instance('wishlist')->add($card->id, $card->name, 1, $card->price)->associate(Card::class);
-            $this->emit('updateCart');
-            $this->alert('success','تم اضافة الباقة الي قائمة مفضلاتك بنجاح');
-        }
-
-
-    }
-
-    
     public function render()
     {
         return view('livewire.frontend.home.featured-card-component', [
@@ -67,7 +44,7 @@ class FeaturedCardComponent extends Component
                                                     ->pluck('value','name')
                                                     ->toArray()['site_featured_cards']
                                             )
-                                            ->get()
+            ->get()
         ]);
     }
 }
