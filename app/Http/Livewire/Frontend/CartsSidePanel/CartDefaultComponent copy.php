@@ -11,11 +11,11 @@ class CartDefaultComponent extends Component
 {
     use LivewireAlert;
 
-    // public $cart_subtotal;
-    // public $cart_discount; //discount from coupon
-    // public $cart_tax;
-    // public $cart_shipping;
-    // public $cart_total;
+    public $cart_subtotal;
+    public $cart_discount; //discount from coupon
+    public $cart_tax;
+    public $cart_shipping;
+    public $cart_total;
 
     public $admin_discount = 0;
 
@@ -29,30 +29,27 @@ class CartDefaultComponent extends Component
     public $item_quantity = 1; 
 
     protected $listeners = [
-        'updateCart' => 'mountUpdate'
+        'updateCart' => 'mount'
     ];
 
     public function mount(){
-        // $this->cart_subtotal = getNumbers()->get('subtotal');
-        // $this->cart_discount = getNumbers()->get('discount');
-        // $this->cart_tax = getNumbers()->get('productTaxes');
-        // $this->cart_shipping = getNumbers()->get('shipping');
-        // $this->cart_total = getNumbers()->get('total');
+        $this->cart_subtotal = getNumbers()->get('subtotal');
+        $this->cart_discount = getNumbers()->get('discount');
+        $this->cart_tax = getNumbers()->get('productTaxes');
+        $this->cart_shipping = getNumbers()->get('shipping');
+        $this->cart_total = getNumbers()->get('total');
 
         $this->refreshCart();
-        $this->admin_discount = Session()->get('offer_discount');
+        $this->admin_discount = Session()->get('offer_discount1');
 
         
     }
 
-    
-
     public function mountUpdate(){
-        // $this->cart_subtotal = Cart::instance('default')->subtotal();
-        // $this->cart_tax = Cart::Instance('default')->tax();
+        $this->cart_subtotal = Cart::instance('default')->subtotal();
+        $this->cart_tax = Cart::Instance('default')->tax();
         
         $this->refreshCart();
-        $this->admin_discount = Session()->get('offer_discount');
     }
 
     public function refreshCart(){
@@ -92,7 +89,7 @@ class CartDefaultComponent extends Component
     }
 
     public function removeFromCart($rowId){
-        $this->emit('removeFromCart' , $rowId );
+        // $this->emit('removeFromCart' , $rowId );
         Cart::remove($rowId);
         $this->emit('updateCart');
         $this->alert('success','Item removed from your cart! ');
@@ -104,7 +101,7 @@ class CartDefaultComponent extends Component
 
     public function render()
     {
-        // $this->refreshCart();
+        $this->refreshCart();
         // session()->forget('offer_discount1');
         return view('livewire.frontend.carts-side-panel.cart-default-component');
     }
