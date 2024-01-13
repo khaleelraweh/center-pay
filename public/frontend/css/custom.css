@@ -199,6 +199,10 @@ background-color: transparent;
   display: flex;
 }
 
+.image-container{
+  height: 100%;
+}
+
 .card-accordion .tag-input:focus{
   border: 1px solid #DC3C01;
 }

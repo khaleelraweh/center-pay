@@ -318,7 +318,7 @@
                                     <div class="post-prw-teaser">
                                         {{-- {!! $post->description !!} --}}
 
-                                        {!! Str::limit($post->description, 150, ' ...') !!}
+                                        {!! Str::limit($post->description, 90, ' ...') !!}
                                     </div>
                                     <div class="post-prw-btn">
                                         <a href="{{ route('frontend.blog.post', $post->slug) }}" class="btn btn--md">اقرأ
