@@ -215,8 +215,6 @@
     {{-- featured cards livewire component --}}
     <livewire:frontend.home.featured-card-component />
 
-    {{-- random cards --}}
-    <livewire:frontend.home.random-card-component :random_cards="$random_cards" />
 
     {{-- card categories  --}}
 
@@ -268,6 +266,10 @@
             </div>
         </div>
     @endif
+
+
+    {{-- random cards --}}
+    <livewire:frontend.home.random-card-component :random_cards="$random_cards" />
 
 
 

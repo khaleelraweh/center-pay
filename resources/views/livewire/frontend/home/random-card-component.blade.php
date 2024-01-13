@@ -4,7 +4,7 @@
         <div class="holder">
             <div class="container">
                 <div class="title-wrap text-center">
-                    <h2 class="h1-style">تصفح الباقات العشوائية</h2>
+                    <h2 class="h1-style">باقات متنوعة</h2>
                     <div class="carousel-arrows"></div>
                 </div>
 
