@@ -120,8 +120,7 @@
 
                                         <div class="prd-price">
                                             @if ($featured_card->offer_price > 0)
-                                                <div class="price-old">${{ $featured_card->price }}
-                                                </div>
+                                                <div class="price-old">$ {{ $featured_card->price }}</div>
                                                 <div class="price-new custom-header-color">$
                                                     {{ $featured_card->price - $featured_card->offer_price }}</div>
                                             @else

@@ -12,6 +12,8 @@ class FeaturedCardComponent extends Component
 {
     use LivewireAlert;
 
+
+
     public function store($instance,$card_id, $card_name , $card_quentity, $card_price){
         
         $duplicates = Cart::instance($instance)->search(function($cartItem,$rowId) use($card_id) {
@@ -34,7 +36,7 @@ class FeaturedCardComponent extends Component
         return view('livewire.frontend.home.featured-card-component', [
             'featured_cards'    =>  Card::with('firstMedia' , 'lastMedia' ,'photos' )
                                             ->CardCategory()
-                                            ->orderBy('published_on','desc') 
+                                            ->orderBy('created_at','desc') 
                                             ->Featured()
                                             ->Active()
                                             ->HasQuantity()

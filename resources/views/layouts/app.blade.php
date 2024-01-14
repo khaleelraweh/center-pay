@@ -108,6 +108,7 @@
     <script src="{{ asset('frontend/js/vendor-special/jquery.ez-plus.js') }}"></script>
     <script src="{{ asset('frontend/js/vendor/vendor.min.js') }}"></script>
     <script src="{{ asset('frontend/js/app-html.js') }}"></script>
+    <script src="{{ asset('frontend/js/custom.js') }}"></script>
 
     <script src="//unpkg.com/alpinejs" defer></script>
 
