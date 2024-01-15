@@ -83,6 +83,21 @@
                             </div>
                         </div>
 
+                        {{--  currency_symbol field --}}
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 pt-3">
+                                <div class="form-group">
+                                    <label for="currency_symbol">رمز العملة symbol</label>
+                                    <input type="text" id="currency_symbol" name="currency_symbol"
+                                        value="{{ old('currency_symbol', $currency->currency_symbol) }}"
+                                        class="form-control">
+                                    @error('currency_symbol')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
 
                         {{--  currency_code field --}}
                         <div class="row ">

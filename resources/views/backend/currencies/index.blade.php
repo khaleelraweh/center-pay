@@ -45,7 +45,8 @@
                 <thead>
                     <tr>
                         <th> اسم العملة</th>
-                        <th>رمز العملة</th>
+                        <th>symbol</th>
+                        <th>رمز العملة iso3</th>
                         <th>سعر الصرف</th>
                         <th class="d-none d-sm-table-cell">الكاتب</th>
                         <th class="d-none d-sm-table-cell">تاريخ الانشاء </th>
@@ -57,6 +58,7 @@
                     @forelse ($currencies as $currency)
                         <tr>
                             <td>{{ $currency->currency_name }}</td>
+                            <td>{{ $currency->currency_symbol }}</td>
                             <td>{{ $currency->currency_code }}</td>
                             <td>{{ $currency->exchange_rate }}</td>
                             <td class="d-none d-sm-table-cell">{{ $currency->created_by }}</td>
@@ -99,13 +101,13 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="6" class="text-center">لم يتم الحصول علي اي شريحة</td>
+                            <td colspan="7" class="text-center">لم يتم الحصول علي اي شريحة</td>
                         </tr>
                     @endforelse
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="6">
+                        <td colspan="7">
                             <div class="float-right">
                                 {!! $currencies->appends(request()->all())->links() !!}
                             </div>

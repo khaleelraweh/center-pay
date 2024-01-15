@@ -54,10 +54,10 @@ Route::get('/blog',[BlogController::class,'blog'])->name('frontend.blog');
 Route::get('/blog/post/{slug?}',[BlogController::class,'post'])->name('frontend.blog.post');
 
 // start blog tag
-
 Route::get('/blog/tags/{slug?}',[BlogController::class,'blog_tag'])->name('frontend.blog_tag');
-
 // end blog tag 
+
+Route::post('currency_load' , [CurrenciesController::class , 'currencyLoad'])->name('currency.load');
 
 
 

@@ -120,13 +120,18 @@
 
                                         <div class="prd-price">
                                             @if ($featured_card->offer_price > 0)
-                                                <div class="price-old">${{ $featured_card->price }}
+                                                <div class="price-old">
+                                                    {{ currency_converter($featured_card->price) }}
                                                 </div>
-                                                <div class="price-new custom-header-color">$
-                                                    {{ $featured_card->price - $featured_card->offer_price }}</div>
+                                                <div class="price-new custom-header-color">
+                                                    {{-- {{ $featured_card->price - $featured_card->offer_price }} --}}
+                                                    {{ currency_converter($featured_card->price - $featured_card->offer_price) }}
+                                                </div>
                                             @else
-                                                <div class="price-new custom-header-color">$
-                                                    {{ $featured_card->price }}</div>
+                                                <div class="price-new custom-header-color">
+                                                    {{-- {{ $featured_card->price }} --}}
+                                                    {{ currency_converter($featured_card->price) }}
+                                                </div>
                                             @endif
 
                                         </div>

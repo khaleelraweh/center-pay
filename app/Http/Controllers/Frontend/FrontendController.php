@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\CommonQuestion;
+use App\Models\Currency;
 use App\Models\News;
 use App\Models\Product;
 use App\Models\ProductCategory;
@@ -32,6 +33,8 @@ class FrontendController extends Controller
                     ->toArray()['site_main_sliders']
              )
         ->get();
+
+        
 
         $adv_sliders = Slider::with('firstMedia')
             ->AdvertisorSliders()
@@ -88,8 +91,12 @@ class FrontendController extends Controller
                     ->toArray()['site_bogs']
         )
         ->get();
+
+        // $getCurrencies = Currency::where('status',1)->get()->toArray();
+
+        $getCurrencies = Currency::SELECT('currency_name','currency_code','currency_symbol')->where('status',1)->get()->toArray();
  
-        return view('frontend.index',compact('main_sliders','adv_sliders','card_categories','random_cards','common_questions' ,'blog'));
+        return view('frontend.index',compact('main_sliders','adv_sliders','card_categories','random_cards','common_questions' ,'blog' , 'getCurrencies'));
     }
 
  

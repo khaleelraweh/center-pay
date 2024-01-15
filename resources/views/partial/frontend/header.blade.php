@@ -170,19 +170,57 @@
                                 </div>
                                 <div class="dropdn_currency">
                                     <div class="dropdn dropdn_caret">
-                                        <a href="#" class="dropdn-link js-dropdn-link">دولار امريكي<i
-                                                class="icon-angle-down"></i></a>
+
+                                        @php
+                                            // came from GeneralHelper
+                                            currency_load();
+
+                                            $currency_code = session('currency_code');
+                                            $currency_symbol = session('currency_symbol');
+
+                                            // this will happen if the user did not choose any currency yet so we will git them the default currency
+                                            if ($currency_symbol == '') {
+                                                $system_default_currency_info = session('system_default_currency_info');
+
+                                                $currency_code = $system_default_currency_info->currency_code;
+                                                $currency_symbol = $system_default_currency_info->currency_symbol;
+                                            }
+
+                                        @endphp
+                                        <a href="#" class="dropdn-link js-dropdn-link">
+                                            {{-- دولار امريكي --}}
+                                            {{-- {{ $getCurrencies[0]['currency_name'] }} --}}
+
+                                            {{ $currency_symbol }} {{ Str::upper($currency_code) }}
+                                            <i class="icon-angle-down"></i>
+                                        </a>
+
                                         <div class="dropdn-content">
                                             <ul>
-                                                <li class="active">
-                                                    <a href="#"><span>دولار امريكي</span></a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><span>يورو</span></a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><span>باوند بريطاني</span></a>
-                                                </li>
+
+                                                {{-- @forelse ($getCurrencies as $currency) --}}
+                                                @forelse (\App\Models\Currency::where('status',1)->get() as $currency)
+                                                    {{-- <li class="active"> --}}
+                                                    <li>
+                                                        <a href="javascript:;"
+                                                            onclick="currency_change('{{ $currency['currency_code'] }}');">
+                                                            <span style="font-size: 12px">
+                                                                {{-- {{ $currency['currency_name'] }} --}}
+
+                                                                {{-- {{ $currency['currency_symbol'] }}
+                                                                 &nbsp; 
+                                                                {{ Str::upper($currency['currency_code']) }} --}}
+
+                                                                {{ $currency->currency_symbol }}
+                                                                {{-- &nbsp; --}}
+                                                                {{ Str::upper($currency->currency_code) }}
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                @empty
+                                                @endforelse
+
+
                                             </ul>
                                         </div>
                                     </div>
@@ -227,3 +265,28 @@
     </div>
 
 </header>
+
+
+@section('script')
+    <script>
+        //change currency 
+        function currency_change(currency_code) {
+            $.ajax({
+                type: 'POST',
+                url: '{{ route('currency.load') }}',
+                data: {
+                    currency_code: currency_code,
+                    _token: '{{ csrf_token() }}',
+                },
+                success: function(response) {
+                    if (response['status']) {
+                        location.reload();
+                    } else {
+                        alert('server error');
+                    }
+
+                }
+            })
+        }
+    </script>
+@endsection

@@ -1,4 +1,6 @@
 $(document).ready(function () {
+
+    // carosuel effect 
     $('.carousel').each(function(){
 
         // find carousel
@@ -27,4 +29,8 @@ $(document).ready(function () {
         // begin the cycle again
         carousel.cycle();
     });
+
 });
+
+
+

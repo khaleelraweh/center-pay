@@ -3,6 +3,8 @@
 
 @section('content')
 
+
+    {{-- {{ dd($getCurrencies) }} --}}
     {{-- Main slider part  --}}
     @if (count($main_sliders) > 0)
         <div class="page-content">

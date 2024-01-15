@@ -71,7 +71,7 @@
 
                             {{--  currency_name field --}}
                             <div class="row">
-                                <div class="col-sm-12 col-md-12 pt-4">
+                                <div class="col-sm-12 col-md-12 pt-3">
                                     <div class="form-group">
                                         <label for="currency_name">اسم العملة</label>
                                         <input type="text" id="currency_name" name="currency_name"
@@ -83,11 +83,25 @@
                                 </div>
                             </div>
 
+                            {{--  currency_symbol field --}}
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12 pt-3">
+                                    <div class="form-group">
+                                        <label for="currency_symbol">رمز العملة symbol</label>
+                                        <input type="text" id="currency_symbol" name="currency_symbol"
+                                            value="{{ old('currency_symbol') }}" class="form-control">
+                                        @error('currency_symbol')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+
                             {{--  currency_code field --}}
                             <div class="row">
-                                <div class="col-sm-12 col-md-12 pt-4">
+                                <div class="col-sm-12 col-md-12 pt-3">
                                     <div class="form-group">
-                                        <label for="currency_code">رمز العملة</label>
+                                        <label for="currency_code">رمز العملة iso3</label>
                                         <input type="text" id="currency_code" name="currency_code"
                                             value="{{ old('currency_code') }}" class="form-control">
                                         @error('currency_code')
@@ -99,7 +113,7 @@
 
                             {{--  exchange_rate field --}}
                             <div class="row">
-                                <div class="col-sm-12 col-md-12 pt-4">
+                                <div class="col-sm-12 col-md-12 pt-3">
                                     <div class="form-group">
                                         <label for="exchange_rate">سعر الصرف</label>
                                         <input type="number" id="exchange_rate" name="exchange_rate"
@@ -120,7 +134,7 @@
 
                         {{-- publish_start publish time field --}}
                         <div class="row">
-                            <div class="col-sm-12 col-md-12 pt-4">
+                            <div class="col-sm-12 col-md-12 pt-3">
                                 <div class="form-group">
                                     <label for="published_on">تاريخ النشر</label>
                                     <input type="text" id="published_on" name="published_on"
@@ -133,7 +147,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-sm-12 col-md-12 pt-4">
+                            <div class="col-sm-12 col-md-12 pt-3">
                                 <div class="form-group">
                                     <label for="published_on_time">وقت النشر</label>
                                     <input type="text" id="published_on_time" name="published_on_time"
@@ -150,7 +164,7 @@
 
                         {{-- status and featured field --}}
                         <div class="row">
-                            <div class="col-sm-12 col-md-12 pt-4">
+                            <div class="col-sm-12 col-md-12 pt-3">
                                 <label for="status">الحالة</label>
                                 <select name="status" class="form-control">
                                     <option value="1" {{ old('status') == '1' ? 'selected' : null }}>مفعل</option>
@@ -165,7 +179,7 @@
                     </div>
 
 
-                    <div class="form-group pt-4">
+                    <div class="form-group pt-3">
                         <button type="submit" name="submit" class="btn btn-primary">حفظ البيانات</button>
                     </div>
                 </div>

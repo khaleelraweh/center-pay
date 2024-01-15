@@ -31,18 +31,7 @@ class CurrenciesController extends Controller
         
     }
 
-    public function updateCurrencyStatus(Request $request){
-        if($request->ajax()){
-            $data = $request->all();
-            if($data['status'] == "Active"){
-                $status = 0 ;
-            }else{
-                $status = 1;
-            }
-            Currency::where('id' , $data['currency_id'])->update(['status'=>$status]);
-            return response()->json(['status'=>$status ,'currency_id'=>$data['currency_id']]);
-        }
-    }
+    
 
     public function create()
     {
@@ -61,6 +50,7 @@ class CurrenciesController extends Controller
         }
 
         $input['currency_name']        =   $request->currency_name;
+        $input['currency_symbol']        =   $request->currency_symbol;
         $input['currency_code']        =   $request->currency_code;
         $input['exchange_rate']        =   $request->exchange_rate;
 
@@ -108,6 +98,7 @@ class CurrenciesController extends Controller
         }
 
          $input['currency_name']        =   $request->currency_name;
+         $input['currency_symbol']      =   $request->currency_symbol;
          $input['currency_code']        =   $request->currency_code;
          $input['exchange_rate']        =   $request->exchange_rate;
 
@@ -141,6 +132,37 @@ class CurrenciesController extends Controller
             'message' => 'تم الحذف بنجاح',
             'alert-type' => 'success'
         ]);
+    }
+
+    // in backend 
+    public function updateCurrencyStatus(Request $request){
+        if($request->ajax()){
+            $data = $request->all();
+            if($data['status'] == "Active"){
+                $status = 0 ;
+            }else{
+                $status = 1;
+            }
+            Currency::where('id' , $data['currency_id'])->update(['status'=>$status]);
+            return response()->json(['status'=>$status ,'currency_id'=>$data['currency_id']]);
+        }
+    }
+
+    // in frontend
+
+    public function currencyLoad(Request $request){
+        // dd($request->all());
+
+        session()->put('currency_code', $request->currency_code);
+
+        $currency = Currency::where('currency_code' , $request->currency_code)->first();
+
+        session()->put('currency_symbol' , $currency->currency_symbol);
+        session()->put('currency_exchange_rate' , $currency->exchange_rate);
+
+        $response['status']=true;
+
+        return $response;
     }
 
    

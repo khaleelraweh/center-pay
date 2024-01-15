@@ -16,14 +16,10 @@ class CurrencySeeder extends Seeder
      */
     public function run()
     {
-        $faker = Factory::create('ar_JO');
-        $currencyRecords = [
-            ['id'=> 1 , 'currency_name' => 'دولار امريكي' , 'slug'=>$faker->unique()->slug() , 'currency_code' => 'USD' , 'exchange_rate' => 3.75 , 'created_at'=> now() , 'status' => 1],
-            ['id'=> 2 , 'currency_name' => 'باوند بريطاني' , 'slug'=>$faker->unique()->slug() , 'currency_code' => 'GBP' , 'exchange_rate' => 4.77 , 'created_at'=> now() , 'status' => 1],
-            ['id'=> 3 , 'currency_name' => 'يورو اوروبي' , 'slug'=>$faker->unique()->slug() , 'currency_code' => 'EUR' , 'exchange_rate' => 4.11 , 'created_at'=> now() , 'status' => 1],
-            ['id'=> 4 , 'currency_name' => 'دولار استرالي' , 'slug'=>$faker->unique()->slug() , 'currency_code' => 'AUD' , 'exchange_rate' => 2.50 , 'created_at'=> now() , 'status' => 1],
-        ];
+        $faker = Factory::create();
+     
+        Currency::create(['currency_name'=>'دولار امريكي' , 'slug' =>$faker->unique()->slug(2,3), 'currency_symbol' =>'$' , 'currency_code'=>'USD' , 'exchange_rate' => 4.11 , 'status'=> true ]);
+        Currency::create(['currency_name'=>'باوند بريطاني' , 'slug' =>$faker->unique()->slug(2,3), 'currency_symbol' =>'GP;' , 'currency_code'=>'GBP' , 'exchange_rate' => 3.11 , 'status'=> true ]);
 
-        Currency::insert($currencyRecords);
     }
 }
