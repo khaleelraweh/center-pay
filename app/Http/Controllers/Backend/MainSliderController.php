@@ -237,4 +237,5 @@ class MainSliderController extends Controller
          return true;
 
     }
+    
 }

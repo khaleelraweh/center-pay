@@ -4,20 +4,13 @@
 
 use App\Models\Permission;
 
-//AccountSettings
-//  $manageAccountSettings = Permission::create(['name' => 'manage_account_settings', 'display_name' => 'إدارة الحسابات' , 'route' => 'account_settings' , 'module' => 'account_settings' , 'as' => 'account_settings.index' , 'icon' => 'fas fa-user' , 'parent' => $manageCustomers->id , 'parent_original' => '0' , 'parent_show' => $manageCustomers->id  , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '60',] );
-//  $manageAccountSettings->parent_show = $manageAccountSettings->id; $manageAccountSettings->save();
-//  $showAccountSettings   =  Permission::create(['name' => 'show_account_settings'      , 'display_name'    => 'الحسابات'       , 'route' => 'account_settings' , 'module' => 'account_settings' , 'as' => 'account_settings.account_settings'    , 'icon' => 'fas fa-user'     , 'parent' => $manageAccountSettings->id , 'parent_original' => $manageAccountSettings->id ,'parent_show' => $manageAccountSettings->id , 'sidebar_link' => '1' , 'appear' => '1'] );
-//  $updateAccountSettings  =  Permission::create(['name' => 'update_account_settings'   , 'display_name'    => 'تعديل حساب' , 'route' => 'account_settings' , 'module' => 'account_settings' , 'as' => 'account_settings.edit'     , 'icon' => null              , 'parent' => $manageAccountSettings->id , 'parent_original' => $manageAccountSettings->id ,'parent_show' => $manageAccountSettings->id , 'sidebar_link' => '0' , 'appear' => '0'] );
 
-
-
-
-// Account Settings
-$manageAccountSettings = Permission::create(['name' => 'manage_account_settings', 'display_name' => 'إدارة الحسابات' , 'route' => 'account_settings' , 'module' => 'account_settings' , 'as' => 'account_settings.account_settings' , 'icon' => 'fas fa-user' , 'parent' => '0', 'parent_original' => '0' , 'parent_show' => '0'  , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '1000',] );
-$manageAccountSettings->parent_show = $manageAccountSettings->id; $manageAccountSettings->save();
-
-$showAccountSettings    =  Permission::create(['name' => 'show_account_settings'    ,  'display_name' => 'إدارة الحساب'      , 'route' => 'account_settings' , 'module' => 'account_settings' , 'as' => 'account_settings.account_settings'    , 'icon' => 'fas fa-calculator' , 'parent' => $manageAccountSettings->id , 'parent_original' => $manageAccountSettings->id ,'parent_show' => $manageAccountSettings->id , 'sidebar_link' => '1' , 'appear' => '1'] );
-$displayAccountSettings =  Permission::create(['name' => 'display_account_settings' , 'display_name'  => 'عرض الحساب '   , 'route' => 'account_settings' , 'module' => 'account_settings' , 'as' => 'account_settings.show'     , 'icon' => null                  , 'parent' => $manageAccountSettings->id , 'parent_original' => $manageAccountSettings->id ,'parent_show' => $manageAccountSettings->id , 'sidebar_link' => '0' , 'appear' => '0'] );
-$updateAccountSettings  =  Permission::create(['name' => 'update_account_settings'  , 'display_name'  => 'تعديل الحساب   ' , 'route' => 'account_settings' , 'module' => 'account_settings' , 'as' => 'account_settings.edit'     , 'icon' => null                  , 'parent' => $manageAccountSettings->id , 'parent_original' => $manageAccountSettings->id ,'parent_show' => $manageAccountSettings->id , 'sidebar_link' => '0' , 'appear' => '0'] );
-
+ //currencies
+ $manageCurrencies = Permission::create(['name' => 'manage_currencies', 'display_name' => 'إدارة العملات ' , 'route' => 'currencies' , 'module' => 'currencies' , 'as' => 'currencies.index' , 'icon' => 'fa fa-money' , 'parent' => '0' , 'parent_original' => '0' , 'sidebar_link' => '1' , 'appear' => '1' , 'ordering' => '15',] );
+ $manageCurrencies->parent_show = $manageCurrencies->id; $manageCurrencies->save();
+ $showCurrencies    =  Permission::create(['name' => 'show_currencies'    , 'display_name' => 'العملات'     , 'route' => 'currencies' , 'module' => 'currencies' , 'as' => 'currencies.index'    , 'icon' => 'fa fa-money' , 'parent' => $manageCurrencies->id , 'parent_original' => $manageCurrencies->id ,'parent_show' => $manageCurrencies->id , 'sidebar_link' => '1' , 'appear' => '1'] );
+ $createCurrencies  =  Permission::create(['name' => 'create_currencies'  , 'display_name'  => 'إضافة عملة جديدة'        , 'route' => 'currencies' , 'module' => 'currencies' , 'as' => 'currencies.create'   , 'icon' => null                  , 'parent' => $manageCurrencies->id , 'parent_original' => $manageCurrencies->id ,'parent_show' => $manageCurrencies->id , 'sidebar_link' => '0' , 'appear' => '0'] );
+ $displayCurrencies =  Permission::create(['name' => 'display_currencies' , 'display_name'  => 'عرض العملة'             ,  'route' => 'currencies' , 'module' => 'currencies' , 'as' => 'currencies.show'     , 'icon' => null                  , 'parent' => $manageCurrencies->id , 'parent_original' => $manageCurrencies->id ,'parent_show' => $manageCurrencies->id , 'sidebar_link' => '0' , 'appear' => '0'] );
+ $updateCurrencies  =  Permission::create(['name' => 'update_currencies'  , 'display_name'  => 'تعديل العملة'           ,  'route' => 'currencies' , 'module' => 'currencies' , 'as' => 'currencies.edit'     , 'icon' => null                  , 'parent' => $manageCurrencies->id , 'parent_original' => $manageCurrencies->id ,'parent_show' => $manageCurrencies->id , 'sidebar_link' => '0' , 'appear' => '0'] );
+ $deleteCurrencies  =  Permission::create(['name' => 'delete_currencies'  , 'display_name'  => 'حذف العملة'             ,  'route' => 'currencies' , 'module' => 'currencies' , 'as' => 'currencies.destroy'  , 'icon' => null                  , 'parent' => $manageCurrencies->id , 'parent_original' => $manageCurrencies->id ,'parent_show' => $manageCurrencies->id , 'sidebar_link' => '0' , 'appear' => '0'] );
+ 

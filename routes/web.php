@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\CityController;
 use App\Http\Controllers\Backend\CommonQuestionController;
 use App\Http\Controllers\Backend\CountryController;
 use App\Http\Controllers\Backend\CouponController;
+use App\Http\Controllers\Backend\CurrenciesController;
 use App\Http\Controllers\Backend\CustomerAddressController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\MainSliderController;
@@ -122,6 +123,7 @@ Route::group(['prefix'=>'admin' , 'as' =>'admin.'],function(){
         Route::post('main_sliders/remove-image', [MainSliderController::class, 'remove_image'])->name('main_sliders.remove_image');
         Route::resource('main_sliders', MainSliderController::class);
         
+        
         Route::post('advertisor_sliders/remove-image', [AdvertisorSliderController::class, 'remove_image'])->name('advertisor_sliders.remove_image');
         Route::resource('advertisor_sliders', AdvertisorSliderController::class);
 
@@ -199,6 +201,9 @@ Route::group(['prefix'=>'admin' , 'as' =>'admin.'],function(){
         
         Route::get('site_setting/site_counters' , [SiteSettingsController::class , 'counter_index'])->name('site_counters.counter_index');
         Route::post('site_setting/update_site_counter/{id?}' , [SiteSettingsController::class , 'counter_update'])->name('site_counters.update');
+
+        Route::resource('currencies', CurrenciesController::class);
+        Route::post('update-currency-status' , [CurrenciesController::class , 'updateCurrencyStatus'])->name('currencies.update_currency_status');
 
 
     });
