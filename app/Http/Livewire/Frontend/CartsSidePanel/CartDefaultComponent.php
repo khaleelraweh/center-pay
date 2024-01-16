@@ -61,8 +61,9 @@ class CartDefaultComponent extends Component
         $this->total_offer_price = 0;
         $this->total_original_price = 0 ;
         foreach (Cart::instance('default')->content() as $item) {
-            // $this->total_original_price +=  $item->model->price * $item->qty   ; 
-            $this->total_offer_price += $item->model->offer_price * $item->qty ;
+            $this->total_original_price +=  $item->model->price * $item->qty   ;
+                $this->total_offer_price += $item->model->offer_price * $item->qty ;
+            
         }
         Session()->put('offer_discount', $this->total_offer_price);
         $this->total_final_price = getNumbers()->get('total'); // get total price after discount by general helper
@@ -107,6 +108,7 @@ class CartDefaultComponent extends Component
     {
         // $this->refreshCart();
         // session()->forget('offer_discount1');
-        return view('livewire.frontend.carts-side-panel.cart-default-component');
+        return view('livewire.frontend.carts-side-panel.cart-default-component' , [
+        ]);
     }
 }

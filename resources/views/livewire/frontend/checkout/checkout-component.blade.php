@@ -252,7 +252,7 @@
                                     </div>
                                 </div>
                                 <div class="cart-table-prd-price-total">
-                                    ${{ $item->qty * $item->model?->price }}
+                                    {{ currency_converter($item->qty * $item->model?->price) }}
                                 </div>
                             </div>
                         </div>
@@ -301,7 +301,7 @@
 
                         <div class="cart-total-sm mt-3">
                             <span>المجموع</span>
-                            <span class="card-total-price">$ 494.00</span>
+                            <span class="card-total-price">{{ currency_converter(Cart::total()) }}</span>
                         </div>
 
                     </div>

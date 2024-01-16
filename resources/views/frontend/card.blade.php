@@ -127,12 +127,14 @@
                             data-prd-handle="/cards/copy-of-suede-leather-mini-skirt">
                             <div class="prd-block_info-top prd-block_info_item order-0 order-md-2">
                                 <div class="prd-block_price prd-block_price--style2">
-                                    <div class="prd-block_price--actual">${{ $card->price - $card->offer_price }}</div>
+                                    <div class="prd-block_price--actual">
+                                        {{ currency_converter($card->price - $card->offer_price) }}</div>
                                     <div class="prd-block_price-old-wrap">
-                                        <span class="prd-block_price--old">${{ $card->price }}</span>
-                                        <span class="prd-block_price--text">حافظت على : ${{ $card->offer_price }}
+                                        <span class="prd-block_price--old">{{ currency_converter($card->price) }}</span>
+                                        <span class="prd-block_price--text">حافظت على :
+                                            {{ currency_converter($card->offer_price) }}
                                             (
-                                            {{ number_format(($card->offer_price / $card->price) * 100, 0, '.', ',') }}%
+                                            {{ currency_converter(($card->offer_price / $card->price) * 100) }}%
                                             )</span>
                                     </div>
                                 </div>

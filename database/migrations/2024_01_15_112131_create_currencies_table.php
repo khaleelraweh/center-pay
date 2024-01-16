@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('currency_symbol')->nullable();
             $table->string('currency_code')->nullable();
-            $table->real('exchange_rate')->nullable();
+            $table->string('exchange_rate')->nullable();
             
 
              // will be use always

@@ -50,7 +50,8 @@
                                 </div>
                                 <div class="minicart-prd-price prd-price">
                                     <div class="price-old">$200.00</div>
-                                    <div class="price-new">{{ $item->model?->price * $item?->qty }}</div>
+                                    <div class="price-new">
+                                        {{ currency_converter($item->model?->price * $item?->qty) }}</div>
                                 </div>
                             </div>
                             {{-- trash part --}}

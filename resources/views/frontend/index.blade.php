@@ -221,9 +221,8 @@
     <livewire:frontend.home.featured-card-component />
 
 
-    {{-- card categories  --}}
-
-    @if (count($card_categories) > 0)
+    {{-- card categories with slider  --}}
+    {{-- @if (count($card_categories) > 0)
         <div class="holder global_width">
             <div class="container">
                 <div class="title-wrap text-center">
@@ -240,14 +239,7 @@
                                         class="image-hover-scale">
                                         <img src="{{ asset('assets/card_categories/' . $card_category->firstMedia?->file_name) }}"
                                             alt="{{ $card_category->name }}" class="js-prd-img" />
-                                        {{-- <div class="prd-big-circle-labels">
-                                        <div class="label-sale">
-                                            <span>-false <span class="sale-text">Sale</span></span>
-                                            <div class="countdown-circle">
-                                                <div class="countdown js-countdown" data-countdown="2021/07/01"></div>
-                                            </div>
-                                        </div>
-                                    </div> --}}
+
                                     </a>
                                 </div>
                                 <div class="prd-info text-center">
@@ -256,6 +248,51 @@
                                     </h2>
                                     <div class="prd-hover">
                                         <div class="prd-action">
+                                            <a href="{{ route('frontend.card_category', $card_category->slug) }}"
+                                                class="btn js-prd-addtocart">
+                                                عرض الباقات
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @empty
+                    @endforelse
+
+                </div>
+            </div>
+        </div>
+    @endif --}}
+
+    {{-- card categories without slider  --}}
+    @if (count($card_categories) > 0)
+        <div class="holder global_width">
+            <div class="container">
+                <div class="title-wrap text-center">
+                    <h3 class="h2-style testimonials-carousel-simple-name">بطاقاتنا</h3>
+                    <h2 class="h1-style">اختر البطاقة المناسبة لك</h2>
+                </div>
+                <div class="prd-grid product-listing data-to-show-5 data-to-show-md-3 data-to-show-sm-2 ">
+
+                    @forelse ($card_categories as $card_category)
+                        {{-- <div class="prd prd-promo  prd--style2 prd-labels--max prd-labels-shadow prd-w-xxs"> --}}
+                        <div class="prd  prd--style2 prd-labels--max prd-labels-shadow prd-w-xxs">
+                            <div class="">
+                                <div class="">
+                                    <a href="{{ route('frontend.card_category', $card_category->slug) }}"
+                                        class="image-hover-scale">
+                                        <img src="{{ asset('assets/card_categories/' . $card_category->firstMedia?->file_name) }}"
+                                            alt="{{ $card_category->name }}" class="js-prd-img" />
+
+                                    </a>
+                                </div>
+                                <div class="prd-info text-center">
+                                    <h2 class="prd-title"><a
+                                            href="{{ route('frontend.card_category', $card_category->slug) }}">{{ $card_category->name }}</a>
+                                    </h2>
+                                    <div class="prd-hover">
+                                        <div class="mt-2">
                                             <a href="{{ route('frontend.card_category', $card_category->slug) }}"
                                                 class="btn js-prd-addtocart">
                                                 عرض الباقات

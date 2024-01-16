@@ -116,12 +116,12 @@
 
                             <div class="prd-price">
                                 @if ($more_card->offer_price > 0)
-                                    <div class="price-old">$ {{ $more_card->price }}</div>
-                                    <div class="price-new">$
-                                        {{ $more_card->price - $more_card->offer_price }}</div>
+                                    <div class="price-old">{{ currency_converter($more_card->price) }}</div>
+                                    <div class="price-new">
+                                        {{ currency_converter($more_card->price - $more_card->offer_price) }}</div>
                                 @else
-                                    <div class="price-new">$
-                                        {{ $more_card->price }}</div>
+                                    <div class="price-new">
+                                        {{ currency_converter($more_card->price) }}</div>
                                 @endif
 
                             </div>

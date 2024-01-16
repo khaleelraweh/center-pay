@@ -21,7 +21,7 @@
     </th>
 
     <td class="p-3 align-middle border-light ">
-        <p class="mb-0 small">${{ $wishListItem->model->price }}</p>
+        <p class="mb-0 small">{{ currency_converter($wishListItem->model->price) }}</p>
     </td>
     {{-- move item from wish list to cart  --}}
     <td class="p-3 align-middle border-light">

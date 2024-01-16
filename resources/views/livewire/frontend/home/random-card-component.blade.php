@@ -98,14 +98,16 @@
                                         </div>
                                         <div class="prd-price">
                                             @if ($random_product_card->offer_price > 0)
-                                                <div class="price-old">$ {{ $random_product_card->price }}</div>
+                                                {{-- <div class="price-old">$ {{ $random_product_card->price }}</div> --}}
+                                                <div class="price-old">
+                                                    {{ currency_converter($random_product_card->price) }}</div>
                                                 <div class="price-new custom-header-color">
-                                                    $
-                                                    {{ $random_product_card->price - $random_product_card->offer_price }}
+
+                                                    {{ currency_converter($random_product_card->price - $random_product_card->offer_price) }}
                                                 </div>
                                             @else
-                                                <div class="price-new custom-header-color">$
-                                                    {{ $random_product_card->price }}</div>
+                                                <div class="price-new custom-header-color">
+                                                    {{ currency_converter($random_product_card->price) }}</div>
                                             @endif
 
                                         </div>

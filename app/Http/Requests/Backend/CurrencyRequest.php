@@ -28,9 +28,9 @@ class CurrencyRequest extends FormRequest
             {
                 return [
                     'currency_name'    =>  'required|max:255|unique:currencies', 
-                    'currency_symbol'  =>  'nullable',  
-                    'currency_code'    =>  'nullable',  
-                    'exchange_rate'    =>  'nullable',
+                    'currency_symbol'  =>  'required',  
+                    'currency_code'    =>  'required',  
+                    'exchange_rate'    =>  'required|numeric',
 
                     // used always 
                     'status'             =>  'required',
@@ -47,9 +47,9 @@ class CurrencyRequest extends FormRequest
             {
                 return [
                     'currency_name'     =>  'required|max:255|unique:currencies,currency_name,'.$this->route()->currency->id,
-                    'currency_symbol'   =>  'nullable',  
-                    'currency_code'     =>  'nullable',
-                    'exchange_rate'     =>  'nullable',
+                    'currency_symbol'   =>  'required',  
+                    'currency_code'     =>  'required',
+                    'exchange_rate'     =>  'required|numeric',
 
                     // used always 
                     'status'             =>  'required',

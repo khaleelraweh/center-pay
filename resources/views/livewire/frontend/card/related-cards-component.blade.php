@@ -29,9 +29,7 @@
                                             <div class="label-sale">
                                                 <span>
                                                     {{ number_format(($related_card->offer_price / $related_card->price) * 100, 0, '.', ',') }}%-
-                                                    {{-- <span class="sale-text">
-                                                    <small>تخفيض</small>
-                                                </span> --}}
+
                                                 </span>
                                                 <div class="countdown-circle">
                                                     <div class="countdown js-countdown" data-countdown="2021/07/01">
@@ -99,7 +97,7 @@
                                             <button class="btn js-prd-addtocart rounded-pill"
                                                 wire:click.prevent="addToCart('{{ $related_card->id }}')"
                                                 data-product='{"name": "Midi Dress with Belt", "path":"{{ asset('
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                												frontend/assests/images/skins/fashion/cards/product-06-1.webp') }}", "url"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                												frontend/assests/images/skins/fashion/cards/product-06-1.webp') }}", "url"
 												:"product.html", "aspect_ratio" :0.778}'>
                                                 اضافة للسلة
                                             </button>
@@ -124,12 +122,14 @@
 
                                     <div class="prd-price">
                                         @if ($related_card->offer_price > 0)
-                                            <div class="price-old">$ {{ $related_card->price }}</div>
-                                            <div class="price-new">$
-                                                {{ $related_card->price - $related_card->offer_price }}</div>
+                                            <div class="price-old"> {{ currency_converter($related_card->price) }}
+                                            </div>
+                                            <div class="price-new">
+                                                {{ currency_converter($related_card->price - $related_card->offer_price) }}
+                                            </div>
                                         @else
-                                            <div class="price-new">$
-                                                {{ $related_card->price }}</div>
+                                            <div class="price-new">
+                                                {{ currency_converter($related_card->price) }}</div>
                                         @endif
 
                                     </div>

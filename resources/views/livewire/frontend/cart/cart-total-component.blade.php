@@ -17,11 +17,11 @@
 
                     <div class="d-flex mt-4">
                         <div class="col ">إجمالي المبلغ</div>
-                        <div class="col-auto js-price text-right">${{ $cart_subtotal }} </div>
+                        <div class="col-auto js-price text-right">{{ currency_converter($cart_subtotal) }} </div>
                     </div>
                     <div class="d-flex mt-4">
                         <div class="col ">إجمالي الضريبة</div>
-                        <div class="col-auto js-price text-right">${{ $cart_tax }} </div>
+                        <div class="col-auto js-price text-right">{{ currency_converter($cart_tax) }} </div>
                     </div>
 
                 </div>
@@ -72,7 +72,8 @@
                                 )
                             </div>
 
-                            <div class="col-auto  card-discount-price text-right"> ${{ $cart_discount }}</div>
+                            <div class="col-auto  card-discount-price text-right">
+                                {{ currency_converter($cart_discount) }}</div>
                         </div>
                     @endif
 
@@ -95,7 +96,7 @@
 
                     <div class="d-flex mt-5">
                         <div class="col card-total-txt">الإجمالي</div>
-                        <div class="col-auto card-total-price text-right">${{ $cart_total }}</div>
+                        <div class="col-auto card-total-price text-right">{{ currency_converter($cart_total) }}</div>
                     </div>
 
                 </div>

@@ -24,7 +24,7 @@ class CurrenciesController extends Controller
         ->when(\request()->status != null , function($query){
             $query->where('status',\request()->status);
         })
-        ->orderBy(\request()->sort_by ?? 'published_on' , \request()->order_by ?? 'desc')
+        ->orderBy(\request()->sort_by ?? 'created_at' , \request()->order_by ?? 'asc')
         ->paginate(\request()->limit_by ?? 10);
 
         return view('backend.currencies.index',compact('currencies'));

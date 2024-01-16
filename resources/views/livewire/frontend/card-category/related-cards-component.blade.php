@@ -55,9 +55,7 @@
                                         <div class="label-sale">
                                             <span>
                                                 {{ number_format(($card->offer_price / $card->price) * 100, 0, '.', ',') }}%-
-                                                {{-- <span class="sale-text">
-                                                        <small>تخفيض</small>
-                                                    </span> --}}
+
                                             </span>
                                             <div class="countdown-circle">
                                                 <div class="countdown js-countdown" data-countdown="2021/07/01">

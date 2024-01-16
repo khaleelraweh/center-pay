@@ -18,7 +18,7 @@
                         <div class="cart-item-prices">
                             <span class="item-price" style="display: flex; align-items: center;">
                                 السعر:
-                                ${{ $cartItem->model?->price }}<span
+                                {{ currency_converter($cartItem->model?->price) }}<span
                                     style="color: rgb(181, 181, 181); text-decoration: line-through; margin: 0px 5px;"></span>
                             </span>
 
@@ -47,7 +47,7 @@
                         </div>
 
                         <div class="final-price" id="final-price-2">
-                            ${{ $cartItem->qty * $cartItem->model?->price }}
+                            {{ currency_converter($cartItem->qty * $cartItem->model?->price) }}
                         </div>
                     </div>
                 </div>

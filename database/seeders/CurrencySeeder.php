@@ -18,8 +18,9 @@ class CurrencySeeder extends Seeder
     {
         $faker = Factory::create();
      
-        Currency::create(['currency_name'=>'الريال السعودي' , 'slug' =>$faker->unique()->slug(2,3), 'currency_symbol' =>'س ر' , 'currency_code'=>'SAR' , 'exchange_rate' => 1 , 'status'=> true ]);
-        Currency::create(['currency_name'=>'ريال يمني' , 'slug' =>$faker->unique()->slug(2,3), 'currency_symbol' =>'ر ي;' , 'currency_code'=>'YER' , 'exchange_rate' => 139 , 'status'=> true ]);
+        Currency::create(['currency_name'=>'ريال سعودي' , 'slug' =>$faker->unique()->slug(2,3), 'currency_symbol' =>'رس' , 'currency_code'=>'SAR' , 'exchange_rate' => 1 , 'status'=> true ]);
+        Currency::create(['currency_name'=>'ريال يمني' , 'slug' =>$faker->unique()->slug(2,3), 'currency_symbol' =>'ري' , 'currency_code'=>'YER' , 'exchange_rate' => 139 , 'status'=> true ]);
+        Currency::create(['currency_name'=>'دولار امريكي ' , 'slug' =>$faker->unique()->slug(2,3), 'currency_symbol' =>'USD' , 'currency_code'=>'$' , 'exchange_rate' => 0.2666 , 'status'=> true ]);
 
     }
 }

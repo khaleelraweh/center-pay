@@ -6,6 +6,7 @@
         </div>
         <div class="minicart-drop-content js-dropdn-content-scroll ">
 
+
             <!-- show cart item  -->
             @forelse (Cart::instance('default')->content() as $item)
                 {{-- <div class="minicart-prd row" x-data="{ open_{{$item->model->id}}: true }" x-show="open_{{$item->model->id}}"> --}}
@@ -37,12 +38,13 @@
                                     </small>
                                 </span>
                                 @if ($item->model->offer_price > 0)
-                                    <div class="price-old">$ {{ $item->model->price }}</div>
-                                    <div class="price-new">$
-                                        {{ $item->model->price - $item->model->offer_price }}</div>
+                                    <div class="price-old"> {{ currency_converter($item->model->price) }}</div>
+                                    <div class="price-new">
+                                        {{ currency_converter($item->model->price - $item->model->offer_price) }}
+                                    </div>
                                 @else
-                                    <div class="price-new">$
-                                        {{ $item->model->price }}</div>
+                                    <div class="price-new">
+                                        {{ currency_converter($item->model->price) }}</div>
                                 @endif
                             </div>
 
@@ -77,10 +79,11 @@
                                         </small>
                                     </span>
                                     @if ($item->model->offer_price > 0)
-                                        <div class="price-old">$ {{ $item->model->price * $item->qty }} </div>
+                                        <div class="price-old">
+                                            {{ currency_converter($item->model->price * $item->qty) }} </div>
 
-                                        <div class="price-new">$
-                                            {{ $item->model->price * $item->qty - $item->model->offer_price * $item->qty }}
+                                        <div class="price-new">
+                                            {{ currency_converter($item->model->price * $item->qty - $item->model->offer_price * $item->qty) }}
                                             {{-- build session here  --}}
                                             @php
                                                 // if (session()->has('offer_discount1')) {
@@ -94,7 +97,8 @@
                                             @endphp
                                         </div>
                                     @else
-                                        <div class="price-new">$ {{ $item->model->price * $item->qty }} </div>
+                                        <div class="price-new">
+                                            {{ currency_converter($item->model->price * $item->qty) }} </div>
                                     @endif
 
 
@@ -115,6 +119,8 @@
                     </div>
 
                 </div>
+
+
 
 
             @empty
@@ -177,11 +183,12 @@
 
                     @if ($total_offer_price > 0)
                         {{-- <div class="price-old"><sub>${{ $total_original_price }}</sub> </div> --}}
-                        <div class="price-old mx-2"><sub style="font-size: 14px">${{ Cart::total() }}</sub></div>
+                        <div class="price-old mx-2"><sub
+                                style="font-size: 14px">{{ currency_converter(Cart::total()) }}</sub></div>
 
-                        <div class="price-new">${{ $total_final_price }}</div>
+                        <div class="price-new">{{ currency_converter($total_final_price) }}</div>
                     @else
-                        <div class="price-new">${{ $total_final_price }}</div>
+                        <div class="price-new">{{ currency_converter($total_final_price) }}</div>
                     @endif
 
                 </div>
@@ -194,7 +201,7 @@
                         حافظت على :
                     </div>
                     <div class="minicart-drop-total-price col " style="font-size: 12px" data-header-cart-total="">
-                        ${{ $total_offer_price }}
+                        {{ currency_converter($total_offer_price) }}
                     </div>
 
                 </div>
