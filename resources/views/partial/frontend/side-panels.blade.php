@@ -165,7 +165,7 @@
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
                         <div class="form-group">
-                            <input type="text" name="username" value="{{ old('username') }}" required
+                            {{-- <input type="text" name="username" value="{{ old('username') }}" required
                                 autocomplete="username" class="form-control form-control--sm js_email_fe rounded-pill"
                                 placeholder="ادخل اسم المستخدم" />
 
@@ -173,7 +173,18 @@
                                 <span class="invalid-feedback text-danger" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
-                            @enderror
+                            @enderror --}}
+
+                            <div class="form-group">
+                                {{-- <label for="email">Email Address</label> --}}
+                                <input type="text" name="email"
+                                    class="form-control form-control--sm js_email_fe rounded-pill @if ($errors->has('email') || $errors->has('username')) has-error @endif"
+                                    placeholder="ادخل اسم المستخدم او البريد الالكتروي" value="{{ old('email') }}">
+                                @if ($errors->has('email') || $errors->has('username'))
+                                    <span class="help">{{ $errors->first('email') }}
+                                        {{ $errors->first('username') }}</span>
+                                @endif
+                            </div>
 
                             <!-- <div class="invalid-feedback">لا يكون الحقل فارغ</div> -->
                         </div>

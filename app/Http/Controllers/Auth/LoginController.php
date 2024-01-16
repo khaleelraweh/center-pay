@@ -42,10 +42,20 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    // public function username()
+    // {
+    //     return 'username'; // اسم الحقل الذي من خلالة سيتم تسجيل الدخول
+    // }
+
+
+    // login using username or email
     public function username()
     {
-        return 'username'; // اسم الحقل الذي من خلالة سيتم تسجيل الدخول
+        $field = (filter_var(request()->email, FILTER_VALIDATE_EMAIL) || !request()->email) ? 'email' : 'username';
+        request()->merge([$field => request()->email]);
+        return $field;
     }
+
 
     public function redirectTo(){
         if(auth()->user()->roles->first()->allowed_route != ''){
