@@ -23,15 +23,15 @@
 
                             {{-- {{ array_key_exists('site_twitter', $site_setting) ? $site_setting['site_twitter'] : '' }} --}}
                             @forelse ($main_sliders as $main_slider)
-                                @if ($loop->first)
-                                    {{-- slider slid  --}}
+                                {{-- @if ($loop->first)
+                                    <!-- slider slid  -->
                                     <div class="bnslider-slide">
-                                        {{-- for desktop --}}
+                                        <!--  for desktop -->
                                         <div class="bnslider-image-mobile lazyload fade-up"
                                             data-bgset="{{ asset('assets/main_sliders/' . $main_slider->firstMedia?->file_name) }}">
                                         </div>
 
-                                        {{-- for mobile --}}
+                                        <!--  for mobile -->
                                         <div class="bnslider-image-mobile lazyload bnslider-lightning bnslider-flashit"
                                             data-bgset="{{ asset('assets/main_sliders/' . $main_slider->firstMedia?->file_name) }}"
                                             style="opacity: 0"></div>
@@ -74,50 +74,50 @@
                                         @endif
 
                                     </div>
-                                @else
-                                    {{-- slider slid  --}}
-                                    <div class="bnslider-slide">
-                                        <div class="bnslider-image-mobile lazyload"
-                                            data-bgset="{{ asset('assets/main_sliders/' . $main_slider->firstMedia?->file_name) }}">
-                                        </div>
+                                @else --}}
+                                {{-- slider slid  --}}
 
+                                <div class="bnslider-slide">
+                                    <div class="bnslider-image-mobile lazyload"
+                                        data-bgset="{{ asset('assets/main_sliders/' . $main_slider->firstMedia?->file_name) }}">
+                                    </div>
 
-                                        <div class="bnslider-image lazyload"
-                                            data-bgset="{{ asset('assets/main_sliders/' . $main_slider->firstMedia?->file_name) }}">
-                                        </div>
+                                    <div class="bnslider-image lazyload"
+                                        data-bgset="{{ asset('assets/main_sliders/' . $main_slider->firstMedia?->file_name) }}">
+                                    </div>
 
-                                        @if ($main_slider->showInfo == true)
-                                            <div class="bnslider-text-wrap bnslider-overlay">
-                                                <div class="bnslider-text-content txt-middle txt-center">
-                                                    <div class="bnslider-text-content-flex">
-                                                        <div class="bnslider-vert w-s-60 w-ms-100">
-                                                            <div class="bnslider-text order-1 mt-sm bnslider-text--xl text-center heading-font"
-                                                                data-animation="fadeInUp" data-animation-delay="500"
-                                                                data-fontcolor="#fff" data-fontweight="900">
-                                                                {{ $main_slider->title }}
-                                                            </div>
-                                                            <div class="bnslider-text order-2 mt-sm bnslider-text--sm text-center heading-font"
-                                                                data-animation="fadeInUp" data-animation-delay="1000"
-                                                                data-fontcolor="#fff" data-fontweight="900">
-                                                                {!! $main_slider->content !!}
-                                                            </div>
-                                                            <div class="btn-wrap text-center order-3 mt-lg"
-                                                                data-animation="fadeIn" data-animation-delay="2000"
-                                                                style="opacity: 1">
-                                                                <a href="{{ $main_slider->url != null ? url($main_slider->url) : '#' }}"
-                                                                    class="btn btn--invert btn--lg"
-                                                                    target="{{ $main_slider->target }}">تسوق
-                                                                    الان</a>
-                                                            </div>
+                                    @if ($main_slider->showInfo == true)
+                                        <div class="bnslider-text-wrap bnslider-overlay">
+                                            <div class="bnslider-text-content txt-middle txt-center">
+                                                <div class="bnslider-text-content-flex">
+                                                    <div class="bnslider-vert w-s-60 w-ms-100">
+                                                        <div class="bnslider-text order-1 mt-sm bnslider-text--xl text-center heading-font"
+                                                            data-animation="fadeInUp" data-animation-delay="500"
+                                                            data-fontcolor="#fff" data-fontweight="900">
+                                                            {{ $main_slider->title }}
+                                                        </div>
+                                                        <div class="bnslider-text order-2 mt-sm bnslider-text--sm text-center heading-font"
+                                                            data-animation="fadeInUp" data-animation-delay="1000"
+                                                            data-fontcolor="#fff" data-fontweight="900">
+                                                            {!! $main_slider->content !!}
+                                                        </div>
+                                                        <div class="btn-wrap text-center order-3 mt-lg"
+                                                            data-animation="fadeIn" data-animation-delay="2000"
+                                                            style="opacity: 1">
+                                                            <a href="{{ $main_slider->url != null ? url($main_slider->url) : '#' }}"
+                                                                class="btn btn--invert btn--lg"
+                                                                target="{{ $main_slider->target }}">تسوق
+                                                                الان</a>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        @endif
+                                        </div>
+                                    @endif
 
+                                </div>
 
-                                    </div>
-                                @endif
+                                {{-- @endif --}}
 
                             @empty
                             @endforelse

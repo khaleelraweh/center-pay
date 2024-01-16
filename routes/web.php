@@ -37,6 +37,9 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes(['verify'=>true]);
 
+// لايقاف الديباجر نضيف هذا الكود
+app('debugbar')->disable();
+
 //Frontend 
 Route::get('/', [FrontendController::class,'index'])->name('frontend.index');
 

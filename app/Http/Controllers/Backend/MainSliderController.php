@@ -85,9 +85,11 @@ class MainSliderController extends Controller
                 $file_type = $image->getMimeType();
                 $path = public_path('assets/main_sliders/' . $file_name);
                 
-                Image::make($image->getRealPath())->resize(500,null,function($constraint){
-                    $constraint->aspectRatio();
-                })->save($path,100);
+                // Image::make($image->getRealPath())->resize(500,null,function($constraint){
+                //     $constraint->aspectRatio();
+                // })->save($path,100);
+
+                Image::make($image->getRealPath())->save($path);
 
                 $mainSlider->photos()->create([
                     'file_name' =>$file_name,
@@ -169,9 +171,12 @@ class MainSliderController extends Controller
                 $file_type = $image->getMimeType();
                 $path = public_path('assets/main_sliders/' . $file_name);
                 
-                Image::make($image->getRealPath())->resize(500,null,function($constraint){
-                    $constraint->aspectRatio();
-                })->save($path,100);
+                // Image::make($image->getRealPath())->resize(500,null,function($constraint){
+                //     $constraint->aspectRatio();
+                // })->save($path,100);
+
+
+                Image::make($image->getRealPath())->save($path);
 
                 $mainSlider->photos()->create([
                     'file_name' =>$file_name,

@@ -116,5 +116,7 @@ if(!function_exists('currency_symbol')){
 if(!function_exists('format_price')){
     function format_price($price){
         return currency_symbol(). number_format($price , 2);
+        // return currency_symbol(). number_format((float)round($price,2) , 3);
+
     }
 }

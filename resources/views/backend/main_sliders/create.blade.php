@@ -134,6 +134,7 @@
                                 <div class="row">
                                     <div class="col-sm-12 col-md-12 pt-4">
                                         <label for="images">الصورة/ الصور</label>
+                                        <span>(<small>w:750 , h:1550 </small>)</span>
                                         <br>
                                         <div class="file-loading">
                                             <input type="file" name="images[]" id="slider_images"
