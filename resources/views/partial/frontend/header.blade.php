@@ -84,7 +84,7 @@
                                     <li class="mmenu-item--simple">
                                         <a href="{{ $menu->link != null ? url($menu->link) : '#' }}" class="active">
                                             {{-- {{ dd($user_side_menu) }} --}}
-                                            <span>{{ $menu->name_ar }}</span>
+                                            <span>{{ $menu->title }}</span>
                                         </a>
                                     </li>
                                 @else
@@ -92,7 +92,7 @@
 
                                     <li class="mmenu-item--simple">
 
-                                        <a href="javascript: void(0);">{{ $menu->name_ar }}</a>
+                                        <a href="javascript: void(0);">{{ $menu->title }}</a>
 
                                         @if ($menu->appearedChildren !== null && count($menu->appearedChildren) > 0)
                                             <div class="mmenu-submenu">
@@ -103,7 +103,7 @@
                                                             {{-- <a href="{{ url($sub_menu->link) }}"> --}}
                                                             <a
                                                                 href="{{ $sub_menu->link != null ? url($sub_menu->link) : '#' }}">
-                                                                {{ $sub_menu->name_ar }}
+                                                                {{ $sub_menu->title }}
                                                             </a>
 
                                                         </li>

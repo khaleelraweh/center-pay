@@ -15,14 +15,11 @@ return new class extends Migration
     {
         Schema::create('web_menus', function (Blueprint $table) {
             $table->id();
-            $table->string('name_ar');
-            $table->string('slug')->unique();
-            $table->string('name_en');
-
+           
+            $table->json('title');
+            $table->json('slug');
             $table->string('link')->nullable();
             
-            // $table->string('mylink')->nullable();
-
             $table->unsignedBigInteger('parent_id')->nullable();
             $table->foreign('parent_id')->references('id')->on('product_categories')->nullOnDelete();
 

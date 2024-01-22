@@ -1,14 +1,16 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="rtl">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" <?php echo config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl' ? "dir='rtl'" : ''; ?>>
+
+
 
 <head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Premium Multipurpose Admin & Dashboard Template" />
     <meta name="robots" content="all,follow">
     <meta name="author" content="Themesdesign" />
-
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -18,54 +20,46 @@
 
     <title> Dashboard | {{ config('app.name', 'Laravel') }} - Admin & Dashboard Template </title>
 
-    <!-- Scripts -->
     {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-
-    <!-- Google fonts-->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;700&amp;display=swap">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Martel+Sans:wght@300;400;800&amp;display=swap">
-
-    <!-- FontAwesome CSS - loading as last, so it doesn't block rendering-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
-        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-
-    <!-- jquery.vectormap css -->
-    <link href="{{ asset('backend/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css') }}"
-        rel="stylesheet" type="text/css" />
-
-    <!-- DataTables -->
-    <link href="{{ asset('backend/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
-        type="text/css" />
-
-    <!-- Responsive fileinput css  -->
-    <link rel="stylesheet" href="{{ asset('backend/vendor/bootstrap-fileinput/css/fileinput.min.css') }}">
-
-    <!-- Responsive datatable examples -->
-    <link href="{{ asset('backend/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}"
-        rel="stylesheet" type="text/css" />
-
-    <!-- Bootstrap Css -->
-    {{-- <link href="{{asset('backend/css/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" /> --}}
-    {{-- <link href="{{asset('backend/css/bootstrap-rtl.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" /> --}}
-    <link href="{{ asset('backend/css/bootstrap-dark-rtl.min.css') }}" id="bootstrap-style" rel="stylesheet"
-        type="text/css" />
-
-    <!-- Icons Css -->
-    <link href="{{ asset('backend/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
 
     {{-- summernote for description field  --}}
     <link rel="stylesheet" href="{{ asset('backend/vendor/summernote/summernote-bs4.min.css') }}">
 
+    {{-- pickadate calling css --}}
+    <link rel="stylesheet" href="{{ asset('backend/vendor/datepicker/themes/classic.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/vendor/datepicker/themes/classic.date.css') }}">
+
+    {{-- Responsive fileInput --}}
+    <link rel="stylesheet" href="{{ asset('backend/vendor/bootstrap-fileinput/css/fileinput.min.css') }}">
+
+    <!-- Plugins css -->
+    <link href="{{ asset('backend/css/bootstrap-editable.css') }}" rel="stylesheet" type="text/css">
+
+    <!-- Bootstrap Css -->
+    {{-- <link href="{{ asset('backend/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css">
+    <!-- Icons Css -->
+    <link href="{{ asset('backend/css/icons.min.css') }}" rel="stylesheet" type="text/css">
     <!-- App Css-->
-    {{-- <link href="{{asset('backend/css/app.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />  --}}
-    {{-- <link href="{{asset('backend/css/app-rtl.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />  --}}
-    <link href="{{ asset('backend/css/app-dark-rtl.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('backend/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css"> --}}
+
+
+    @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl')
+        <!-- Bootstrap Css -->
+        <link href="{{ asset('backend/css/bootstrap-rtl.min.css') }}" id="bootstrap-style" rel="stylesheet"
+            type="text/css">
+        <!-- Icons Css -->
+        <link href="{{ asset('backend/css/icons.min.css') }}" rel="stylesheet" type="text/css">
+        <!-- App Css-->
+        <link href="{{ asset('backend/css/app-rtl.min.css') }}" id="app-style" rel="stylesheet" type="text/css">
+    @else
+        <!-- Bootstrap Css -->
+        <link href="{{ asset('backend/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet"
+            type="text/css">
+        <!-- Icons Css -->
+        <link href="{{ asset('backend/css/icons.min.css') }}" rel="stylesheet" type="text/css">
+        <!-- App Css-->
+        <link href="{{ asset('backend/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css">
+    @endif
 
     {{-- is used to make tab-content --}}
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
@@ -78,21 +72,15 @@
         integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous">
     </script>
 
-    {{-- pickadate calling css --}}
-    <link rel="stylesheet" href="{{ asset('backend/vendor/datepicker/themes/classic.css') }}">
-    <link rel="stylesheet" href="{{ asset('backend/vendor/datepicker/themes/classic.date.css') }}">
-
-
-
-
 
     {{-- my custom css --}}
     <link rel="stylesheet" href="{{ asset('backend/css/custom.css') }}">
 
-
-
-
     @yield('style')
+
+
+
+
 </head>
 
 <body data-topbar="dark">

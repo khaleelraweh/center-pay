@@ -10,6 +10,8 @@ use illuminate\support\Str;
 use Intervention\Image\Facades\Image;
 use DateTimeImmutable;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
+
 
 class WebMenuController extends Controller
 {
@@ -39,42 +41,59 @@ class WebMenuController extends Controller
             return redirect('admin/index');
         }
 
-        $main_menus =WebMenu::whereNull('parent_id')->where('section',1)->get(['id','name_ar']);
+        $main_menus = WebMenu::whereNull('parent_id')->where('section',1)->active()->get(['id','title']);
+
         return view('backend.web_menus.create',compact('main_menus'));
     }
 
-    public function store(WebMenuRequest $request)
+    public function store(Request $request)
     {
         if(!auth()->user()->ability('admin','create_web_menus')){
             return redirect('admin/index');
         }
 
-        $input['name_ar'] = $request->name_ar;
-        $input['name_en'] = $request->name_en;
+        $niceNames = [];
+        $attr = [];
 
+        foreach (config('locales.languages') as $key => $val) {
+            $attr['title.' . $key] = 'required';
+            $niceNames['title.' . $key] = __('posts.title'). ' (' . $val['name'] . ')';
+        }
+
+        $validation = Validator::make($request->all(), $attr);
+        $validation->setAttributeNames($niceNames);
+        if ($validation->fails()){
+            return redirect()->back()->withErrors($validation)->withInput();
+        }
+
+        $input['title'] = $request->title;
         $input['link'] = $request->link;
-
         $input['parent_id'] = $request->parent_id;
-
-        
-
-        $input['section'] = 1; // main menu 
+        $input['section'] = 1;
 
         $input['status']            =   $request->status;
         $input['created_by'] = auth()->user()->full_name;
-
         $published_on = $request->published_on.' '.$request->published_on_time;
         $published_on = new DateTimeImmutable($published_on);
         $input['published_on'] = $published_on;
 
-        $productCategory = WebMenu::create($input);
+        $webMenu = WebMenu::create($input);
 
-       
-        return redirect()->route('admin.web_menus.index')->with([
-            'message' => 'تم الانشاء بنجاح',
-            'alert-type' => 'success'
+
+        if ($webMenu) {
+            return redirect()->route('admin.web_menus.index')->with([
+                'message' => __('panel.created_successfully'),
+                'alert-type' => 'success'
+            ]);
+        }
+
+        return redirect()->route('posts.index')->with([
+            'message' => __('panel.something_was_wrong'),
+            'alert-type' => 'danger'
         ]);
+       
     }
+
     
     
     public function show($id)
@@ -85,60 +104,122 @@ class WebMenuController extends Controller
         return view('backend.web_menus.show');
     }
 
-    public function edit(WebMenu $webMenu)
+    public function edit( $webMenu)
     {
         if(!auth()->user()->ability('admin','update_web_menus')){
             return redirect('admin/index');
         }
+
+        $main_menus = WebMenu::whereNull('parent_id')->where('section',1)->active()->get(['id','title']);
+
+        $webMenu = WebMenu::where('id', $webMenu)->first();
         
-        $main_menus = WebMenu::whereNull('parent_id')->get(['id','name_ar']);
         return view('backend.web_menus.edit',compact('main_menus' , 'webMenu'));
-    }
-    
-    public function update(WebMenuRequest $request, WebMenu $webMenu)
+    } 
+
+    public function update(Request $request, $webMenu)
     {
-        if(!auth()->user()->ability('admin','update_web_menus')){
-            return redirect('admin/index');
+       
+        $niceNames = [];
+        $attr = [];
+
+        foreach (config('locales.languages') as $key => $val) {
+            $attr['title.' . $key] = 'required';
+            $niceNames['title.' . $key] = __('posts.title'). ' (' . $val['name'] . ')';
         }
 
-        
-        $input['name_ar']   = $request->name_ar;
-        $input['name_en']   = $request->name_en;
+        $validation = Validator::make($request->all(), $attr);
+        $validation->setAttributeNames($niceNames);
+        if ($validation->fails()){
+            return redirect()->back()->withErrors($validation)->withInput();
+        }
 
-        $input['link']      = $request->link;
+        $webMenu = WebMenu::where('id', $webMenu)->first();
 
+
+        $input['title'] = $request->title;
+        $input['link'] = $request->link;
         $input['parent_id'] = $request->parent_id;
+        $input['section'] = 1;
 
-        $input['status']    =   $request->status;
-        $input['updated_by']=   auth()->user()->full_name;
-
+        $input['status']            =   $request->status;
+        $input['created_by'] = auth()->user()->full_name;
         $published_on = $request->published_on.' '.$request->published_on_time;
         $published_on = new DateTimeImmutable($published_on);
         $input['published_on'] = $published_on;
 
         $webMenu->update($input);
+
+        if ($webMenu) {
+            return redirect()->route('admin.web_menus.index')->with([
+                'message' => __('panel.updated_successfully'),
+                'alert-type' => 'success'
+            ]);
+        }
+
+        return redirect()->route('posts.index')->with([
+            'message' => __('panel.something_was_wrong'),
+            'alert-type' => 'danger'
+        ]);
+
+
+
+
+   
+    }
+    
+    // public function update(WebMenuRequest $request, WebMenu $webMenu)
+    // {
+    //     if(!auth()->user()->ability('admin','update_web_menus')){
+    //         return redirect('admin/index');
+    //     }
+
+        
+    //     $input['title']   = $request->title;
+    //     $input['name_en']   = $request->name_en;
+
+    //     $input['link']      = $request->link;
+
+    //     $input['parent_id'] = $request->parent_id;
+
+    //     $input['status']    =   $request->status;
+    //     $input['updated_by']=   auth()->user()->full_name;
+
+    //     $published_on = $request->published_on.' '.$request->published_on_time;
+    //     $published_on = new DateTimeImmutable($published_on);
+    //     $input['published_on'] = $published_on;
+
+    //     $webMenu->update($input);
        
 
-        return redirect()->route('admin.web_menus.index')->with([
-            'message' => 'تم التعديل بنجاح',
-            'alert-type' => 'success'
-        ]);
-    }
+    //     return redirect()->route('admin.web_menus.index')->with([
+    //         'message' => 'تم التعديل بنجاح',
+    //         'alert-type' => 'success'
+    //     ]);
+    // }
 
-    public function destroy(WebMenu $webMenu)
+
+    
+
+    public function destroy($webMenu)
     {
         if(!auth()->user()->ability('admin','delete_web_menus')){
             return redirect('admin/index');
         }
 
-      
-        $webMenu->deleted_by = auth()->user()->full_name;
-        $webMenu->save();
-        $webMenu->delete();
+        $webMenu = WebMenu::where('id', $webMenu)->first()->delete();
+
+        if ($webMenu) {
+            return redirect()->route('admin.web_menus.index')->with([
+                'message' => __('panel.deleted_successfully'),
+                'alert-type' => 'success'
+            ]);
+        }
 
         return redirect()->route('admin.web_menus.index')->with([
-            'message' => 'تم الحذف بنجاح',
-            'alert-type' => 'success'
+            'message' => __('panel.something_was_wrong'),
+            'alert-type' => 'danger'
         ]);
+
     }
 }

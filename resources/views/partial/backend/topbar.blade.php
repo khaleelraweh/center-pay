@@ -178,21 +178,58 @@
         <div class="d-flex">
 
 
-            <div class="dropdown d-inline-block  ms-2">
+            {{-- <div class="dropdown d-inline-block  ms-2">
 
                 <a href="{{ route('frontend.index') }}"
                     class=" d-flex align-items-center btn btn-sm px-3 font-size-24 header-item waves-effect"
                     id="vertical-menu-btn" title="واجهة العملاء">
-                    {{-- <i class="ri-home-line align-middle"></i> --}}
+                    <i class="ri-home-wifi-line"></i>
+                </a>
+
+            </div> --}}
+
+            <div class="dropdown d-inline-block  ms-2">
+
+                {{-- <a href="{{ route('frontend.index') }}"
+                    class=" d-flex align-items-center btn btn-sm px-3 font-size-24 header-item waves-effect"
+                    id="vertical-menu-btn" title="واجهة العملاء">
+                    <i class="ri-home-line align-middle"></i>
                     <i class="ri-home-wifi-line"></i>
 
-                </a>
+                </a> --}}
+
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+
+                        <a href="#"
+                            class="nav-link dropdown-toggle d-flex align-items-center btn btn-sm px-3 font-size-18 header-item waves-effect"
+                            id="languagesDropdown" data-toggle="dropdown" role="button" aria-expanded="false"
+                            aria-haspopup="true">
+                            {{-- {{ config('locales.languages')[app()->getLocale()]['name'] }} --}}
+                            {{ __('panel.' . config('locales.languages')[app()->getLocale()]['lang']) }}
+                            <span class="caret"></span>
+                            <i class="mdi mdi-chevron-down"></i>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="languagesDropdown">
+                            @foreach (config('locales.languages') as $key => $val)
+                                @if ($key != app()->getLocale())
+                                    <a href="{{ route('change.language', $key) }}" class="dropdown-item">
+                                        {{-- {{ $val['name'] }} --}}
+                                        {{ __('panel.' . $val['lang']) }}
+                                    </a>
+                                @endif
+                            @endforeach
+                        </div>
+
+                    </li>
+                </ul>
 
             </div>
 
             <div class="dropdown d-inline-block d-lg-none ms-2">
-                <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-search-dropdown"
-                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button type="button" class="btn header-item noti-icon waves-effect"
+                    id="page-header-search-dropdown" data-bs-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
                     <i class="ri-search-line"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
@@ -400,7 +437,7 @@
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img class="rounded-circle header-profile-user"
                         src="{{ asset('assets/users/' . auth()->user()->user_image) }}" alt="Header Avatar">
-                    <span class="d-none d-xl-inline-block ms-1">Julia</span>
+                    <span class="d-none d-xl-inline-block ms-1">{{ auth()->user()->full_name }}</span>
                     <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">

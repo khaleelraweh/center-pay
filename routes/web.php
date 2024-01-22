@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\CurrenciesController;
 use App\Http\Controllers\Backend\CustomerAddressController;
 use App\Http\Controllers\Backend\CustomerController;
+use App\Http\Controllers\Backend\LocaleController;
 use App\Http\Controllers\Backend\MainSliderController;
 use App\Http\Controllers\Backend\NewsController;
 use App\Http\Controllers\Backend\OrderController;
@@ -180,8 +181,30 @@ Route::group(['prefix'=>'admin' , 'as' =>'admin.'],function(){
         
 
 
-        Route::resource('web_menus', WebMenuController::class);
-        Route::resource('web_menu_helps', WebMenuHelpController::class);
+        // Route::group(['middleware' => 'web'], function (){
+            
+            Route::get('/web_menus/{web_menus}/edit',    [WebMenuController::class, 'edit'])->name('web_menus.edit');
+            Route::resource('web_menus', WebMenuController::class);
+
+            // Route::get('/web_menus',                [WebMenuController::class, 'index'])->name('web_menus.index');
+
+            // Route::get('/web_menus/create',         [WebMenuController::class, 'create'])->name('web_menus.create');
+            // Route::post('/web_menus/create',        [WebMenuController::class, 'store'])->name('web_menus.store');
+
+            // Route::get('/web_menus/{web_menu}',         [WebMenuController::class, 'show'])->name('web_menus.show');
+
+            // Route::get('/web_menus/{web_menus}/edit',    [WebMenuController::class, 'edit'])->name('web_menus.edit');
+
+            // Route::get('/web_menus/{web_menu}/edit',    [WebMenuController::class, 'edit'])->name('web_menus.edit');
+            // Route::patch('/web_menus/{web_menu}/edit',  [WebMenuController::class, 'update'])->name('web_menus.update');
+
+            // Route::delete('/web_menus/{web_menu}',      [WebMenuController::class, 'destroy'])->name('web_menus.destroy');
+
+
+            Route::resource('web_menu_helps', WebMenuHelpController::class);
+
+
+        // });
 
 
         // Route::resource('site_infos' , SiteSettingsController::class);
@@ -213,3 +236,23 @@ Route::group(['prefix'=>'admin' , 'as' =>'admin.'],function(){
     
 });
 
+
+
+Route::get('/change-language/{locale}',     [LocaleController::class, 'switch'])->name('change.language');
+
+
+// Route::group(['middleware' => 'web'], function (){
+
+//     Route::get('/posts',                [PostController::class, 'index'])->name('posts.index');
+
+//     Route::get('/posts/create',         [PostController::class, 'create'])->name('posts.create');
+//     Route::post('/posts/create',        [PostController::class, 'store'])->name('posts.store');
+
+//     Route::get('/posts/{post}',         [PostController::class, 'show'])->name('posts.show');
+
+//     Route::get('/posts/{post}/edit',    [PostController::class, 'edit'])->name('posts.edit');
+//     Route::patch('/posts/{post}/edit',  [PostController::class, 'update'])->name('posts.update');
+
+//     Route::delete('/posts/{post}',      [PostController::class, 'destroy'])->name('posts.destroy');
+
+// });

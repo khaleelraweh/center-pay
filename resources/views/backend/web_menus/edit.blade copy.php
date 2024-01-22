@@ -10,93 +10,111 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-edit"></i>
-                    {{ __('panel.edit_existing_link') }}
+                    تعديل رابط
                 </h3>
                 <ul class="breadcrumb">
                     <li>
                         <a href="{{ route('admin.index') }}">
-                            {{ __('panel.main') }}
+                            الرئيسية
                         </a>
                         <i class="fa fa-solid fa-chevron-left chevron"></i>
                     </li>
                     <li>
                         <a href="{{ route('admin.web_menus.index') }}">
-                            {{ __('panel.show_web_menus') }}
+                            القائمة الرئيسية
                         </a>
                     </li>
                 </ul>
             </div>
         </div>
 
-
         {{-- body part  --}}
         <div class="card-body">
-
             <form action="{{ route('admin.web_menus.update', $webMenu->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
 
+                {{-- links of tabs --}}
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="content-tab" data-bs-toggle="tab" data-bs-target="#content"
-                            type="button" role="tab" aria-controls="content"
-                            aria-selected="true">{{ __('panel.content_tab') }}</button>
+                        <a class="nav-link active" id="content-tab" data-toggle="tab" href="#content" role="tab"
+                            aria-controls="content" aria-selected="true">بيانات المحتوي</a>
                     </li>
-
 
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="published-tab" data-bs-toggle="tab" data-bs-target="#published"
-                            type="button" role="tab" aria-controls="published"
-                            aria-selected="false">{{ __('panel.published_tab') }}</button>
+                        <a class="nav-link" id="publish-tab" data-toggle="tab" href="#publish" role="tab"
+                            aria-controls="publish" aria-selected="false">بيانات النشر</a>
                     </li>
-
                 </ul>
 
+                {{-- contents of links tabs  --}}
                 <div class="tab-content" id="myTabContent">
 
-                    <div class="tab-pane fade show active" id="content" role="tabpanel" aria-labelledby="content-tab">
+                    {{-- تاب بيانات المحتوي --}}
+                    <div class="tab-pane fade active show" id="content" role="tabpanel" aria-labelledby="content-tab">
 
+                        {{-- تصنيفات الرابط --}}
                         <div class="row">
-                            <div class="col-sm-12 pt-3">
+                            <div class="col-sm-12 pt-4">
                                 <label for="parent_id" class="control-label">
-                                    {{ __('panel.category_menu') }}
+                                    تصنيف الرابط
+                                    <span class="require red">*</span> :
                                 </label>
                                 <select name="parent_id" class="form-control">
-                                    <option value="">{{ __('panel.main_category') }} __</option>
+                                    <option value="">التصنيف الرئيسي_</option>
                                     @forelse ($main_menus as $main_menu)
                                         <option value="{{ $main_menu->id }}"
                                             {{ old('parent_id', $webMenu->parent_id) == $main_menu->id ? 'selected' : null }}>
-                                            {{ $main_menu->title }}
-                                        </option>
+                                            {{ $main_menu->name_ar }}</option>
                                     @empty
                                     @endforelse
-
-
-
                                 </select>
+                            </div>
+
+                        </div>
+
+                        {{-- عنوان الرابط عربي  --}}
+                        <div class="row">
+                            <div class="col-sm-12 pt-4">
+                                <label for="name_ar" class="control-label">
+                                    العنوان (عربي)
+                                    <span class="require red">*</span> :
+                                </label>
+                                <div class="form-group">
+                                    <input type="text" id="name_ar" name="name_ar"
+                                        value="{{ old('name_ar', $webMenu->name_ar) }}" class="form-control">
+                                    @error('name_ar')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
                             </div>
                         </div>
 
-                        @foreach (config('locales.languages') as $key => $val)
-                            <div class="row ">
-                                <div class="col-sm-12 pt-3">
-                                    <div class="form-group">
-                                        <label for="title">{{ __('posts.title') }} ({{ $key }})</label>
-                                        <input type="text" name="title[{{ $key }}]"
-                                            value="{{ old('title.' . $key, $webMenu->getTranslation('title', $key)) }}"
-                                            class="form-control">
-                                        @error('title')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
+                        {{-- عنوان الرابط أنجليزي  --}}
+                        <div class="row">
+                            <div class="col-sm-12 pt-4">
+                                <label for="name_en" class="control-label">
+                                    العنوان (انجليزي)
+                                    <span class="require red">*</span> :
+                                </label>
+                                <div class="form-group">
+                                    <input type="text" id="name_en" name="name_en"
+                                        value="{{ old('name_en', $webMenu->name_en) }}" class="form-control">
+                                    @error('name_en')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
-                        @endforeach
+                        </div>
 
-                        <div class="row ">
-                            <div class="col-sm-12 pt-3">
+                        {{--  الرابط   --}}
+                        <div class="row">
+                            <div class="col-sm-12 pt-4">
+                                <label for="link" class="control-label">
+                                    الرابط
+                                    <span class="require red">*</span> :
+                                </label>
                                 <div class="form-group">
-                                    <label for="link">{{ __('panel.link') }}</label>
                                     <input type="text" id="link" name="link"
                                         value="{{ old('link', $webMenu->link) }}" class="form-control">
                                     @error('link')
@@ -109,15 +127,16 @@
                     </div>
 
 
-
-                    <div class="tab-pane fade" id="published" role="tabpanel" aria-labelledby="published-tab">
+                    {{-- تاب بيانات النشر --}}
+                    <div class="tab-pane fade" id="publish" role="tabpanel" aria-labelledby="publish-tab">
 
                         <div class="row">
-                            <div class="col-sm-12 col-md-12 pt-3">
+                            <div class="col-sm-12  pt-4">
                                 <div class="form-group">
-                                    <label for="published_on"> {{ __('panel.published_date') }}</label>
+                                    <label for="published_on">تاريخ النشر</label> :
                                     <input type="text" id="published_on" name="published_on"
-                                        value="{{ old('published_on', now()->format('Y-m-d')) }}" class="form-control">
+                                        value="{{ old('published_on', \Carbon\Carbon::parse($webMenu->published_on)->Format('Y-m-d')) }}"
+                                        class="form-control">
                                     @error('published_on')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -126,11 +145,11 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-sm-12 col-md-12 pt-3">
+                            <div class="col-sm-12  pt-4">
                                 <div class="form-group">
-                                    <label for="published_on_time"> {{ __('panel.published_time') }}</label>
+                                    <label for="published_on_time">وقت النشر</label> :
                                     <input type="text" id="published_on_time" name="published_on_time"
-                                        value="{{ old('published_on_time', now()->format('h:m A')) }}"
+                                        value="{{ old('published_on_time', \Carbon\Carbon::parse($webMenu->published_on)->Format('h:i A')) }}"
                                         class="form-control">
                                     @error('published_on_time')
                                         <span class="text-danger">{{ $message }}</span>
@@ -140,18 +159,19 @@
 
                         </div>
 
-
-                        <div class="row">
-                            <div class="col-md-12 col-sm-12 pt-3">
-                                <label for="status" class="control-label col-md-2 col-sm-12 ">
-                                    <span>{{ __('panel.status') }}</span>
+                        {{-- حالة التصنيف --}}
+                        <div class="row ">
+                            <div class="col-sm-12 pt-4">
+                                <label for="status" class="control-label col-md-3 col-sm-12 ">
+                                    <span>الحالة</span> :
                                 </label>
                                 <select name="status" class="form-control">
-                                    <option value="1" {{ old('status') == '1' ? 'selected' : null }}>
-                                        {{ __('panel.status_active') }}
+                                    <option value="">---</option>
+                                    <option value="1"
+                                        {{ old('status', $webMenu->status) == '1' ? 'selected' : null }}>مفعل
                                     </option>
-                                    <option value="0" {{ old('status') == '0' ? 'selected' : null }}>
-                                        {{ __('panel.status_inactive') }}
+                                    <option value="0"
+                                        {{ old('status', $webMenu->status) == '0' ? 'selected' : null }}>غير مفعل
                                     </option>
                                 </select>
                                 @error('status')
@@ -161,20 +181,17 @@
                         </div>
 
                     </div>
-
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group pt-3 mx-3">
-                                <button type="submit" name="submit" class="btn btn-primary">
-                                    {{ __('panel.update_data') }}
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
 
+
+                {{-- submit part --}}
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group pt-3 mx-3">
+                            <button type="submit" name="submit" class="btn btn-primary">تعديل البيانات</button>
+                        </div>
+                    </div>
+                </div>
 
 
             </form>

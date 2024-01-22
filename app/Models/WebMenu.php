@@ -9,33 +9,70 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Lang;
 use Nicolaslopezj\Searchable\SearchableTrait;
+use Spatie\Translatable\HasTranslations;
 
 class WebMenu extends Model
 {
-    use HasFactory ,Sluggable , SearchableTrait , SoftDeletes;
+    use HasFactory, HasTranslations, Sluggable, SearchableTrait;
 
     protected $guarded = [];
+    public $translatable = ['title', 'slug'];
 
-    public function sluggable(): array
+
+    public function sluggable():array
     {
         return [
-            'slug' => [
-                'source' => 'name_ar'
+            'slug->en' => [
+                'source' => 'titleen',
+            ],
+            'slug->ar' => [
+                'source' => 'titlear',
+            ],
+            'slug->ca' => [
+                'source' => 'titleca',
             ]
         ];
     }
 
     protected $searchable = [
         'columns' => [
-            'web_menus.name_ar' => 10,
-            'web_menus.name_en' => 10,
-            'web_menus.link' => 10,
+            'title' => 10,
+            'link' => 10,
         ]
     ];
 
+    
+    protected function asJson($value)
+    {
+        return json_encode($value, JSON_UNESCAPED_UNICODE);
+    }
+
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
+    public function getTitleenAttribute()
+    {
+        return $this->getTranslation('title', 'en');
+    }
+
+    public function getTitlearAttribute()
+    {
+        return $this->getTranslation('title', 'ar');
+    }
+
+    public function getTitlecaAttribute()
+    {
+        return $this->getTranslation('title', 'ca');
+    }
+
+
     public function status(){
-        return $this->status ? 'مفعل' : "غير مفعل";
+        return $this->status ? __('panel.status_active') : __('panel.status_inactive');
     }
 
     public function scopeActive($query){

@@ -13,17 +13,19 @@
                     <div class="card-naving">
                         <h3 class="font-weight-bold text-primary">
                             <i class="fa fa-folder"></i>
-                            القائمة الرئيسية
+                            {{ __('panel.manage_web_menus') }}
                         </h3>
                         <ul class="breadcrumb">
                             <li>
-                                <a href="{{ route('admin.index') }}">
-                                    الرئيسية
-                                </a>
-                                <i class="fa fa-solid fa-chevron-left chevron"></i>
+                                <a href="{{ route('admin.index') }}">{{ __('panel.main') }}</a>
+                                @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl')
+                                    <i class="fa fa-solid fa-chevron-left chevron"></i>
+                                @else
+                                    <i class="fa fa-solid fa-chevron-right chevron"></i>
+                                @endif
                             </li>
                             <li>
-                                القائمة الرئيسية
+                                {{ __('panel.show_web_menus') }}
                             </li>
                         </ul>
                     </div>
@@ -33,7 +35,7 @@
                                 <span class="icon text-white-50">
                                     <i class="fa fa-plus-square"></i>
                                 </span>
-                                <span class="text">إضافة محتوى جديد</span>
+                                <span class="text">{{ __('panel.add_new_content') }}</span>
                             </a>
                         @endability
                     </div>
@@ -51,29 +53,27 @@
                             style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                                 <tr>
-                                    <th>العنوان</th>
-                                    {{-- <th>عدد عناصر القائمة</th> --}}
-                                    <th class="d-none d-sm-table-cell">الكاتب</th>
-                                    <th>الحالة</th>
-                                    <th class="d-none d-sm-table-cell">تاريخ الانشاء</th>
-                                    <th class="text-center" style="width:30px;">الاعدادات</th>
+                                    <th>{{ __('panel.title') }}</th>
+                                    <th class="d-none d-sm-table-cell">{{ __('panel.author') }}</th>
+                                    <th>{{ __('panel.status') }}</th>
+                                    <th class="d-none d-sm-table-cell">{{ __('panel.created_at') }}</th>
+                                    <th class="text-center" style="width:30px;">{{ __('panel.actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @forelse ($menus as $menu)
                                     <tr>
                                         <td>
-                                            {{ $menu->name_ar }}
+                                            {{ $menu->title }}
                                             <br>
                                             @if ($menu->parent != null)
                                                 <small
                                                     style="background: #17a2b8;color:white;padding:1px 3px;border-radius: 5px; font-size:11px">
-                                                    تابع للقائمة:
-                                                    <span>{{ $menu->parent?->name_ar }}</span> </small>
+                                                    {{-- تابع للقائمة: --}}
+                                                    <span>{{ $menu->parent?->title }}</span> </small>
                                             @endif
 
                                         </td>
-                                        {{-- <td>{{ $menu->products_count }}</td> --}}
                                         <td class="d-none d-sm-table-cell">{{ $menu->created_by }}</td>
                                         <td>
                                             <span
@@ -82,12 +82,13 @@
                                         <td class="d-none d-sm-table-cell">{{ $menu->created_at }}</td>
                                         <td>
                                             <div class="btn-group btn-group-sm">
+
                                                 <a href="{{ route('admin.web_menus.edit', $menu->id) }}"
                                                     class="btn btn-primary">
                                                     <i class="fa fa-edit"></i>
                                                 </a>
                                                 <a href="javascript:void(0);"
-                                                    onclick=" if( confirm('Are you sure to delete this record?') ){document.getElementById('delete-product-category-{{ $menu->id }}').submit();}else{return false;}"
+                                                    onclick=" if( confirm('{{ __('panel.confirm_delete_message') }}') ){document.getElementById('delete-product-category-{{ $menu->id }}').submit();}else{return false;}"
                                                     class="btn btn-danger">
                                                     <i class="fa fa-trash"></i>
                                                 </a>

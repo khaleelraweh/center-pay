@@ -50,12 +50,14 @@
                 @csrf
 
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="content-tab" data-bs-toggle="tab" data-bs-target="#content"
-                            type="button" role="tab" aria-controls="content"
-                            aria-selected="true">{{ __('panel.content_tab') }}</button>
-                    </li>
-
+                    @foreach (config('locales.languages') as $key => $val)
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link {{ $loop->index == 0 ? 'active' : '' }}" id="{{ $key }}-tab"
+                                data-bs-toggle="tab" data-bs-target="#{{ $key }}" type="button" role="tab"
+                                aria-controls="{{ $key }}"
+                                aria-selected="true">{{ __('panel.content_tab') }}({{ $key }})</button>
+                        </li>
+                    @endforeach
 
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="published-tab" data-bs-toggle="tab" data-bs-target="#published"
@@ -67,55 +69,64 @@
 
                 <div class="tab-content" id="myTabContent">
 
-                    <div class="tab-pane fade show active" id="content" role="tabpanel" aria-labelledby="content-tab">
+                    @foreach (config('locales.languages') as $key => $val)
+                        <div class="tab-pane fade {{ $loop->index == 0 ? 'show active' : '' }}" id="{{ $key }}"
+                            role="tabpanel" aria-labelledby="{{ $key }}-tab">
 
-                        <div class="row">
-                            <div class="col-sm-12 pt-3">
-                                <label for="parent_id" class="control-label">
-                                    {{ __('panel.category_menu') }}
-                                </label>
-                                <select name="parent_id" class="form-control">
-                                    <option value="">{{ __('panel.main_category') }} __</option>
-                                    @forelse ($main_menus as $main_menu)
-                                        <option value="{{ $main_menu->id }}"
-                                            {{ old('parent_id') == $main_menu->id ? 'selected' : null }}>
-                                            {{ $main_menu->title }}</option>
-                                    @empty
-                                    @endforelse
-                                </select>
-                            </div>
-                        </div>
+                            @if ($loop->first)
+                                <div class="row">
+                                    <div class="col-sm-12 pt-3">
+                                        <label for="parent_id" class="control-label">
+                                            {{ __('panel.category_menu') }}
+                                        </label>
+                                        <select name="parent_id" class="form-control">
+                                            <option value="">{{ __('panel.main_category') }} __</option>
+                                            @forelse ($main_menus as $main_menu)
+                                                <option value="{{ $main_menu->id }}"
+                                                    {{ old('parent_id') == $main_menu->id ? 'selected' : null }}>
+                                                    {{ $main_menu->name_ar }}</option>
+                                            @empty
+                                            @endforelse
+                                        </select>
+                                    </div>
+                                </div>
+                            @endif
 
-                        @foreach (config('locales.languages') as $key => $val)
+
                             <div class="row ">
                                 <div class="col-sm-12 pt-3">
+                                    <label for="name_ar" class="control-label col-sm-12 ">
+                                        {{ __('panel.title') }} ({{ $key }})
+
+                                    </label>
                                     <div class="form-group">
-                                        <label for="title">{{ __('posts.title') }} ({{ $key }})</label>
-                                        <input type="text" name="title[{{ $key }}]"
-                                            value="{{ old('title.' . $key) }}" class="form-control">
-                                        @error('title')
+                                        <input type="text" id="name_ar" name="name_ar" value="{{ old('name_ar') }}"
+                                            class="form-control">
+                                        @error('name_ar')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
 
-                        <div class="row ">
-                            <div class="col-sm-12 pt-3">
-                                <div class="form-group">
-                                    <label for="link">{{ __('panel.link') }}</label>
-                                    <input type="text" id="link" name="link" value="{{ old('link') }}"
-                                        class="form-control">
-                                    @error('link')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
+                            <div class="row ">
+                                <div class="col-sm-12 pt-3">
+                                    <label for="link" class="control-label col-sm-12 ">
+                                        {{ __('panel.link') }}
+
+                                    </label>
+                                    <div class="form-group">
+                                        <input type="text" id="link" name="link" value="{{ old('link') }}"
+                                            class="form-control">
+                                        @error('link')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
                                 </div>
                             </div>
+
                         </div>
-
-                    </div>
-
+                    @endforeach
 
 
                     <div class="tab-pane fade" id="published" role="tabpanel" aria-labelledby="published-tab">
