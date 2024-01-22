@@ -41,6 +41,8 @@ class DatabaseSeeder extends Seeder
         $this->call(SiteSettingSeeder::class);
 
         $this->call(CurrencySeeder::class);
+
+        $this->call(PostSeeder::class);
         
     }
 }
