@@ -128,45 +128,36 @@
                             <div class="hdr-inline-link">
                                 <div class="dropdn_language">
                                     <div class="dropdn dropdn_language dropdn_language--noimg dropdn_caret">
-                                        <a href="#" class="dropdn-link js-dropdn-link"><span
-                                                class="js-dropdn-select-current mainBtnLang">اللغة</span><i
-                                                class="icon-angle-down"></i></a>
+                                        <a href="#" class="dropdn-link js-dropdn-link">
+                                            <span class="js-dropdn-select-current mainBtnLang">
+                                                {{ __('panel.' . config('locales.languages')[app()->getLocale()]['lang']) }}
+                                            </span>
+                                            <i class="icon-angle-down"></i>
+                                        </a>
                                         <div class="dropdn-content">
                                             <ul>
-                                                <li>
-                                                    <a href="#eng" data-reload class="mylang"
-                                                        onclick="setLanguageStyle('english');" title="english">
-                                                        <img src="{{ asset('frontend/images/flags/en.webp') }}"
-                                                            alt="" />
-                                                        الانجليزية
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#ar" data-reload class="mylang"
-                                                        onclick="setLanguageStyle('arabic');" title="arabic">
-                                                        <img src="{{ asset('frontend/images/flags/ar.webp') }}"
-                                                            alt="" />
-                                                        العربية
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><img
-                                                            src="{{ asset('frontend/images/flags/sp.webp') }}"
-                                                            alt="" />الاسبانية</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><img
-                                                            src="{{ asset('frontend/images/flags/de.webp') }}"
-                                                            alt="" />الالمانية</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><img
-                                                            src="{{ asset('frontend/images/flags/fr.webp') }}"
-                                                            alt="" />الفرنسية</a>
-                                                </li>
+
+                                                @foreach (config('locales.languages') as $key => $val)
+                                                    @if ($key != app()->getLocale())
+                                                        <li>
+                                                            <a href="{{ route('change.language', $key) }}" data-reload
+                                                                class="mylang" onclick="setLanguageStyle('english');"
+                                                                title="english">
+                                                                <img src="{{ asset('frontend/images/flags/en.webp') }}"
+                                                                    alt="" />
+                                                                {{-- {{ $val['name'] }} --}}
+                                                                {{ __('panel.' . $val['lang']) }}
+                                                            </a>
+                                                        </li>
+                                                    @endif
+                                                @endforeach
+
+
+
                                             </ul>
                                         </div>
                                     </div>
+
                                 </div>
                                 <div class="dropdn_currency">
                                     <div class="dropdn dropdn_caret">

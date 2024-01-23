@@ -26,6 +26,7 @@ return [
     // common translate
     'en' => 'English',
     'ar' => 'Arabic',
+    'ca' => 'Spanish',
     'add_new_content' => 'Add New Content' ,  
     'content_tab'     => 'Content Data ',
     'published_tab'   => 'Publish Data',

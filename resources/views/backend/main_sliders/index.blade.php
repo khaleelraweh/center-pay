@@ -2,6 +2,8 @@
 @section('content')
     <div class="card shadow mb-4">
 
+        {{-- {{ dd(Cookie::get('theme')) }} --}}
+
         {{-- breadcrumb part  --}}
         <div class="card-header py-3 d-flex justify-content-between">
             <div class="card-naving">

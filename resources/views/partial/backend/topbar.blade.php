@@ -26,11 +26,11 @@
                 <i class="ri-menu-2-line align-middle"></i>
             </button>
 
-            {{-- <a href="{{ route('frontend.index') }}"
+            <a href="{{ route('frontend.index') }}"
                 class=" d-flex align-items-center btn btn-sm px-3 font-size-24 header-item waves-effect"
                 id="vertical-menu-btn" title="واجهة العملاء">
                 <i class="ri-home-line align-middle"></i>
-            </a> --}}
+            </a>
 
             <!-- App Search-->
             <form class="app-search d-none d-lg-block">
@@ -190,19 +190,11 @@
 
             <div class="dropdown d-inline-block  ms-2">
 
-                {{-- <a href="{{ route('frontend.index') }}"
-                    class=" d-flex align-items-center btn btn-sm px-3 font-size-24 header-item waves-effect"
-                    id="vertical-menu-btn" title="واجهة العملاء">
-                    <i class="ri-home-line align-middle"></i>
-                    <i class="ri-home-wifi-line"></i>
-
-                </a> --}}
-
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown">
 
                         <a href="#"
-                            class="nav-link dropdown-toggle d-flex align-items-center btn btn-sm px-3 font-size-18 header-item waves-effect"
+                            class="nav-link dropdown-toggle d-flex align-items-center btn btn-sm px-3 font-size-16 header-item waves-effect"
                             id="languagesDropdown" data-toggle="dropdown" role="button" aria-expanded="false"
                             aria-haspopup="true">
                             {{-- {{ config('locales.languages')[app()->getLocale()]['name'] }} --}}

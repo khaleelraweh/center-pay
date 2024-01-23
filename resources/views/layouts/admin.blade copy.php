@@ -1,10 +1,7 @@
-<?php $rtl = config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl' ? '-rtl' : ''; ?>
-<?php $dark = Cookie::get('theme') == 'dark' ? '-dark' : ''; ?>
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir=<?php echo $rtl ? 'rtl' : ''; ?>>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" <?php echo config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl' ? "dir='rtl'" : ''; ?>>
 
 
-{{-- {{ dd(Cookie::get('theme')) }} --}}
 
 <head>
 
@@ -46,14 +43,23 @@
     <link href="{{ asset('backend/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css"> --}}
 
 
-    <!-- Bootstrap Css -->
-    <link href="<?php echo asset('backend/css/bootstrap' . $dark . $rtl . '.min.css'); ?>" id="bootstrap-style" rel="stylesheet" type="text/css">
-    <!-- Icons Css -->
-    <link href="{{ asset('backend/css/icons.min.css') }}" rel="stylesheet" type="text/css">
-    <!-- App Css-->
-    <link href="<?php echo asset('backend/css/app' . $dark . $rtl . '.min.css'); ?>" id="app-style" rel="stylesheet" type="text/css">
-
-
+    @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl')
+        <!-- Bootstrap Css -->
+        <link href="{{ asset('backend/css/bootstrap-rtl.min.css') }}" id="bootstrap-style" rel="stylesheet"
+            type="text/css">
+        <!-- Icons Css -->
+        <link href="{{ asset('backend/css/icons.min.css') }}" rel="stylesheet" type="text/css">
+        <!-- App Css-->
+        <link href="{{ asset('backend/css/app-rtl.min.css') }}" id="app-style" rel="stylesheet" type="text/css">
+    @else
+        <!-- Bootstrap Css -->
+        <link href="{{ asset('backend/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet"
+            type="text/css">
+        <!-- Icons Css -->
+        <link href="{{ asset('backend/css/icons.min.css') }}" rel="stylesheet" type="text/css">
+        <!-- App Css-->
+        <link href="{{ asset('backend/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css">
+    @endif
 
     {{-- is used to make tab-content --}}
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
@@ -78,8 +84,6 @@
 </head>
 
 <body data-topbar="dark">
-
-    {{-- <body data-topbar="{{ $theme == 'dark' ? 'dark' : 'light' }}"> --}}
 
     <!-- <body data-layout="horizontal" data-topbar="dark"> -->
 

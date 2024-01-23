@@ -7,7 +7,7 @@
     'url' => 'https://authenticate.test',
     'asset_url' => NULL,
     'timezone' => 'UTC',
-    'locale' => 'en',
+    'locale' => 'ar',
     'fallback_locale' => 'ar',
     'faker_locale' => 'ar_SA',
     'key' => 'base64:3gdBxy7dxaWxACJ8Or+BAYmQ/NKwkhhd8BzxsLmKgvI=',
@@ -606,7 +606,7 @@
   ),
   'locales' => 
   array (
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'ar',
     'languages' => 
     array (
       'ar' => 
@@ -622,6 +622,13 @@
         'unicode' => 'en_US',
         'rtl_support' => 'ltr',
         'name' => 'English',
+      ),
+      'ca' => 
+      array (
+        'lang' => 'ca',
+        'unicode' => 'ca_ES',
+        'rtl_support' => 'ltr',
+        'name' => 'Spanish',
       ),
     ),
   ),

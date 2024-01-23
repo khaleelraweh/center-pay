@@ -26,6 +26,7 @@ return [
     // common translate
     'en' => 'الانجليزية',
     'ar' => 'العربية',
+    'ca' => 'الاسبانية',
     'add_new_content' => 'إضافة محتوي جديد' ,
     'content_tab'     => ' بيانات المحتوي ',
     'published_tab'   => 'بيانات النشر',

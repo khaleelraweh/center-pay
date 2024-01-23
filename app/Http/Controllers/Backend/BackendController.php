@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\AdminInfoRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
 use illuminate\support\Str;
 use Intervention\Image\Facades\Image;
@@ -14,6 +15,9 @@ use Illuminate\Support\Facades\Hash;
 
 class BackendController extends Controller
 {
+
+    
+    
     public function login(){
         return view('backend.admin-login');
     }
@@ -30,8 +34,27 @@ class BackendController extends Controller
         return view('backend.admin-recoverpw');
     }
 
-    public function index(){
+    public function index(Request $request){
+        // $theme = $request->cookie('theme');
+        // Config::set('theme', $theme);
         return view('backend.index');
+    }
+
+    public function create_update_theme(Request $request){
+        $theme = $request->cookie('theme');
+        $theme = $request->input('theme_choice');
+        
+        if($theme && in_array($theme , ['light','dark'])){
+            
+            // set a cookies with the selected theme
+            $cookie = cookie('theme' , $theme , 60*25*365 , "/") ; // just one year
+            // setcookie('theme', $theme, time() + (86400 * 30 * ), "/")
+        }
+
+        
+
+        return back()->withCookie($cookie);
+        // return back();
     }
 
     public function account_settings(){

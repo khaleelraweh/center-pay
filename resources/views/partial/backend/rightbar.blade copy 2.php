@@ -14,8 +14,7 @@
         <h6 class="text-center mb-0">Choose Layouts</h6>
 
 
-        {{-- will be used in frontend index  --}}
-        <span class="navbar-text d-none">
+        <span class="navbar-text">
             <form action="{{ route('admin.create_update_theme') }}" method="post" class="d-flex">
                 @csrf
                 <input type="radio" name="theme_choice" id="theme"
@@ -28,7 +27,7 @@
             </form>
         </span>
 
-        <div class="p-4 pt-3">
+        <div class="p-4">
             <div class="mb-2">
                 <label for="light-mode-switch" class="form-check-label">
                     <img src="{{ asset('backend/images/layouts/layout-1.jpg') }}" class="img-fluid img-thumbnail"
@@ -67,40 +66,51 @@
                 </form>
             </div>
 
-            @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl')
-                <div class="mb-2">
-                    <label for="rtl-mode-switch" class="form-check-label">
-                        <img src="{{ asset('backend/images/layouts/layout-1.jpg') }}" class="img-fluid img-thumbnail"
-                            alt="layout-3">
-                    </label>
-                </div>
-            @else
-                <div class="mb-2">
-                    <label for="rtl-mode-switch" class="form-check-label">
-                        <img src="{{ asset('backend/images/layouts/layout-3.jpg') }}" class="img-fluid img-thumbnail"
-                            alt="layout-3">
-                    </label>
-                </div>
-            @endif
 
 
-            <div class="form-check form-switch mb-3">
-                @foreach (config('locales.languages') as $key => $val)
-                    @if ($key != app()->getLocale())
-                        <form action="{{ route('change.language', $key) }}" method="get">
-                            @csrf
-                            <input class="form-check-input theme-choice" type="checkbox" id="rtl-mode-switch"
-                                onchange="this.form.submit();">
-                            <label class="form-check-label" for="dark-mode-switch">
-                                {{ __('panel.' . $val['lang']) }}
-                            </label>
-
-                        </form>
-                    @endif
-                @endforeach
+            <div class="mb-2">
+                <label for="rtl-mode-switch" class="form-check-label">
+                    <img src="{{ asset('backend/images/layouts/layout-3.jpg') }}" class="img-fluid img-thumbnail"
+                        alt="layout-3">
+                </label>
             </div>
 
+            {{-- <div class="form-check form-switch mb-5">
+                <input class="form-check-input theme-choice" type="checkbox" id="rtl-mode-switch"
+                    data-appStyle="{{ asset('backend/css/app-rtl.min.css') }}" checked>
+                <label class="form-check-label" for="rtl-mode-switch">RTL Mode</label>
+            </div> --}}
 
+            <div class="form-check form-switch mb-5">
+                <input class="form-check-input theme-choice" type="checkbox" id="rtl-mode-switch"
+                    data-appStyle="{{ asset('backend/css/app-rtl.min.css') }}" checked disabled>
+                <label class="form-check-label" for="rtl-mode-switch">
+                    <div class="dropdown d-inline-block  ms-2">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle  p-0" id="languagesDropdown"
+                                    data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                    {{ __('panel.' . config('locales.languages')[app()->getLocale()]['lang']) }}
+                                    <span class="caret"></span>
+                                    <i class="mdi mdi-chevron-down"></i>
+                                </a>
+                                <div class="dropdown-menu position-relative" style=""
+                                    aria-labelledby="languagesDropdown">
+                                    @foreach (config('locales.languages') as $key => $val)
+                                        @if ($key != app()->getLocale())
+                                            <a href="{{ route('change.language', $key) }}" class="dropdown-item">
+                                                {{ __('panel.' . $val['lang']) }}
+                                            </a>
+                                        @endif
+                                    @endforeach
+                                </div>
+
+                            </li>
+                        </ul>
+
+                    </div>
+                </label>
+            </div>
 
 
 
