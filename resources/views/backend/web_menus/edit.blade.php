@@ -32,7 +32,17 @@
         {{-- body part  --}}
         <div class="card-body">
 
-            <form action="{{ route('admin.web_menus.update', $webMenu->id) }}" method="post" enctype="multipart/form-data">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            <form action="{{ route('admin.web_menus.update', $webMenu->id) }}" method="post">
                 @csrf
                 @method('PATCH')
 
@@ -70,9 +80,6 @@
                                         </option>
                                     @empty
                                     @endforelse
-
-
-
                                 </select>
                             </div>
                         </div>
@@ -81,11 +88,14 @@
                             <div class="row ">
                                 <div class="col-sm-12 pt-3">
                                     <div class="form-group">
-                                        <label for="title">{{ __('posts.title') }} ({{ $key }})</label>
+                                        <label for="title[{{ $key }}]">{{ __('panel.title') }}
+                                            ({{ $key }})
+                                        </label>
                                         <input type="text" name="title[{{ $key }}]"
+                                            id="title[{{ $key }}]"
                                             value="{{ old('title.' . $key, $webMenu->getTranslation('title', $key)) }}"
                                             class="form-control">
-                                        @error('title')
+                                        @error('title.' . $key)
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>

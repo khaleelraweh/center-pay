@@ -10,6 +10,13 @@
       'Debugbar' => 'Barryvdh\\Debugbar\\Facades\\Debugbar',
     ),
   ),
+  'codezero/laravel-unique-translation' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'CodeZero\\UniqueTranslation\\UniqueTranslationServiceProvider',
+    ),
+  ),
   'cviebrock/eloquent-sluggable' => 
   array (
     'providers' => 

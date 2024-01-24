@@ -105,25 +105,10 @@ class WebMenuController extends Controller
         return view('backend.web_menus.edit', compact('main_menus', 'webMenu'));
     }
 
-    public function update(Request $request, $webMenu)
+    public function update(WebMenuRequest $request, $webMenu)
     {
 
-        $niceNames = [];
-        $attr = [];
-
-        foreach (config('locales.languages') as $key => $val) {
-            $attr['title.' . $key] = 'required';
-            $niceNames['title.' . $key] = __('posts.title') . ' (' . $val['name'] . ')';
-        }
-
-        $validation = Validator::make($request->all(), $attr);
-        $validation->setAttributeNames($niceNames);
-        if ($validation->fails()) {
-            return redirect()->back()->withErrors($validation)->withInput();
-        }
-
         $webMenu = WebMenu::where('id', $webMenu)->first();
-
 
         $input['title'] = $request->title;
         $input['link'] = $request->link;

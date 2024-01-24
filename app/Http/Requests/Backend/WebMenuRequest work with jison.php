@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Backend;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class WebMenuRequest extends FormRequest
 {
@@ -25,12 +26,12 @@ class WebMenuRequest extends FormRequest
     {
         switch ($this->method()) {
             case 'POST': {
-                    return [
+                    $attr =  [
                         'title.*'       =>  'required|max:255|unique_translation:web_menus',
-                        'link'          =>  'nullable',
+                        'link'          =>  'required',
                         'parent_id'     =>  'nullable',
                         'section'       =>  'nullable',
-
+                        // $this->all('title'),
 
                         // used always 
                         'status'             =>  'required',
@@ -42,13 +43,35 @@ class WebMenuRequest extends FormRequest
                         // end of used always 
 
                     ];
+
+                    //كود شغال 
+                    // foreach (config('locales.languages') as $key => $val) {
+                    //     $attr += ['title.' . $key       =>  'required|max:255',];
+                    // }
+
+                    // كود شغال
+                    // شغال للتاكد من ان القيمة المدخلة لا يوجد هناك نفسها في نفس اللغة مثلا في اللغة العربية في الجدول 
+                    // foreach (config('locales.languages') as $key => $val) {
+                    //     $attr += ['title.' . $key       =>  'required|max:255|unique_translation:web_menus',];
+                    // }
+
+                    // كود شغال
+                    // شغال لجعل هذه الشروط تطبق علي كافة الترجمات التابعة للستايل نفس السابق دو الحاجة للفور
+                    // $attr += ['title.*'       =>  'required|max:255|unique_translation:web_menus',];
+
+
+
+                    return $attr;
                 }
             case 'PUT':
             case 'PATCH': {
                     return [
+                        // 'title'             =>   'required|max:255|unique:web_menus,name_ar,' . $this->route()->web_menu->id,
                         // 'slug.*' => "unique_translation:posts,slug,{$post->id}",
-                        'title.*'           =>   'required|max:255|unique_translation:web_menus,title,' . $this->route()->web_menu,
-                        'link'              =>   'nullable',
+                        // 'title.*'             =>   'required|max:255|unique_translation:web_menus,title,' . $this->route()->id,
+                        'title.*'       =>  'required|max:255|unique_translation:web_menus',
+
+                        'link'              =>   'required',
                         'parent_id'         =>   'nullable',
                         'section'           =>   'nullable',
 
@@ -60,6 +83,7 @@ class WebMenuRequest extends FormRequest
                         'updated_by'         =>  'nullable',
                         'deleted_by'         =>  'nullable',
                         // end of used always 
+
                     ];
                 }
 
@@ -68,6 +92,13 @@ class WebMenuRequest extends FormRequest
         }
     }
 
+
+
+    /**
+     * Get custom attributes for validator errors.
+     *
+     * @return array<string, string>
+     */
     public function attributes(): array
     {
         $attr = [
@@ -82,4 +113,15 @@ class WebMenuRequest extends FormRequest
 
         return $attr;
     }
+
+
+    // public function messages()
+    // {
+    //     // use trans instead on Lang 
+    //     return [
+    //         //   'username.required' => Lang::get('userpasschange.usernamerequired'),
+    //         'link.required' => __('panel.link'),
+
+    //     ];
+    // }
 }
