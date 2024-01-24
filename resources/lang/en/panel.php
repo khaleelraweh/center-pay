@@ -2,68 +2,88 @@
 
 return [
 
-    // main dishboard page 
+    //=========== dishboard page Translations ======//
     'dashboard'                 => 'Dashboard',
-    'centerpay'                  => 'CenterPay',
-    'centerpay_show'                  => 'CenterPay Show',
-    
+    'centerpay'                 => 'CenterPay',
+    'centerpay_show'            => 'CenterPay Show',
+    'menu'                      => 'Menu',
 
-    // vertical sidebar main show 
-    'menu'              => 'Menu' , 
-    'main'  => 'Main',
+    // =============  Manage Web Menus ===============//
+    'manage_menus'              => 'Manage Web Menus',
 
-    'manage_web_menus' => 'Manage Web Menus' , 
-        'show_web_menus' => 'Main Menu',
-            'add_new_link'  => 'Add New Link',
-            'edit_existing_link'  => 'Edit Existing Link',
-            'category_menu' => 'Category Menu',
-        'manage_web_menu_helps' => 'Helps Menu',
+    // --------------- Main Menu --------------//
+    'show_web_menus'            => 'Main Menu',
+    'add_new_link'              => 'Add New Link',
+    'edit_existing_link'        => 'Edit Existing Link',
+    'category_menu'             => 'Category Menu',
 
-    'manage_main_sliders' => 'Manage Main Sliders',
-        'show_main_sliders' => 'Show Main Sliders',
-        'manage_advertisor_sliders' => 'Manage Adv Sliders',
+    // ------------- Helps Menu ------------- //
+    'show_web_helps_menu'       => 'Helps Menu',
+    'add_new_help_link'         => 'Add New Help Link',
+    'edit_existing_help_link'   => 'Edit Existing Help Link',
+    'category_help_menu'        => 'Category Helps Menu',
 
-    // common translate
-    'en' => 'English',
-    'ar' => 'Arabic',
-    'ca' => 'Spanish',
-    'add_new_content' => 'Add New Content' ,  
-    'content_tab'     => 'Content Data ',
-    'published_tab'   => 'Publish Data',
-        'published_date' => 'Published Date',
-        'published_time' => 'Published Time',
-    
-    'save_data' => 'Save Data',
-    'update_data' => 'Update Data',
-    'main_category' => 'Main Category',
+    // ........... commons in menus ....... //
     'title' => 'Title',
-    'link'=> 'Link',
+    'link' => 'Link',
+
+
+
+    // ============ common translate ==============//
+
+    // Languages 
+    'en'                    => 'English',
+    'ar'                    => 'Arabic',
+    'ca'                    => 'Spanish',
+
+
+
+    // ============ In all Pages ===================//
+    'main'                      => 'Main',
+    'add_new_content'       => 'Add New Content',
+
+    // ======= display Add and Update Section =======// 
+
+    // ------------ Tabs name -----------------/
+    'content_tab'           => 'Content Data ',
+    'published_tab'         => 'Publish Data',
+
+    // ------------ Common fileds ------------/
+    'main_category'         => 'Main Category',
+    'published_date'        => 'Published Date',
+    'published_time'        => 'Published Time',
+    'status'                => 'Status',
+    'status_active'         => 'Active',
+    'status_inactive'       => 'Inactive',
+    'actions' => 'Actions',
+
+    //------------ commin buttons ---------------/
+    'save_data'             => 'Save Data',
+    'update_data'           => 'Update Data',
+
+    // ---------- navigation part ---------------/
     'keyword'               => 'Enter search keyword',
     'search'                => 'Search',
-    'show_all'  => 'Show All',
-    'asc' => 'Ascending',
-    'desc'=> 'Descending',
-    'created_at' => 'Created at',
-    'published_on' => 'Published On',
-    'author'=> 'Author',
-    'id'=>  'ID',
+    'show_all'              => 'Show All',
+    'asc'                   => 'Ascending',
+    'desc'                  => 'Descending',
+    'created_at'            => 'Created at',
+    'published_on'          => 'Published On',
+    'author'                => 'Author',
+    'id'                    => 'ID',
 
-    // related to table show 
-    'status' => 'Status',
-        'status_active' => 'Active',
-        'status_inactive' => 'Inactive',
-    'actions'=> 'Actions',
 
-    'created_successfully'  => 'Row created successfully',
-    'updated_successfully'  => 'Row updated successfully',
-    'deleted_successfully'  => 'Row deleted successfully',
-    'something_was_wrong'   => 'Something was wrong',
-    'confirm_delete_message' => 'Are you sure you want to delete this !!',
+    // ============= Message Responsive ================ //
+    'created_successfully'      => 'Row created successfully',
+    'updated_successfully'      => 'Row updated successfully',
+    'deleted_successfully'      => 'Row deleted successfully',
+    'something_was_wrong'       => 'Something was wrong',
+    'confirm_delete_message'    => 'Are you sure you want to delete this !!',
+    'no_found_item'             => 'No item founded yet',
 
-    
-    
 
-    
+
+    // ================ Validations ======================//
+    //---------------- Common Validation -----------------//
+    'in'                        => 'In',
 ];
-
-

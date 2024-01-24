@@ -5,8 +5,6 @@
     {{-- main holder page  --}}
     <div class="card shadow mb-4">
 
-
-
         {{-- breadcrumb part  --}}
         <div class="card-header py-3 d-flex justify-content-between">
             <div class="card-naving">
@@ -28,8 +26,6 @@
                     </li>
                 </ul>
             </div>
-
-
         </div>
 
         {{-- body part  --}}
@@ -46,21 +42,22 @@
             @endif
 
 
-            <form action="{{ route('admin.web_menus.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('admin.web_menus.store') }}" method="post">
                 @csrf
 
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
                         <button class="nav-link active" id="content-tab" data-bs-toggle="tab" data-bs-target="#content"
                             type="button" role="tab" aria-controls="content"
-                            aria-selected="true">{{ __('panel.content_tab') }}</button>
+                            aria-selected="true">{{ __('panel.content_tab') }}
+                        </button>
                     </li>
-
 
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="published-tab" data-bs-toggle="tab" data-bs-target="#published"
                             type="button" role="tab" aria-controls="published"
-                            aria-selected="false">{{ __('panel.published_tab') }}</button>
+                            aria-selected="false">{{ __('panel.published_tab') }}
+                        </button>
                     </li>
 
                 </ul>
@@ -90,10 +87,13 @@
                             <div class="row ">
                                 <div class="col-sm-12 pt-3">
                                     <div class="form-group">
-                                        <label for="title">{{ __('posts.title') }} ({{ $key }})</label>
+                                        <label for="title[{{ $key }}]">{{ __('panel.title') }}
+                                            ({{ $key }})
+                                        </label>
                                         <input type="text" name="title[{{ $key }}]"
-                                            value="{{ old('title.' . $key) }}" class="form-control">
-                                        @error('title')
+                                            id="title[{{ $key }}]" value="{{ old('title.' . $key) }}"
+                                            class="form-control">
+                                        @error('title.' . $key)
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
@@ -115,8 +115,6 @@
                         </div>
 
                     </div>
-
-
 
                     <div class="tab-pane fade" id="published" role="tabpanel" aria-labelledby="published-tab">
 
@@ -148,7 +146,6 @@
 
                         </div>
 
-
                         <div class="row">
                             <div class="col-md-12 col-sm-12 pt-3">
                                 <label for="status" class="control-label col-md-2 col-sm-12 ">
@@ -168,10 +165,7 @@
                             </div>
                         </div>
 
-
-
                     </div>
-
 
                     <div class="row">
                         <div class="col-md-12">
@@ -185,11 +179,7 @@
 
                 </div>
 
-
-
             </form>
-
-
 
         </div>
 
@@ -197,42 +187,23 @@
 
 @endsection
 
-
 @section('script')
-    {{-- pickadate calling js --}}
-    <script src="{{ asset('backend/vendor/datepicker/picker.js') }}"></script>
-    <script src="{{ asset('backend/vendor/datepicker/picker.date.js') }}"></script>
-    <script src="{{ asset('backend/vendor/datepicker/picker.time.js') }}"></script>
     <script>
         $(function() {
-
-            //Category image 
-            $("#category_image").fileinput({
-                theme: "fa5",
-                maxFileCount: 1,
-                allowedFileTypes: ['image'],
-                showCancel: true,
-                showRemove: false,
-                showUpload: false,
-                overwriteInitial: false
-            });
-
 
             $('#published_on').pickadate({
                 format: 'yyyy-mm-dd',
                 min: new Date(),
-                selectMonths: true, // Creates a dropdown to control month
-                selectYears: true, // creates a dropdown to control years
+                selectMonths: true,
+                selectYears: true,
                 clear: 'Clear',
                 close: 'OK',
-                colseOnSelect: true // Close Upon Selecting a date
+                colseOnSelect: true
             });
 
-
             var publishedOn = $('#published_on').pickadate(
-                'picker'); // set startdate in the picker to the start date in the #start_date elemet
+                'picker');
 
-            // when change date 
             $('#published_on').change(function() {
                 selected_ci_date = "";
                 selected_ci_date = $('#published_on').val();
@@ -243,30 +214,11 @@
                     min_codate.setDate(cidate.getDate() + 1);
                     enddate.set('min', min_codate);
                 }
-
             });
 
             $('#published_on_time').pickatime({
                 clear: ''
             });
-
-
-
-            //summernote for description 
-            $('.summernote').summernote({
-                tabSize: 2,
-                height: 150,
-                toolbar: [
-                    ['style', ['style']],
-                    ['font', ['bold', 'underline', 'clear']],
-                    ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    ['table', ['table']],
-                    ['insert', ['link', 'picture', 'video']],
-                    ['view', ['fullscreen', 'codeview', 'help']]
-                ]
-            });
-
         });
     </script>
 @endsection

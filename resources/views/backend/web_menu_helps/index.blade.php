@@ -1,27 +1,27 @@
 @extends('layouts.admin')
 
-
 @section('content')
     <div class="row">
         <div class="col-12">
             <div class="card">
-
                 {{-- breadcrumb part  --}}
                 <div class="card-header py-3 d-flex justify-content-between">
                     <div class="card-naving">
                         <h3 class="font-weight-bold text-primary">
                             <i class="fa fa-folder"></i>
-                            قائمة المساعدة
+                            {{ __('panel.manage_menus') }}
                         </h3>
                         <ul class="breadcrumb">
                             <li>
-                                <a href="{{ route('admin.index') }}">
-                                    الرئيسية
-                                </a>
-                                <i class="fa fa-solid fa-chevron-left chevron"></i>
+                                <a href="{{ route('admin.index') }}">{{ __('panel.main') }}</a>
+                                @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl')
+                                    <i class="fa fa-solid fa-chevron-left chevron"></i>
+                                @else
+                                    <i class="fa fa-solid fa-chevron-right chevron"></i>
+                                @endif
                             </li>
                             <li>
-                                قائمة المساعدة
+                                {{ __('panel.show_web_helps_menu') }}
                             </li>
                         </ul>
                     </div>
@@ -31,11 +31,10 @@
                                 <span class="icon text-white-50">
                                     <i class="fa fa-plus-square"></i>
                                 </span>
-                                <span class="text">إضافة محتوى جديد</span>
+                                <span class="text">{{ __('panel.add_new_content') }}</span>
                             </a>
                         @endability
                     </div>
-
                 </div>
 
                 <div class="card-body">
@@ -49,24 +48,24 @@
                             style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                                 <tr>
-                                    <th>العنوان</th>
-                                    <th class="d-none d-sm-table-cell">الكاتب</th>
-                                    <th>الحالة</th>
-                                    <th class="d-none d-sm-table-cell">تاريخ الانشاء</th>
-                                    <th class="text-center" style="width:30px;">الاعدادات</th>
+                                    <th>{{ __('panel.title') }}</th>
+                                    <th class="d-none d-sm-table-cell">{{ __('panel.author') }}</th>
+                                    <th>{{ __('panel.status') }}</th>
+                                    <th class="d-none d-sm-table-cell">{{ __('panel.created_at') }}</th>
+                                    <th class="text-center" style="width:30px;">{{ __('panel.actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @forelse ($menus as $menu)
                                     <tr>
                                         <td>
-                                            {{ $menu->name_ar }}
+                                            {{ $menu->title }}
                                             <br>
                                             @if ($menu->parent != null)
                                                 <small
                                                     style="background: #17a2b8;color:white;padding:1px 3px;border-radius: 5px; font-size:11px">
-                                                    تابع للقائمة:
-                                                    <span>{{ $menu->parent?->name_ar }}</span>
+                                                    {{-- تابع للقائمة: --}}
+                                                    <span>{{ $menu->parent?->title }}</span>
                                                 </small>
                                             @endif
                                         </td>
@@ -98,7 +97,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="6" class="text-center">No categories found</td>
+                                        <td colspan="6" class="text-center">{{ __('panel.no_found_item') }}</td>
                                     </tr>
                                 @endforelse
                             </tbody>

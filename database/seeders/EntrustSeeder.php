@@ -130,7 +130,7 @@ class EntrustSeeder extends Seeder
 
         //------------- 05- Permission  ------------//
         //manage main dashboard page
-        $manageMain = Permission::create(['name' => 'main', 'display_name' => 'الرئيسية', 'route' => 'index', 'module' => 'index', 'as' => 'index', 'icon' => 'ri-dashboard-line', 'parent' => '0', 'parent_original' => '0', 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '1']);
+        $manageMain = Permission::create(['name' => 'main', 'display_name' => ['ar' =>  'الرئيسية', 'en'   =>  'Main'], 'route' => 'index', 'module' => 'index', 'as' => 'index', 'icon' => 'ri-dashboard-line', 'parent' => '0', 'parent_original' => '0', 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '1']);
         $manageMain->parent_show = $manageMain->id;
         $manageMain->save();
 

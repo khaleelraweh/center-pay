@@ -37,7 +37,8 @@
                         <li>
                             <a href="{{ route('admin.' . $menu->as) }}" class="waves-effect">
                                 <i class="{{ $menu->icon != null ? $menu->icon : 'fas fa-home' }}"></i>
-                                <span><b>{{ __('panel.' . $menu->name) }}</b></span>
+                                <span><b>{{ $menu->display_name }}</b></span>
+
                             </a>
                         </li>
                     @else
@@ -46,7 +47,6 @@
                             <a href="javascript: void(0);" class="has-arrow waves-effect">
                                 <i class="{{ $menu->icon != null ? $menu->icon : 'fas fa-home' }}"></i>
                                 <span><b>{{ $menu->display_name }}</b></span>
-                                {{-- <span><b>{{ __('panel.' . $menu->name) }}</b></span> --}}
                             </a>
                             {{-- sup menu item  --}}
                             @if ($menu->appearedChildren !== null && count($menu->appearedChildren) > 0)
@@ -57,7 +57,6 @@
                                                 <i
                                                     class="{{ $sub_menu->icon != null ? $sub_menu->icon : 'fas fa-home' }}"></i>
                                                 <span><b> {{ $sub_menu->display_name }}</b></span>
-                                                {{-- <span><b> {{ __('panel.' . $sub_menu->name) }} </b></span> --}}
                                             </a>
                                         </li>
                                     @endforeach

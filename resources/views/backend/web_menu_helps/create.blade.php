@@ -10,24 +10,22 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-plus-square"></i>
-                    إضفافة رابط جديد
+                    {{ __('panel.add_new_help_link') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
                         <a href="{{ route('admin.index') }}">
-                            الرئيسية
+                            {{ __('panel.main') }}
                         </a>
                         <i class="fa fa-solid fa-chevron-left chevron"></i>
                     </li>
                     <li>
                         <a href="{{ route('admin.web_menu_helps.index') }}">
-                            قائمة المساعدة
+                            {{ __('panel.show_web_helps_menu') }}
                         </a>
                     </li>
                 </ul>
             </div>
-
-
         </div>
 
         {{-- body part  --}}
@@ -44,19 +42,23 @@
             @endif
 
 
-            <form action="{{ route('admin.web_menu_helps.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('admin.web_menu_helps.store') }}" method="post">
                 @csrf
 
                 {{-- links of tabs --}}
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link active" id="content-tab" data-toggle="tab" href="#content" role="tab"
-                            aria-controls="content" aria-selected="true">بيانات المحتوي</a>
+                        <button class="nav-link active" id="content-tab" data-bs-toggle="tab" data-bs-target="#content"
+                            type="button" role="tab" aria-controls="content"
+                            aria-selected="true">{{ __('panel.content_tab') }}
+                        </button>
                     </li>
 
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link" id="publish-tab" data-toggle="tab" href="#publish" role="tab"
-                            aria-controls="publish" aria-selected="false">بيانات النشر</a>
+                        <button class="nav-link" id="published-tab" data-bs-toggle="tab" data-bs-target="#published"
+                            type="button" role="tab" aria-controls="published"
+                            aria-selected="false">{{ __('panel.published_tab') }}
+                        </button>
                     </li>
 
                 </ul>
@@ -64,51 +66,27 @@
                 {{-- contents of links tabs  --}}
                 <div class="tab-content" id="myTabContent">
 
-                    {{-- تاب بيانات المحتوي --}}
                     <div class="tab-pane fade active show" id="content" role="tabpanel" aria-labelledby="content-tab">
 
-                        {{-- عنوان الرابط عربي  --}}
-                        <div class="row">
-                            <div class="col-sm-12 pt-4">
-                                <label for="name_ar" class="control-label ">
-                                    العنوان (عربي) :
-                                    <span class="require red">*</span>
-                                </label>
-                                <div class="form-group">
-                                    <input type="text" id="name_ar" name="name_ar" value="{{ old('name_ar') }}"
-                                        class="form-control">
-                                    @error('name_ar')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
+                        @foreach (config('locales.languages') as $key => $val)
+                            <div class="row ">
+                                <div class="col-sm-12 pt-3">
+                                    <div class="form-group">
+                                        <label for="title">{{ __('posts.title') }} ({{ $key }})</label>
+                                        <input type="text" name="title[{{ $key }}]"
+                                            value="{{ old('title.' . $key) }}" class="form-control">
+                                        @error('title')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        @endforeach
 
-                        {{-- عنوان الرابط انجليزي  --}}
-                        <div class="row">
-                            <div class="col-sm-12 pt-4">
-                                <label for="name_en" class="control-label ">
-                                    العنوان (انجليزي) :
-                                    <span class="require red">*</span>
-                                </label>
+                        <div class="row ">
+                            <div class="col-sm-12 pt-3">
                                 <div class="form-group">
-                                    <input type="text" id="name_en" name="name_en" value="{{ old('name_en') }}"
-                                        class="form-control">
-                                    @error('name_en')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-                        </div>
-
-                        {{--  الرابط --}}
-                        <div class="row">
-                            <div class="col-sm-12 pt-4">
-                                <label for="link" class="control-label">
-                                    الرابط
-                                    <span class="require red">*</span> :
-                                </label>
-                                <div class="form-group">
+                                    <label for="link">{{ __('panel.link') }}</label>
                                     <input type="text" id="link" name="link" value="{{ old('link') }}"
                                         class="form-control">
                                     @error('link')
@@ -117,16 +95,15 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
 
-                    {{-- تاب بيانات النشر --}}
-                    <div class="tab-pane fade" id="publish" role="tabpanel" aria-labelledby="publish-tab">
+                    <div class="tab-pane fade" id="published" role="tabpanel" aria-labelledby="published-tab">
 
-                        {{-- publish_start publish time field --}}
                         <div class="row">
-                            <div class="col-sm-12 pt-4">
+                            <div class="col-sm-12 col-md-12 pt-3">
                                 <div class="form-group">
-                                    <label for="published_on">تاريخ النشر</label> :
+                                    <label for="published_on"> {{ __('panel.published_date') }}</label>
                                     <input type="text" id="published_on" name="published_on"
                                         value="{{ old('published_on', now()->format('Y-m-d')) }}" class="form-control">
                                     @error('published_on')
@@ -137,9 +114,9 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-sm-12 pt-4">
+                            <div class="col-sm-12 col-md-12 pt-3">
                                 <div class="form-group">
-                                    <label for="published_on_time">وقت النشر</label> :
+                                    <label for="published_on_time"> {{ __('panel.published_time') }}</label>
                                     <input type="text" id="published_on_time" name="published_on_time"
                                         value="{{ old('published_on_time', now()->format('h:m A')) }}"
                                         class="form-control">
@@ -148,18 +125,20 @@
                                     @enderror
                                 </div>
                             </div>
+
                         </div>
 
-                        {{-- حالة التصنيف --}}
                         <div class="row">
-                            <div class="col-sm-12 pt-4">
-                                <label for="status" class="control-label ">
-                                    <span>الحالة</span>
-                                    <span class="require red">*</span>:
+                            <div class="col-md-12 col-sm-12 pt-3">
+                                <label for="status" class="control-label col-md-2 col-sm-12 ">
+                                    <span>{{ __('panel.status') }}</span>
                                 </label>
                                 <select name="status" class="form-control">
-                                    <option value="1" {{ old('status') == '1' ? 'selected' : null }}>مفعل</option>
-                                    <option value="0" {{ old('status') == '0' ? 'selected' : null }}>غير مفعل
+                                    <option value="1" {{ old('status') == '1' ? 'selected' : null }}>
+                                        {{ __('panel.status_active') }}
+                                    </option>
+                                    <option value="0" {{ old('status') == '0' ? 'selected' : null }}>
+                                        {{ __('panel.status_inactive') }}
                                     </option>
                                 </select>
                                 @error('status')
@@ -167,15 +146,17 @@
                                 @enderror
                             </div>
                         </div>
+
                     </div>
 
                 </div>
 
-                {{-- submit part --}}
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group pt-3 mx-3">
-                            <button type="submit" name="submit" class="btn btn-primary">حفظ البيانات</button>
+                            <button type="submit" name="submit" class="btn btn-primary">
+                                {{ __('panel.save_data') }}
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -188,38 +169,23 @@
 
 @endsection
 
-
 @section('script')
     <script>
         $(function() {
 
-            //Category image 
-            $("#category_image").fileinput({
-                theme: "fa5",
-                maxFileCount: 1,
-                allowedFileTypes: ['image'],
-                showCancel: true,
-                showRemove: false,
-                showUpload: false,
-                overwriteInitial: false
-            });
-
-
             $('#published_on').pickadate({
                 format: 'yyyy-mm-dd',
                 min: new Date(),
-                selectMonths: true, // Creates a dropdown to control month
-                selectYears: true, // creates a dropdown to control years
+                selectMonths: true,
+                selectYears: true,
                 clear: 'Clear',
                 close: 'OK',
-                colseOnSelect: true // Close Upon Selecting a date
+                colseOnSelect: true
             });
 
-
             var publishedOn = $('#published_on').pickadate(
-                'picker'); // set startdate in the picker to the start date in the #start_date elemet
+                'picker');
 
-            // when change date 
             $('#published_on').change(function() {
                 selected_ci_date = "";
                 selected_ci_date = $('#published_on').val();
@@ -230,30 +196,11 @@
                     min_codate.setDate(cidate.getDate() + 1);
                     enddate.set('min', min_codate);
                 }
-
             });
 
             $('#published_on_time').pickatime({
                 clear: ''
             });
-
-
-
-            //summernote for description 
-            $('.summernote').summernote({
-                tabSize: 2,
-                height: 150,
-                toolbar: [
-                    ['style', ['style']],
-                    ['font', ['bold', 'underline', 'clear']],
-                    ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    ['table', ['table']],
-                    ['insert', ['link', 'picture', 'video']],
-                    ['view', ['fullscreen', 'codeview', 'help']]
-                ]
-            });
-
         });
     </script>
 @endsection

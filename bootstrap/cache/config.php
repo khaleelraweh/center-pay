@@ -615,6 +615,7 @@
         'unicode' => 'ar_SA',
         'rtl_support' => 'rtl',
         'name' => 'Arabic',
+        'name_native' => 'عربي',
       ),
       'en' => 
       array (
@@ -622,6 +623,7 @@
         'unicode' => 'en_US',
         'rtl_support' => 'ltr',
         'name' => 'English',
+        'name_native' => 'English',
       ),
       'ca' => 
       array (
@@ -629,6 +631,7 @@
         'unicode' => 'ca_ES',
         'rtl_support' => 'ltr',
         'name' => 'Spanish',
+        'name_native' => 'Española',
       ),
     ),
   ),

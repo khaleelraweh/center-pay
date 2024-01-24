@@ -2,8 +2,6 @@
 
 
 @section('content')
-
-
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -13,7 +11,7 @@
                     <div class="card-naving">
                         <h3 class="font-weight-bold text-primary">
                             <i class="fa fa-folder"></i>
-                            {{ __('panel.manage_web_menus') }}
+                            {{ __('panel.manage_menus') }}
                         </h3>
                         <ul class="breadcrumb">
                             <li>
@@ -102,7 +100,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="6" class="text-center">No categories found</td>
+                                        <td colspan="6" class="text-center">{{ __('panel.no_found_item') }}</td>
                                     </tr>
                                 @endforelse
                             </tbody>

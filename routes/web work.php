@@ -186,7 +186,20 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::get('/web_menus/{web_menus}/edit',    [WebMenuController::class, 'edit'])->name('web_menus.edit');
         Route::resource('web_menus', WebMenuController::class);
 
-        Route::get('/web_menu_helps/{web_menu_helps}/edit',    [WebMenuController::class, 'edit'])->name('web_menu_helps.edit');
+        // Route::get('/web_menus',                [WebMenuController::class, 'index'])->name('web_menus.index');
+
+        // Route::get('/web_menus/create',         [WebMenuController::class, 'create'])->name('web_menus.create');
+        // Route::post('/web_menus/create',        [WebMenuController::class, 'store'])->name('web_menus.store');
+
+        // Route::get('/web_menus/{web_menu}',         [WebMenuController::class, 'show'])->name('web_menus.show');
+
+        // Route::get('/web_menus/{web_menus}/edit',    [WebMenuController::class, 'edit'])->name('web_menus.edit');
+
+        // Route::get('/web_menus/{web_menu}/edit',    [WebMenuController::class, 'edit'])->name('web_menus.edit');
+        // Route::patch('/web_menus/{web_menu}/edit',  [WebMenuController::class, 'update'])->name('web_menus.update');
+
+        // Route::delete('/web_menus/{web_menu}',      [WebMenuController::class, 'destroy'])->name('web_menus.destroy');
+
         Route::resource('web_menu_helps', WebMenuHelpController::class);
 
 
