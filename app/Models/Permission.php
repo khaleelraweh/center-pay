@@ -2,11 +2,36 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Mindscms\Entrust\EntrustPermission;
+use Nicolaslopezj\Searchable\SearchableTrait;
+use Spatie\Translatable\HasTranslations;
 
 class Permission extends EntrustPermission
 {
+    
+    use HasFactory, HasTranslations,  SearchableTrait;
+
     protected $guarded = [];
+    public $translatable = ['display_name', 'description'];
+
+
+    protected $searchable = [
+        'columns' => [
+            'permissions.display_name' => 10,
+            'permissions.description' => 10,
+        ]
+    ];
+
+    
+    protected function asJson($value)
+    {
+        return json_encode($value, JSON_UNESCAPED_UNICODE);
+    }
+
+
+
+    
     
     public function parent()
     {

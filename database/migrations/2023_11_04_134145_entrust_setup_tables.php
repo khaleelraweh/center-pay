@@ -33,8 +33,8 @@ class EntrustSetupTables extends Migration
         Schema::create('permissions', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->string('display_name')->nullable();
-            $table->string('description')->nullable();
+            $table->json('display_name')->nullable();
+            $table->json('description')->nullable();
             $table->string('route')->nullable();
             $table->string('module')->nullable();
             $table->string('as')->nullable();
