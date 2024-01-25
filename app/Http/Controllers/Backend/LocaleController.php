@@ -41,11 +41,9 @@ class LocaleController extends Controller
                 }
 
                 return redirect()->back();
-
             }
 
             return redirect()->back();
-
         } catch (\Exception $exception) {
             return redirect()->back();
         }
@@ -58,13 +56,12 @@ class LocaleController extends Controller
 
     protected function resolveModel($modelClass, $slug, $locale)
     {
-        $model = $modelClass::where('slug->'. $locale, $slug)->first();
+        $model = $modelClass::where('slug->' . $locale, $slug)->first();
 
         if (is_null($model)) {
 
-            foreach (config('locales.languages') as $key => $val)
-            {
-                $modelInLocale = $modelClass::where('slug->'. $key, $slug)->first();
+            foreach (config('locales.languages') as $key => $val) {
+                $modelInLocale = $modelClass::where('slug->' . $key, $slug)->first();
                 if ($modelInLocale) {
                     $newRoute = str_replace($slug, $modelInLocale->slug, urldecode(urlencode(route('posts.show', $modelInLocale->slug))));
                     return redirect()->to($newRoute)->send();
@@ -72,6 +69,13 @@ class LocaleController extends Controller
             }
             abort(404);
         }
+
+        // تستخدم اذا كان السلاج الجديد مساوي للسلاج القديم 
+        if ($slug === $model->slug) {
+            return redirect()->back();
+        }
+
+
         return $model;
     }
 }
