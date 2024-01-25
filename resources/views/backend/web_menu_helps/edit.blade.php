@@ -10,18 +10,20 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-edit"></i>
-                    تعديل رابط
+                    {{ __('panel.edit_existing_help_link') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
-                        <a href="{{ route('admin.index') }}">
-                            الرئيسية
-                        </a>
-                        <i class="fa fa-solid fa-chevron-left chevron"></i>
+                        <a href="{{ route('admin.index') }}">{{ __('panel.main') }}</a>
+                        @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl')
+                            <i class="fa fa-solid fa-chevron-left chevron"></i>
+                        @else
+                            <i class="fa fa-solid fa-chevron-right chevron"></i>
+                        @endif
                     </li>
                     <li>
                         <a href="{{ route('admin.web_menu_helps.index') }}">
-                            قائمة المساعدة
+                            {{ __('panel.show_web_helps_menu') }}
                         </a>
                     </li>
                 </ul>
@@ -30,21 +32,35 @@
 
         {{-- body part  --}}
         <div class="card-body">
-            <form action="{{ route('admin.web_menu_helps.update', $webMenuHelp->id) }}" method="post"
-                enctype="multipart/form-data">
+
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            <form action="{{ route('admin.web_menu_helps.update', $webMenuHelp->id) }}" method="post">
                 @csrf
                 @method('PATCH')
 
                 {{-- links of tabs --}}
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link active" id="content-tab" data-toggle="tab" href="#content" role="tab"
-                            aria-controls="content" aria-selected="true">بيانات المحتوي</a>
+                        <button class="nav-link active" id="content-tab" data-bs-toggle="tab" data-bs-target="#content"
+                            type="button" role="tab" aria-controls="content"
+                            aria-selected="true">{{ __('panel.content_tab') }}
+                        </button>
                     </li>
 
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link" id="publish-tab" data-toggle="tab" href="#publish" role="tab"
-                            aria-controls="publish" aria-selected="false">بيانات النشر</a>
+                        <button class="nav-link" id="published-tab" data-bs-toggle="tab" data-bs-target="#published"
+                            type="button" role="tab" aria-controls="published"
+                            aria-selected="false">{{ __('panel.published_tab') }}
+                        </button>
                     </li>
                 </ul>
 
@@ -54,68 +70,47 @@
                     {{-- تاب بيانات المحتوي --}}
                     <div class="tab-pane fade active show" id="content" role="tabpanel" aria-labelledby="content-tab">
 
-                        {{-- عنوان الرابط عربي  --}}
-                        <div class="row">
-                            <div class="col-sm-12 pt-4">
-                                <label for="name_ar" class="control-label">
-                                    العنوان (عربي)
-                                    <span class="require red">*</span>
-                                </label>
-                                <div class="form-group">
-                                    <input type="text" id="name_ar" name="name_ar"
-                                        value="{{ old('name_ar', $webMenuHelp->name_ar) }}" class="form-control"
-                                        placeholder="name_ar">
-                                    @error('name_ar')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
+
+                        @foreach (config('locales.languages') as $key => $val)
+                            <div class="row ">
+                                <div class="col-sm-12 pt-3">
+                                    <div class="form-group">
+                                        <label for="title[{{ $key }}]">{{ __('panel.title') }}
+                                            ({{ $key }})
+                                        </label>
+                                        <input type="text" name="title[{{ $key }}]"
+                                            id="title[{{ $key }}]"
+                                            value="{{ old('title.' . $key, $webMenuHelp->title) }}" class="form-control">
+                                        @error('title.' . $key)
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        @endforeach
 
-                        {{-- عنوان الرابط أنجليزي  --}}
-                        <div class="row">
-                            <div class="col-sm-12 pt-4">
-                                <label for="name_en" class="control-label">
-                                    العنوان (انجليزي)
-                                    <span class="require red">*</span>
-                                </label>
+
+                        <div class="row ">
+                            <div class="col-sm-12 pt-3">
                                 <div class="form-group">
-                                    <input type="text" id="name_en" name="name_en"
-                                        value="{{ old('name_en', $webMenuHelp->name_en) }}" class="form-control"
-                                        placeholder="name_en">
-                                    @error('name_en')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-                        </div>
-
-
-                        {{--  الرابط   --}}
-                        <div class="row">
-                            <div class="col-sm-12 pt-4">
-                                <label for="link" class="control-label">
-                                    الرابط
-                                    <span class="require red">*</span>
-                                </label>
-                                <div class="form-group">
+                                    <label for="link">{{ __('panel.link') }}</label>
                                     <input type="text" id="link" name="link"
-                                        value="{{ old('link', $webMenuHelp->link) }}" class="form-control"
-                                        placeholder="link">
+                                        value="{{ old('link', $webMenuHelp->link) }}" class="form-control">
                                     @error('link')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
                         </div>
+
                     </div>
 
                     {{-- تاب بيانات النشر --}}
-                    <div class="tab-pane fade" id="publish" role="tabpanel" aria-labelledby="publish-tab">
+                    <div class="tab-pane fade" id="published" role="tabpanel" aria-labelledby="published-tab">
                         <div class="row">
                             <div class="col-sm-12  pt-4">
                                 <div class="form-group">
-                                    <label for="published_on">تاريخ النشر</label>
+                                    <label for="published_on">{{ __('panel.published_date') }}</label>
                                     <input type="text" id="published_on" name="published_on"
                                         value="{{ old('published_on', \Carbon\Carbon::parse($webMenuHelp->published_on)->Format('Y-m-d')) }}"
                                         class="form-control">
@@ -129,7 +124,7 @@
                         <div class="row">
                             <div class="col-sm-12  pt-4">
                                 <div class="form-group">
-                                    <label for="published_on_time">وقت النشر</label>
+                                    <label for="published_on_time">{{ __('panel.published_time') }}</label>
                                     <input type="text" id="published_on_time" name="published_on_time"
                                         value="{{ old('published_on_time', \Carbon\Carbon::parse($webMenuHelp->published_on)->Format('h:i A')) }}"
                                         class="form-control">
@@ -146,16 +141,17 @@
 
                             <div class="col-md-12 col-sm-12 pt-4">
                                 <label for="status" class="control-label">
-                                    <span>الحالة</span>
-                                    <span class="require red">*</span>
+                                    <span>{{ __('panel.status') }}</< /span>
                                 </label>
                                 <select name="status" class="form-control">
                                     <option value="">---</option>
                                     <option value="1"
-                                        {{ old('status', $webMenuHelp->status) == '1' ? 'selected' : null }}>مفعل
+                                        {{ old('status', $webMenuHelp->status) == '1' ? 'selected' : null }}>
+                                        {{ __('panel.status_active') }}
                                     </option>
                                     <option value="0"
-                                        {{ old('status', $webMenuHelp->status) == '0' ? 'selected' : null }}>غير مفعل
+                                        {{ old('status', $webMenuHelp->status) == '0' ? 'selected' : null }}>
+                                        {{ __('panel.status_inactive') }}
                                     </option>
                                 </select>
                                 @error('status')
@@ -164,12 +160,6 @@
                             </div>
                         </div>
 
-
-                    </div>
-
-                    {{-- تاب لاي شي جديد --}}
-                    <div class="tab-pane fade" id="other" role="tabpanel" aria-labelledby="other-tab">
-                        any think you want
                     </div>
 
                 </div>
@@ -179,12 +169,12 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group pt-3 mx-3">
-                            <button type="submit" name="submit" class="btn btn-primary">تعديل البيانات</button>
+                            <button type="submit" name="submit" class="btn btn-primary">
+                                {{ __('panel.update_data') }}
+                            </button>
                         </div>
                     </div>
                 </div>
-
-
             </form>
         </div>
 
@@ -193,28 +183,22 @@
 
 
 @section('script')
-    {{-- pickadate calling js --}}
-
-    <script src="{{ asset('backend/vendor/datepicker/picker.js') }}"></script>
-    <script src="{{ asset('backend/vendor/datepicker/picker.date.js') }}"></script>
-    <script src="{{ asset('backend/vendor/datepicker/picker.time.js') }}"></script>
     <script>
         $(function() {
 
             $('#published_on').pickadate({
                 format: 'yyyy-mm-dd',
                 min: new Date(),
-                selectMonths: true, // Creates a dropdown to control month
-                selectYears: true, // creates a dropdown to control years
+                selectMonths: true,
+                selectYears: true,
                 clear: 'Clear',
                 close: 'OK',
-                colseOnSelect: true // Close Upon Selecting a date
+                colseOnSelect: true
             });
 
             var publishedOn = $('#published_on').pickadate(
-                'picker'); // set startdate in the picker to the start date in the #start_date elemet
+                'picker');
 
-            // when change date 
             $('#published_on').change(function() {
                 selected_ci_date = "";
                 selected_ci_date = now() // make selected start date in picker = start_date value  

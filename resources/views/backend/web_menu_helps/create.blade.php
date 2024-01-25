@@ -14,10 +14,12 @@
                 </h3>
                 <ul class="breadcrumb">
                     <li>
-                        <a href="{{ route('admin.index') }}">
-                            {{ __('panel.main') }}
-                        </a>
-                        <i class="fa fa-solid fa-chevron-left chevron"></i>
+                        <a href="{{ route('admin.index') }}">{{ __('panel.main') }}</a>
+                        @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl')
+                            <i class="fa fa-solid fa-chevron-left chevron"></i>
+                        @else
+                            <i class="fa fa-solid fa-chevron-right chevron"></i>
+                        @endif
                     </li>
                     <li>
                         <a href="{{ route('admin.web_menu_helps.index') }}">
@@ -72,10 +74,13 @@
                             <div class="row ">
                                 <div class="col-sm-12 pt-3">
                                     <div class="form-group">
-                                        <label for="title">{{ __('posts.title') }} ({{ $key }})</label>
+                                        <label for="title[{{ $key }}]">{{ __('panel.title') }}
+                                            ({{ $key }})
+                                        </label>
                                         <input type="text" name="title[{{ $key }}]"
-                                            value="{{ old('title.' . $key) }}" class="form-control">
-                                        @error('title')
+                                            id="title[{{ $key }}]" value="{{ old('title.' . $key) }}"
+                                            class="form-control">
+                                        @error('title.' . $key)
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>

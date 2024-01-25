@@ -52,9 +52,6 @@ class WebMenuController extends Controller
             return redirect('admin/index');
         }
 
-        $niceNames = [];
-        $attr = [];
-
         $input['title'] = $request->title;
         $input['link'] = $request->link;
         $input['parent_id'] = $request->parent_id;
@@ -76,7 +73,7 @@ class WebMenuController extends Controller
             ]);
         }
 
-        return redirect()->route('posts.index')->with([
+        return redirect()->route('admin.web_menus.index')->with([
             'message' => __('panel.something_was_wrong'),
             'alert-type' => 'danger'
         ]);
@@ -130,7 +127,7 @@ class WebMenuController extends Controller
             ]);
         }
 
-        return redirect()->route('posts.index')->with([
+        return redirect()->route('admin.web_menus.index')->with([
             'message' => __('panel.something_was_wrong'),
             'alert-type' => 'danger'
         ]);

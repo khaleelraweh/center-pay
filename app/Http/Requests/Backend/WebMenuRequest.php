@@ -31,7 +31,6 @@ class WebMenuRequest extends FormRequest
                         'parent_id'     =>  'nullable',
                         'section'       =>  'nullable',
 
-
                         // used always 
                         'status'             =>  'required',
                         'published_on'       =>  'nullable',

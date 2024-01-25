@@ -24,52 +24,58 @@ class WebMenuHelpRequest extends FormRequest
     public function rules()
     {
         switch ($this->method()) {
-            case 'POST':
-            {
-                return [
-                    'name_ar'       =>  'required|max:255|unique:web_menus',
-                    'name_en'       =>  'required|max:255|unique:web_menus',
-                    'link'          =>  'nullable',
-                    'section'       =>  'nullable',
+            case 'POST': {
+                    return [
+                        'title.*'       =>  'required|max:255|unique_translation:web_menus',
+                        'link'          =>  'nullable',
+                        'section'       =>  'nullable',
 
+                        // used always 
+                        'status'             =>  'required',
+                        'published_on'       =>  'nullable',
+                        'published_on_time'  =>  'nullable',
+                        'created_by'         =>  'nullable',
+                        'updated_by'         =>  'nullable',
+                        'deleted_by'         =>  'nullable',
+                        // end of used always 
 
-                    // used always 
-                    'status'             =>  'required',
-                    'published_on'       =>  'nullable',
-                    'published_on_time'  =>  'nullable',
-                    'created_by'         =>  'nullable',
-                    'updated_by'         =>  'nullable',
-                    'deleted_by'         =>  'nullable',
-                    // end of used always 
-                    
-                ];
-            }
+                    ];
+                }
             case 'PUT':
-            case 'PATCH':
-            {
-                return [ 
-                    'name_ar'          =>   'required|max:255|unique:web_menus,name_ar,'.$this->route()->web_menu_help->id,
-                    'name_en'          =>   'required|max:255|unique:web_menus,name_en,'.$this->route()->web_menu_help->id,
-                    'link'              =>  'nullable',
-                    'section'           =>  'nullable',
+            case 'PATCH': {
+                    return [
+                        'title.*'           =>   'required|max:255|unique_translation:web_menus,title,' . $this->route()->web_menu_help,
+                        'link'              =>  'nullable',
+                        'section'           =>  'nullable',
 
+                        // used always 
+                        'status'             =>  'required',
+                        'published_on'       =>  'nullable',
+                        'published_on_time'  =>  'nullable',
+                        'created_by'         =>  'nullable',
+                        'updated_by'         =>  'nullable',
+                        'deleted_by'         =>  'nullable',
+                        // end of used always 
+                    ];
+                }
 
-                    // used always 
-                    'status'             =>  'required',
-                    'published_on'       =>  'nullable',
-                    'published_on_time'  =>  'nullable',
-                    'created_by'         =>  'nullable',
-                    'updated_by'         =>  'nullable',
-                    'deleted_by'         =>  'nullable',
-                    // end of used always 
-
-                    
-                    
-                ];
-            }
-            
-            default: break;
-                
+            default:
+                break;
         }
+    }
+
+    public function attributes(): array
+    {
+        $attr = [
+            'link'      => '( ' . __('panel.link') . ' )',
+            'status'    =>  '( ' . __('panel.status') . ' )',
+        ];
+
+        foreach (config('locales.languages') as $key => $val) {
+            $attr += ['title.' . $key       =>  "( " . __('panel.title')   . ' ' . __('panel.in') . ' ' . __('panel.' . $val['lang'])   . " )",];
+        }
+
+
+        return $attr;
     }
 }

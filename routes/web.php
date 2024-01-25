@@ -186,7 +186,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::get('/web_menus/{web_menus}/edit',    [WebMenuController::class, 'edit'])->name('web_menus.edit');
         Route::resource('web_menus', WebMenuController::class);
 
-        Route::get('/web_menu_helps/{web_menu_helps}/edit',    [WebMenuController::class, 'edit'])->name('web_menu_helps.edit');
+        Route::get('/web_menu_helps/{web_menu_helps}/edit',    [WebMenuHelpController::class, 'edit'])->name('web_menu_helps.edit');
         Route::resource('web_menu_helps', WebMenuHelpController::class);
 
 
