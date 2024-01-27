@@ -24,66 +24,79 @@ class ProductRequest extends FormRequest
     public function rules()
     {
         switch ($this->method()) {
-            case 'POST':
-            {
-                return [
-                    'name'                  =>  'required|max:255', 
-                    'description'           =>  'nullable',
-                    'quantity'              =>  'nullable|numeric',
-                    'price'                 =>  'required|numeric',
-                    'offer_price'           =>  'nullable|numeric',
-                    'offer_ends'            =>  'nullable|date_format:Y-m-d',
-                    'sku'                   =>  'nullable',
-                    'max_order'             =>  'nullable|numeric',
-                    'product_category_id'   =>  'required',
-                    'tags.*'                =>  'required',
-                    'featured'              =>  'required',
-                    'images'                =>  'required',  
-                    'images.*'              =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
-                    'views'                 =>  'nullable',// عدد مرات العرض
+            case 'POST': {
+                    return [
+                        'product_name.*'                  =>  'required|max:255',
+                        'description'           =>  'nullable',
+                        'quantity'              =>  'nullable|numeric',
+                        'price'                 =>  'required|numeric',
+                        'offer_price'           =>  'nullable|numeric',
+                        'offer_ends'            =>  'nullable|date_format:Y-m-d',
+                        'sku'                   =>  'nullable',
+                        'max_order'             =>  'nullable|numeric',
+                        'product_category_id'   =>  'required',
+                        'tags.*'                =>  'required',
+                        'featured'              =>  'required',
+                        'images'                =>  'required',
+                        'images.*'              =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
+                        'views'                 =>  'nullable', // عدد مرات العرض
 
-                    // used always 
-                    'status'             =>  'required',
-                    'published_on'       =>  'nullable',
-                    'published_on_time'  =>  'nullable',
-                    'created_by'         =>  'nullable',
-                    'updated_by'         =>  'nullable',
-                    'deleted_by'         =>  'nullable',
-                    // end of used always 
-                ];
-            }
+                        // used always 
+                        'status'             =>  'required',
+                        'published_on'       =>  'nullable',
+                        'published_on_time'  =>  'nullable',
+                        'created_by'         =>  'nullable',
+                        'updated_by'         =>  'nullable',
+                        'deleted_by'         =>  'nullable',
+                        // end of used always 
+                    ];
+                }
             case 'PUT':
-            case 'PATCH':
-            {
-                return [
-                    'name'                  =>  'required|max:255', 
-                    'description'           =>  'nullable',
-                    'quantity'              =>  'nullable|numeric',
-                    'price'                 =>  'required|numeric',
-                    'offer_price'           =>  'nullable|numeric',
-                    'offer_ends'            =>  'nullable|date_format:Y-m-d',
-                    'sku'                   =>  'nullable',
-                    'max_order'             =>  'nullable|numeric',
-                    'product_category_id'   =>  'required',
-                    'tags.*'                =>  'required', 
-                    'featured'              =>  'required',
-                    'images'                =>  'nullable',
-                    'images.*'              =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
-                    'views'                 =>  'nullable', // عدد مرات العرض
+            case 'PATCH': {
+                    return [
+                        'product_name.*'                  =>  'required|max:255',
+                        'description'           =>  'nullable',
+                        'quantity'              =>  'nullable|numeric',
+                        'price'                 =>  'required|numeric',
+                        'offer_price'           =>  'nullable|numeric',
+                        'offer_ends'            =>  'nullable|date_format:Y-m-d',
+                        'sku'                   =>  'nullable',
+                        'max_order'             =>  'nullable|numeric',
+                        'product_category_id'   =>  'required',
+                        'tags.*'                =>  'required',
+                        'featured'              =>  'required',
+                        'images'                =>  'nullable',
+                        'images.*'              =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
+                        'views'                 =>  'nullable', // عدد مرات العرض
 
-                    // used always 
-                    'status'             =>  'required',
-                    'published_on'       =>  'nullable',
-                    'published_on_time'  =>  'nullable',
-                    'created_by'         =>  'nullable',
-                    'updated_by'         =>  'nullable',
-                    'deleted_by'         =>  'nullable',
-                    // end of used always 
-                ];
-            }
-            
-            default: break;
-                
+                        // used always 
+                        'status'             =>  'required',
+                        'published_on'       =>  'nullable',
+                        'published_on_time'  =>  'nullable',
+                        'created_by'         =>  'nullable',
+                        'updated_by'         =>  'nullable',
+                        'deleted_by'         =>  'nullable',
+                        // end of used always 
+                    ];
+                }
+
+            default:
+                break;
         }
+    }
+
+    public function attributes(): array
+    {
+        $attr = [
+            'link'      => '( ' . __('panel.link') . ' )',
+            'status'    =>  '( ' . __('panel.status') . ' )',
+        ];
+
+        foreach (config('locales.languages') as $key => $val) {
+            $attr += ['title.' . $key       =>  "( " . __('panel.title')   . ' ' . __('panel.in') . ' ' . __('panel.' . $val['lang'])   . " )",];
+        }
+
+
+        return $attr;
     }
 }

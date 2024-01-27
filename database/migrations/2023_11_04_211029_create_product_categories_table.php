@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('product_categories', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('slug')->unique();
-            $table->text('description')->nullable();
+            $table->json('category_name');
+            $table->json('slug');
+            $table->json('description')->nullable();
             $table->unsignedBigInteger('parent_id')->nullable();
             $table->foreign('parent_id')->references('id')->on('product_categories')->nullOnDelete();
             $table->integer('views')->default(0);
@@ -26,9 +26,9 @@ return new class extends Migration
 
             // will be use always
             $table->boolean('status')->default(true);
-            $table->dateTime('published_on')->nullable(); 
-            $table->string('created_by')->nullable(); 
-            $table->string('updated_by')->nullable(); 
+            $table->dateTime('published_on')->nullable();
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
             $table->string('deleted_by')->nullable();
             $table->softDeletes();
             $table->timestamps();

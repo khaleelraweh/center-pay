@@ -9,22 +9,35 @@
         <div class="card-header py-3 d-flex justify-content-between">
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
-                    <i class="fa fa-plus-square"></i>
-                    إضافة بطاقة جديدة
+                    <i class="fa fa-folder"></i>
+                    {{ __('panel.add_new_card_category') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
-                        <a href="{{ route('admin.index') }}">
-                            الرئيسية
-                        </a>
-                        <i class="fa fa-solid fa-chevron-left chevron"></i>
+                        <a href="{{ route('admin.index') }}">{{ __('panel.main') }}</a>
+                        @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl')
+                            <i class="fa fa-solid fa-chevron-left chevron"></i>
+                        @else
+                            <i class="fa fa-solid fa-chevron-right chevron"></i>
+                        @endif
                     </li>
                     <li>
                         <a href="{{ route('admin.card_categories.index') }}">
-                            إدارة البطائق
+                            {{ __('panel.show_card_categories') }}
                         </a>
                     </li>
                 </ul>
+            </div>
+
+            <div class="ml-auto">
+                @ability('admin', 'create_card_categories')
+                    <a href="{{ route('admin.card_categories.create') }}" class="btn btn-primary">
+                        <span class="icon text-white-50">
+                            <i class="fa fa-plus-square"></i>
+                        </span>
+                        <span class="text">{{ __('panel.add_new_card_category') }}</span>
+                    </a>
+                @endability
             </div>
 
         </div>
@@ -48,117 +61,113 @@
 
                 {{-- links of tabs --}}
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link active" id="content-tab" data-toggle="tab" href="#content" role="tab"
-                            aria-controls="content" aria-selected="true">بيانات المحتوي</a>
-                    </li>
+                    @foreach (config('locales.languages') as $key => $val)
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link {{ $loop->index == 0 ? 'active' : '' }}" id="{{ $key }}-tab"
+                                data-bs-toggle="tab" data-bs-target="#{{ $key }}" type="button" role="tab"
+                                aria-controls="{{ $key }}" aria-selected="true">
+                                {{ __('panel.content_tab') }}({{ $key }})
+                            </button>
+                        </li>
+                    @endforeach
+
 
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link" id="publish-tab" data-toggle="tab" href="#publish" role="tab"
-                            aria-controls="publish" aria-selected="false">بيانات النشر</a>
+                        <button class="nav-link" id="published-tab" data-bs-toggle="tab" data-bs-target="#published"
+                            type="button" role="tab" aria-controls="published"
+                            aria-selected="false">{{ __('panel.published_tab') }}
+                        </button>
                     </li>
+
                 </ul>
 
                 {{-- contents of links tabs  --}}
                 <div class="tab-content" id="myTabContent">
 
-                    {{-- تاب بيانات المحتوي --}}
-                    <div class="tab-pane fade active show" id="content" role="tabpanel" aria-labelledby="content-tab">
+                    @foreach (config('locales.languages') as $key => $val)
+                        {{-- تاب بيانات المحتوي --}}
+                        <div class="tab-pane fade {{ $loop->index == 0 ? 'show active' : '' }}" id="{{ $key }}"
+                            role="tabpanel" aria-labelledby="{{ $key }}">
 
-                        <div class="row">
-                            {{-- البيانات الاساسية --}}
-                            <div class="col-md-7 col-sm-12 ">
+                            <div class="row">
+                                {{-- البيانات الاساسية --}}
+                                <div class="{{ $loop->index == 0 ? 'col-md-7' : '' }} col-sm-12 ">
 
-                                {{-- عنوان التصنيف  --}}
-                                <div class="row">
-                                    <div class="col-sm-12 pt-4">
-                                        <label for="name" class="control-label ">
-                                            العنوان
-                                            <span class="require red">*</span>
-                                        </label>
-                                        <div class="form-group">
-                                            <input type="text" id="name" name="name" value="{{ old('name') }}"
-                                                class="form-control" placeholder="العنوان..">
-                                            @error('name')
+                                    {{-- عنوان التصنيف  --}}
+                                    <div class="row ">
+                                        <div class="col-sm-12 pt-3">
+                                            <div class="form-group">
+                                                <label for="category_name[{{ $key }}]">
+                                                    {{ __('panel.category_name') }}
+                                                    {{ __('panel.in') }} {{ __('panel.' . $key) }}
+                                                </label>
+                                                <input type="text" name="category_name[{{ $key }}]"
+                                                    id="name[{{ $key }}]"
+                                                    value="{{ old('category_name.' . $key) }}" class="form-control">
+                                                @error('category_name.' . $key)
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {{--  الوصف --}}
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-12 pt-4">
+                                            <label for="description[{{ $key }}]">
+                                                {{ __('panel.description') }}
+                                                {{ __('panel.in') }} {{ __('panel.' . $key) }}
+                                            </label>
+                                            <textarea name="description[{{ $key }}]" rows="10" class="form-control summernote">
+                                            {!! old('description.' . $key) !!}
+                                        </textarea>
+                                            @error('description.' . $key)
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
+
                                 </div>
 
-                                {{-- الوصف  --}}
-                                <div class="row">
-                                    <div class="col-sm-12 pt-4">
-                                        <label for="description" class="control-label ">
-                                            <span>التفاصيل</span>
-                                            <span class="require red">*</span>
-                                        </label>
-                                        <div class="form-group">
-                                            <textarea name="description" rows="8" class="form-control summernote">
-                                                {!! old('description') !!}
-                                            </textarea>
-                                            @error('description')
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
+                                {{-- مرفق الصورة --}}
+                                <div class="{{ $loop->index == 0 ? 'col-md-5' : 'd-none' }} col-sm-12 ">
 
-                            </div>
+                                    {{-- الصورة  --}}
+                                    <div class="row">
+                                        <div class="col-sm-12 pt-4">
+                                            <label for="images" class="control-label ">
+                                                {{ __('panel.image') }}
+                                                /
+                                                {{ __('panel.images') }}
+                                            </label>
+                                            <div class="file-loading">
+                                                <input type="file" name="images[]" id="category_image"
+                                                    class="file-input-overview " multiple>
+                                                <span class="form-text text-muted">Image width should be 500px x 500px
+                                                </span>
 
-                            {{-- مرفق الصورة --}}
-                            <div class="col-md-5 col-sm-12 ">
-
-                                {{-- الصورة  --}}
-                                <div class="row">
-                                    <div class="col-sm-12 pt-4">
-                                        <label for="images" class="control-label ">
-                                            <span>صورة</span>
-                                            <span class="require red">*</span>
-                                        </label>
-                                        <div class="file-loading">
-                                            <input type="file" name="images[]" id="category_image"
-                                                class="file-input-overview " multiple>
-                                            <span class="form-text text-muted">Image width should be 500px x 500px </span>
+                                            </div>
                                             @error('images')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
+
                                 </div>
 
                             </div>
 
                         </div>
+                    @endforeach
 
-                    </div>
+                    {{-- Published Tab --}}
+                    <div class="tab-pane fade" id="published" role="tabpanel" aria-labelledby="published-tab">
 
-
-                    {{-- تاب بيانات النشر --}}
-                    <div class="tab-pane fade" id="publish" role="tabpanel" aria-labelledby="publish-tab">
-
-                        {{-- حالة التصنيف --}}
-                        <div class="row">
-                            <div class="col-sm-12 pt-4">
-                                <label for="status" class="control-label ">
-                                    <span>الحالة</span>
-                                    <span class="require red">*</span>
-                                </label>
-                                <select name="status" class="form-control">
-                                    <option value="1" {{ old('status') == '1' ? 'selected' : null }}>مفعل</option>
-                                    <option value="0" {{ old('status') == '0' ? 'selected' : null }}>غير مفعل
-                                    </option>
-                                </select>
-                                @error('status')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-
+                        {{-- publish_start publish time field --}}
                         <div class="row">
                             <div class="col-sm-12 col-md-12 pt-4">
                                 <div class="form-group">
-                                    <label for="published_on">تاريخ النشر</label>
+                                    <label for="published_on">{{ __('panel.published_date') }}</label>
                                     <input type="text" id="published_on" name="published_on"
                                         value="{{ old('published_on', now()->format('Y-m-d')) }}" class="form-control">
                                     @error('published_on')
@@ -169,9 +178,9 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-sm-12 pt-4">
+                            <div class="col-sm-12 col-md-12 pt-4">
                                 <div class="form-group">
-                                    <label for="published_on_time">وقت النشر</label>
+                                    <label for="published_on_time">{{ __('panel.published_time') }}</label>
                                     <input type="text" id="published_on_time" name="published_on_time"
                                         value="{{ old('published_on_time', now()->format('h:m A')) }}"
                                         class="form-control">
@@ -180,17 +189,36 @@
                                     @enderror
                                 </div>
                             </div>
+
                         </div>
 
+                        {{-- status and featured field --}}
                         <div class="row">
-                            <div class="col-sm-12 pt-4">
-                                <label for="featured" class="control-label ">
-                                    <span>المفضلة</span>
-                                    <span class="require red">*</span>
-                                </label>
+                            <div class="col-sm-12 col-md-12 pt-4">
+                                <label for="status">{{ __('panel.status') }}</label>
+                                <select name="status" class="form-control">
+                                    <option value="1" {{ old('status') == '1' ? 'selected' : null }}>
+                                        {{ __('panel.status_active') }}
+                                    </option>
+                                    <option value="0" {{ old('status') == '0' ? 'selected' : null }}>
+                                        {{ __('panel.status_inactive') }}
+                                    </option>
+                                </select>
+                                @error('status')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 pt-4">
+                                <label for="featured">{{ __('panel.featured') }}</label>
                                 <select name="featured" class="form-control">
-                                    <option value="1" {{ old('featured') == '1' ? 'selected' : null }}>نعم</option>
-                                    <option value="0" {{ old('featured') == '0' ? 'selected' : null }}> لا</option>
+                                    <option value="1" {{ old('featured') == '1' ? 'selected' : null }}>
+                                        {{ __('panel.yes') }}
+                                    </option>
+                                    <option value="0" {{ old('featured') == '0' ? 'selected' : null }}>
+                                        {{ __('panel.no') }}
+                                    </option>
                                 </select>
                                 @error('featured')
                                     <span class="text-danger">{{ $message }}</span>
@@ -203,12 +231,9 @@
                 </div>
 
                 {{-- submit part --}}
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group pt-3 mx-3">
-                            <button type="submit" name="submit" class="btn btn-primary">حفظ البيانات</button>
-                        </div>
-                    </div>
+                <div class="form-group pt-4">
+                    <button type="submit" name="submit" class="btn btn-primary">
+                        {{ __('panel.save_data') }}</button>
                 </div>
 
             </form>

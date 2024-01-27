@@ -15,7 +15,8 @@
                             {{ __('panel.status_active') }}
                         </option>
                         <option value="0" {{ old('status', request()->input('status')) == '0' ? 'selected' : '' }}>
-                            {{ __('panel.status_inactive') }} </option>
+                            {{ __('panel.status_inactive') }}
+                        </option>
                     </select>
                 </div>
             </div>
@@ -33,7 +34,8 @@
                         </option>
                         <option value="created_at"
                             {{ old('sort_by', request()->input('sort_by')) == 'created_at' ? 'selected' : '' }}>
-                            {{ __('panel.created_at') }} </option>
+                            {{ __('panel.created_at') }}
+                        </option>
                         <option value="published_on"
                             {{ old('sort_by', request()->input('sort_by')) == 'published_on' ? 'selected' : '' }}>
                             {{ __('panel.published_on') }}

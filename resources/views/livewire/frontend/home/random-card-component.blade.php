@@ -62,7 +62,7 @@
                                             <div class="prd-tag">
                                                 <a
                                                     href="{{ route('frontend.card_category', $random_product_card->category->slug) }}">
-                                                    {{ $random_product_card->category->name }}
+                                                    {{ $random_product_card->category->category_name }}
                                                 </a>
                                             </div>
                                         </div>
@@ -70,12 +70,12 @@
                                         <div class="prd-tag">
                                             <a
                                                 href="{{ route('frontend.card_category', $random_product_card->category->slug) }}">
-                                                {{ $random_product_card->category->name }}
+                                                {{ $random_product_card->category->category_name }}
                                             </a>
                                         </div>
                                         <h2 class="prd-title">
                                             <a
-                                                href="{{ route('frontend.card', $random_product_card->slug) }}">{{ $random_product_card->name }}</a>
+                                                href="{{ route('frontend.card', $random_product_card->slug) }}">{{ $random_product_card->product_name }}</a>
                                         </h2>
                                         <div class="prd-description">
                                             Quisque volutpat condimentum velit. Class aptent taciti
@@ -116,7 +116,7 @@
                                                 <form action="#">
                                                     <button class="btn js-prd-addtocart rounded-pill"
                                                         wire:click.prevent="addToCart('{{ $random_product_card->id }}')"
-                                                        data-product='{"name": "{{ $random_product_card->name }}", "path":"{{ asset('assets/cards/' . $random_product_card->lastMedia->file_name) }}", "url":"product.html", "aspect_ratio":0.778}'>
+                                                        data-product='{"name": "{{ $random_product_card->product_name }}", "path":"{{ asset('assets/cards/' . $random_product_card->lastMedia->file_name) }}", "url":"product.html", "aspect_ratio":0.778}'>
                                                         اضافة للسلة
                                                     </button>
                                                 </form>

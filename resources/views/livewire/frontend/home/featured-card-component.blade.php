@@ -48,7 +48,7 @@
 
                                     <div class="prd-circle-labels">
                                         <a href="#"
-                                            wire:click.prevent="store( 'wishlist' , {{ $featured_card->id }} , '{{ $featured_card->name }}' , 1 , {{ $featured_card->price }})"
+                                            wire:click.prevent="store( 'wishlist' , {{ $featured_card->id }} , '{{ $featured_card->product_name }}' , 1 , {{ $featured_card->price }})"
                                             class="circle-label-compare circle-label-wishlist--add js-add-wishlist mt-0"
                                             title="Add To Wishlist">
                                             <i class="icon-heart-stroke"></i>
@@ -68,7 +68,7 @@
                                             <div class="prd-tag">
                                                 <a
                                                     href="{{ route('frontend.card_category', $featured_card->category->slug) }}">
-                                                    {{ $featured_card->category->name }}
+                                                    {{ $featured_card->category->category_name }}
                                                 </a>
                                             </div>
                                         </div>
@@ -82,13 +82,13 @@
                                         <div class="prd-tag">
                                             <a
                                                 href="{{ route('frontend.card_category', $featured_card->category->slug) }}">
-                                                {{ $featured_card->category->name }}
+                                                {{ $featured_card->category->category_name }}
                                             </a>
                                         </div>
 
                                         <h2 class="prd-title">
                                             <a href="{{ route('frontend.card', $featured_card->slug) }}">
-                                                {{ $featured_card->name }}
+                                                {{ $featured_card->product_name }}
                                             </a>
                                         </h2>
 
@@ -98,7 +98,7 @@
                                         <div class="prd-circle-labels">
                                             <div>
                                                 <a href="#"
-                                                    wire:click.prevent="store( 'wishlist' , {{ $featured_card->id }} , '{{ $featured_card->name }}' , 1 , {{ $featured_card->price }})"
+                                                    wire:click.prevent="store( 'wishlist' , {{ $featured_card->id }} , '{{ $featured_card->product_name }}' , 1 , {{ $featured_card->price }})"
                                                     class="circle-label-compare circle-label-wishlist--add js-add-wishlist mt-0"
                                                     title="Add To Wishlist">
                                                     <i class="icon-heart-stroke"></i>
@@ -140,8 +140,8 @@
                                             <div class="prd-action-left">
                                                 <form action="#">
                                                     <button class="btn js-prd-addtocart rounded-pill"
-                                                        wire:click.prevent="store( 'default' , {{ $featured_card->id }} , '{{ $featured_card->name }}' , 1 , {{ $featured_card->price }})"
-                                                        data-product='{"name": "{{ $featured_card->name }}", "path":"{{ asset('assets/cards/' . $featured_card->firstMedia->file_name) }}", "url":"{{ route('frontend.card', $featured_card->slug) }}", "aspect_ratio":0.778}'>
+                                                        wire:click.prevent="store( 'default' , {{ $featured_card->id }} , '{{ $featured_card->product_name }}' , 1 , {{ $featured_card->price }})"
+                                                        data-product='{"name": "{{ $featured_card->product_name }}", "path":"{{ asset('assets/cards/' . $featured_card->firstMedia->file_name) }}", "url":"{{ route('frontend.card', $featured_card->slug) }}", "aspect_ratio":0.778}'>
                                                         اضافة للسلة
                                                     </button>
                                                 </form>

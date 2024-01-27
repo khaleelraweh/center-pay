@@ -49,7 +49,7 @@ class MainSliderRequest extends FormRequest
             case 'PATCH': {
                     return [
                         'title.*'           =>  'required|max:255|unique_translation:sliders,title,' . $this->route()->main_slider,
-                        'description'           =>  'nullable',
+                        'description.*'           =>  'nullable',
                         'url'               =>  'nullable',
                         'target'            =>  'required',
                         'section'           =>  'nullable',

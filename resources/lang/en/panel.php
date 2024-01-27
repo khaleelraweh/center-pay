@@ -45,14 +45,59 @@ return [
     'edit_existing_adv_slider'      => 'Edit Existing Adv Slider',
 
     // ........... commons in Sliders ....... //
-    'description'                       => 'Content',
-    'image'                         => 'Image',
-    'images'                        => 'Images',
     'show_slider_info'              => 'Show Slider Info',
     'url_link'                      => 'Url Link',
     'url_target'                    => 'Url Target',
     'in_the_same_tab'               => 'In The Same Tab',
     'in_new_tab'                    =>  'In New Tab',
+
+
+    ##############################################################
+
+    // =============  Manage Categories (product and card categories) ===============//
+    'manage_categories'                => 'Manage Categories',
+
+    // --------------- Product Categories --------------//
+    'show_product_categories'              => 'Product Categories',
+    'add_new_product_category'                => 'Add New Product Category',
+    'edit_existing_product_category'          => 'Edit Existing Product Category',
+
+    // ------------- Card Categories  ------------- //
+    'show_card_categories'               => 'Card Categories',
+    'add_new_card_category'            => 'Add New Card Category',
+    'edit_existing_card_category'      => 'Edit Existing Card Category',
+
+    // ........... commons in Categories ....... //
+    'category_name'                     => 'Category Name',
+    'category_card-count'               => 'Card Quintity',
+
+
+    ##############################################################
+
+    // =============  Manage Products (product and card ) ===============//
+    'manage_products'                => 'Manage Products',
+
+    // --------------- Product  --------------//
+    'show_products'              => 'Products',
+    'add_new_product'                => 'Add New Product',
+    'edit_existing_product'          => 'Edit Existing Product ',
+
+    // ------------- Card   ------------- //
+    'show_cards'               => 'Cards',
+    'add_new_card'            => 'Add New Card',
+    'edit_existing_card'      => 'Edit Existing Card',
+
+    // ........... commons in products and cards  ....... //
+    'product_name'                  => 'Product Name',
+    'card_name'                     => 'Card Name',
+    'sku'                           =>  'SKU',
+    'offer_price'                   =>  'Offer Price',
+    'offer_ends'                    =>  'Offer Ends',
+    'max_order'                     =>  'Max Order',
+    'qty_not_limited'               =>  'Quantity Not Limited',
+
+
+
 
 
     ##############################################################
@@ -64,13 +109,19 @@ return [
     'ar'                    => 'Arabic',
     'ca'                    => 'Spanish',
 
-
-
     // ============ In all Pages ===================//
     'main'                  => 'Main',
     'add_new_content'       => 'Add New Content',
     'yes'                   =>  'Yes',
     'no'                    =>  'No',
+    'description'                       => 'Content',
+    'image'                         => 'Image',
+    'images'                        => 'Images',
+    'featured'                      =>  'Featured',
+    'qty'                           =>  'Quantity',
+    'price'                         =>  'Price',
+    'views'                         =>  'Views',
+
 
     // ======= display Add and Update Section =======// 
 
@@ -78,6 +129,7 @@ return [
     'content_tab'           => 'Content Data ',
     'published_tab'         => 'Publish Data',
     'url_tab'               =>  'URLS',
+    'price_tab'             => 'Price',
 
     // ------------ Common fileds ------------/
     'main_category'         => 'Main Category',

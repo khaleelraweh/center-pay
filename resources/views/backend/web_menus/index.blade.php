@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="card shadow mb-4">
+
         {{-- breadcrumb part  --}}
         <div class="card-header py-3 d-flex justify-content-between">
             <div class="card-naving">

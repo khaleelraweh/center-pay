@@ -45,15 +45,57 @@ return [
     'edit_existing_adv_slider'      => 'تعديل بيانات الإعلان',
 
     // ........... المشترك في عارضات الشرائح ....... //
-    'description'                       => 'المحتوي',
-    'image'                         => 'الصورة',
-    'images'                        => 'الصور',
     'show_slider_info'              =>  'عرض تفاصيل الشريحة',
     'url_link'                      => 'رابط الانتقال',
     'url_target'                    => 'مكان العرض',
     'in_the_same_tab'               => 'عرض في نفس الصفحة',
     'in_new_tab'                    => 'عرض في تبويب جديد',
 
+
+    ##############################################################
+
+    // =============  Manage Categories (product and card categories) ===============//
+    'manage_categories'                => 'إدارة التصنيفات',
+
+    // --------------- Product Categories --------------//
+    'show_product_categories'              => 'تصنيف المنتجات',
+    'add_new_product_category'                => 'إضافة تصنيف منتج ',
+    'edit_existing_product_category'          => 'التعديل علي تصنيف منتج',
+
+    // ------------- Card Categories  ------------- //
+    'show_card_categories'               => 'تصنيف البطائق',
+    'add_new_card_category'            => 'إضافة تصنيف بطاقة',
+    'edit_existing_card_category'      => 'التعديل على تصنيف بطاقة',
+
+    // ........... commons in Categories ....... //
+
+    'category_name'                     => 'إسم الصنف',
+    'category_card-count'               => 'عدد الباقات',
+
+
+    ##############################################################
+
+    // =============  Manage Products (product and card ) ===============//
+    'manage_products'                => 'إدارة المنتجات',
+
+    // --------------- Product  --------------//
+    'show_products'              => 'المتجات',
+    'add_new_product'                => 'إضافة منتج جديد',
+    'edit_existing_product'          => 'تعديل بيانات المنتج ',
+
+    // ------------- Card   ------------- //
+    'show_cards'               => 'الباقات',
+    'add_new_card'            => 'إضافة باقة جديدة',
+    'edit_existing_card'      => 'تعديل بيانات الباقة',
+
+    // ........... commons in products and cards  ....... //
+    'product_name'                  => 'إسم المنتج',
+    'card_name'                     => 'إسم الباقة',
+    'sku'                           =>  'رمز (Sku)',
+    'offer_price'                   =>  'سعر التخفيض',
+    'offer_ends'                    =>  'اخر موعد للتخفيض',
+    'max_order'                     =>  'اعلي كمية يمكن طلبها',
+    'qty_not_limited'               =>  'الكمية غير محدودة',
 
 
 
@@ -71,12 +113,24 @@ return [
     'add_new_content'               => 'إضافة محتوي جديد',
     'yes'                           =>  'نعم',
     'no'                            =>  'لا',
+    'description'                       => 'المحتوي',
+    'image'                         => 'الصورة',
+    'images'                        => 'الصور',
+    'featured'                      =>  'المفضلة',
+    'qty'                           =>  'الكمية',
+    'price'                         =>  'السعر',
+    'views'                         =>  'مشاهدات',
+
+
+
 
     //=========== العرض والإضافة والبحث =================//
     // --------------- التبويبات -------------------//
     'content_tab'                   => ' بيانات المحتوي ',
     'published_tab'                 => 'بيانات النشر',
     'url_tab'                       =>  'الروابط',
+    'price_tab'                     => 'التسعيرة',
+
 
 
     // ------------ الحقول المشتركة ---------------//

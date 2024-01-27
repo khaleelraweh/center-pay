@@ -39,76 +39,78 @@
 
         </div>
 
-        {{-- filter form part  --}}
+        <div class="card-body">
+            {{-- filter form part  --}}
+            @include('backend.main_sliders.filter.filter')
 
-        @include('backend.main_sliders.filter.filter')
-
-        {{-- table part --}}
-        <div class="table-responsive">
-            <table class="table table-hover table-striped table-bordered dt-responsive nowrap"
-                style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                <thead>
-                    <tr>
-                        <th>{{ __('panel.image') }}</th>
-                        <th>{{ __('panel.title') }}</th>
-                        <th class="d-none d-sm-table-cell">{{ __('panel.author') }}</th>
-                        <th class="d-none d-sm-table-cell"> {{ __('panel.created_at') }} </th>
-                        <th>{{ __('panel.status') }}</th>
-                        <th class="text-center" style="width:30px;">{{ __('panel.actions') }}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @forelse ($mainSliders as $slider)
+            {{-- table part --}}
+            <div class="table-responsive">
+                <table class="table table-hover table-striped table-bordered dt-responsive nowrap"
+                    style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                    <thead>
                         <tr>
-                            <td>
-                                @if ($slider->firstMedia)
-                                    <img src="{{ asset('assets/main_sliders/' . $slider->firstMedia->file_name) }}"
-                                        width="60" height="60" alt="{{ $slider->title }}">
-                                @else
-                                    <img src="{{ asset('assets/noImage.png') }}" width="60" height="60"
-                                        alt="{{ $slider->title }}">
-                                @endif
+                            <th>{{ __('panel.image') }}</th>
+                            <th>{{ __('panel.title') }}</th>
+                            <th class="d-none d-sm-table-cell">{{ __('panel.author') }}</th>
+                            <th class="d-none d-sm-table-cell"> {{ __('panel.created_at') }} </th>
+                            <th>{{ __('panel.status') }}</th>
+                            <th class="text-center" style="width:30px;">{{ __('panel.actions') }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse ($mainSliders as $slider)
+                            <tr>
+                                <td>
+                                    @if ($slider->firstMedia)
+                                        <img src="{{ asset('assets/main_sliders/' . $slider->firstMedia->file_name) }}"
+                                            width="60" height="60" alt="{{ $slider->title }}">
+                                    @else
+                                        <img src="{{ asset('assets/noImage.png') }}" width="60" height="60"
+                                            alt="{{ $slider->title }}">
+                                    @endif
 
-                            </td>
-                            <td>{{ $slider->title }}</td>
-                            <td class="d-none d-sm-table-cell">{{ $slider->created_by }}</td>
-                            <td class="d-none d-sm-table-cell">{{ $slider->created_at }}</td>
-                            <td>{{ $slider->status() }}</td>
-                            <td>
+                                </td>
+                                <td>{{ $slider->title }}</td>
+                                <td class="d-none d-sm-table-cell">{{ $slider->created_by }}</td>
+                                <td class="d-none d-sm-table-cell">{{ $slider->created_at }}</td>
+                                <td>{{ $slider->status() }}</td>
+                                <td>
 
-                                <div class="btn-group btn-group-sm">
-                                    <a href="{{ route('admin.main_sliders.edit', $slider->id) }}" class="btn btn-primary">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
-                                    <a href="javascript:void(0);"
-                                        onclick=" if( confirm('{{ __('panel.confirm_delete_message') }}') ){document.getElementById('delete-product-{{ $slider->id }}').submit();}else{return false;}"
-                                        class="btn btn-danger">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
+                                    <div class="btn-group btn-group-sm">
+                                        <a href="{{ route('admin.main_sliders.edit', $slider->id) }}"
+                                            class="btn btn-primary">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                        <a href="javascript:void(0);"
+                                            onclick=" if( confirm('{{ __('panel.confirm_delete_message') }}') ){document.getElementById('delete-product-{{ $slider->id }}').submit();}else{return false;}"
+                                            class="btn btn-danger">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </div>
+                                    <form action="{{ route('admin.main_sliders.destroy', $slider->id) }}" method="post"
+                                        class="d-none" id="delete-product-{{ $slider->id }}">
+                                        @csrf
+                                        @method('DELETE')
+                                    </form>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="6" class="text-center"> {{ __('panel.no_found_item') }} </td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="6">
+                                <div class="float-right">
+                                    {!! $mainSliders->appends(request()->all())->links() !!}
                                 </div>
-                                <form action="{{ route('admin.main_sliders.destroy', $slider->id) }}" method="post"
-                                    class="d-none" id="delete-product-{{ $slider->id }}">
-                                    @csrf
-                                    @method('DELETE')
-                                </form>
                             </td>
                         </tr>
-                    @empty
-                        <tr>
-                            <td colspan="6" class="text-center"> {{ __('panel.no_found_item') }} </td>
-                        </tr>
-                    @endforelse
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="6">
-                            <div class="float-right">
-                                {!! $mainSliders->appends(request()->all())->links() !!}
-                            </div>
-                        </td>
-                    </tr>
-                </tfoot>
-            </table>
+                    </tfoot>
+                </table>
+            </div>
         </div>
 
     </div>

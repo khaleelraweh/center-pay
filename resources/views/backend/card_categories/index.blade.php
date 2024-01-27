@@ -11,17 +11,19 @@
                     <div class="card-naving">
                         <h3 class="font-weight-bold text-primary">
                             <i class="fa fa-folder"></i>
-                            إدارة البطائق
+                            {{ __('panel.manage_categories') }}
                         </h3>
                         <ul class="breadcrumb">
                             <li>
-                                <a href="{{ route('admin.index') }}">
-                                    الرئيسية
-                                </a>
-                                <i class="fa fa-solid fa-chevron-left chevron"></i>
+                                <a href="{{ route('admin.index') }}">{{ __('panel.main') }}</a>
+                                @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl')
+                                    <i class="fa fa-solid fa-chevron-left chevron"></i>
+                                @else
+                                    <i class="fa fa-solid fa-chevron-right chevron"></i>
+                                @endif
                             </li>
                             <li>
-                                إدارة البطائق
+                                {{ __('panel.show_card_categories') }}
                             </li>
                         </ul>
                     </div>
@@ -32,7 +34,7 @@
                                 <span class="icon text-white-50">
                                     <i class="fa fa-plus-square"></i>
                                 </span>
-                                <span class="text">إضافة محتوى جديد</span>
+                                <span class="text">{{ __('panel.add_new_card_category') }}</span>
                             </a>
                         @endability
                     </div>
@@ -50,13 +52,13 @@
                             style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                                 <tr>
-                                    <th>الصورة</th>
-                                    <th>اسم الصنف</th>
-                                    <th>عدد الباقات</th>
-                                    <th class="d-none d-sm-table-cell">الكاتب</th>
-                                    <th class="d-none d-sm-table-cell">الحالة</th>
-                                    <th class="d-none d-sm-table-cell">تاريخ الانشاء</th>
-                                    <th class="text-center" style="width:30px;">الإعدادات</th>
+                                    <th>{{ __('panel.image') }}</th>
+                                    <th>{{ __('panel.category_name') }}</th>
+                                    <th>{{ __('panel.category_card-count') }} </th>
+                                    <th class="d-none d-sm-table-cell">{{ __('panel.author') }}</th>
+                                    <th class="d-none d-sm-table-cell">{{ __('panel.title') }}</th>
+                                    <th class="d-none d-sm-table-cell"> {{ __('panel.created_at') }}</th>
+                                    <th class="text-center" style="width:30px;">{{ __('panel.actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -67,16 +69,16 @@
                                             @if ($category->firstMedia)
                                                 {{-- <td><img src="{{asset('assets/products/'.$product->photos()->first()->file_name)}}" width="60" alt="product Image"> </td> --}}
                                                 <img src="{{ asset('assets/card_categories/' . $category->firstMedia->file_name) }}"
-                                                    width="60" height="60" alt="{{ $category->name }}">
+                                                    width="60" height="60" alt="{{ $category->category_name }}">
                                             @else
                                                 <img src="{{ asset('assets/No-Image-Found.png') }}" width="60"
-                                                    height="60" alt="{{ $category->name }}">
+                                                    height="60" alt="{{ $category->category_name }}">
                                             @endif
 
                                         </td>
 
                                         <td>
-                                            {{ $category->name }}
+                                            {{ $category->category_name }}
                                         </td>
                                         <td>{{ $category->products_count }}</td>
                                         <td class="d-none d-sm-table-cell">{{ $category->created_by }}</td>
@@ -92,7 +94,7 @@
                                                     <i class="fa fa-edit"></i>
                                                 </a>
                                                 <a href="javascript:void(0);"
-                                                    onclick=" if( confirm('Are you sure to delete this record?') ){document.getElementById('delete-card-{{ $category->id }}').submit();}else{return false;}"
+                                                    onclick=" if( confirm('{{ __('panel.confirm_delete_message') }}') ){document.getElementById('delete-card-{{ $category->id }}').submit();}else{return false;}"
                                                     class="btn btn-danger">
                                                     <i class="fa fa-trash"></i>
                                                 </a>
@@ -106,7 +108,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="7" class="text-center">No Cards found</td>
+                                        <td colspan="7" class="text-center">{{ __('panel.no_found_item') }}</td>
                                     </tr>
                                 @endforelse
                             </tbody>

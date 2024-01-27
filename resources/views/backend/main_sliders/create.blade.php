@@ -79,8 +79,8 @@
                     @foreach (config('locales.languages') as $key => $val)
                         <div class="tab-pane fade {{ $loop->index == 0 ? 'show active' : '' }}" id="{{ $key }}"
                             role="tabpanel" aria-labelledby="{{ $key }}">
-                            <div class="row">
 
+                            <div class="row">
                                 {{-- البيانات الاساسية --}}
                                 <div class=" {{ $loop->index == 0 ? 'col-md-7' : '' }} col-sm-12 ">
 
@@ -177,8 +177,8 @@
                                 @enderror
                             </div>
                         </div>
-                    </div>
 
+                    </div>
 
                     {{-- Published Tab --}}
                     <div class="tab-pane fade" id="published" role="tabpanel" aria-labelledby="published-tab">
@@ -249,7 +249,6 @@
                         </div>
 
                     </div>
-
 
                     <div class="form-group pt-4">
                         <button type="submit" name="submit" class="btn btn-primary">

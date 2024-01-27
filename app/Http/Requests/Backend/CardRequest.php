@@ -27,8 +27,8 @@ class CardRequest extends FormRequest
         switch ($this->method()) {
             case 'POST': {
                     return [
-                        'name'                  =>  'required|max:255',
-                        'description'           =>  'nullable',
+                        'product_name.*'                  =>  'required|max:255',
+                        'description.*'           =>  'nullable',
                         'quantity'              =>  'nullable|numeric',
 
 
@@ -61,8 +61,8 @@ class CardRequest extends FormRequest
             case 'PUT':
             case 'PATCH': {
                     return [
-                        'name'                  =>  'required|max:255',
-                        'description'           =>  'nullable',
+                        'product_name.*'                  =>  'required|max:255',
+                        'description.*'           =>  'nullable',
                         'quantity'              =>  'nullable|numeric',
 
                         'price' => 'required|integer|min:1|digits_between: 1,5',
@@ -95,13 +95,21 @@ class CardRequest extends FormRequest
     }
 
 
-    public function messages()
+    public function attributes(): array
     {
-        // use trans instead on Lang 
-        return [
-            //   'username.required' => Lang::get('userpasschange.usernamerequired'),
-            'images.required' => 'مطلوب اختيار صورة',
-
+        $attr = [
+            'product_category_id'      => '( ' . __('panel.category_name') . ' )',
+            'status'    =>  '( ' . __('panel.status') . ' )',
+            'images'    =>  '( ' . __('panel.images') . ' )',
+            'price'    =>  '( ' . __('panel.price') . ' )',
         ];
+
+        foreach (config('locales.languages') as $key => $val) {
+            $attr += ['product_name.' . $key       =>  "( " . __('panel.card_name')   . ' ' . __('panel.in') . ' ' . __('panel.' . $val['lang'])   . " )",];
+            $attr += ['description.' . $key       =>  "( " . __('panel.description')   . ' ' . __('panel.in') . ' ' . __('panel.' . $val['lang'])   . " )",];
+        }
+
+
+        return $attr;
     }
 }
