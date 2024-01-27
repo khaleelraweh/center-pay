@@ -70,6 +70,7 @@
 
     <link href="{{ asset('frontend/fonts/icomoon/icons.css') }}" rel="stylesheet">
 
+    {{-- <link rel="stylesheet" href="{{ asset('frontend/css/style-rtl.css') }}" class="languages" /> --}}
     <link rel="stylesheet" href="{{ asset('frontend/css/style-rtl.css') }}" class="languages" />
     <link href="{{ asset('frontend/css/icons.css') }}" rel="stylesheet" />
 

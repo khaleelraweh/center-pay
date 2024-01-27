@@ -1,7 +1,7 @@
 @extends('layouts.admin')
+
 @section('content')
     <div class="card shadow mb-4">
-
         {{-- {{ dd(Cookie::get('theme')) }} --}}
 
         {{-- breadcrumb part  --}}
@@ -9,17 +9,19 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-folder"></i>
-                    عارض الشرائح
+                    {{ __('panel.manage_sliders') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
-                        <a href="{{ route('admin.index') }}">
-                            الرئيسية
-                        </a>
-                        <i class="fa fa-solid fa-chevron-left chevron"></i>
+                        <a href="{{ route('admin.index') }}">{{ __('panel.main') }}</a>
+                        @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl')
+                            <i class="fa fa-solid fa-chevron-left chevron"></i>
+                        @else
+                            <i class="fa fa-solid fa-chevron-right chevron"></i>
+                        @endif
                     </li>
                     <li>
-                        عارض الشرائح الرئيسي
+                        {{ __('panel.show_main_slider') }}
                     </li>
                 </ul>
             </div>
@@ -30,7 +32,7 @@
                         <span class="icon text-white-50">
                             <i class="fa fa-plus-square"></i>
                         </span>
-                        <span class="text">إضافة محتوى جديد</span>
+                        <span class="text">{{ __('panel.add_new_slider') }}</span>
                     </a>
                 @endability
             </div>
@@ -43,15 +45,16 @@
 
         {{-- table part --}}
         <div class="table-responsive">
-            <table class="table table-hover">
+            <table class="table table-hover table-striped table-bordered dt-responsive nowrap"
+                style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                 <thead>
                     <tr>
-                        <th>الصورة</th>
-                        <th>العنوان</th>
-                        <th class="d-none d-sm-table-cell">الكاتب</th>
-                        <th class="d-none d-sm-table-cell">تاريخ الانشاء </th>
-                        <th>الحالة</th>
-                        <th class="text-center" style="width:30px;">الاعدادات</th>
+                        <th>{{ __('panel.image') }}</th>
+                        <th>{{ __('panel.title') }}</th>
+                        <th class="d-none d-sm-table-cell">{{ __('panel.author') }}</th>
+                        <th class="d-none d-sm-table-cell"> {{ __('panel.created_at') }} </th>
+                        <th>{{ __('panel.status') }}</th>
+                        <th class="text-center" style="width:30px;">{{ __('panel.actions') }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -78,7 +81,7 @@
                                         <i class="fa fa-edit"></i>
                                     </a>
                                     <a href="javascript:void(0);"
-                                        onclick=" if( confirm('Are you sure to delete this record?') ){document.getElementById('delete-product-{{ $slider->id }}').submit();}else{return false;}"
+                                        onclick=" if( confirm('{{ __('panel.confirm_delete_message') }}') ){document.getElementById('delete-product-{{ $slider->id }}').submit();}else{return false;}"
                                         class="btn btn-danger">
                                         <i class="fa fa-trash"></i>
                                     </a>
@@ -92,7 +95,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="6" class="text-center">لم يتم الحصول علي اي شريحة</td>
+                            <td colspan="6" class="text-center"> {{ __('panel.no_found_item') }} </td>
                         </tr>
                     @endforelse
                 </tbody>

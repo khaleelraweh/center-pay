@@ -4,9 +4,9 @@
 
     {{-- main holder page  --}}
     <div class="card shadow mb-4">
-
         {{-- breadcrumb part  --}}
         <div class="card-header py-3 d-flex justify-content-between">
+
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-plus-square"></i>

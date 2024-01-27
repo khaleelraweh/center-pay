@@ -8,6 +8,8 @@ return [
     'centerpay_show'            => 'CenterPay Show',
     'menu'                      => 'Menu',
 
+    ##############################################################
+
     // =============  Manage Web Menus ===============//
     'manage_menus'              => 'Manage Web Menus',
 
@@ -27,7 +29,33 @@ return [
     'title' => 'Title',
     'link' => 'Link',
 
+    ##############################################################
 
+    // =============  Manage Sliders ===============//
+    'manage_sliders'                => 'Manage Sliders',
+
+    // --------------- Main Slider --------------//
+    'show_main_slider'              => 'Main Slider',
+    'add_new_slider'                => 'Add New Slider',
+    'edit_existing_slider'          => 'Edit Existing Slider',
+
+    // ------------- Adv Slider ------------- //
+    'show_adv_slider'               => 'Adv Slider',
+    'add_new_adv_slider'            => 'Add New Adv Slider',
+    'edit_existing_adv_slider'      => 'Edit Existing Adv Slider',
+
+    // ........... commons in Sliders ....... //
+    'content'                       => 'Content',
+    'image'                         => 'Image',
+    'images'                        => 'Images',
+    'show_slider_info'              => 'Show Slider Info',
+    'url_link'                      => 'Url Link',
+    'url_target'                    => 'Url Target',
+    'in_the_same_tab'               => 'In The Same Tab',
+    'in_new_tab'                    =>  'In New Tab',
+
+
+    ##############################################################
 
     // ============ common translate ==============//
 
@@ -39,14 +67,17 @@ return [
 
 
     // ============ In all Pages ===================//
-    'main'                      => 'Main',
+    'main'                  => 'Main',
     'add_new_content'       => 'Add New Content',
+    'yes'                   =>  'Yes',
+    'no'                    =>  'No',
 
     // ======= display Add and Update Section =======// 
 
     // ------------ Tabs name -----------------/
     'content_tab'           => 'Content Data ',
     'published_tab'         => 'Publish Data',
+    'url_tab'               =>  'URLS',
 
     // ------------ Common fileds ------------/
     'main_category'         => 'Main Category',

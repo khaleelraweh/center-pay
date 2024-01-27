@@ -124,12 +124,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::post('products/remove-image', [ProductController::class, 'remove_image'])->name('products.remove_image');
         Route::resource('products', ProductController::class);
 
-        Route::post('main_sliders/remove-image', [MainSliderController::class, 'remove_image'])->name('main_sliders.remove_image');
-        Route::resource('main_sliders', MainSliderController::class);
+        // Route::post('main_sliders/remove-image', [MainSliderController::class, 'remove_image'])->name('main_sliders.remove_image');
+        // Route::resource('main_sliders', MainSliderController::class);
 
 
-        Route::post('advertisor_sliders/remove-image', [AdvertisorSliderController::class, 'remove_image'])->name('advertisor_sliders.remove_image');
-        Route::resource('advertisor_sliders', AdvertisorSliderController::class);
+        // Route::post('advertisor_sliders/remove-image', [AdvertisorSliderController::class, 'remove_image'])->name('advertisor_sliders.remove_image');
+        // Route::resource('advertisor_sliders', AdvertisorSliderController::class);
 
         Route::resource('tags', TagController::class);
 
@@ -183,11 +183,20 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         // Route::group(['middleware' => 'web'], function (){
 
-        Route::get('/web_menus/{web_menus}/edit',    [WebMenuController::class, 'edit'])->name('web_menus.edit');
+        // Route::get('/web_menus/{web_menus}/edit',    [WebMenuController::class, 'edit'])->name('web_menus.edit');
         Route::resource('web_menus', WebMenuController::class);
 
-        Route::get('/web_menu_helps/{web_menu_helps}/edit',    [WebMenuHelpController::class, 'edit'])->name('web_menu_helps.edit');
+        // Route::get('/web_menu_helps/{web_menu_helps}/edit',    [WebMenuHelpController::class, 'edit'])->name('web_menu_helps.edit');
         Route::resource('web_menu_helps', WebMenuHelpController::class);
+
+        Route::post('main_sliders/remove-image', [MainSliderController::class, 'remove_image'])->name('main_sliders.remove_image');
+        // Route::get('main_sliders/{main_slider}/edit', [MainSliderController::class, 'edit'])->name('main_sliders.edit');
+        Route::resource('main_sliders', MainSliderController::class);
+
+
+        Route::post('advertisor_sliders/remove-image', [AdvertisorSliderController::class, 'remove_image'])->name('advertisor_sliders.remove_image');
+        // Route::get('advertisor_sliders/{advertisor_slider}/edit', [AdvertisorSliderController::class, 'edit'])->name('advertisor_sliders.edit');
+        Route::resource('advertisor_sliders', AdvertisorSliderController::class);
 
 
         // });

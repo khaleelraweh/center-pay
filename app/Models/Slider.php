@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Cviebrock\EloquentSluggable\Sluggable;
+use App\Helper\MySlugHelper;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -11,13 +11,17 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Nicolaslopezj\Searchable\SearchableTrait;
-
+use Spatie\Sluggable\HasTranslatableSlug;
+use Spatie\Sluggable\SlugOptions;
+use Spatie\Translatable\HasTranslations;
 
 class Slider extends Model
 {
-    use HasFactory ,Sluggable , SearchableTrait , SoftDeletes;
+
+    use HasFactory, HasTranslations, HasTranslatableSlug, SearchableTrait;
 
     protected $guarded = [];
+    public $translatable = ['title', 'slug', 'content'];
 
     protected $casts = [
         'start_date' => 'datetime',
@@ -25,23 +29,53 @@ class Slider extends Model
         'published_on' => 'datetime',
     ];
 
-    public function sluggable(): array
-    {
-        return [
-            'slug' => [
-                'source' => 'title'
-            ]
-        ];
-    }
-
     protected $searchable = [
         'columns' => [
             'sliders.title' => 10,
+            'sliders.content' => 10,
         ]
-    ]; 
+    ];
 
-    public function status(){
-        return $this->status ? 'مفعل' : "غير مفعل";
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('title')
+            ->saveSlugsTo('slug');
+    }
+
+    protected function generateNonUniqueSlug(): string
+    {
+        $slugField = $this->slugOptions->slugField;
+        $slugString = $this->getSlugSourceString();
+
+        $slug = $this->getTranslations($slugField)[$this->getLocale()] ?? null;
+
+        $slugGeneratedFromCallable = is_callable($this->slugOptions->generateSlugFrom);
+        $hasCustomSlug = $this->hasCustomSlugBeenUsed() && !empty($slug);
+        $hasNonChangedCustomSlug = !$slugGeneratedFromCallable && !empty($slug) && !$this->slugIsBasedOnTitle();
+
+        if ($hasCustomSlug || $hasNonChangedCustomSlug) {
+            $slugString = $slug;
+        }
+
+        return MySlugHelper::slug($slugString);
+
+        // return Str::slug($slugString, $this->slugOptions->slugSeparator, $this->slugOptions->slugLanguage);
+    }
+
+    protected function asJson($value)
+    {
+        return json_encode($value, JSON_UNESCAPED_UNICODE);
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
+    public function status()
+    {
+        return $this->status ? __('panel.status_active') : __('panel.status_inactive');
     }
 
     // public function featured(){
@@ -52,43 +86,47 @@ class Slider extends Model
     //     return $query->whereFeatured(true);
     // }
 
-    public function scopeActive($query){
+    public function scopeActive($query)
+    {
         return $query->whereStatus(true);
     }
 
-   
+
     // not working now because there is no categories for sliders
-    public function scopeActiveCategory($query){
-        return $query->whereHas('category',function($query){
-            $query->whereStatus(1) ;
+    public function scopeActiveCategory($query)
+    {
+        return $query->whereHas('category', function ($query) {
+            $query->whereStatus(1);
         });
     }
 
     // To check if this slider is main or not 
-    public function scopeMainSliders($query){
+    public function scopeMainSliders($query)
+    {
         return $query->whereSection(1);
     }
 
     // to check if this slider is advertisorsliders or not 
-    public function scopeAdvertisorSliders($query){
+    public function scopeAdvertisorSliders($query)
+    {
         return $query->whereSection(2);
     }
 
-     // to get only first one media elemet
-     public function firstMedia(): MorphOne{
-        return $this->MorphOne(Photo::class, 'imageable')->orderBy('file_sort','asc');
+    // to get only first one media elemet
+    public function firstMedia(): MorphOne
+    {
+        return $this->MorphOne(Photo::class, 'imageable')->orderBy('file_sort', 'asc');
     }
-    
+
     // one product may have more than one photo
-    public function photos():MorphMany
+    public function photos(): MorphMany
     {
         return $this->morphMany(Photo::class, 'imageable');
     }
 
 
-    public function tags():MorphToMany
+    public function tags(): MorphToMany
     {
         return $this->morphToMany(Tag::class, 'taggable');
     }
-    
 }

@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('web_menus', function (Blueprint $table) {
             $table->id();
-           
+
             $table->json('title');
             $table->json('slug');
             $table->string('link')->nullable();
-            
+
             $table->unsignedBigInteger('parent_id')->nullable();
             $table->foreign('parent_id')->references('id')->on('product_categories')->nullOnDelete();
 
@@ -27,9 +27,9 @@ return new class extends Migration
 
             // will be use always
             $table->boolean('status')->default(true);
-            $table->dateTime('published_on')->nullable(); 
-            $table->string('created_by')->nullable(); 
-            $table->string('updated_by')->nullable(); 
+            $table->dateTime('published_on')->nullable();
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
             $table->string('deleted_by')->nullable();
             $table->softDeletes();
             $table->timestamps();

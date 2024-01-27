@@ -24,63 +24,68 @@ class MainSliderRequest extends FormRequest
     public function rules()
     {
         switch ($this->method()) {
-            case 'POST':
-            {
-                return [
-                    'title'         =>  'required|max:255|unique:sliders', 
-                    'content'       =>  'nullable',  
-                    'url'           =>  'nullable', 
-                    'target'        =>  'required', 
-                    'section'       =>  'nullable', 
-                    // 'start_date'    => 'nullable|date_format:Y-m-d',
-                    // 'expire_date'   => 'required_with:start_date|date|date_format:Y-m-d',
-                    'showInfo'      => 'required',
-                    // 'tags.*'        =>  'required', 
-                    'images'        =>  'required',   
-                    'images.*'      =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',  
-                    
+            case 'POST': {
+                    return [
+                        'title.*'       =>  'required|max:255|unique_translation:sliders',
+                        'content.*'       =>  'nullable',
+                        'url'           =>  'nullable',
+                        'target'        =>  'required',
+                        'section'       =>  'nullable',
+                        'showInfo'      => 'required',
+                        'images'        =>  'required',
+                        'images.*'      =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
 
-
-                    // used always 
-                    'status'             =>  'required',
-                    'published_on'       =>  'nullable',
-                    'published_on_time'  =>  'nullable',
-                    'created_by'         =>  'nullable',
-                    'updated_by'         =>  'nullable',
-                    'deleted_by'         =>  'nullable',
-                    // end of used always 
-                ];
-            }
+                        // used always 
+                        'status'             =>  'required',
+                        'published_on'       =>  'nullable',
+                        'published_on_time'  =>  'nullable',
+                        'created_by'         =>  'nullable',
+                        'updated_by'         =>  'nullable',
+                        'deleted_by'         =>  'nullable',
+                        // end of used always 
+                    ];
+                }
             case 'PUT':
-            case 'PATCH':
-            {
-                return [
-                    'title'             =>  'required|max:255|unique:sliders,title,'.$this->route()->main_slider->id,
-                    'content'           =>  'nullable',
-                    'url'               =>  'nullable',
-                    'target'            =>  'required',
-                    'section'           =>  'nullable',
-                    // 'start_date'        => 'nullable|date_format:Y-m-d',
-                    // 'expire_date'       => 'required_with:start_date|date|date_format:Y-m-d',
-                    'showInfo'      => 'required',
-                    // 'tags.*'            =>  'required', 
-                    'images'            =>  'nullable',
-                    'images.*'          =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
+            case 'PATCH': {
+                    return [
+                        'title.*'           =>  'required|max:255|unique_translation:sliders,title,' . $this->route()->main_slider,
+                        'content'           =>  'nullable',
+                        'url'               =>  'nullable',
+                        'target'            =>  'required',
+                        'section'           =>  'nullable',
+                        'showInfo'      => 'required',
+                        'images'            =>  'nullable',
+                        'images.*'          =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
 
-                    // used always 
-                    'status'             =>  'required',
-                    'published_on'       =>  'nullable',
-                    'published_on_time'  =>  'nullable',
-                    'created_by'         =>  'nullable',
-                    'updated_by'         =>  'nullable',
-                    'deleted_by'         =>  'nullable',
-                    // end of used always 
-                ];
-            }
-            
-            default: break;
-                
+                        // used always 
+                        'status'             =>  'required',
+                        'published_on'       =>  'nullable',
+                        'published_on_time'  =>  'nullable',
+                        'created_by'         =>  'nullable',
+                        'updated_by'         =>  'nullable',
+                        'deleted_by'         =>  'nullable',
+                        // end of used always 
+                    ];
+                }
+
+            default:
+                break;
         }
-       
+    }
+
+    public function attributes(): array
+    {
+        $attr = [
+            'link'      => '( ' . __('panel.link') . ' )',
+            'status'    =>  '( ' . __('panel.status') . ' )',
+        ];
+
+        foreach (config('locales.languages') as $key => $val) {
+            $attr += ['title.' . $key       =>  "( " . __('panel.title')   . ' ' . __('panel.in') . ' ' . __('panel.' . $val['lang'])   . " )",];
+            $attr += ['content.' . $key       =>  "( " . __('panel.content')   . ' ' . __('panel.in') . ' ' . __('panel.' . $val['lang'])   . " )",];
+        }
+
+
+        return $attr;
     }
 }

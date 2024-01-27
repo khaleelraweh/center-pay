@@ -15,20 +15,20 @@ return new class extends Migration
     {
         Schema::create('sliders', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('slug')->unique();
-            $table->string('content')->nullable(); 
+            $table->json('title');
+            $table->json('slug');
+            $table->json('content');
             $table->string('url')->nullable();
             $table->string('target')->default('_self');
-            $table->unsignedBigInteger('section')->default(1); 
+            $table->unsignedBigInteger('section')->default(1);
 
             $table->boolean('showInfo')->default(true); // عرض العنوان والتصفاصيل 
 
             // will be use always
             $table->boolean('status')->default(true);
-            $table->dateTime('published_on')->nullable(); 
-            $table->string('created_by')->nullable(); 
-            $table->string('updated_by')->nullable(); 
+            $table->dateTime('published_on')->nullable();
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
             $table->string('deleted_by')->nullable();
             $table->softDeletes();
             $table->timestamps();

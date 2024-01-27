@@ -73,8 +73,6 @@ class WebMenu extends Model
     }
 
 
-
-
     public function status()
     {
         return $this->status ? __('panel.status_active') : __('panel.status_inactive');
@@ -94,8 +92,6 @@ class WebMenu extends Model
     {
         return $query->whereSection(1);
     }
-
-
 
     // Get Parent of This Element in the same table inner Relationship
     public function parent(): HasOne
