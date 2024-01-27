@@ -21,7 +21,7 @@ class Slider extends Model
     use HasFactory, HasTranslations, HasTranslatableSlug, SearchableTrait;
 
     protected $guarded = [];
-    public $translatable = ['title', 'slug', 'content'];
+    public $translatable = ['title', 'slug', 'description'];
 
     protected $casts = [
         'start_date' => 'datetime',
@@ -32,7 +32,7 @@ class Slider extends Model
     protected $searchable = [
         'columns' => [
             'sliders.title' => 10,
-            'sliders.content' => 10,
+            'sliders.description' => 10,
         ]
     ];
 

@@ -21,7 +21,7 @@ class SliderSeeder extends Seeder
         $target = ['_self', '_blank'];
 
         $quots01['title'] = ['ar' => 'الرئيسية', 'en' => 'Main', 'ca' => 'Principal',];
-        $quots01['content'] = ['ar' => 'بيانات عن الخدمات الرئيسية', 'en' => 'details about main service', 'ca' => 'Datos sobre los principales servicios',];
+        $quots01['description'] = ['ar' => 'بيانات عن الخدمات الرئيسية', 'en' => 'details about main service', 'ca' => 'Datos sobre los principales servicios',];
         $quots01['section'] = 1;
         $quots01['created_by'] = 'admin';
         $quots01['status'] = true;
@@ -33,7 +33,7 @@ class SliderSeeder extends Seeder
             $target = ['_self', '_blank'];
 
             $quots01['title'] = ['ar' => 'fake data', 'en' => 'Main', 'ca' => 'Principal',];
-            $quots01['content'] = ['ar' => 'بيانات عن الخدمات الرئيسية', 'en' => 'details about main service', 'ca' => 'Datos sobre los principales servicios',];
+            $quots01['description'] = ['ar' => 'بيانات عن الخدمات الرئيسية', 'en' => 'details about main service', 'ca' => 'Datos sobre los principales servicios',];
             $quots01['section'] = 1;
             $quots01['created_by'] = 'admin';
             $quots01['status'] = true;
@@ -46,7 +46,7 @@ class SliderSeeder extends Seeder
             $target = ['_self', '_blank'];
 
             $quots01['title'] = ['ar' => 'اعلان', 'en' => 'Main', 'ca' => 'Principal',];
-            $quots01['content'] = ['ar' => 'بيانات عن الخدمات الرئيسية', 'en' => 'details about main service', 'ca' => 'Datos sobre los principales servicios',];
+            $quots01['description'] = ['ar' => 'بيانات عن الخدمات الرئيسية', 'en' => 'details about main service', 'ca' => 'Datos sobre los principales servicios',];
             $quots01['section'] = 2;
             $quots01['created_by'] = 'admin';
             $quots01['status'] = true;

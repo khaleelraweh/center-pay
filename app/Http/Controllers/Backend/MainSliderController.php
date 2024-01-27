@@ -54,7 +54,7 @@ class MainSliderController extends Controller
         }
 
         $input['title']          =   $request->title;
-        $input['content']        =   $request->content;
+        $input['description']        =   $request->description;
         $input['url']            =   $request->url;
         $input['target']         =   $request->target;
         $input['section']        =   1;
@@ -140,7 +140,7 @@ class MainSliderController extends Controller
 
 
         $input['title']          =   $request->title;
-        $input['content']        =   $request->content;
+        $input['description']        =   $request->description;
         $input['url']            =   $request->url;
         $input['target']         =   $request->target;
         $input['section']        =   1;

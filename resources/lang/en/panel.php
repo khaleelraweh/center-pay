@@ -45,7 +45,7 @@ return [
     'edit_existing_adv_slider'      => 'Edit Existing Adv Slider',
 
     // ........... commons in Sliders ....... //
-    'content'                       => 'Content',
+    'description'                       => 'Content',
     'image'                         => 'Image',
     'images'                        => 'Images',
     'show_slider_info'              => 'Show Slider Info',

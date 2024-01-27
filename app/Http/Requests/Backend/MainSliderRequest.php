@@ -27,7 +27,7 @@ class MainSliderRequest extends FormRequest
             case 'POST': {
                     return [
                         'title.*'       =>  'required|max:255|unique_translation:sliders',
-                        'content.*'       =>  'nullable',
+                        'description.*'       =>  'nullable',
                         'url'           =>  'nullable',
                         'target'        =>  'required',
                         'section'       =>  'nullable',
@@ -49,7 +49,7 @@ class MainSliderRequest extends FormRequest
             case 'PATCH': {
                     return [
                         'title.*'           =>  'required|max:255|unique_translation:sliders,title,' . $this->route()->main_slider,
-                        'content'           =>  'nullable',
+                        'description'           =>  'nullable',
                         'url'               =>  'nullable',
                         'target'            =>  'required',
                         'section'           =>  'nullable',
@@ -82,7 +82,7 @@ class MainSliderRequest extends FormRequest
 
         foreach (config('locales.languages') as $key => $val) {
             $attr += ['title.' . $key       =>  "( " . __('panel.title')   . ' ' . __('panel.in') . ' ' . __('panel.' . $val['lang'])   . " )",];
-            $attr += ['content.' . $key       =>  "( " . __('panel.content')   . ' ' . __('panel.in') . ' ' . __('panel.' . $val['lang'])   . " )",];
+            $attr += ['description.' . $key       =>  "( " . __('panel.description')   . ' ' . __('panel.in') . ' ' . __('panel.' . $val['lang'])   . " )",];
         }
 
 

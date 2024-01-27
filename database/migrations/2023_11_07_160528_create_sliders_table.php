@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->json('title');
             $table->json('slug');
-            $table->json('content');
+            $table->json('description');
             $table->string('url')->nullable();
             $table->string('target')->default('_self');
             $table->unsignedBigInteger('section')->default(1);

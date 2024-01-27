@@ -102,15 +102,15 @@
                                         </div>
                                     </div>
 
-                                    {{--  content field --}}
+                                    {{--  description field --}}
                                     <div class="row">
                                         <div class="col-sm-12 col-md-12 pt-4">
-                                            <label for="content[{{ $key }}]">
-                                                {{ __('panel.content') }}
+                                            <label for="description[{{ $key }}]">
+                                                {{ __('panel.description') }}
                                                 {{ __('panel.in') }} {{ __('panel.' . $key) }}
                                             </label>
-                                            <textarea name="content[{{ $key }}]" rows="10" class="form-control summernote">
-                                            {!! old('content.' . $key) !!}
+                                            <textarea name="description[{{ $key }}]" rows="10" class="form-control summernote">
+                                            {!! old('description.' . $key) !!}
                                         </textarea>
                                         </div>
                                     </div>
