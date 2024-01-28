@@ -54,7 +54,6 @@
     <link href="<?php echo asset('backend/css/app' . $dark . $rtl . '.min.css'); ?>" id="app-style" rel="stylesheet" type="text/css">
 
 
-
     {{-- is used to make tab-content --}}
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">

@@ -783,14 +783,16 @@ body.has-loader-bg .image-container img:not(.lazyloaded) + .foxic-loader
 
 .container:not(.container-prd-block).container--boxed
 {
-    max-width: 1200px;
+    /* max-width: 1200px; */
+    max-width: 1600px; 
 }
 
 body.boxed .page-wrapper
 {
     overflow: hidden;
 
-    max-width: 1200px;
+    /* max-width: 1200px; */
+    max-width: 1600px; 
     margin-right: auto;
     margin-left: auto;
 
@@ -1834,7 +1836,8 @@ body.mac .custom-grid:after
 .footer-sticky .container,
 .holder:not(.fullwidth) .container:not(.coming-soon-block)
 {
-    max-width: 1200px !important;
+    /* max-width: 1200px !important; */
+    max-width: 1600px !important; 
 }
 
 .image-container
@@ -10025,6 +10028,46 @@ select.selectpicker
 {
     .hdr-logo
     {
+        max-width: 130px;
+    }
+}
+
+.hdr-logo img
+{
+    max-width: 150px !important;
+    transition: .2s;
+}
+@media (max-width: 1199px)
+{
+    
+    .hdr-logo img
+    {
+        display: block;
+        max-width: 130px !important;
+    }
+}
+
+@media (max-width: 575px)
+{
+    .hdr-logo
+    {
+        max-width: 160px !important;
+    }
+    .hdr-logo img
+    {
+        display: block;
+        max-width: 130px !important;
+    }
+}
+@media (max-width: 479px)
+{
+    .hdr-logo
+    {
+        max-width: 130px !important;
+    }
+    .hdr-logo img
+    {
+        display: block;
         max-width: 130px;
     }
 }
@@ -32963,6 +33006,7 @@ body.has-round-btns .form-inline .form-control
 .form-card-bg .form-wrapper
 {
     max-width: 1200px;
+  
     margin-top: 20px;
     margin-right: auto; 
     margin-left: auto;

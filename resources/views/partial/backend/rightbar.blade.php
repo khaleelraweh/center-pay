@@ -15,7 +15,7 @@
 
 
         {{-- will be used in frontend index  --}}
-        <span class="navbar-text d-none">
+        <span class="navbar-text ">
             <form action="{{ route('admin.create_update_theme') }}" method="post" class="d-flex">
                 @csrf
                 <input type="radio" name="theme_choice" id="theme"

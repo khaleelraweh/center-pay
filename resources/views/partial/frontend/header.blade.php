@@ -219,6 +219,25 @@
                             </div>
                         </div>
                         <div class="hdr-inline-link">
+
+
+                            {{-- will be used in frontend index  --}}
+
+                            <form action="{{ route('admin.create_update_theme') }}" method="post" class="d-flex">
+                                @csrf
+                                <label for="theme" class="dropdn-link  minicart-link only-icon m-0"
+                                    style="cursor: pointer">
+                                    <input type="radio" name="theme_choice" id="theme"
+                                        value="{{ Cookie::get('theme') == 'dark' ? 'light' : 'dark' }}"
+                                        class="btn-check " onchange="this.form.submit();">
+                                    <i
+                                        class="{{ Cookie::get('theme') == 'light' ? 'fas fa-moon fa-lg' : 'fas fa-sun text-warning' }} "></i>
+                                    {{-- Mode --}}
+                                </label>
+                            </form>
+
+
+
                             <div class="search_container_desktop">
                                 <div class="dropdn dropdn_search dropdn_fullwidth">
                                     <a href="#" class="dropdn-link js-dropdn-link only-icon"><i
@@ -254,6 +273,8 @@
             </div>
         </div>
     </div>
+
+
 
 </header>
 

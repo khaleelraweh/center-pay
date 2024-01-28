@@ -1,5 +1,8 @@
+<?php $rtl = config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl' ? '-rtl' : ''; ?>
+<?php $dark = Cookie::get('theme') == 'dark' ? 'dark' : ''; ?>
+
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir=<?php echo $rtl ? 'rtl' : ''; ?>>
 
 {{-- {{ dd(Cookie::get('theme')) }} --}}
 {{-- {{ dd(config('locales.languages')[app()->getLocale()]['rtl_support']) }} --}}
@@ -26,8 +29,6 @@
     <!-- Scripts -->
     {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
 
-
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
@@ -40,11 +41,6 @@
     {{-- arabic font al yamani --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    {{-- new in product --}}
-    {{-- <link href="../../../https@fonts.googleapis.com/css2@family=Montserrat_3Aital,wght_400,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet"> --}}
-    {{-- <link href="../../../https@fonts.googleapis.com/css2@family=Open%20Sans_3Aital,wght_400,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"> --}}
-    {{-- new in product --}}
-
     <!-- FontAwesome CSS - loading as last, so it doesn't block rendering-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -52,7 +48,7 @@
 
     <link rel="stylesheet" href="{{ asset('frontend/css/vendor/bootstrap.min.css') }}" />
 
-    <link href="{{ asset('frontend/css/vendor/bootstrap.min-rtl.css') }}" rel="stylesheet" />
+    {{-- <link href="{{ asset('frontend/css/vendor/bootstrap.min-rtl.css') }}" rel="stylesheet" /> --}}
 
     <link href="{{ asset('frontend/css/vendor/vendor.min.css') }}" rel="stylesheet" />
 
@@ -60,21 +56,25 @@
     <link href=" https://cdn.jsdelivr.net/npm/glyphicons-halflings@1.9.1/css/glyphicons-halflings.min.css "
         rel="stylesheet">
 
-
-    <link href="{{ asset('frontend/css/style-games.css') }}" rel="stylesheet" />
-
-    {{-- <link href="css/style.css" rel="stylesheet"> --}}
-    {{-- <link href="{{ asset('frontend/css/style.css') }}" rel="stylesheet"> --}}
-
-
-
     <link href="{{ asset('frontend/fonts/icomoon/icons.css') }}" rel="stylesheet">
 
+
+    {{-- dart rtl  --}}
+    {{-- <link href="{{ asset('frontend/css/style-games.css') }}" rel="stylesheet" />
     {{-- <link rel="stylesheet" href="{{ asset('frontend/css/style-rtl.css') }}" class="languages" /> --}}
-    <link rel="stylesheet" href="{{ asset('frontend/css/style-rtl.css') }}" class="languages" />
+
+    <link href="{{ asset('frontend/css/style.css') }}" rel="stylesheet" />
+
+    <link href="<?php echo asset(Cookie::get('theme') == 'dark' ? 'frontend/css/style-games.css' : 'frontend/css/style.css'); ?>" rel="stylesheet" />
+
+
+    <link rel="stylesheet" href="<?php echo asset($rtl == '-rtl' ? 'frontend/css/style-rtl.css' : ''); ?>" class="languages" />
+
+
+
     <link href="{{ asset('frontend/css/icons.css') }}" rel="stylesheet" />
 
-    <link href="{{ asset('frontend/css/custom.css') }}" rel="stylesheet" />
+    {{-- <link href="{{ asset('frontend/css/custom.css') }}" rel="stylesheet" /> --}}
     <livewire:styles />
     @yield('style')
 
