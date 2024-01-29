@@ -1,3 +1,4 @@
+<?php $currentPath = Route::currentRouteName(); ?>
 {{-- <header class="hdr-wrap {{ request()->routeIs('frontend.index') ? 'hdr-transparent' : null }}"> --}}
 <header class="hdr-wrap">
 
@@ -130,6 +131,7 @@
                                     <div class="dropdn dropdn_language dropdn_language--noimg dropdn_caret">
                                         <a href="#" class="dropdn-link js-dropdn-link">
                                             <span class="js-dropdn-select-current mainBtnLang">
+
                                                 {{ __('panel.' . config('locales.languages')[app()->getLocale()]['lang']) }}
                                             </span>
                                             <i class="icon-angle-down"></i>

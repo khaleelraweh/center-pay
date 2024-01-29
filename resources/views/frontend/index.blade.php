@@ -275,7 +275,10 @@
                 </div>
                 <div class="prd-grid product-listing data-to-show-5 data-to-show-md-3 data-to-show-sm-2 ">
 
+
+                    {{-- {{ dd($card_categories->where('slug', 'الاسطورة')->first()) }} --}}
                     @forelse ($card_categories as $card_category)
+                        {{-- {{ dd($card_category->slug) }} --}}
                         {{-- <div class="prd prd-promo  prd--style2 prd-labels--max prd-labels-shadow prd-w-xxs"> --}}
                         <div class="prd  prd--style2 prd-labels--max prd-labels-shadow prd-w-xxs">
                             <div class="">
@@ -283,16 +286,17 @@
                                     <a href="{{ route('frontend.card_category', $card_category->slug) }}"
                                         class="image-hover-scale">
                                         <img src="{{ asset('assets/card_categories/' . $card_category->firstMedia?->file_name) }}"
-                                            alt="{{ $card_category->name }}" class="js-prd-img" />
+                                            alt="{{ $card_category->category_name }}" class="js-prd-img" />
 
                                     </a>
                                 </div>
                                 <div class="prd-info text-center">
                                     <h2 class="prd-title"><a
-                                            href="{{ route('frontend.card_category', $card_category->slug) }}">{{ $card_category->name }}</a>
+                                            href="{{ route('frontend.card_category', $card_category->slug) }}">{{ $card_category->category_name }}</a>
                                     </h2>
                                     <div class="prd-hover">
                                         <div class="mt-2">
+
                                             <a href="{{ route('frontend.card_category', $card_category->slug) }}"
                                                 class="btn js-prd-addtocart">
                                                 عرض الباقات

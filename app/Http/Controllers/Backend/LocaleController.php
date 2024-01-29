@@ -3,15 +3,20 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\News;
 use App\Models\Post;
+use App\Models\Product;
+use App\Models\ProductCategory;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Lang;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 
 class LocaleController extends Controller
 {
+
     protected $previousRequest;
     protected $locale;
 
@@ -37,7 +42,22 @@ class LocaleController extends Controller
                 }
 
                 if (isset($segments[1])) {
-                    return $this->resolveModel(Post::class, $segments[1], $locale);
+
+                    $url = url()->previous();
+                    $routeName = app('router')->getRoutes($url)->match(app('request')->create($url))->getName();
+                    // dd($routeName);
+
+                    // $currentPath = Route::getFacadeRoot()->current()->uri();
+                    // dd($currentPath);
+
+                    if ($routeName === "frontend.card") {
+                        // dd("yes");
+                        return $this->resolveModel(Product::class, $segments[1], $locale, $routeName);
+                    } else if ($routeName === "frontend.card_category") {
+                        return $this->resolveModel(ProductCategory::class, $segments[1], $locale, $routeName);
+                    } else if ($routeName === "frontend.blog.post") {
+                        return $this->resolveModel(News::class, $segments[2], $locale, $routeName);
+                    }
                 }
 
                 return redirect()->back();
@@ -54,28 +74,25 @@ class LocaleController extends Controller
         return request()->create(url()->previous());
     }
 
-    protected function resolveModel($modelClass, $slug, $locale)
+    protected function resolveModel($modelClass, $slug, $locale, $routeName)
     {
         $model = $modelClass::where('slug->' . $locale, $slug)->first();
-
         if (is_null($model)) {
 
             foreach (config('locales.languages') as $key => $val) {
+
+
                 $modelInLocale = $modelClass::where('slug->' . $key, $slug)->first();
                 if ($modelInLocale) {
-                    $newRoute = str_replace($slug, $modelInLocale->slug, urldecode(urlencode(route('posts.show', $modelInLocale->slug))));
+
+
+                    $newRoute = str_replace($slug, $modelInLocale->slug, urldecode(urlencode(route($routeName, $modelInLocale->slug))));
+                    // dd($newRoute);
                     return redirect()->to($newRoute)->send();
                 }
             }
             abort(404);
         }
-
-        // تستخدم اذا كان السلاج الجديد مساوي للسلاج القديم 
-        if ($slug === $model->slug) {
-            return redirect()->back();
-        }
-
-
         return $model;
     }
 }

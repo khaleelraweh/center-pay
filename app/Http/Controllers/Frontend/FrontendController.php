@@ -16,40 +16,39 @@ use Illuminate\Http\Request;
 class FrontendController extends Controller
 {
 
-    
 
-
-    public function index(){
+    public function index()
+    {
         // $main_slider = Slider::whereStatus(1)->whereNull('parent_id')->get();
-        
-       $main_sliders = Slider::with('firstMedia')
+
+        $main_sliders = Slider::with('firstMedia')
             ->MainSliders()
             // ->inRandomOrder()
-            ->orderBy('published_on','desc')
+            ->orderBy('published_on', 'desc')
             ->Active()
-            ->take( 
+            ->take(
                 SiteSetting::whereNotNull('value')
-                    ->pluck('value','name')
+                    ->pluck('value', 'name')
                     ->toArray()['site_main_sliders']
-             )
-        ->get();
+            )
+            ->get();
 
-        
+
 
         $adv_sliders = Slider::with('firstMedia')
             ->AdvertisorSliders()
             // ->inRandomOrder()
-            ->orderBy('published_on','desc')
+            ->orderBy('published_on', 'desc')
             ->Active()
             ->take(
                 SiteSetting::whereNotNull('value')
-                    ->pluck('value','name')
+                    ->pluck('value', 'name')
                     ->toArray()['site_advertisor_sliders']
             )
-        ->get();
+            ->get();
 
 
-        $random_cards = Product::with('firstMedia', 'lastMedia' , 'photos')
+        $random_cards = Product::with('firstMedia', 'lastMedia', 'photos')
             ->CardCategory()
             ->inRandomOrder()
             ->Active()
@@ -57,10 +56,13 @@ class FrontendController extends Controller
             ->ActiveCategory()
             ->take(
                 SiteSetting::whereNotNull('value')
-                    ->pluck('value','name')
+                    ->pluck('value', 'name')
                     ->toArray()['site_random_cards']
             )
-        ->get();
+            ->get();
+
+
+
 
         $card_categories = ProductCategory::with('firstMedia')
             ->Active()
@@ -69,78 +71,83 @@ class FrontendController extends Controller
             ->HasProducts()
             ->take(
                 SiteSetting::whereNotNull('value')
-                    ->pluck('value','name')
+                    ->pluck('value', 'name')
                     ->toArray()['site_card_categories']
             )
-        ->get();
+            ->get();
 
         $common_questions = CommonQuestion::query()
-        ->active()
-        ->take(
-            SiteSetting::whereNotNull('value')
-                    ->pluck('value','name')
+            ->active()
+            ->take(
+                SiteSetting::whereNotNull('value')
+                    ->pluck('value', 'name')
                     ->toArray()['site_questions']
-        )
-        ->get();
+            )
+            ->get();
 
         $blog = News::query()
-        ->active()
-        ->take(
-            SiteSetting::whereNotNull('value')
-                    ->pluck('value','name')
+            ->active()
+            ->take(
+                SiteSetting::whereNotNull('value')
+                    ->pluck('value', 'name')
                     ->toArray()['site_bogs']
-        )
-        ->get();
+            )
+            ->get();
 
         // $getCurrencies = Currency::where('status',1)->get()->toArray();
 
-        $getCurrencies = Currency::SELECT('currency_name','currency_code','currency_symbol')->where('status',1)->get()->toArray();
- 
-        return view('frontend.index',compact('main_sliders','adv_sliders','card_categories','random_cards','common_questions' ,'blog' , 'getCurrencies'));
+        $getCurrencies = Currency::SELECT('currency_name', 'currency_code', 'currency_symbol')->where('status', 1)->get()->toArray();
+
+        return view('frontend.index', compact('main_sliders', 'adv_sliders', 'card_categories', 'random_cards', 'common_questions', 'blog', 'getCurrencies'));
     }
 
- 
-    public function card($slug){
+
+    public function card($slug)
+    {
         //get choisen card 
-        $card  = Product::with('category','tags','photos','reviews')
-        ->withAvg('reviews','rating')
-        ->whereSlug($slug)
-        ->Active()
-        ->HasQuantity()
-        ->ActiveCategory()
-        ->firstOrFail();
+        $card  = Product::with('category', 'tags', 'photos', 'reviews')
+            ->withAvg('reviews', 'rating')
+            ->where('slug->' . app()->getLocale(), $slug)
+            ->Active()
+            ->HasQuantity()
+            ->ActiveCategory()
+            ->firstOrFail();
+
+
+
 
         //get all related card that are the same of card_category of the card choisen
-        $related_cards = Product::with('firstMedia','photos')->whereHas('category', function ($query) use ($card){
+        $related_cards = Product::with('firstMedia', 'photos')->whereHas('category', function ($query) use ($card) {
             $query->whereId($card->product_category_id)->whereStatus(true);
         })->inRandomOrder()
-        ->Active()
-        ->HasQuantity()
-        ->take(
-            SiteSetting::whereNotNull('value')
-                    ->pluck('value','name')
+            ->Active()
+            ->HasQuantity()
+            ->take(
+                SiteSetting::whereNotNull('value')
+                    ->pluck('value', 'name')
                     ->toArray()['site_related_cards']
-        )
-        ->get(); // get in random order  only card which is active and has quantity :and take from them 4 card 
+            )
+            ->get(); // get in random order  only card which is active and has quantity :and take from them 4 card 
 
-        return view('frontend.card',compact('card','related_cards'));
+        return view('frontend.card', compact('card', 'related_cards'));
     }
 
-    public function card_category($slug = null){
+    public function card_category($slug = null)
+    {
+        // dd($slug);
 
         // This is the specific category chosen
         $card_category = ProductCategory::withCount('cards')
-                            ->whereSlug($slug)
-                            ->whereStatus(true)
-        ->first();
+            ->where('slug->' . app()->getLocale(), $slug)
+            ->whereStatus(true)
+            ->first();
 
-        
-        
+
         // get all cards related to category chosen
-        $cards = Product::with('firstMedia' , 'photos');
+        $cards = Product::with('firstMedia', 'photos');
         $cards = $cards->with('category')->whereHas('category', function ($query) use ($slug) {
             $query->where([
-                'slug' => $slug,
+                'slug->' . app()->getLocale() => $slug,
                 'status'   => true
             ]);
         })->get();
@@ -154,18 +161,19 @@ class FrontendController extends Controller
             ->HasProducts()
             ->take(
                 SiteSetting::whereNotNull('value')
-                    ->pluck('value','name')
+                    ->pluck('value', 'name')
                     ->toArray()['site_more_categories']
             )
-            ->where('slug' , '!=',$slug)
-        ->get();
+            ->where('slug->' . app()->getLocale(), '!=', $slug)
+            ->get();
 
-        return view('frontend.card_category',compact('card_category' , 'cards' , 'more_categories'));
+        return view('frontend.card_category', compact('card_category', 'cards', 'more_categories'));
     }
 
-    public function cart(){
+    public function cart()
+    {
 
-        $more_cards = Product::with('firstMedia', 'lastMedia' , 'photos')
+        $more_cards = Product::with('firstMedia', 'lastMedia', 'photos')
             ->CardCategory()
             ->inRandomOrder()
             ->Active()
@@ -173,21 +181,16 @@ class FrontendController extends Controller
             ->ActiveCategory()
             ->take(
                 SiteSetting::whereNotNull('value')
-                    ->pluck('value','name')
+                    ->pluck('value', 'name')
                     ->toArray()['site_more_like_cards']
             )
-        ->get();
+            ->get();
 
         return view('frontend.cart', compact('more_cards'));
     }
 
-    public function wishlist(){
+    public function wishlist()
+    {
         return view('frontend.wishlist');
     }
-
-    
-
-   
-
-
 }

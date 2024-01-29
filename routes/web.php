@@ -46,8 +46,11 @@ Route::get('/', [FrontendController::class, 'index'])->name('frontend.index');
 
 
 Route::get('/index', [FrontendController::class, 'index'])->name('frontend.index');
-Route::get('/card-category/{slug?}', [FrontendController::class, 'card_category'])->name('frontend.card_category');
-Route::get('/card/{slug?}', [FrontendController::class, 'card'])->name('frontend.card');
+
+Route::group(['middleware' => 'web'], function () {
+    Route::get('/card-category/{slug?}', [FrontendController::class, 'card_category'])->name('frontend.card_category');
+    Route::get('/card/{slug?}', [FrontendController::class, 'card'])->name('frontend.card');
+});
 Route::get('/cart', [FrontendController::class, 'cart'])->name('frontend.cart');
 Route::get('/wishlist', [FrontendController::class, 'wishlist'])->name('frontend.wishlist');
 

@@ -66,14 +66,14 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
 
         //middle ware Roles to controll users
-        'roles'=>\App\Http\Middleware\Roles::class,
+        'roles' => \App\Http\Middleware\Roles::class,
 
         //Middleware 3 files related to Entrust lab
         'role' => \Mindscms\Entrust\Middleware\EntrustRole::class,
         'permission' => \Mindscms\Entrust\Middleware\EntrustPermission::class,
         'ability' => \Mindscms\Entrust\Middleware\EntrustAbility::class,
 
-        'check_cart'=> \App\Http\Middleware\CheckCart::class,
+        'check_cart' => \App\Http\Middleware\CheckCart::class,
 
     ];
 }
