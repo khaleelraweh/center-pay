@@ -141,6 +141,26 @@ return [
     'use_time'                     =>  'عدد مرات الاستخدام',
     'coupon_description'            =>  'وصف الكوبون',
 
+    ##############################################################
+
+    // =============  Manage Users  ===============//
+    'manage_users'                => 'إدارة المستخدمين',
+
+    // --------------- Customers  --------------//
+    'show_customers'               => 'العملاء',
+    'add_new_customer'             => 'إضافة حساب عميل جديد',
+    'edit_existing_customer'       => 'تعديل بيانات حساب العميل ',
+
+    // --------------- Supervisors  --------------//
+    'show_supervisors'              => 'المشرفين',
+    'add_new_supervisor'           => 'إضافة حساب مشرف جديد',
+    'edit_existing_supervisor'     => 'تعديل بيانات حساب مشرف ',
+
+    // ........... commons in Users   ....... //
+    'customer_name'               => 'إسم العميل ',
+    'advertisor_name'               =>  'إسم المشرف',
+    'permissions'                   =>  'الصلاحيات',
+    'grant_all_permissions'         =>  'منح كل الصلاحيات',
 
 
 
@@ -156,16 +176,26 @@ return [
 
     // ================= في كل الصفحات ===================//
     'main'                          =>  'الرئيسية',
-    'add_new_content'               => 'إضافة محتوي جديد',
+    'add_new_content'               =>  'إضافة محتوي جديد',
     'yes'                           =>  'نعم',
     'no'                            =>  'لا',
-    'description'                       => 'المحتوي',
-    'image'                         => 'الصورة',
-    'images'                        => 'الصور',
+    'description'                   =>  'المحتوي',
+    'image'                         =>  'الصورة',
+    'images'                        =>  'الصور',
     'featured'                      =>  'المفضلة',
     'qty'                           =>  'الكمية',
     'price'                         =>  'السعر',
     'views'                         =>  'مشاهدات',
+    'email'                         =>  'الايميل',
+    'mobile'                        =>  'الموبايل',
+    'first_name'                    =>  'الإسم الاول',
+    'last_name'                     =>  'اللقب',
+    'user_name'                     =>  'اسم المستخدم',
+    'user_password'                 =>  'كلمة المرور',
+
+
+
+
 
 
 
@@ -210,10 +240,14 @@ return [
     'something_was_wrong'       => 'حدث خطأ ما',
     'confirm_delete_message'    => 'هل انت متاكد من انك تريد حذف هذا السجل !!',
     'no_found_item'             => 'لم يتم العثور على اي عنصر ',
+    'user_image_size'           => 'حجم الصورة 500px * 500px لافضل اداء',
+
 
 
     // ================ Validations ======================//
     //---------------- Common Validation -----------------//
     'in'                        => 'باللغة',
+    'and'                           =>  'و',
+
 
 ];

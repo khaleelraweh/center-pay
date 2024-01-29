@@ -143,6 +143,26 @@ return [
     'coupon_description'            =>  'Coupon Descrip',
 
 
+    ##############################################################
+
+    // =============  Manage Users  ===============//
+    'manage_users'                => 'Manage Users',
+
+    // --------------- Customers  --------------//
+    'show_customers'               => 'Customers',
+    'add_new_customer'             => 'Add New Customer',
+    'edit_existing_customer'       => 'Edit Existing Customer ',
+
+    // --------------- Supervisors  --------------//
+    'show_supervisors'              => 'Supervisors',
+    'add_new_supervisor'           => 'Add New Supervisor',
+    'edit_existing_supervisor'     => 'Edit Existing Supervisor ',
+
+    // ........... commons in Users   ....... //
+    'customer_name'               => 'Customer Name',
+    'advertisor_name'               =>  'Advertisor Name',
+    'permissions'                   =>  'Permissions',
+    'grant_all_permissions'         =>  'Grant All Permissions',
 
 
 
@@ -168,6 +188,12 @@ return [
     'qty'                           =>  'Quantity',
     'price'                         =>  'Price',
     'views'                         =>  'Views',
+    'email'                         =>  'Email',
+    'mobile'                        =>  'Mobile',
+    'first_name'                    =>  'First Name',
+    'last_name'                     =>  'Last Name',
+    'user_name'                     =>  'User Name',
+    'user_password'                 =>  'User Password',
 
 
     // ======= display Add and Update Section =======// 
@@ -210,10 +236,11 @@ return [
     'something_was_wrong'       => 'Something was wrong',
     'confirm_delete_message'    => 'Are you sure you want to delete this !!',
     'no_found_item'             => 'No item founded yet',
-
+    'user_image_size'           => 'Image width should be 500px * 500px for best show',
 
 
     // ================ Validations ======================//
     //---------------- Common Validation -----------------//
     'in'                        => 'In',
+    'and'                       => '&',
 ];

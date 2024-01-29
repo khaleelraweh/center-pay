@@ -319,6 +319,7 @@
             }).on('filesorted', function(event, params) {
                 console.log(params.previewId, params.oldIndex, params.newIndex, params.stack);
             });
+
             // ======= start pickadate codeing  for start and end date ===========
 
             $('#published_on').pickadate({

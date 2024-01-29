@@ -19,18 +19,18 @@ class WorldSeeder extends Seeder
         // نحدد اسم الملف الذي نريد اخذ البيانات منه والموجود في المجلد بابلك 
         $sql_file = public_path('worlds.sql');
 
-        
+
 
 
         // نحدد بيانات قاعدة البيانات تبعنا
         $db = [
             'host'  => '127.0.0.1',
-            'database'  =>'center_pay_db',
-            'username'  =>'root',
-            'password'  =>null,
+            'database'  => 'center_pay_db_multilanguage',
+            'username'  => 'root',
+            'password'  => null,
         ];
 
         // نعطي له اوامر الشيل من اجل التنفيذ
-         exec("mysql --user={$db['username']} --password={$db['password']} --host={$db['host']} --database={$db['database']} < $sql_file");
+        exec("mysql --user={$db['username']} --password={$db['password']} --host={$db['host']} --database={$db['database']} < $sql_file");
     }
 }

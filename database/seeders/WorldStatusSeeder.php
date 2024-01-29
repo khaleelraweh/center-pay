@@ -18,23 +18,22 @@ class WorldStatusSeeder extends Seeder
     public function run()
     {
 
-        $countriesArray = ['Algeria','Bahrain','Djibouti','Egypt','Irag','Kuwait','Lebanan','Libya','Morocco','Mauritania','Oman','Palestinian Territory Occupied','Qatar','Saudi Arabia','Sudan','Syria','Tunisia','Yemen'];
-        
+        $countriesArray = ['Algeria', 'Bahrain', 'Djibouti', 'Egypt', 'Irag', 'Kuwait', 'Lebanan', 'Libya', 'Morocco', 'Mauritania', 'Oman', 'Palestinian Territory Occupied', 'Qatar', 'Saudi Arabia', 'Sudan', 'Syria', 'Tunisia', 'Yemen'];
+
         // تحويل الحالة في الدول العربية التي لديها محافظات الي فعال 
-        Country::whereHas('states')->whereIn('name',$countriesArray)->update(['status' =>true]);
+        Country::whereHas('states')->whereIn('name', $countriesArray)->update(['status' => true]);
 
         // تحويل الحالة في المحافظات العربية التي لديها مدن الي فعال 
         State::select('states.*')
-        ->whereHas('cities')
-        ->join('countries','states.country_id','=','countries.id')
-        ->where('countries.status', 1)
-        ->update(['states.status'   =>  true]);
+            ->whereHas('cities')
+            ->join('countries', 'states.country_id', '=', 'countries.id')
+            ->where('countries.status', 1)
+            ->update(['states.status'   =>  true]);
 
         // تحويل الحالة في المدن العربية الي فعال 
         City::select('cities.*')
-        ->join('states','cities.state_id','=','states.id')
-        ->where('states.status', 1)
-        ->update(['cities.status'   =>  true]);
-
+            ->join('states', 'cities.state_id', '=', 'states.id')
+            ->where('states.status', 1)
+            ->update(['cities.status'   =>  true]);
     }
 }

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('name_native')->nullable();
-            $table->char('country_code',2)->nullable();
+            $table->char('country_code', 2)->nullable();
             $table->string('phone_code')->nullable();
             $table->string('capital')->nullable();
             $table->string('currency')->nullable();
@@ -31,15 +31,14 @@ return new class extends Migration
             $table->string('emoji')->nullable();
             $table->boolean('status')->default(false);
 
-            $table->dateTime('published_on')->nullable(); 
-            $table->boolean('view_in_main')->default(false); 
-            $table->string('created_by')->nullable(); 
-            $table->string('updated_by')->nullable(); 
+            $table->dateTime('published_on')->nullable();
+            $table->boolean('view_in_main')->default(false);
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
             $table->string('deleted_by')->nullable();
             $table->softDeletes();
             $table->timestamps();
-
-        }); 
+        });
     }
 
     /**
