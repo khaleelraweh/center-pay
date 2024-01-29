@@ -202,6 +202,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::resource('advertisor_sliders', AdvertisorSliderController::class);
 
 
+
         // });
 
 

@@ -12,27 +12,26 @@ class TagController extends Controller
 {
     public function index()
     {
-        if(!auth()->user()->ability('admin','manage_tags , show_tags')){
+        if (!auth()->user()->ability('admin', 'manage_tags , show_tags')) {
             return redirect('admin/index');
         }
 
         $tags = Tag::with('products')
-        ->when(\request()->keyword != null , function($query){
-            $query->search(\request()->keyword);
-        })
-        ->when(\request()->status != null , function($query){
-            $query->where('status',\request()->status);
-        })
-        ->orderBy(\request()->sort_by ?? 'id' , \request()->order_by ?? 'desc')
-        ->paginate(\request()->limit_by ?? 10);
-        
-        return view('backend.tags.index',compact('tags'));
-        
+            ->when(\request()->keyword != null, function ($query) {
+                $query->search(\request()->keyword);
+            })
+            ->when(\request()->status != null, function ($query) {
+                $query->where('status', \request()->status);
+            })
+            ->orderBy(\request()->sort_by ?? 'id', \request()->order_by ?? 'desc')
+            ->paginate(\request()->limit_by ?? 10);
+
+        return view('backend.tags.index', compact('tags'));
     }
 
     public function create()
     {
-        if(!auth()->user()->ability('admin','create_tags')){
+        if (!auth()->user()->ability('admin', 'create_tags')) {
             return redirect('admin/index');
         }
         return view('backend.tags.create');
@@ -40,7 +39,7 @@ class TagController extends Controller
 
     public function store(TagRequest $request)
     {
-        if(!auth()->user()->ability('admin','create_tags')){
+        if (!auth()->user()->ability('admin', 'create_tags')) {
             return redirect('admin/index');
         }
 
@@ -49,70 +48,98 @@ class TagController extends Controller
         $input['status']        =   $request->status;
         $input['created_by']    =   auth()->user()->full_name;
 
-        $published_on = $request->published_on.' '.$request->published_on_time;
+        $published_on = $request->published_on . ' ' . $request->published_on_time;
         $published_on = new DateTimeImmutable($published_on);
         $input['published_on'] = $published_on;
 
-        Tag::create($input);
+        $tag = Tag::create($input);
+
+        if ($tag) {
+            return redirect()->route('admin.tags.index')->with([
+                'message' => __('panel.created_successfully'),
+                'alert-type' => 'success'
+            ]);
+        }
 
         return redirect()->route('admin.tags.index')->with([
-            'message' => 'created successfully',
-            'alert-type' => 'success'
+            'message' => __('panel.something_was_wrong'),
+            'alert-type' => 'danger'
         ]);
     }
-    
+
     public function show($id)
     {
-        if(!auth()->user()->ability('admin','display_tags')){
+        if (!auth()->user()->ability('admin', 'display_tags')) {
             return redirect('admin/index');
         }
         return view('backend.tags.show');
     }
 
-    public function edit(Tag $tag)
+    public function edit($tag)
     {
-        if(!auth()->user()->ability('admin','update_tags')){
+        if (!auth()->user()->ability('admin', 'update_tags')) {
             return redirect('admin/index');
         }
-        return view('backend.tags.edit',compact( 'tag'));
+
+        $tag = Tag::where('id', $tag)->first();
+        return view('backend.tags.edit', compact('tag'));
     }
-    
-    public function update(TagRequest $request, Tag $tag)
+
+    public function update(TagRequest $request,  $tag)
     {
-        if(!auth()->user()->ability('admin','update_tags')){
+        if (!auth()->user()->ability('admin', 'update_tags')) {
             return redirect('admin/index');
         }
+
+        $tag = Tag::where('id', $tag)->first();
 
         $input['name'] = $request->name;
         $input['section']       =   $request->section;
         $input['status']        =   $request->status;
         $input['updated_by']    =   auth()->user()->full_name;
 
-        $published_on = $request->published_on.' '.$request->published_on_time;
+        $published_on = $request->published_on . ' ' . $request->published_on_time;
         $published_on = new DateTimeImmutable($published_on);
         $input['published_on'] = $published_on;
 
         $tag->update($input);
 
+        if ($tag) {
+            return redirect()->route('admin.tags.index')->with([
+                'message' => __('panel.updated_successfully'),
+                'alert-type' => 'success'
+            ]);
+        }
         return redirect()->route('admin.tags.index')->with([
-            'message' => 'Updated successfully',
-            'alert-type' => 'success'
+            'message' => __('panel.something_was_wrong'),
+            'alert-type' => 'danger'
         ]);
     }
 
-    public function destroy(Tag $tag)
+    public function destroy($tag)
     {
-        if(!auth()->user()->ability('admin','delete_tags')){
+        if (!auth()->user()->ability('admin', 'delete_tags')) {
             return redirect('admin/index');
         }
+
+        $tag = Tag::where('id', $tag)->first();
+
 
         $tag->deleted_by = auth()->user()->full_name;
         $tag->save();
         $tag->delete();
 
+
+        if ($tag) {
+            return redirect()->route('admin.tags.index')->with([
+                'message' => __('panel.deleted_successfully'),
+                'alert-type' => 'success'
+            ]);
+        }
+
         return redirect()->route('admin.tags.index')->with([
-            'message' => 'Deleted successfully',
-            'alert-type' => 'success'
+            'message' => __('panel.something_was_wrong'),
+            'alert-type' => 'danger'
         ]);
     }
 }

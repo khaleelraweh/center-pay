@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('coupons', function (Blueprint $table) {
             $table->id();
-            $table->string('code')->unique();
+            $table->json('code');
+            $table->json('description');
             $table->string('type');
             $table->unsignedBigInteger('value')->nullable();
-            $table->text('description')->nullable();
             $table->unsignedBigInteger('use_times')->nullable();
             $table->unsignedBigInteger('used_times')->default(0);
             $table->dateTime('start_date')->nullable();
@@ -27,18 +27,16 @@ return new class extends Migration
 
             // will be use always
             $table->boolean('status')->default(true);
-            $table->boolean('featured')->default(false); 
-            $table->dateTime('published_on')->nullable(); 
-            $table->boolean('view_in_main')->default(false); 
-            $table->unsignedBigInteger('views')->default(0); 
-            $table->string('created_by')->nullable(); 
-            $table->string('updated_by')->nullable(); 
+            $table->dateTime('published_on')->nullable();
+            $table->unsignedBigInteger('views')->default(0);
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
             $table->string('deleted_by')->nullable();
             $table->softDeletes();
             $table->timestamps();
             // end of will be use always
 
-        });  
+        });
     }
 
     /**

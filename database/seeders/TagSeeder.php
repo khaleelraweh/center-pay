@@ -15,13 +15,10 @@ class TagSeeder extends Seeder
      */
     public function run()
     {
-        Tag::create(['name' =>  'شدات', 'status' => true]);
-        Tag::create(['name' =>  'بوبجي', 'status' => true]);
-        Tag::create(['name' =>  'إنمي', 'status' => true]);
-        Tag::create(['name' =>  'كروت', 'status' => true]);
-        Tag::create(['name' =>  'بطاقات', 'status' => true]);
-        Tag::create(['name' =>  'مميزات', 'status' => true]);
-        Tag::create(['name' =>  'تخفيضات', 'status' => true]);
-        Tag::create(['name' =>  'عروض', 'status' => true]);
+        Tag::create(['name' => ['ar' => 'Pupga', 'en' => 'PUPGA', 'ca' => 'PUPGAspan'], 'slug' => ['ar' => 'Pupga', 'en' => 'Pubga', 'ca' => 'Pubga-Span'],  'section' => 3,  'status' => true]);
+        Tag::create(['name' => ['ar' => 'إنمي', 'en' => 'Enimy', 'ca' => 'EnimySpan'], 'slug' => ['ar' => 'إنمي', 'en' => 'Enimay', 'ca' => 'Enimay-Span'],  'section' => 3,  'status' => true]);
+        Tag::create(['name' => ['ar' => 'كروت', 'en' => 'Enimy', 'ca' => 'Cardspan'], 'slug' => ['ar' => 'كروت', 'en' => 'cards', 'ca' => 'cards-Span'],  'section' => 3,  'status' => true]);
+        Tag::create(['name' => ['ar' => 'عروض', 'en' => 'offers', 'ca' => 'offerspan'], 'slug' => ['ar' => 'عروض', 'en' => 'offers', 'ca' => 'offers-Span'],  'section' => 3,  'status' => true]);
+        Tag::create(['name' => ['ar' => 'منتج', 'en' => 'Product', 'ca' => 'ProductSpan'], 'slug' => ['ar' => 'منتج', 'en' => 'Product', 'ca' => 'Product-Span'],  'section' => 3,  'status' => true]);
     }
 }

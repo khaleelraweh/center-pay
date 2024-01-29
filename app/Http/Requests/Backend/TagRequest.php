@@ -22,47 +22,58 @@ class TagRequest extends FormRequest
      * @return array<string, mixed>
      */
     public function rules()
-    {
-        {
+    { {
             switch ($this->method()) {
-                case 'POST':
-                {
-                    return [
-                        'name'          =>  'required|max:255|unique:tags',
-                        'section'       =>  'nullable', 
-                        
-                        // used always 
-                        'status'             =>  'required',
-                        'published_on'       =>  'nullable',
-                        'published_on_time'  =>  'nullable',
-                        'created_by'         =>  'nullable',
-                        'updated_by'         =>  'nullable',
-                        'deleted_by'         =>  'nullable',
-                        // end of used always 
-                    ];
-                }
-                case 'PUT':
-                case 'PATCH':
-                {
-                    return [
-                        'name'       => 'required|max:255|unique:tags,name,'.$this->route()->tag->id,
-                        'section'    => 'nullable', 
-                       
-                        // used always 
-                        'status'             =>  'required',
-                        'published_on'       =>  'nullable',
-                        'published_on_time'  =>  'nullable',
-                        'created_by'         =>  'nullable',
-                        'updated_by'         =>  'nullable',
-                        'deleted_by'         =>  'nullable',
-                        // end of used always 
+                case 'POST': {
+                        return [
+                            'name.*'          =>  'required|max:255|unique_translation:tags',
+                            'section'       =>  'nullable',
 
-                    ];
-                }
-                
-                default: break;
-                    
+                            // used always 
+                            'status'             =>  'required',
+                            'published_on'       =>  'nullable',
+                            'published_on_time'  =>  'nullable',
+                            'created_by'         =>  'nullable',
+                            'updated_by'         =>  'nullable',
+                            'deleted_by'         =>  'nullable',
+                            // end of used always 
+                        ];
+                    }
+                case 'PUT':
+                case 'PATCH': {
+                        return [
+                            'name.*'       => 'required|max:255|unique_translation:tags,name,' . $this->route()->tag,
+                            'section'    => 'nullable',
+
+                            // used always 
+                            'status'             =>  'required',
+                            'published_on'       =>  'nullable',
+                            'published_on_time'  =>  'nullable',
+                            'created_by'         =>  'nullable',
+                            'updated_by'         =>  'nullable',
+                            'deleted_by'         =>  'nullable',
+                            // end of used always 
+
+                        ];
+                    }
+
+                default:
+                    break;
             }
         }
+    }
+
+    public function attributes(): array
+    {
+
+        $attr = [
+            'status'            =>  '( ' . __('panel.status') . ' )',
+        ];
+
+        foreach (config('locales.languages') as $key => $val) {
+            $attr += ['name.' . $key       =>  "( " . __('panel.tag_name')   . ' ' . __('panel.in') . ' ' . __('panel.' . $val['lang'])   . " )",];
+        }
+
+        return $attr;
     }
 }

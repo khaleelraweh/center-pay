@@ -177,7 +177,7 @@
 
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="form-group pt-3 mx-3">
+                            <div class="form-group pt-3">
                                 <button type="submit" name="submit" class="btn btn-primary">
                                     {{ __('panel.update_data') }}
                                 </button>

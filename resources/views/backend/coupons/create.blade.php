@@ -12,18 +12,20 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-plus-square"></i>
-                    إضفافة كوبون جديد
+                    {{ __('panel.add_new_coupon') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
-                        <a href="{{ route('admin.index') }}">
-                            الرئيسية
-                        </a>
-                        <i class="fa fa-solid fa-chevron-left chevron"></i>
+                        <a href="{{ route('admin.index') }}">{{ __('panel.main') }}</a>
+                        @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl')
+                            <i class="fa fa-solid fa-chevron-left chevron"></i>
+                        @else
+                            <i class="fa fa-solid fa-chevron-right chevron"></i>
+                        @endif
                     </li>
                     <li>
                         <a href="{{ route('admin.coupons.index') }}">
-                            كوبونات الخصم
+                            {{ __('panel.show_coupons') }}
                         </a>
                     </li>
                 </ul>
@@ -53,14 +55,19 @@
                 {{-- links of tabs --}}
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link active" id="content-tab" data-toggle="tab" href="#content" role="tab"
-                            aria-controls="content" aria-selected="true">بيانات الشريحة</a>
+                        <button class="nav-link active" id="content-tab" data-bs-toggle="tab" data-bs-target="#content"
+                            type="button" role="tab" aria-controls="content"
+                            aria-selected="true">{{ __('panel.content_tab') }}
+                        </button>
                     </li>
 
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link" id="publish-tab" data-toggle="tab" href="#publish" role="tab"
-                            aria-controls="publish" aria-selected="false">بيانات النشر</a>
+                        <button class="nav-link" id="published-tab" data-bs-toggle="tab" data-bs-target="#published"
+                            type="button" role="tab" aria-controls="published"
+                            aria-selected="false">{{ __('panel.published_tab') }}
+                        </button>
                     </li>
+
                 </ul>
 
                 <div class="tab-content" id="myTabContent">
@@ -71,47 +78,48 @@
                         <div class="row">
                             <div class="col-sm-12 col-md-7">
                                 {{-- code and type field --}}
-                                <div class="row">
-                                    <div class="col-sm-12 col-md-6 pt-4">
-                                        <div class="form-group">
-                                            <label for="code">Code</label>
-                                            <input type="text" id="code" name="code" value="{{ old('code') }}"
-                                                class="form-control">
-                                            @error('code')
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror
+
+                                <div class="row ">
+                                    @foreach (config('locales.languages') as $key => $val)
+                                        <div class="col-sm-12 col-md-<?php echo 12 / count(config('locales.languages')); ?> pt-3">
+                                            <div class="form-group">
+                                                <label for="code[{{ $key }}]">{{ __('panel.coupon_code') }}
+                                                    ({{ $key }})
+                                                </label>
+                                                <input type="text" name="code[{{ $key }}]"
+                                                    id="code[{{ $key }}]" value="{{ old('code.' . $key) }}"
+                                                    class="form-control">
+                                                @error('code.' . $key)
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-sm-12 col-md-6 pt-4">
-                                        <label for="type">نوع الكوبون</label>
-                                        <select name="type" class="form-control">
-                                            <option value="">---</option>
-                                            <option value="fixed" {{ old('type') == 'fixed' ? 'selected' : null }}>قيمة
-                                                ثابته</option>
-                                            <option value="percentage"
-                                                {{ old('type') == 'percentage' ? 'selected' : null }}>نسبة المئوية</option>
-                                        </select>
-                                    </div>
+                                    @endforeach
                                 </div>
 
-                                {{-- value and use_time field --}}
                                 <div class="row">
                                     <div class="col-sm-12 col-md-6 pt-4">
+                                        <label for="type"> {{ __('panel.coupon_type') }}</label>
+                                        <select name="type" class="form-control">
+                                            <option value="">---</option>
+                                            <option value="fixed" {{ old('type') == 'fixed' ? 'selected' : null }}>
+                                                {{ __('panel.static_value') }}
+                                            </option>
+                                            <option value="percentage"
+                                                {{ old('type') == 'percentage' ? 'selected' : null }}>
+                                                {{ __('panel.percentage_value') }}
+                                            </option>
+                                        </select>
+                                        @error('type')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    <div class="col-sm-12 col-md-6 pt-4">
                                         <div class="form-group">
-                                            <label for="value">قيمة التخفيض </label>
+                                            <label for="value"> {{ __('panel.coupon_value') }} </label>
                                             <input type="number" id="value" name="value" value="{{ old('value') }}"
                                                 class="form-control">
                                             @error('value')
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12 col-md-6 pt-4">
-                                        <div class="form-group">
-                                            <label for="use_times">عدد مرات الاستخدام</label>
-                                            <input type="number" id="use_times" name="use_times"
-                                                value="{{ old('use_times') }}" class="form-control">
-                                            @error('use_times')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
@@ -122,7 +130,7 @@
                                 <div class="row">
                                     <div class="col-sm-12 col-md-6 pt-4">
                                         <div class="form-group">
-                                            <label for="start_date">تاريخ البدء</label>
+                                            <label for="start_date"> {{ __('panel.coupon_start_date') }} </label>
                                             <input type="text" id="start_date" name="start_date"
                                                 value="{{ old('start_date', now()->format('Y-m-d')) }}"
                                                 class="form-control">
@@ -133,7 +141,7 @@
                                     </div>
                                     <div class="col-sm-12 col-md-6 pt-4">
                                         <div class="form-group">
-                                            <label for="expire_date">تاريخ الانتهاء </label>
+                                            <label for="expire_date"> {{ __('panel.coupon_expire_date') }} </label>
                                             <input type="text" id="expire_date" name="expire_date"
                                                 value="{{ old('expire_date',now()->addDay(1)->format('Y-m-d')) }}"
                                                 class="form-control">
@@ -146,9 +154,19 @@
 
                                 {{-- greater than field  --}}
                                 <div class="row">
-                                    <div class="col-sm-12 col-ms-12 pt-4">
+                                    <div class="col-sm-12 col-md-6 pt-4">
                                         <div class="form-group">
-                                            <label for="greater_than">يطبق على تسعيرة اكبر من </label>
+                                            <label for="use_times"> {{ __('panel.use_time') }} </label>
+                                            <input type="number" id="use_times" name="use_times"
+                                                value="{{ old('use_times') }}" class="form-control">
+                                            @error('use_times')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6 pt-4">
+                                        <div class="form-group">
+                                            <label for="greater_than"> {{ __('panel.price_greater_than') }} </label>
                                             <input type="number" id="greater_than" name="greater_than"
                                                 value="{{ old('greater_than') }}" class="form-control">
                                             @error('greater_than')
@@ -162,15 +180,49 @@
                             </div>
                             <div class="col-sm-12 col-md-5">
 
-                                {{-- description row --}}
-                                <div class="row">
-                                    <div class="col-12 pt-4">
-                                        <label for="description">الوصف</label>
-                                        <textarea name="description" rows="10" class="form-control summernote">
-                                            {!! old('description') !!}
-                                        </textarea>
-                                    </div>
+                                {{-- links of tabs --}}
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    @foreach (config('locales.languages') as $key => $val)
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link {{ $loop->index == 0 ? 'active' : '' }}"
+                                                id="{{ $key }}-tab" data-bs-toggle="tab"
+                                                data-bs-target="#{{ $key }}" type="button" role="tab"
+                                                aria-controls="{{ $key }}" aria-selected="true">
+                                                {{ __('panel.coupon_description') }}({{ $key }})
+                                            </button>
+                                        </li>
+                                    @endforeach
+
+                                </ul>
+
+                                <div class="tab-content" id="myTabContent">
+                                    @foreach (config('locales.languages') as $key => $val)
+                                        <div class="tab-pane fade {{ $loop->index == 0 ? 'show active' : '' }}"
+                                            id="{{ $key }}" role="tabpanel"
+                                            aria-labelledby="{{ $key }}">
+
+                                            <div class="row">
+                                                <div class="col-sm-12">
+
+                                                    {{--  description field --}}
+                                                    <div class="row">
+                                                        <div class="col-sm-12 col-md-12 pt-3">
+                                                            <label for="description[{{ $key }}]">
+                                                                {{ __('panel.coupon_description') }}
+                                                                {{ __('panel.in') }} {{ __('panel.' . $key) }}
+                                                            </label>
+                                                            <textarea name="description[{{ $key }}]" rows="10" class="form-control summernote">
+                                                                {!! old('description.' . $key) !!}
+                                                            </textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    @endforeach
                                 </div>
+
 
                             </div>
 
@@ -180,37 +232,12 @@
 
 
                     {{-- Publish Tab --}}
-                    <div class="tab-pane fade" id="publish" role="tabpanel" aria-labelledby="publish-tab">
-                        {{-- status and featured field --}}
-                        <div class="row">
-                            <div class="col-6 pt-4">
-                                <label for="status">الحالة</label>
-                                <select name="status" class="form-control">
-                                    <option value="1" {{ old('status') == '1' ? 'selected' : null }}>مفعل</option>
-                                    <option value="0" {{ old('status') == '0' ? 'selected' : null }}>غير مفعل
-                                    </option>
-                                </select>
-                                @error('status')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                            <div class="col-6 pt-4">
-                                <label for="featured">عرض في المفضلة</label>
-                                <select name="featured" class="form-control">
-                                    <option value="1" {{ old('featured') == '1' ? 'selected' : null }}>نعم</option>
-                                    <option value="0" {{ old('featured') == '0' ? 'selected' : null }}>لا</option>
-                                </select>
-                                @error('featured')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
+                    <div class="tab-pane fade" id="published" role="tabpanel" aria-labelledby="published-tab">
 
-                        {{-- publish_start publish time field --}}
                         <div class="row">
-                            <div class="col-sm-12 col-md-6 pt-4">
+                            <div class="col-sm-12 col-md-12 pt-3">
                                 <div class="form-group">
-                                    <label for="published_on">تاريخ النشر</label>
+                                    <label for="published_on"> {{ __('panel.published_date') }}</label>
                                     <input type="text" id="published_on" name="published_on"
                                         value="{{ old('published_on', now()->format('Y-m-d')) }}" class="form-control">
                                     @error('published_on')
@@ -218,10 +245,12 @@
                                     @enderror
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="col-sm-12 col-md-6 pt-4">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 pt-3">
                                 <div class="form-group">
-                                    <label for="published_on_time">وقت النشر</label>
+                                    <label for="published_on_time"> {{ __('panel.published_time') }}</label>
                                     <input type="text" id="published_on_time" name="published_on_time"
                                         value="{{ old('published_on_time', now()->format('h:m A')) }}"
                                         class="form-control">
@@ -233,20 +262,20 @@
 
                         </div>
 
-
-                        {{-- view_in_main and  tags fields --}}
-                        <div class="row ">
-                            {{-- view_in_main field --}}
-                            <div class="col-md-6 col-sm-12 pt-4">
-                                <label for="view_in_main" class="control-label "><span>عرض في الرئيسية</span><span
-                                        class="require red">*</span></label>
-                                <select name="view_in_main" class="form-control">
-                                    <option value="1" {{ old('view_in_main') == '1' ? 'selected' : null }}>مفعل
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 pt-3">
+                                <label for="status" class="control-label col-md-2 col-sm-12 ">
+                                    <span>{{ __('panel.status') }}</span>
+                                </label>
+                                <select name="status" class="form-control">
+                                    <option value="1" {{ old('status') == '1' ? 'selected' : null }}>
+                                        {{ __('panel.status_active') }}
                                     </option>
-                                    <option value="0" {{ old('view_in_main') == '0' ? 'selected' : null }}>غير مفعل
+                                    <option value="0" {{ old('status') == '0' ? 'selected' : null }}>
+                                        {{ __('panel.status_inactive') }}
                                     </option>
                                 </select>
-                                @error('view_in_main')
+                                @error('status')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
@@ -254,8 +283,14 @@
 
                     </div>
 
-                    <div class="form-group pt-4">
-                        <button type="submit" name="submit" class="btn btn-primary">إنشاء الكوبون</button>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group pt-3 ">
+                                <button type="submit" name="submit" class="btn btn-primary">
+                                    {{ __('panel.save_data') }}
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
 

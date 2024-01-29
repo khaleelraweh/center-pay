@@ -15,15 +15,15 @@ return new class extends Migration
     {
         Schema::create('tags', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('slug')->unique();
-            $table->unsignedBigInteger('section')->default(1);// tag:1= product , 2= card , 3 = blog
+            $table->json('name');
+            $table->json('slug');
+            $table->unsignedBigInteger('section')->default(1); // tag:1= product , 2= card , 3 = blog
 
             // will be use always
             $table->boolean('status')->default(true);
-            $table->dateTime('published_on')->nullable(); 
-            $table->string('created_by')->nullable(); 
-            $table->string('updated_by')->nullable(); 
+            $table->dateTime('published_on')->nullable();
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
             $table->string('deleted_by')->nullable();
             $table->softDeletes();
             $table->timestamps();

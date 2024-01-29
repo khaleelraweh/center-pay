@@ -99,6 +99,53 @@ return [
 
 
 
+    ##############################################################
+
+    // =============  Manage Tags  ===============//
+    'manage_tags'                => 'Manage Tags',
+
+    // --------------- Product  --------------//
+    'show_tags'              => 'Tags',
+    'add_new_tag'                => 'Add New Tag',
+    'edit_existing_tag'          => 'Edit Existing Tag ',
+
+
+    // ........... commons in Tag   ....... //
+    'tag_name'                  => 'Tag Name',
+    'tag_type'                  =>  'Tag Type',
+    'product_tag'               =>  'Product Tag',
+    'card_tag'                  =>  'Card Tag',
+    'blog_tag'                  =>  'Blog Tag',
+
+
+    ##############################################################
+
+    // =============  Manage Coupon  ===============//
+    'manage_coupons'                => 'Manage Coupons',
+
+    // --------------- Coupon  --------------//
+    'show_coupons'              => 'Coupons',
+    'add_new_coupon'                => 'Add New Coupon',
+    'edit_existing_coupon'          => 'Edit Existing Coupon ',
+
+
+    // ........... commons in Coupon   ....... //
+    'coupon_code'                   =>  'Coupon Code',
+    'coupon_type'                   =>  'Coupon Type',
+    'static_value'                  =>  'Static Value',
+    'percentage_value'              =>  'Percentage Value',
+    'coupon_value'                  =>  'Coupon Value',
+    'price_greater_than'            =>  'Price Greater Than',
+    'coupon_start_date'             =>  'Coupon Start Date',
+    'coupon_expire_date'            =>  'Coupon Expire Date',
+    'expiration_date'               =>  'Expiration Date',
+    'use_time'                     =>  'Use Time',
+    'coupon_description'            =>  'Coupon Descrip',
+
+
+
+
+
 
     ##############################################################
 
@@ -114,7 +161,7 @@ return [
     'add_new_content'       => 'Add New Content',
     'yes'                   =>  'Yes',
     'no'                    =>  'No',
-    'description'                       => 'Content',
+    'description'                   => 'Content',
     'image'                         => 'Image',
     'images'                        => 'Images',
     'featured'                      =>  'Featured',

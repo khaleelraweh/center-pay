@@ -4,6 +4,7 @@
 
     {{-- main holder page  --}}
     <div class="card shadow mb-4">
+
         {{-- breadcrumb part  --}}
         <div class="card-header py-3 d-flex justify-content-between">
 
@@ -171,7 +172,7 @@
 
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="form-group pt-3 mx-3">
+                            <div class="form-group pt-3 ">
                                 <button type="submit" name="submit" class="btn btn-primary">
                                     {{ __('panel.save_data') }}
                                 </button>
