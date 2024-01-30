@@ -167,6 +167,27 @@ return [
 
 
     ##############################################################
+
+    // =============  Manage Users  ===============//
+    'manage_customer_addresses'              => 'Manage Customer Addresses',
+
+    // --------------- Customer Address  --------------//
+    'show_customer_addresses'               => 'Customer Addresses',
+    'add_new_customer_address'             => 'Add New Customer Address',
+    'edit_existing_customer_address'       => 'Edit Existing Customer Address',
+
+
+    // ........... commons in Customer address   ....... //
+    'default'       =>  'Default',
+    'shipping_info' =>  'Shipping Info',
+    'shipping_address_title'    =>  'Address Title',
+    'location'      =>  'Location',
+    'zip_code'      =>  'Zip Code',
+    'po_box'        =>  'Po Box',
+
+
+
+    ##############################################################
     // =============  Manage Orders  ===============//
     'manage_orders'              => 'Manage Orders',
 
