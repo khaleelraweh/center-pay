@@ -18,10 +18,11 @@ class NewsSeeder extends Seeder
     public function run()
     {
         $faker = Factory::create('ar_JO');
-        for( $i = 1; $i <= 3; $i++ ){
+        for ($i = 1; $i <= 3; $i++) {
             News::create([
-                'name'          =>  $faker->realTextBetween(10,12),
-                'description'   =>  $faker->realText(50),
+                'title'         =>  ['ar' => $faker->realTextBetween(10, 12), 'en' => $faker->realTextBetween(10, 12), 'ca' => $faker->realTextBetween(10, 12)],
+                'description'   =>  ['ar' => $faker->realText(50), 'en' => $faker->realText(50), 'ca' => $faker->realText(50)],
+                'created_by'    =>  'admin',
                 'published_on'  =>  Carbon::now(),
                 'status'        =>  1,
             ]);

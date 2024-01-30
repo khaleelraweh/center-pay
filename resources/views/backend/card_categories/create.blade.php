@@ -29,17 +29,6 @@
                 </ul>
             </div>
 
-            <div class="ml-auto">
-                @ability('admin', 'create_card_categories')
-                    <a href="{{ route('admin.card_categories.create') }}" class="btn btn-primary">
-                        <span class="icon text-white-50">
-                            <i class="fa fa-plus-square"></i>
-                        </span>
-                        <span class="text">{{ __('panel.add_new_card_category') }}</span>
-                    </a>
-                @endability
-            </div>
-
         </div>
 
         {{-- body part  --}}
@@ -143,7 +132,8 @@
                                             <div class="file-loading">
                                                 <input type="file" name="images[]" id="category_image"
                                                     class="file-input-overview " multiple>
-                                                <span class="form-text text-muted">Image width should be 500px x 500px
+                                                <span class="form-text text-muted">Image width should be 500px x
+                                                    500px
                                                 </span>
 
                                             </div>

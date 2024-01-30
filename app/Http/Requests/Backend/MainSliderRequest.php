@@ -49,11 +49,11 @@ class MainSliderRequest extends FormRequest
             case 'PATCH': {
                     return [
                         'title.*'           =>  'required|max:255|unique_translation:sliders,title,' . $this->route()->main_slider,
-                        'description.*'           =>  'nullable',
+                        'description.*'     =>  'nullable',
                         'url'               =>  'nullable',
                         'target'            =>  'required',
                         'section'           =>  'nullable',
-                        'showInfo'      => 'required',
+                        'showInfo'          => 'required',
                         'images'            =>  'nullable',
                         'images.*'          =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
 
@@ -84,7 +84,6 @@ class MainSliderRequest extends FormRequest
             $attr += ['title.' . $key       =>  "( " . __('panel.title')   . ' ' . __('panel.in') . ' ' . __('panel.' . $val['lang'])   . " )",];
             $attr += ['description.' . $key       =>  "( " . __('panel.description')   . ' ' . __('panel.in') . ' ' . __('panel.' . $val['lang'])   . " )",];
         }
-
 
         return $attr;
     }

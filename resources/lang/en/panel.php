@@ -247,7 +247,23 @@ return [
     'edit_existing_question'          => 'Edit Existing Question ',
 
 
-    // ........... commons in Tag   ....... //
+    // ........... commons in questions   ....... //
+
+
+
+    ##############################################################
+
+    // =============  Manage Blogs   ===============//
+    'manage_blogs'                      => 'Manage Blogs',
+
+    // --------------- Blogs   --------------//
+    'show_posts'                        => 'Posts',
+    'add_new_post'                      => 'Add New Post',
+    'edit_existing_post'                => 'Edit Existing Post ',
+
+
+    // ........... commons in blogs   ....... //
+    'blog_tags'         => 'Blog Tags',
 
 
 

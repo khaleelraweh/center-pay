@@ -19,18 +19,21 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-plus-square"></i>
-                    المدونة
+                    {{ __('panel.add_new_post') }}
+
                 </h3>
                 <ul class="breadcrumb">
                     <li>
-                        <a href="{{ route('admin.index') }}">
-                            الرئيسية
-                        </a>
-                        <i class="fa fa-solid fa-chevron-left chevron"></i>
+                        <a href="{{ route('admin.index') }}">{{ __('panel.main') }}</a>
+                        @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl')
+                            <i class="fa fa-solid fa-chevron-left chevron"></i>
+                        @else
+                            <i class="fa fa-solid fa-chevron-right chevron"></i>
+                        @endif
                     </li>
                     <li>
                         <a href="{{ route('admin.news.index') }}">
-                            إدارة المدونة
+                            {{ __('panel.show_posts') }}
                         </a>
                     </li>
                 </ul>
@@ -55,103 +58,128 @@
             <form action="{{ route('admin.news.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
 
+
+
                 {{-- links of tabs --}}
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link active" id="content-tab" data-toggle="tab" href="#content" role="tab"
-                            aria-controls="content" aria-selected="true">بيانات المنشور</a>
-                    </li>
+                    @foreach (config('locales.languages') as $key => $val)
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link {{ $loop->index == 0 ? 'active' : '' }}" id="{{ $key }}-tab"
+                                data-bs-toggle="tab" data-bs-target="#{{ $key }}" type="button" role="tab"
+                                aria-controls="{{ $key }}" aria-selected="true">
+                                {{ __('panel.content_tab') }}({{ $key }})
+                            </button>
+                        </li>
+                    @endforeach
+
 
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link" id="publish-tab" data-toggle="tab" href="#publish" role="tab"
-                            aria-controls="publish" aria-selected="false">بيانات النشر</a>
+                        <button class="nav-link" id="published-tab" data-bs-toggle="tab" data-bs-target="#published"
+                            type="button" role="tab" aria-controls="published"
+                            aria-selected="false">{{ __('panel.published_tab') }}
+                        </button>
                     </li>
 
                 </ul>
 
                 <div class="tab-content" id="myTabContent">
 
-                    {{-- content tab --}}
-                    <div class="tab-pane fade active show" id="content" role="tabpanel" aria-labelledby="content-tab">
+                    @foreach (config('locales.languages') as $key => $val)
+                        {{-- تاب بيانات المحتوي --}}
+                        <div class="tab-pane fade {{ $loop->index == 0 ? 'show active' : '' }}" id="{{ $key }}"
+                            role="tabpanel" aria-labelledby="{{ $key }}">
 
-                        <div class="row">
+                            <div class="row">
 
-                            {{-- content part  --}}
-                            <div class="col-sm-12 col-md-7">
+                                {{-- البيانات الاساسية --}}
+                                <div class="{{ $loop->index == 0 ? 'col-md-7' : '' }} col-sm-12 ">
 
-                                {{-- name and content content --}}
-                                <div class="row">
-                                    <div class="col-sm-12 col-md-12 pt-3">
-                                        <div class="form-group">
-                                            <label for="name">عنوان المنشور</label>
-                                            <input type="text" id="name" name="name" value="{{ old('name') }}"
-                                                class="form-control">
-                                            @error('name')
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror
+
+                                    {{-- title field --}}
+                                    <div class="row ">
+                                        <div class="col-sm-12 pt-3">
+                                            <div class="form-group">
+                                                <label for="title[{{ $key }}]">
+                                                    {{ __('panel.title') }}
+                                                    {{ __('panel.in') }} {{ __('panel.' . $key) }}
+                                                </label>
+                                                <input type="text" name="title[{{ $key }}]"
+                                                    id="title[{{ $key }}]" value="{{ old('title.' . $key) }}"
+                                                    class="form-control">
+                                                @error('title.' . $key)
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                {{-- description row --}}
-                                <div class="row">
-                                    <div class="col-12 pt-3">
-                                        <label for="description">وصف المنشور</label>
-                                        <textarea name="description" rows="10" class="form-control summernote">
-                                            {!! old('description') !!}
-                                        </textarea>
+                                    {{--  description field --}}
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-12 pt-4">
+                                            <label for="description[{{ $key }}]">
+                                                {{ __('panel.description') }}
+                                                {{ __('panel.in') }} {{ __('panel.' . $key) }}
+                                            </label>
+                                            <textarea name="description[{{ $key }}]" rows="10" class="form-control summernote">
+                                        {!! old('description.' . $key) !!}
+                                    </textarea>
+                                        </div>
                                     </div>
-                                </div>
 
-                                {{--  tags field --}}
-                                <div class="row ">
-                                    {{-- Tags field  --}}
-                                    <div class="col-md-12 col-sm-12 pt-3">
-                                        <label for="tags">الكلمات المفتاحية</label>
-                                        <select name="tags[]" class="form-control select2" multiple="multiple">
-                                            @forelse ($tags as $tag)
-                                                <option value="{{ $tag->id }}"
-                                                    {{ in_array($tag->id, old('tags', [])) ? 'selected' : null }}>
-                                                    {{ $tag->name }}</option>
-                                            @empty
-                                            @endforelse
-                                        </select>
+                                    {{--  tags field --}}
+                                    <div class="row ">
+                                        {{-- Tags field  --}}
+                                        <div
+                                            class="col-md-12 col-sm-12 pt-3 {{ $loop->index == 0 ? 'd-block' : 'd-none' }}">
+                                            <label for="tags">{{ __('panel.blog_tags') }}</label>
+                                            <select name="tags[]" class="form-control select2" multiple="multiple">
+                                                @forelse ($tags as $tag)
+                                                    <option value="{{ $tag->id }}"
+                                                        {{ in_array($tag->id, old('tags', [])) ? 'selected' : null }}>
+                                                        {{ $tag->name }}</option>
+                                                @empty
+                                                @endforelse
+                                            </select>
+                                        </div>
                                     </div>
+
                                 </div>
 
-                            </div>
+                                {{-- مرفق الصورة --}}
+                                <div class="{{ $loop->index == 0 ? 'col-md-5' : 'd-none' }} col-sm-12 ">
 
-                            {{-- image part  --}}
-                            <div class="col-sm-12 col-md-5">
-                                <div class="row pt-3">
-                                    <div class="col-12">
-                                        <label for="images">الصورة/ الصور</label>
-                                        <br>
-                                        <div class="file-loading">
-                                            <input type="file" name="images[]" id="product_images"
-                                                class="file-input-overview" multiple="multiple">
+                                    <div class="row pt-3">
+                                        <div class="col-12">
+                                            <label for="images">
+                                                {{ __('panel.image') }} / {{ __('panel.images') }}
+                                            </label>
+                                            <br>
+                                            <div class="file-loading">
+                                                <input type="file" name="images[]" id="product_images"
+                                                    class="file-input-overview" multiple="multiple">
+
+                                            </div>
                                             @error('images')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
+
                                 </div>
 
                             </div>
 
                         </div>
+                    @endforeach
 
-                    </div>
-
-
-                    {{-- Publish Tab --}}
-                    <div class="tab-pane fade" id="publish" role="tabpanel" aria-labelledby="publish-tab">
+                    {{-- Published Tab --}}
+                    <div class="tab-pane fade" id="published" role="tabpanel" aria-labelledby="published-tab">
 
                         {{-- publish_start publish time field --}}
                         <div class="row">
-                            <div class="col-sm-12 pt-3">
+                            <div class="col-sm-12 col-md-12 pt-4">
                                 <div class="form-group">
-                                    <label for="published_on">تاريخ النشر</label>
+                                    <label for="published_on">{{ __('panel.published_date') }}</label>
                                     <input type="text" id="published_on" name="published_on"
                                         value="{{ old('published_on', now()->format('Y-m-d')) }}" class="form-control">
                                     @error('published_on')
@@ -162,9 +190,9 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-sm-12 pt-3">
+                            <div class="col-sm-12 col-md-12 pt-4">
                                 <div class="form-group">
-                                    <label for="published_on_time">وقت النشر</label>
+                                    <label for="published_on_time">{{ __('panel.published_time') }}</label>
                                     <input type="text" id="published_on_time" name="published_on_time"
                                         value="{{ old('published_on_time', now()->format('h:m A')) }}"
                                         class="form-control">
@@ -176,13 +204,16 @@
 
                         </div>
 
-                        {{-- status --}}
+                        {{-- status field --}}
                         <div class="row">
-                            <div class="col-sm-12 col-md-12 pt-3">
-                                <label for="status">الحالة</label>
+                            <div class="col-sm-12 col-md-12 pt-4">
+                                <label for="status">{{ __('panel.status') }}</label>
                                 <select name="status" class="form-control">
-                                    <option value="1" {{ old('status') == '1' ? 'selected' : null }}>مفعل</option>
-                                    <option value="0" {{ old('status') == '0' ? 'selected' : null }}>غير مفعل
+                                    <option value="1" {{ old('status') == '1' ? 'selected' : null }}>
+                                        {{ __('panel.status_active') }}
+                                    </option>
+                                    <option value="0" {{ old('status') == '0' ? 'selected' : null }}>
+                                        {{ __('panel.status_inactive') }}
                                     </option>
                                 </select>
                                 @error('status')
@@ -193,9 +224,12 @@
 
                     </div>
 
-                    <div class="form-group pt-3">
-                        <button type="submit" name="submit" class="btn btn-primary">حفظ المنشور</button>
+                    {{-- submit part --}}
+                    <div class="form-group pt-4">
+                        <button type="submit" name="submit" class="btn btn-primary">
+                            {{ __('panel.save_data') }}</button>
                     </div>
+
                 </div>
 
             </form>
