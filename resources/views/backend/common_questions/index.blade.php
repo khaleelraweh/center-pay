@@ -7,17 +7,19 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-folder"></i>
-                    الاسئلة الشائعة
+                    {{ __('panel.manage_questions') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
-                        <a href="{{ route('admin.index') }}">
-                            الرئيسية
-                        </a>
-                        <i class="fa fa-solid fa-chevron-left chevron"></i>
+                        <a href="{{ route('admin.index') }}">{{ __('panel.main') }}</a>
+                        @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl')
+                            <i class="fa fa-solid fa-chevron-left chevron"></i>
+                        @else
+                            <i class="fa fa-solid fa-chevron-right chevron"></i>
+                        @endif
                     </li>
                     <li>
-                        إدارة الاسئلة الشائعة
+                        {{ __('panel.show_questions') }}
                     </li>
                 </ul>
             </div>
@@ -28,76 +30,77 @@
                         <span class="icon text-white-50">
                             <i class="fa fa-plus-square"></i>
                         </span>
-                        <span class="text">إضافة محتوى جديد</span>
+                        <span class="text">{{ __('panel.add_new_question') }}</span>
                     </a>
                 @endability
             </div>
 
         </div>
 
-        {{-- filter form part  --}}
+        <div class="card-body">
 
-        @include('backend.common_questions.filter.filter')
+            {{-- filter form part  --}}
+            @include('backend.common_questions.filter.filter')
 
-        {{-- table part --}}
-        <div class="table-responsive">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>العنوان</th>
-                        <th>الكاتب</th>
-                        <th>حالة السؤال </th>
-                        <th>تاريخ النشر </th>
-                        <th>تاريخ الانشاء </th>
-                        <th class="text-center" style="width:30px;">الاعدادات</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @forelse ($common_questions as $question)
+            {{-- table part --}}
+            <div class="table-responsive">
+                <table class="table table-hover table-striped table-bordered dt-responsive nowrap"
+                    style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                    <thead>
                         <tr>
-                            <td>
-                                {{ Str::limit($question->title, 50) }}
-                            </td>
-                            <td>{{ $question->created_by }}</td>
-                            <td>{{ $question->status() }}</td>
-                            <td>{{ $question->published_on->format('Y-m-d h:i a') ?? '-' }}</td>
-                            <td>{{ $question->created_at->format('Y-m-d h:i a') }}</td>
-                            <td>
-                                <div class="btn-group btn-group-sm">
-                                    <a href="{{ route('admin.common_questions.edit', $question->id) }}"
-                                        class="btn btn-primary">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
-                                    <a href="javascript:void(0);"
-                                        onclick=" if( confirm('Are you sure to delete this record?') ){document.getElementById('delete-question-{{ $question->id }}').submit();}else{return false;}"
-                                        class="btn btn-danger">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
+                            <th>{{ __('panel.title') }}</th>
+                            <th>{{ __('panel.author') }}</th>
+                            <th> {{ __('panel.status') }} </th>
+                            <th> {{ __('panel.created_at') }} </th>
+                            <th class="text-center" style="width:30px;">{{ __('panel.actions') }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse ($common_questions as $question)
+                            <tr>
+                                <td>
+                                    {{ Str::limit($question->title, 50) }}
+                                </td>
+                                <td>{{ $question->created_by }}</td>
+                                <td>{{ $question->status() }}</td>
+                                <td>{{ $question->created_at->format('Y-m-d h:i a') }}</td>
+                                <td>
+                                    <div class="btn-group btn-group-sm">
+                                        <a href="{{ route('admin.common_questions.edit', $question->id) }}"
+                                            class="btn btn-primary">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                        <a href="javascript:void(0);"
+                                            onclick=" if( confirm('{{ __('panel.confirm_delete_message') }}') ){document.getElementById('delete-question-{{ $question->id }}').submit();}else{return false;}"
+                                            class="btn btn-danger">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </div>
+                                    <form action="{{ route('admin.common_questions.destroy', $question->id) }}"
+                                        method="post" class="d-none" id="delete-question-{{ $question->id }}">
+                                        @csrf
+                                        @method('DELETE')
+                                    </form>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="5" class="text-center">{{ __('panel.no_found_item') }}</td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="5">
+                                <div class="float-right">
+                                    {!! $common_questions->appends(request()->all())->links() !!}
                                 </div>
-                                <form action="{{ route('admin.common_questions.destroy', $question->id) }}" method="post"
-                                    class="d-none" id="delete-question-{{ $question->id }}">
-                                    @csrf
-                                    @method('DELETE')
-                                </form>
                             </td>
                         </tr>
-                    @empty
-                        <tr>
-                            <td colspan="6" class="text-center">No questions found</td>
-                        </tr>
-                    @endforelse
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="6">
-                            <div class="float-right">
-                                {!! $common_questions->appends(request()->all())->links() !!}
-                            </div>
-                        </td>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
+                    </tfoot>
+                </table>
+            </div>
 
+        </div>
     </div>
 @endsection

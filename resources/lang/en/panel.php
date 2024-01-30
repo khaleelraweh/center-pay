@@ -104,7 +104,7 @@ return [
     // =============  Manage Tags  ===============//
     'manage_tags'                => 'Manage Tags',
 
-    // --------------- Product  --------------//
+    // --------------- Tag  --------------//
     'show_tags'              => 'Tags',
     'add_new_tag'                => 'Add New Tag',
     'edit_existing_tag'          => 'Edit Existing Tag ',
@@ -213,6 +213,21 @@ return [
     'order_detail'                      => 'Order Details',
     'order_product_name'                =>  'Product Name',
     'order_qty'                         =>  'Quantity',
+
+
+    ##############################################################
+
+    // =============  Manage Common Questions   ===============//
+    'manage_questions'                => 'Manage Questions',
+
+    // --------------- Common Questions  --------------//
+    'show_questions'              => 'Questions',
+    'add_new_question'                => 'Add New Question',
+    'edit_existing_question'          => 'Edit Existing Question ',
+
+
+    // ........... commons in Tag   ....... //
+
 
 
 

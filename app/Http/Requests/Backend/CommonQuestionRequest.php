@@ -24,46 +24,44 @@ class CommonQuestionRequest extends FormRequest
     public function rules()
     {
         switch ($this->method()) {
-            case 'POST':
-            {
-                return [
-                'title'          => 'required|unique:common_questions',
-                'content'       => 'required',
+            case 'POST': {
+                    return [
+                        'title.*'             => 'required|unique_translation:common_questions',
+                        'description.*'       => 'required',
 
-                // used always 
-                'status'             =>  'required',
-                'published_on'       =>  'nullable',
-                'published_on_time'  =>  'nullable',
-                'views'              =>  'nullable',
-                'created_by'         =>  'nullable',
-                'updated_by'         =>  'nullable',
-                'deleted_by'         =>  'nullable',
-                // end of used always 
-
-                ];
-            }
-            case 'PUT':
-            case 'PATCH':
-            {
-                return [
-                    'title'         => 'required|max:255|unique:common_questions,title,'.$this->route()->common_question->id,
-                    'content'          => 'required',
-                    
-                    // used always 
-                    'status'             =>  'required',
-                    'published_on'       =>  'nullable',
-                    'published_on_time'  =>  'nullable',
-                    'views'              =>  'nullable',
-                    'created_by'         =>  'nullable',
-                    'updated_by'         =>  'nullable',
-                    'deleted_by'         =>  'nullable',
-                    // end of used always 
+                        // used always 
+                        'status'             =>  'required',
+                        'published_on'       =>  'nullable',
+                        'published_on_time'  =>  'nullable',
+                        'views'              =>  'nullable',
+                        'created_by'         =>  'nullable',
+                        'updated_by'         =>  'nullable',
+                        'deleted_by'         =>  'nullable',
+                        // end of used always 
 
                     ];
-            }
-            
-            default: break;
-                
+                }
+            case 'PUT':
+            case 'PATCH': {
+                    return [
+                        'title.*'         => 'required|max:255|unique_translation:common_questions,title,' . $this->route()->common_question,
+                        'description.*'          => 'required',
+
+                        // used always 
+                        'status'             =>  'required',
+                        'published_on'       =>  'nullable',
+                        'published_on_time'  =>  'nullable',
+                        'views'              =>  'nullable',
+                        'created_by'         =>  'nullable',
+                        'updated_by'         =>  'nullable',
+                        'deleted_by'         =>  'nullable',
+                        // end of used always 
+
+                    ];
+                }
+
+            default:
+                break;
         }
     }
 }

@@ -15,15 +15,16 @@ return new class extends Migration
     {
         Schema::create('common_questions', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('content');
+            $table->json('title');
+            $table->json('slug');
+            $table->json('description');
 
             // will be use always
             $table->boolean('status')->default(true);
-            $table->dateTime('published_on')->nullable(); 
-            $table->unsignedBigInteger('views')->default(0); 
-            $table->string('created_by')->nullable()->default('admin'); 
-            $table->string('updated_by')->nullable(); 
+            $table->dateTime('published_on')->nullable();
+            $table->unsignedBigInteger('views')->default(0);
+            $table->string('created_by')->nullable()->default('admin');
+            $table->string('updated_by')->nullable();
             $table->string('deleted_by')->nullable();
             $table->softDeletes();
             $table->timestamps();
