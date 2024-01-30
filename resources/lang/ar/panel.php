@@ -184,6 +184,57 @@ return [
 
 
     ##############################################################
+    // =============  Manage Orders  ===============//
+    'manage_orders'              => 'إدارة الطلبات',
+
+    // ---------------  Orders  --------------//
+    'show_orders'               => 'الطلبات',
+    'add_new_order'             => 'إضافة طلب جديد',
+    'edit_existing_order'       => 'التعديل علي بيانات الطلب ',
+
+    // ........... commons in Orders  ....... //
+    'ref_id'        =>  'رقم المرجع',
+    'payment_method'    =>  'طريقة الدفع',
+
+    //............. Order Status .............//
+    'order_status'              =>      'حالة الطلب',
+    'order_choose_appropriate_event'  =>      'اختر الحدث المناسب',
+    'order_new_order'           =>      'طلب جديد',
+    'order_paid'                =>      'تم الدفع',
+    'order_under_process'       =>      'تحت المعالجة',
+    'order_finished'            =>      'تم الانتهائ من الطلب',
+    'order_rejected'            =>      'مرفوض',
+    'order_canceled'            =>      'الغيت',
+    'order_refund_requested'    =>      'استرداد الطلب',
+    'order_returned_order'      =>      'تم الاسترداد',
+    'order_refunded'            =>      'تم إعادة المنتج',
+
+    //...............  order payment info ...............//
+    'order_subtotal'        =>  'الإجمالي',
+    'order_discount_code'   =>  'كود الخصم',
+    'order_discount'        =>  'قيمة الخصم',
+    'order_shipping'        =>  'خدمة التوصيل',
+    'order_tax'             =>  'الضريبة',
+    'order_amount'          =>  'الإجمالي الكلي',
+
+
+    // ............... Operations of demand (order process) ....................//
+    'order_operations_on_demand'              =>  'العمليات على الحدث',
+    'order_event_name'                  =>  'إسم الحدث',
+    'order_payment_method'              =>  'طريقة الدفع',
+    'order_event_number'                =>  'رقم الحدث',
+    'order_payment_result'              =>  'ناتج الدفع',
+    'order_event_created_at'            =>  'تاريخ الحدث',
+
+
+    // ............... Order Details .................................//
+    'order_detail'                      => 'تفاصيل الطلب',
+    'order_product_name'                =>  'إسم المنتج',
+    'order_qty'                         =>  'الكمية',
+
+
+
+    ##############################################################
 
     // ========== ترجمه شائعة في اغلب الاقسام  ==========//
 
@@ -268,6 +319,8 @@ return [
     'confirm_delete_message'    => 'هل انت متاكد من انك تريد حذف هذا السجل !!',
     'no_found_item'             => 'لم يتم العثور على اي عنصر ',
     'user_image_size'           => 'حجم الصورة 500px * 500px لافضل اداء',
+    'no_event_happened_yet'     =>  'لم يتم تطبيق حدث على هذا الطلب الى الان',
+
 
 
 

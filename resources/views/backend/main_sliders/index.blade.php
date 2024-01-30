@@ -40,6 +40,7 @@
         </div>
 
         <div class="card-body">
+
             {{-- filter form part  --}}
             @include('backend.main_sliders.filter.filter')
 

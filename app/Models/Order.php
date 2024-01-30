@@ -38,9 +38,9 @@ class Order extends Model
             'shipping_companies.code'       =>  10,
         ],
         'joins' => [
-            'users'  =>  ['users.id' ,'orders.user_id'],
-            'user_addresses'  =>  ['user_addresses.id' ,'orders.user_address_id'],
-            'shipping_companies'  =>  ['shipping_companies.id' ,'orders.shipping_company_id'],
+            'users'  =>  ['users.id', 'orders.user_id'],
+            'user_addresses'  =>  ['user_addresses.id', 'orders.user_address_id'],
+            'shipping_companies'  =>  ['shipping_companies.id', 'orders.shipping_company_id'],
         ],
     ];
 
@@ -53,73 +53,116 @@ class Order extends Model
     const CANCELED = 5;
     const REFUNDED_REQUEST = 6;
     const RETURNED = 7;
-    const REFUNDED = 8;  
-    
-  
-    
+    const REFUNDED = 8;
+
+
+
 
     // used to check currency balue if USD means will return $ instead of USD
-    public function currency(): string {
-        
+    public function currency(): string
+    {
+
         return $this->currency == 'USD' ? '$' : $this->currency;
     }
 
-    public function user(): BelongsTo{
+    public function user(): BelongsTo
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function user_address(): BelongsTo{
+    public function user_address(): BelongsTo
+    {
         return $this->belongsTo(UserAddress::class);
-    } 
+    }
 
-    public function products(): BelongsToMany{
+    public function products(): BelongsToMany
+    {
         return $this->belongsToMany(Product::class)->withPivot('quantity');
     }
 
-    public function transactions():HasMany {
+    public function transactions(): HasMany
+    {
         return $this->hasMany(OrderTransaction::class);
     }
 
-    public function payment_method():BelongsTo{
+    public function payment_method(): BelongsTo
+    {
         return $this->belongsTo(PaymentMethod::class);
     }
 
-    public function shipping_company():BelongsTo{
+    public function shipping_company(): BelongsTo
+    {
         return $this->belongsTo(ShippingCompany::class);
     }
 
-    public function status($transaction_number = null){
+    public function status($transaction_number = null)
+    {
 
         $transaction = $transaction_number != '' ? $transaction_number : $this->order_status;
 
         switch ($transaction) {
-            case 0: $result = 'New order'; break;
-            case 1: $result = 'Paid'; break;
-            case 2: $result = 'Under process'; break;
-            case 3: $result = 'Finished'; break;
-            case 4: $result = 'Rejected'; break;
-            case 5: $result = 'Canceled'; break;
-            case 6: $result = 'Refund requested'; break;
-            case 7: $result = 'Returned order'; break;
-            case 8: $result = 'Refunded'; break;
-
+            case 0:
+                $result = __('panel.order_new_order');
+                break;
+            case 1:
+                $result = __('panel.order_paid');
+                break;
+            case 2:
+                $result = __('panel.order_under_process');
+                break;
+            case 3:
+                $result = __('panel.order_finished');
+                break;
+            case 4:
+                $result = __('panel.order_rejected');
+                break;
+            case 5:
+                $result = __('panel.order_canceled');
+                break;
+            case 6:
+                $result = __('panel.order_refund_requested');
+                break;
+            case 7:
+                $result = __('panel.order_returned_order');
+                break;
+            case 8:
+                $result = __('panel.order_refunded');
+                break;
         }
         return $result;
     }
 
-    public function statusWithLabel(){
+    public function statusWithLabel()
+    {
 
         switch ($this->order_status) {
-            case 0: $result = '<label class="badge bg-success text-light"> طلب جديد </label>'; break;
-            case 1: $result = '<label class="badge bg-warning text-light"> تم الدفع </label>'; break;
-            case 2: $result = '<label class="badge bg-warning text-light"> تحت المعالجة </label>'; break;
-            case 3: $result = '<label class="badge bg-primary text-light"> منتهي </label>'; break;
-            case 4: $result = '<label class="badge bg-danger text-light"> مرفوض </label>'; break;
-            case 5: $result = '<label class="badge bg-dark text-light"> ملغي </label>'; break;
-            case 6: $result = '<label class="badge bg-dark text-light"> طلب استرداد </label>'; break;
-            case 7: $result = '<label class="badge bg-info text-dark"> تم الاسترداد  </label>'; break;
-            case 8: $result = '<label class="badge bg-dark text-light"> تمت الاعادة </label>'; break;
-
+            case 0:
+                $result = '<label class="badge bg-success text-light">' .  __('panel.order_new_order')  . '</label>';
+                break;
+            case 1:
+                $result = '<label class="badge bg-warning text-light">' . __('panel.order_paid') . '</label>';
+                break;
+            case 2:
+                $result = '<label class="badge bg-warning text-light">' .  __('panel.order_under_process') . '</label>';
+                break;
+            case 3:
+                $result = '<label class="badge bg-primary text-light">' . __('panel.order_finished') . '</label>';
+                break;
+            case 4:
+                $result = '<label class="badge bg-danger text-light">' . __('panel.order_rejected') . '</label>';
+                break;
+            case 5:
+                $result = '<label class="badge bg-dark text-light">' . __('panel.order_canceled') . '</label>';
+                break;
+            case 6:
+                $result = '<label class="badge bg-dark text-light">' . __('panel.order_refund_requested')  . '</label>';
+                break;
+            case 7:
+                $result = '<label class="badge bg-info text-dark">' .  __('panel.order_returned_order')  . '</label>';
+                break;
+            case 8:
+                $result = '<label class="badge bg-dark text-light">' .  __('panel.order_refunded') . '</label>';
+                break;
         }
         return $result;
     }

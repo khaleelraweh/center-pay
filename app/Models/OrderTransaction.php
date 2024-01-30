@@ -21,42 +21,50 @@ class OrderTransaction extends Model
     const REFUNDED_REQUEST = 6;
     const RETURNED = 7;
     const REFUNDED = 8;
- 
 
-    public function order():BelongsTo{
+
+    public function order(): BelongsTo
+    {
         return $this->belongsTo(Order::class);
     }
 
-    public function status($transaction_number = null){
+    public function status($transaction_number = null)
+    {
 
-        $transaction = $transaction_number != '' ? $transaction_number :$this->transaction;
+        $transaction = $transaction_number != '' ? $transaction_number : $this->transaction;
 
-        // switch ($transaction ) {
-        //     case 0: $result = 'New order'; break;
-        //     case 1: $result = 'Paid'; break;
-        //     case 2: $result = 'Under process'; break;
-        //     case 3: $result = 'Finished'; break;
-        //     case 4: $result = 'Rejected'; break;
-        //     case 5: $result = 'Canceled'; break;
-        //     case 6: $result = 'Refund requested'; break;
-        //     case 7: $result = 'Returned order'; break;
-        //     case 8: $result = 'Refunded'; break;
-
-        // }
-
-        switch ($transaction ) {
-            case 0: $result = 'طلب جديد'; break;
-            case 1: $result = 'تم الدفع'; break;
-            case 2: $result = 'تحت المعالجة'; break;
-            case 3: $result = 'انتهي'; break;
-            case 4: $result = 'مرفوض'; break;
-            case 5: $result = 'ملغي'; break;
-            case 6: $result = 'طلب الاستعادة'; break;
-            case 7: $result = 'تم اعادة الطلب'; break;
-            case 8: $result = 'تم استعادة المنتج'; break;
-
+        switch ($transaction) {
+            case 0:
+                $result = __('panel.order_new_order');
+                break;
+            case 1:
+                $result = __('panel.order_paid');
+                break;
+            case 2:
+                $result = __('panel.order_under_process');
+                break;
+            case 3:
+                $result = __('panel.order_finished');
+                break;
+            case 4:
+                $result = __('panel.order_rejected');
+                break;
+            case 5:
+                $result = __('panel.order_canceled');
+                break;
+            case 6:
+                $result = __('panel.order_refund_requested');
+                break;
+            case 7:
+                $result = __('panel.order_returned_order');
+                break;
+            case 8:
+                $result = __('panel.order_refunded');
+                break;
         }
+
+
+
         return $result;
-    } 
-    
+    }
 }

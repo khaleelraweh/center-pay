@@ -165,25 +165,54 @@ return [
     'grant_all_permissions'         =>  'Grant All Permissions',
 
 
+
     ##############################################################
+    // =============  Manage Orders  ===============//
+    'manage_orders'              => 'Manage Orders',
 
-    // =============  Manage Users  ===============//
-    'manage_customer_addresses'              => 'Manage Customer Addresses',
+    // ---------------  Orders  --------------//
+    'show_orders'               => 'Orders',
+    'add_new_order'             => 'Add New Order',
+    'edit_existing_order'       => 'Edit Existing Order ',
 
-    // --------------- Customer Address  --------------//
-    'show_customer_addresses'               => 'Customer Addresses',
-    'add_new_customer_address'             => 'Add New Customer Addresses',
-    'edit_existing_customer_address'       => 'Edit Existing Customer Addresses ',
+    // ........... commons in Orders  ....... //
+    'ref_id'        =>  'Ref No',
+    'payment_method'    =>  'Payment Method',
+
+    //............. Order Status .............//
+    'order_status'              =>      'Order Status',
+    'order_choose_appropriate_event'  =>      'Choose the appropriate event',
+    'order_new_order'           =>      'New Order',
+    'order_paid'                =>      'Paid',
+    'order_under_process'       =>      'Under Process',
+    'order_finished'            =>      'Finished',
+    'order_rejected'            =>      'Rejected',
+    'order_canceled'            =>      'Canceled',
+    'order_refund_requested'    =>      'Refund Requested',
+    'order_returned_order'      =>      'Returned Order',
+    'order_refunded'            =>      'Refunded',
+
+    //...............  order payment info ...............//
+    'order_subtotal'        =>  'Subtotal',
+    'order_discount_code'   =>  'Discount Code',
+    'order_discount'        =>  'Discount',
+    'order_shipping'        =>  'Shipping',
+    'order_tax'             =>  'Tax',
+    'order_amount'          =>  'Amount',
+
+    // ............... Operations of demand (order process) ....................//
+    'order_operations_on_demand'              =>  'Operations on demand',
+    'order_event_name'                  =>  'Event Name',
+    'order_payment_method'              =>  'Payment Method',
+    'order_event_number'                =>  'Event Number',
+    'order_payment_result'              =>  'Payment Result',
+    'order_event_created_at'            =>  'Event Created At',
 
 
-    // ........... commons in Customer address   ....... //
-    'default'       =>  'Default',
-    'shipping_info' =>  'Shipping Info',
-    'shipping_address_title'    =>  'Shipping Address Title',
-    'location'      =>  'Location',
-    'zip_code'      =>  'Zip Code',
-    'po_box'        =>  'Po Box',
-
+    // ............... Order Details .................................//
+    'order_detail'                      => 'Order Details',
+    'order_product_name'                =>  'Product Name',
+    'order_qty'                         =>  'Quantity',
 
 
 
@@ -266,6 +295,7 @@ return [
     'confirm_delete_message'    => 'Are you sure you want to delete this !!',
     'no_found_item'             => 'No item founded yet',
     'user_image_size'           => 'Image width should be 500px * 500px for best show',
+    'no_event_happened_yet'     =>  'No Event Happened Yet',
 
 
     // ================ Validations ======================//

@@ -8,18 +8,20 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-edit"></i>
-                    تعديل حالة الطلب للمرجع : <small>({{ $order->ref_id }})</small>
+                    {{ __('panel.edit_existing_order') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
-                        <a href="{{ route('admin.index') }}">
-                            الرئيسية
-                        </a>
-                        <i class="fa fa-solid fa-chevron-left chevron"></i>
+                        <a href="{{ route('admin.index') }}">{{ __('panel.main') }}</a>
+                        @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl')
+                            <i class="fa fa-solid fa-chevron-left chevron"></i>
+                        @else
+                            <i class="fa fa-solid fa-chevron-right chevron"></i>
+                        @endif
                     </li>
                     <li>
                         <a href="{{ route('admin.orders.index') }}">
-                            إدارة الطلبات
+                            {{ __('panel.show_orders') }}
                         </a>
                     </li>
                 </ul>
@@ -33,12 +35,12 @@
                         <label class="sr-only" for="inlineFormInputGroupOrderStatus">Username</label>
                         <div class="input-group">
                             <div class="input-group-prepend">
-                                <div class="input-group-text">حالة الطلب</div>
+                                <div class="input-group-text">{{ __('panel.order_status') }}</div>
                             </div>
                             <select name="order_status" style="outline-style:none;" onchange="this.form.submit()"
                                 class="form-control">
 
-                                <option value="">إختر الحدث المناسب </option>
+                                <option value=""> {{ __('panel.order_choose_appropriate_event') }} </option>
                                 @foreach ($order_status_array as $key => $value)
                                     <option value="{{ $key }}"> {{ $value }}</option>
                                 @endforeach
@@ -59,11 +61,11 @@
                     <table class="table table-hover">
                         <tbody>
                             <tr>
-                                <th>مرجع الطلب</th>
+                                <th>{{ __('panel.ref_id') }}</th>
                                 <td>{{ $order->ref_id }}</td>
                             </tr>
                             <tr>
-                                <th>العميل</th>
+                                <th>{{ __('panel.customer') }}</th>
                                 <td>
                                     <a href="{{ route('admin.customers.show', $order->user_id) }}">
                                         {{ $order->user->full_name }}
@@ -77,11 +79,11 @@
                                 {{-- <td>{{ $order->shipping_company->name . '(' . $order->shipping_company->code . ')' }}</td> --}}
                             </tr>
                             <tr>
-                                <th>تاريخ الانشاء </th>
+                                <th> {{ __('panel.created_at') }} </th>
                                 <td>{{ $order->created_at->format('Y-m-d h:i a') }}</td>
                             </tr>
                             <tr>
-                                <th>حالة الطلب</th>
+                                <th> {{ __('panel.order_status') }}</th>
                                 <td>{!! $order->statusWithLabel() !!}</td>
                             </tr>
                         </tbody>
@@ -93,27 +95,27 @@
                     <table class="table table-hover">
                         <tbody>
                             <tr>
-                                <th>المجموع</th>
+                                <th>{{ __('panel.order_subtotal') }}</th>
                                 <td>{{ $order->currency() . $order->subtotal }}</td>
                             </tr>
                             <tr>
-                                <th>كود الخصم </th>
+                                <th> {{ __('panel.order_discount_code') }} </th>
                                 <td>{{ $order->discount_code }}</td>
                             </tr>
                             <tr>
-                                <th>قيمة الخصم</th>
+                                <th>{{ __('panel.order_discount') }} </th>
                                 <td>{{ $order->currency() . $order->discount }}</td>
                             </tr>
                             <tr>
-                                <th>خدمة التوصيل</th>
+                                <th>{{ __('panel.order_shipping') }}</th>
                                 <td>{{ $order->currency() . $order->shipping }}</td>
                             </tr>
                             <tr>
-                                <th>الضرائب</th>
+                                <th>{{ __('panel.order_tax') }}</th>
                                 <td>{{ $order->currency() . $order->tax }}</td>
                             </tr>
                             <tr>
-                                <th>الاجمالي الكلي</th>
+                                <th>{{ __('panel.order_amount') }}</th>
                                 <td>{{ $order->currency() . $order->total }}</td>
                             </tr>
                         </tbody>
@@ -124,18 +126,18 @@
     </div>
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">العمليات على الطلب</h6>
+            <h6 class="m-0 font-weight-bold text-primary">{{ __('panel.order_operations_on_demand') }}</h6>
         </div>
 
         <div class="table-responsive">
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>إسم الحدث</th>
-                        <th>طريقة الدفع</th>
-                        <th class="d-none d-sm-table-cell">رقم الحدث</th>
-                        <th>نتيجة الدفع</th>
-                        <th>تاريخ الحدث</th>
+                        <th>{{ __('panel.order_event_name') }}</th>
+                        <th> {{ __('panel.order_payment_method') }}</th>
+                        <th class="d-none d-sm-table-cell"> {{ __('panel.order_event_number') }}</th>
+                        <th> {{ __('panel.order_payment_result') }}</th>
+                        <th> {{ __('panel.order_event_created_at') }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -149,7 +151,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="5">لم يحدث اي حدث على هذا الطلب </td>
+                            <td colspan="5"> {{ __('panel.no_event_happened_yet') }} </td>
                         </tr>
                     @endforelse
                 </tbody>
@@ -159,21 +161,23 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">التفاصيل</h6>
+            <h6 class="m-0 font-weight-bold text-primary">{{ __('panel.order_detail') }}</h6>
         </div>
 
         <div class="table-responsive">
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>اسم المنتج</th>
-                        <th>الكمية</th>
+                        <th> {{ __('panel.order_product_name') }}</th>
+                        <th>{{ __('panel.order_qty') }}</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($order->products as $product)
                         <tr>
-                            <td><a href="{{ route('admin.products.show', $product->id) }}">{{ $product->name }}</a></td>
+                            <td><a
+                                    href="{{ route('admin.products.show', $product->id) }}">{{ $product->product_name }}</a>
+                            </td>
                             <td>{{ $product->pivot->quantity }}</td>
                         </tr>
                     @empty
