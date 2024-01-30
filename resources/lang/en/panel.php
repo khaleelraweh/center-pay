@@ -165,6 +165,26 @@ return [
     'grant_all_permissions'         =>  'Grant All Permissions',
 
 
+    ##############################################################
+
+    // =============  Manage Users  ===============//
+    'manage_customer_addresses'              => 'Manage Customer Addresses',
+
+    // --------------- Customer Address  --------------//
+    'show_customer_addresses'               => 'Customer Addresses',
+    'add_new_customer_address'             => 'Add New Customer Addresses',
+    'edit_existing_customer_address'       => 'Edit Existing Customer Addresses ',
+
+
+    // ........... commons in Customer address   ....... //
+    'default'       =>  'Default',
+    'shipping_info' =>  'Shipping Info',
+    'shipping_address_title'    =>  'Shipping Address Title',
+    'location'      =>  'Location',
+    'zip_code'      =>  'Zip Code',
+    'po_box'        =>  'Po Box',
+
+
 
 
     ##############################################################
@@ -177,10 +197,10 @@ return [
     'ca'                    => 'Spanish',
 
     // ============ In all Pages ===================//
-    'main'                  => 'Main',
-    'add_new_content'       => 'Add New Content',
-    'yes'                   =>  'Yes',
-    'no'                    =>  'No',
+    'main'                          => 'Main',
+    'add_new_content'               => 'Add New Content',
+    'yes'                           =>  'Yes',
+    'no'                            =>  'No',
     'description'                   => 'Content',
     'image'                         => 'Image',
     'images'                        => 'Images',
@@ -190,10 +210,17 @@ return [
     'views'                         =>  'Views',
     'email'                         =>  'Email',
     'mobile'                        =>  'Mobile',
+    'customer'                      =>  'Customer',
     'first_name'                    =>  'First Name',
     'last_name'                     =>  'Last Name',
     'user_name'                     =>  'User Name',
     'user_password'                 =>  'User Password',
+
+    'country'                       =>  'Country',
+    'state'                        =>  'State',
+    'city'                          =>  'City',
+    'main_address'                  => 'Main Adress',
+    'optional_address'                  => 'Optional Adress',
 
 
     // ======= display Add and Update Section =======// 
@@ -203,6 +230,8 @@ return [
     'published_tab'         => 'Publish Data',
     'url_tab'               =>  'URLS',
     'price_tab'             => 'Price',
+    'personal_tab'         =>  'Personal Info',
+    'address_tab'           =>  'Shipping Address',
 
     // ------------ Common fileds ------------/
     'main_category'         => 'Main Category',

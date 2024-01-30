@@ -10,18 +10,20 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-plus-square"></i>
-                    إضفافة عنوان جديد
+                    {{ __('panel.add_new_customer_address') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
-                        <a href="{{ route('admin.index') }}">
-                            الرئيسية
-                        </a>
-                        <i class="fa fa-solid fa-chevron-left chevron"></i>
+                        <a href="{{ route('admin.index') }}">{{ __('panel.main') }}</a>
+                        @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl')
+                            <i class="fa fa-solid fa-chevron-left chevron"></i>
+                        @else
+                            <i class="fa fa-solid fa-chevron-right chevron"></i>
+                        @endif
                     </li>
                     <li>
                         <a href="{{ route('admin.customer_addresses.index') }}">
-                            عناوين العملاء
+                            {{ __('panel.show_customer_addresses') }}
                         </a>
                     </li>
                 </ul>
@@ -50,18 +52,27 @@
                 {{-- links of tabs --}}
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link active" id="content-tab" data-toggle="tab" href="#content" role="tab"
-                            aria-controls="content" aria-selected="true">المعلومات الشخصية</a>
+                        <button class="nav-link active " id="content-tab" data-bs-toggle="tab" data-bs-target="#content"
+                            type="button" role="tab" aria-controls="content" aria-selected="true">
+                            {{ __('panel.content_tab') }}
+                        </button>
                     </li>
 
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link " id="address-tab" data-toggle="tab" href="#address" role="tab"
-                            aria-controls="address" aria-selected="false"> معلومات العنوان</a>
+                        <button class="nav-link  " id="address-tab" data-bs-toggle="tab" data-bs-target="#address"
+                            type="button" role="tab" aria-controls="address" aria-selected="true">
+                            {{ __('panel.address_tab') }}
+                        </button>
                     </li>
 
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link" id="publish-tab" data-toggle="tab" href="#publish" role="tab"
-                            aria-controls="publish" aria-selected="false">بيانات النشر</a>
+
+                        <button class="nav-link  " id="published-tab" data-bs-toggle="tab" data-bs-target="#published"
+                            type="button" role="tab" aria-controls="published" aria-selected="true">
+                            {{ __('panel.published_tab') }}
+                        </button>
+
+
                     </li>
 
                 </ul>
@@ -76,7 +87,7 @@
                             {{-- field one  --}}
                             <div class="col-sm-12 col-md-12 pt-4">
                                 <div class="form-group">
-                                    <label for="user_id">العميل</label>
+                                    <label for="user_id">{{ __('panel.customer') }}</label>
                                     <input type="text" class="form-control typeahead" name="customer_name"
                                         id="customer_name"
                                         value="{{ old('customer_name', request()->input('customer_name')) }}">
@@ -95,7 +106,7 @@
                             {{-- field one --}}
                             <div class="col-sm-12 col-md-6 pt-4">
                                 <div class="form-group">
-                                    <label for="first_name">الاسم الاول</label>
+                                    <label for="first_name">{{ __('panel.first_name') }}</label>
                                     <input type="text" name="first_name" value="{{ old('first_name') }}"
                                         class="form-control">
                                     @error('first_name')
@@ -107,7 +118,7 @@
                             {{-- field two  --}}
                             <div class="col-sm-12 col-md-6 pt-4">
                                 <div class="form-group">
-                                    <label for="last_name">الاسم الاخير</label>
+                                    <label for="last_name">{{ __('panel.last_name') }}</label>
                                     <input type="text" name="last_name" value="{{ old('last_name') }}"
                                         class="form-control">
                                     @error('last_name')
@@ -124,7 +135,7 @@
                             {{-- field one  --}}
                             <div class="col-sm-12 col-md-6 pt-4">
                                 <div class="form-group">
-                                    <label for="email">الايميل</label>
+                                    <label for="email">{{ __('panel.email') }}</label>
                                     <input type="text" name="email" value="{{ old('email') }}" class="form-control">
                                     @error('email')
                                         <div class="text-danger">{{ $message }}</div>
@@ -134,7 +145,7 @@
                             {{-- field two --}}
                             <div class="col-sm-12 col-md-6 pt-4">
                                 <div class="form-group">
-                                    <label for="mobile">موبايل</label>
+                                    <label for="mobile">{{ __('panel.mobile') }}</label>
                                     <input type="text" name="mobile" value="{{ old('mobile') }}" class="form-control">
                                     @error('mobile')
                                         <div class="text-danger">{{ $message }}</div>
@@ -155,7 +166,7 @@
                             {{-- field one --}}
                             <div class="col-sm-12 col-md-8 pt-4">
                                 <div class="form-group">
-                                    <label for="address_title">اسم العنوان </label>
+                                    <label for="address_title">{{ __('panel.shipping_address_title') }}</label>
                                     <input type="text" name="address_title" value="{{ old('address_title') }}"
                                         class="form-control">
                                     @error('address_title')
@@ -166,11 +177,13 @@
                             {{-- field two --}}
                             <div class="col-sm-12 col-md-4 pt-4">
                                 <div class="form-group">
-                                    <label for="default_address">العنوان الافتراضي</label>
+                                    <label for="default_address">{{ __('panel.default') }}</label>
                                     <select name="default_address" id="" class="form-control">
-                                        <option value="0" {{ old('default_address') == '0' ? 'selected' : null }}>نعم
+                                        <option value="0" {{ old('default_address') == '0' ? 'selected' : null }}>
+                                            {{ __('panel.yes') }}
                                         </option>
-                                        <option value="1" {{ old('default_address') == '1' ? 'selected' : null }}>لا
+                                        <option value="1" {{ old('default_address') == '1' ? 'selected' : null }}>
+                                            {{ __('panel.no') }}
                                         </option>
                                     </select>
                                     @error('default_address')
@@ -186,7 +199,7 @@
                             {{-- field one --}}
                             <div class="col-sm-12 col-md-4 pt-4">
                                 <div class="form-group">
-                                    <label for="country_id">الدولة</label>
+                                    <label for="country_id">{{ __('panel.country') }}</label>
                                     <select name="country_id" id="country_id" class="form-control">
                                         <option value="">---</option>
                                         @forelse ($countries as $country)
@@ -204,7 +217,7 @@
                             {{-- field two --}}
                             <div class="col-sm-12 col-md-4 pt-4">
                                 <div class="form-group">
-                                    <label for="state_id">المقاطعة/المحافظة</label>
+                                    <label for="state_id">{{ __('panel.state') }}</label>
                                     <select name="state_id" id="state_id" class="form-control">
                                     </select>
                                     @error('state_id')
@@ -215,7 +228,7 @@
                             {{-- field three --}}
                             <div class="col-sm-12 col-md-4 pt-4">
                                 <div class="form-group">
-                                    <label for="city_id">المدينة</label>
+                                    <label for="city_id">{{ __('panel.city') }}</label>
                                     <select name="city_id" id="city_id" class="form-control">
                                     </select>
                                     @error('city_id')
@@ -231,7 +244,7 @@
                             {{-- field one --}}
                             <div class="col-sm-12 col-md-6 pt-4">
                                 <div class="form-group">
-                                    <label for="address">العنوان الاول </label>
+                                    <label for="address">{{ __('panel.main_address') }} </label>
                                     <input type="text" name="address" value="{{ old('address') }}"
                                         class="form-control">
                                     @error('address')
@@ -242,7 +255,7 @@
                             {{-- field two --}}
                             <div class="col-sm-12 col-md-6 pt-4">
                                 <div class="form-group">
-                                    <label for="address2">العنوان البديل </label>
+                                    <label for="address2">{{ __('panel.optional_address') }} </label>
                                     <input type="text" name="address2" value="{{ old('address2') }}"
                                         class="form-control">
                                     @error('address2')
@@ -257,7 +270,7 @@
                         <div class="row">
                             <div class="col-sm-12 col-md-6 pt-4">
                                 <div class="form-group">
-                                    <label for="zip_code">الرمز البريدي</label>
+                                    <label for="zip_code">{{ __('panel.zip_code') }}</label>
                                     <input type="text" name="zip_code" value="{{ old('zip_code') }}"
                                         class="form-control">
                                     @error('zip_code')
@@ -268,7 +281,7 @@
 
                             <div class="col-sm-12 col-md-6 pt-4">
                                 <div class="form-group">
-                                    <label for="po_box">صندوق البريد </label>
+                                    <label for="po_box"> {{ __('panel.po_box') }} </label>
                                     <input type="text" name="po_box" value="{{ old('po_box') }}"
                                         class="form-control">
                                     @error('po_box')
@@ -279,14 +292,14 @@
                         </div>
                     </div>
 
-                    {{-- Publish Tab --}}
-                    <div class="tab-pane fade" id="publish" role="tabpanel" aria-labelledby="publish-tab">
+                    {{-- Published Tab --}}
+                    <div class="tab-pane fade" id="published" role="tabpanel" aria-labelledby="published-tab">
 
                         {{-- publish_start publish time field --}}
                         <div class="row">
-                            <div class="col-sm-12 pt-4">
+                            <div class="col-sm-12 col-md-12 pt-4">
                                 <div class="form-group">
-                                    <label for="published_on">تاريخ النشر</label>
+                                    <label for="published_on">{{ __('panel.published_date') }}</label>
                                     <input type="text" id="published_on" name="published_on"
                                         value="{{ old('published_on', now()->format('Y-m-d')) }}" class="form-control">
                                     @error('published_on')
@@ -297,9 +310,9 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-sm-12 pt-4">
+                            <div class="col-sm-12 col-md-12 pt-4">
                                 <div class="form-group">
-                                    <label for="published_on_time">وقت النشر</label>
+                                    <label for="published_on_time">{{ __('panel.published_time') }}</label>
                                     <input type="text" id="published_on_time" name="published_on_time"
                                         value="{{ old('published_on_time', now()->format('h:m A')) }}"
                                         class="form-control">
@@ -308,15 +321,19 @@
                                     @enderror
                                 </div>
                             </div>
+
                         </div>
 
                         {{-- status and featured field --}}
                         <div class="row">
-                            <div class="col-sm-12 pt-4">
-                                <label for="status">الحالة</label>
+                            <div class="col-sm-12 col-md-12 pt-4">
+                                <label for="status">{{ __('panel.status') }}</label>
                                 <select name="status" class="form-control">
-                                    <option value="1" {{ old('status') == '1' ? 'selected' : null }}>مفعل</option>
-                                    <option value="0" {{ old('status') == '0' ? 'selected' : null }}>غير مفعل
+                                    <option value="1" {{ old('status') == '1' ? 'selected' : null }}>
+                                        {{ __('panel.status_active') }}
+                                    </option>
+                                    <option value="0" {{ old('status') == '0' ? 'selected' : null }}>
+                                        {{ __('panel.status_inactive') }}
                                     </option>
                                 </select>
                                 @error('status')
@@ -329,7 +346,8 @@
 
                     {{-- submit button  --}}
                     <div class="form-group pt-4">
-                        <button type="submit" name="submit" class="btn btn-primary">إضافة عنوان </button>
+                        <button type="submit" name="submit" class="btn btn-primary">
+                            {{ __('panel.save_data') }}</button>
                     </div>
                 </div>
 

@@ -163,6 +163,24 @@ return [
     'grant_all_permissions'         =>  'منح كل الصلاحيات',
 
 
+    ##############################################################
+
+    // =============  Manage Users  ===============//
+    'manage_customer_addresses'              => 'إدارة عناوين العملاء',
+
+    // --------------- Customer Address  --------------//
+    'show_customer_addresses'               => 'عناوين العملاء',
+    'add_new_customer_address'             => 'إضافة عنوان عميل جديد',
+    'edit_existing_customer_address'       => 'التعديل على بيانات  عنوان عميل  ',
+
+
+    // ........... commons in Customer address   ....... //
+    'default'       =>  'الافتراضي',
+    'shipping_info' =>  'معلومات الشحن',
+    'shipping_address_title'    =>  'عنوان الشحن',
+    'location'      =>  'الموقع',
+    'zip_code'      =>  'الرمز البريدي',
+    'po_box'        =>  'الصندوق البريدي',
 
 
     ##############################################################
@@ -188,10 +206,17 @@ return [
     'views'                         =>  'مشاهدات',
     'email'                         =>  'الايميل',
     'mobile'                        =>  'الموبايل',
+    'customer'                      =>  'العميل',
     'first_name'                    =>  'الإسم الاول',
     'last_name'                     =>  'اللقب',
     'user_name'                     =>  'اسم المستخدم',
     'user_password'                 =>  'كلمة المرور',
+
+    'country'                       =>  'الدولة',
+    'state'                         =>  'المحافظة',
+    'city'                          =>  'المدينة',
+    'main_address'                  =>  'العنوان الرئيسي',
+    'optional_address'              => 'عنوان اختياري',
 
 
 
@@ -206,6 +231,8 @@ return [
     'published_tab'                 => 'بيانات النشر',
     'url_tab'                       =>  'الروابط',
     'price_tab'                     => 'التسعيرة',
+    'personal_tab'                 =>  'المعلومات الشخصية',
+    'address_tab'                   =>  'عنوان الشحن',
 
 
 
