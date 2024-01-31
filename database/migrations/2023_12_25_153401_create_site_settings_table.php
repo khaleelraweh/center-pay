@@ -16,20 +16,20 @@ return new class extends Migration
         Schema::create('site_settings', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
-            $table->string('value')->nullable();
-            $table->string('slug')->unique();
+            $table->json('value');
+            $table->json('slug');
             $table->unsignedBigInteger('section')->default(1); // one means it related to any category except cards
 
             // will be use always
             $table->boolean('status')->default(true);
-            $table->dateTime('published_on')->nullable(); 
-            $table->string('created_by')->nullable()->default('admin'); 
-            $table->string('updated_by')->nullable(); 
+            $table->dateTime('published_on')->nullable();
+            $table->string('created_by')->nullable()->default('admin');
+            $table->string('updated_by')->nullable();
             $table->string('deleted_by')->nullable();
             $table->softDeletes();
             $table->timestamps();
             // end of will be use always
-            
+
         });
     }
 
