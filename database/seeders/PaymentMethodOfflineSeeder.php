@@ -30,8 +30,9 @@ class PaymentMethodOfflineSeeder extends Seeder
         $categories = PaymentCategory::whereStatus(true)->pluck('id');
 
         PaymentMethodOffline::create([
-            'method_name'                  => 'Kuraimi Bank',
-            
+            'title'                         => ['ar' => 'بنك الكريمي', 'en' => 'Kuraimi Bank', 'ca' => 'Banco Kuraimi'],
+            'description'                   => ['ar' => $faker->paragraph(), 'en' => $faker->paragraph(), 'ca' => $faker->paragraph()],
+
             // for owner account 
             'owner_account_name'            =>      'Mohammed Hutaif',
             'owner_account_number'          =>      '987654324',
@@ -46,15 +47,16 @@ class PaymentMethodOfflineSeeder extends Seeder
             'customer_account_phone'        =>      '711131459',
             // End for cuatomer account 
 
-            'payment_category_id'           =>      2, 
+            'payment_category_id'           =>      2,
             'status'                        =>      true,
             'published_on'                  =>      Carbon::now(),
             'created_by'                    =>      'admin'
 
         ]);
         PaymentMethodOffline::create([
-            'method_name'                  => 'Tadamon Bank',
-            
+            'title'                         => ['ar' => 'بنك التضامن', 'en' => 'Tadamon Bank', 'ca' => 'Banco Tadamon'],
+            'description'                   => ['ar' => $faker->paragraph(), 'en' => $faker->paragraph(), 'ca' => $faker->paragraph()],
+
             // for owner account 
             'owner_account_name'            =>      'Mohammed Hutaif',
             'owner_account_number'          =>      '123456789',
@@ -69,13 +71,11 @@ class PaymentMethodOfflineSeeder extends Seeder
             'customer_account_phone'        =>      '711131459',
             // End for cuatomer account 
 
-            'payment_category_id'           =>      2, 
+            'payment_category_id'           =>      2,
             'status'                        =>      true,
             'published_on'                  =>      Carbon::now(),
             'created_by'                    =>      'admin'
 
         ]);
-        
-       
     }
 }

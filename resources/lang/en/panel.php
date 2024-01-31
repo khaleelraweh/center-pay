@@ -278,11 +278,26 @@ return [
     'edit_existing_payment_category'    => 'Edit Existing Payment Category ',
 
     // --------------- payment method_locale   --------------//
-    'show_payment_method'                        => 'Payment Methods',
-    'add_new_payment_method'                      => 'Add New Payment Method',
-    'edit_existing_payment_method'                => 'Edit Existing Payment Method ',
+    'show_payment_method'                           => 'Payment Methods',
+    'add_new_payment_method'                        => 'Add New Payment Method',
+    'edit_existing_payment_method'                  => 'Edit Existing Payment Method ',
 
     // ........... commons in payments   ....... //
+    'payment_category_name'                           =>  'Payment Category Name',
+
+    'payment_method_name'                           =>  'Payment Method Name',
+    'payment_method_description'                    =>  'Payment Method Description',
+
+    'owner_account_name'                            =>  'Owner Account Name',
+    'owner_account_number'                          =>  'Owner Account Number',
+    'owner_account_country'                         =>  'Owner Account Country',
+    'owner_account_phone'                           =>  'Owner Account Phone',
+
+    'customer_account_name'                         =>  'Customer Account Name',
+    'customer_account_number'                       =>  'Customer Account Number',
+    'customer_account_country'                      =>  'Customer Account Country',
+    'customer_account_phone'                        =>  'Customer Account Phone',
+
 
 
 
@@ -330,8 +345,10 @@ return [
     'published_tab'         => 'Publish Data',
     'url_tab'               =>  'URLS',
     'price_tab'             => 'Price',
-    'personal_tab'         =>  'Personal Info',
+    'personal_tab'          =>  'Personal Info',
     'address_tab'           =>  'Shipping Address',
+    'owner_account_tab'     =>  'Owner Account',
+    'customer_account_tab'  =>  'Customer Account',
 
     // ------------ Common fileds ------------/
     'main_category'         => 'Main Category',

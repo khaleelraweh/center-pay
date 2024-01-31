@@ -279,7 +279,20 @@ return [
     'edit_existing_payment_method'                => 'التعديل على طريقة الدفع',
 
     // ........... commons in payments   ....... //
+    'payment_category_name'                           =>  'تصنيف طريقة الدفع',
 
+    'payment_method_name'                           =>  'إسم طريقة الدفع',
+    'payment_method_description'                    =>  'شرح طريقة الدفع',
+
+    'owner_account_name'                            =>  'إسم  الحساب',
+    'owner_account_number'                          =>  'رقم  الحساب',
+    'owner_account_country'                         =>  'دولة فتح الحساب',
+    'owner_account_phone'                           =>  'رقم التلفون المرتبط بالحساب',
+
+    'customer_account_name'                         =>  'إسم حساب العميل',
+    'customer_account_number'                       =>  'رقم حساب العميل',
+    'customer_account_country'                      =>  'دولة فتح الحساب',
+    'customer_account_phone'                        =>  'رقم التلفون المرتبط بالحساب',
 
 
 
@@ -332,8 +345,10 @@ return [
     'published_tab'                 => 'بيانات النشر',
     'url_tab'                       =>  'الروابط',
     'price_tab'                     => 'التسعيرة',
-    'personal_tab'                 =>  'المعلومات الشخصية',
+    'personal_tab'                  =>  'المعلومات الشخصية',
     'address_tab'                   =>  'عنوان الشحن',
+    'owner_account_tab'             =>  'حساب مالك الموقع',
+    'customer_account_tab'          =>  'حساب العميل ',
 
 
 
