@@ -80,11 +80,12 @@
                 </ul>
 
                 <div class="tab-content" id="myTabContent">
-                    {{-- Content Tab --}}
 
+                    {{-- Content Tab --}}
                     @foreach (config('locales.languages') as $key => $val)
                         <div class="tab-pane fade {{ $loop->index == 0 ? 'show active' : '' }}" id="{{ $key }}"
                             role="tabpanel" aria-labelledby="{{ $key }}">
+
                             <div class="row">
 
                                 {{-- البيانات الاساسية --}}

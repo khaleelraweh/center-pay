@@ -267,6 +267,25 @@ return [
 
 
 
+    ##############################################################
+
+    // =============  Manage payments   ===============//
+    'manage_payments'                      => 'Manage Payments',
+
+    // --------------- payment categories   --------------//
+    'show_payment_categories'           => 'Payment Categories',
+    'add_new_payment_category'          => 'Add New Payment Category',
+    'edit_existing_payment_category'    => 'Edit Existing Payment Category ',
+
+    // --------------- payment method_locale   --------------//
+    'show_payment_method'                        => 'Payment Methods',
+    'add_new_payment_method'                      => 'Add New Payment Method',
+    'edit_existing_payment_method'                => 'Edit Existing Payment Method ',
+
+    // ........... commons in payments   ....... //
+
+
+
 
     ##############################################################
 

@@ -263,6 +263,24 @@ return [
     'blog_tags'         => 'الكلمات المفتاحية',
 
 
+    ##############################################################
+
+    // =============  Manage payments   ===============//
+    'manage_payments'                      => 'إدارة عمليات الدفع',
+
+    // --------------- payment categories   --------------//
+    'show_payment_categories'           => 'تصنيفات الدفع',
+    'add_new_payment_category'          => 'إضافة تصنيف دقع جديد',
+    'edit_existing_payment_category'    => 'التعديل على تصنيف دقع موجود ',
+
+    // --------------- payment method_locale   --------------//
+    'show_payment_method'                        => 'طرق الدفع',
+    'add_new_payment_method'                      => 'إضافة طريقة دفع جديدة',
+    'edit_existing_payment_method'                => 'التعديل على طريقة الدفع',
+
+    // ........... commons in payments   ....... //
+
+
 
 
 

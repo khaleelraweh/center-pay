@@ -17,11 +17,10 @@ class PaymentCategorySeeder extends Seeder
     public function run()
     {
         $faker = Factory::create();
-        
-        $onlineGateway = PaymentCategory::create(['name_ar' => 'بوابة دفع الكترونية ' ,  'name_en' => 'Online Gateway ' ,   'description_ar' =>  $faker->paragraph()  ,  'description_en' =>  $faker->paragraph()  ,    'status' => true  , 'published_on' => $faker->dateTime()]);
-        $bankTransfer = PaymentCategory::create(['name_ar' => 'حوالة بنكية' ,  'name_en' => 'Bank Transfer ' ,   'description_ar' =>  $faker->paragraph()  ,  'description_en' =>  $faker->paragraph()  ,    'status' => true  , 'published_on' => $faker->dateTime()]);
-        $electronicWallet = PaymentCategory::create(['name_ar' => 'محفظة بنكية' ,  'name_en' => 'ُElectronic Wallet' ,   'description_ar' =>  $faker->paragraph()  ,  'description_en' =>  $faker->paragraph()  ,    'status' => true  , 'published_on' => $faker->dateTime()]);
-        $electronicCard = PaymentCategory::create(['name_ar' => 'بطاقة الكترونية' ,  'name_en' => 'Electronic Card' ,   'description_ar' =>  $faker->paragraph()  ,  'description_en' =>  $faker->paragraph()  ,    'status' => true  , 'published_on' => $faker->dateTime()]);
-       
+
+        $onlineGateway = PaymentCategory::create(['title' => ['ar' => 'الدفع الالكتروني', 'en' => 'Online Payment', 'ca' => 'pago en línea'],   'description' => ['ar' => $faker->paragraph(), 'en' => $faker->paragraph(), 'ca' => $faker->paragraph()], 'created_by' => 'admin', 'status' => true, 'published_on' => $faker->dateTime()]);
+        $bankTransfer = PaymentCategory::create(['title' => ['ar' => 'حوالة بنكية', 'en' => 'Bank Transfer', 'ca' => 'transferencia bancaria'],   'description' => ['ar' => $faker->paragraph(), 'en' => $faker->paragraph(), 'ca' => $faker->paragraph()], 'created_by' => 'admin', 'status' => true, 'published_on' => $faker->dateTime()]);
+        $electronicWallet = PaymentCategory::create(['title' => ['ar' => 'محفظة بنكية', 'en' => 'Electronic Wallet', 'ca' => 'Monedero electrónico'],   'description' => ['ar' => $faker->paragraph(), 'en' => $faker->paragraph(), 'ca' => $faker->paragraph()], 'created_by' => 'admin', 'status' => true, 'published_on' => $faker->dateTime()]);
+        $electronicCard = PaymentCategory::create(['title' => ['ar' => 'بطاقة الكترونية', 'en' => 'Electronic Card', 'ca' => 'Tarjeta electrónica'],   'description' => ['ar' => $faker->paragraph(), 'en' => $faker->paragraph(), 'ca' => $faker->paragraph()], 'created_by' => 'admin', 'status' => true, 'published_on' => $faker->dateTime()]);
     }
 }
