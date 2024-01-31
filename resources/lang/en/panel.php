@@ -299,6 +299,43 @@ return [
     'customer_account_phone'                        =>  'Customer Account Phone',
 
 
+    ##############################################################
+
+    // =============  Manage Site Settings   ===============//
+    'manage_site_settings'                      => 'Manage Site Settings',
+
+    // --------------- Site Information    --------------//
+    'show_site_information'                        => 'Basic Site Information ',
+    'add_new_site_information'                      => 'Add New Site Information',
+    'edit_existing_site_information'                => 'Edit Existing Site Information ',
+
+    // ........... commons in Site Information    ....... //
+    'site_name'                 =>  'Site Name',
+    'site_short_name'           => 'Site Short Name',
+    'site_description'          => 'Site Description',
+    'site_link'                 => 'Site Link',
+    'site_img'                  => 'Site Image',
+
+
+    // --------------- Site contact    --------------//
+    'show_site_contact'                        => ' Site Contact Info ',
+    'add_new_site_contact'                      => 'Add New Site Contact',
+    'edit_existing_site_contact'                => 'Edit Existing Site Contact ',
+
+    // ........... commons in Site contact    ....... //
+    'site_address'                  => 'Site Address',
+    'site_phone'                    => 'Site Phone',
+    'site_mobile'                   => 'Site Mobile',
+    'site_fax'                      => 'Site Fax',
+    'site_po_box'                   => 'Site Po Box',
+    'site_email1'                   => 'Site Main Email',
+    'site_email2'                   => 'Site Secondary Email',
+    'site_workTime'                 => 'Site Work Time',
+
+
+
+
+
 
 
 

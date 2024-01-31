@@ -625,14 +625,6 @@
         'name' => 'English',
         'name_native' => 'English',
       ),
-      'ca' => 
-      array (
-        'lang' => 'ca',
-        'unicode' => 'ca_ES',
-        'rtl_support' => 'ltr',
-        'name' => 'Spanish',
-        'name_native' => 'Española',
-      ),
     ),
   ),
   'logging' => 

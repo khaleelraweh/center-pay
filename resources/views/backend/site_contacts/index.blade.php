@@ -12,17 +12,19 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-folder"></i>
-                    ادارة الموقع
+                    {{ __('panel.manage_site_settings') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
-                        <a href="{{ route('admin.index') }}">
-                            الرئيسية
-                        </a>
-                        <i class="fa fa-solid fa-chevron-left chevron"></i>
+                        <a href="{{ route('admin.index') }}">{{ __('panel.main') }}</a>
+                        @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl')
+                            <i class="fa fa-solid fa-chevron-left chevron"></i>
+                        @else
+                            <i class="fa fa-solid fa-chevron-right chevron"></i>
+                        @endif
                     </li>
                     <li>
-                        إدارة بيانات الإتصال
+                        {{ __('panel.show_site_contact') }}
                     </li>
                 </ul>
             </div>
@@ -33,7 +35,7 @@
                         <span class="icon text-white-50">
                             <i class="fa fa-plus-square"></i>
                         </span>
-                        <span class="text">إضافة محتوى جديد</span>
+                        <span class="text">{{ __('panel.add_new_site_contact') }}</span>
                     </a>
                 @endability
             </div>
@@ -49,7 +51,7 @@
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
                         <a class="nav-link active" id="content-tab" data-toggle="tab" href="#content" role="tab"
-                            aria-controls="content" aria-selected="true">بيانات المحتوي</a>
+                            aria-controls="content" aria-selected="true"> {{ __('panel.content_tab') }} </a>
                     </li>
                 </ul>
 
@@ -65,7 +67,7 @@
                                         ->first();
                                 @endphp
                                 <div class="form-group">
-                                    <label for="{{ $site->name }}">العنوان:</label>
+                                    <label for="{{ $site->name }}"> {{ __('panel.site_address') }} </label>
                                     <input type="text" id="{{ $site->name }}" name="{{ $site->name }}"
                                         value="{{ old($site->name, $site->value) }}" class="form-control"
                                         placeholder="{{ $site->name }}">
@@ -86,7 +88,7 @@
                                         ->first();
                                 @endphp
                                 <div class="form-group">
-                                    <label for="{{ $site->name }}">الهاتف:</label>
+                                    <label for="{{ $site->name }}"> {{ __('panel.site_phone') }} </label>
                                     <input type="text" id="{{ $site->name }}" name="{{ $site->name }}"
                                         value="{{ old($site->name, $site->value) }}" class="form-control"
                                         placeholder="{{ $site->name }}">
@@ -104,7 +106,7 @@
                                         ->first();
                                 @endphp
                                 <div class="form-group">
-                                    <label for="{{ $site->name }}">الموبايل</label>
+                                    <label for="{{ $site->name }}">{{ __('panel.site_mobile') }}</label>
                                     <input type="text" id="{{ $site->name }}" name="{{ $site->name }}"
                                         value="{{ old($site->name, $site->value) }}" class="form-control"
                                         placeholder="{{ $site->name }}">
@@ -126,7 +128,7 @@
                                         ->first();
                                 @endphp
                                 <div class="form-group">
-                                    <label for="{{ $site->name }}">الفاكس </label>
+                                    <label for="{{ $site->name }}"> {{ __('panel.site_fax') }} </label>
                                     <input type="text" id="{{ $site->name }}" name="{{ $site->name }}"
                                         value="{{ old($site->name, $site->value) }}" class="form-control"
                                         placeholder="{{ $site->name }}">
@@ -144,7 +146,7 @@
                                         ->first();
                                 @endphp
                                 <div class="form-group">
-                                    <label for="{{ $site->name }}">صندوق البريد </label>
+                                    <label for="{{ $site->name }}"> {{ __('panel.site_po_box') }} </label>
                                     <input type="text" id="{{ $site->name }}" name="{{ $site->name }}"
                                         value="{{ old($site->name, $site->value) }}" class="form-control"
                                         placeholder="{{ $site->name }}">
@@ -166,7 +168,7 @@
                                         ->first();
                                 @endphp
                                 <div class="form-group">
-                                    <label for="{{ $site->name }}"> البريد الالكتروني:</label>
+                                    <label for="{{ $site->name }}"> {{ __('panel.site_email1') }} </label>
                                     <input type="text" id="{{ $site->name }}" name="{{ $site->name }}"
                                         value="{{ old($site->name, $site->value) }}" class="form-control"
                                         placeholder="{{ $site->name }}">
@@ -184,7 +186,7 @@
                                         ->first();
                                 @endphp
                                 <div class="form-group">
-                                    <label for="{{ $site->name }}"> البريد الالكتروني البديل:</label>
+                                    <label for="{{ $site->name }}"> {{ __('panel.site_email2') }} </label>
                                     <input type="text" id="{{ $site->name }}" name="{{ $site->name }}"
                                         value="{{ old($site->name, $site->value) }}" class="form-control"
                                         placeholder="{{ $site->name }}">
@@ -205,7 +207,7 @@
                                         ->first();
                                 @endphp
                                 <div class="form-group">
-                                    <label for="{{ $site->name }}"> مواعيد العمل:</label>
+                                    <label for="{{ $site->name }}"> {{ __('panel.site_workTime') }} </label>
                                     <input type="text" id="{{ $site->name }}" name="{{ $site->name }}"
                                         value="{{ old($site->name, $site->value) }}" class="form-control"
                                         placeholder="{{ $site->name }}">
@@ -226,7 +228,8 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group pt-3 mx-3">
-                                <button type="submit" name="submit" class="btn btn-primary">تعديل البيانات</button>
+                                <button type="submit" name="submit" class="btn btn-primary"> {{ __('panel.update_data') }}
+                                </button>
                             </div>
                         </div>
                     </div>

@@ -296,6 +296,41 @@ return [
 
 
 
+    ##############################################################
+
+    // =============  Manage Site Settings   ===============//
+    'manage_site_settings'                      => 'إدارة إعدادات الموقع',
+
+    // --------------- Site Information    --------------//
+    'show_site_information'                        => 'بيانات الموقع الاساسية',
+    'add_new_site_information'                      => 'إضافة بيانات للموقع',
+    'edit_existing_site_information'                => 'تعديل بيانات الموقع ',
+
+
+    // ........... commons in Site Information    ....... //
+    'site_name'                 =>  'إسم الموقع',
+    'site_short_name'           => 'الاسم المختصر للموقع',
+    'site_description'          => 'وصف الموقع ',
+    'site_link'                 => 'رابط الموقع',
+    'site_img'                  => 'الصورة الافتراضية للموقع',
+
+
+    // --------------- Site contact    --------------//
+    'show_site_contact'                        => 'معلومات الإتصال باملوقع ',
+    'add_new_site_contact'                      => 'إضافة طريقة اتصال بالموقع',
+    'edit_existing_site_contact'                => 'تعديل بيانات طريقة اتصال ',
+
+    // ........... commons in Site contact    ....... //
+    'site_address'                  => 'عنوان الموقع',
+    'site_phone'                    => 'رقم الموقع الإفتراضي',
+    'site_mobile'                   => 'تلفون الموقع',
+    'site_fax'                      => 'فاكس الموقع',
+    'site_po_box'                   => 'الصندوق البريدي للموقع',
+    'site_email1'                   => 'إيميل الموقع الإفتراضي',
+    'site_email2'                   => 'إيميل الموقع الثانوي',
+    'site_workTime'                 => 'مواعيد العمل',
+
+
 
     ##############################################################
 
