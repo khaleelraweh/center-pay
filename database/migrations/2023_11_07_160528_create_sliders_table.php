@@ -15,9 +15,11 @@ return new class extends Migration
     {
         Schema::create('sliders', function (Blueprint $table) {
             $table->id();
+
             $table->json('title');
             $table->json('slug');
             $table->json('description');
+
             $table->string('url')->nullable();
             $table->string('target')->default('_self');
             $table->unsignedBigInteger('section')->default(1);

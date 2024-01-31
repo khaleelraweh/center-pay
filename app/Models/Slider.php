@@ -23,6 +23,7 @@ class Slider extends Model
     protected $guarded = [];
     public $translatable = ['title', 'slug', 'description'];
 
+
     protected $casts = [
         'start_date' => 'datetime',
         'expire_date' => 'datetime',
@@ -36,6 +37,10 @@ class Slider extends Model
         ]
     ];
 
+
+    /**
+     * Get the options for generating the slug.
+     */
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
