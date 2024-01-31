@@ -333,9 +333,62 @@ return [
     'site_workTime'                 => 'Site Work Time',
 
 
+    // --------------- Site Socail Medail Icon    --------------//
+    'show_site_socail'                         => ' Site Socail Icon ',
+    'add_new_site_socail'                      => 'Add New Site Socail Icon',
+    'edit_existing_site_socail'                => 'Edit Existing Site Socail Icon ',
+
+    // ........... commons in Site Socail Medail Icon    ....... //
 
 
 
+    // --------------- Site Meta Tags   --------------//
+    'show_site_meta_tag'                         => ' Site Meta Tags  ',
+    'add_new_site_meta_tag'                      => 'Add New Site Meta Tags ',
+    'edit_existing_site_meta_tag'                => 'Edit Existing Site Meta Tags  ',
+
+    // ........... commons in Site Meta Tags  Icon    ....... //
+    'site_name_meta'                                    =>  'Site Meta Name',
+    'site_description_meta'                             =>  'Site Meta Description ',
+    'site_link_meta'                                    =>  'Site Meta Link',
+    'site_keywords_meta'                                =>  'Site Meta KeyWords',
+    'site_keywords_meta_message_input'                  =>  'Please Input Meta KeyWords',
+
+    // --------------- Site Payment Method Icon    --------------//
+    'show_site_payment_method_icon'                         => 'Site Payment Method Icon  ',
+    'add_new_site_payment_method_icon'                      => 'Add New Site Payment Method Icon ',
+    'edit_existing_site_payment_method_icon'                => 'Edit Existing Site Payment Method Icon  ',
+
+    // ........... commons in Site Payment Method Icon     ....... //
+    'site_pay_by'                   =>  'Pay By',
+    'site_pay_amazon'               =>  'Amazon',
+    'site_pay_visa_card'            =>  'Visa Card',
+    'site_pay_skrill'               =>  'Skrill',
+    'site_pay_master_card'          =>  'Master_card',
+    'site_pay_paypal'               =>  'Paypal',
+    'site_pay_apple_pay'            =>  'Apple_Pay',
+    'site_pay_klarna'               =>  'Klarna',
+    'site_pay_payoneer'             =>  'Payoneer',
+    'site_pay_bpay'                 =>  'Bpay',
+
+
+    // --------------- Site Counter     --------------//
+    'show_site_counters'              => 'Site Counters  ',
+    'add_new_site_counter'            => 'Add New Site Counter ',
+    'edit_existing_site_counter'      => 'Edit existing Counter',
+
+    // ........... commons in Site Counter     ....... //
+    'site_number_of_items_in'               =>  'Number Of Items In',
+    'site_main_sliders'                     =>  'Main Sliders',
+    'site_advertisor_sliders'               =>  'Advertisor Sliders',
+    'site_card_categories'                  =>  'Card Categories',
+    'site_featured_cards'                   =>  'Featured Cards',
+    'site_random_cards'                     =>  'Random Cards',
+    'site_related_cards'                    =>  'Related Cards',
+    'site_more_like_cards'                  =>  'More Like Cards',
+    'site_posts'                            =>  'Posts',
+    'site_questions'                        =>  'Questions ',
+    'site_more_categories'                  =>  'More Categories',
 
 
 

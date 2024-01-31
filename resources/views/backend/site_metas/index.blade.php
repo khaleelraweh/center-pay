@@ -30,17 +30,19 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-folder"></i>
-                    ادارة الموقع
+                    {{ __('panel.manage_site_settings') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
-                        <a href="{{ route('admin.index') }}">
-                            الرئيسية
-                        </a>
-                        <i class="fa fa-solid fa-chevron-left chevron"></i>
+                        <a href="{{ route('admin.index') }}">{{ __('panel.main') }}</a>
+                        @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl')
+                            <i class="fa fa-solid fa-chevron-left chevron"></i>
+                        @else
+                            <i class="fa fa-solid fa-chevron-right chevron"></i>
+                        @endif
                     </li>
                     <li>
-                        إدارة الكلمات المفتاحية
+                        {{ __('panel.show_site_meta_tag') }}
                     </li>
                 </ul>
             </div>
@@ -51,7 +53,7 @@
                         <span class="icon text-white-50">
                             <i class="fa fa-plus-square"></i>
                         </span>
-                        <span class="text">إضافة محتوى جديد</span>
+                        <span class="text">{{ __('panel.add_new_site_meta_tag') }}</span>
                     </a>
                 @endability
             </div>
@@ -67,7 +69,7 @@
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
                         <a class="nav-link active" id="content-tab" data-toggle="tab" href="#content" role="tab"
-                            aria-controls="content" aria-selected="true">بيانات المحتوي</a>
+                            aria-controls="content" aria-selected="true">{{ __('panel.content_tab') }}</a>
                     </li>
                 </ul>
 
@@ -84,7 +86,7 @@
                                 @endphp
                                 <div class="form-group">
                                     <label for="{{ $site->name }}">
-                                        اسم المتجر
+                                        {{ __('panel.site_name_meta') }}
                                     </label>
                                     <input type="text" id="{{ $site->name }}" name="{{ $site->name }}"
                                         value="{{ old($site->name, $site->value) }}" class="form-control"
@@ -107,7 +109,7 @@
                                 @endphp
                                 <div class="form-group">
                                     <label for="{{ $site->name }}">
-                                        وصف المتجر
+                                        {{ __('panel.site_description_meta') }}
                                     </label>
                                     <input type="text" id="{{ $site->name }}" name="{{ $site->name }}"
                                         value="{{ old($site->name, $site->value) }}" class="form-control"
@@ -130,7 +132,7 @@
                                 @endphp
                                 <div class="form-group">
                                     <label for="{{ $site->name }}">
-                                        رابط المتجر
+                                        {{ __('panel.site_link_meta') }}
                                     </label>
                                     <input type="text" id="{{ $site->name }}" name="{{ $site->name }}"
                                         value="{{ old($site->name, $site->value) }}" class="form-control"
@@ -153,7 +155,7 @@
                                 @endphp
                                 <div class="form-group">
                                     <label for="exist-values">
-                                        كلمات دلالية
+                                        {{ __('panel.site_keywords_meta') }}
                                     </label>
                                     {{-- <input type="text" id="{{ $site->name }}" name="{{ $site->name }}"
                                         value="{{ old($site->name, $site->value) }}" class="form-control"
@@ -161,7 +163,8 @@
 
                                     <input type="text" id="exist-values" class="tagged form-control"
                                         data-removeBtn="true" name="{{ $site->name }}"
-                                        value="{{ old($site->name, $site->value) }}" placeholder="ادخل كلمة دلالية" />
+                                        value="{{ old($site->name, $site->value) }}"
+                                        placeholder="{{ __('panel.site_keywords_meta_message_input') }}" />
 
                                     @error('exist-values')
                                         <span class="text-danger">{{ $message }}</span>
@@ -180,7 +183,8 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group pt-3 mx-3">
-                                <button type="submit" name="submit" class="btn btn-primary">تعديل البيانات</button>
+                                <button type="submit" name="submit" class="btn btn-primary">{{ __('panel.update_data') }}
+                                </button>
                             </div>
                         </div>
                     </div>

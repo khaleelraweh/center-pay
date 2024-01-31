@@ -13,17 +13,19 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-folder"></i>
-                    ادارة الموقع
+                    {{ __('panel.manage_site_settings') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
-                        <a href="{{ route('admin.index') }}">
-                            الرئيسية
-                        </a>
-                        <i class="fa fa-solid fa-chevron-left chevron"></i>
+                        <a href="{{ route('admin.index') }}">{{ __('panel.main') }}</a>
+                        @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl')
+                            <i class="fa fa-solid fa-chevron-left chevron"></i>
+                        @else
+                            <i class="fa fa-solid fa-chevron-right chevron"></i>
+                        @endif
                     </li>
                     <li>
-                        إدارة وسائل التواصل الاجتماعي
+                        {{ __('panel.show_site_socail') }}
                     </li>
                 </ul>
             </div>
@@ -34,7 +36,7 @@
                         <span class="icon text-white-50">
                             <i class="fa fa-plus-square"></i>
                         </span>
-                        <span class="text">إضافة محتوى جديد</span>
+                        <span class="text">{{ __('panel.add_new_site_information') }}</span>
                     </a>
                 @endability
             </div>

@@ -90,7 +90,7 @@ class FrontendController extends Controller
             ->take(
                 SiteSetting::whereNotNull('value')
                     ->pluck('value', 'name')
-                    ->toArray()['site_bogs'] ?? 1
+                    ->toArray()['site_posts'] ?? 1
             )
             ->get();
 

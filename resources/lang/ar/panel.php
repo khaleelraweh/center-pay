@@ -330,6 +330,64 @@ return [
     'site_email2'                   => 'إيميل الموقع الثانوي',
     'site_workTime'                 => 'مواعيد العمل',
 
+    // --------------- Site Socail Medail Icon    --------------//
+    'show_site_socail'                         => ' ايقونات وسائل التواصل الإجتماعي ',
+    'add_new_site_socail'                      => 'إضافة ايقونة وسائل التواصل الاجتماعي',
+    'edit_existing_site_socail'                => 'تعديل بيانات وسائل التواصل الاجتماعي  ',
+
+    // ........... commons in Site Socail Medail Icon    ....... //
+
+
+    // --------------- Site Meta  Tags   --------------//
+    'show_site_meta_tag'                         => 'إدارة الكلمات المفتاحية ',
+    'add_new_site_meta_tag'                      => 'إضافة كلمة مفتاحية جديدة',
+    'edit_existing_site_meta_tag'                => 'تعديل بيانات الكلمة المفتاحية',
+
+    // ........... commons in Site Meta Tags  Icon    ....... //
+    'site_name_meta'                                    =>  'اسم الموقع',
+    'site_description_meta'                             =>  'وصف الموقع',
+    'site_link_meta'                                    =>  'رابط الموقع',
+    'site_keywords_meta'                                =>  'الكلمات المفتاحية',
+    'site_keywords_meta_message_input'                  =>  'ادخل كلمات مفتاحية للموقع',
+
+
+    // --------------- Site Payment Method Icon    --------------//
+    'show_site_payment_method_icon'                         => ' Site Payment Method Icon  ',
+    'add_new_site_payment_method_icon'                      => 'Add New Site Payment Method Icon ',
+    'edit_existing_site_payment_method_icon'                => 'Edit Existing Site Payment Method Icon  ',
+
+    // ........... commons in Site Payment Method Icon     ....... //
+    'site_pay_by'                   =>  'الدفع بواسطة',
+    'site_pay_amazon'               =>  'Amazon',
+    'site_pay_visa_card'            =>  'Visa Card',
+    'site_pay_skrill'               =>  'Skrill',
+    'site_pay_master_card'          =>  'Master_card',
+    'site_pay_paypal'               =>  'Paypal',
+    'site_pay_apple_pay'            =>  'Apple_Pay',
+    'site_pay_klarna'               =>  'Klarna',
+    'site_pay_payoneer'             =>  'Payoneer',
+    'site_pay_bpay'                 =>  'Bpay',
+
+
+    // --------------- Site Counter     --------------//
+    'show_site_counters'              => 'Site Counters  ',
+    'add_new_site_counter'            => 'Add New Site Counter ',
+    'edit_existing_site_counter'      => 'Edit existing Counter',
+
+    // ........... commons in Site Counter     ....... //
+    'site_number_of_items_in'               =>  'عدد العناصر في ',
+    'site_main_sliders'                     =>  'عارض الشرائح الرئيسي',
+    'site_advertisor_sliders'               =>  'عارض شرائح الإعلانات',
+    'site_card_categories'                  =>  'البطاقات',
+    'site_featured_cards'                   =>  'الباقات الجديدة',
+    'site_random_cards'                     =>  'الباقات العشوائية',
+    'site_related_cards'                    =>  ' الباقات المرتبطة بالباقة الحالية',
+    'site_more_like_cards'                  =>  'قد يعجبك ايضا',
+    'site_posts'                            =>  'المنشورات',
+    'site_questions'                        =>  'الاسئلة الشائعة',
+    'site_more_categories'                  =>  'بطاقات اكثر ',
+
+
 
 
     ##############################################################

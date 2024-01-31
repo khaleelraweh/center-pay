@@ -72,7 +72,7 @@ class SiteSettingSeeder extends Seeder
         SiteSetting::create(['name'    =>  'site_random_cards',   'value' =>  3,   'status'    =>  true,   'section'   =>  6,   'published_on'  =>  $faker->dateTime()]);
         SiteSetting::create(['name'    =>  'site_related_cards',   'value' =>  3,   'status'    =>  true,   'section'   =>  6,   'published_on'  =>  $faker->dateTime()]); // in card info page 
         SiteSetting::create(['name'    =>  'site_more_like_cards',   'value' =>  3,   'status'    =>  true,   'section'   =>  6,   'published_on'  =>  $faker->dateTime()]); // in cart page 
-        SiteSetting::create(['name'    =>  'site_bogs',   'value' =>  3,   'status'    =>  true,   'section'   =>  6,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['name'    =>  'site_posts',   'value' =>  3,   'status'    =>  true,   'section'   =>  6,   'published_on'  =>  $faker->dateTime()]);
         SiteSetting::create(['name'    =>  'site_questions',   'value' =>  3,   'status'    =>  true,   'section'   =>  6,   'published_on'  =>  $faker->dateTime()]);
         SiteSetting::create(['name'    =>  'site_more_categories',   'value' =>  3,   'status'    =>  true,   'section'   =>  6,   'published_on'  =>  $faker->dateTime()]);
     }
