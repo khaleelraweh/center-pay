@@ -43,7 +43,7 @@ class FeaturedCardComponent extends Component
                 ->take(
                     SiteSetting::whereNotNull('value')
                         ->pluck('value', 'name')
-                        ->toArray()['site_featured_cards'] ?? 1
+                        ->toArray()['site_featured_cards']
                 )
                 ->get()
         ]);

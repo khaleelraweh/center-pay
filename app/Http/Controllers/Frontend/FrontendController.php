@@ -29,7 +29,7 @@ class FrontendController extends Controller
             ->take(
                 SiteSetting::whereNotNull('value')
                     ->pluck('value', 'name')
-                    ->toArray()['site_main_sliders'] ?? 1
+                    ->toArray()['site_main_sliders']
             )
             ->get();
 
@@ -43,7 +43,7 @@ class FrontendController extends Controller
             ->take(
                 SiteSetting::whereNotNull('value')
                     ->pluck('value', 'name')
-                    ->toArray()['site_advertisor_sliders'] ?? 1
+                    ->toArray()['site_advertisor_sliders']
             )
             ->get();
 
@@ -57,7 +57,7 @@ class FrontendController extends Controller
             ->take(
                 SiteSetting::whereNotNull('value')
                     ->pluck('value', 'name')
-                    ->toArray()['site_random_cards'] ?? 1
+                    ->toArray()['site_random_cards']
             )
             ->get();
 
@@ -72,7 +72,7 @@ class FrontendController extends Controller
             ->take(
                 SiteSetting::whereNotNull('value')
                     ->pluck('value', 'name')
-                    ->toArray()['site_card_categories'] ?? 1
+                    ->toArray()['site_card_categories']
             )
             ->get();
 
@@ -81,7 +81,7 @@ class FrontendController extends Controller
             ->take(
                 SiteSetting::whereNotNull('value')
                     ->pluck('value', 'name')
-                    ->toArray()['site_questions'] ?? 1
+                    ->toArray()['site_questions']
             )
             ->get();
 
@@ -90,7 +90,7 @@ class FrontendController extends Controller
             ->take(
                 SiteSetting::whereNotNull('value')
                     ->pluck('value', 'name')
-                    ->toArray()['site_posts'] ?? 1
+                    ->toArray()['site_posts']
             )
             ->get();
 
