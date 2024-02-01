@@ -30,6 +30,8 @@ class WorldSeeder extends Seeder
             'password'  => null,
         ];
 
+        // Notes : database in bluehost will be like this 
+        //             'database'  => '            'database'  => 'center_pay_db_multilanguage',
         // نعطي له اوامر الشيل من اجل التنفيذ
         exec("mysql --user={$db['username']} --password={$db['password']} --host={$db['host']} --database={$db['database']} < $sql_file");
     }
