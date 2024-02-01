@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->json('product_name');
-            $table->json('slug')->unique();
-            $table->json('description')->nullable();
+            $table->json('slug');
+            $table->json('description');
             $table->integer('quantity')->nullable()->default(-1); // سالب واحد تعني ان الكمية غير محدودة
             $table->double('price')->default(0.0);
             $table->double('offer_price')->nullable()->default(0.0); // سعر العرض
