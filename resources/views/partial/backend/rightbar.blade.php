@@ -19,8 +19,8 @@
             <form action="{{ route('admin.create_update_theme') }}" method="post" class="d-flex">
                 @csrf
                 <input type="radio" name="theme_choice" id="theme"
-                    value="{{ Cookie::get('theme') == 'dark' ? 'light' : 'dark' }}" class="btn-check"
-                    onchange="this.form.submit();">
+                    value=" {{ Cookie::get('theme') != null ? (Cookie::get('theme') == 'dark' ? 'light' : 'dark') : 'light' }}"
+                    class="btn-check" onchange="this.form.submit();">
                 <label for="theme" class="btn btn-secondary">
                     <i class="{{ Cookie::get('theme') == 'light' ? 'fas fa-moon' : 'fas fa-sun text-warning' }}"></i>
                     Mode
@@ -56,13 +56,12 @@
             </div>
 
 
-
             <div class="form-check form-switch mb-3">
                 <form action="{{ route('admin.create_update_theme') }}" method="post">
                     @csrf
                     <input class="form-check-input theme-choice" name="theme_choice" value="dark" type="checkbox"
                         id="dark-mode-switch" onchange="this.form.submit();"
-                        {{ Cookie::get('theme') == 'dark' ? 'checked , disabled' : '' }}>
+                        {{ Cookie::get('theme') != null ? (Cookie::get('theme') == 'dark' ? 'checked , disabled' : '') : 'checked , disabled' }}>
                     <label class="form-check-label" for="dark-mode-switch">Dark Mode</label>
                 </form>
             </div>
