@@ -35,17 +35,17 @@ class AppServiceProvider extends ServiceProvider
         //start check currency 
         currency_load();
 
-        $currency_code = session('system_default_currency_info')->currency_code ?? "SAR";
+        if (session::has("system_default_currency_info")) {
+            $currency_code = session('system_default_currency_info')->currency_code;
 
+            if (!Session()->has('currency_symbol')) {
+                $currency = Currency::where('currency_code', $currency_code)->first();
 
-
-        if (!Session()->has('currency_symbol')) {
-            $currency = Currency::where('currency_code', $currency_code)->first();
-
-            session()->put('currency_code', $currency->currency_code);
-            session()->put('currency_symbol', $currency->currency_symbol);
-            session()->put('currency_name', $currency->currency_name);
-            session()->put('currency_exchange_rate', $currency->exchange_rate);
+                session()->put('currency_code', $currency->currency_code);
+                session()->put('currency_symbol', $currency->currency_symbol);
+                session()->put('currency_name', $currency->currency_name);
+                session()->put('currency_exchange_rate', $currency->exchange_rate);
+            }
         }
 
         // end check currency 
