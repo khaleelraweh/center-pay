@@ -1,5 +1,8 @@
 <?php $rtl = config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl' ? '-rtl' : ''; ?>
-<?php $dark = Cookie::get('theme') == 'dark' ? '-dark' : ''; ?>
+
+{{-- if there is no cookie yet then make it dark else check the cookie value --}}
+<?php $dark = Cookie::get('theme') !== null ? (Cookie::get('theme') == 'dark' ? '-dark' : '') : '-dark'; ?>
+
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir=<?php echo $rtl ? 'rtl' : ''; ?>>
 

@@ -17,6 +17,7 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment
@@ -82,7 +83,8 @@ return [
     |
     */
 
-    'locale' => 'ar',//en
+    'locale' => 'ar', //en
+    'currency' => env('PAYPAL_CURRENCY', 'USD'),
 
     /*
     |--------------------------------------------------------------------------
@@ -108,7 +110,7 @@ return [
     |
     */
 
-    'faker_locale' => 'ar_SA',//en_US
+    'faker_locale' => 'ar_SA', //en_US
 
     /*
     |--------------------------------------------------------------------------
@@ -168,8 +170,8 @@ return [
          * Package Service Providers...
          */
 
-         Mindscms\Entrust\EntrustServiceProvider::class,
-         Intervention\Image\ImageServiceProvider::class,
+        Mindscms\Entrust\EntrustServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -182,7 +184,7 @@ return [
 
         //This provider is related to my redis to upload data to cache using redis cache
         App\Providers\ViewServiceProvider::class,
-        
+
 
     ],
 

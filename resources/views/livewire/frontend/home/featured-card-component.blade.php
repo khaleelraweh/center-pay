@@ -126,6 +126,7 @@
                                                 <div class="price-new custom-header-color">
                                                     {{-- {{ $featured_card->price - $featured_card->offer_price }} --}}
                                                     {{ currency_converter($featured_card->price - $featured_card->offer_price) }}
+
                                                 </div>
                                             @else
                                                 <div class="price-new custom-header-color">

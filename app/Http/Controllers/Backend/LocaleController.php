@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Currency;
 use App\Models\News;
 use App\Models\Post;
 use App\Models\Product;
@@ -39,6 +40,17 @@ class LocaleController extends Controller
                     Session::put('lang-rtl', true);
                 } else {
                     Session::forget('lang-rtl');
+                }
+
+                if (Session()->has('currency_code')) {
+                    // dd(Session()->get('currency_code'));
+                    $currency_code = Session()->get('currency_code');
+
+                    $currency = Currency::where('currency_code', $currency_code)->first();
+                    session()->put('currency_code', $currency->currency_code);
+                    session()->put('currency_symbol', $currency->currency_symbol);
+                    session()->put('currency_name', $currency->currency_name);
+                    session()->put('currency_exchange_rate', $currency->exchange_rate);
                 }
 
                 if (isset($segments[1])) {
@@ -85,9 +97,8 @@ class LocaleController extends Controller
                 $modelInLocale = $modelClass::where('slug->' . $key, $slug)->first();
                 if ($modelInLocale) {
 
-
                     $newRoute = str_replace($slug, $modelInLocale->slug, urldecode(urlencode(route($routeName, $modelInLocale->slug))));
-                    // dd($newRoute);
+
                     return redirect()->to($newRoute)->send();
                 }
             }

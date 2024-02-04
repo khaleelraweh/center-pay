@@ -8,6 +8,7 @@
     'asset_url' => NULL,
     'timezone' => 'UTC',
     'locale' => 'ar',
+    'currency' => 'USD',
     'fallback_locale' => 'ar',
     'faker_locale' => 'ar_SA',
     'key' => 'base64:3gdBxy7dxaWxACJ8Or+BAYmQ/NKwkhhd8BzxsLmKgvI=',

@@ -154,8 +154,6 @@
                                                     @endif
                                                 @endforeach
 
-
-
                                             </ul>
                                         </div>
                                     </div>
@@ -165,55 +163,35 @@
                                     <div class="dropdn dropdn_caret">
 
                                         @php
-                                            // came from GeneralHelper
-                                            currency_load();
-
+                                            // came from even (AppServiceProvider:boot(on first load ) or LocaleController:switch(on change language ) or CurrenciesController:currencyLoad(on Currency change ))
                                             $currency_code = session('currency_code');
                                             $currency_symbol = session('currency_symbol');
-
-                                            // this will happen if the user did not choose any currency yet so we will git them the default currency
-                                            if ($currency_symbol == '') {
-                                                $system_default_currency_info = session('system_default_currency_info');
-
-                                                $currency_code = $system_default_currency_info->currency_code;
-                                                $currency_symbol = $system_default_currency_info->currency_symbol;
-                                            }
-
+                                            $currency_name = session('currency_name');
                                         @endphp
+                                        {{-- for chosed item --}}
                                         <a href="#" class="dropdn-link js-dropdn-link">
-                                            {{-- دولار امريكي --}}
-                                            {{-- {{ $getCurrencies[0]['currency_name'] }} --}}
-
-                                            {{ $currency_symbol }} {{ Str::upper($currency_code) }}
+                                            {{ Str::title($currency_name) }}
                                             <i class="icon-angle-down"></i>
                                         </a>
 
                                         <div class="dropdn-content">
                                             <ul>
-
-                                                {{-- @forelse ($getCurrencies as $currency) --}}
                                                 @forelse (\App\Models\Currency::where('status',1)->get() as $currency)
-                                                    {{-- <li class="active"> --}}
-                                                    <li>
-                                                        <a href="javascript:;"
-                                                            onclick="currency_change('{{ $currency['currency_code'] }}');">
-                                                            <span style="font-size: 12px">
-                                                                {{-- {{ $currency['currency_name'] }} --}}
+                                                    {{--  to show non choosen items --}}
+                                                    @if ($currency['currency_code'] != $currency_code)
+                                                        <li
+                                                            class="{{ $currency['currency_code'] == $currency_code ? 'active' : '' }}">
+                                                            <a href="javascript:;"
+                                                                onclick="currency_change('{{ $currency['currency_code'] }}');">
+                                                                <span style="font-size: 12px">
+                                                                    {{ Str::title($currency->currency_name) }}
+                                                                </span>
+                                                            </a>
+                                                        </li>
+                                                    @endif
 
-                                                                {{-- {{ $currency['currency_symbol'] }}
-                                                                 &nbsp; 
-                                                                {{ Str::upper($currency['currency_code']) }} --}}
-
-                                                                {{ $currency->currency_symbol }}
-                                                                {{-- &nbsp; --}}
-                                                                {{ Str::upper($currency->currency_code) }}
-                                                            </span>
-                                                        </a>
-                                                    </li>
                                                 @empty
                                                 @endforelse
-
-
                                             </ul>
                                         </div>
                                     </div>
@@ -229,15 +207,14 @@
                                 @csrf
                                 <label for="theme" class="dropdn-link  minicart-link only-icon m-0"
                                     style="cursor: pointer">
-                                    <input type="radio" name="theme_choice" id="theme"
-                                        value="{{ Cookie::get('theme') == 'dark' ? 'light' : 'dark' }}"
-                                        class="btn-check " onchange="this.form.submit();">
+                                    <input type="radio" name="theme_choice" id="theme" {{-- value="{{ Cookie::get('theme') != null ? (Cookie::get('theme') == 'dark' ? 'light' : 'dark') : 'light' }}" --}}
+                                        value="{{ $dark == 'dark' ? 'light' : 'dark' }}" class="btn-check "
+                                        onchange="this.form.submit();">
                                     <i
                                         class="{{ Cookie::get('theme') == 'light' ? 'fas fa-moon fa-lg' : 'fas fa-sun text-warning' }} "></i>
                                     {{-- Mode --}}
                                 </label>
                             </form>
-
 
 
                             <div class="search_container_desktop">

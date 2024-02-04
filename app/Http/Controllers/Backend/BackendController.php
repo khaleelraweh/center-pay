@@ -16,53 +16,51 @@ use Illuminate\Support\Facades\Hash;
 class BackendController extends Controller
 {
 
-    
-    
-    public function login(){
+    public function login()
+    {
         return view('backend.admin-login');
     }
 
-    public function register(){
+    public function register()
+    {
         return view('backend.admin-register');
     }
 
-    public function lock_screen(){
+    public function lock_screen()
+    {
         return view('backend.admin-lock-screen');
     }
 
-    public function recover_password(){
+    public function recover_password()
+    {
         return view('backend.admin-recoverpw');
     }
 
-    public function index(Request $request){
-        // $theme = $request->cookie('theme');
-        // Config::set('theme', $theme);
+    public function index()
+    {
         return view('backend.index');
     }
 
-    public function create_update_theme(Request $request){
-        $theme = $request->cookie('theme');
+    public function create_update_theme(Request $request)
+    {
         $theme = $request->input('theme_choice');
-        
-        if($theme && in_array($theme , ['light','dark'])){
-            
-            // set a cookies with the selected theme
-            $cookie = cookie('theme' , $theme , 60*25*365 , "/") ; // just one year
-            // setcookie('theme', $theme, time() + (86400 * 30 * ), "/")
+
+        if ($theme && in_array($theme, ['light', 'dark'])) {
+
+            $cookie = cookie('theme', $theme, 60 * 25 * 365, "/"); // just one year
         }
 
-        
-
         return back()->withCookie($cookie);
-        // return back();
     }
 
-    public function account_settings(){
+    public function account_settings()
+    {
         return view('backend.account_settings');
     }
 
 
-    public function update_account_settings(AdminInfoRequest $request){
+    public function update_account_settings(AdminInfoRequest $request)
+    {
 
         $user = auth()->user();
         $data['first_name'] =   $request->first_name;
@@ -71,26 +69,24 @@ class BackendController extends Controller
         $data['email']      =   $request->email;
         $data['mobile']     =   $request->mobile;
 
-        if(!empty($request->password) && !Hash::check($request->password , $user->password ) ){
+        if (!empty($request->password) && !Hash::check($request->password, $user->password)) {
             $data['password'] = bcrypt($request->password);
         }
 
-        if($user_image = $request->file('user_image')){
-            if($user->user_image != ''){
-                if(File::exists('assets/users/' . $user->user_image )){
-                    unlink('assets/users/' .$user->user_image);
-
+        if ($user_image = $request->file('user_image')) {
+            if ($user->user_image != '') {
+                if (File::exists('assets/users/' . $user->user_image)) {
+                    unlink('assets/users/' . $user->user_image);
                 }
             }
 
             $file_name = $user->username . '.' . $user_image->extension();
-            $path = public_path('assets/users/'.$file_name);
-            Image::make($user_image->getRealPath())->resize(300,null,function($constraints){
+            $path = public_path('assets/users/' . $file_name);
+            Image::make($user_image->getRealPath())->resize(300, null, function ($constraints) {
                 $constraints->aspectRatio();
-            })->save($path,100);
+            })->save($path, 100);
 
             $data['user_image'] = $file_name;
-
         }
 
         $user->update($data);
@@ -99,16 +95,16 @@ class BackendController extends Controller
         return back();
     }
 
-    public function remove_image(Request $request){
-        
+    public function remove_image(Request $request)
+    {
+
 
 
         $user = auth()->user();
-    
-        if($user->user_image != ''){
-            if(File::exists('assets/users/' . $user->user_image )){
-                unlink('assets/users/' .$user->user_image);
 
+        if ($user->user_image != '') {
+            if (File::exists('assets/users/' . $user->user_image)) {
+                unlink('assets/users/' . $user->user_image);
             }
 
             $user->user_image = null;
@@ -117,8 +113,6 @@ class BackendController extends Controller
             // toast('profile Image deleted' ,'success');
             // return back();
             return true;
-
         }
     }
-
 }

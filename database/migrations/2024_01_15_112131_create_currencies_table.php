@@ -15,22 +15,22 @@ return new class extends Migration
     {
         Schema::create('currencies', function (Blueprint $table) {
             $table->id();
-            $table->string('currency_name');
-            $table->string('slug')->unique();
-            $table->string('currency_symbol')->nullable();
+            $table->json('currency_name');
+            $table->json('slug')->unique();
+            $table->json('currency_symbol')->nullable();
             $table->string('currency_code')->nullable();
             $table->string('exchange_rate')->nullable();
-            
 
-             // will be use always
-             $table->boolean('status')->default(true);
-             $table->dateTime('published_on')->nullable(); 
-             $table->string('created_by')->nullable()->default('admin'); 
-             $table->string('updated_by')->nullable(); 
-             $table->string('deleted_by')->nullable();
-             $table->softDeletes();
-             $table->timestamps();
-             // end of will be use always
+
+            // will be use always
+            $table->boolean('status')->default(true);
+            $table->dateTime('published_on')->nullable();
+            $table->string('created_by')->nullable()->default('admin');
+            $table->string('updated_by')->nullable();
+            $table->string('deleted_by')->nullable();
+            $table->softDeletes();
+            $table->timestamps();
+            // end of will be use always
 
         });
     }

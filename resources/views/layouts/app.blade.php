@@ -1,8 +1,9 @@
 <?php $rtl = config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl' ? '-rtl' : ''; ?>
-<?php $dark = Cookie::get('theme') == 'dark' ? 'dark' : ''; ?>
+<?php $dark = Cookie::get('theme') !== null ? (Cookie::get('theme') == 'dark' ? 'dark' : '') : 'dark'; ?>
+
 
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir=<?php echo $rtl ? 'rtl' : ''; ?>>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 {{-- {{ dd(Cookie::get('theme')) }} --}}
 {{-- {{ dd(config('locales.languages')[app()->getLocale()]['rtl_support']) }} --}}
@@ -63,13 +64,13 @@
     {{-- <link href="{{ asset('frontend/css/style-games.css') }}" rel="stylesheet" />
     {{-- <link rel="stylesheet" href="{{ asset('frontend/css/style-rtl.css') }}" class="languages" /> --}}
 
-    <link href="{{ asset('frontend/css/style.css') }}" rel="stylesheet" />
+    {{-- <link href="{{ asset('frontend/css/style.css') }}" rel="stylesheet" /> --}}
 
-    <link href="<?php echo asset(Cookie::get('theme') == 'dark' ? 'frontend/css/style-games.css' : 'frontend/css/style.css'); ?>" rel="stylesheet" />
+    <link href="<?php echo asset($dark == 'dark' ? 'frontend/css/style-games.css' : 'frontend/css/style.css'); ?>" rel="stylesheet" />
+    {{-- <link href="<?php echo asset(Cookie::get('theme') != null ? (Cookie::get('theme') == 'dark' ? 'frontend/css/style-games.css' : 'frontend/css/style.css') : 'frontend/css/style-games.css'); ?>" rel="stylesheet" /> --}}
 
 
     <link rel="stylesheet" href="<?php echo asset($rtl == '-rtl' ? 'frontend/css/style-rtl.css' : ''); ?>" class="languages" />
-
 
 
     <link href="{{ asset('frontend/css/icons.css') }}" rel="stylesheet" />
