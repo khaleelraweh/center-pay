@@ -40,7 +40,7 @@ class AppServiceProvider extends ServiceProvider
 
 
         if (!Session()->has('currency_symbol')) {
-            $currency = Currency::where('currency_code', "SAR")->first();
+            $currency = Currency::where('currency_code', $currency_code)->first();
 
             dd($currency);
             session()->put('currency_code', $currency->currency_code);
