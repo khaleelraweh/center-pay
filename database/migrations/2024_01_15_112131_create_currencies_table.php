@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('currencies', function (Blueprint $table) {
             $table->id();
             $table->json('currency_name');
-            $table->json('slug')->unique();
-            $table->json('currency_symbol')->nullable();
+            $table->json('slug');
+            $table->json('currency_symbol');
             $table->string('currency_code')->nullable();
             $table->string('exchange_rate')->nullable();
 
