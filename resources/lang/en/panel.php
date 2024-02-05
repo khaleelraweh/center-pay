@@ -457,6 +457,8 @@ return [
     'address_tab'           =>  'Shipping Address',
     'owner_account_tab'     =>  'Owner Account',
     'customer_account_tab'  =>  'Customer Account',
+    'name_symbol_tab'       =>  'Currency Name & Symbol',
+    'code_rate_tab'         =>  'Currency Code & Rate',
 
     // ------------ Common fileds ------------/
     'main_category'         => 'Main Category',

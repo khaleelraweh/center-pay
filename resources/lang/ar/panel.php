@@ -459,6 +459,8 @@ return [
     'address_tab'                   =>  'عنوان الشحن',
     'owner_account_tab'             =>  'حساب مالك الموقع',
     'customer_account_tab'          =>  'حساب العميل ',
+    'name_symbol_tab'               =>  'إسم ورمز العملة',
+    'code_rate_tab'                 =>  'الكود و قيمة التحويل',
 
 
 
