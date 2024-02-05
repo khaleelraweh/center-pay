@@ -268,7 +268,8 @@
     <div class="footer-bottom footer-bottom--bg">
         <div class="container">
             <div class="footer-copyright text-center">
-                <a href="#">{{ __('panel.f_center_pay') }}</a> ©2020 {{ __('panel.f_copyright') }}
+                <a href="#">{{ __('panel.f_center_pay') }}</a> ©{{ now()->year }}
+                {{ __('panel.f_copyright') }}
             </div>
         </div>
     </div>
