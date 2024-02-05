@@ -24,13 +24,13 @@
 
                             @if (array_key_exists('site_phone', $site_setting))
                                 <li>
-                                    تلفون: {{ $site_setting['site_phone'] }}
+                                    {{ __('panel.f_phone') }} : {{ $site_setting['site_phone'] }}
                                 </li>
                             @endif
 
                             @if (array_key_exists('site_email1', $site_setting))
                                 <li>
-                                    ايميل:
+                                    {{ __('panel.f_email') }} :
                                     <a href="mailto:{{ $site_setting['site_email1'] }}">
                                         {{ $site_setting['site_email1'] }}
                                     </a>
@@ -39,19 +39,19 @@
 
                             @if (array_key_exists('site_fax', $site_setting))
                                 <li>
-                                    فاكس: {{ $site_setting['site_fax'] }}
+                                    {{ __('panel.f_fax') }} : {{ $site_setting['site_fax'] }}
                                 </li>
                             @endif
 
                             @if (array_key_exists('site_po_box', $site_setting))
                                 <li>
-                                    الصندوق البريدي: {{ $site_setting['site_po_box'] }}
+                                    {{ __('panel.f_po_box') }} : {{ $site_setting['site_po_box'] }}
                                 </li>
                             @endif
 
                             @if (array_key_exists('site_workTime', $site_setting))
                                 <li>
-                                    وقت العمل: {{ $site_setting['site_workTime'] }}
+                                    {{ __('panel.f_work_time') }} : {{ $site_setting['site_workTime'] }}
                                 </li>
                             @endif
 
@@ -62,7 +62,7 @@
                 <div class="col-lg-3 col-xl-3">
                     <div class="footer-block collapsed-mobile">
                         <div class="title">
-                            <h4>حول سنترباي</h4>
+                            <h4> {{ __('panel.f_about_center_pay') }} </h4>
                             <span class="toggle-arrow"><span></span><span></span></span>
                         </div>
                         <div class="collapsed-content">
@@ -85,7 +85,7 @@
                 <div class="col-lg-3 col-xl-3">
                     <div class="footer-block collapsed-mobile">
                         <div class="title">
-                            <h4>منصات التواصل الاجتماعية</h4>
+                            <h4> {{ __('panel.f_socail_media_platforms') }} </h4>
                             <span class="toggle-arrow"><span></span><span></span></span>
                         </div>
                         <div class="collapsed-content">
@@ -164,7 +164,7 @@
                     @if (array_key_exists('site_mobile', $site_setting))
                         <div class="footer-block collapsed-mobile">
                             <div class="title">
-                                <h4>اذا كان لديك سؤال</h4>
+                                <h4> {{ __('panel.f_if_you_have_question') }} </h4>
                                 <span class="toggle-arrow"><span></span><span></span></span>
                             </div>
                             <div class="collapsed-content">
@@ -184,7 +184,7 @@
                 <div class="col-lg-3 col-xl-3">
                     <div class="footer-block collapsed-mobile">
                         <div class="title">
-                            <h4>وسائل الدفع</h4>
+                            <h4> {{ __('panel.f_payment_methods') }} </h4>
                             <span class="toggle-arrow"><span></span><span></span></span>
                         </div>
                         <div class="collapsed-content">
@@ -268,7 +268,7 @@
     <div class="footer-bottom footer-bottom--bg">
         <div class="container">
             <div class="footer-copyright text-center">
-                <a href="#">CenterPay</a> ©2020 copyright
+                <a href="#">{{ __('panel.f_center_pay') }}</a> ©2020 {{ __('panel.f_copyright') }}
             </div>
         </div>
     </div>

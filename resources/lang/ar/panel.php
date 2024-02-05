@@ -598,4 +598,24 @@ return [
     'f_packages_that_suit_your_needs'                                       => 'باقات تناسب احتياجك',
 
 
+
+    // ========================  fronten Footer  =========================// 
+    'f_phone'                                       => 'تلفون',
+    'f_email'                                       => 'إيميل',
+    'f_fax'                                         => 'فاكس',
+    'f_po_box'                                      => 'الصندوق البريدي',
+    'f_work_time'                                   => 'ايام الدوام',
+
+    'f_about_center_pay'                            => 'حول سنتر باي',
+
+    'f_socail_media_platforms'                      =>  'منصات التواصل الإجتماعي',
+
+    'f_if_you_have_question'                        =>  'إذا كان لديك سؤال',
+
+    'f_payment_methods'                             =>  'وسائل الدفع',
+
+    'f_center_pay'                                  =>  'سينر باي',
+    'f_copyright'                                   =>  'حقوق الطبع محفوظة',
+
+
 ];

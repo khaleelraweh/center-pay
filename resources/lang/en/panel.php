@@ -594,4 +594,26 @@ return [
     'f_outstanding_customer_service'                                        => 'Outstanding customer service',
     'f_packages_that_suit_your_needs'                                       => 'Packages that suit your needs',
 
+
+    // ========================  fronten Footer  =========================// 
+    'f_phone'                                       => 'Phone',
+    'f_email'                                       => 'Email',
+    'f_fax'                                         => 'Fax',
+    'f_po_box'                                      => 'PoBox',
+    'f_work_time'                                   => 'Work Time',
+
+    'f_about_center_pay'                            => 'About CenterPay',
+
+    'f_socail_media_platforms'                      =>  'Social media platforms',
+
+    'f_if_you_have_question'                        =>  'If you May have questions',
+
+    'f_payment_methods'                             =>  'Payment Methods',
+
+    'f_center_pay'                                  =>  'CenterPay',
+    'f_copyright'                                   =>  'Copyright',
+
+
+
+
 ];
