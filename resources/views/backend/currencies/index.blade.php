@@ -37,86 +37,90 @@
 
         </div>
 
-        {{-- filter form part  --}}
+        <div class="card-body">
+            {{-- filter form part  --}}
+            @include('backend.currencies.filter.filter')
 
-        @include('backend.currencies.filter.filter')
-
-        {{-- table part --}}
-        <div class="table-responsive">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th> {{ __('panel.currency_name') }} </th>
-                        <th>{{ __('panel.currency_symbol') }}</th>
-                        <th> {{ __('panel.currency_code') }} </th>
-                        <th> {{ __('panel.currency_exchange_rate') }} </th>
-                        <th class="d-none d-sm-table-cell"> {{ __('panel.author') }} </th>
-                        <th class="d-none d-sm-table-cell"> {{ __('panel.created_at') }} </th>
-                        {{-- <th>الحالة</th> --}}
-                        <th class="text-center" style="width:30px;">{{ __('panel.actions') }}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @forelse ($currencies as $currency)
+            {{-- table part --}}
+            <div class="table-responsive">
+                <table class="table table-hover table-striped table-bordered dt-responsive nowrap"
+                    style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                    <thead>
                         <tr>
-                            <td>{{ $currency->currency_name }}</td>
-                            <td>{{ $currency->currency_symbol }}</td>
-                            <td>{{ $currency->currency_code }}</td>
-                            <td>{{ $currency->exchange_rate }}</td>
-                            <td class="d-none d-sm-table-cell">{{ $currency->created_by }}</td>
-                            <td class="d-none d-sm-table-cell">{{ $currency->created_at }}</td>
-                            {{-- <td>{{ $currency->status() }}</td> --}}
-                            <td>
+                            <th> {{ __('panel.currency_name') }} </th>
+                            <th> {{ __('panel.currency_symbol') }}</th>
+                            <th> {{ __('panel.currency_code') }} </th>
+                            <th> {{ __('panel.currency_exchange_rate') }} </th>
+                            <th class="d-none d-sm-table-cell"> {{ __('panel.author') }} </th>
+                            <th class="d-none d-sm-table-cell"> {{ __('panel.created_at') }} </th>
+                            {{-- <th>الحالة</th> --}}
+                            <th class="text-center" style="width:30px;">{{ __('panel.actions') }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse ($currencies as $currency)
+                            <tr>
+                                <td>{{ $currency->currency_name }}</td>
+                                <td>{{ $currency->currency_symbol }}</td>
+                                <td>{{ $currency->currency_code }}</td>
+                                <td>{{ $currency->exchange_rate }}</td>
+                                <td class="d-none d-sm-table-cell">{{ $currency->created_by }}</td>
+                                <td class="d-none d-sm-table-cell">{{ $currency->created_at }}</td>
+                                {{-- <td>{{ $currency->status() }}</td> --}}
+                                <td>
 
-                                <div class="btn-group btn-group-sm">
-                                    <a href="{{ route('admin.currencies.edit', $currency->id) }}" class="btn btn-primary">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
-                                    <a href="javascript:void(0);"
-                                        onclick=" if( confirm('Are you sure to delete this record?') ){document.getElementById('delete-product-{{ $currency->id }}').submit();}else{return false;}"
-                                        class="btn btn-danger">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
-
-                                    @if ($currency->status == 1)
-                                        <a href="javascript:void(0);" class="updateCurrencyStatus btn"
-                                            id="currency-{{ $currency->id }}" currency_id="{{ $currency->id }}">
-                                            <i class="fas fa-toggle-on fa-lg text-primary" aria-hidden="true"
-                                                status="Active"></i>
+                                    <div class="btn-group btn-group-sm">
+                                        <a href="{{ route('admin.currencies.edit', $currency->id) }}"
+                                            class="btn btn-primary">
+                                            <i class="fa fa-edit"></i>
                                         </a>
-                                    @else
-                                        <a href="javascript:void(0);" class="updateCurrencyStatus btn  "
-                                            id="currency-{{ $currency->id }}" currency_id="{{ $currency->id }}">
-                                            <i class="fas fa-toggle-off fa-lg text-warning" aria-hidden="true"
-                                                status="Inactive"></i>
+                                        <a href="javascript:void(0);"
+                                            onclick=" if( confirm('{{ __('panel.confirm_delete_message') }}') ){document.getElementById('delete-product-{{ $currency->id }}').submit();}else{return false;}"
+                                            class="btn btn-danger">
+                                            <i class="fa fa-trash"></i>
                                         </a>
-                                    @endif
+
+                                        @if ($currency->status == 1)
+                                            <a href="javascript:void(0);" class="updateCurrencyStatus btn"
+                                                id="currency-{{ $currency->id }}" currency_id="{{ $currency->id }}">
+                                                <i class="fas fa-toggle-on fa-lg text-primary" aria-hidden="true"
+                                                    status="Active"></i>
+                                            </a>
+                                        @else
+                                            <a href="javascript:void(0);" class="updateCurrencyStatus btn  "
+                                                id="currency-{{ $currency->id }}" currency_id="{{ $currency->id }}">
+                                                <i class="fas fa-toggle-off fa-lg text-warning" aria-hidden="true"
+                                                    status="Inactive"></i>
+                                            </a>
+                                        @endif
 
 
+                                    </div>
+                                    <form action="{{ route('admin.currencies.destroy', $currency->id) }}" method="post"
+                                        class="d-none" id="delete-product-{{ $currency->id }}">
+                                        @csrf
+                                        @method('DELETE')
+                                    </form>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="7" class="text-center"> {{ __('panel.no_found_item') }} </td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="7">
+                                <div class="float-right">
+                                    {!! $currencies->appends(request()->all())->links() !!}
                                 </div>
-                                <form action="{{ route('admin.currencies.destroy', $currency->id) }}" method="post"
-                                    class="d-none" id="delete-product-{{ $currency->id }}">
-                                    @csrf
-                                    @method('DELETE')
-                                </form>
                             </td>
                         </tr>
-                    @empty
-                        <tr>
-                            <td colspan="7" class="text-center">لم يتم الحصول علي اي شريحة</td>
-                        </tr>
-                    @endforelse
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="7">
-                            <div class="float-right">
-                                {!! $currencies->appends(request()->all())->links() !!}
-                            </div>
-                        </td>
-                    </tr>
-                </tfoot>
-            </table>
+                    </tfoot>
+                </table>
+            </div>
+
         </div>
 
     </div>

@@ -31,8 +31,6 @@ class CurrenciesController extends Controller
         return view('backend.currencies.index', compact('currencies'));
     }
 
-
-
     public function create()
     {
         if (!auth()->user()->ability('admin', 'create_currencies')) {
@@ -49,10 +47,10 @@ class CurrenciesController extends Controller
             return redirect('admin/index');
         }
 
-        $input['currency_name']        =   $request->currency_name;
-        $input['currency_symbol']        =   $request->currency_symbol;
-        $input['currency_code']        =   $request->currency_code;
-        $input['exchange_rate']        =   $request->exchange_rate;
+        $input['currency_name']             =   $request->currency_name;
+        $input['currency_symbol']           =   $request->currency_symbol;
+        $input['currency_code']             =   $request->currency_code;
+        $input['exchange_rate']             =   $request->exchange_rate;
 
 
         $input['status']            =   $request->status;
@@ -62,12 +60,18 @@ class CurrenciesController extends Controller
         $published_on = new DateTimeImmutable($published_on);
         $input['published_on'] = $published_on;
 
-        Currency::create($input);
+        $currency = Currency::create($input);
 
+        if ($currency) {
+            return redirect()->route('admin.currencies.index')->with([
+                'message' => __('panel.created_successfully'),
+                'alert-type' => 'success'
+            ]);
+        }
 
         return redirect()->route('admin.currencies.index')->with([
-            'message' => 'تمت الاضافة بنجاح',
-            'alert-type' => 'success'
+            'message' => __('panel.something_was_wrong'),
+            'alert-type' => 'danger'
         ]);
     }
 
@@ -81,20 +85,24 @@ class CurrenciesController extends Controller
     }
 
 
-    public function edit(Currency $currency)
+    public function edit($currency)
     {
         if (!auth()->user()->ability('admin', 'update_currencies')) {
             return redirect('admin/index');
         }
+
+        $currency = Currency::where('id', $currency)->first();
 
         return view('backend.currencies.edit', compact('currency'));
     }
 
-    public function update(CurrencyRequest $request, Currency $currency)
+    public function update(CurrencyRequest $request,  $currency)
     {
         if (!auth()->user()->ability('admin', 'update_currencies')) {
             return redirect('admin/index');
         }
+
+        $currency = Currency::where('id', $currency)->first();
 
         $input['currency_name']        =   $request->currency_name;
         $input['currency_symbol']      =   $request->currency_symbol;
@@ -110,25 +118,40 @@ class CurrenciesController extends Controller
 
         $currency->update($input);
 
+        if ($currency) {
+            return redirect()->route('admin.currencies.index')->with([
+                'message' => __('panel.updated_successfully'),
+                'alert-type' => 'success'
+            ]);
+        }
         return redirect()->route('admin.currencies.index')->with([
-            'message' => 'تم التعديل بنجاح',
-            'alert-type' => 'success'
+            'message' => __('panel.something_was_wrong'),
+            'alert-type' => 'danger'
         ]);
     }
 
 
 
-    public function destroy(Currency $currency)
+    public function destroy($currency)
     {
         if (!auth()->user()->ability('admin', 'delete_currencies')) {
             return redirect('admin/index');
         }
 
+        $currency = Currency::where('id', $currency)->first();
         $currency->delete();
 
+
+        if ($currency) {
+            return redirect()->route('admin.currencies.index')->with([
+                'message' => __('panel.deleted_successfully'),
+                'alert-type' => 'success'
+            ]);
+        }
+
         return redirect()->route('admin.currencies.index')->with([
-            'message' => 'تم الحذف بنجاح',
-            'alert-type' => 'success'
+            'message' => __('panel.something_was_wrong'),
+            'alert-type' => 'danger'
         ]);
     }
 

@@ -26,22 +26,22 @@ class MainSliderRequest extends FormRequest
         switch ($this->method()) {
             case 'POST': {
                     return [
-                        'title.*'       =>  'required|max:255|unique_translation:sliders',
-                        'description.*'       =>  'nullable',
-                        'url'           =>  'nullable',
-                        'target'        =>  'required',
-                        'section'       =>  'nullable',
-                        'showInfo'      => 'required',
-                        'images'        =>  'required',
-                        'images.*'      =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
+                        'title.*'               =>  'required|max:255|unique_translation:sliders',
+                        'description.*'         =>  'nullable',
+                        'url'                   =>  'nullable',
+                        'target'                =>  'required',
+                        'section'               =>  'nullable',
+                        'showInfo'              =>  'required',
+                        'images'                =>  'required',
+                        'images.*'              =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
 
                         // used always 
-                        'status'             =>  'required',
-                        'published_on'       =>  'nullable',
-                        'published_on_time'  =>  'nullable',
-                        'created_by'         =>  'nullable',
-                        'updated_by'         =>  'nullable',
-                        'deleted_by'         =>  'nullable',
+                        'status'                =>  'required',
+                        'published_on'          =>  'nullable',
+                        'published_on_time'     =>  'nullable',
+                        'created_by'            =>  'nullable',
+                        'updated_by'            =>  'nullable',
+                        'deleted_by'            =>  'nullable',
                         // end of used always 
                     ];
                 }
