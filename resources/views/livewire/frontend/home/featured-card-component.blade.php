@@ -143,7 +143,7 @@
                                                     <button class="btn js-prd-addtocart rounded-pill"
                                                         wire:click.prevent="store( 'default' , {{ $featured_card->id }} , '{{ $featured_card->product_name }}' , 1 , {{ $featured_card->price }})"
                                                         data-product='{"name": "{{ $featured_card->product_name }}", "path":"{{ asset('assets/cards/' . $featured_card->firstMedia->file_name) }}", "url":"{{ route('frontend.card', $featured_card->slug) }}", "aspect_ratio":0.778}'>
-                                                        اضافة للسلة
+                                                        {{ __('panel.f_add_to_card') }}
                                                     </button>
                                                 </form>
                                             </div>

@@ -97,9 +97,9 @@
                                             <button class="btn js-prd-addtocart rounded-pill"
                                                 wire:click.prevent="addToCart('{{ $related_card->id }}')"
                                                 data-product='{"name": "Midi Dress with Belt", "path":"{{ asset('
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                												frontend/assests/images/skins/fashion/cards/product-06-1.webp') }}", "url"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                												frontend/assests/images/skins/fashion/cards/product-06-1.webp') }}", "url"
 												:"product.html", "aspect_ratio" :0.778}'>
-                                                اضافة للسلة
+                                                {{ __('panel.f_add_to_card') }}
                                             </button>
                                         </form>
                                     </div>
@@ -140,7 +140,7 @@
                                                 <button class="btn js-prd-addtocart rounded-pill"
                                                     wire:click.prevent="addToCart('{{ $related_card->id }}')"
                                                     data-product='{"name": "{{ $related_card->name }}", "path":"{{ asset('assets/cards/' . $related_card->firstMedia->file_name) }}", "url":"{{ route('frontend.card', $related_card->slug) }}", "aspect_ratio":0.778}'>
-                                                    اضافة للسلة
+                                                    {{ __('panel.f_add_to_card') }}
                                                 </button>
                                             </form>
                                         </div>

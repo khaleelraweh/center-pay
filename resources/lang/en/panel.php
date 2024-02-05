@@ -585,6 +585,9 @@ return [
 
     // ...........  in all frontend page   ......... //
 
+    'f_add_to_card'                         =>  'add to card',
+    'f_add_to_wishlist'                     =>  'Add To Wishlist',
+
     // ========================  fronten Message =========================// 
     'f_our_price_are_the_best'                                              => 'Our prices are the best',
     'f_strongest_offers'                                                    => 'Strongest offers',

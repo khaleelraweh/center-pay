@@ -98,7 +98,7 @@
                                     <button class="btn js-prd-addtocart rounded-pill"
                                         wire:click.prevent="addToCart('{{ $more_card->id }}')"
                                         data-product='{"name": "{{ $more_card->name }}", "path":"{{ asset('assets/cards/' . $more_card->firstMedia->file_name) }}", "url":"{{ route('frontend.card', $more_card->slug) }}", "aspect_ratio":0.778}'>
-                                        اضافة للسلة
+                                        {{ __('panel.f_add_to_card') }}
                                     </button>
                                 </form>
                             </div>
@@ -132,7 +132,7 @@
                                         <button class="btn js-prd-addtocart rounded-pill"
                                             wire:click.prevent="addToCart('{{ $more_card->id }}')"
                                             data-product='{"name": "{{ $more_card->name }}", "path":"{{ asset('assets/cards/' . $more_card->firstMedia->file_name) }}", "url":"{{ route('frontend.card', $more_card->slug) }}", "aspect_ratio":0.778}'>
-                                            اضافة للسلة
+                                            {{ __('panel.f_add_to_card') }}
                                         </button>
                                     </form>
                                 </div>

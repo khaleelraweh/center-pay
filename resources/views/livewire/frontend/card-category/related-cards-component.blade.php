@@ -114,7 +114,7 @@
                                         <button class="btn js-prd-addtocart"
                                             wire:click.prevent="addToCart('{{ $card->id }}')"
                                             data-product='{"name": "{{ $card->name }}", "path":"{{ asset('assets/cards/' . $card->firstMedia?->file_name) }}", "url":"{{ route('frontend.card', $card->slug) }}", "aspect_ratio":0.778}'>
-                                            إضافة للسلة
+                                            {{ __('panel.f_add_to_card') }}
                                         </button>
                                     </form>
                                 </div>
@@ -150,7 +150,7 @@
                                             <button class="btn js-prd-addtocart"
                                                 wire:click.prevent="addToCart('{{ $card->id }}')"
                                                 data-product='{"name": "{{ $card->name }}", "path":"{{ asset('assets/cards/' . $card->firstMedia?->file_name) }}", "url":"{{ route('frontend.card', $card->slug) }}", "aspect_ratio":0.778}'>
-                                                اضافة للسلة
+                                                {{ __('panel.f_add_to_card') }}
                                             </button>
                                         </form>
                                     </div>

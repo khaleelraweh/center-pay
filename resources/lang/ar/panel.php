@@ -588,6 +588,9 @@ return [
 
     // ...........  in all frontend page   ......... //
 
+    'f_add_to_card'                         =>  'إضافة للسلة',
+    'f_add_to_wishlist'                     =>  'إضافة للمفضلة',
+
     // ========================  fronten Message =========================// 
     'f_our_price_are_the_best'                                              => 'اسعارنا الافضل',
     'f_strongest_offers'                                                    => 'عروضنا الأقوى',

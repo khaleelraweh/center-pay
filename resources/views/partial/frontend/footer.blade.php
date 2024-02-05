@@ -309,7 +309,7 @@
                     </div>
                     <div class="btn-wrap">
                         <button class="btn js-prd-addtocart" data-fancybox data-src="#modalCheckOut">
-                            اضافة للسلة
+                            {{ __('panel.f_add_to_card') }}
                         </button>
                     </div>
                 </div>
@@ -395,7 +395,7 @@
                         </div>
                     </div>
                     <div class="btn-wrap">
-                        <button class="btn js-prd-addtocart">اضافة للسلة</button>
+                        <button class="btn js-prd-addtocart">{{ __('panel.f_add_to_card') }}</button>
                     </div>
                 </div>
             </div>
