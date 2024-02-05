@@ -13,25 +13,28 @@ class City extends Model
     use HasFactory, SearchableTrait;
 
     protected $guarded = [];
-    
+
     public $timestamps = false;
 
     public $searchable =  [
-        'columns' =>[
+        'columns' => [
             'cities.name' => 10,
             'cities.name_native' => 10,
         ]
     ];
 
-    public function status():string{
-        return $this->status ?'مفعل' : 'غير مفعل';
+    public function status()
+    {
+        return $this->status ? __('panel.status_active') : __('panel.status_inactive');
     }
 
-    public function state():BelongsTo{
+    public function state(): BelongsTo
+    {
         return $this->belongsTo(State::class);
     }
 
-    public function addresses():HasMany {
+    public function addresses(): HasMany
+    {
         return $this->hasMany(UserAddress::class);
     }
 }

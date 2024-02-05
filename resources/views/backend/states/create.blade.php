@@ -8,18 +8,20 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-plus-square"></i>
-                    المقاطعات / المحافظات
+                    {{ __('panel.add_new_state') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
-                        <a href="{{ route('admin.index') }}">
-                            الرئيسية
-                        </a>
-                        <i class="fa fa-solid fa-chevron-left chevron"></i>
+                        <a href="{{ route('admin.index') }}">{{ __('panel.main') }}</a>
+                        @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl')
+                            <i class="fa fa-solid fa-chevron-left chevron"></i>
+                        @else
+                            <i class="fa fa-solid fa-chevron-right chevron"></i>
+                        @endif
                     </li>
                     <li>
                         <a href="{{ route('admin.states.index') }}">
-                            إدارة المقاطعات
+                            {{ __('panel.show_states') }}
                         </a>
                     </li>
                 </ul>
@@ -83,7 +85,8 @@
                 </div>
                 {{-- end row --}}
                 <div class="form-group pt-4">
-                    <button type="submit" name="submit" class="btn btn-primary">إضافة مقاطعة</button>
+                    <button type="submit" name="submit" class="btn btn-primary">
+                        {{ __('panel.save_data') }}</button>
                 </div>
 
             </form>

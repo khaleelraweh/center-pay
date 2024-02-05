@@ -186,6 +186,49 @@ return [
     'po_box'        =>  'Po Box',
 
 
+    ##############################################################
+
+    // =============  Manage Residential Site ( Countries , States , Cities   )===============//
+    'manage_residentail_site'              => 'Residential site management',
+
+    // --------------- Countries  --------------//
+    'show_countries'               => 'Countries',
+    'add_new_country'             => 'Add New Country',
+    'edit_existing_country'       => 'Edit Existing Country',
+
+
+    // ........... commons in Countries   ....... //
+
+    'country_name'              =>  'Country Name',
+    'states_count'               =>  'States Count',
+    'emoji'                     =>  'Emoji',
+
+    // --------------- States --------------//
+    'show_states'               => 'States',
+    'add_new_state'             => 'Add New State',
+    'edit_existing_state'       => 'Edit Existing State',
+
+
+    // ........... commons in States   ....... //
+    'state_name'                => 'State Name',
+    'cities_count'              =>  'Cities Count',
+
+
+    // --------------- Cities --------------//
+    'show_cities'               => 'Cities',
+    'add_new_city'              => 'Add New City',
+    'edit_existing_city'        => 'Edit Existing City',
+
+
+    // ........... commons in cities   ....... //
+
+    'city_name'                 =>  'City Name',
+
+
+
+
+
+
 
     ##############################################################
     // =============  Manage Orders  ===============//

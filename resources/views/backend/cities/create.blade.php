@@ -9,18 +9,20 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-plus-square"></i>
-                    إضافة مدينة جديدة
+                    {{ __('panel.add_new_city') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
-                        <a href="{{ route('admin.index') }}">
-                            الرئيسية
-                        </a>
-                        <i class="fa fa-solid fa-chevron-left chevron"></i>
+                        <a href="{{ route('admin.index') }}">{{ __('panel.main') }}</a>
+                        @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl')
+                            <i class="fa fa-solid fa-chevron-left chevron"></i>
+                        @else
+                            <i class="fa fa-solid fa-chevron-right chevron"></i>
+                        @endif
                     </li>
                     <li>
                         <a href="{{ route('admin.cities.index') }}">
-                            إدارة المدن
+                            {{ __('panel.show_cities') }}
                         </a>
                     </li>
                 </ul>
@@ -60,7 +62,8 @@
                         <select name="state_id" class="form-control">
                             <option value="">---</option>
                             @forelse ($states as $state)
-                                <option value="{{ $state->id }}" {{ old('state_id') == $state->id ? 'selected' : null }}>
+                                <option value="{{ $state->id }}"
+                                    {{ old('state_id') == $state->id ? 'selected' : null }}>
                                     {{ $state->name }}</option>
                             @empty
                             @endforelse
@@ -82,7 +85,8 @@
                 </div>
                 {{-- end row --}}
                 <div class="form-group pt-4">
-                    <button type="submit" name="submit" class="btn btn-primary">حفظ المدينة</button>
+                    <button type="submit" name="submit" class="btn btn-primary">
+                        {{ __('panel.save_data') }}</button>
                 </div>
 
             </form>

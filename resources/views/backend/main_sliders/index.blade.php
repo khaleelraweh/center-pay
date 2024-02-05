@@ -50,6 +50,7 @@
             <div class="table-responsive">
                 <table class="table table-hover table-striped table-bordered dt-responsive nowrap"
                     style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+
                     <thead>
                         <tr>
                             <th>{{ __('panel.image') }}</th>

@@ -11,18 +11,20 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-plus-square"></i>
-                    إضافة دولة جديدة
+                    {{ __('panel.add_new_country') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
-                        <a href="{{ route('admin.index') }}">
-                            الرئيسية
-                        </a>
-                        <i class="fa fa-solid fa-chevron-left chevron"></i>
+                        <a href="{{ route('admin.index') }}">{{ __('panel.main') }}</a>
+                        @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl')
+                            <i class="fa fa-solid fa-chevron-left chevron"></i>
+                        @else
+                            <i class="fa fa-solid fa-chevron-right chevron"></i>
+                        @endif
                     </li>
                     <li>
                         <a href="{{ route('admin.countries.index') }}">
-                            إدارة الدول
+                            {{ __('panel.show_countries') }}
                         </a>
                     </li>
                 </ul>
@@ -294,7 +296,8 @@
 
                     {{-- submit button  --}}
                     <div class="form-group pt-4">
-                        <button type="submit" name="submit" class="btn btn-primary">إضافة الدولة</button>
+                        <button type="submit" name="submit" class="btn btn-primary">
+                            {{ __('panel.save_data') }}</button>
                     </div>
 
                 </div>
