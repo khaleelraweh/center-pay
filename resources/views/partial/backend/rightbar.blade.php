@@ -2,7 +2,7 @@
     <div data-simplebar class="h-100">
         <div class="rightbar-title d-flex align-items-center px-3 py-4">
 
-            <h5 class="m-0 me-2">Settings</h5>
+            <h5 class="m-0 me-2">{{ __('panel.settings') }}</h5>
 
             <a href="javascript:void(0);" class="right-bar-toggle ms-auto">
                 <i class="mdi mdi-close noti-icon"></i>
@@ -11,7 +11,7 @@
 
         <!-- Settings -->
         <hr class="mt-0" />
-        <h6 class="text-center mb-0">Choose Layouts</h6>
+        <h6 class="text-center mb-0">{{ __('panel.choose_layouts') }}</h6>
 
 
         {{-- will be used in frontend index  --}}
@@ -23,7 +23,7 @@
                     class="btn-check" onchange="this.form.submit();">
                 <label for="theme" class="btn btn-secondary">
                     <i class="{{ Cookie::get('theme') == 'light' ? 'fas fa-moon' : 'fas fa-sun text-warning' }}"></i>
-                    Mode
+                    {{ __('panel.mode') }}
                 </label>
             </form>
         </span>
@@ -43,7 +43,7 @@
                         id="light-mode-switch" onchange="this.form.submit();"
                         {{ Cookie::get('theme') == 'light' ? 'checked , disabled' : '' }}>
 
-                    <label class="form-check-label" for="light-mode-switch">Light Mode</label>
+                    <label class="form-check-label" for="light-mode-switch"> {{ __('panel.light_mode') }} </label>
                 </form>
             </div>
 
@@ -62,7 +62,7 @@
                     <input class="form-check-input theme-choice" name="theme_choice" value="dark" type="checkbox"
                         id="dark-mode-switch" onchange="this.form.submit();"
                         {{ Cookie::get('theme') != null ? (Cookie::get('theme') == 'dark' ? 'checked , disabled' : '') : 'checked , disabled' }}>
-                    <label class="form-check-label" for="dark-mode-switch">Dark Mode</label>
+                    <label class="form-check-label" for="dark-mode-switch">{{ __('panel.dark_mode') }} </label>
                 </form>
             </div>
 

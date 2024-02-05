@@ -544,4 +544,15 @@ return [
     //---------------- Common Validation -----------------//
     'in'                        => 'In',
     'and'                       => '&',
+
+
+
+    // =================== Static word in the webpage ===============//
+    'settings'                       =>  'Settings',
+    'choose_layouts'                 =>  'Choose Layouts',
+    'mode'                           =>  'Mode',
+    'light_mode'                     =>  'Light Mode',
+    'dark_mode'                      =>  'Dark Mode',
+
+
 ];

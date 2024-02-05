@@ -549,4 +549,12 @@ return [
     'and'                           =>  'و',
 
 
+    // =================== Static word in the webpage ===============//
+    'settings'                       =>  'الإعدادات',
+    'choose_layouts'                 =>  'إختر التيم المناسب لك',
+    'mode'                           =>  'الثيم',
+    'light_mode'                     =>  'الوضع المشرق',
+    'dark_mode'                      =>  'الوضع الداكن',
+
+
 ];
