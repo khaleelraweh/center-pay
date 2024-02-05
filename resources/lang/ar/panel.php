@@ -569,5 +569,30 @@ return [
     'light_mode'                     =>  'الوضع المشرق',
     'dark_mode'                      =>  'الوضع الداكن',
 
+    // ===================  front end static word =====================//
+
+    'f_new_cards'                           => 'الباقات الجديدة',
+
+    'f_our_categories'                      => 'بطاقاتنا',
+    'f_choose_your_favorite_category'       => 'اختر البطاقة المناسبة لك',
+    'f_view_category'                       =>  'عرض الباقات',
+
+    'f_various_cards'                        => 'باقات متنوعة',
+
+    'f_blog'                                => 'المدونة',
+    'f_read_more'                           => 'إقراء المزيد',
+
+    'f_Inquiries'                           =>  'الإستفسارات',
+    'f_common_questions'                    =>  'الاسئلة الشائعة',
+
+
+    // ...........  in all frontend page   ......... //
+
+    // ========================  fronten Message =========================// 
+    'f_our_price_are_the_best'                                              => 'اسعارنا الافضل',
+    'f_strongest_offers'                                                    => 'عروضنا الأقوى',
+    'f_outstanding_customer_service'                                        => 'خدمة عملاء متميزة',
+    'f_packages_that_suit_your_needs'                                       => 'باقات تناسب احتياجك',
+
 
 ];

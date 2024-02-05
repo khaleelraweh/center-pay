@@ -4,7 +4,7 @@
         <div class="holder">
             <div class="container">
                 <div class="title-wrap text-center">
-                    <h2 class="h1-style custom-header-color">باقات متنوعة</h2>
+                    <h2 class="h1-style custom-header-color"> {{ __('panel.f_various_cards') }} </h2>
                     <div class="carousel-arrows"></div>
                 </div>
 
@@ -20,10 +20,12 @@
 
                                         <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
                                             data-src="{{ asset('assets/cards/' . $random_product_card->firstMedia->file_name) }}"
-                                            alt="بطائق الدفع" class="js-prd-img lazyload fade-up" />
+                                            alt="{{ $random_product_card->product_name }}"
+                                            class="js-prd-img lazyload fade-up" />
                                         <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
                                             data-src="{{ asset('assets/cards/' . $random_product_card->lastMedia->file_name) }}"
-                                            alt="بطائق الدفع" class="js-prd-img lazyload fade-up" />
+                                            alt="{{ $random_product_card->product_name }}"
+                                            class="js-prd-img lazyload fade-up" />
 
                                         @if ($random_product_card->offer_price > 0)
                                             <div class="foxic-loader"></div>

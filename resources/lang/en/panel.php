@@ -562,11 +562,32 @@ return [
 
 
     // =================== Static word in the webpage ===============//
-    'settings'                       =>  'Settings',
-    'choose_layouts'                 =>  'Choose Layouts',
-    'mode'                           =>  'Mode',
-    'light_mode'                     =>  'Light Mode',
-    'dark_mode'                      =>  'Dark Mode',
+    'settings'                          =>  'Settings',
+    'choose_layouts'                    =>  'Choose Layouts',
+    'mode'                              =>  'Mode',
+    'light_mode'                        =>  'Light Mode',
+    'dark_mode'                         =>  'Dark Mode',
 
+    // ===================  front end static word =====================//
+    'f_new_cards'                           => 'New Cards',
 
+    'f_our_categories'                      => 'Our Categories',
+    'f_choose_your_favorite_category'       => 'Choose Your Favorite Categories',
+    'f_view_category'                       =>  'View Category',
+
+    'f_various_cards'                        => 'Various Cards',
+
+    'f_blog'                                => 'Blog',
+    'f_read_more'                           => 'Read More',
+
+    'f_Inquiries'                           =>  'Inquiries',
+    'f_common_questions'                    =>  'Common Questions',
+
+    // ...........  in all frontend page   ......... //
+
+    // ========================  fronten Message =========================// 
+    'f_our_price_are_the_best'                                      => 'Our prices are the best',
+    'f_strongest_offers'                                      => 'Strongest offers',
+    'f_outstanding_customer_service'                                      => 'Outstanding customer service',
+    'f_packages_that_suit_your_needs'                                      => 'Packages that suit your needs',
 ];

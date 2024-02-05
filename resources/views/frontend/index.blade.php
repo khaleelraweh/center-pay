@@ -270,8 +270,8 @@
         <div class="holder global_width">
             <div class="container">
                 <div class="title-wrap text-center">
-                    <h3 class="h2-style testimonials-carousel-simple-name">بطاقاتنا</h3>
-                    <h2 class="h1-style">اختر البطاقة المناسبة لك</h2>
+                    <h3 class="h2-style testimonials-carousel-simple-name"> {{ __('panel.f_our_categories') }} </h3>
+                    <h2 class="h1-style"> {{ __('panel.f_choose_your_favorite_category') }} </h2>
                 </div>
                 <div class="prd-grid product-listing data-to-show-5 data-to-show-md-3 data-to-show-sm-2 ">
 
@@ -299,7 +299,7 @@
 
                                             <a href="{{ route('frontend.card_category', $card_category->slug) }}"
                                                 class="btn js-prd-addtocart">
-                                                عرض الباقات
+                                                {{ __('panel.f_view_category') }}
                                             </a>
                                         </div>
                                     </div>
@@ -314,21 +314,19 @@
         </div>
     @endif
 
-
     {{-- random cards --}}
     <livewire:frontend.home.random-card-component :random_cards="$random_cards" />
 
 
 
     {{--  cards blog --}}
-
     @if (count($blog) > 0)
         <div class="holder holder-mt-medium blog">
             <div class="container">
                 <div class="title-wrap text-center">
                     <a href="{{ route('frontend.blog') }}" class="h1-style">
                         <i class="fas fa-blog custom-header-color"></i>
-                        المدونة
+                        {{ __('panel.f_blog') }}
                     </a>
                     <div class="carousel-arrows"></div>
                 </div>
@@ -350,7 +348,7 @@
 
                                 <div class="post-prw-text col-sm-6">
                                     <h4 class="post-prw-title">
-                                        <a href="{{ route('frontend.blog.post', $post->slug) }}"> {{ $post->name }}
+                                        <a href="{{ route('frontend.blog.post', $post->slug) }}"> {{ $post->title }}
                                         </a>
                                     </h4>
                                     <div class="post-prw-links">
@@ -364,8 +362,9 @@
                                         {!! Str::limit($post->description, 90, ' ...') !!}
                                     </div>
                                     <div class="post-prw-btn">
-                                        <a href="{{ route('frontend.blog.post', $post->slug) }}" class="btn btn--md">اقرأ
-                                            المزيد</a>
+                                        <a href="{{ route('frontend.blog.post', $post->slug) }}" class="btn btn--md">
+                                            {{ __('panel.f_read_more') }}
+                                        </a>
                                     </div>
                                 </div>
 
@@ -385,8 +384,8 @@
             style="background-color: transparent">
             <div class="container">
                 <div class="title-wrap text-center">
-                    <h3 class="h2-style testimonials-carousel-simple-name">الإستفسارات</h3>
-                    <h2 class="h1-style">الاسئلة الشائعة</h2>
+                    <h3 class="h2-style testimonials-carousel-simple-name">{{ __('panel.f_Inquiries') }}</h3>
+                    <h2 class="h1-style"> {{ __('panel.f_common_questions') }} </h2>
                 </div>
                 <div class="row p-5">
                     <div class="col-md-12">
@@ -515,7 +514,7 @@
                             <i class="icon-tag "></i>
                         </div>
                         <div class="text">
-                            <h4>أسعارنا الأفضل</h4>
+                            <h4>{{ __('panel.f_our_price_are_the_best') }} </h4>
 
                         </div>
                     </div>
@@ -525,7 +524,7 @@
                             <i class="icon-shopping"></i>
                         </div>
                         <div class="text">
-                            <h4>عروضنا الأقوى</h4>
+                            <h4> {{ __('panel.f_strongest_offers') }} </h4>
                         </div>
                     </div>
 
@@ -534,7 +533,7 @@
                             <i class="icon-call-center"></i>
                         </div>
                         <div class="text">
-                            <h4>خدمة عملاء متميزة</h4>
+                            <h4> {{ __('panel.f_outstanding_customer_service') }} </h4>
 
                         </div>
                     </div>
@@ -543,7 +542,7 @@
                             <i class="icon-shopping-1"></i>
                         </div>
                         <div class="text">
-                            <h4>منتجات تناسب احتياجك</h4>
+                            <h4> {{ __('panel.f_packages_that_suit_your_needs') }} </h4>
 
                         </div>
                     </div>

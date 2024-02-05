@@ -4,7 +4,7 @@
         <div class="holder">
             <div class="container">
                 <div class="title-wrap text-center">
-                    <h2 class="h1-style custom-header-color">الباقات الجديدة</h2>
+                    <h2 class="h1-style custom-header-color"> {{ __('panel.f_new_cards') }} </h2>
                     <div class="carousel-arrows"></div>
                 </div>
                 <div class="prd-grid prd-carousel js-prd-carousel slick-arrows-aside-simple slick-arrows-mobile-lg data-to-show-4 data-to-show-md-3 data-to-show-sm-3 data-to-show-xs-2"
