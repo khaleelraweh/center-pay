@@ -638,16 +638,36 @@ return [
 
     // =========================== Footer continue slides ===============================//
 
-    'f_has_been_added_to'                            =>  'It has been added to',
-    'f_you_can_continue'                            =>  'You can continue',
-    'f_complete_your_purchase'                            =>  'Complete your purchase',
-    'f_check_shopping_cart'                            =>  'Check shopping cart',
+    'f_has_been_added_to'                                   =>  'It has been added to',
+    'f_you_can_continue'                                    =>  'You can continue',
+    'f_complete_your_purchase'                              =>  'Complete your purchase',
+    'f_check_shopping_cart'                                 =>  'Check shopping cart',
+
+    'f_select_option_please'                                =>  'Select Option Please..',
+    'f_cant_be_blank'                                       =>  'Can\'t be blank',
+
+    'f_scroll_to_top'                                       =>  'Scroll To Top',
+
+    // ===================== cart-default-component =====================================//
+    'f_close'                                           =>  'Close',
+    'f_item_price'                                      =>  'Item Price',
+    'f_quentity'                                        =>  'Quentity',
+    'f_total'                                           =>  'Total',
+
+
+    'f_remove_from_shopping_cart'                       =>  'Remove From Shopping Cart',
+    'f_shopping_cart_is_empty'                          =>  'Shopping cart is Empty',
+
+    'f_m_get_gift'                                      =>  'When you buy two or more cards, get a gift',
+    'f_shopping'                                        =>  'Shopping!',
+    'f_m_continue_shopping_and_get_free_delivery'       =>  'Continue shopping and get free delivery within a week',
+
+    'f_you_saved'                                       =>  'You Saved ',
+
+    'f_shopping_cart'                                   =>  'Shopping Cart',
+    'f_payment_process'                                 =>  'Pay Process',
 
 
 
-    'f_select_option_please'                =>  'Select Option Please..',
-    'f_cant_be_blank'                       =>  'Can\'t be blank',
-
-    'f_scroll_to_top'                       =>  'Scroll To Top',
 
 ];

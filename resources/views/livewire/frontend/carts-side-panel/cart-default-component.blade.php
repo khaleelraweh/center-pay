@@ -2,7 +2,7 @@
 <div class="dropdn-content minicart-drop" id="dropdnMinicart" wire:ignore.self>
     <div class="dropdn-content-block">
         <div class="dropdn-close">
-            <span class="js-dropdn-close">اغلاق</span>
+            <span class="js-dropdn-close">{{ __('panel.f_close') }}</span>
         </div>
         <div class="minicart-drop-content js-dropdn-content-scroll ">
 
@@ -18,23 +18,23 @@
                             <a href="{{ route('frontend.card', $item->model->slug) }}"><img class="lazyload fade-up"
                                     src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
                                     data-src="{{ asset('assets/cards/' . $item->model?->firstMedia->file_name) }}"
-                                    alt="{{ $item->model->name }}" /></a>
+                                    alt="{{ $item->model->product_name }}" /></a>
                         </div>
 
                         <!-- content part part  -->
                         <div class="minicart-prd-info col">
                             <div class="minicart-prd-tag"><a
-                                    href="{{ route('frontend.card_category', $item->model->category->slug) }}">{{ $item->model->category->name }}</a>
+                                    href="{{ route('frontend.card_category', $item->model->category->slug) }}">{{ $item->model->category->category_name }}</a>
                             </div>
                             <h2 class="minicart-prd-name">
-                                <a href="{{ route('frontend.card', $item->model->slug) }}">{{ $item->model->name }}
+                                <a href="{{ route('frontend.card', $item->model->slug) }}">{{ $item->model->product_name }}
                                 </a>
                             </h2>
 
                             <div class="minicart-prd-price prd-price pt-0 mt-1">
                                 <span class="minicart-prd-qty-label">
                                     <small>
-                                        سعر الحبة :
+                                        {{ __('panel.f_item_price') }} :
                                     </small>
                                 </span>
                                 @if ($item->model->offer_price > 0)
@@ -51,7 +51,7 @@
                             <div class="mt-auto default_custom_price">
                                 <div class="minicart-prd-qty d-flex align-items-center mt-0">
                                     <span class="minicart-prd-qty-label ">
-                                        الكمية:
+                                        {{ __('panel.f_quentity') }} :
                                     </span>
                                     <span class="minicart-prd-qty-value">
 
@@ -75,7 +75,7 @@
 
                                     <span class="minicart-prd-qty-label">
                                         <small>
-                                            الاجمالي:
+                                            {{ __('panel.f_total') }}:
                                         </small>
                                     </span>
                                     @if ($item->model->offer_price > 0)
@@ -112,7 +112,8 @@
                         <div class="minicart-prd-action">
                             <a wire:click.prevent="removeFromCart('{{ $item->rowId }}')"
                                 x-on:click="open_{{ $item->model->id }} = ! open_{{ $item->model->id }}"
-                                class="js-product-remove" title="حذف من السلة" style="cursor: pointer">
+                                class="js-product-remove" title=" {{ __('panel.f_remove_from_shopping_cart') }} "
+                                style="cursor: pointer">
                                 <i class="icon-recycle"></i>
                             </a>
                         </div>
@@ -138,7 +139,7 @@
                             </svg>
                         </div>
                     </div>
-                    <h2 class="text-center">السلة فارغة</h2>
+                    <h2 class="text-center"> {{ __('panel.f_shopping_cart_is_empty') }} </h2>
                 </div>
             @endforelse
 
@@ -151,7 +152,7 @@
                         </div>
                         <div class="col">
                             <div class="countdown-txt">
-                                عند شرائك لبطاقتين او اكثر احصل على هدية
+                                {{ __('panel.f_m_get_gift') }}
                             </div>
                             <div class="countdown js-countdown" data-countdown="2021/07/01"></div>
                         </div>
@@ -164,7 +165,8 @@
                         <i class="icon-truck"></i>
                     </div>
                     <div class="shop-feature-text col">
-                        <b>تسوق!</b> واصل التسوق واحصل على توصيل مجاني خلال فترة اسبوع
+                        <b>{{ __('panel.f_shopping') }}</b>
+                        {{ __('panel.f_m_continue_shopping_and_get_free_delivery') }}
                     </div>
                 </div>
             </div>
@@ -176,7 +178,7 @@
             <div
                 class="minicart-drop-total  js-minicart-drop-total row no-gutters align-items-center minicart-prd-price prd-price mx-auto">
                 <div class="minicart-drop-total-txt col-auto heading-font">
-                    الاجمالي
+                    {{ __('panel.f_total') }}
                 </div>
                 <div class="minicart-drop-total-price col d-flex justify-content-end align-items-center"
                     data-header-cart-total="">
@@ -220,11 +222,19 @@
 
 
             <div class="minicart-drop-actions">
-                <a href="{{ route('frontend.cart') }}" class="btn btn--md btn--grey"><i
-                        class="icon-basket"></i><span>سلة
-                        المشتريات</span></a>
-                <a href="{{ route('frontend.checkout') }}" class="btn btn--md"><i class="icon-checkout"></i><span>عملية
-                        الدفع</span></a>
+                <a href="{{ route('frontend.cart') }}" class="btn btn--md btn--grey"><i class="icon-basket"></i>
+                    <span>
+
+                        {{ __('panel.f_shopping_cart') }}
+
+                    </span>
+                </a>
+                <a href="{{ route('frontend.checkout') }}" class="btn btn--md">
+                    <i class="icon-checkout"></i>
+                    <span>
+                        {{ __('panel.f_payment_process') }}
+                    </span>
+                </a>
             </div>
 
             <ul class="payment-link mb-2">

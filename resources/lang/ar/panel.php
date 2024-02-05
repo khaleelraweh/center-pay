@@ -644,12 +644,32 @@ return [
     'f_complete_your_purchase'                       =>  'إكمال عملية الشراء',
     'f_check_shopping_cart'                          =>  'فحص سلة التسقو',
 
-
-
     'f_select_option_please'                        =>  'حدد الخيار من فضلك..',
     'f_cant_be_blank'                               =>  'لا يمكن أن يكون فارغا',
 
     'f_scroll_to_top'                               =>  'انتقل إلى أعلى',
+
+    // ===================== cart-default-component =====================================//
+    'f_close'                               =>  'إغلاق',
+    'f_item_price'                               =>  'سعر الحبة',
+    'f_quentity'                               =>  'الكمية',
+    'f_total'                               =>  'الإجمالي',
+    'f_remove_from_shopping_cart'                    =>  'حذف من سلة التسوق',
+    'f_shopping_cart_is_empty'              =>  'سلة التسوق فارغة',
+
+    'f_m_get_gift'                          =>  'عند شرائك لبطاقتين او اكثر احصل على هدية',
+    'f_shopping'                            =>  'تسوق!',
+    'f_m_continue_shopping_and_get_free_delivery' => 'واصل التسوق واحصل على توصيل مجاني خلال فترة اسبوع ',
+
+
+    'f_you_saved'                           =>  'حافظت على',
+
+
+    'f_shopping_cart'                       => 'سلة المشتريات',
+    'f_payment_process'                     => 'عملية الدفع',
+
+
+
 
 
 ];
