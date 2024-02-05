@@ -407,6 +407,7 @@ return [
     'currency_symbol'                       =>   'Currency Symbol',
     'currency_code'                         =>   'Currency Code',
     'currency_exchange_rate'                =>   'Currency Exchange Rate',
+    'default_currency'                      =>   'Default Currency',
 
 
 

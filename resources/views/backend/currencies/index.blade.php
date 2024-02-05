@@ -60,7 +60,13 @@
                     <tbody>
                         @forelse ($currencies as $currency)
                             <tr>
-                                <td>{{ $currency->currency_name }}</td>
+                                <td>{{ $currency->currency_name }}
+                                    @if ($loop->first)
+                                        <span> <small class="btn btn-round  rounded-pill btn-success btn-xs"
+                                                style="font-size: 9px">{{ __('panel.default_currency') }}
+                                            </small></span>
+                                    @endif
+                                </td>
                                 <td>{{ $currency->currency_symbol }}</td>
                                 <td>{{ $currency->currency_code }}</td>
                                 <td>{{ $currency->exchange_rate }}</td>
@@ -93,8 +99,6 @@
                                                     status="Inactive"></i>
                                             </a>
                                         @endif
-
-
                                     </div>
                                     <form action="{{ route('admin.currencies.destroy', $currency->id) }}" method="post"
                                         class="d-none" id="delete-product-{{ $currency->id }}">

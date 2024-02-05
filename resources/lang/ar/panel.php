@@ -403,6 +403,8 @@ return [
     'currency_symbol'                       =>   'رمز العملة',
     'currency_code'                         =>   'كود العملة',
     'currency_exchange_rate'                =>   'قيمة التحويل',
+    'default_currency'                      =>   'العملة الإفتراضية',
+
 
 
 

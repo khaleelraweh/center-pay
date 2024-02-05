@@ -23,7 +23,8 @@ class CurrencySeeder extends Seeder
         // Currency::create(['currency_name'=>'دولار امريكي ' , 'slug' =>$faker->unique()->slug(2,3), 'currency_symbol' =>'USD' , 'currency_code'=>'$' , 'exchange_rate' => 0.2666 , 'status'=> true ]);
 
 
-        Currency::create(['currency_name' => ['ar' => 'ريال سعودي', 'en' => 'suaida ryal'], 'slug' => json_encode(['ar' => 'ريال-سعودي', 'en' => 'sudai-ryal']), 'currency_symbol' => ['ar' => 'رس', 'en' => 'SR'], 'currency_code' => 'SAR', 'exchange_rate' => 1, 'status' => true]);
-        Currency::create(['currency_name' => ['ar' => 'ريال يمني', 'en' => 'yemeni ryal'], 'slug' => json_encode(['ar' => 'ريال-يمني', 'en' => 'yemeni-ryal']), 'currency_symbol' => ['ar' => 'ري', 'en' => 'YR'], 'currency_code' => 'YER', 'exchange_rate' => 1, 'status' => true]);
+        Currency::create(['currency_name' => ['ar' => 'ريال سعودي', 'en' => 'Saudi Riyal'], 'slug' => json_encode(['ar' => 'ريال-سعودي', 'en' => 'Saudi-Riyal']), 'currency_symbol' => ['ar' => 'رس', 'en' => 'SR'], 'currency_code' => 'SAR', 'exchange_rate' => 1, 'status' => true]);
+        Currency::create(['currency_name' => ['ar' => 'ريال يمني', 'en' => 'Yemeni Riyal'], 'slug' => json_encode(['ar' => 'ريال-يمني', 'en' => 'Yemeni-Riyal']), 'currency_symbol' => ['ar' => 'ري', 'en' => 'YR'], 'currency_code' => 'YER', 'exchange_rate' => 1, 'status' => true]);
+        Currency::create(['currency_name' => ['ar' => 'دولار امريكي', 'en' => 'U.S Dollar'], 'slug' => json_encode(['ar' => 'دولار-امريكي', 'en' => 'U.S-Dollar']), 'currency_symbol' => ['ar' => '$', 'en' => '$'], 'currency_code' => 'USD', 'exchange_rate' => 1, 'status' => true]);
     }
 }
