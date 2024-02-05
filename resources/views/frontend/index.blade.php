@@ -106,8 +106,9 @@
                                                             style="opacity: 1">
                                                             <a href="{{ $main_slider->url != null ? url($main_slider->url) : '#' }}"
                                                                 class="btn btn--invert btn--lg"
-                                                                target="{{ $main_slider->target }}">تسوق
-                                                                الان</a>
+                                                                target="{{ $main_slider->target }}">
+                                                                {{ __('panel.f_shop_now') }}
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 </div>
