@@ -453,6 +453,20 @@ return [
     'default_currency'                      =>   'Default Currency',
 
 
+    ##############################################################
+
+    // =============  Manage Account Settings  ===============//
+    'manage_account_settings'                => 'Manage Account Settings',
+
+    // --------------- Account Settings  --------------//
+    'show_account_settings'                   => 'Account Settings',
+    'add_new_account_setting'                  => 'Add New Account Setting',
+    'edit_existing_account_setting'            => 'Edit Existing Account Setting ',
+
+
+    // ........... commons in Account Settings   ....... //
+
+
 
     ##############################################################
 

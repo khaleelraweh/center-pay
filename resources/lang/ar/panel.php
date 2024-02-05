@@ -446,6 +446,19 @@ return [
     'default_currency'                      =>   'العملة الإفتراضية',
 
 
+    ##############################################################
+
+    // =============  Manage Account Settings  ===============//
+    'manage_account_settings'                => 'إدارة الحساب',
+
+    // --------------- Account Settings  --------------//
+    'show_account_settings'                   => 'الحساب',
+    'add_new_account_setting'                  => 'إضافة حساب جديد',
+    'edit_existing_account_setting'            => 'تعديل بيانات الحساب',
+
+    // ........... commons in Account Settings   ....... //
+
+
 
 
 

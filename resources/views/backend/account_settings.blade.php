@@ -3,24 +3,24 @@
     {{-- main holder page  --}}
     <div class="card shadow mb-4">
 
-
-
         {{-- breadcrumb part  --}}
         <div class="card-header py-3 d-flex justify-content-between">
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-folder"></i>
-                    إدارة الحساب
+                    {{ __('panel.manage_account_settings') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
-                        <a href="{{ route('admin.index') }}">
-                            الرئيسية
-                        </a>
-                        <i class="fa fa-solid fa-chevron-left chevron"></i>
+                        <a href="{{ route('admin.index') }}">{{ __('panel.main') }}</a>
+                        @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl')
+                            <i class="fa fa-solid fa-chevron-left chevron"></i>
+                        @else
+                            <i class="fa fa-solid fa-chevron-right chevron"></i>
+                        @endif
                     </li>
                     <li>
-                        إدارة الحساب
+                        {{ __('panel.show_account_settings') }}
                     </li>
                 </ul>
             </div>
@@ -40,7 +40,7 @@
                         <div class="row ">
                             <div class="col-sm-12 col-md-6 pt-3">
                                 <div class="form-group">
-                                    <label for="first_name">الاسم الاول</label>
+                                    <label for="first_name"> {{ __('panel.first_name') }}</label>
                                     <input type="text" id="first_name" name="first_name"
                                         value="{{ old('first_name', auth()->user()->first_name) }}" class="form-control">
                                     @error('first_name')
@@ -50,7 +50,7 @@
                             </div>
                             <div class="col-sm-12 col-md-6 pt-3">
                                 <div class="form-group">
-                                    <label for="last_name">اللقب</label>
+                                    <label for="last_name">{{ __('panel.last_name') }}</label>
                                     <input type="text" id="last_name" name="last_name"
                                         value="{{ old('last_name', auth()->user()->last_name) }}" class="form-control">
                                     @error('last_name')
@@ -63,7 +63,7 @@
                         <div class="row ">
                             <div class="col-sm-12 col-md-6 pt-3">
                                 <div class="form-group">
-                                    <label for="username">اسم المستخدم</label>
+                                    <label for="username"> {{ __('panel.user_name') }}</label>
                                     <input type="text" id="username" name="username"
                                         value="{{ old('username', auth()->user()->username) }}" class="form-control">
                                     @error('username')
@@ -73,7 +73,7 @@
                             </div>
                             <div class="col-sm-12 col-md-6 pt-3">
                                 <div class="form-group">
-                                    <label for="email">الايميل</label>
+                                    <label for="email">{{ __('panel.email') }}</label>
                                     <input type="text" id="email" name="email"
                                         value="{{ old('email', auth()->user()->email) }}" class="form-control">
                                     @error('email')
@@ -86,7 +86,7 @@
                         <div class="row ">
                             <div class="col-sm-12 col-md-6 pt-3">
                                 <div class="form-group">
-                                    <label for="mobile">الموبايل</label>
+                                    <label for="mobile">{{ __('panel.mobile') }}</label>
                                     <input type="text" id="mobile" name="mobile"
                                         value="{{ old('mobile', auth()->user()->mobile) }}" class="form-control">
                                     @error('mobile')
@@ -97,7 +97,7 @@
 
                             <div class="col-sm-12 col-md-6 pt-3">
                                 <div class="form-group">
-                                    <label for="password">كلمة المرور</label>
+                                    <label for="password"> {{ __('panel.user_password') }} </label>
                                     <input type="password" id="password" name="password" value=""
                                         class="form-control">
                                     @error('password')
@@ -118,7 +118,7 @@
                     <div class="col-sm-12 col-md-4">
                         <div class="row pt-3">
                             <div class="col-12">
-                                <label for="user_image">صورة الحساب</label>
+                                <label for="user_image"> {{ __('panel.image') }}</label>
                                 <br>
                                 <div class="file-loading">
                                     <input type="file" name="user_image" id="admin_image" class="file-input-overview ">
@@ -135,7 +135,7 @@
 
                 @ability('admin', 'update_account_settings')
                     <div class="form-group pt-4">
-                        <button type="submit" name="submit" class="btn btn-primary">تحديث بيانات الحساب</button>
+                        <button type="submit" name="submit" class="btn btn-primary"> {{ __('panel.update_data') }}</button>
                     </div>
                 @endability
 
