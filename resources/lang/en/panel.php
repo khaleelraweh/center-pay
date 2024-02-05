@@ -558,6 +558,7 @@ return [
     //---------------- Common Validation -----------------//
     'in'                        => 'In',
     'and'                       => '&',
+    'or'                        => 'or',
 
 
 
@@ -590,6 +591,8 @@ return [
     // global
     'f_add_to_card'                         =>  'add to card',
     'f_add_to_wishlist'                     =>  'Add To Wishlist',
+    'f_shop_cart'                           =>  'Shop Cart',
+    'f_wishlist_cart'                       =>  'Wishlist Cart',
 
     //messages 
     'f_m_item_removed_from_shop_cart'                       =>  'The item has been removed from your shopping cart',
@@ -607,14 +610,14 @@ return [
     'f_m_some_thing_went_error'                             =>  'Somethig Went Error !',
 
 
-    // ========================  fronten Message =========================// 
+    // ========================  frontend Message =========================// 
     'f_our_price_are_the_best'                                              => 'Our prices are the best',
     'f_strongest_offers'                                                    => 'Strongest offers',
     'f_outstanding_customer_service'                                        => 'Outstanding customer service',
     'f_packages_that_suit_your_needs'                                       => 'Packages that suit your needs',
 
 
-    // ========================  fronten Footer  =========================// 
+    // ========================  frontend Footer  =========================// 
     'f_phone'                                       => 'Phone',
     'f_email'                                       => 'Email',
     'f_fax'                                         => 'Fax',
@@ -633,6 +636,18 @@ return [
     'f_copyright'                                   =>  'Copyright',
 
 
+    // =========================== Footer continue slides ===============================//
 
+    'f_has_been_added_to'                            =>  'It has been added to',
+    'f_you_can_continue'                            =>  'You can continue',
+    'f_complete_your_purchase'                            =>  'Complete your purchase',
+    'f_check_shopping_cart'                            =>  'Check shopping cart',
+
+
+
+    'f_select_option_please'                =>  'Select Option Please..',
+    'f_cant_be_blank'                       =>  'Can\'t be blank',
+
+    'f_scroll_to_top'                       =>  'Scroll To Top',
 
 ];

@@ -319,6 +319,7 @@
             </div>
         </div>
     </div>
+
     <div class="popup-addedtocart js-popupAddToCart closed" data-close="90000">
         <div class="container">
             <div class="row">
@@ -343,23 +344,26 @@
                         </a>
                         <div class="col popup-addedtocart_text">
                             <a href="product.html" class="popup-addedtocart_title"></a>
-                            <span class="popup-addedtocart_message">تمت إضافتها إلى
-                                <a href="{{ route('frontend.cart') }}" class="underline">سلة التسوق</a></span>
+                            <span class="popup-addedtocart_message">{{ __('panel.f_has_been_added_to') }}
+                                <a href="{{ route('frontend.cart') }}" class="underline">
+                                    {{ __('panel.f_shop_cart') }} </a></span>
                             <span class="popup-addedtocart_error_message"></span>
                         </div>
                     </div>
                 </div>
                 <div class="col-auto popup-addedtocart_actions">
-                    <span>يمكنك الاستمرار</span>
+                    <span> {{ __('panel.f_you_can_continue') }} </span>
                     <a href="{{ route('frontend.cart') }}" class="btn btn--grey btn--sm js-open-drop"
-                        data-panel="#dropdnMinicart"><i class="icon-basket"></i><span>فحص سلة التسوق</span></a>
-                    <span>او</span>
+                        data-panel="#dropdnMinicart"><i class="icon-basket"></i><span>
+                            {{ __('panel.f_check_shopping_cart') }} </span></a>
+                    <span>{{ __('panel.or') }}</span>
                     <a href="{{ route('frontend.checkout') }}" class="btn btn--invert btn--sm"><i
-                            class="icon-envelope-1"></i><span>إكمال عملية الشراء</span></a>
+                            class="icon-envelope-1"></i><span> {{ __('panel.f_complete_your_purchase') }} </span></a>
                 </div>
             </div>
         </div>
     </div>
+
     <div class="sticky-addcart popup-selectoptions js-popupSelectOptions closed" data-close="300000">
         <div class="container">
             <div class="row">
@@ -377,19 +381,19 @@
                         <span class="sticky-addcart_price--actual"></span>
                         <span class="sticky-addcart_price--old"></span>
                     </div>
-                    <div class="sticky-addcart_error_message">Error Message</div>
+                    <div class="sticky-addcart_error_message">{{ __('panel.f_m_some_thing_went_error') }}</div>
                 </div>
                 <div class="col-auto sticky-addcart_options prd-block prd-block_info--style1">
                     <div class="select-wrapper">
                         <select class="form-control form-control--sm sticky-addcart_options_select">
-                            <option value="none">Select Option please..</option>
+                            <option value="none">{{ __('panel.f_select_option_please') }}</option>
                         </select>
-                        <div class="invalid-feedback">Can't be blank</div>
+                        <div class="invalid-feedback">{{ __('panel.f_cant_be_blank') }}</div>
                     </div>
                 </div>
                 <div class="col-auto sticky-addcart_actions">
                     <div class="prd-block_qty">
-                        <span class="option-label">الكمية:</span>
+                        <span class="option-label">{{ __('panel.qty') }} : </span>
                         <div class="qty qty-changer">
                             <button class="decrease"></button>
                             <input type="number" class="qty-input" value="2" data-min="1"
@@ -404,9 +408,12 @@
             </div>
         </div>
     </div>
-    <a class="back-to-top js-back-to-top compensate-for-scrollbar" href="#" title="Scroll To Top">
+
+    <a class="back-to-top js-back-to-top compensate-for-scrollbar" href="#"
+        title="{{ __('panel.f_scroll_to_top') }}">
         <i class="icon icon-angle-up"></i>
     </a>
+
     <div class="loader-horizontal js-loader-horizontal">
         <div class="progress">
             <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 100%"></div>

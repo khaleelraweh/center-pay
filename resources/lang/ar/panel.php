@@ -558,8 +558,9 @@ return [
 
     // ================ Validations ======================//
     //---------------- Common Validation -----------------//
-    'in'                        => 'باللغة',
+    'in'                            => 'باللغة',
     'and'                           =>  'و',
+    'or'                            =>  'او',
 
 
     // =================== Static word in the webpage ===============//
@@ -592,6 +593,8 @@ return [
     //global
     'f_add_to_card'                                         =>  'إضافة للسلة',
     'f_add_to_wishlist'                                     =>  'إضافة للمفضلة',
+    'f_shop_cart'                                           =>  'سلة التسوق',
+    'f_wishlist_cart'                                       =>  'قائمة المفضلات',
 
     //messages 
     'f_m_item_removed_from_shop_cart'                       =>  'تم إزالة العنصر من سلة التسوق بنجاح',
@@ -632,6 +635,21 @@ return [
 
     'f_center_pay'                                  =>  'سينر باي',
     'f_copyright'                                   =>  'حقوق الطبع محفوظة',
+
+
+    // =========================== Footer continue slides ===============================//
+
+    'f_has_been_added_to'                            =>  'تم إضافتها الى',
+    'f_you_can_continue'                             =>  'يمكنك الإستمرار',
+    'f_complete_your_purchase'                       =>  'إكمال عملية الشراء',
+    'f_check_shopping_cart'                          =>  'فحص سلة التسقو',
+
+
+
+    'f_select_option_please'                        =>  'حدد الخيار من فضلك..',
+    'f_cant_be_blank'                               =>  'لا يمكن أن يكون فارغا',
+
+    'f_scroll_to_top'                               =>  'انتقل إلى أعلى',
 
 
 ];
