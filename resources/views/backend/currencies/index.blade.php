@@ -7,17 +7,19 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-folder"></i>
-                    العملات
+                    {{ __('panel.manage_currencies') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
-                        <a href="{{ route('admin.index') }}">
-                            الرئيسية
-                        </a>
-                        <i class="fa fa-solid fa-chevron-left chevron"></i>
+                        <a href="{{ route('admin.index') }}">{{ __('panel.main') }}</a>
+                        @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl')
+                            <i class="fa fa-solid fa-chevron-left chevron"></i>
+                        @else
+                            <i class="fa fa-solid fa-chevron-right chevron"></i>
+                        @endif
                     </li>
                     <li>
-                        إدارة العملات
+                        {{ __('panel.show_currencies') }}
                     </li>
                 </ul>
             </div>
@@ -28,7 +30,7 @@
                         <span class="icon text-white-50">
                             <i class="fa fa-plus-square"></i>
                         </span>
-                        <span class="text">إضافة محتوى جديد</span>
+                        <span class="text">{{ __('panel.add_new_currency') }}</span>
                     </a>
                 @endability
             </div>
@@ -44,14 +46,14 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th> اسم العملة</th>
-                        <th>symbol</th>
-                        <th>رمز العملة iso3</th>
-                        <th>سعر الصرف</th>
-                        <th class="d-none d-sm-table-cell">الكاتب</th>
-                        <th class="d-none d-sm-table-cell">تاريخ الانشاء </th>
+                        <th> {{ __('panel.currency_name') }} </th>
+                        <th>{{ __('panel.currency_symbol') }}</th>
+                        <th> {{ __('panel.currency_code') }} </th>
+                        <th> {{ __('panel.currency_exchange_rate') }} </th>
+                        <th class="d-none d-sm-table-cell"> {{ __('panel.author') }} </th>
+                        <th class="d-none d-sm-table-cell"> {{ __('panel.created_at') }} </th>
                         {{-- <th>الحالة</th> --}}
-                        <th class="text-center" style="width:30px;">الاعدادات</th>
+                        <th class="text-center" style="width:30px;">{{ __('panel.actions') }}</th>
                     </tr>
                 </thead>
                 <tbody>

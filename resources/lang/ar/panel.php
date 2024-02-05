@@ -387,6 +387,23 @@ return [
     'site_questions'                        =>  'الاسئلة الشائعة',
     'site_more_categories'                  =>  'بطاقات اكثر ',
 
+    ##############################################################
+
+    // =============  Manage Currencies  ===============//
+    'manage_currencies'                => 'إدارة العملات',
+
+    // --------------- Currencies  --------------//
+    'show_currencies'                   => 'العملات',
+    'add_new_currency'                  => 'إضافة عملة جديدة',
+    'edit_existing_currency'            => 'تعديل بيانات العملة',
+
+
+    // ........... commons in Currency   ....... //
+    'currency_name'                         =>   'إسم العملة',
+    'currency_symbol'                       =>   'رمز العملة',
+    'currency_code'                         =>   'كود العملة',
+    'currency_exchange_rate'                =>   'قيمة التحويل',
+
 
 
 

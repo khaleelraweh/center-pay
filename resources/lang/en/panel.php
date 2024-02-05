@@ -391,6 +391,24 @@ return [
     'site_more_categories'                  =>  'More Categories',
 
 
+    ##############################################################
+
+    // =============  Manage Currencies  ===============//
+    'manage_currencies'                => 'Manage Currencies',
+
+    // --------------- Currencies  --------------//
+    'show_currencies'                   => 'Currencies',
+    'add_new_currency'                  => 'Add New Currency',
+    'edit_existing_currency'            => 'Edit Existing Currency ',
+
+
+    // ........... commons in Currency   ....... //
+    'currency_name'                         =>   'Currency Name',
+    'currency_symbol'                       =>   'Currency Symbol',
+    'currency_code'                         =>   'Currency Code',
+    'currency_exchange_rate'                =>   'Currency Exchange Rate',
+
+
 
     ##############################################################
 
