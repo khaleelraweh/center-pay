@@ -586,8 +586,9 @@ return [
     // ...........  in all frontend page   ......... //
 
     // ========================  fronten Message =========================// 
-    'f_our_price_are_the_best'                                      => 'Our prices are the best',
-    'f_strongest_offers'                                      => 'Strongest offers',
-    'f_outstanding_customer_service'                                      => 'Outstanding customer service',
-    'f_packages_that_suit_your_needs'                                      => 'Packages that suit your needs',
+    'f_our_price_are_the_best'                                              => 'Our prices are the best',
+    'f_strongest_offers'                                                    => 'Strongest offers',
+    'f_outstanding_customer_service'                                        => 'Outstanding customer service',
+    'f_packages_that_suit_your_needs'                                       => 'Packages that suit your needs',
+
 ];
