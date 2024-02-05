@@ -585,10 +585,27 @@ return [
     'f_Inquiries'                           =>  'Inquiries',
     'f_common_questions'                    =>  'Common Questions',
 
-    // ...........  in all frontend page   ......... //
+    // ===================  in cart translation    ======================== //
 
+    // global
     'f_add_to_card'                         =>  'add to card',
     'f_add_to_wishlist'                     =>  'Add To Wishlist',
+
+    //messages 
+    'f_m_item_removed_from_shop_cart'                       =>  'The item has been removed from your shopping cart',
+    'f_m_item_removed_from_wishlist_cart'                   =>  'The item has been removed from your wishlist cart',
+
+    'f_m_item_removed_all_from_shop_cart'                   =>  'All items has been removed from your shopping cart',
+    'f_m_item_removed_all_from_wishlist_cart'               =>  'All items has been removed from your wishlist cart',
+
+    'f_m_item_already_exist_in_shop_cart'                   =>  'The item is already in the shopping cart',
+    'f_m_item_already_exist_in_wishlist_cart'               =>  'The item is already in the wishlist cart',
+
+    'f_m_item_add_to_shop_cart'                             =>  'The item has been added to the shopping cart successfully',
+    'f_m_item_add_to_wishlist_cart'                         =>  'The item has been added to the wishlist cart successfully',
+
+    'f_m_some_thing_went_error'                             =>  'Somethig Went Error !',
+
 
     // ========================  fronten Message =========================// 
     'f_our_price_are_the_best'                                              => 'Our prices are the best',

@@ -22,11 +22,23 @@ class FeaturedCardComponent extends Component
         });
 
         if ($duplicates->isNotEmpty()) {
-            $this->alert('error', 'الباقة  مضافة مسبقا!!');
+            if ($instance == 'default') {
+                $this->alert('error', __('panel.f_m_item_already_exist_in_shop_cart'));
+            } else if ($instance == 'wishlist') {
+                $this->alert('error', __('panel.f_m_item_already_exist_in_wishlist_cart'));
+            } else {
+                $this->alert('error', __('panel.f_m_some_thing_went_error'));
+            }
         } else {
             Cart::instance($instance)->add($card_id, $card_name, $card_quentity, $card_price)->associate(Card::class);
             $this->emit('updateCart');
-            $this->alert('success', ' تم ضافة الباقة الى ' . $instance . ' بنجاح');
+            if ($instance == 'default') {
+                $this->alert('success', __('panel.f_m_item_add_to_shop_cart'));
+            } else if ($instance == 'wishlist') {
+                $this->alert('success', __('panel.f_m_item_add_to_wishlist_cart'));
+            } else {
+                $this->alert('success', __('panel.f_m_some_thing_went_error'));
+            }
         }
     }
 

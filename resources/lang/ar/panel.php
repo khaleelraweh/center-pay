@@ -587,10 +587,25 @@ return [
     'f_common_questions'                    =>  'الاسئلة الشائعة',
 
 
-    // ...........  in all frontend page   ......... //
+    // =====================  in cart translation   ======================= //
 
-    'f_add_to_card'                         =>  'إضافة للسلة',
-    'f_add_to_wishlist'                     =>  'إضافة للمفضلة',
+    //global
+    'f_add_to_card'                                         =>  'إضافة للسلة',
+    'f_add_to_wishlist'                                     =>  'إضافة للمفضلة',
+
+    //messages 
+    'f_m_item_removed_from_shop_cart'                       =>  'تم إزالة العنصر من سلة التسوق بنجاح',
+    'f_m_item_removed_from_wishlist_cart'                   =>  'تم إزالة العنصر من قائمة المفظلات بنجاح',
+
+    'f_m_item_removed_all_from_shop_cart'                   =>  'تم إزالة جميع العناصر من سلة التسوق بنجاح',
+    'f_m_item_removed_all_from_wishlist_cart'               =>  'تم إزالة جميع العناصر من قائمة المفضلات بنجاح',
+
+    'f_m_item_already_exist_in_shop_cart'                   =>  'العنصر موجود بالفعل في سلة التسوق',
+    'f_m_item_already_exist_in_wishlist_cart'               =>  'العنصر موجود بالفعل في قائمة المفضلات',
+
+    'f_m_item_add_to_shop_cart'                             =>  'تم إضافة العنصر الى سلة التسوق بنجاح',
+    'f_m_item_add_to_wishlist_cart'                         =>  'تم إضافة العنصر الى قائمة المفضلات بنجاح',
+
 
     // ========================  fronten Message =========================// 
     'f_our_price_are_the_best'                                              => 'اسعارنا الافضل',
