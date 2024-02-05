@@ -407,7 +407,7 @@
                                         <div id="collapse{{ $question->id }}" class="panel-collapse collapse"
                                             role="tabpanel" aria-labelledby="{{ $question->id }}">
                                             <div class="panel-body">
-                                                {!! $question->content !!}
+                                                {!! $question->description !!}
                                             </div>
                                         </div>
                                     </div>

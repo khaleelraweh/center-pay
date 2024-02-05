@@ -569,7 +569,6 @@ return [
     'dark_mode'                         =>  'Dark Mode',
 
     // ===================  front end static word =====================//
-
     'f_shop_now'                            =>  'Shop Now',
 
     'f_new_cards'                           => 'New Cards',
