@@ -38885,58 +38885,53 @@ p.countdown-box-text:not(:first-child)
 
 .breadcrumbs
 {
-    padding: 8px 0;
-
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding: .75rem 1rem;
     list-style: none;
+    border-radius: .25rem;
 
     color: #282828;
 }
 .breadcrumbs li
 {
-    font-size: 14px;
-    line-height: 20px; 
+    list-style: none;
+}
 
-    display: inline-block;
-}
-.breadcrumbs li:first-child
+.breadcrumbs li.active
 {
-    padding-left: 0;
+  color: #6c757d;
 }
-.breadcrumbs li:last-child
-{
-    padding-right: 0;
-}
+
 .breadcrumbs li a
 {
     white-space: nowrap;
-    text-decoration: underline; 
-
+    /* text-decoration: underline;  */
     color: #282828;
 }
 .breadcrumbs li a:hover
 {
     text-decoration: none; 
-
     color: #17c6aa;
 }
-.breadcrumbs li:after
+
+.breadcrumbs li:before
 {
     font-family: 'icon-foxic';
+    display: inline-block;
     font-size: 8px;
     line-height: 20px; 
 
-    position: relative;
-
-    margin-right: -8px;
-    padding-right: 12px;
-    padding-left: 8px;
-
     content: '\e919';
     vertical-align: bottom;
+    padding-right: .5rem;
+    padding-left: .5rem;
 
     color: #282828;
 }
-.breadcrumbs li:last-child:after
+.breadcrumbs li:first-child:before
 {
     display: none;
 }
@@ -43044,3 +43039,5 @@ body
     animation-name: driveInLeft;
     animation-duration: 2s;
 }
+
+

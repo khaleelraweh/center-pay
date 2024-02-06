@@ -5,32 +5,18 @@
 @section('content')
     <div class="container">
 
-
-        <div class="holder mt-0">
+        <div class="holder breadcrumbs-wrap mt-0">
             <div class="container">
-                <ul class="breadcrumb pref">
-                    <li>
-                        <a href="{{ route('frontend.index') }}">
-                            الرئيسية
-                        </a>
-                        <i class="fa fa-solid fa-chevron-left chevron"></i>
+                <ul class="breadcrumbs">
+                    <li><a href="{{ route('frontend.index') }}">Home</a></li>
+                    <li><a
+                            href="{{ route('frontend.card_category', $card->category->slug) }}">{{ $card->category->category_name }}</a>
                     </li>
-
-                    <li>
-                        <a href="{{ route('frontend.card_category', $card->category->slug) }}">
-                            {{ $card->category->name }}
-                        </a>
-                        <i class="fa fa-solid fa-chevron-left chevron"></i>
-                    </li>
-
-                    <li>
-                        <a href="{{ route('frontend.card', $card->slug) }}" class="active">
-                            {{ $card->name }}
-                        </a>
-                    </li>
+                    <li class="active"><span> {{ $card->product_name }}</span></li>
                 </ul>
             </div>
         </div>
+
 
         {{-- review and card show image and detail part --}}
         <div class="holder">
@@ -272,7 +258,8 @@
                                     </p>
                                     <p>
                                         إرسال الطرود معنا أمر بسيط. لبدء العملية، ستحتاج أولاً إلى ذلك
-                                        احصل على عرض أسعار باستخدام خدمة عرض الأسعار المجانية عبر الإنترنت. من هذا، سوف تكون
+                                        احصل على عرض أسعار باستخدام خدمة عرض الأسعار المجانية عبر الإنترنت. من هذا،
+                                        سوف تكون
                                         قادرًا
                                         للتنقل عبر النموذج عبر الإنترنت لحجز تاريخ استلام الطرود الخاصة بك،
                                         اختيار يوم الشحن المناسب لك.
@@ -313,8 +300,7 @@
                                         </div>
                                         <div class="form-group">
                                             <input type="text" name="contact[email]"
-                                                class="form-control form-control--sm" placeholder="الايميل"
-                                                required="">
+                                                class="form-control form-control--sm" placeholder="الايميل" required="">
                                         </div>
                                         <div class="form-group">
                                             <input type="text" name="contact[phone]"

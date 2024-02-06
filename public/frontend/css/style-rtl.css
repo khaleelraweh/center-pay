@@ -4288,46 +4288,16 @@ ul.category-list-lg li a
 }
 
 
-
-.breadcrumbs li:first-child
-{
-    padding-right: 0;
-    margin-left: 20px;
-}
-
-.breadcrumbs li:last-child
-{
-    padding-left: 0;
-}
-
-.breadcrumbs li:after
-{
-    display: none;
-}
-
 .breadcrumbs li:before
 {
-    font-family: 'icon-foxic';
-    font-size: 8px;
-    line-height: 20px;
-
-    position: relative;
-
-    margin-right: 0;
-    margin-left: -8px;
-    padding-right: 8px;
-    padding-left: 12px;
-
     content: '\e907';
-    vertical-align: bottom;
-    right: 100%;
-left: auto;
 }
 
-.breadcrumbs li:last-child:before
+.breadcrumbs li.active
 {
-    display: none;
+  color: #6c757d;
 }
+
 
 .panel-group--style1 .panel > .panel-heading .toggle-arrow
 {
@@ -4580,5 +4550,4 @@ left: auto;
         left: 15px;
     }
 }
-
 

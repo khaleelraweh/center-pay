@@ -49,7 +49,6 @@
 
     <link rel="stylesheet" href="{{ asset('frontend/css/vendor/bootstrap.min.css') }}" />
 
-    {{-- <link href="{{ asset('frontend/css/vendor/bootstrap.min-rtl.css') }}" rel="stylesheet" /> --}}
 
     <link href="{{ asset('frontend/css/vendor/vendor.min.css') }}" rel="stylesheet" />
 
@@ -60,15 +59,7 @@
     <link href="{{ asset('frontend/fonts/icomoon/icons.css') }}" rel="stylesheet">
 
 
-    {{-- dart rtl  --}}
-    {{-- <link href="{{ asset('frontend/css/style-games.css') }}" rel="stylesheet" />
-    {{-- <link rel="stylesheet" href="{{ asset('frontend/css/style-rtl.css') }}" class="languages" /> --}}
-
-    {{-- <link href="{{ asset('frontend/css/style.css') }}" rel="stylesheet" /> --}}
-
     <link href="<?php echo asset($dark == 'dark' ? 'frontend/css/style-games.css' : 'frontend/css/style.css'); ?>" rel="stylesheet" />
-    {{-- <link href="<?php echo asset(Cookie::get('theme') != null ? (Cookie::get('theme') == 'dark' ? 'frontend/css/style-games.css' : 'frontend/css/style.css') : 'frontend/css/style-games.css'); ?>" rel="stylesheet" /> --}}
-
 
     <link rel="stylesheet" href="<?php echo asset($rtl == '-rtl' ? 'frontend/css/style-rtl.css' : ''); ?>" class="languages" />
 
