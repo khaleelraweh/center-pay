@@ -14,7 +14,7 @@
             <div class="btn-wrap">
                 <form action="#">
                     <button class="btn btn--add-to-cart js-trigger-addtocart js-prd-addtocart rounded-pill"
-                        wire:click.prevent="addToCart('{{ $card->id }}')"
+                        wire:click.prevent="store( 'default' , {{ $card->id }} , '{{ $card->product_name }}' , {{ $quantity }} , {{ $card->price }})"
                         data-product='{"name": "{{ $card->name }}", "path":"{{ asset('assets/cards/' . $card->firstMedia->file_name) }}", "url":"{{ route('frontend.card', $card->slug) }}", "aspect_ratio":0.778}'>
                         اضافة الى السلة
                     </button>
@@ -22,7 +22,8 @@
             </div>
 
             <div class="btn-wishlist-wrap">
-                <a href="#" wire:click="addToWishList()"
+                <a href="#"
+                    wire:click.prevent="store( 'wishlist' , {{ $card->id }} , '{{ $card->product_name }}' , {{ $quantity }} , {{ $card->price }})"
                     class="btn-add-to-wishlist ml-auto btn-add-to-wishlist--add js-add-wishlist"
                     title="Add To Wishlist"><i class="icon-heart-stroke"></i></a>
                 <a href="#" class="btn-add-to-wishlist ml-auto btn-add-to-wishlist--off js-remove-wishlist"

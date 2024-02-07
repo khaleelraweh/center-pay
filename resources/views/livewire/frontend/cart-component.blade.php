@@ -1,7 +1,7 @@
 <div>
     <div class="d-flex">
         {{-- wishlist part  --}}
-        <div class="dropdn dropdn_fullheight minicart">
+        <div class="dropdn dropdn_fullheight minicart d-none">
             <a href="#" class="dropdn-link js-dropdn-link minicart-link only-icon" data-panel="#dropdnMiniwishlist">
                 <i class="icon-heart-stroke"></i>
                 <span class="minicart-qty">({{ $wishListCount }})</span>

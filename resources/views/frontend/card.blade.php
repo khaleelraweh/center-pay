@@ -10,6 +10,7 @@
 
 @section('content')
     <div class="container">
+
         <div class="holder breadcrumbs-wrap mt-0">
             <div class="container">
                 <ul class="breadcrumbs">
@@ -120,7 +121,7 @@
 
                             <div class="prd-block_description prd-block_info_item ">
                                 <h3 class="small_desc">
-                                    {!! substr(strip_tags($card->description), 0, 200) !!} ...
+                                    {!! substr(strip_tags($card->description), 0, 200) !!} {{ strlen($card->description) > 200 ? '...' : '' }}
                                 </h3>
 
 
@@ -130,9 +131,15 @@
                                         {!! $card->description !!}
                                     </span>
                                     <div class="mt-1"></div>
-                                    <a class="button jkit-btn-inverse toggle  btn-link read-more"
-                                        style="cursor: pointer;">Read
-                                        More</a>
+
+
+                                    @if (strlen($card->description) > 200)
+                                        <a class="button jkit-btn-inverse toggle  btn-link read-more"
+                                            style="cursor: pointer;">Read
+                                            More</a>
+                                    @else
+                                    @endif
+
                                 </div>
                             </div>
 

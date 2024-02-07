@@ -2,7 +2,7 @@
     use App\Models\SiteSetting;
 @endphp
 
-<div class="holder mt-0">
+<div class="holder mt-5">
     <div class="footer-shop-info">
         <div class="container">
             <div class="text-icn-blocks-bg-row">

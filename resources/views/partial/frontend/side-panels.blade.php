@@ -286,12 +286,6 @@
                     </li>
 
                     @if (auth()->user()->email_verified_at != null)
-                        {{-- <li>
-                            <h5>
-                                <i class="icon-user"></i>
-                                <span>الملف الشخصي </span>
-                            </h5>
-                        </li> --}}
                         <li>
                             <div class="card mt-0 border-0  p-lg-2 custom-card main-back-color" style="padding: 0px">
                                 <div class="card-body custom-card-body-rounded second-back-color">
@@ -377,8 +371,6 @@
                         </li>
                     @else
                     @endif
-
-
 
                 </ul>
 

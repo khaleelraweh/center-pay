@@ -12,74 +12,56 @@ class UpdateQtyComponent extends Component
     use LivewireAlert;
 
     public $card;
-    public $quantity =1;
+    public $quantity = 1;
 
-    public function decreaseQuantity(){
-        if($this->quantity > 1){
+    public function decreaseQuantity()
+    {
+        if ($this->quantity > 1) {
 
             $this->quantity--;
         }
-    } 
-      
-    public function increaseQuantity(){
+    }
 
-        if($this->card->quantity == -1 ){
+    public function increaseQuantity()
+    {
+
+        if ($this->card->quantity == -1) {
             $this->quantity++;
-        }else{
-            if(  $this->card->quantity  >  $this->quantity  ){
+        } else {
+            if ($this->card->quantity  >  $this->quantity) {
                 $this->quantity++;
-            }else{
-                $this->alert('warning','هذه هي الكمية القصوى التي يمكنك إضافتها!');
+            } else {
+                $this->alert('warning', 'هذه هي الكمية القصوى التي يمكنك إضافتها!');
             }
         }
-
-        
     }
 
-    public function addToCart(){
+    public function store($instance, $card_id, $card_name, $card_quentity, $card_price)
+    {
 
-        // check if the card is already exist in the cart :search in the instance defalut in the table
-        $duplicates = Cart::instance('default')->search(function($cartItem,$rowId){
-            return $cartItem->id === $this->card->id;
+        $duplicates = Cart::instance($instance)->search(function ($cartItem, $rowId) use ($card_id) {
+            return $cartItem->id === $card_id;
         });
 
-        if($duplicates->isNotEmpty()){
-            $this->alert('error','الباقة موجودة مسبقا!!');
-        }else{
-            Cart:: instance('default')->add(
-                $this->card->id,
-                $this->card->name,
-                $this->quantity,
-                $this->card->price
-            )->associate(Card::class);
-
+        if ($duplicates->isNotEmpty()) {
+            if ($instance == 'default') {
+                $this->alert('error', __('panel.f_m_item_already_exist_in_shop_cart'));
+            } else if ($instance == 'wishlist') {
+                $this->alert('error', __('panel.f_m_item_already_exist_in_wishlist_cart'));
+            } else {
+                $this->alert('error', __('panel.f_m_some_thing_went_error'));
+            }
+        } else {
+            Cart::instance($instance)->add($card_id, $card_name, $card_quentity, $card_price)->associate(Card::class);
             $this->emit('updateCart');
             $this->quantity = 1;
-            $this->alert('success','تم اضافة الباقة الي السلة بنجاح');
-        }
-    }
-
-    public function addToWishList(){
-
-        $duplicates = Cart::instance('wishlist')->search(function($cartItem,$rowId){
-            return $cartItem->id === $this->card->id;
-        });
-
-        if($duplicates->isNotEmpty()){
-            $this->alert('error','الباقة موجودة مسبقا !!');
-            $wishListStatus = true;
-        }else{
-            
-            Cart:: instance('wishlist')->add(
-                $this->card->id,
-                $this->card->name,
-                1, 
-                $this->card->price
-            )->associate(Card::class);
-
-            $this->emit('updateCart');
-            $this->alert('success','تم إضافة الباقة الي مفضلاتك بنجاح');
-    
+            if ($instance == 'default') {
+                $this->alert('success', __('panel.f_m_item_add_to_shop_cart'));
+            } else if ($instance == 'wishlist') {
+                $this->alert('success', __('panel.f_m_item_add_to_wishlist_cart'));
+            } else {
+                $this->alert('success', __('panel.f_m_some_thing_went_error'));
+            }
         }
     }
 

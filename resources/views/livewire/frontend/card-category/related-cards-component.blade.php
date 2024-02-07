@@ -1,41 +1,7 @@
 <div wire:ignore class="col-lg aside">
     <div class="prd-grid-wrap">
-        {{-- <div class="filter-row">
-            <div class="row">
-                <div class="items-count"> عدد العناصر: </div>
-                <div class="select-wrap d-none d-md-flex">
-                    <div class="select-label">ترتيب:</div>
-                    <div class="select-wrapper select-wrapper-xxs">
-                        <select class="form-control input-sm">
-                            <option value="featured">Featured</option>
-                            <option value="rating">Rating</option>
-                            <option value="price">Price</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="select-wrap d-none d-md-flex">
-                    <div class="select-label">العرض:</div>
-                    <div class="select-wrapper select-wrapper-xxs">
-                        <select class="form-control input-sm">
-                            <option value="featured">12</option>
-                            <option value="rating">36</option>
-                            <option value="price">100</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="viewmode-wrap">
-                    <div class="view-mode">
-                        <span class="js-horview d-none d-lg-inline-flex"><i class="icon-grid"></i></span>
-                        <span class="js-gridview"><i class="icon-grid"></i></span>
-                        <span class="js-listview"><i class="icon-list"></i></span>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
         <div class="prd-grid product-listing data-to-show-3 data-to-show-md-3 data-to-show-sm-2 js-category-grid"
             data-grid-tab-content>
-
-
 
             @forelse ($cards as $card)
 
@@ -46,7 +12,7 @@
                                 class="prd-img image-hover-scale image-container">
                                 <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
                                     data-src="{{ asset('assets/cards/' . $card->firstMedia?->file_name) }}"
-                                    alt="{{ $card->name }}" class="js-prd-img lazyload fade-up" />
+                                    alt="{{ $card->product_name }}" class="js-prd-img lazyload fade-up" />
 
                                 {{-- rounded circle discount --}}
                                 @if ($card->offer_price > 0)
@@ -84,10 +50,10 @@
                                     <li data-image="{{ asset('assets/cards/' . $photo?->file_name) }}"
                                         class="{{ $loop->first ? 'active' : null }}">
                                         <a href="#" class="js-color-toggle" data-toggle="tooltip"
-                                            data-placement="right" title="{{ $card->name }}">
+                                            data-placement="right" title="{{ $card->product_name }}">
                                             <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
                                                 data-src="{{ asset('assets/cards/' . $photo?->file_name) }}"
-                                                class="lazyload fade-up" alt="{{ $card->name }}">
+                                                class="lazyload fade-up" alt="{{ $card->product_name }}">
                                         </a>
                                     </li>
                                 @endforeach
@@ -98,13 +64,13 @@
 
                                 <div class="prd-tag">
                                     <a href="{{ route('frontend.card_category', $card->category->slug) }}">
-                                        {{ $card->category->name }}
+                                        {{ $card->category->category_name }}
                                     </a>
                                 </div>
 
                                 <h2 class="prd-title">
                                     <a href="{{ route('frontend.card', $card->slug) }}">
-                                        {{ $card->name }}
+                                        {{ $card->product_name }}
                                     </a>
                                 </h2>
 
@@ -113,7 +79,7 @@
                                     <form action="#">
                                         <button class="btn js-prd-addtocart"
                                             wire:click.prevent="addToCart('{{ $card->id }}')"
-                                            data-product='{"name": "{{ $card->name }}", "path":"{{ asset('assets/cards/' . $card->firstMedia?->file_name) }}", "url":"{{ route('frontend.card', $card->slug) }}", "aspect_ratio":0.778}'>
+                                            data-product='{"name": "{{ $card->product_name }}", "path":"{{ asset('assets/cards/' . $card->firstMedia?->file_name) }}", "url":"{{ route('frontend.card', $card->slug) }}", "aspect_ratio":0.778}'>
                                             {{ __('panel.f_add_to_card') }}
                                         </button>
                                     </form>
@@ -149,7 +115,7 @@
                                         <form action="#">
                                             <button class="btn js-prd-addtocart"
                                                 wire:click.prevent="addToCart('{{ $card->id }}')"
-                                                data-product='{"name": "{{ $card->name }}", "path":"{{ asset('assets/cards/' . $card->firstMedia?->file_name) }}", "url":"{{ route('frontend.card', $card->slug) }}", "aspect_ratio":0.778}'>
+                                                data-product='{"name": "{{ $card->product_name }}", "path":"{{ asset('assets/cards/' . $card->firstMedia?->file_name) }}", "url":"{{ route('frontend.card', $card->slug) }}", "aspect_ratio":0.778}'>
                                                 {{ __('panel.f_add_to_card') }}
                                             </button>
                                         </form>
