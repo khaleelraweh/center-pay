@@ -61,12 +61,13 @@
 
     <link href="<?php echo asset($dark == 'dark' ? 'frontend/css/style-games.css' : 'frontend/css/style.css'); ?>" rel="stylesheet" />
 
-    <link rel="stylesheet" href="<?php echo asset($rtl == '-rtl' ? 'frontend/css/style-rtl.css' : ''); ?>" class="languages" />
-
+    @if ($rtl == '-rtl')
+        <link rel="stylesheet" href="{{ asset('frontend/css/style-rtl.css') }}" class="languages">
+    @else
+    @endif
 
     <link href="{{ asset('frontend/css/icons.css') }}" rel="stylesheet" />
 
-    {{-- <link href="{{ asset('frontend/css/custom.css') }}" rel="stylesheet" /> --}}
     <link href="<?php echo asset($dark == 'dark' ? 'frontend/css/custom.css' : 'frontend/css/custom-light.css'); ?>" rel="stylesheet" />
 
     <livewire:styles />
