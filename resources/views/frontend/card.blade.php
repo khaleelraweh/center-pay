@@ -1,5 +1,13 @@
 @extends('layouts.app')
 
+@section('style')
+    <style>
+        span.text {
+            display: none;
+        }
+    </style>
+@endsection
+
 @section('content')
     <div class="container">
         <div class="holder breadcrumbs-wrap mt-0">
@@ -86,21 +94,24 @@
                         <div class="prd-block_info prd-block_info--style1"
                             data-prd-handle="/cards/copy-of-suede-leather-mini-skirt">
                             <div class="prd-block_info-top prd-block_info_item order-0 order-md-2">
-                                <h1 class="mb-0 font-weight-bold"> {{ $card->product_name }}</h1>
+                                <h1 class="mb-0 " style="font-size: 35px ; font-weight:bold"> {{ $card->product_name }}
+                                </h1>
                             </div>
 
 
                             <div class="prd-block_info-top prd-block_info_item order-0 order-md-2">
-
                                 <div class="prd-block_price prd-block_price--style2">
-                                    <div class="prd-block_price--actual">
+                                    <div class="prd-block_price--actual main-color"
+                                        style="font-size: 20px; font-weight:bold">
                                         {{ currency_converter($card->price - $card->offer_price) }}
                                     </div>
-                                    <div class="prd-block_price-old-wrap">
+                                    <div class="prd-block_price-old-wrap" style="margin-top:0; margin-top:10px;padding:0">
 
-
-                                        <span class=" prd-block_price--old">
-                                            <sub>{{ currency_converter($card->price) }}</sub>
+                                        <span class="prd-block_price--text prd-block_price--old"
+                                            style="padding: 0px;font-size:20px;">
+                                            <small>
+                                                <sub>{{ currency_converter($card->price) }}</sub>
+                                            </small>
                                         </span>
                                     </div>
                                 </div>
@@ -108,37 +119,20 @@
                             </div>
 
                             <div class="prd-block_description prd-block_info_item ">
-                                <h3>وصف قصير</h3>
-                                <p>
-                                    {!! $card->description !!}
-                                </p>
-                                <div class="mt-1"></div>
-
-                            </div>
+                                <h3 class="small_desc">
+                                    {!! substr(strip_tags($card->description), 0, 200) !!} ...
+                                </h3>
 
 
-                            <div class="prd-block_info-box prd-block_info_item bg-transparent">
-                                <div class="two-column">
-                                    <p>التوفر :
-                                        <span class="prd-in-stock" data-stock-status="">هذه البطاقة متوفرة</span>
-                                    </p>
-                                    <p class="prd-taxes">المعلومات الضريبية :
-                                        <span>شامل الضريبة.</span>
-                                    </p>
-                                    <p>التصنيف :
-                                        <span>
-                                            <a href="{{ route('frontend.card_category', $card->category->slug) }}"
-                                                data-toggle="tooltip" data-placement="top"
-                                                data-original-title="View all">{{ $card->category->name }}
-                                            </a>
 
-                                        </span>
-                                    </p>
-                                    <p>رمز sku : <span data-sku="">{{ $card->sku }}</span></p>
-                                    <p>المزود : <span>سنتر باي</span></p>
-                                    <p>الكمية :
-                                        <span>{{ $card->quantity >= 0 ? $card->quantity : 'الكمية غير محدودة' }}</span>
-                                    </p>
+                                <div class="section">
+                                    <span class="text">
+                                        {!! $card->description !!}
+                                    </span>
+                                    <div class="mt-1"></div>
+                                    <a class="button jkit-btn-inverse toggle  btn-link read-more"
+                                        style="cursor: pointer;">Read
+                                        More</a>
                                 </div>
                             </div>
 
@@ -261,4 +255,38 @@
         @endif
 
     </div>
+@endsection
+
+
+@section('script')
+    <script>
+        var readMore = jQuery(document).ready(function() {
+
+            $(".section .toggle").click(function() {
+
+                var elem = $(this);
+                if (elem.hasClass('read-more')) {
+                    //Stuff to do when btn is in the read more state
+                    $(this).text("Read Less");
+                    $(this).parent().find('.text').slideDown();
+                    $(".small_desc").slideUp();
+
+                    elem.removeClass('read-more');
+                    elem.addClass('read-less');
+                } else {
+                    //Stuff to do when btn is in the read less state
+                    $(this).text("Read More");
+                    $(this).parent().find('.text').slideUp();
+                    $(".small_desc").slideDown();
+
+                    elem.removeClass('read-less');
+                    elem.addClass('read-more');
+
+                }
+
+
+
+            });
+        });
+    </script>
 @endsection
