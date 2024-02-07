@@ -1,4 +1,4 @@
-.breadcrumb-item + .breadcrumb-item::before
+/* .breadcrumb-item + .breadcrumb-item::before
 {
   display: inline-block;
   padding-right: .5rem;
@@ -6,4 +6,110 @@
   color: #6c757d;
   content: ">";
   padding-left: .5rem;
+} */
+
+
+:root {
+  /* --main-bg-section-color: #F9F9F9;
+  --second-bg-section-color:#6c757d; */
+
+  --main-bg-section-color: #e6e9e8  ;
+  --second-bg-section-color:#F9F9F9;
+
+  --white-bg-section-color:#fff;
+
+  --main-color:#17c6aa;
+  --white-color:#fff;
+  --black-color:#000;
+
+  --main-border-radius:16px !important;
+  --second-border-radius:4px !important;
+}
+
+.main-color{
+  color :var(--main-color);
+}
+
+.main-back-color{
+  background-color: var(--main-bg-section-color);
+}
+
+.second-back-color{
+  background-color : var(--second-bg-section-color) ;
+}
+
+.custom-white-spacing{
+  padding: 20px;
+  border-radius: var(--main-border-radius);
+}
+
+.custom-card{
+  padding: 15px !important;
+  border-radius: var(--main-border-radius) ;
+  
+}
+ .custom-card-body-rounded{
+  border-radius: var(--second-border-radius) 40px var(--second-border-radius) 40px !important;
+}
+
+.custom-nav-item{
+  border: none;
+  border-radius: var(--main-border-radius);
+  font-size: 18px;
+
+}
+
+.custom-nav-item:hover {
+  background-color: var(--white-bg-section-color);
+  color: var(--main-color);
+}
+
+
+.custom-nav-item a{  
+  background-color: transparent;
+  display: block;
+  padding: 7px;
+  margin-bottom: 6px;
+  text-decoration: none;
+}
+
+.custom-nav-item:hover a{
+  color: var(--main-color); 
+}
+
+.custom-nav-item.active{
+  background-color: var(--main-color);
+  border-radius: var(--main-border-radius);
+}
+
+.custom-nav-item.active:hover{
+  background-color: var(--white-bg-section-color);
+  color: var(--main-color);
+}
+
+
+
+.tags-list li a{
+color: var(--black-color);
+}
+
+/*  border radius  */
+.custom-radius-btn,
+.btn, 
+button,
+body.equal-height .prd-img:not(.prd-img--noequal) img,
+a.image-hover-scale,
+.panel-heading,
+.card {
+  border-radius: var(--main-border-radius);
+}
+
+.page-content{
+  width: 98%;
+  margin: auto;
+}
+
+/* main sliders */
+.slick-initialized .bnslider-image, .slick-initialized .bnslider-image-mobile, .no-js .bnslider-image{
+border-radius: var(--main-border-radius);
 }

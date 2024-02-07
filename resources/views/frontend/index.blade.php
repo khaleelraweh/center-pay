@@ -3,7 +3,6 @@
 
 @section('content')
 
-
     {{-- {{ dd($getCurrencies) }} --}}
     {{-- Main slider part  --}}
     @if (count($main_sliders) > 0)
@@ -141,7 +140,6 @@
     @endif
 
 
-
     {{-- Advertisor menu --}}
     {{-- <div class="holder mt-0"> --}}
     @if (count($adv_sliders) > 0)
@@ -216,7 +214,6 @@
             </div>
         </div>
     @endif
-
 
     {{-- featured cards livewire component --}}
     <livewire:frontend.home.featured-card-component />
@@ -317,8 +314,6 @@
 
     {{-- random cards --}}
     <livewire:frontend.home.random-card-component :random_cards="$random_cards" />
-
-
 
     {{--  cards blog --}}
     @if (count($blog) > 0)
@@ -506,50 +501,6 @@
         </div>
     </div> --}}
 
-    <div class="holder mt-0">
-        <div class="footer-shop-info">
-            <div class="container">
-                <div class="text-icn-blocks-bg-row">
-                    <div class="text-icn-block-footer">
-                        <div class="icn">
-                            <i class="icon-tag "></i>
-                        </div>
-                        <div class="text">
-                            <h4>{{ __('panel.f_our_price_are_the_best') }} </h4>
 
-                        </div>
-                    </div>
-
-                    <div class="text-icn-block-footer">
-                        <div class="icn">
-                            <i class="icon-shopping"></i>
-                        </div>
-                        <div class="text">
-                            <h4> {{ __('panel.f_strongest_offers') }} </h4>
-                        </div>
-                    </div>
-
-                    <div class="text-icn-block-footer">
-                        <div class="icn">
-                            <i class="icon-call-center"></i>
-                        </div>
-                        <div class="text">
-                            <h4> {{ __('panel.f_outstanding_customer_service') }} </h4>
-
-                        </div>
-                    </div>
-                    <div class="text-icn-block-footer">
-                        <div class="icn">
-                            <i class="icon-shopping-1"></i>
-                        </div>
-                        <div class="text">
-                            <h4> {{ __('panel.f_packages_that_suit_your_needs') }} </h4>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
 @endsection

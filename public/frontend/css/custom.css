@@ -1,84 +1,100 @@
-/* :root {
+:root {
   --main-bg-section-color: #1E171B;
-} */
+  --second-bg-section-color:#261F23;
+  --white-bg-section-color:#fff;
 
-.main_color{
-  color :#DC3C01
+  --main-color:#DC3C01;
+  --white-color:#fff;
+  --black-color:#000;
+
+  --main-border-radius:16px !important;
+  --second-border-radius:4px !important;
 }
 
-.main_backColor{
-  color :#1E171B;
+.main-color{
+  color :var(--main-color);
 }
 
-
-.my-nav-item{
-
+.main-back-color{
+  background-color: var(--main-bg-section-color);
 }
 
-/* .pref-link:hover */
-.my-nav-item:hover {
-  background-color: white;
-  color: #DC3C01;
+.second-back-color{
+  background-color : var(--second-bg-section-color) ;
+}
+
+.custom-white-spacing{
+  padding: 20px;
+  border-radius: var(--main-border-radius);
+}
+
+.custom-card{
+  padding: 15px !important;
+  border-radius: var(--main-border-radius) ;
+  
+}
+ .custom-card-body-rounded{
+  border-radius: var(--second-border-radius) 40px var(--second-border-radius) 40px !important;
+}
+
+.custom-nav-item{
   border: none;
-  border-radius: 4px;
+  border-radius: var(--main-border-radius);
+  font-size: 18px;
+
+}
+
+.custom-nav-item:hover {
+  background-color: var(--white-bg-section-color);
+  color: var(--main-color);
 }
 
 
-/* equail to .pref-link a */
-.my-nav-item a{  
+.custom-nav-item a{  
   background-color: transparent;
   display: block;
   padding: 7px;
   margin-bottom: 6px;
-  border: none;
-  border-radius: 20px;
-  font-size: 18px;
   text-decoration: none;
 }
 
-.my-nav-item:hover a{
-  color: #DC3C01; 
+.custom-nav-item:hover a{
+  color: var(--main-color); 
 }
 
-/* equail to .pref-link.active */
-.my-nav-item.active{
-  background-color: #DC3C01;
-  border: none;
-  border-radius: 4px;
+.custom-nav-item.active{
+  background-color: var(--main-color);
+  border-radius: var(--main-border-radius);
 }
 
-/* eqauil to .pref-link.active:hover */
-.my-nav-item.active:hover{
-  background-color: white;
-  color: #DC3C01;
-  border: none;
-  border-radius: 4px;
+.custom-nav-item.active:hover{
+  background-color: var(--white-bg-section-color);
+  color: var(--main-color);
 }
 
 
 
 .tags-list li a{
-color: black;
-
+color: var(--black-color);
 }
 
-/* cart border radius  */
+/*  border radius  */
+.custom-radius-btn,
 .btn, 
 button,
 body.equal-height .prd-img:not(.prd-img--noequal) img,
 a.image-hover-scale,
 .panel-heading,
 .card {
-  border-radius: 16px;
+  border-radius: var(--main-border-radius);
 }
 
-/* .page-content{
+.page-content{
   width: 98%;
   margin: auto;
-
-} */
+}
 
 /* main sliders */
 .slick-initialized .bnslider-image, .slick-initialized .bnslider-image-mobile, .no-js .bnslider-image{
-border-radius: 16px;
+border-radius: var(--main-border-radius);
 }

@@ -66,7 +66,9 @@
 
     <link href="{{ asset('frontend/css/icons.css') }}" rel="stylesheet" />
 
-    <link href="{{ asset('frontend/css/custom.css') }}" rel="stylesheet" />
+    {{-- <link href="{{ asset('frontend/css/custom.css') }}" rel="stylesheet" /> --}}
+    <link href="<?php echo asset($dark == 'dark' ? 'frontend/css/custom.css' : 'frontend/css/custom-light.css'); ?>" rel="stylesheet" />
+
     <livewire:styles />
     @yield('style')
 

@@ -1,25 +1,25 @@
 @extends('layouts.app')
 @section('content')
-    <section class="py-5 second-back-color custom-card">
-        <div class="">
-            <div class="row align-items-center justify-content-between">
-                <div class="col-12">
+    <section class="py-5 second-back-color custom-card-body-rounded">
+        <div class="container ">
+            <div class="row px-4 px-lg-5 py-lg-4 align-items-center">
+                <div class="col-lg-6">
                     <h1 class="h4 text-uppercase mb-0">الملف الشخصي للعميل {{ auth()->user()->full_name }}</h1>
+                </div>
+                <div class="col-lg-6 text-lg-right">
                     <nav aria-label="breadcrumb ">
-                        <ol class="breadcrumb justify-content-lg-start mb-0 px-5 bg-transparent">
+                        <ol class="breadcrumb justify-content-lg-end mb-0 px-0 bg-transparent">
                             <li class="breadcrumb-item"><a href="{{ route('frontend.index') }}">الرئيسية</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('customer.dashboard') }}"> لوحة التحكم الرئيسية
-                                </a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('customer.profile') }}">الملف الشخصي</a></li>
                         </ol>
                     </nav>
                 </div>
-
             </div>
         </div>
     </section>
 
     <section class="py-5 ">
-        <div class="row m-0">
+        <div class="row ">
 
             <div class="col-lg-8 custom-white-spacing second-back-color">
                 <h2 class="h5 text-uppercase mb-4">المعلومات العامة </h2>
