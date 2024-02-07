@@ -18,6 +18,7 @@
         </div>
 
 
+
         {{-- review and card show image and detail part --}}
         <div class="holder">
             <div class="container js-prd-gallery" id="prdGallery">

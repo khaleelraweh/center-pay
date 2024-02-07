@@ -4551,3 +4551,8 @@ ul.category-list-lg li a
     }
 }
 
+/* custom khaleel style  */
+
+.panel-heading  a:before {
+     float: left;
+  }

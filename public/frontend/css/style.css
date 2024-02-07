@@ -22563,9 +22563,14 @@ body.touch .prd-block_main-image .slick-prev:not(.slick-disabled):hover:not(.sli
 {
     margin-top: 25px;
 }
+.panel-body{
+    padding: 0 20px 20px 20px;
+}
 .prd-block_details .panel-group--style1 .panel-heading + .panel-collapse > .panel-body
 {
     padding: 20px 0;
+    
+
 }
 
 .prd-block_accordion
@@ -29618,7 +29623,8 @@ a.minicart-drop-countdown
 {
     padding: 89px 0; 
 
-    color: #fff;
+    /* color: #fff; */
+    color: #000;
     background-color: #17c6aa;
     background-repeat: no-repeat;
     background-size: cover;
@@ -32428,7 +32434,8 @@ body.has-round-btns .form-inline .form-control
 {
     font-size: 16px;
     font-weight: 600;
-    line-height: 24px;
+    /* line-height: 24px; */
+    line-height: 44px;
 
     margin-bottom: 8px;
 
@@ -43041,3 +43048,34 @@ body
 }
 
 
+/* custom khaleel style  */
+
+
+
+.panel-title>a, .panel-title>a:active{
+    display:block;
+    padding:15px;
+  color:#000;
+  background-color: #f9f9f9;
+  font-size:16px;
+  font-weight:bold;
+    text-transform:uppercase;
+    letter-spacing:1px;
+  word-spacing:3px;
+    text-decoration:none;
+}
+
+.panel-heading  a:before {
+  font-family: icon-foxic;
+   content: "\002B";
+   float: right;
+   transition: all 0.5s;
+   font-size: 25px;
+  font-weight: bold;
+}
+.panel-heading.active a:before {
+    -webkit-transform: rotate(-360deg);
+    -moz-transform: rotate(-360deg);
+    transform: rotate(-360deg);
+    content: '\2212';
+}

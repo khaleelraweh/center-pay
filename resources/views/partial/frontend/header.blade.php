@@ -21,6 +21,21 @@
                 <div class="hdr-nav hide-mobile nav-holder-s"></div>
                 <div class="hdr-links-wrap col-auto ml-auto">
                     <div class="hdr-inline-link">
+
+                        {{-- will be used in frontend index  --}}
+                        <form action="{{ route('admin.create_update_theme') }}" method="post" class="d-flex">
+                            @csrf
+                            <label for="theme" class="dropdn-link  minicart-link only-icon m-0"
+                                style="cursor: pointer">
+                                <input type="radio" name="theme_choice" id="theme" {{-- value="{{ Cookie::get('theme') != null ? (Cookie::get('theme') == 'dark' ? 'light' : 'dark') : 'light' }}" --}}
+                                    value="{{ $dark == 'dark' ? 'light' : 'dark' }}" class="btn-check "
+                                    onchange="this.form.submit();">
+                                <i
+                                    class="{{ Cookie::get('theme') == 'light' ? 'fas fa-moon fa-lg' : 'fas fa-sun text-warning' }} "></i>
+                                {{-- Mode --}}
+                            </label>
+                        </form>
+
                         <div class="search_container_desktop">
                             <div class="dropdn dropdn_search dropdn_fullwidth">
                                 <a href="#" class="dropdn-link js-dropdn-link only-icon"><i
@@ -40,11 +55,13 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="dropdn dropdn_account dropdn_fullheight">
                             <a href="#" class="dropdn-link js-dropdn-link js-dropdn-link only-icon"
                                 data-panel="#dropdnAccount"><i class="icon-user"></i><span
                                     class="dropdn-link-txt">حسابي</span></a>
                         </div>
+
                         {{-- call to cart component livewire for cart and wishlist counter --}}
                         <livewire:frontend.cart-component />
 
@@ -202,7 +219,6 @@
 
 
                             {{-- will be used in frontend index  --}}
-
                             <form action="{{ route('admin.create_update_theme') }}" method="post" class="d-flex">
                                 @csrf
                                 <label for="theme" class="dropdn-link  minicart-link only-icon m-0"

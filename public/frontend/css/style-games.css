@@ -6765,7 +6765,8 @@ select::-ms-expand
     color: #fff;
     border: 0;
     border-radius: 50%;
-    background: #f7f7f8;
+    /* background: #f7f7f8; */
+    background: transparent;
 
     -ms-flex-align: center;
     align-items: center;
@@ -14475,6 +14476,8 @@ body.fancybox--from-sticky .js-stickyAddToCart
 .footer-shop-info .row
 {
     background-color: #fdfdfd;
+    /* background-color: #282828; */
+    color:black;
 }
 .footer-shop-info h4,
 .footer-shop-info p,
@@ -19010,8 +19013,11 @@ body:not(.has-sticky) .bnr-sticky
 
     bottom: 15px;
 
-    color: #000;
-    background-color: #f2e74b;
+    /* color: #000;
+    background-color: #f2e74b; */
+
+    background-color: #DC3C01 !important; 
+    color: white;
 
     -ms-flex-align: center;
     align-items: center;
@@ -32450,11 +32456,12 @@ body.has-round-btns .form-inline .form-control
 {
     font-size: 16px;
     font-weight: 400;
-    line-height: 24px;
+    /* line-height: 24px; */
+    line-height: 44px;
 
     margin-bottom: 8px;
 
-    color: #fff;
+    color: inherit;
 }
 .text-icn-block-footer .icn
 {
@@ -32465,7 +32472,7 @@ body.has-round-btns .form-inline .form-control
 
     max-width: 62px;
 
-    color: inherit;
+    color: #000;
 
     -ms-flex: 0 0 62px;
         flex: 0 0 62px;
@@ -32512,6 +32519,7 @@ body.has-round-btns .form-inline .form-control
     font-size: 14px;
     font-weight: 400;
     line-height: 1.6em;
+    color:#000;
 }
 @media (max-width: 575px)
 {
@@ -43081,7 +43089,8 @@ body
   .panel-heading {
     padding: 0;
       border:0;
-      background-color: #23232d;
+      /* background-color: #23232d; */
+      background-color: #1E171B;
   }
 
 
@@ -43102,16 +43111,20 @@ body
     word-spacing:3px;
       text-decoration:none;
   }
+
   .panel-heading  a:before {
     font-family: icon-foxic;
-     content: "\e907";
-     float: right;
-     transition: all 0.5s;
+    content: "\002B";
+    float: right;
+    transition: all 0.5s;
+    font-size: 25px;
+    font-weight: bold;
   }
   .panel-heading.active a:before {
-      -webkit-transform: rotate(-90deg);
-      -moz-transform: rotate(-90deg);
-      transform: rotate(-90deg);
+      -webkit-transform: rotate(-360deg);
+      -moz-transform: rotate(-360deg);
+      transform: rotate(-360deg);
+      content: '\2212';
   }
 
   .cart-list {
