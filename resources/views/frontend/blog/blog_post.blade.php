@@ -8,8 +8,8 @@
             <div class="holder breadcrumbs-wrap mt-0">
                 <div class="container">
                     <ul class="breadcrumbs">
-                        <li><a href="{{ route('frontend.index') }}">الرئيسية</a></li>
-                        <li><a href="{{ route('frontend.blog') }}">المدونة</a></li>
+                        <li><a href="{{ route('frontend.index') }}">{{ __('panel.f_main') }}</a></li>
+                        <li><a href="{{ route('frontend.blog') }}">{{ __('panel.f_blog') }}</a></li>
                         <li class="active"><span> {{ $post->title }}<span></li>
                     </ul>
                 </div>
@@ -24,7 +24,7 @@
 
                             @if (count($tags) > 0)
                                 <div class="aside-block">
-                                    <h2 class="text-uppercase">الكلمات الشائعة</h2>
+                                    <h2 class="text-uppercase"> {{ __('panel.f_common_tags') }} </h2>
                                     <ul class="tags-list">
 
                                         @foreach ($tags as $tag)
@@ -40,7 +40,7 @@
 
                             @if (count($random_posts) > 0)
                                 <div class="aside-block">
-                                    <h2 class="text-uppercase">اخترنا لك </h2>
+                                    <h2 class="text-uppercase"> {{ __('panel.f_we_chosed_for_you') }} </h2>
 
                                     @forelse ($random_posts as $rand_post)
                                         <div class="post-prw-simple-sm">
@@ -57,12 +57,13 @@
                                                 </div>
                                                 <a href="{{ route('frontend.blog.post', $rand_post->slug) }}"
                                                     class="post-prw-author">
-                                                    {{ $rand_post->created_by ? 'بواسطة ' . $rand_post->created_by : '' }}
+                                                    {{ $rand_post->created_by ? __('panel.by') . ': ' . $rand_post->created_by : '' }}
                                                 </a>
 
                                             </div>
                                             <h4 class="post-prw-title"><a
-                                                    href="{{ route('frontend.blog.post', $rand_post->slug) }}">موضوع
+                                                    href="{{ route('frontend.blog.post', $rand_post->slug) }}">{{ __('panel.f_topic') }}
+                                                    :
                                                     {{ $rand_post->title }}
                                                 </a></h4>
                                             {{-- <a href="#" class="post-prw-comments"><i class="icon-chat"></i>15
@@ -70,24 +71,8 @@
                                         </div>
                                     @empty
                                     @endforelse
-
-
-
-
-
                                 </div>
                             @endif
-
-
-
-                            {{-- <div class="aside-block">
-                                <h2 class="text-uppercase">الارشيف</h2>
-                                <ul class="list list--nomarker">
-                                    <li><a href="#">January 2018</a></li>
-                                    <li><a href="#">February 2018</a></li>
-                                    <li><a href="#">March 2018</a></li>
-                                </ul>
-                            </div> --}}
 
                         </div>
 
@@ -98,7 +83,7 @@
                                     <div class="post-date"><i
                                             class="icon-calendar"></i>{{ $post->published_on->format('Y-m-d') }}</div>
                                     <a href="#" class="post-link">
-                                        {{ $post->created_by ? 'بواسطة ' . $post->created_by : '' }}</a>
+                                        {{ $post->created_by ? __('panel.by') . ': ' . $post->created_by : '' }}</a>
                                     {{-- <a href="#postComments" class="js-scroll-to"><i class="icon-chat"></i>15
                                         تعليق(ات)</a> --}}
                                 </div>
@@ -131,7 +116,7 @@
                             <div class="related-posts">
                                 <div class="title-with-arrows">
                                     <h3 class="h2-style">
-                                        المنشورات ذات الصلة
+                                        {{ __('panel.posts_related_to_this_topic') }}
                                     </h3>
                                     <div class="carousel-arrows"></div>
                                 </div>
@@ -171,7 +156,8 @@
                                                         {!! Str::limit($post->description, 150, ' ...') !!}
                                                     </div>
                                                     <div class="post-prw-btn">
-                                                        <a href="#" class="btn btn--md">اقرأ المزيد</a>
+                                                        <a href="#" class="btn btn--md">
+                                                            {{ __('panel.f_read_more') }} </a>
                                                     </div>
                                                 </div>
 

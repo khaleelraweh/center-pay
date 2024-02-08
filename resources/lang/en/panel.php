@@ -697,7 +697,8 @@ return [
     'f_common_tags'                                      =>  'Common Tags',
     'f_we_chosed_for_you'                                =>  'We chosed for you',
     'f_topic'                                            => 'Topic',
-    'f_no_posts_yet'                                      =>  'There is no posts yet ',
+    'f_no_posts_yet'                                     =>  'There is no posts yet ',
+    'posts_related_to_this_topic'                              => 'Posts related to this Topic',
 
 
 ];
