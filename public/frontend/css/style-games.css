@@ -11420,11 +11420,13 @@ body.boxed .dropdn.dropdn_fullheight .dropdn-content
 
 .account-drop
 {
-    text-align: right;
+    /* text-align: right; */
+    text-align: left;
 }
 .account-drop .form-control
 {
-    text-align: right;
+    /* text-align: right; */
+    text-align: left;
 }
 .account-drop .dropdn-form-wrapper
 {

@@ -44,7 +44,7 @@
                                     <div class="container">
                                         <form method="get" action="#" class="search search-off-popular">
                                             <input name="search" type="text" class="search-input input-empty"
-                                                placeholder="ما الذي تريد البحث عنه؟" />
+                                                placeholder="{{ __('panel.f_what_do_you_want_to_search_for') }}" />
                                             <button type="submit" class="search-button">
                                                 <i class="icon-search"></i>
                                             </button>
@@ -241,7 +241,7 @@
                                         <div class="container">
                                             <form method="get" action="#" class="search search-off-popular">
                                                 <input name="search" type="text" class="search-input input-empty"
-                                                    placeholder="ما الذي تريد البحث عنه؟" />
+                                                    placeholder="{{ __('panel.f_what_do_you_want_to_search_for') }}" />
                                                 <button type="submit" class="search-button">
                                                     <i class="icon-search"></i>
                                                 </button>

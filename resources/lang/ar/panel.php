@@ -603,41 +603,41 @@ return [
 
     'f_socail_media_platforms'                  =>  'منصات التواصل الإجتماعي',
 
-    'f_if_you_have_question'                    =>  'إذا كان لديك سؤال',
+    'f_if_you_have_question'                            =>  'إذا كان لديك سؤال',
 
-    'f_payment_methods'                         =>  'وسائل الدفع',
+    'f_payment_methods'                                 =>  'وسائل الدفع',
 
-    'f_center_pay'                              =>  'سينر باي',
-    'f_copyright'                               =>  'حقوق الطبع محفوظة',
+    'f_center_pay'                                      =>  'سينر باي',
+    'f_copyright'                                       =>  'حقوق الطبع محفوظة',
 
     // =========================== Footer continue slides ===============================//
 
-    'f_has_been_added_to'                       =>  'تم إضافتها الى',
-    'f_you_can_continue'                        =>  'يمكنك الإستمرار',
-    'f_complete_your_purchase'                  =>  'إكمال عملية الشراء',
-    'f_check_shopping_cart'                     =>  'فحص سلة التسقو',
+    'f_has_been_added_to'                               =>  'تم إضافتها الى',
+    'f_you_can_continue'                                =>  'يمكنك الإستمرار',
+    'f_complete_your_purchase'                          =>  'إكمال عملية الشراء',
+    'f_check_shopping_cart'                             =>  'فحص سلة التسقو',
 
-    'f_select_option_please'                    =>  'حدد الخيار من فضلك..',
-    'f_cant_be_blank'                           =>  'لا يمكن أن يكون فارغا',
+    'f_select_option_please'                            =>  'حدد الخيار من فضلك..',
+    'f_cant_be_blank'                                   =>  'لا يمكن أن يكون فارغا',
 
-    'f_scroll_to_top'                           =>  'انتقل إلى أعلى',
+    'f_scroll_to_top'                                   =>  'انتقل إلى أعلى',
 
     // ===================== cart-default-component =====================================//
-    'f_close'                                   =>  'إغلاق',
-    'f_item_price'                              =>  'سعر الحبة',
-    'f_quentity'                                =>  'الكمية',
-    'f_total'                                   =>  'الإجمالي',
-    'f_remove_from_shopping_cart'               =>  'حذف من سلة التسوق',
-    'f_shopping_cart_is_empty'                  =>  'سلة التسوق فارغة',
+    'f_close'                                           =>  'إغلاق',
+    'f_item_price'                                      =>  'سعر الحبة',
+    'f_quentity'                                        =>  'الكمية',
+    'f_total'                                           =>  'الإجمالي',
+    'f_remove_from_shopping_cart'                       =>  'حذف من سلة التسوق',
+    'f_shopping_cart_is_empty'                          =>  'سلة التسوق فارغة',
 
-    'f_m_get_gift'                              =>  'عند شرائك لبطاقتين او اكثر احصل على هدية',
-    'f_shopping'                                =>  'تسوق!',
-    'f_m_continue_shopping_and_get_free_delivery' => 'واصل التسوق واحصل على توصيل مجاني خلال فترة اسبوع ',
+    'f_m_get_gift'                                      =>  'عند شرائك لبطاقتين او اكثر احصل على هدية',
+    'f_shopping'                                        =>  'تسوق!',
+    'f_m_continue_shopping_and_get_free_delivery'       => 'واصل التسوق واحصل على توصيل مجاني خلال فترة اسبوع ',
 
-    'f_you_saved'                               =>  'حافظت على',
+    'f_you_saved'                                       =>  'حافظت على',
 
-    'f_shopping_cart'                           => 'سلة المشتريات',
-    'f_payment_process'                         => 'عملية الدفع',
+    'f_shopping_cart'                                   => 'سلة المشتريات',
+    'f_payment_process'                                 => 'عملية الدفع',
 
 
     // ====================== card page translation ===================================//
@@ -661,15 +661,23 @@ return [
     'f_we_chosed_for_you'                                =>  'اخترنا لك',
     'f_topic'                                            =>  'موضوع',
     'f_no_posts_yet'                                     =>  'لم يتم إضافة منشورات بعد',
-    'f_posts_related_to_this_topic'                        =>  'المنشورات ذات الصلة',
+    'f_posts_related_to_this_topic'                      =>  'المنشورات ذات الصلة',
+    'f_what_do_you_want_to_search_for'                   =>  'ما الذي تريد البحث عنه؟',
 
-
-
-
-
-
-
-
-
+    // ========================== frontend header side panel translate ===============================================//
+    // user login guest 
+    'f_close'                                           =>  'إغلاق',
+    'f_center_pay'                                      =>  'سنتر باي',
+    'f_login'                                           =>  'تسجيل الدخول',
+    'f_new_user'                                        =>  'مستخدم جديد',
+    'f_add_new_account'                                 =>  'إنشاء حساب جديد',
+    'f_now'                                             =>  'الان',
+    'f_input'                                           =>  'ادخل',
+    'f_enter'                                           =>  'ادخل',
+    'f_user_name'                                       =>  'إسم المستخدم',
+    'f_user_email'                                      =>  'البريد الإلكتروني',
+    'f_password'                                        =>  ' كلمة المرور',
+    'f_user_password'                                  =>  ' كلمة المرور للمستخدم',
+    'f_forgot_password'                                 =>  'نسيت كلمة المرور ؟',
 
 ];

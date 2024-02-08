@@ -126,7 +126,7 @@
         <div class="dropdn-content account-drop" id="dropdnAccount">
             <div class="dropdn-content-block">
                 <div class="dropdn-close">
-                    <span class="js-dropdn-close">اغلاق</span>
+                    <span class="js-dropdn-close">{{ __('panel.f_close') }}</span>
                 </div>
                 <ul>
                     <li>
@@ -134,24 +134,24 @@
                             <img srcset="
                                     {{ asset('frontend/images/games/logo-games.webp') }} 1x,
                                     {{ asset('frontend/images/games/logo-games2x.webp') }} 2x "
-                                alt="سنتر باي" width="200">
+                                alt="{{ __('panel.f_center_pay') }}" width="200">
                         </div>
                     </li>
                     <li>
                         <!-- <a href="account-create.html"> -->
                         <h5>
                             <i class="icon-login custom-color"></i>
-                            <span>تسجيل الدخول</span>
+                            <span>{{ __('panel.f_login') }}</span>
                         </h5>
                         <!-- </a> -->
                     </li>
                     <li>
                         <h6 class="small-body-subtitle">
-                            مستخدم جديد ؟
+                            {{ __('panel.f_new_user') }} !
                             <a href="#" class="dropdn-link js-dropdn-link js-dropdn-link only-icon custom-color"
                                 data-panel="#dropdnSignUp">
                                 <!-- <i class="icon-user"></i> -->
-                                <span>انشاء حساب جديد الان</span>
+                                <span> {{ __('panel.f_add_new_account') }} {{ __('panel.f_now') }} </span>
                             </a>
                         </h6>
                     </li>
@@ -170,7 +170,8 @@
                                 {{-- <label for="email">Email Address</label> --}}
                                 <input type="text" name="email"
                                     class="form-control form-control--sm js_email_fe rounded-pill @if ($errors->has('email') || $errors->has('username')) has-error @endif"
-                                    placeholder="ادخل اسم المستخدم او البريد الالكتروي" value="{{ old('email') }}">
+                                    placeholder="{{ __('panel.f_enter') }} {{ __('panel.f_user_name') }}  {{ __('panel.or') }} {{ __('panel.f_user_email') }}"
+                                    value="{{ old('email') }}">
                                 @if ($errors->has('email') || $errors->has('username'))
                                     <span class="help">{{ $errors->first('email') }}
                                         {{ $errors->first('username') }}</span>
@@ -183,7 +184,7 @@
                         <div class="form-group">
                             <input type="password" name="password" required autocomplete="current-password"
                                 class="form-control form-control--sm js_email_fe rounded-pill"
-                                placeholder="ادخل كلمة المرور" />
+                                placeholder="{{ __('panel.f_enter') }} {{ __('panel.f_user_password') }}" />
 
                             @error('password')
                                 <span class="invalid-feedback text-danger" role="alert">
@@ -194,12 +195,13 @@
                             <!-- <div class="invalid-feedback">لا يكون الحقل فارغ</div> -->
                         </div>
 
-                        <button type="submit" class="btn mt-3 col-sm-12 rounded-pill js-login-btn">تسجل الدخول</button>
+                        <button type="submit" class="btn mt-3 col-sm-12 rounded-pill js-login-btn">
+                            {{ __('panel.f_login') }} </button>
 
                         <div class="mt-3">
                             @if (Route::has('password.request'))
                                 <a class="  " href="{{ route('password.request') }}">
-                                    {{ __('نسيت كلمة المرور ؟') }}
+                                    {{ __('panel.f_forgot_password') }}
                                 </a>
                             @endif
                         </div>

@@ -602,7 +602,6 @@ return [
 
 
 
-
     //messages 
     'f_m_item_removed_from_shop_cart'                       =>  'The item has been removed from your shopping cart',
     'f_m_item_removed_from_wishlist_cart'                   =>  'The item has been removed from your wishlist cart',
@@ -698,7 +697,22 @@ return [
     'f_we_chosed_for_you'                                =>  'We chosed for you',
     'f_topic'                                            => 'Topic',
     'f_no_posts_yet'                                     =>  'There is no posts yet ',
-    'f_posts_related_to_this_topic'                              => 'Posts related to this Topic',
+    'f_posts_related_to_this_topic'                      => 'Posts related to this Topic',
+    'f_what_do_you_want_to_search_for'          =>  'What do you want to search for',
 
-
+    // ========================== frontend header side panel translate ===============================================//
+    // user login guest 
+    'f_close'                                           =>  'Close',
+    'f_center_pay'                                      =>  'CenterPay',
+    'f_login'                                           =>  'Login',
+    'f_new_user'                                        =>  'New user',
+    'f_add_new_account'                                 =>  'Add new account',
+    'f_now'                                             =>  'now',
+    'f_input'                                           =>  'Input',
+    'f_enter'                                           =>  'enter',
+    'f_user_name'                                       =>  'user name',
+    'f_user_email'                                      =>  'user email',
+    'f_password'                                        =>  'password',
+    'f_user_password'                                   =>  'user password',
+    'f_forgot_password'                                 =>  'forgot password?',
 ];
