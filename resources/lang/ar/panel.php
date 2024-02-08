@@ -677,7 +677,33 @@ return [
     'f_user_name'                                       =>  'إسم المستخدم',
     'f_user_email'                                      =>  'البريد الإلكتروني',
     'f_password'                                        =>  ' كلمة المرور',
-    'f_user_password'                                  =>  ' كلمة المرور للمستخدم',
+    'f_user_password'                                   =>  ' كلمة المرور للمستخدم',
     'f_forgot_password'                                 =>  'نسيت كلمة المرور ؟',
+
+
+    //user loged in 
+    'f_profile'                                         =>  'الملف الشخصي',
+    'f_user_profile'                                    =>  'الملف الشخصي للمستخدم ',
+    'f_welcome'                                         =>  'مرحبا',
+    'f_insure_user_email'                               =>  'تاكيد عنوان البريد الإلكتروني ',
+    'f_we_sent_link_insurent_to_your_email'                =>  'تم إرسال رابط تحقق جديد إلى عنوان بريدك الإلكتروني.',
+    'f_before_start_check_email_to_continue'            =>  'قبل المتابعة، يرجى التحقق من بريدك الإلكتروني للحصول على رابط التحقق.',
+    'f_if_you_didnt_receive_an_email'                   =>  'إذا لم تتلق البريد الإلكتروني',
+    'f_click_here_to_get_another'                       =>  'انقر هنا لطلب آخر',
+
+    'f_content'                                         =>  'المحتوي',
+    'f_control_panel'                                   =>  'لوحة التحكم',
+    'f_user_addresses'                                       =>  'العناوين',
+    'f_my_orders'                                       =>  'طلباتي',
+    'f_logout'                                          =>  'تسجيل الخروج',
+
+
+
+
+
+
+
+
+
 
 ];

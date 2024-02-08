@@ -222,19 +222,19 @@
                             <img srcset="
                                 {{ asset('frontend/images/games/logo-games.webp') }} 1x,
                                 {{ asset('frontend/images/games/logo-games2x.webp') }} 2x "
-                                alt="سنتر باي" width="200">
+                                alt="{{ __('panel.center_pay') }}" width="200">
                         </div>
                     </li>
                     <li>
                         <h5>
                             <i class="icon-user"></i>
-                            <span>الملف الشخصي </span>
+                            <span> {{ __('panel.f_profile') }} </span>
                         </h5>
                     </li>
 
                     <li>
                         <h6>
-                            <span>مرحبا : </span>
+                            <span>{{ __('panel.f_welcome') }} : </span>
                             @if (auth()->user()->full_name != null)
                                 <span class="custom-color">{{ auth()->user()?->full_name }}</span>
                             @endif
@@ -248,23 +248,24 @@
 
                                 <div class="mt-4">
 
-                                    <h5 class=" mb-3">تاكيد عنوان البريد الإلكتروني</h5>
+                                    <h5 class=" mb-3"> {{ __('panel.f_insure_user_email') }} </h5>
 
                                     @if (session('resent'))
                                         <div class="alert alert-success" role="alert"
                                             style="margin-bottom: 5px ; background-color:rgba(200 , 100 , 100,0.3) ; border-radius: 10px">
-                                            تم إرسال رابط تحقق جديد إلى عنوان بريدك الإلكتروني.
+                                            {{ __('panel.f_we_sent_link_insurent_to_your_email') }}
                                         </div>
                                     @endif
 
-                                    {{ __('قبل المتابعة، يرجى التحقق من بريدك الإلكتروني للحصول على رابط التحقق.') }}
+                                    {{ __('panel.f_before_start_check_email_to_continue') }}
                                     <br> <br>
-                                    {{ __('إذا لم تتلق البريد الإلكتروني') }},
+                                    {{ __('panel.f_if_you_didnt_receive_an_email') }},
 
                                     <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
                                         @csrf
                                         <button type="submit" class="btn btn-link p-0 px-1 py-1 m-0 align-baseline"
-                                            style="border-radius: 5px">{{ __('انقر هنا لطلب آخر') }}</button>.
+                                            style="border-radius: 5px"> {{ __('panel.f_click_here_to_get_another') }}
+                                        </button>.
                                     </form>
                                 </div>
                             @endif
@@ -276,28 +277,33 @@
                         <li>
                             <div class="card mt-0 border-0  p-lg-2 custom-card main-back-color" style="padding: 0px">
                                 <div class="card-body custom-card-body-rounded second-back-color">
-                                    <h5 class="text-uppercase mb-4">المحتوي</h5>
+                                    <h5 class="text-uppercase mb-4"> {{ __('panel.f_content') }} </h5>
 
 
 
                                     @if (auth()->user()->roles->first()->allowed_route != '')
                                         <div class=" custom-nav-item">
                                             <a href="{{ route('admin.index') }}">
-                                                <strong class="small text-uppercase font-weight-bold">لوحة التحكم
-                                                    الرئيسية</strong>
+                                                <strong class="small text-uppercase font-weight-bold">
+                                                    {{ __('panel.control_panel') }}
+                                                </strong>
                                             </a>
                                         </div>
 
                                         <div class=" custom-nav-item">
                                             <a href="{{ route('admin.account_settings') }}">
-                                                <strong class="small text-uppercase font-weight-bold">الملف الشخصي</strong>
+                                                <strong class="small text-uppercase font-weight-bold">
+                                                    {{ __('panel.f_user_profile') }}
+                                                </strong>
                                             </a>
                                         </div>
 
                                         <div class=" custom-nav-item">
                                             <a href="javascript:void(0);"
                                                 onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                                <strong class="small text-uppercase font-weight-bold">تسجيل الخروج</strong>
+                                                <strong class="small text-uppercase font-weight-bold">
+                                                    {{ __('panel.logout') }}
+                                                </strong>
                                             </a>
                                             <form action="{{ route('logout') }}" method="POST" id="logout-form"
                                                 class="d-none">
@@ -316,28 +322,36 @@
                                         <div
                                             class=" custom-nav-item {{ Route::currentRouteName() == 'customer.profile' ? 'active text-white' : '' }} ">
                                             <a href="{{ route('customer.profile') }}">
-                                                <strong class="small text-uppercase font-weight-bold">الملف الشخصي</strong>
+                                                <strong class="small text-uppercase font-weight-bold">
+                                                    {{ __('panel.f_user_profile') }}
+                                                </strong>
                                             </a>
                                         </div>
 
                                         <div
                                             class=" custom-nav-item {{ Route::currentRouteName() == 'customer.addresses' ? 'active text-white' : '' }} ">
                                             <a href="{{ route('customer.addresses') }}">
-                                                <strong class="small text-uppercase font-weight-bold">العناوين</strong>
+                                                <strong class="small text-uppercase font-weight-bold">
+                                                    {{ __('panel.f_user_addresses') }}
+                                                </strong>
                                             </a>
                                         </div>
 
                                         <div
                                             class=" custom-nav-item {{ Route::currentRouteName() == 'customer.orders' ? 'active text-white' : '' }} ">
                                             <a href="{{ route('customer.orders') }}">
-                                                <strong class="small text-uppercase font-weight-bold">طلباتي</strong>
+                                                <strong class="small text-uppercase font-weight-bold">
+                                                    {{ __('panel.f_my_orders') }}
+                                                </strong>
                                             </a>
                                         </div>
 
                                         <div class=" custom-nav-item">
                                             <a href="javascript:void(0);"
                                                 onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                                <strong class="small text-uppercase font-weight-bold">تسجيل الخروج</strong>
+                                                <strong class="small text-uppercase font-weight-bold">
+                                                    {{ __('panel.f_logout') }}
+                                                </strong>
                                             </a>
                                             <form action="{{ route('logout') }}" method="POST" id="logout-form"
                                                 class="d-none">
@@ -345,16 +359,8 @@
                                             </form>
                                         </div>
                                     @endif
-
-
-
-
-
-
                                 </div>
                             </div>
-
-
                         </li>
                     @else
                     @endif

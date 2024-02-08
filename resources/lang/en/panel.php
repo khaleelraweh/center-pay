@@ -714,5 +714,26 @@ return [
     'f_user_email'                                      =>  'user email',
     'f_password'                                        =>  'password',
     'f_user_password'                                   =>  'user password',
-    'f_forgot_password'                                 =>  'forgot password?',
+    'f_forgot_password'                                 =>  'forgot password ?',
+
+    //user loged in 
+    'f_profile'                                         =>  'Profile',
+    'f_user_profile'                                    =>  'User Profile',
+    'f_welcome'                                         =>  'Welcome',
+    'f_insure_user_email'                               =>  'Insure your email',
+    'f_we_sent_link_insurent_to_your_email'             =>  'We had Sent you an insurent link to your email ',
+    'f_before_start_check_email_to_continue'            =>  'Before you start , please check your email account to active your account',
+    'f_if_you_didnt_receive_an_email'                   =>  'If you did not receive an email',
+    'f_click_here_to_get_another'                       =>  'Click here to get another',
+
+    'f_content'                                         =>  'Content',
+    'f_control_panel'                                   =>  'Control Panel',
+    'f_user_addresses'                                       =>  'Addresses',
+    'f_my_orders'                                       =>  'My Orders',
+    'f_logout'                                          =>  'Logout',
+
+
+
+
+
 ];
