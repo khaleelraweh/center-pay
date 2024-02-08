@@ -36,23 +36,16 @@
 
     <div class="page-content">
 
-        <div class="holder mt-0">
+        <div class="holder breadcrumbs-wrap mt-0">
             <div class="container">
-                <ul class="breadcrumb pref">
-                    <li>
-                        <a href="{{ route('frontend.index') }}">
-                            الرئيسية
-                        </a>
-                        <i class="fa fa-solid fa-chevron-left chevron"></i>
-                    </li>
-
-                    <li>
-                        المدونة
-                    </li>
-
+                <ul class="breadcrumbs">
+                    <li><a href="{{ route('frontend.index') }}">الرئيسية</a></li>
+                    <li class="active"><span>المدونة<span></li>
                 </ul>
             </div>
         </div>
+
+
 
         <div class="holder">
             <div class="container">
@@ -90,7 +83,7 @@
                                                 <img style="height: 200px"
                                                     src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
                                                     data-src="{{ asset('assets/news/' . $rand_post->firstMedia?->file_name) }}"
-                                                    class="lazyload fade-up" alt="{{ $rand_post->name }}">
+                                                    class="lazyload fade-up" alt="{{ $rand_post->title }}">
                                             </a>
                                             <div class="post-prw-links">
                                                 <div class="post-prw-date"><i class="icon-calendar"></i>
@@ -103,7 +96,7 @@
                                             </div>
                                             <h4 class="post-prw-title"><a
                                                     href="{{ route('frontend.blog.post', $rand_post->slug) }}">موضوع
-                                                    {{ $rand_post->name }}</a>
+                                                    {{ $rand_post->title }}</a>
                                             </h4>
 
                                             {{-- <a href="#" class="post-prw-comments"><i class="icon-chat"></i>15
@@ -135,7 +128,7 @@
                                                     data-src="{{ asset('assets/news/' . $post->firstMedia?->file_name) }}"
                                                     class="lazyload
                                                     fade-up"
-                                                    alt="{{ $post->name }}">
+                                                    alt="{{ $post->title }}">
                                             </a>
                                         </div>
 
@@ -148,7 +141,7 @@
                                             </div>
                                             <h4 class="post-prw-title">
                                                 <a href="{{ route('frontend.blog.post', $post->slug) }}">
-                                                    {{ $post->name }}
+                                                    {{ $post->title }}
                                                 </a>
                                             </h4>
                                             <div class="post-prw-teaser">
