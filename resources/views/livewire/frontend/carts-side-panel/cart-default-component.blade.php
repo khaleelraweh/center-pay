@@ -112,8 +112,8 @@
                         <div class="minicart-prd-action">
                             <a wire:click.prevent="removeFromCart('{{ $item->rowId }}')"
                                 x-on:click="open_{{ $item->model->id }} = ! open_{{ $item->model->id }}"
-                                class="js-product-remove" title=" {{ __('panel.f_remove_from_shopping_cart') }} "
-                                style="cursor: pointer">
+                                class="js-product-remove d-flex justify-content-end"
+                                title=" {{ __('panel.f_remove_from_shopping_cart') }} " style="cursor: pointer; ">
                                 <i class="icon-recycle"></i>
                             </a>
                         </div>
@@ -142,7 +142,6 @@
                     <h2 class="text-center"> {{ __('panel.f_shopping_cart_is_empty') }} </h2>
                 </div>
             @endforelse
-
 
             <a href="#" class="minicart-drop-countdown mt-3">
                 <div class="countdown-box-full">

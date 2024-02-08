@@ -165,15 +165,6 @@
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
                         <div class="form-group">
-                            {{-- <input type="text" name="username" value="{{ old('username') }}" required
-                                autocomplete="username" class="form-control form-control--sm js_email_fe rounded-pill"
-                                placeholder="ادخل اسم المستخدم" />
-
-                            @error('username')
-                                <span class="invalid-feedback text-danger" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror --}}
 
                             <div class="form-group">
                                 {{-- <label for="email">Email Address</label> --}}
@@ -211,13 +202,7 @@
                                     {{ __('نسيت كلمة المرور ؟') }}
                                 </a>
                             @endif
-
-
                         </div>
-
-
-
-
                     </form>
                 </div>
             </div>
@@ -580,6 +565,5 @@
 
     <!-- القائمة الجانبية سلة الشراء  -->
     @livewire('frontend.carts-side-panel.cart-default-component')
-
 
 </div>
