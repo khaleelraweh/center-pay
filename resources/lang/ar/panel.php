@@ -661,7 +661,7 @@ return [
     'f_we_chosed_for_you'                                =>  'اخترنا لك',
     'f_topic'                                            =>  'موضوع',
     'f_no_posts_yet'                                     =>  'لم يتم إضافة منشورات بعد',
-    'posts_related_to_this_topic'                        =>  'المنشورات ذات الصلة',
+    'f_posts_related_to_this_topic'                        =>  'المنشورات ذات الصلة',
 
 
 

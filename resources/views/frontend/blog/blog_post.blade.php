@@ -116,7 +116,7 @@
                             <div class="related-posts">
                                 <div class="title-with-arrows">
                                     <h3 class="h2-style">
-                                        {{ __('panel.posts_related_to_this_topic') }}
+                                        {{ __('panel.f_posts_related_to_this_topic') }}
                                     </h3>
                                     <div class="carousel-arrows"></div>
                                 </div>
