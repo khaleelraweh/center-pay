@@ -32430,6 +32430,7 @@ body.has-round-btns .form-inline .form-control
 
     -ms-flex: 1;
         flex: 1;
+        align-items: center;
 }
 @media (max-width: 575px)
 {
