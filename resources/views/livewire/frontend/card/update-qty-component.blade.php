@@ -15,8 +15,8 @@
                 <form action="#">
                     <button class="btn btn--add-to-cart js-trigger-addtocart js-prd-addtocart rounded-pill"
                         wire:click.prevent="store( 'default' , {{ $card->id }} , '{{ $card->product_name }}' , {{ $quantity }} , {{ $card->price }})"
-                        data-product='{"name": "{{ $card->name }}", "path":"{{ asset('assets/cards/' . $card->firstMedia->file_name) }}", "url":"{{ route('frontend.card', $card->slug) }}", "aspect_ratio":0.778}'>
-                        اضافة الى السلة
+                        data-product='{"name": "{{ $card->product_name }}", "path":"{{ asset('assets/cards/' . $card->firstMedia->file_name) }}", "url":"{{ route('frontend.card', $card->slug) }}", "aspect_ratio":0.778}'>
+                        {{ __('panel.f_add_to_shopping_cart') }}
                     </button>
                 </form>
             </div>
@@ -25,9 +25,9 @@
                 <a href="#"
                     wire:click.prevent="store( 'wishlist' , {{ $card->id }} , '{{ $card->product_name }}' , {{ $quantity }} , {{ $card->price }})"
                     class="btn-add-to-wishlist ml-auto btn-add-to-wishlist--add js-add-wishlist"
-                    title="Add To Wishlist"><i class="icon-heart-stroke"></i></a>
+                    title="{{ __('panel.f_add_to_wishlist') }}"><i class="icon-heart-stroke"></i></a>
                 <a href="#" class="btn-add-to-wishlist ml-auto btn-add-to-wishlist--off js-remove-wishlist"
-                    title="Remove From Wishlist"><i class="icon-heart-hover"></i></a>
+                    title="{{ __('panel.f_remove_from_wishlist') }}"><i class="icon-heart-hover"></i></a>
             </div>
         </div>
 

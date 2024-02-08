@@ -8,9 +8,7 @@ return [
     'centerpay_show'            => 'CenterPay Show',
     'menu'                      => 'Menu',
 
-    ##############################################################
-
-    // =============  Manage Web Menus ===============//
+    ############################ Manage Web Menus #################################
     'manage_menus'              => 'Manage Web Menus',
 
     // --------------- Main Menu --------------//
@@ -26,12 +24,10 @@ return [
     'category_help_menu'        => 'Category Helps Menu',
 
     // ........... commons in menus ....... //
-    'title' => 'Title',
-    'link' => 'Link',
+    'title'                     => 'Title',
+    'link'                      => 'Link',
 
-    ##############################################################
-
-    // =============  Manage Sliders ===============//
+    ############################# Manage Sliders #################################
     'manage_sliders'                => 'Manage Sliders',
 
     // --------------- Main Slider --------------//
@@ -52,7 +48,7 @@ return [
     'in_new_tab'                    =>  'In New Tab',
 
 
-    ##############################################################
+    ###########################  ##################################
 
     // =============  Manage Categories (product and card categories) ===============//
     'manage_categories'                => 'Manage Categories',
@@ -492,6 +488,7 @@ return [
     'email'                         =>  'Email',
     'mobile'                        =>  'Mobile',
     'customer'                      =>  'Customer',
+    'full_name'                     =>  'Full Name',
     'first_name'                    =>  'First Name',
     'last_name'                     =>  'Last Name',
     'user_name'                     =>  'User Name',
@@ -559,6 +556,7 @@ return [
     'in'                        => 'In',
     'and'                       => '&',
     'or'                        => 'or',
+    'by'                        =>  'By',
 
 
 
@@ -581,7 +579,6 @@ return [
     'f_various_cards'                        => 'Various Cards',
 
     'f_blog'                                => 'Blog',
-    'f_read_more'                           => 'Read More',
 
     'f_Inquiries'                           =>  'Inquiries',
     'f_common_questions'                    =>  'Common Questions',
@@ -589,10 +586,22 @@ return [
     // ===================  in cart translation    ======================== //
 
     // global
-    'f_add_to_card'                         =>  'add to card',
-    'f_add_to_wishlist'                     =>  'Add To Wishlist',
-    'f_shop_cart'                           =>  'Shop Cart',
-    'f_wishlist_cart'                       =>  'Wishlist Cart',
+    'f_main'                                    =>  'Main',
+    'f_add_to_card'                             =>  'add to cart',
+    'f_add_to_shopping_cart'                    =>  'add to shopping cart',
+    'f_add_to_wishlist'                         =>  'Add To Wishlist',
+    'f_shop_cart'                               =>  'Shop Cart',
+    'f_wishlist_cart'                           =>  'Wishlist Cart',
+    'f_main'                                    =>  'Main',
+    'f_read_more'                               =>  'Read More',
+    'f_read_less'                               =>  'Read Less',
+
+    'f_remove_from_cart'                        =>  'Remove From Cart',
+    'f_remove_from_wishlist'                    =>  'Remove From Wishlist',
+
+
+
+
 
     //messages 
     'f_m_item_removed_from_shop_cart'                       =>  'The item has been removed from your shopping cart',
@@ -668,6 +677,27 @@ return [
     'f_payment_process'                                 =>  'Pay Process',
 
 
+    // ====================== card page translation ===================================//
+    'f_delevory_and_return_order'                       =>  'Delevery and Return Order',
+    'f_question_about_this_card'                        =>  'Question about this Card',
+
+
+    'f_we_have_fast_delevery_for_card_code'             =>  'We have fast delevery for card code',
+    'f_time_delevery'                                   =>  'Time Delevery',
+
+    'f_have_question'                                   =>  'Have Question ?',
+    'f_question_consulting'                             =>  'Question Consulting',
+    'f_we_will_contact_you_soon'                        =>  'We Will Contact You Soon',
+    'f_may_you_like'                                    =>  'May You Likes',
+
+    // ====================== card category page translation ===================================//
+
+    // ====================== Blog page  translation ===================================//
+    // main blog page 
+    'f_common_tags'                                      =>  'Common Tags',
+    'f_we_chosed_for_you'                                =>  'We chosed for you',
+    'f_topic'                                            => 'Topic',
+    'f_no_posts_yet'                                      =>  'There is no posts yet ',
 
 
 ];

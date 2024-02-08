@@ -268,16 +268,14 @@
         <div class="holder global_width">
             <div class="container">
                 <div class="title-wrap text-center">
-                    <h3 class="h2-style testimonials-carousel-simple-name"> {{ __('panel.f_our_categories') }} </h3>
+                    <h3 class="h2-style testimonials-carousel-simple-name main-color"> {{ __('panel.f_our_categories') }}
+                    </h3>
                     <h2 class="h1-style"> {{ __('panel.f_choose_your_favorite_category') }} </h2>
                 </div>
                 <div class="prd-grid product-listing data-to-show-5 data-to-show-md-3 data-to-show-sm-2 ">
 
 
-                    {{-- {{ dd($card_categories->where('slug', 'الاسطورة')->first()) }} --}}
                     @forelse ($card_categories as $card_category)
-                        {{-- {{ dd($card_category->slug) }} --}}
-                        {{-- <div class="prd prd-promo  prd--style2 prd-labels--max prd-labels-shadow prd-w-xxs"> --}}
                         <div class="prd  prd--style2 prd-labels--max prd-labels-shadow prd-w-xxs">
                             <div class="">
                                 <div class="">
@@ -285,7 +283,6 @@
                                         class="image-hover-scale">
                                         <img src="{{ asset('assets/card_categories/' . $card_category->firstMedia?->file_name) }}"
                                             alt="{{ $card_category->category_name }}" class="js-prd-img" />
-
                                     </a>
                                 </div>
                                 <div class="prd-info text-center">
@@ -321,7 +318,7 @@
             <div class="container">
                 <div class="title-wrap text-center">
                     <a href="{{ route('frontend.blog') }}" class="h1-style">
-                        <i class="fas fa-blog custom-header-color"></i>
+                        <i class="fas fa-blog custom-header-color main-color"></i>
                         {{ __('panel.f_blog') }}
                     </a>
                     <div class="carousel-arrows"></div>

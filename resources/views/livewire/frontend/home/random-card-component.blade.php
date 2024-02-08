@@ -4,7 +4,7 @@
         <div class="holder">
             <div class="container">
                 <div class="title-wrap text-center">
-                    <h2 class="h1-style custom-header-color"> {{ __('panel.f_various_cards') }} </h2>
+                    <h2 class="h1-style custom-header-color main-color"> {{ __('panel.f_various_cards') }} </h2>
                     <div class="carousel-arrows"></div>
                 </div>
 

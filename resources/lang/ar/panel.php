@@ -3,69 +3,63 @@
 return [
 
     //=========== ترجمة صفحة التحكم الرئيسية ============//
-    'dashboard'                     => 'لوحة التحكم',
-    'centerpay'                     => 'سنتر باي',
-    'centerpay_show'                => 'واجهة العرض',
-    'menu'                          => 'القائمة',
+    'dashboard'                         => 'لوحة التحكم',
+    'centerpay'                         => 'سنتر باي',
+    'centerpay_show'                    => 'واجهة العرض',
+    'menu'                              => 'القائمة',
 
-    ##############################################################
-
-    // ================  إدارة القوائم ===================//
-    'manage_menus'                  => 'إدارة القوائم ',
+    ############################  إدارة القوائم ################################
+    'manage_menus'                      => 'إدارة القوائم ',
 
     // --------------- القائمة الرئيسية -----------------//
-    'show_web_menus'                => ' القائمة الرئيسية',
-    'add_new_link'                  => 'إضافة رابط جديد',
-    'edit_existing_link'            => 'تعديل بيانات الرابط',
-    'category_menu'                 => 'تصنيفات القائمة الرئيسية',
+    'show_web_menus'                    => ' القائمة الرئيسية',
+    'add_new_link'                      => 'إضافة رابط جديد',
+    'edit_existing_link'                => 'تعديل بيانات الرابط',
+    'category_menu'                     => 'تصنيفات القائمة الرئيسية',
 
     // ----------------- قائمة المساعدة -------------- //
-    'show_web_helps_menu'           => 'قائمة المساعدة',
-    'add_new_help_link'             => 'إضافة رابط مساعدة جديد',
-    'edit_existing_help_link'       => 'تعديل رابط مساعدة جديد',
-    'category_help_menu'            => 'تصنيفات قائمة المساعدة',
+    'show_web_helps_menu'               => 'قائمة المساعدة',
+    'add_new_help_link'                 => 'إضافة رابط مساعدة جديد',
+    'edit_existing_help_link'           => 'تعديل رابط مساعدة جديد',
+    'category_help_menu'                => 'تصنيفات قائمة المساعدة',
 
     // ............... المشترك في القوائم ................. //
-    'title'                         => 'العنوان',
-    'link'                          => 'الرابط',
+    'title'                             => 'العنوان',
+    'link'                              => 'الرابط',
 
-    ##############################################################
-
-    // =============  إدارة عارضات الشرائح  ===============//
-    'manage_sliders'                => 'إدارة عارض الشرائح ',
+    ############################### إدارة عارضات الشرائح  ######################
+    'manage_sliders'                    => 'إدارة عارض الشرائح ',
 
     // --------------- عارض الشرائح الرئيسي --------------//
-    'show_main_slider'              => 'عارض الشرائح الرئيسي',
-    'add_new_slider'                => 'إضافة شريحة جديدة',
-    'edit_existing_slider'          => 'تعديل بيانات الشريحة ',
+    'show_main_slider'                  => 'عارض الشرائح الرئيسي',
+    'add_new_slider'                    => 'إضافة شريحة جديدة',
+    'edit_existing_slider'              => 'تعديل بيانات الشريحة ',
 
     // ---------------- عارض الاعلانات ------------------ //
-    'show_adv_slider'               => 'عارض الاعلانات',
-    'add_new_adv_slider'            => 'إضافة إعلان جديد',
-    'edit_existing_adv_slider'      => 'تعديل بيانات الإعلان',
+    'show_adv_slider'                   => 'عارض الاعلانات',
+    'add_new_adv_slider'                => 'إضافة إعلان جديد',
+    'edit_existing_adv_slider'          => 'تعديل بيانات الإعلان',
 
     // ........... المشترك في عارضات الشرائح ....... //
-    'show_slider_info'              =>  'عرض تفاصيل الشريحة',
-    'url_link'                      => 'رابط الانتقال',
-    'url_target'                    => 'مكان العرض',
-    'in_the_same_tab'               => 'عرض في نفس الصفحة',
-    'in_new_tab'                    => 'عرض في تبويب جديد',
+    'show_slider_info'                  =>  'عرض تفاصيل الشريحة',
+    'url_link'                          => 'رابط الانتقال',
+    'url_target'                        => 'مكان العرض',
+    'in_the_same_tab'                   => 'عرض في نفس الصفحة',
+    'in_new_tab'                        => 'عرض في تبويب جديد',
 
 
-    ##############################################################
-
-    // =============  Manage Categories (product and card categories) ===============//
-    'manage_categories'                => 'إدارة التصنيفات',
+    ################################ Manage Categories  #########################
+    'manage_categories'                 => 'إدارة التصنيفات',
 
     // --------------- Product Categories --------------//
-    'show_product_categories'              => 'تصنيف المنتجات',
-    'add_new_product_category'                => 'إضافة تصنيف منتج ',
-    'edit_existing_product_category'          => 'التعديل علي تصنيف منتج',
+    'show_product_categories'           => 'تصنيف المنتجات',
+    'add_new_product_category'          => 'إضافة تصنيف منتج ',
+    'edit_existing_product_category'    => 'التعديل علي تصنيف منتج',
 
     // ------------- Card Categories  ------------- //
-    'show_card_categories'               => 'تصنيف البطائق',
-    'add_new_card_category'            => 'إضافة تصنيف بطاقة',
-    'edit_existing_card_category'      => 'التعديل على تصنيف بطاقة',
+    'show_card_categories'              => 'تصنيف البطائق',
+    'add_new_card_category'             => 'إضافة تصنيف بطاقة',
+    'edit_existing_card_category'       => 'التعديل على تصنيف بطاقة',
 
     // ........... commons in Categories ....... //
 
@@ -73,57 +67,51 @@ return [
     'category_card-count'               => 'عدد الباقات',
 
 
-    ##############################################################
-
-    // =============  Manage Products (product and card ) ===============//
-    'manage_products'                => 'إدارة المنتجات',
+    ################################### Manage Products ###########################
+    'manage_products'                   => 'إدارة المنتجات',
 
     // --------------- Product  --------------//
-    'show_products'              => 'المتجات',
-    'add_new_product'                => 'إضافة منتج جديد',
-    'edit_existing_product'          => 'تعديل بيانات المنتج ',
+    'show_products'                     => 'المتجات',
+    'add_new_product'                   => 'إضافة منتج جديد',
+    'edit_existing_product'             => 'تعديل بيانات المنتج ',
 
     // ------------- Card   ------------- //
-    'show_cards'               => 'الباقات',
-    'add_new_card'            => 'إضافة باقة جديدة',
-    'edit_existing_card'      => 'تعديل بيانات الباقة',
+    'show_cards'                        => 'الباقات',
+    'add_new_card'                      => 'إضافة باقة جديدة',
+    'edit_existing_card'                => 'تعديل بيانات الباقة',
 
     // ........... commons in products and cards  ....... //
-    'product_name'                  => 'إسم المنتج',
-    'card_name'                     => 'إسم الباقة',
-    'sku'                           =>  'رمز (Sku)',
-    'offer_price'                   =>  'سعر التخفيض',
-    'offer_ends'                    =>  'اخر موعد للتخفيض',
-    'max_order'                     =>  'اعلي كمية يمكن طلبها',
-    'qty_not_limited'               =>  'الكمية غير محدودة',
+    'product_name'                      =>  'إسم المنتج',
+    'card_name'                         =>  'إسم الباقة',
+    'sku'                               =>  'رمز (Sku)',
+    'offer_price'                       =>  'سعر التخفيض',
+    'offer_ends'                        =>  'اخر موعد للتخفيض',
+    'max_order'                         =>  'اعلي كمية يمكن طلبها',
+    'qty_not_limited'                   =>  'الكمية غير محدودة',
 
 
-    ##############################################################
-
-    // =============  Manage Tags  ===============//
-    'manage_tags'                => 'إدارة الكلمات المفتاحية',
+    #################################### Manage Tags ##########################
+    'manage_tags'                       => 'إدارة الكلمات المفتاحية',
 
     // --------------- Tags  --------------//
-    'show_tags'              => 'الكلمات المفتاحية',
-    'add_new_tag'                => 'إضافة كلمة مفتاحية جديدة',
-    'edit_existing_tag'          => 'تعديل بيانات الكلمة المفتاحية',
+    'show_tags'                         => 'الكلمات المفتاحية',
+    'add_new_tag'                       => 'إضافة كلمة مفتاحية جديدة',
+    'edit_existing_tag'                 => 'تعديل بيانات الكلمة المفتاحية',
 
 
     // ........... commons in Tag   ....... //
-    'tag_name'                  => 'الكلمة المفتاحية',
-    'tag_type'                  =>  'نوع التاج',
-    'product_tag'               =>  'تاج منتج',
-    'card_tag'                  =>  'تاج بطاقة',
-    'blog_tag'                  =>  'تاج مدونة',
+    'tag_name'                          => 'الكلمة المفتاحية',
+    'tag_type'                          =>  'نوع التاج',
+    'product_tag'                       =>  'تاج منتج',
+    'card_tag'                          =>  'تاج بطاقة',
+    'blog_tag'                          =>  'تاج مدونة',
 
 
-    ##############################################################
-
-    // =============  Manage Coupon  ===============//
+    #################################### Manage Coupon ##########################
     'manage_coupons'                => 'إدارة كوبونات الخصم',
 
     // --------------- Coupon  --------------//
-    'show_coupons'              => 'كوبونات الخصم',
+    'show_coupons'                  => 'كوبونات الخصم',
     'add_new_coupon'                => 'إضافة كوبون خصم جديد',
     'edit_existing_coupon'          => 'تعديل كوبون الخصم',
 
@@ -138,227 +126,205 @@ return [
     'coupon_start_date'             =>  'تاريخ البدء',
     'coupon_expire_date'            =>  'تاريخ انتهاء الكوبون',
     'expiration_date'               =>  'تاريخ الصلاحية',
-    'use_time'                     =>  'عدد مرات الاستخدام',
+    'use_time'                      =>  'عدد مرات الاستخدام',
     'coupon_description'            =>  'وصف الكوبون',
 
-    ##############################################################
-
-    // =============  Manage Users  ===============//
-    'manage_users'                => 'إدارة المستخدمين',
+    ################################ Manage Users ##############################
+    'manage_users'                  => 'إدارة المستخدمين',
 
     // --------------- Customers  --------------//
-    'show_customers'               => 'العملاء',
-    'add_new_customer'             => 'إضافة حساب عميل جديد',
-    'edit_existing_customer'       => 'تعديل بيانات حساب العميل ',
+    'show_customers'                => 'العملاء',
+    'add_new_customer'              => 'إضافة حساب عميل جديد',
+    'edit_existing_customer'        => 'تعديل بيانات حساب العميل ',
 
     // --------------- Supervisors  --------------//
     'show_supervisors'              => 'المشرفين',
-    'add_new_supervisor'           => 'إضافة حساب مشرف جديد',
-    'edit_existing_supervisor'     => 'تعديل بيانات حساب مشرف ',
+    'add_new_supervisor'            => 'إضافة حساب مشرف جديد',
+    'edit_existing_supervisor'      => 'تعديل بيانات حساب مشرف ',
 
     // ........... commons in Users   ....... //
-    'customer_name'               => 'إسم العميل ',
+    'customer_name'                 =>  'إسم العميل ',
     'advertisor_name'               =>  'إسم المشرف',
     'permissions'                   =>  'الصلاحيات',
     'grant_all_permissions'         =>  'منح كل الصلاحيات',
 
 
-    ##############################################################
-
-    // =============  Manage Customer addresses  ===============//
-    'manage_customer_addresses'              => 'إدارة عناوين العملاء',
+    ################################ Manage Customer addresses ##############################
+    'manage_customer_addresses'     => 'إدارة عناوين العملاء',
 
     // --------------- Customer Address  --------------//
-    'show_customer_addresses'               => 'عناوين العملاء',
-    'add_new_customer_address'             => 'إضافة عنوان عميل جديد',
-    'edit_existing_customer_address'       => 'التعديل على بيانات  عنوان عميل  ',
+    'show_customer_addresses'        => 'عناوين العملاء',
+    'add_new_customer_address'       => 'إضافة عنوان عميل جديد',
+    'edit_existing_customer_address' => 'التعديل على بيانات  عنوان عميل  ',
 
 
     // ........... commons in Customer address   ....... //
-    'default'       =>  'الافتراضي',
-    'shipping_info' =>  'معلومات الشحن',
-    'shipping_address_title'    =>  'عنوان الشحن',
-    'location'      =>  'الموقع',
-    'zip_code'      =>  'الرمز البريدي',
-    'po_box'        =>  'الصندوق البريدي',
+    'default'                       =>  'الافتراضي',
+    'shipping_info'                 =>  'معلومات الشحن',
+    'shipping_address_title'        =>  'عنوان الشحن',
+    'location'                      =>  'الموقع',
+    'zip_code'                      =>  'الرمز البريدي',
+    'po_box'                        =>  'الصندوق البريدي',
 
 
-    ##############################################################
-
-    // =============  Manage Residential Site ( Countries , States , Cities   )===============//
-    'manage_residentail_site'              => 'إدارة الموقع السكني',
+    #################################### Manage Residential Site ( Countries , States , Cities   ) ##########################
+    'manage_residentail_site'       => 'إدارة الموقع السكني',
 
     // --------------- Countries  --------------//
-    'show_countries'               => 'الدول',
-    'add_new_country'             => 'إضافة دولة جديدة',
-    'edit_existing_country'       => 'تعديل بياناتة الدولة',
+    'show_countries'                => 'الدول',
+    'add_new_country'               => 'إضافة دولة جديدة',
+    'edit_existing_country'         => 'تعديل بياناتة الدولة',
 
 
     // ........... commons in Countries   ....... //
 
-    'country_name'              =>  'إسم الدولة',
-    'states_count'               =>  'عدد المقاطعات',
-    'emoji'                     =>  'صورة مصغرة',
+    'country_name'                  =>  'إسم الدولة',
+    'states_count'                  =>  'عدد المقاطعات',
+    'emoji'                         =>  'صورة مصغرة',
 
     // --------------- States --------------//
-    'show_states'               => 'المقاطعة',
-    'add_new_state'             => 'إضافة مقاطعة جديدة',
-    'edit_existing_state'       => 'تعديل بيانات المقاطعة',
+    'show_states'                   => 'المقاطعة',
+    'add_new_state'                 => 'إضافة مقاطعة جديدة',
+    'edit_existing_state'           => 'تعديل بيانات المقاطعة',
 
 
     // ........... commons in States   ....... //
 
-    'state_name'                => 'إسم المقاطعة',
-    'cities_count'              =>  'عدد المدن',
+    'state_name'                    => 'إسم المقاطعة',
+    'cities_count'                  =>  'عدد المدن',
 
     // --------------- Cities --------------//
-    'show_cities'               => 'المدينة',
-    'add_new_city'              => 'إضافة مدينة جديدة',
-    'edit_existing_city'        => 'تعديل بيانات مدينة',
+    'show_cities'                   => 'المدينة',
+    'add_new_city'                  => 'إضافة مدينة جديدة',
+    'edit_existing_city'            => 'تعديل بيانات مدينة',
 
 
     // ........... commons in cities   ....... //
 
-    'city_name'                 =>  'إسم المدينة',
+    'city_name'                     =>  'إسم المدينة',
 
 
 
-    ##############################################################
-    // =============  Manage Orders  ===============//
-    'manage_orders'              => 'إدارة الطلبات',
+    ################################ Manage Orders ##############################
+    'manage_orders'                 => 'إدارة الطلبات',
 
     // ---------------  Orders  --------------//
-    'show_orders'               => 'الطلبات',
-    'add_new_order'             => 'إضافة طلب جديد',
-    'edit_existing_order'       => 'التعديل علي بيانات الطلب ',
+    'show_orders'                   => 'الطلبات',
+    'add_new_order'                 => 'إضافة طلب جديد',
+    'edit_existing_order'           => 'التعديل علي بيانات الطلب ',
 
     // ........... commons in Orders  ....... //
-    'ref_id'        =>  'رقم المرجع',
-    'payment_method'    =>  'طريقة الدفع',
+    'ref_id'                        =>  'رقم المرجع',
+    'payment_method'                =>  'طريقة الدفع',
 
     //............. Order Status .............//
-    'order_status'              =>      'حالة الطلب',
-    'order_choose_appropriate_event'  =>      'اختر الحدث المناسب',
-    'order_new_order'           =>      'طلب جديد',
-    'order_paid'                =>      'تم الدفع',
-    'order_under_process'       =>      'تحت المعالجة',
-    'order_finished'            =>      'تم الانتهائ من الطلب',
-    'order_rejected'            =>      'مرفوض',
-    'order_canceled'            =>      'الغيت',
-    'order_refund_requested'    =>      'استرداد الطلب',
-    'order_returned_order'      =>      'تم الاسترداد',
-    'order_refunded'            =>      'تم إعادة المنتج',
+    'order_status'                  =>  'حالة الطلب',
+    'order_choose_appropriate_event' => 'اختر الحدث المناسب',
+    'order_new_order'               =>  'طلب جديد',
+    'order_paid'                    =>  'تم الدفع',
+    'order_under_process'           =>  'تحت المعالجة',
+    'order_finished'                =>  'تم الانتهائ من الطلب',
+    'order_rejected'                =>  'مرفوض',
+    'order_canceled'                =>  'الغيت',
+    'order_refund_requested'        =>  'استرداد الطلب',
+    'order_returned_order'          =>  'تم الاسترداد',
+    'order_refunded'                =>  'تم إعادة المنتج',
 
     //...............  order payment info ...............//
-    'order_subtotal'        =>  'الإجمالي',
-    'order_discount_code'   =>  'كود الخصم',
-    'order_discount'        =>  'قيمة الخصم',
-    'order_shipping'        =>  'خدمة التوصيل',
-    'order_tax'             =>  'الضريبة',
-    'order_amount'          =>  'الإجمالي الكلي',
+    'order_subtotal'                =>  'الإجمالي',
+    'order_discount_code'           =>  'كود الخصم',
+    'order_discount'                =>  'قيمة الخصم',
+    'order_shipping'                =>  'خدمة التوصيل',
+    'order_tax'                     =>  'الضريبة',
+    'order_amount'                  =>  'الإجمالي الكلي',
 
 
     // ............... Operations of demand (order process) ....................//
-    'order_operations_on_demand'              =>  'العمليات على الحدث',
-    'order_event_name'                  =>  'إسم الحدث',
-    'order_payment_method'              =>  'طريقة الدفع',
-    'order_event_number'                =>  'رقم الحدث',
-    'order_payment_result'              =>  'ناتج الدفع',
-    'order_event_created_at'            =>  'تاريخ الحدث',
+    'order_operations_on_demand'    =>  'العمليات على الحدث',
+    'order_event_name'              =>  'إسم الحدث',
+    'order_payment_method'          =>  'طريقة الدفع',
+    'order_event_number'            =>  'رقم الحدث',
+    'order_payment_result'          =>  'ناتج الدفع',
+    'order_event_created_at'        =>  'تاريخ الحدث',
 
 
     // ............... Order Details .................................//
-    'order_detail'                      => 'تفاصيل الطلب',
-    'order_product_name'                =>  'إسم المنتج',
-    'order_qty'                         =>  'الكمية',
+    'order_detail'                  => 'تفاصيل الطلب',
+    'order_product_name'            =>  'إسم المنتج',
+    'order_qty'                     =>  'الكمية',
 
-
-
-
-    // =============  Manage Common Questions   ===============//
-    'manage_questions'                => ' إدارة الاسئلة الشائعة',
+    ################################ Manage Common Questions ##############################
+    'manage_questions'              => ' إدارة الاسئلة الشائعة',
 
     // --------------- Common Questions  --------------//
-    'show_questions'              => 'الاسئلة الشائعة',
-    'add_new_question'                => 'إضافة سؤال جديد',
-    'edit_existing_question'          => 'تعديل محتوي السؤال',
-
+    'show_questions'                => 'الاسئلة الشائعة',
+    'add_new_question'              => 'إضافة سؤال جديد',
+    'edit_existing_question'        => 'تعديل محتوي السؤال',
 
     // ........... commons in Questions   ....... //
 
 
-    ##############################################################
-
-    // =============  Manage Blogs   ===============//
-    'manage_blogs'                      => 'إدارة المدونة',
+    ################################ Manage Blogs ############################
+    'manage_blogs'                  => 'إدارة المدونة',
 
     // --------------- Blogs   --------------//
-    'show_posts'                        => 'المنشورات',
-    'add_new_post'                      => 'إضافة منشور جديد',
-    'edit_existing_post'                => 'تعديل بيانات المنشور',
-
+    'show_posts'                    => 'المنشورات',
+    'add_new_post'                  => 'إضافة منشور جديد',
+    'edit_existing_post'            => 'تعديل بيانات المنشور',
 
     // ........... commons in blogs   ....... //
+    'blog_tags'                     => 'الكلمات المفتاحية',
 
-    'blog_tags'         => 'الكلمات المفتاحية',
 
-
-    ##############################################################
-
-    // =============  Manage payments   ===============//
-    'manage_payments'                      => 'إدارة عمليات الدفع',
+    ################################ Manage payments ##############################
+    'manage_payments'               => 'إدارة عمليات الدفع',
 
     // --------------- payment categories   --------------//
-    'show_payment_categories'           => 'تصنيفات الدفع',
-    'add_new_payment_category'          => 'إضافة تصنيف دقع جديد',
-    'edit_existing_payment_category'    => 'التعديل على تصنيف دقع موجود ',
+    'show_payment_categories'       => 'تصنيفات الدفع',
+    'add_new_payment_category'      => 'إضافة تصنيف دقع جديد',
+    'edit_existing_payment_category' => 'التعديل على تصنيف دقع موجود ',
 
     // --------------- payment method_locale   --------------//
-    'show_payment_method'                        => 'طرق الدفع',
-    'add_new_payment_method'                      => 'إضافة طريقة دفع جديدة',
-    'edit_existing_payment_method'                => 'التعديل على طريقة الدفع',
+    'show_payment_method'           => 'طرق الدفع',
+    'add_new_payment_method'        => 'إضافة طريقة دفع جديدة',
+    'edit_existing_payment_method'  => 'التعديل على طريقة الدفع',
 
     // ........... commons in payments   ....... //
-    'payment_category_name'                           =>  'تصنيف طريقة الدفع',
+    'payment_category_name'         =>  'تصنيف طريقة الدفع',
 
-    'payment_method_name'                           =>  'إسم طريقة الدفع',
-    'payment_method_description'                    =>  'شرح طريقة الدفع',
+    'payment_method_name'           =>  'إسم طريقة الدفع',
+    'payment_method_description'    =>  'شرح طريقة الدفع',
 
-    'owner_account_name'                            =>  'إسم  الحساب',
-    'owner_account_number'                          =>  'رقم  الحساب',
-    'owner_account_country'                         =>  'دولة فتح الحساب',
-    'owner_account_phone'                           =>  'رقم التلفون المرتبط بالحساب',
+    'owner_account_name'            =>  'إسم  الحساب',
+    'owner_account_number'          =>  'رقم  الحساب',
+    'owner_account_country'         =>  'دولة فتح الحساب',
+    'owner_account_phone'           =>  'رقم التلفون المرتبط بالحساب',
 
-    'customer_account_name'                         =>  'إسم حساب العميل',
-    'customer_account_number'                       =>  'رقم حساب العميل',
-    'customer_account_country'                      =>  'دولة فتح الحساب',
-    'customer_account_phone'                        =>  'رقم التلفون المرتبط بالحساب',
+    'customer_account_name'         =>  'إسم حساب العميل',
+    'customer_account_number'       =>  'رقم حساب العميل',
+    'customer_account_country'      =>  'دولة فتح الحساب',
+    'customer_account_phone'        =>  'رقم التلفون المرتبط بالحساب',
 
 
-
-    ##############################################################
-
-    // =============  Manage Site Settings   ===============//
-    'manage_site_settings'                      => 'إدارة إعدادات الموقع',
+    ################################ Manage Site Settings  ###########################
+    'manage_site_settings'          => 'إدارة إعدادات الموقع',
 
     // --------------- Site Information    --------------//
-    'show_site_information'                        => 'بيانات الموقع الاساسية',
-    'add_new_site_information'                      => 'إضافة بيانات للموقع',
-    'edit_existing_site_information'                => 'تعديل بيانات الموقع ',
-
+    'show_site_information'         => 'بيانات الموقع الاساسية',
+    'add_new_site_information'      => 'إضافة بيانات للموقع',
+    'edit_existing_site_information' => 'تعديل بيانات الموقع ',
 
     // ........... commons in Site Information    ....... //
-    'site_name'                 =>  'إسم الموقع',
-    'site_short_name'           => 'الاسم المختصر للموقع',
-    'site_description'          => 'وصف الموقع ',
-    'site_link'                 => 'رابط الموقع',
-    'site_img'                  => 'الصورة الافتراضية للموقع',
-
+    'site_name'                     =>  'إسم الموقع',
+    'site_short_name'               => 'الاسم المختصر للموقع',
+    'site_description'              => 'وصف الموقع ',
+    'site_link'                     => 'رابط الموقع',
+    'site_img'                      => 'الصورة الافتراضية للموقع',
 
     // --------------- Site contact    --------------//
-    'show_site_contact'                        => 'معلومات الإتصال باملوقع ',
-    'add_new_site_contact'                      => 'إضافة طريقة اتصال بالموقع',
-    'edit_existing_site_contact'                => 'تعديل بيانات طريقة اتصال ',
+    'show_site_contact'             => 'معلومات الإتصال باملوقع ',
+    'add_new_site_contact'          => 'إضافة طريقة اتصال بالموقع',
+    'edit_existing_site_contact'    => 'تعديل بيانات طريقة اتصال ',
 
     // ........... commons in Site contact    ....... //
     'site_address'                  => 'عنوان الموقع',
@@ -371,24 +337,24 @@ return [
     'site_workTime'                 => 'مواعيد العمل',
 
     // --------------- Site Socail Medail Icon    --------------//
-    'show_site_socail'                         => ' ايقونات وسائل التواصل الإجتماعي ',
-    'add_new_site_socail'                      => 'إضافة ايقونة وسائل التواصل الاجتماعي',
-    'edit_existing_site_socail'                => 'تعديل بيانات وسائل التواصل الاجتماعي  ',
+    'show_site_socail'              => ' ايقونات وسائل التواصل الإجتماعي ',
+    'add_new_site_socail'           => 'إضافة ايقونة وسائل التواصل الاجتماعي',
+    'edit_existing_site_socail'     => 'تعديل بيانات وسائل التواصل الاجتماعي  ',
 
     // ........... commons in Site Socail Medail Icon    ....... //
 
 
     // --------------- Site Meta  Tags   --------------//
-    'show_site_meta_tag'                         => 'إدارة الكلمات المفتاحية ',
-    'add_new_site_meta_tag'                      => 'إضافة كلمة مفتاحية جديدة',
-    'edit_existing_site_meta_tag'                => 'تعديل بيانات الكلمة المفتاحية',
+    'show_site_meta_tag'            => 'إدارة الكلمات المفتاحية ',
+    'add_new_site_meta_tag'         => 'إضافة كلمة مفتاحية جديدة',
+    'edit_existing_site_meta_tag'   => 'تعديل بيانات الكلمة المفتاحية',
 
     // ........... commons in Site Meta Tags  Icon    ....... //
-    'site_name_meta'                                    =>  'اسم الموقع',
-    'site_description_meta'                             =>  'وصف الموقع',
-    'site_link_meta'                                    =>  'رابط الموقع',
-    'site_keywords_meta'                                =>  'الكلمات المفتاحية',
-    'site_keywords_meta_message_input'                  =>  'ادخل كلمات مفتاحية للموقع',
+    'site_name_meta'                =>  'اسم الموقع',
+    'site_description_meta'         =>  'وصف الموقع',
+    'site_link_meta'                =>  'رابط الموقع',
+    'site_keywords_meta'            =>  'الكلمات المفتاحية',
+    'site_keywords_meta_message_input' =>  'ادخل كلمات مفتاحية للموقع',
 
 
     // --------------- Site Payment Method Icon    --------------//
@@ -410,22 +376,22 @@ return [
 
 
     // --------------- Site Counter     --------------//
-    'show_site_counters'              => 'Site Counters  ',
-    'add_new_site_counter'            => 'Add New Site Counter ',
-    'edit_existing_site_counter'      => 'Edit existing Counter',
+    'show_site_counters'            => 'Site Counters  ',
+    'add_new_site_counter'          => 'Add New Site Counter ',
+    'edit_existing_site_counter'    => 'Edit existing Counter',
 
     // ........... commons in Site Counter     ....... //
-    'site_number_of_items_in'               =>  'عدد العناصر في ',
-    'site_main_sliders'                     =>  'عارض الشرائح الرئيسي',
-    'site_advertisor_sliders'               =>  'عارض شرائح الإعلانات',
-    'site_card_categories'                  =>  'البطاقات',
-    'site_featured_cards'                   =>  'الباقات الجديدة',
-    'site_random_cards'                     =>  'الباقات العشوائية',
-    'site_related_cards'                    =>  ' الباقات المرتبطة بالباقة الحالية',
-    'site_more_like_cards'                  =>  'قد يعجبك ايضا',
-    'site_posts'                            =>  'المنشورات',
-    'site_questions'                        =>  'الاسئلة الشائعة',
-    'site_more_categories'                  =>  'بطاقات اكثر ',
+    'site_number_of_items_in'       =>  'عدد العناصر في ',
+    'site_main_sliders'             =>  'عارض الشرائح الرئيسي',
+    'site_advertisor_sliders'       =>  'عارض شرائح الإعلانات',
+    'site_card_categories'          =>  'البطاقات',
+    'site_featured_cards'           =>  'الباقات الجديدة',
+    'site_random_cards'             =>  'الباقات العشوائية',
+    'site_related_cards'            =>  ' الباقات المرتبطة بالباقة الحالية',
+    'site_more_like_cards'          =>  'قد يعجبك ايضا',
+    'site_posts'                    =>  'المنشورات',
+    'site_questions'                =>  'الاسئلة الشائعة',
+    'site_more_categories'          =>  'بطاقات اكثر ',
 
     ##############################################################
 
@@ -486,6 +452,7 @@ return [
     'email'                         =>  'الايميل',
     'mobile'                        =>  'الموبايل',
     'customer'                      =>  'العميل',
+    'full_name'                     =>  'الاسم الكامل',
     'first_name'                    =>  'الإسم الاول',
     'last_name'                     =>  'اللقب',
     'user_name'                     =>  'اسم المستخدم',
@@ -561,6 +528,7 @@ return [
     'in'                            => 'باللغة',
     'and'                           =>  'و',
     'or'                            =>  'او',
+    'by'                            =>  'بواسطة',
 
 
     // =================== Static word in the webpage ===============//
@@ -570,103 +538,134 @@ return [
     'light_mode'                     =>  'الوضع المشرق',
     'dark_mode'                      =>  'الوضع الداكن',
 
-    // ===================  front end static word =====================//
-    'f_shop_now'                            =>  'تسوق الان',
+    // ===================  frontend static word =====================//
+    'f_shop_now'                     =>  'تسوق الان',
 
-    'f_new_cards'                           => 'الباقات الجديدة',
+    'f_new_cards'                    => 'الباقات الجديدة',
 
-    'f_our_categories'                      => 'بطاقاتنا',
-    'f_choose_your_favorite_category'       => 'اختر البطاقة المناسبة لك',
-    'f_view_category'                       =>  'عرض الباقات',
+    'f_our_categories'               => 'بطاقاتنا',
+    'f_choose_your_favorite_category' => 'اختر البطاقة المناسبة لك',
+    'f_view_category'                =>  'عرض الباقات',
 
-    'f_various_cards'                        => 'باقات متنوعة',
+    'f_various_cards'                => 'باقات متنوعة',
 
-    'f_blog'                                => 'المدونة',
-    'f_read_more'                           => 'إقراء المزيد',
+    'f_blog'                         => 'المدونة',
 
-    'f_Inquiries'                           =>  'الإستفسارات',
-    'f_common_questions'                    =>  'الاسئلة الشائعة',
+    'f_Inquiries'                    =>  'الإستفسارات',
+    'f_common_questions'             =>  'الاسئلة الشائعة',
 
 
     // =====================  in cart translation   ======================= //
 
     //global
-    'f_add_to_card'                                         =>  'إضافة للسلة',
-    'f_add_to_wishlist'                                     =>  'إضافة للمفضلة',
-    'f_shop_cart'                                           =>  'سلة التسوق',
-    'f_wishlist_cart'                                       =>  'قائمة المفضلات',
+    'f_main'                                    =>  'الرئيسية',
+    'f_add_to_card'                             =>  'إضافة للسلة',
+    'f_add_to_shopping_cart'                    =>  'إضافة الى سلة المشتريات',
+    'f_add_to_wishlist'                         =>  'إضافة للمفضلة',
+    'f_shop_cart'                               =>  'سلة التسوق',
+    'f_wishlist_cart'                           =>  'قائمة المفضلات',
+    'f_main'                                    =>  'الرئيسية',
+    'f_read_more'                               =>  'إقراء اكثر',
+    'f_read_less'                               =>  'إقراء اقل',
+
+    'f_remove_from_cart'                        =>  'حذف من سلة المشتريات',
+    'f_remove_from_wishlist'                    =>  'حذف من سلة المفضلات',
 
     //messages 
-    'f_m_item_removed_from_shop_cart'                       =>  'تم إزالة العنصر من سلة التسوق بنجاح',
-    'f_m_item_removed_from_wishlist_cart'                   =>  'تم إزالة العنصر من قائمة المفظلات بنجاح',
+    'f_m_item_removed_from_shop_cart'           =>  'تم إزالة العنصر من سلة التسوق بنجاح',
+    'f_m_item_removed_from_wishlist_cart'       =>  'تم إزالة العنصر من قائمة المفظلات بنجاح',
 
-    'f_m_item_removed_all_from_shop_cart'                   =>  'تم إزالة جميع العناصر من سلة التسوق بنجاح',
-    'f_m_item_removed_all_from_wishlist_cart'               =>  'تم إزالة جميع العناصر من قائمة المفضلات بنجاح',
+    'f_m_item_removed_all_from_shop_cart'       =>  'تم إزالة جميع العناصر من سلة التسوق بنجاح',
+    'f_m_item_removed_all_from_wishlist_cart'   =>  'تم إزالة جميع العناصر من قائمة المفضلات بنجاح',
 
-    'f_m_item_already_exist_in_shop_cart'                   =>  'العنصر موجود بالفعل في سلة التسوق',
-    'f_m_item_already_exist_in_wishlist_cart'               =>  'العنصر موجود بالفعل في قائمة المفضلات',
+    'f_m_item_already_exist_in_shop_cart'       =>  'العنصر موجود بالفعل في سلة التسوق',
+    'f_m_item_already_exist_in_wishlist_cart'   =>  'العنصر موجود بالفعل في قائمة المفضلات',
 
-    'f_m_item_add_to_shop_cart'                             =>  'تم إضافة العنصر الى سلة التسوق بنجاح',
-    'f_m_item_add_to_wishlist_cart'                         =>  'تم إضافة العنصر الى قائمة المفضلات بنجاح',
+    'f_m_item_add_to_shop_cart'                 =>  'تم إضافة العنصر الى سلة التسوق بنجاح',
+    'f_m_item_add_to_wishlist_cart'             =>  'تم إضافة العنصر الى قائمة المفضلات بنجاح',
 
 
-    // ========================  fronten Message =========================// 
-    'f_our_price_are_the_best'                                              => 'اسعارنا الافضل',
-    'f_strongest_offers'                                                    => 'عروضنا الأقوى',
-    'f_outstanding_customer_service'                                        => 'خدمة عملاء متميزة',
-    'f_packages_that_suit_your_needs'                                       => 'باقات تناسب احتياجك',
-
+    // ========================  frontend Message =========================// 
+    'f_our_price_are_the_best'                  => 'اسعارنا الافضل',
+    'f_strongest_offers'                        => 'عروضنا الأقوى',
+    'f_outstanding_customer_service'            => 'خدمة عملاء متميزة',
+    'f_packages_that_suit_your_needs'           => 'باقات تناسب احتياجك',
 
 
     // ========================  fronten Footer  =========================// 
-    'f_phone'                                       => 'تلفون',
-    'f_email'                                       => 'إيميل',
-    'f_fax'                                         => 'فاكس',
-    'f_po_box'                                      => 'الصندوق البريدي',
-    'f_work_time'                                   => 'ايام الدوام',
+    'f_phone'                                   => 'تلفون',
+    'f_email'                                   => 'إيميل',
+    'f_fax'                                     => 'فاكس',
+    'f_po_box'                                  => 'الصندوق البريدي',
+    'f_work_time'                               => 'ايام الدوام',
 
-    'f_about_center_pay'                            => 'حول سنتر باي',
+    'f_about_center_pay'                        => 'حول سنتر باي',
 
-    'f_socail_media_platforms'                      =>  'منصات التواصل الإجتماعي',
+    'f_socail_media_platforms'                  =>  'منصات التواصل الإجتماعي',
 
-    'f_if_you_have_question'                        =>  'إذا كان لديك سؤال',
+    'f_if_you_have_question'                    =>  'إذا كان لديك سؤال',
 
-    'f_payment_methods'                             =>  'وسائل الدفع',
+    'f_payment_methods'                         =>  'وسائل الدفع',
 
-    'f_center_pay'                                  =>  'سينر باي',
-    'f_copyright'                                   =>  'حقوق الطبع محفوظة',
-
+    'f_center_pay'                              =>  'سينر باي',
+    'f_copyright'                               =>  'حقوق الطبع محفوظة',
 
     // =========================== Footer continue slides ===============================//
 
-    'f_has_been_added_to'                            =>  'تم إضافتها الى',
-    'f_you_can_continue'                             =>  'يمكنك الإستمرار',
-    'f_complete_your_purchase'                       =>  'إكمال عملية الشراء',
-    'f_check_shopping_cart'                          =>  'فحص سلة التسقو',
+    'f_has_been_added_to'                       =>  'تم إضافتها الى',
+    'f_you_can_continue'                        =>  'يمكنك الإستمرار',
+    'f_complete_your_purchase'                  =>  'إكمال عملية الشراء',
+    'f_check_shopping_cart'                     =>  'فحص سلة التسقو',
 
-    'f_select_option_please'                        =>  'حدد الخيار من فضلك..',
-    'f_cant_be_blank'                               =>  'لا يمكن أن يكون فارغا',
+    'f_select_option_please'                    =>  'حدد الخيار من فضلك..',
+    'f_cant_be_blank'                           =>  'لا يمكن أن يكون فارغا',
 
-    'f_scroll_to_top'                               =>  'انتقل إلى أعلى',
+    'f_scroll_to_top'                           =>  'انتقل إلى أعلى',
 
     // ===================== cart-default-component =====================================//
-    'f_close'                               =>  'إغلاق',
-    'f_item_price'                               =>  'سعر الحبة',
-    'f_quentity'                               =>  'الكمية',
-    'f_total'                               =>  'الإجمالي',
-    'f_remove_from_shopping_cart'                    =>  'حذف من سلة التسوق',
-    'f_shopping_cart_is_empty'              =>  'سلة التسوق فارغة',
+    'f_close'                                   =>  'إغلاق',
+    'f_item_price'                              =>  'سعر الحبة',
+    'f_quentity'                                =>  'الكمية',
+    'f_total'                                   =>  'الإجمالي',
+    'f_remove_from_shopping_cart'               =>  'حذف من سلة التسوق',
+    'f_shopping_cart_is_empty'                  =>  'سلة التسوق فارغة',
 
-    'f_m_get_gift'                          =>  'عند شرائك لبطاقتين او اكثر احصل على هدية',
-    'f_shopping'                            =>  'تسوق!',
+    'f_m_get_gift'                              =>  'عند شرائك لبطاقتين او اكثر احصل على هدية',
+    'f_shopping'                                =>  'تسوق!',
     'f_m_continue_shopping_and_get_free_delivery' => 'واصل التسوق واحصل على توصيل مجاني خلال فترة اسبوع ',
 
+    'f_you_saved'                               =>  'حافظت على',
 
-    'f_you_saved'                           =>  'حافظت على',
+    'f_shopping_cart'                           => 'سلة المشتريات',
+    'f_payment_process'                         => 'عملية الدفع',
 
 
-    'f_shopping_cart'                       => 'سلة المشتريات',
-    'f_payment_process'                     => 'عملية الدفع',
+    // ====================== card page translation ===================================//
+    'f_delevory_and_return_order'                       =>  'التسليم وإعادة الطلب',
+    'f_question_about_this_card'                        =>  'اسال عن هذه الباقة',
+
+    'f_we_have_fast_delevery_for_card_code'             =>  'لدينا خدمة تسليم فورية لكودات الباقات',
+    'f_time_delevery'                                   =>  'وقت الشن',
+
+    'f_have_question'                                   =>  'لدي سؤال؟',
+    'f_question_consulting'                             =>  'اسأل مستشار',
+    'f_we_will_contact_you_soon'                        =>  'سوف نتواصل بك قريبا',
+    'f_may_you_like'                                    =>  'قد يعجبك ايضا',
+
+
+    // ====================== card category page translation ===================================//
+
+    // ====================== Blog page  translation ===================================//
+    // main blog page 
+    'f_common_tags'                                      =>  'الكلمات المفتاحية',
+    'f_we_chosed_for_you'                                =>  'اخترنا لك',
+    'f_topic'                                            =>  'موضوع',
+    'f_no_posts_yet'                                      =>  'لم يتم إضافة منشورات بعد',
+
+
+
+
+
 
 
 

@@ -8,7 +8,7 @@
         <div class="holder breadcrumbs-wrap mt-0">
             <div class="container">
                 <ul class="breadcrumbs">
-                    <li><a href="{{ route('frontend.index') }}">الرئيسية</a></li>
+                    <li><a href="{{ route('frontend.index') }}">{{ __('panel.main') }}</a></li>
                     <li class="active"><span> {{ $card_category->category_name }}</span></li>
                 </ul>
             </div>
@@ -17,9 +17,9 @@
         <div class="holder">
             <div class="container">
 
-                <div class="page-title text-center">
+                {{-- <div class="page-title text-center">
                     <h1>{{ $card_category->category_name }}</< /h1>
-                </div>
+                </div> --}}
 
                 <div class="row prd-block prd-block--prv-bottom">
                     <div class="col-md-5 col-lg-5 col-xl-5 aside--sticky js-sticky-collision">
@@ -85,7 +85,7 @@
             <div class="holder global_width">
                 <div class="container">
                     <div class="title-wrap text-center">
-                        <h2 class="h1-style">قد يعجبك ايضا</h2>
+                        <h2 class="h1-style main-color"> {{ __('panel.f_may_you_like') }} </h2>
                     </div>
                     <div class="prd-grid prd-promo-carousel data-to-show-4 js-prd-promo-carousel">
 
@@ -110,7 +110,7 @@
                                             <div class="prd-action">
                                                 <a class="btn js-prd-addtocart"
                                                     href="{{ route('frontend.card_category', $more_category->slug) }}">
-                                                    عرض الباقات
+                                                    {{ __('panel.f_view_category') }}
                                                 </a>
 
                                             </div>

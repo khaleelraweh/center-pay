@@ -135,9 +135,8 @@
 
                                     @if (strlen($card->description) > 200)
                                         <a class="button jkit-btn-inverse toggle  btn-link read-more"
-                                            style="cursor: pointer;">
-                                            {{ __('panel.f_read_more') }}
-                                        </a>
+                                            style="cursor: pointer;">Read
+                                            More</a>
                                     @else
                                     @endif
 
@@ -153,13 +152,13 @@
                                     <li>
                                         <i class="icon-delivery-1"></i>
                                         <a href="#" data-fancybox class="modal-info-link" data-src="#deliveryInfo">
-                                            {{ __('panel.f_delevory_and_return_order') }}
+                                            التسليم واعادة الطلب
                                         </a>
                                     </li>
                                     <li>
                                         <i class="icon-email-1"></i>
                                         <a href="#" data-fancybox class="modal-info-link" data-src="#contactModal">
-                                            {{ __('panel.f_question_about_this_card') }}
+                                            اسأل عن هذا المنتج
                                         </a>
                                     </li>
                                 </ul>
@@ -174,11 +173,11 @@
                                             <i class="icon-delivery-1"></i>
                                         </div>
                                         <h2>
-                                            {{ __('panel.f_delevory_and_return_order') }}
+                                            التسليم واعادة الطلب
                                         </h2>
                                     </div>
                                     <br>
-                                    <h5> {{ __('panel.f_we_have_fast_delevery_for_card_code') }} </h5>
+                                    <h5>لدينا خدمة البريد السريع الطرود</h5>
                                     <p>
                                         تفتخر شركة Foxic بتقديم خدمة شحن الطرود الدولية الاستثنائية. هو - هي
                                         من السهل جدًا تنظيم شحن الطرود الدولية. ملكنا
@@ -194,7 +193,7 @@
                                         اختيار يوم الشحن المناسب لك.
                                     </p>
                                     <br>
-                                    <h5>{{ __('panel.f_time_delevery') }}</h5>
+                                    <h5>وقت الشحن</h5>
                                     <p>
                                         يعتمد وقت الشحن على طريقة الشحن التي اخترتها.
                                         <br>
@@ -219,32 +218,30 @@
                                             <i class="icon-envelope"></i>
                                         </div>
                                         <h2>
-                                            {{ __('panel.f_have_question') }}
+                                            لدي سؤال؟
                                         </h2>
                                     </div>
                                     <form method="post" action="#" id="contactForm" class="contact-form">
                                         <div class="form-group">
                                             <input type="text" name="contact[name]" class="form-control form-control--sm"
-                                                placeholder="{{ __('panel.full_name') }}">
+                                                placeholder="الاسم">
                                         </div>
                                         <div class="form-group">
                                             <input type="text" name="contact[email]"
-                                                class="form-control form-control--sm" placeholder="{{ __('panel.email') }}"
-                                                required="">
+                                                class="form-control form-control--sm" placeholder="الايميل" required="">
                                         </div>
                                         <div class="form-group">
                                             <input type="text" name="contact[phone]"
-                                                class="form-control form-control--sm"
-                                                placeholder="{{ __('panel.phone') }}">
+                                                class="form-control form-control--sm" placeholder="رقم التلفون">
                                         </div>
                                         <div class="form-group">
                                             <textarea class="form-control textarea--height-170" name="contact[body]" placeholder="Message" required=""></textarea>
                                         </div>
                                         <button class="btn" type="submit">
-                                            {{ __('panel.f_question_consulting') }}
+                                            اسأل مستشارنا
                                         </button>
                                         <p class="p--small mt-15 mb-0">
-                                            {{ __('panel.f_we_will_contact_you_soon') }}
+                                            وسوف نتواصل بك قريبا
                                         </p>
                                         <input name="recaptcha-v3-token" type="hidden"
                                             value="03AGdBq27T8WvzvZu79QsHn8lp5GhjNX-w3wkcpVJgCH15Ehh0tu8c9wTKj4aNXyU0OLM949jTA4cDxfznP9myOBw9m-wggkfcp1Cv_vhsi-TQ9E_EbeLl33dqRhp2sa5tKBOtDspTgwoEDODTHAz3nuvG28jE7foIFoqGWiCqdQo5iEphqtGTvY1G7XgWPAkNPnD0B9V221SYth9vMazf1mkYX3YHAj_g_6qhikdQDsgF2Sa2wOcoLKWiTBMF6L0wxdwhIoGFz3k3VptYem75sxPM4lpS8Y_UAxfvF06fywFATA0nNH0IRnd5eEPnnhJuYc5LYsV6Djg7_S4wLBmOzYnahC-S60MHvQFf-scQqqhPWOtgEKPihUYiGFBJYRn2p1bZwIIhozAgveOtTNQQi7FGqmlbKkRWCA">
@@ -277,7 +274,7 @@
                 var elem = $(this);
                 if (elem.hasClass('read-more')) {
                     //Stuff to do when btn is in the read more state
-                    $(this).text("{{ __('panel.f_read_less') }}");
+                    $(this).text("Read Less");
                     $(this).parent().find('.text').slideDown();
                     $(".small_desc").slideUp();
 
@@ -285,7 +282,7 @@
                     elem.addClass('read-less');
                 } else {
                     //Stuff to do when btn is in the read less state
-                    $(this).text("{{ __('panel.f_read_more') }}");
+                    $(this).text("Read More");
                     $(this).parent().find('.text').slideUp();
                     $(".small_desc").slideDown();
 

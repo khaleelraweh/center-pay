@@ -86,8 +86,9 @@ body.equal-height .prd-img:not(.prd-img--noequal) img,
 a.image-hover-scale,
 .panel-heading,
 .card {
-  border-radius: var(--main-border-radius);
+  border-radius: var(--main-border-radius) !important;
 }
+
 
 .page-content{
   width: 98%;

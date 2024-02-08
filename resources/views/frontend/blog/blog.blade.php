@@ -40,8 +40,8 @@
         <div class="holder breadcrumbs-wrap mt-0">
             <div class="container">
                 <ul class="breadcrumbs">
-                    <li><a href="{{ route('frontend.index') }}">الرئيسية</a></li>
-                    <li class="active"><span> المدونة</span></li>
+                    <li><a href="{{ route('frontend.index') }}">{{ __('panel.f_main') }}</a></li>
+                    <li class="active"><span> {{ __('panel.f_blog') }}</span></li>
                 </ul>
             </div>
         </div>
@@ -59,7 +59,7 @@
 
                             @if (count($tags) > 0)
                                 <div class="aside-block">
-                                    <h2 class="text-uppercase">الكلمات الشائعة</h2>
+                                    <h2 class="text-uppercase"> {{ __('panel.f_common_tags') }} </h2>
                                     <ul class="tags-list">
 
                                         @forelse ($tags as $tag)
@@ -78,7 +78,7 @@
 
                             @if (count($random_posts) > 0)
                                 <div class="aside-block">
-                                    <h2 class="text-uppercase">اخترنا لك </h2>
+                                    <h2 class="text-uppercase"> {{ __('panel.f_we_chosed_for_you') }} </h2>
 
                                     @forelse ($random_posts as $rand_post)
                                         <div class="post-prw-simple-sm">
@@ -95,11 +95,12 @@
                                                 </div>
                                                 <a href="{{ route('frontend.blog.post', $rand_post->slug) }}"
                                                     class="post-prw-author">
-                                                    {{ $rand_post->created_by ? 'بواسطة ' . $rand_post->created_by : '' }}
+                                                    {{ $rand_post->created_by ? __('panel.by') . ': ' . $rand_post->created_by : '' }}
                                                 </a>
                                             </div>
                                             <h4 class="post-prw-title"><a
-                                                    href="{{ route('frontend.blog.post', $rand_post->slug) }}">موضوع
+                                                    href="{{ route('frontend.blog.post', $rand_post->slug) }}">{{ __('panel.f_topic') }}
+                                                    :
                                                     {{ $rand_post->title }}</a>
                                             </h4>
 
@@ -149,14 +150,14 @@
                                             </div>
                                             <div class="post-prw-btn">
                                                 <a href="{{ route('frontend.blog.post', $post->slug) }}"
-                                                    class="btn btn--sm">إقراء اكثر</a>
+                                                    class="btn btn--sm"> {{ __('panel.f_read_more') }}</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
                             @empty
-                                لم يتم اضافة اي مدونة الى الان
+                                {{ __('panel.f_no_posts_yet') }}
                             @endforelse
 
 
