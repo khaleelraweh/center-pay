@@ -14,7 +14,7 @@
         <div class="holder breadcrumbs-wrap mt-0">
             <div class="container">
                 <ul class="breadcrumbs">
-                    <li><a href="{{ route('frontend.index') }}">Home</a></li>
+                    <li><a href="{{ route('frontend.index') }}">الرئيسية</a></li>
                     <li><a
                             href="{{ route('frontend.card_category', $card->category->slug) }}">{{ $card->category->category_name }}</a>
                     </li>

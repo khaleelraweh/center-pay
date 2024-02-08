@@ -43,7 +43,8 @@
 
                                 {{-- top control area  --}}
                                 <div class="prd-circle-labels">
-                                    <a href="#" wire:click.prevent="addToWishList('{{ $related_card->id }}')"
+                                    <a href="#"
+                                        wire:click.prevent="store( 'wishlist' , {{ $related_card->id }} , '{{ $related_card->product_name }}' , 1 , {{ $related_card->price }})"
                                         class="circle-label-compare circle-label-wishlist--add js-add-wishlist mt-0"
                                         title="Add To Wishlist">
                                         <i class="icon-heart-stroke"></i>
@@ -95,9 +96,9 @@
                                     <div class="prd-action">
                                         <form action="#">
                                             <button class="btn js-prd-addtocart rounded-pill"
-                                                wire:click.prevent="addToCart('{{ $related_card->id }}')"
+                                                wire:click.prevent="store( 'default' , {{ $related_card->id }} , '{{ $related_card->product_name }}' , 1 , {{ $related_card->price }})"
                                                 data-product='{"name": "Midi Dress with Belt", "path":"{{ asset('
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                												frontend/assests/images/skins/fashion/cards/product-06-1.webp') }}", "url"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                												frontend/assests/images/skins/fashion/cards/product-06-1.webp') }}", "url"
 												:"product.html", "aspect_ratio" :0.778}'>
                                                 {{ __('panel.f_add_to_card') }}
                                             </button>
@@ -138,7 +139,7 @@
                                         <div class="prd-action-left">
                                             <form action="#">
                                                 <button class="btn js-prd-addtocart rounded-pill"
-                                                    wire:click.prevent="addToCart('{{ $related_card->id }}')"
+                                                    wire:click.prevent="store( 'default' , {{ $related_card->id }} , '{{ $related_card->product_name }}' , 1 , {{ $related_card->price }})"
                                                     data-product='{"name": "{{ $related_card->name }}", "path":"{{ asset('assets/cards/' . $related_card->firstMedia->file_name) }}", "url":"{{ route('frontend.card', $related_card->slug) }}", "aspect_ratio":0.778}'>
                                                     {{ __('panel.f_add_to_card') }}
                                                 </button>

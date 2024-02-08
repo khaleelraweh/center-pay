@@ -8,50 +8,41 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
 class RelatedCardsComponent extends Component
-{ 
+{
     use LivewireAlert;
 
     public $related_cards;
 
 
-    public function addToCart($id){ 
 
-        $card = Card::whereId($id)->Active()->HasQuantity()->ActiveCategory()->firstOrFail();
-        
-        // check if card is already exist in the default cart
-        $duplicates = Cart::instance('default')->search(function($cartItem,$rowId) use($card) {
-            return $cartItem->id === $card->id;
+    public function store($instance, $card_id, $card_name, $card_quentity, $card_price)
+    {
+
+        $duplicates = Cart::instance($instance)->search(function ($cartItem, $rowId) use ($card_id) {
+            return $cartItem->id === $card_id;
         });
 
-        if($duplicates->isNotEmpty()){
-            $this->alert('error','الباقة  مضافة مسبقا!!');
-        }else{
-            Cart:: instance('default')->add($card->id, $card->name, 1, $card->price)->associate(Card::class);
-            //This event is used to update cart and withlist count on success adding to cart in all pages 
+        if ($duplicates->isNotEmpty()) {
+            if ($instance == 'default') {
+                $this->alert('error', __('panel.f_m_item_already_exist_in_shop_cart'));
+            } else if ($instance == 'wishlist') {
+                $this->alert('error', __('panel.f_m_item_already_exist_in_wishlist_cart'));
+            } else {
+                $this->alert('error', __('panel.f_m_some_thing_went_error'));
+            }
+        } else {
+            Cart::instance($instance)->add($card_id, $card_name, $card_quentity, $card_price)->associate(Card::class);
             $this->emit('updateCart');
-            $this->alert('success','تم إضافة الباقة الي السلة بنجاح!');
+            if ($instance == 'default') {
+                $this->alert('success', __('panel.f_m_item_add_to_shop_cart'));
+            } else if ($instance == 'wishlist') {
+                $this->alert('success', __('panel.f_m_item_add_to_wishlist_cart'));
+            } else {
+                $this->alert('success', __('panel.f_m_some_thing_went_error'));
+            }
         }
-
     }
 
-    public function addToWishList($id){
-        
-        $card = Card::whereId($id)->Active()->HasQuantity()->ActiveCategory()->firstOrFail();
-        
-        $duplicates = Cart::instance('wishlist')->search(function($cartItem,$rowId) use($card) {
-            return $cartItem->id === $card->id;
-        });
-
-        if($duplicates->isNotEmpty()){
-            $this->alert('error','الباقة مضافة مسبقا');
-        }else{
-            Cart:: instance('wishlist')->add($card->id, $card->name, 1, $card->price)->associate(Card::class);
-            $this->emit('updateCart');
-            $this->alert('success','تم اضافة الباقة الي قائمة مفضلاتك بنجاح');
-        }
-
-
-    }
 
     public function render()
     {

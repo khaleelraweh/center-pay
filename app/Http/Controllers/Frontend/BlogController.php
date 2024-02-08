@@ -69,10 +69,8 @@ class BlogController extends Controller
     public function post($slug): View
     {
 
-
-
         $post  = News::with('tags')
-            ->where('slug', $slug)
+            ->where('slug->' . app()->getLocale(), $slug)
             ->Active()
             ->firstOrFail();
 
@@ -85,7 +83,7 @@ class BlogController extends Controller
             ->take(
                 SiteSetting::whereNotNull('value')
                     ->pluck('value', 'name')
-                    ->toArray()['site_bogs']
+                    ->toArray()['site_posts']
             )
             ->get();
 

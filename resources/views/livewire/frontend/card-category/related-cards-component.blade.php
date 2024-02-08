@@ -1,7 +1,10 @@
 <div wire:ignore class="col-lg aside">
     <div class="prd-grid-wrap">
+
         <div class="prd-grid product-listing data-to-show-3 data-to-show-md-3 data-to-show-sm-2 js-category-grid"
             data-grid-tab-content>
+
+
 
             @forelse ($cards as $card)
 
@@ -12,7 +15,7 @@
                                 class="prd-img image-hover-scale image-container">
                                 <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
                                     data-src="{{ asset('assets/cards/' . $card->firstMedia?->file_name) }}"
-                                    alt="{{ $card->product_name }}" class="js-prd-img lazyload fade-up" />
+                                    alt="{{ $card->name }}" class="js-prd-img lazyload fade-up" />
 
                                 {{-- rounded circle discount --}}
                                 @if ($card->offer_price > 0)
@@ -35,7 +38,8 @@
 
                             {{-- add to wisth list and view prefiew info --}}
                             <div class="prd-circle-labels">
-                                <a href="#" wire:click.prevent="addToWishList('{{ $card->id }}')"
+                                <a href="#"
+                                    wire:click.prevent="store( 'wishlist' , {{ $card->id }} , '{{ $card->product_name }}' , 1 , {{ $card->price }})"
                                     class="circle-label-compare circle-label-wishlist--add js-add-wishlist mt-0"
                                     title="Add To Wishlist"><i class="icon-heart-stroke"></i></a><a href="#"
                                     class="circle-label-compare circle-label-wishlist--off js-remove-wishlist mt-0"
@@ -50,10 +54,10 @@
                                     <li data-image="{{ asset('assets/cards/' . $photo?->file_name) }}"
                                         class="{{ $loop->first ? 'active' : null }}">
                                         <a href="#" class="js-color-toggle" data-toggle="tooltip"
-                                            data-placement="right" title="{{ $card->product_name }}">
+                                            data-placement="right" title="{{ $card->name }}">
                                             <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
                                                 data-src="{{ asset('assets/cards/' . $photo?->file_name) }}"
-                                                class="lazyload fade-up" alt="{{ $card->product_name }}">
+                                                class="lazyload fade-up" alt="{{ $card->name }}">
                                         </a>
                                     </li>
                                 @endforeach
@@ -64,13 +68,13 @@
 
                                 <div class="prd-tag">
                                     <a href="{{ route('frontend.card_category', $card->category->slug) }}">
-                                        {{ $card->category->category_name }}
+                                        {{ $card->category->name }}
                                     </a>
                                 </div>
 
                                 <h2 class="prd-title">
                                     <a href="{{ route('frontend.card', $card->slug) }}">
-                                        {{ $card->product_name }}
+                                        {{ $card->name }}
                                     </a>
                                 </h2>
 
@@ -78,8 +82,8 @@
                                 <div class="prd-action">
                                     <form action="#">
                                         <button class="btn js-prd-addtocart"
-                                            wire:click.prevent="addToCart('{{ $card->id }}')"
-                                            data-product='{"name": "{{ $card->product_name }}", "path":"{{ asset('assets/cards/' . $card->firstMedia?->file_name) }}", "url":"{{ route('frontend.card', $card->slug) }}", "aspect_ratio":0.778}'>
+                                            wire:click.prevent="store( 'default' , {{ $card->id }} , '{{ $card->product_name }}' , 1 , {{ $card->price }})"
+                                            data-product='{"name": "{{ $card->name }}", "path":"{{ asset('assets/cards/' . $card->firstMedia?->file_name) }}", "url":"{{ route('frontend.card', $card->slug) }}", "aspect_ratio":0.778}'>
                                             {{ __('panel.f_add_to_card') }}
                                         </button>
                                     </form>
@@ -88,7 +92,8 @@
                             <div class="prd-hovers">
                                 <div class="prd-circle-labels">
                                     <div>
-                                        <a href="#" wire:click.prevent="addToWishList('{{ $card->id }}')"
+                                        <a href="#"
+                                            wire:click.prevent="store( 'wishlist' , {{ $card->id }} , '{{ $card->product_name }}' , 1 , {{ $card->price }})"
                                             class="circle-label-compare circle-label-wishlist--add js-add-wishlist mt-0"
                                             title="Add To Wishlist"><i class="icon-heart-stroke"></i></a><a
                                             href="#"
@@ -114,8 +119,8 @@
                                     <div class="prd-action-left">
                                         <form action="#">
                                             <button class="btn js-prd-addtocart"
-                                                wire:click.prevent="addToCart('{{ $card->id }}')"
-                                                data-product='{"name": "{{ $card->product_name }}", "path":"{{ asset('assets/cards/' . $card->firstMedia?->file_name) }}", "url":"{{ route('frontend.card', $card->slug) }}", "aspect_ratio":0.778}'>
+                                                wire:click.prevent="store( 'default' , {{ $card->id }} , '{{ $card->product_name }}' , 1 , {{ $card->price }})"
+                                                data-product='{"name": "{{ $card->name }}", "path":"{{ asset('assets/cards/' . $card->firstMedia?->file_name) }}", "url":"{{ route('frontend.card', $card->slug) }}", "aspect_ratio":0.778}'>
                                                 {{ __('panel.f_add_to_card') }}
                                             </button>
                                         </form>
