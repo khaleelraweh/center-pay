@@ -450,6 +450,7 @@ return [
     'price'                         =>  'السعر',
     'views'                         =>  'مشاهدات',
     'email'                         =>  'الايميل',
+    'user_email'                    =>  'البريد الإلكتروني',
     'mobile'                        =>  'الموبايل',
     'customer'                      =>  'العميل',
     'full_name'                     =>  'الاسم الكامل',
@@ -594,6 +595,7 @@ return [
 
     // ========================  fronten Footer  =========================// 
     'f_phone'                                   => 'تلفون',
+    'f_phone_number'                            => 'رقم الجوال',
     'f_email'                                   => 'إيميل',
     'f_fax'                                     => 'فاكس',
     'f_po_box'                                  => 'الصندوق البريدي',
@@ -677,6 +679,7 @@ return [
     'f_user_name'                                       =>  'إسم المستخدم',
     'f_user_email'                                      =>  'البريد الإلكتروني',
     'f_password'                                        =>  ' كلمة المرور',
+    'f_confirm_password'                                =>  'تاكيد كلمة المرور',
     'f_user_password'                                   =>  ' كلمة المرور للمستخدم',
     'f_forgot_password'                                 =>  'نسيت كلمة المرور ؟',
 
@@ -696,6 +699,14 @@ return [
     'f_user_addresses'                                       =>  'العناوين',
     'f_my_orders'                                       =>  'طلباتي',
     'f_logout'                                          =>  'تسجيل الخروج',
+
+    // Register 
+    'f_create_new_account'                              => 'إنشاء حساب جديد',
+    'f_create_an_account'                               => 'إنشاء حساب',
+    'f_register'                                        => 'إنشاء حساب',
+
+    'f_do_you_have_an_account'                          =>  'هل لديك حساب ؟ ',
+
 
 
 

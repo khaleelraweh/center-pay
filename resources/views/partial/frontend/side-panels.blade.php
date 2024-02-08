@@ -381,13 +381,13 @@
                     <img srcset="
                     {{ asset('frontend/images/games/logo-games.webp') }} 1x,
                     {{ asset('frontend/images/games/logo-games2x.webp') }} 2x "
-                        alt="سنتر باي" width="200">
+                        alt="{{ __('panel.f_center_pay') }}" width="200">
                 </div>
-                <h5><i class="fa fa-sign-in custom-color"></i> انشاء حساب جديد</h5>
-                <h6 class="small-body-subtitle">هل لديك حساب؟
+                <h5><i class="fa fa-sign-in custom-color"></i> {{ __('panel.f_register') }} </h5>
+                <h6 class="small-body-subtitle"> {{ __('panel.f_do_you_have_an_account') }}
                     <a href="#" class="dropdn-link js-dropdn-link js-dropdn-link only-icon custom-color"
                         data-panel="#dropdnAccount">
-                        <span>تسجيل الدخول</span>
+                        <span> {{ __('panel.f_login') }} </span>
                     </a>
                 </h6>
                 <form method="POST" action="{{ route('register') }}">
@@ -398,13 +398,13 @@
 
                             <label for="first_name">
                                 <i class="fa fa-user custom-color"></i>
-                                الاسم الاول
+                                {{ __('panel.first_name') }}
                                 <span class="required">*</span>
                             </label>
 
                             <input type="text" name="first_name" id="first_name"
                                 class="form-control form-control--sm rounded-pill" value=""
-                                placeholder="الاسم الاول">
+                                placeholder="{{ __('panel.first_name') }}">
 
                             @error('first_name')
                                 <span class="invalid-feedback text-danger" role="alert">
@@ -420,13 +420,13 @@
 
                             <label for="last_name">
                                 <i class="fa fa-user custom-color"></i>
-                                اللقب
+                                {{ __('panel.last_name') }}
                                 <span class="required">*</span>
                             </label>
 
                             <input type="text" name="last_name" id="last_name"
                                 class="form-control form-control--sm rounded-pill" value=""
-                                placeholder="اللقب">
+                                placeholder="{{ __('panel.last_name') }}">
 
                             @error('last_name')
                                 <span class="invalid-feedback text-danger" role="alert">
@@ -442,13 +442,13 @@
 
                             <label for="username">
                                 <i class="fa fa-user custom-color"></i>
-                                اسم المستخدم
+                                {{ __('panel.user_name') }}
                                 <span class="required">*</span>
                             </label>
 
                             <input type="text" name="username" id="username"
                                 class="form-control form-control--sm rounded-pill" value=""
-                                placeholder="اسم المستخدم">
+                                placeholder="{{ __('panel.user_name') }}">
 
                             @error('username')
                                 <span class="invalid-feedback text-danger" role="alert">
@@ -464,8 +464,7 @@
 
                             <label for="email">
                                 <i class="fa fa-envelope custom-color"></i>
-                                البريد الالكتروني
-                                <span class="required">*</span>
+                                {{ __('panel.f_user_email') }} <span class="required">*</span>
                             </label>
 
                             <input type="email" name="email" id="email"
@@ -485,7 +484,7 @@
                         <p class="form-row mb-3">
                             <label for="CustomerCountry">
                                 <i class="fa fa-flag custom-color"></i>
-                                الدولة
+                                {{ __('panel.country') }}
                                 <span class="required">*</span>
                             </label>
                             <select class="select-wrapper rounded-pill" id="CustomerCountry" name="Country">
@@ -504,13 +503,13 @@
 
                             <label for="mobile">
                                 <i class="fa fa-mobile-phone custom-color"></i>
-                                رقم الجوال
+                                {{ __('panel.f_phone_number') }}
                                 <span class="required">*</span>
                             </label>
 
                             <input type="text" name="mobile" id="mobile"
                                 class="form-control form-control--sm rounded-pill" value=""
-                                placeholder="رقم الجوال بدون رمز الدولة">
+                                placeholder="{{ __('panel.f_phone_number') }}">
                         </p>
                     </div>
 
@@ -519,13 +518,13 @@
 
                             <label for="password">
                                 <i class="fa fa-user custom-color"></i>
-                                كلمة المرور
+                                {{ __('panel.f_user_password') }}
                                 <span class="required">*</span>
                             </label>
 
                             <input type="password" name="password" id="password"
                                 class="form-control form-control--sm rounded-pill" value=""
-                                placeholder="كلمة المرور">
+                                placeholder="{{ __('panel.f_password') }}">
 
                             @error('password')
                                 <span class="invalid-feedback text-danger" role="alert">
@@ -541,13 +540,13 @@
 
                             <label for="password_confirmation">
                                 <i class="fa fa-user custom-color"></i>
-                                تاكيد كلمة المرور
+                                {{ __('panel.f_confirm_password') }}
                                 <span class="required">*</span>
                             </label>
 
                             <input type="password" name="password_confirmation" id="password_confirmation"
                                 class="form-control form-control--sm rounded-pill" value=""
-                                placeholder="تاكيد كلمة المرور">
+                                placeholder="{{ __('panel.f_confirm_password') }}">
 
                             @error('password_confirmation')
                                 <span class="invalid-feedback text-danger" role="alert">
@@ -559,8 +558,9 @@
                     </div>
 
                     <div class="text-center">
-                        <button type="submit" class="btn mt-3 col-sm-12 rounded-pill js-signup-btn">إنشاء
-                            حساب</button>
+                        <button type="submit" class="btn mt-3 col-sm-12 rounded-pill js-signup-btn">
+                            {{ __('panel.f_register') }}
+                        </button>
                     </div>
                 </form>
             </div>

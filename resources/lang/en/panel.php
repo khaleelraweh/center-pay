@@ -486,6 +486,7 @@ return [
     'price'                         =>  'Price',
     'views'                         =>  'Views',
     'email'                         =>  'Email',
+    'user_email'                    =>  'User Email',
     'mobile'                        =>  'Mobile',
     'customer'                      =>  'Customer',
     'full_name'                     =>  'Full Name',
@@ -602,6 +603,8 @@ return [
 
 
 
+
+
     //messages 
     'f_m_item_removed_from_shop_cart'                       =>  'The item has been removed from your shopping cart',
     'f_m_item_removed_from_wishlist_cart'                   =>  'The item has been removed from your wishlist cart',
@@ -627,6 +630,7 @@ return [
 
     // ========================  frontend Footer  =========================// 
     'f_phone'                                       => 'Phone',
+    'f_phone_number'                                =>  'Phone Number',
     'f_email'                                       => 'Email',
     'f_fax'                                         => 'Fax',
     'f_po_box'                                      => 'PoBox',
@@ -713,6 +717,7 @@ return [
     'f_user_name'                                       =>  'user name',
     'f_user_email'                                      =>  'user email',
     'f_password'                                        =>  'password',
+    'f_confirm_password'                                =>  'Confirm Password',
     'f_user_password'                                   =>  'user password',
     'f_forgot_password'                                 =>  'forgot password ?',
 
@@ -732,6 +737,12 @@ return [
     'f_my_orders'                                       =>  'My Orders',
     'f_logout'                                          =>  'Logout',
 
+    // Register 
+    'f_create_new_account'                              => 'Create new account',
+    'f_create_an_account'                               => 'Create an account',
+    'f_register'                                        =>  'Register',
+
+    'f_do_you_have_an_account'                          =>  'You have an account ?',
 
 
 

@@ -4556,3 +4556,7 @@ ul.category-list-lg li a
 .panel-heading  a:before {
      float: left;
   }
+
+  select{
+    direction: rtl;
+  }

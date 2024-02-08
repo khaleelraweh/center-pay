@@ -43536,7 +43536,8 @@ body
    }
    select {
     width: 100%;
-    direction: rtl;
+    /* direction: rtl; */
+    direction: ltr;
     border: 0 !important;
     font-size: 14px;
     line-height: 20px;
