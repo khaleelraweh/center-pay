@@ -34,8 +34,8 @@
 .custom-card{
   padding: 15px !important;
   border-radius: var(--main-border-radius) ;
-  
 }
+
  .custom-card-body-rounded{
   border-radius: var(--second-border-radius) 40px var(--second-border-radius) 40px !important;
 }
@@ -88,9 +88,28 @@ button,
 body.equal-height .prd-img:not(.prd-img--noequal) img,
 a.image-hover-scale,
 .panel-heading,
-.card {
+.accordion .panel
+.card ,
+.custom-caption,
+.custom--radius-heading
+{
   border-radius: var(--main-border-radius) !important;
 }
+
+.post-prw-img{
+  border-radius: 0px 20px 20px 0px;
+}
+
+.post-prw-text{
+  border-radius: 20px 0px 0px 20px;
+}
+
+/* 
+    === notice 
+    - custom-caption : is for advertisor slider border radius 
+    - accordion .panel : is for common question panel border radius 
+
+*/
 
 
 .page-content{

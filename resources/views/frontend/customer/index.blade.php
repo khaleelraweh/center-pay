@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('content')
-    <section class="py-5 second-back-color custom-card">
-        <div class="">
-            <div class="row align-items-center justify-content-between">
-                <div class="col-12">
+    <section class="py-3 main-back-color custom--radius-heading">
+        <div class="container">
+            <div class="row px-4 px-lg-5 py-lg-4 align-items-center">
+                <div class="col-lg-6">
                     <h1 class="h4 text-uppercase mb-0">الملف الشخصي للعميل {{ auth()->user()->full_name }}</h1>
                     <nav aria-label="breadcrumb ">
                         <ol class="breadcrumb justify-content-lg-start mb-0 px-5 bg-transparent">
@@ -13,7 +13,8 @@
                         </ol>
                     </nav>
                 </div>
-
+                <div class="col-lg-6 text-lg-end">
+                </div>
             </div>
         </div>
     </section>

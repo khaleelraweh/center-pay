@@ -713,6 +713,10 @@ return [
     'f_send_reset_link'                                 =>  'إرسال رابط إعادة التعيين',
 
 
+    //confirm password
+    'f_confirm_password'                                =>  'تاكيد كلمة المرور',
+    'f_please_confirm_your_password_before_continuing'  =>  'الرجاء تاكيد كلمة المرور قبل المتابعة!',
+
 
 
 

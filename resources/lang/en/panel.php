@@ -719,7 +719,7 @@ return [
     'f_password'                                        =>  'password',
     'f_confirm_password'                                =>  'Confirm Password',
     'f_user_password'                                   =>  'user password',
-    'f_forgot_password'                                 =>  'forgot password ?',
+    'f_forgot_password'                                 =>  'forgot your password ?',
 
     //user loged in 
     'f_profile'                                         =>  'Profile',
@@ -748,6 +748,10 @@ return [
     'f_reset_password'                                  =>  'Reset password',
     'f_we_have_sent_you_a_reset_link_to_your_email'     =>  'We have sent you a reset link to your email , please check it ',
     'f_send_reset_link'                                 =>  'Send reset Link',
+
+    //confirm password
+    'f_confirm_password'                                =>  'Confirm Password',
+    'f_please_confirm_your_password_before_continuing'  =>  'Please confirm your password before continuing.',
 
 
 
