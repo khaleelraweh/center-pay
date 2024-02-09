@@ -91,10 +91,11 @@ button,
 body.equal-height .prd-img:not(.prd-img--noequal) img,
 a.image-hover-scale,
 .panel-heading,
-.panel-title > a, .panel-title > a:active,
 .accordion .panel
-.card  ,
-.custom-caption{
+.card ,
+.custom-caption,
+.custom--radius-heading
+{
   border-radius: var(--main-border-radius);
 }
 
