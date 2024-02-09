@@ -151,7 +151,8 @@
                             <a href="#" class="dropdn-link js-dropdn-link js-dropdn-link only-icon custom-color"
                                 data-panel="#dropdnSignUp">
                                 <!-- <i class="icon-user"></i> -->
-                                <span> {{ __('panel.f_add_new_account') }} {{ __('panel.f_now') }} </span>
+                                <span class="main-color"> {{ __('panel.f_add_new_account') }} {{ __('panel.f_now') }}
+                                </span>
                             </a>
                         </h6>
                     </li>
@@ -211,7 +212,7 @@
                             <h6 class="small-body-subtitle">
                                 <a href="#" class="dropdn-link js-dropdn-link js-dropdn-link only-icon custom-color"
                                     data-panel="#dropdnForgotPassword">
-                                    <span> {{ __('panel.f_forgot_password') }} </span>
+                                    <span class="main-color"> {{ __('panel.f_forgot_password') }} </span>
                                 </a>
                             </h6>
                         </div>
@@ -473,7 +474,7 @@
                 <h6 class="small-body-subtitle"> {{ __('panel.f_do_you_have_an_account') }}
                     <a href="#" class="dropdn-link js-dropdn-link js-dropdn-link only-icon custom-color"
                         data-panel="#dropdnAccount">
-                        <span> {{ __('panel.f_login') }} </span>
+                        <span class="main-color"> {{ __('panel.f_login') }} </span>
                     </a>
                 </h6>
                 <form method="POST" action="{{ route('register') }}">
