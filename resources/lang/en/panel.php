@@ -744,6 +744,12 @@ return [
 
     'f_do_you_have_an_account'                          =>  'You have an account ?',
 
+    // Email reset password 
+    'f_reset_password'                                  =>  'Reset password',
+    'f_we_have_sent_you_a_reset_link_to_your_email'     =>  'We have sent you a reset link to your email , please check it ',
+    'f_send_reset_link'                                 =>  'Send reset Link',
+
+
 
 
 

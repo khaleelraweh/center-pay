@@ -155,6 +155,7 @@
                             </a>
                         </h6>
                     </li>
+
                     <li>
                         <!-- <a href="checkout.html"><span>الدفع</span><i class="icon-card"></i></a> -->
                     </li>
@@ -198,13 +199,23 @@
                         <button type="submit" class="btn mt-3 col-sm-12 rounded-pill js-login-btn">
                             {{ __('panel.f_login') }} </button>
 
-                        <div class="mt-3">
+                        {{-- <div class="mt-3">
                             @if (Route::has('password.request'))
                                 <a class="  " href="{{ route('password.request') }}">
                                     {{ __('panel.f_forgot_password') }}
                                 </a>
                             @endif
+                        </div> --}}
+
+                        <div class="mt-3">
+                            <h6 class="small-body-subtitle">
+                                <a href="#" class="dropdn-link js-dropdn-link js-dropdn-link only-icon custom-color"
+                                    data-panel="#dropdnForgotPassword">
+                                    <span> {{ __('panel.f_forgot_password') }} </span>
+                                </a>
+                            </h6>
                         </div>
+
                     </form>
                 </div>
             </div>
@@ -241,11 +252,6 @@
 
                             @if (auth()->user()->email_verified_at != null)
                             @else
-                                {{-- <div class="mt-2">
-                                    من فضلك , قم بتفعيل حسابك لدينا عبر النقر على رسالة التاكيد الى ارسلناها الي بريدك
-                                    الالكتروني
-                                </div> --}}
-
                                 <div class="mt-4">
 
                                     <h5 class=" mb-3"> {{ __('panel.f_insure_user_email') }} </h5>
@@ -371,6 +377,86 @@
             <div class="drop-overlay js-dropdn-close"></div>
         </div>
     @endguest
+
+    {{-- fotgot password  --}}
+    <div class="dropdn-content account-drop" id="dropdnForgotPassword">
+        <div class="dropdn-content-block">
+            <div class="dropdn-close">
+                <span class="js-dropdn-close">{{ __('panel.f_close') }}</span>
+            </div>
+            <ul>
+                <li>
+                    <div class="mb-4">
+                        <img srcset="
+                                {{ asset('frontend/images/games/logo-games.webp') }} 1x,
+                                {{ asset('frontend/images/games/logo-games2x.webp') }} 2x "
+                            alt="{{ __('panel.f_center_pay') }}" width="200">
+                    </div>
+                </li>
+                <li>
+                    <h5>
+                        <i class="icon-login custom-color"></i>
+                        <span> {{ __('panel.f_reset_password') }} <span>
+                    </h5>
+                </li>
+            </ul>
+            <div class="dropdn-form-wrapper">
+
+                <div class="row">
+                    <div class="col-12">
+                        @if (session('status'))
+                            <div class="alert alert-success"
+                                style="margin-bottom: 5px ; background-color:rgba(200 , 100 , 100,0.3) ; border-radius: 10px"
+                                role="alert">
+                                <div class="d-none">{{ session('status') }}</div>
+                                {{ __('panel.f_we_have_sent_you_a_reset_link_to_your_email') }}
+                            </div>
+                        @endif
+                        <form method="POST" action="{{ route('password.email') }}">
+                            @csrf
+
+                            <div class="form-group js_login_fe">
+                                <p class="form-row mb-3">
+
+                                    <label for="email">
+                                        <i class="fa fa-envelope custom-color"></i>
+                                        {{ __('panel.f_email') }}
+                                        <span class="required">*</span>
+                                    </label>
+
+                                    <input type="email" name="email" id="email"
+                                        class="form-control form-control--sm rounded-pill" value=""
+                                        placeholder="your@email.com" autocomplete="email" autocapitalize="none">
+
+                                    @error('email')
+                                        <span class="invalid-feedback text-danger" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+
+                                </p>
+                            </div>
+
+
+                            <div class="row mb-0">
+                                <div class="col-md-8 offset-md-2">
+                                    <button type="submit" class="btn mt-3 col-sm-12 rounded-pill ">
+                                        {{ __('panel.f_send_reset_link') }}
+                                    </button>
+
+                                </div>
+                            </div>
+                        </form>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="drop-overlay js-dropdn-close"></div>
+    </div>
+
 
     <!-- القائمة الجانبية إنشاء حساب جديد -->
     <div class="dropdn-content signup-drop " id="dropdnSignUp">

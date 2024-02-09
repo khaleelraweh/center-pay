@@ -596,7 +596,7 @@ return [
     // ========================  fronten Footer  =========================// 
     'f_phone'                                   => 'تلفون',
     'f_phone_number'                            => 'رقم الجوال',
-    'f_email'                                   => 'إيميل',
+    'f_email'                                   => 'البريد الإلكتروني',
     'f_fax'                                     => 'فاكس',
     'f_po_box'                                  => 'الصندوق البريدي',
     'f_work_time'                               => 'ايام الدوام',
@@ -707,7 +707,10 @@ return [
 
     'f_do_you_have_an_account'                          =>  'هل لديك حساب ؟ ',
 
-
+    // Email reset password 
+    'f_reset_password'                                  =>  'إعادة تعيين كلمة المرور',
+    'f_we_have_sent_you_a_reset_link_to_your_email'     =>  'ال رابط اعادة تعيين كلمة المرور الى بريدك الالكتروني',
+    'f_send_reset_link'                                 =>  'إرسال رابط إعادة التعيين',
 
 
 
