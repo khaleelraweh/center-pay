@@ -733,7 +733,7 @@ return [
 
     'f_content'                                         =>  'Content',
     'f_control_panel'                                   =>  'Control Panel',
-    'f_user_addresses'                                       =>  'Addresses',
+    'f_user_addresses'                                  =>  'Addresses',
     'f_my_orders'                                       =>  'My Orders',
     'f_logout'                                          =>  'Logout',
 
@@ -754,6 +754,7 @@ return [
     'f_please_confirm_your_password_before_continuing'  =>  'Please confirm your password before continuing.',
 
 
+    // customer pages 
 
 
 

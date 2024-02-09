@@ -6,10 +6,10 @@
                 <div class="col-lg-6">
                     <h1 class="h4 text-uppercase mb-0"> عنوان العميل {{ auth()->user()->full_name }}</h1>
                     <nav aria-label="breadcrumb ">
-                        <ol class="breadcrumb justify-content-lg-start mb-0 px-5 bg-transparent">
-                            <li class="breadcrumb-item"><a href="{{ route('frontend.index') }}">الرئيسية</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('customer.addresses') }}">العناوين</a></li>
-                        </ol>
+                        <ul class="breadcrumbs justify-content-lg-start mb-0 px-5 bg-transparent">
+                            <li><a href="{{ route('frontend.index') }}">{{ __('panel.main') }}</a></li>
+                            <li class="active"><span> العناوين <span></li>
+                        </ul>
                     </nav>
                 </div>
                 <div class="col-lg-6 text-lg-end">

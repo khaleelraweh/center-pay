@@ -696,7 +696,7 @@ return [
 
     'f_content'                                         =>  'المحتوي',
     'f_control_panel'                                   =>  'لوحة التحكم',
-    'f_user_addresses'                                       =>  'العناوين',
+    'f_user_addresses'                                  =>  'العناوين',
     'f_my_orders'                                       =>  'طلباتي',
     'f_logout'                                          =>  'تسجيل الخروج',
 
