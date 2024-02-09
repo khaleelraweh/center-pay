@@ -109,3 +109,6 @@ a.image-hover-scale,
 border-radius: var(--main-border-radius);
 }
 
+.footer-top{
+  background-color:var(--second-bg-section-color);
+}
