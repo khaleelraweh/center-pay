@@ -631,7 +631,7 @@ return [
     // ========================  frontend Footer  =========================// 
     'f_phone'                                       => 'Phone',
     'f_phone_number'                                =>  'Phone Number',
-    'f_email'                                       => 'Email',
+    'f_email'                                       => 'Email Address',
     'f_fax'                                         => 'Fax',
     'f_po_box'                                      => 'PoBox',
     'f_work_time'                                   => 'Work Time',

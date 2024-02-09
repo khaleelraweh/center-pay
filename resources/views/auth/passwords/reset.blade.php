@@ -5,7 +5,7 @@
         <div class="container">
             <div class="row px-4 px-lg-5 py-lg-4 align-items-center">
                 <div class="col-lg-6">
-                    <h1 class="h2 text-uppercase mb-0">{{ __('إعادة تعيين كلمة المرور') }}</h1>
+                    <h1 class="h2 text-uppercase mb-0">{{ __('panel.f_reset_password') }}</h1>
                 </div>
                 <div class="col-lg-6 text-lg-end">
                 </div>
@@ -16,7 +16,7 @@
     <section class="py-5 ">
         <div class="row">
             <div class="col-md-6 offset-md-3">
-                <h2 class="h5 text-uppercase mb-3">{{ __('إعادة تعيين كلمة المرور') }}</h2>
+                <h2 class="h5 text-uppercase mb-3">{{ __('panel.f_reset_password') }}</h2>
 
                 <form method="POST" action="{{ route('password.update') }}">
                     @csrf
@@ -43,7 +43,7 @@
                         <div class="col-12 mb-3">
                             <div class="form-group">
                                 <label for="password"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('كلمة المرور') }}</label>
+                                    class="col-md-4 col-form-label text-md-end">{{ __('panel.f_password') }}</label>
                                 <input id="password" name="password" type="password"
                                     class="form-control form-control--sm rounded-pill @error('password') is-invalid @enderror"
                                     required autocomplete="new-password">
@@ -59,7 +59,7 @@
                         <div class="col-12 mb-3">
                             <div class="form-group">
                                 <label for="password-confirm"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('تاكيد كلمة المرور') }}</label>
+                                    class="col-md-4 col-form-label text-md-end">{{ __('panel.f_confirm_password') }}</label>
                                 <input id="password-confirm" name="password_confirmation" type="password"
                                     class="form-control form-control--sm rounded-pill" required autocomplete="new-password">
                             </div>
@@ -68,8 +68,7 @@
                         <div class="col-12 mb-3">
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary  mt-3 rounded-pill">
-                                    {{ __('إعادة تعيين كلمة المرور
-                                                                                                                                                                                                                                                                                                                                                                                                                        ') }}
+                                    {{ __('panel.f_reset_password') }}
                                 </button>
                             </div>
                         </div>
