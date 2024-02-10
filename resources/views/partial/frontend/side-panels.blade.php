@@ -21,14 +21,14 @@
                                 {{-- عرض العنصر الرئيسي الذي ليس له ابناء  --}}
                                 <li>
                                     <a href="{{ $menu->link != null ? url($menu->link) : '#' }}">
-                                        {{ $menu->name_ar }}
+                                        {{ $menu->title }}
                                     </a>
                                 </li>
                             @else
                                 {{-- عرض العنصر الرئيسي الذي لديه ابناء  --}}
                                 <li>
                                     <a href="javascript: void(0);">
-                                        {{ $menu->name_ar }}
+                                        {{ $menu->title }}
 
                                         <span class="arrow">
                                             {{-- <i class="icon-angle-right"></i><!-- right in english  --> --}}
@@ -42,7 +42,7 @@
                                                 <li>
                                                     <a
                                                         href="{{ $sub_menu->link != null ? url($sub_menu->link) : '#' }}">
-                                                        {{ $sub_menu->name_ar }}
+                                                        {{ $sub_menu->title }}
                                                     </a>
                                                 </li>
                                             @endforeach
