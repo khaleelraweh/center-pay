@@ -292,7 +292,7 @@
                                         <div class=" custom-nav-item">
                                             <a href="{{ route('admin.index') }}">
                                                 <strong class="small text-uppercase font-weight-bold">
-                                                    {{ __('panel.control_panel') }}
+                                                    {{ __('panel.f_control_panel') }}
                                                 </strong>
                                             </a>
                                         </div>
@@ -309,7 +309,7 @@
                                             <a href="javascript:void(0);"
                                                 onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                                 <strong class="small text-uppercase font-weight-bold">
-                                                    {{ __('panel.logout') }}
+                                                    {{ __('panel.f_logout') }}
                                                 </strong>
                                             </a>
                                             <form action="{{ route('logout') }}" method="POST" id="logout-form"
@@ -462,7 +462,7 @@
     <!-- القائمة الجانبية إنشاء حساب جديد -->
     <div class="dropdn-content signup-drop " id="dropdnSignUp">
         <div class="dropdn-content-block">
-            <div class="dropdn-close"><span class="js-dropdn-close">اغلاق</span></div>
+            <div class="dropdn-close"><span class="js-dropdn-close">{{ __('panel.close') }}</span></div>
             <div id="js_signup_panel" class="dropdn-form-wrapper">
                 <div class="mb-4">
                     <img srcset="

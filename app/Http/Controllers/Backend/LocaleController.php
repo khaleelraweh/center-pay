@@ -8,9 +8,11 @@ use App\Models\News;
 use App\Models\Post;
 use App\Models\Product;
 use App\Models\ProductCategory;
+use App\Models\SiteSetting;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
@@ -51,6 +53,13 @@ class LocaleController extends Controller
                     session()->put('currency_symbol', $currency->currency_symbol);
                     session()->put('currency_name', $currency->currency_name);
                     session()->put('currency_exchange_rate', $currency->exchange_rate);
+                }
+
+                if (Cache::has('site_setting')) {
+                    //make cache with  main permition come from permission model tree function
+                    Cache::forever('site_setting', SiteSetting::whereNotNull('value')
+                        // ->where('section',3)
+                        ->pluck('value', 'name')->toArray());
                 }
 
                 if (isset($segments[1])) {
