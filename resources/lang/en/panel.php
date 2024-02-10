@@ -496,10 +496,11 @@ return [
     'user_password'                 =>  'User Password',
 
     'country'                       =>  'Country',
-    'state'                        =>  'State',
+    'state'                         =>  'State',
     'city'                          =>  'City',
     'main_address'                  => 'Main Adress',
-    'optional_address'                  => 'Optional Adress',
+    'optional_address'              => 'Optional Adress',
+    'optional'                      =>  'Optional',
 
 
     // ======= display Add and Update Section =======// 
@@ -528,6 +529,11 @@ return [
     //------------ commin buttons ---------------/
     'save_data'             => 'Save Data',
     'update_data'           => 'Update Data',
+    'update'                =>  'Update',
+    'delete'                =>  'Delete',
+    'create'                =>  'Create',
+    'add'                   =>  'Add',
+    'save'                  =>  'Save',
 
     // ---------- navigation part ---------------/
     'keyword'               => 'Enter search keyword',
@@ -558,6 +564,7 @@ return [
     'and'                       => '&',
     'or'                        => 'or',
     'by'                        =>  'By',
+    'for'                       =>  'for',
 
 
 
@@ -722,8 +729,6 @@ return [
     'f_forgot_password'                                 =>  'forgot your password ?',
 
     //user loged in 
-    'f_profile'                                         =>  'Profile',
-    'f_user_profile'                                    =>  'User Profile',
     'f_welcome'                                         =>  'Welcome',
     'f_insure_user_email'                               =>  'Insure your email',
     'f_we_sent_link_insurent_to_your_email'             =>  'We had Sent you an insurent link to your email ',
@@ -731,9 +736,16 @@ return [
     'f_if_you_didnt_receive_an_email'                   =>  'If you did not receive an email',
     'f_click_here_to_get_another'                       =>  'Click here to get another',
 
+    //user control panel 
     'f_content'                                         =>  'Content',
+    'f_profile'                                         =>  'Profile',
+    'f_user_profile'                                    =>  'User Profile',
     'f_control_panel'                                   =>  'Control Panel',
-    'f_user_addresses'                                  =>  'Addresses',
+    'f_user_addresses'                                  =>  'User Addresses',
+    'f_addresses'                                       =>  'Addresses',
+    'f_address'                                         =>  'Address',
+    'f_add_new_address'                                 =>  'Add new address',
+    'f_default_address'                                 =>  'Default Address',
     'f_my_orders'                                       =>  'My Orders',
     'f_logout'                                          =>  'Logout',
 
@@ -754,8 +766,39 @@ return [
     'f_please_confirm_your_password_before_continuing'  =>  'Please confirm your password before continuing.',
 
 
-    // customer pages 
+    // customer profile
+    'f_delete_image'                                    =>  'Delete Image',
+
+    //customer control panel 
+    'f_general_information'                                    =>  'General Information',
+
+    //customer addresses
+    'f_address_title'                                   =>  'Address Title',
+    'f_address_1'                                       =>  'Address 1',
+    'f_address_2'                                       =>  'Address 2',
+    'f_update_address'                                  =>  'Update Address',
+    'f_add_address'                                     =>  'Add Address',
+    'f_no_addresses_found'                              =>  'No Addresses Found',
+
+    // user orders
+    'f_orders'                                          =>  'Orders',
+    'f_order_ref'                                       =>  'Order Ref',
+    'f_order_total'                                     =>  'Total',
+
+    'f_order_card'                                      =>  'Card',
+    'f_order_price'                                     =>  'Price',
+    'f_order_quantity'                                  =>  'Quantity',
+
+    'f_order_proccess'                                  =>  'Proccess',
+    'f_order_transaction'                               =>  'Transaction',
+
+    'f_you_can_return_order_with_in'                    =>  'You can return order with in ',
+    'f_days'                                            =>  'Days',
 
 
+    'f_discount'                                        =>  'Discount',
+    'f_tax'                                             =>  'Tax',
+
+    'f_no_orders_yet'                                   =>  'There is no orders yet',
 
 ];

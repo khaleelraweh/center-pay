@@ -4,11 +4,11 @@
         <div class="container">
             <div class="row px-4 px-lg-5 py-lg-4 align-items-center">
                 <div class="col-lg-6">
-                    <h1 class="h4 text-uppercase mb-0">الملف الشخصي للعميل {{ auth()->user()->full_name }}</h1>
+                    <h1 class="h4 text-uppercase mb-0"> {{ __('panel.f_user_profile') }} </h1>
                     <nav aria-label="breadcrumb ">
                         <ul class="breadcrumbs justify-content-lg-start mb-0 px-5 bg-transparent">
                             <li><a href="{{ route('frontend.index') }}">{{ __('panel.main') }}</a></li>
-                            <li class="active"><span> الملف الشخصي <span></li>
+                            <li class="active"><span> {{ __('panel.f_profile') }} <span></li>
                         </ul>
                     </nav>
                 </div>
@@ -35,7 +35,7 @@
 
                                 <div class="mt-2">
                                     <a href="{{ route('customer.remove_profile_image') }}"
-                                        class="btn btn-sm btn-outline-danger">حذف الصورة</a>
+                                        class="btn btn-sm btn-outline-danger">{{ __('panel.f_delete_image') }}</a>
                                 </div>
                             @else
                                 <img src="{{ asset('assets/users/avatar.svg') }}" alt="{{ auth()->user()->full_name }}"
@@ -44,7 +44,9 @@
                         </div>
 
                         <div class="col-lg-6 form-group pt-2">
-                            <label class="text-small text-uppercase" for="first_name">الاسم الاول </label>
+                            <label class="text-small text-uppercase" for="first_name">
+                                {{ __('panel.first_name') }}
+                            </label>
                             <input class="form-control form-control-lg" name="first_name" type="text"
                                 value="{{ old('first_name', auth()->user()->first_name) }}">
                             @error('first_name')
@@ -53,7 +55,7 @@
                         </div>
 
                         <div class="col-lg-6 form-group pt-2">
-                            <label class="text-small text-uppercase" for="last_name">اللقب </label>
+                            <label class="text-small text-uppercase" for="last_name"> {{ __('panel.last_name') }} </label>
                             <input class="form-control form-control-lg" name="last_name" type="text"
                                 value="{{ old('last_name', auth()->user()->last_name) }}">
                             @error('last_name')
@@ -62,7 +64,7 @@
                         </div>
 
                         <div class="col-lg-6 form-group pt-2">
-                            <label class="text-small text-uppercase" for="email">الايميل </label>
+                            <label class="text-small text-uppercase" for="email">{{ __('panel.f_email') }}</label>
                             <input class="form-control form-control-lg" name="email" type="text"
                                 value="{{ old('email', auth()->user()->email) }}">
                             @error('email')
@@ -71,7 +73,8 @@
                         </div>
 
                         <div class="col-lg-6 form-group pt-2">
-                            <label class="text-small text-uppercase" for="mobile">رقم الجوال </label>
+                            <label class="text-small text-uppercase" for="mobile"> {{ __('panel.f_phone_number') }}
+                            </label>
                             <input class="form-control form-control-lg" name="mobile" type="text"
                                 value="{{ old('mobile', auth()->user()->mobile) }}">
                             @error('mobile')
@@ -80,7 +83,7 @@
                         </div>
 
                         <div class="col-lg-6 form-group pt-2">
-                            <label class="text-small text-uppercase" for="password">كلمة المرور <small
+                            <label class="text-small text-uppercase" for="password"> {{ __('panel.f_password') }} <small
                                     class="ml-auto text-danger">(Optional)</small></label>
                             <input class="form-control form-control-lg" name="password" type="text"
                                 value="{{ old('password') }}">
@@ -90,8 +93,9 @@
                         </div>
 
                         <div class="col-lg-6 form-group pt-2">
-                            <label class="text-small text-uppercase" for="password_confirmation">تاكيد كلمة المرور
-                                <small class="ml-auto text-danger">(Optional)</small> </label>
+                            <label class="text-small text-uppercase" for="password_confirmation">
+                                {{ __('panel.f_confirm_password') }}
+                                <small class="ml-auto text-danger">({{ __('panel.optional') }})</small> </label>
                             <input class="form-control form-control-lg" name="password_confirmation" type="text"
                                 value="{{ old('password_confirmation') }}">
                             @error('password_confirmation')
@@ -100,7 +104,7 @@
                         </div>
 
                         <div class="col-lg-6 form-group pt-2">
-                            <label class="text-small text-uppercase" for="user_image">الصورة</label>
+                            <label class="text-small text-uppercase" for="user_image">{{ __('panel.image') }}</label>
                             <input class="form-control form-control-lg" name="user_image" type="file"
                                 value="{{ old('user_image') }}">
                             @error('user_image')
@@ -109,7 +113,8 @@
                         </div>
 
                         <div class="col-lg-12 form-group pt-3">
-                            <button class="btn  pref-link" type="submit">تحديث الملف الشخصي </button>
+                            <button class="btn  pref-link" type="submit"> {{ __('panel.update') }}
+                                {{ __('panel.f_profile') }} </button>
                         </div>
 
                     </div>

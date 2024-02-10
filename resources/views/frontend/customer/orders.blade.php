@@ -4,11 +4,11 @@
         <div class="container">
             <div class="row px-4 px-lg-5 py-lg-4 align-items-center">
                 <div class="col-lg-6">
-                    <h1 class="h4 text-uppercase mb-0"> طلبات العميل {{ auth()->user()->full_name }} </h1>
+                    <h1 class="h4 text-uppercase mb-0"> {{ __('panel.f_my_orders') }} </h1>
                     <nav aria-label="breadcrumb ">
                         <ul class="breadcrumbs justify-content-lg-start mb-0 px-5 bg-transparent">
                             <li><a href="{{ route('frontend.index') }}">{{ __('panel.main') }}</a></li>
-                            <li class="active"><span> طلباتي <span></li>
+                            <li class="active"><span> {{ __('panel.f_my_orders') }} <span></li>
                         </ul>
                     </nav>
                 </div>
@@ -23,6 +23,7 @@
 
             <div class="col-lg-8 custom-white-spacing second-back-color">
                 <div class="container">
+
                     <livewire:frontend.customer.orders-component />
                 </div>
             </div>

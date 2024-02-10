@@ -464,6 +464,8 @@ return [
     'city'                          =>  'المدينة',
     'main_address'                  =>  'العنوان الرئيسي',
     'optional_address'              => 'عنوان اختياري',
+    'optional'                      =>  'اختياري',
+
 
 
 
@@ -497,8 +499,13 @@ return [
     'actions'                       => 'الإعدادات',
 
     // ------------ الازرار المشتركة ---------------//
-    'save_data'                     => 'حفظ البيانات',
-    'update_data'                   => 'حفظ التغييرات',
+    'save_data'                     =>  'حفظ البيانات',
+    'update_data'                   =>  'حفظ التغييرات',
+    'update'                        =>  'تعديل',
+    'delete'                        =>  'حذف',
+    'create'                        =>  'إنشاء',
+    'add'                           =>  'إضافة',
+    'حفظ'                          =>   'حفظ',
 
     // ------------ مكان البحث ---------------//
     'keyword'               => 'ادخل كلمة البحث',
@@ -530,6 +537,7 @@ return [
     'and'                           =>  'و',
     'or'                            =>  'او',
     'by'                            =>  'بواسطة',
+    'for'                           =>  'ل',
 
 
     // =================== Static word in the webpage ===============//
@@ -685,8 +693,7 @@ return [
 
 
     //user loged in 
-    'f_profile'                                         =>  'الملف الشخصي',
-    'f_user_profile'                                    =>  'الملف الشخصي للمستخدم ',
+
     'f_welcome'                                         =>  'مرحبا',
     'f_insure_user_email'                               =>  'تاكيد عنوان البريد الإلكتروني ',
     'f_we_sent_link_insurent_to_your_email'                =>  'تم إرسال رابط تحقق جديد إلى عنوان بريدك الإلكتروني.',
@@ -695,8 +702,14 @@ return [
     'f_click_here_to_get_another'                       =>  'انقر هنا لطلب آخر',
 
     'f_content'                                         =>  'المحتوي',
+    'f_profile'                                         =>  'الملف الشخصي',
+    'f_user_profile'                                    =>  'الملف الشخصي للمستخدم ',
     'f_control_panel'                                   =>  'لوحة التحكم',
-    'f_user_addresses'                                  =>  'العناوين',
+    'f_user_addresses'                                  =>  'عناوين العميل',
+    'f_addresses'                                       =>  'العناوين',
+    'f_address'                                         =>  'العنوان',
+    'f_add_new_address'                                 =>  'إضافة عنوان جديد',
+    'f_default_address'                                 =>  'العنوان الإفتراضي',
     'f_my_orders'                                       =>  'طلباتي',
     'f_logout'                                          =>  'تسجيل الخروج',
 
@@ -716,6 +729,40 @@ return [
     //confirm password
     'f_confirm_password'                                =>  'تاكيد كلمة المرور',
     'f_please_confirm_your_password_before_continuing'  =>  'الرجاء تاكيد كلمة المرور قبل المتابعة!',
+
+    // customer pages 
+    'f_delete_image'                                    =>  'حذف الصورة',
+
+    //customer control panel 
+    'f_general_information'                             =>  'المعلومات العامة',
+
+    //customer addresses
+    'f_address_title'                                   =>  'عنوان الموقع',
+    'f_address_1'                                       =>  'العنوان الاول',
+    'f_address_2'                                       =>  'العنوان الثاني',
+    'f_update_address'                                  =>  'تعديل العنوان',
+    'f_add_address'                                     =>  'إضافة العنوان',
+    'f_no_addresses_found'                              =>  'لم يتم العثور على اي عنوان',
+
+    // user orders
+    'f_orders'                                            =>  'الطلبات',
+    'f_order_ref'                                       =>  'رقم المرجع',
+    'f_order_total'                                     =>  'الإجمالي',
+
+    'f_order_card'                                      =>  'الباقة',
+    'f_order_price'                                     =>  'السعر',
+    'f_order_quantity'                                  =>  'الكمية',
+
+    'f_order_proccess'                                  =>  'العمليات',
+    'f_order_transaction'                               =>  'الحركة',
+
+    'f_you_can_return_order_with_in'                    =>  'يمكنك استعادة الطلب خلال ',
+    'f_days'                                            =>  'ايام',
+
+    'f_discount'                                        =>  'تخفيض',
+    'f_tax'                                             =>  'ضريبة',
+
+    'f_no_orders_yet'                                   =>  'لا يوجد اي طلب الى الآن',
 
 
 
