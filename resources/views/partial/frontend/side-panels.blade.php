@@ -3,7 +3,7 @@
     <!-- القائمة الجانبية عرض روابط الصفحة في الموبايل   -->
     <div class="mobilemenu js-push-mbmenu">
         <div class="mobilemenu-content">
-            <div class="mobilemenu-close mobilemenu-toggle">اغلاق</div>
+            <div class="mobilemenu-close mobilemenu-toggle">{{ __('panel.f_close') }}</div>
             <div class="mobilemenu-scroll">
                 <div class="mobilemenu-search"></div>
                 <div class="nav-wrapper show-menu">
