@@ -784,7 +784,19 @@ return [
     'f_order_summary'                                   => 'ملخص الطلب',
     'f_conversion_pay_via'                             =>  'بيانات التحويل عبر',
 
-    'f_Choose_the_type_with _which_the_conversion_will_be_made' => 'اختر النوع الذي سيتم التحويل بواسطتة',
+    'f_you_have_not_choosen_any_things'                 =>  'لم تقم باختيار اي بطاقة الى الان',
+
+    'f_bank_transfer_information_via'                   =>  'بيانات التحويل عبر ',
+    'f_account_number_in'                               =>  'رقم الحساب في ',
+    'f_account_name_in'                                 =>  'إسم الحساب في ',
+
+
+    'f_customer_bank_account_number'                   =>  'رقم الحساب البنكي للعميل',
+    'f_copy_of_the_transfer_receipt'                   =>  'صورة من وصل التحويل ',
+
+
+
+
 
 
 

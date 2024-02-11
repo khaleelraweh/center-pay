@@ -815,9 +815,17 @@ return [
 
     //========================== checkout page ============================================//
     'f_order_summary'                                   => 'Order summary',
-    'f_conversion_pay_via'                             =>  'Conversion pay via',
+    'f_conversion_pay_via'                              =>  'Conversion pay via',
 
-    'f_Choose_the_type_with _which_the_conversion_will_be_made'     =>   'Choose the type with which the conversion will be made',
+    'f_you_have_not_choosen_any_things'                 =>  'You have not Choosen any things',
+
+    'f_bank_transfer_information_via'                   =>  'Bank transfer information via',
+    'f_account_number_in'                               =>  'Account number in',
+    'f_account_name_in'                                 =>  'Account name in',
+
+
+    'f_customer_bank_account_number'                   =>  'Customer bank account number',
+    'f_copy_of_the_transfer_receipt'                   =>  'A copy of the transfer receipt',
 
 
 ];

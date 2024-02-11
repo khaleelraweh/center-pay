@@ -145,20 +145,25 @@
                                             <div class="d-lg-flex flex-lg-row">
                                                 <div class="col-lg-4 col-sm-12">
                                                     <img src="{{ asset('assets/payment_method_offlines/' . $payment_method_detail->firstMedia?->file_name) }}"
-                                                        alt="{{ $payment_method_detail->name }}"
+                                                        alt="{{ $payment_method_detail->title }}"
                                                         class=" img-fluid rounded">
                                                 </div>
-                                                <div class="col-lg-6 col-sm-12">
-                                                    <h2 class="">بيانات التحويل عبر
-                                                        {{ $payment_method_detail->method_name }} </h2>
+                                                <div class="col-lg-8 col-sm-12">
+                                                    <h2 class="">
+                                                        {{ __('panel.f_bank_transfer_information_via') }}
+                                                        {{ $payment_method_detail->title }} </h2>
                                                     <h3 class="custom-color">
                                                         {{ $payment_method_detail->name }}</h3>
-                                                    <label>رقم حسابنا في {{ $payment_method_detail->method_name }}
+                                                    <label>
+                                                        {{ __('panel.f_account_number_in') }}
+                                                        {{ $payment_method_detail->title }}
                                                         :</label>
                                                     <div class="form-group">
                                                         {{ $payment_method_detail->owner_account_number }} </div>
-                                                    <label>اسم الحساب في
-                                                        {{ $payment_method_detail->method_name }}:</label>
+                                                    <label>
+
+                                                        {{ __('panel.f_account_name_in') }}
+                                                        {{ $payment_method_detail->title }}:</label>
                                                     <div class="form-group">
                                                         {{ $payment_method_detail->owner_account_name }}
                                                     </div>
@@ -175,16 +180,20 @@
                                             <input type="hidden" name="payType" value="1">
                                             <div class="row">
                                                 <div class="col-md-6 col-sm-12">
-                                                    <label>رقم الحساب البنكي للعميل</label>
+                                                    <label>
+                                                        {{ __('panel.f_customer_bank_account_number') }}
+                                                    </label>
                                                     <div class="form-group">
                                                         <input type="text" name="bankAccNumber"
                                                             class="form-control form-control--sm rounded-pill"
-                                                            placeholder="رقم الحساب البنكي للعميل">
+                                                            placeholder="{{ __('panel.f_customer_bank_account_number') }}">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-6 col-sm-12">
-                                                    <label>صورة وصل التحويل</label>
+                                                    <label>
+                                                        {{ __('panel.f_copy_of_the_transfer_receipt') }}
+                                                    </label>
                                                     <div class="form-group">
                                                         <input type="file" name="bankReceipt" id="bankReceipt"
                                                             class="form-control form-control--sm rounded-pill">
@@ -193,8 +202,11 @@
 
                                                 <div class="col-sm-12 mt-5">
                                                     <button type="submit"
-                                                        class="btn btn--full btn--md rounded-pill js-save-order"><span>اكمال
-                                                            عملية الشراء</span></button>
+                                                        class="btn btn--full btn--md rounded-pill js-save-order">
+                                                        <span>
+                                                            {{ __('panel.f_complete_purchase') }}
+                                                        </span>
+                                                    </button>
                                                 </div>
                                             </div>
                                         </form>
@@ -205,7 +217,7 @@
 
 
                             @empty
-                                "your have not choosen any things"
+                                {{ __('panel.f_you_have_not_choosen_any_things') }}
                             @endforelse
                         @else
                         @endif
@@ -280,7 +292,7 @@
 
                         @if (session()->has('coupon'))
                             <div class="d-flex mt-2">
-                                <div class="col">اجمالي الخصم للكوبون (
+                                <div class="col"> {{ __('panel.f_total_discount') }} (
                                     <small>{{ getNumbers()->get('discount_code') }}</small>
                                     )
                                 </div>
@@ -291,7 +303,7 @@
                         @endif
 
                         <div class="cart-total-sm mt-3">
-                            <span>المجموع</span>
+                            <span>{{ __('panel.f_total') }}</span>
                             <span class="card-total-price">{{ currency_converter(Cart::total()) }}</span>
                         </div>
 
