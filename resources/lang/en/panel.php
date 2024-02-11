@@ -650,6 +650,8 @@ return [
     'f_if_you_have_question'                        =>  'If you May have questions',
 
     'f_payment_methods'                             =>  'Payment Methods',
+    'f_choose_your_payment_method'                 =>  'Choose Your Payment Method',
+
 
     'f_center_pay'                                  =>  'CenterPay',
     'f_copyright'                                   =>  'Copyright',
@@ -810,4 +812,12 @@ return [
     //========================== Cart page ============================================//
     'f_cancel_cart'                                     =>  'Cancel cart',
     'f_complete_purchase'                               =>  'Complete Purchase',
+
+    //========================== checkout page ============================================//
+    'f_order_summary'                                   => 'Order summary',
+    'f_conversion_pay_via'                             =>  'Conversion pay via',
+
+    'f_Choose_the_type_with _which_the_conversion_will_be_made'     =>   'Choose the type with which the conversion will be made',
+
+
 ];

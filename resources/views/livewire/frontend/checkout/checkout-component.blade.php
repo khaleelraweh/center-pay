@@ -33,14 +33,10 @@
 
 
     <div class="container">
-        <h1 class="text-center">اكمال عملية الشراء</h1>
+        <h1 class="text-center"> {{ __('panel.f_complete_your_purchase') }} </h1>
 
         <div class="row">
             <div class="col-sm-12 col-md-5">
-
-
-
-
 
                 {{-- start --}}
                 <div class="card col-md-12 bg-transparent mt-2">
@@ -61,16 +57,16 @@
 
                         {{-- show paymnt mehtod category  --}}
                         <div class=" payment-method mt-3">
-                            <h2>طرق الدفع </h2>
+                            <h2> {{ __('panel.f_payment_methods') }} </h2>
                             <div class="form-group select-wrapper">
                                 <select class="form-control js-payment-type form-control--sm rounded-pill"
                                     wire:model="payment_category_id">
-                                    <option value="">اختر طريقة الدفع</option>
+                                    <option value=""> {{ __('panel.f_choose_your_payment_method') }} </option>
 
                                     @forelse ($payment_categories as $payment_category)
                                         <option value="{{ $payment_category->id }}"
                                             wire:click="updatePaymentCategory()">
-                                            {{ $payment_category->name_ar }}
+                                            {{ $payment_category->title }}
                                         </option>
                                     @empty
                                     @endforelse
@@ -84,7 +80,9 @@
                         @if ($payment_category_id != '')
                             <div class="payment-details mt-3">
                                 <div class="payment-type-1 js-bank">
-                                    <h3 class="custom-color">بيانات التحويل عبر
+                                    <h3 class="custom-color">
+                                        {{ __('panel.f_conversion_pay_via') }}
+
                                         {{ $payment_category_name_ar }}
                                     </h3>
                                     <div class="row">
@@ -102,7 +100,7 @@
 
                                                     @forelse ($payment_methods as $payment_method)
                                                         <option value="{{ $payment_method->id }}">
-                                                            {{ $payment_method->method_name }}
+                                                            {{ $payment_method->title }}
                                                         </option>
                                                     @empty
                                                     @endforelse
@@ -212,12 +210,6 @@
                         @else
                         @endif
 
-
-
-
-
-
-
                     </div>
                 </div>
                 {{-- end --}}
@@ -226,7 +218,7 @@
 
             {{-- سيكون الشعل علي ملخص الطلب هذا لعرض  بيانات المنتجات  --}}
             <div class="col-sm-12 col-md-7 pl-lg-8 mt-2 mt-md-0">
-                <h2 class="custom-color">ملخص الطلب</h2>
+                <h2 class="custom-color">{{ __('panel.f_order_summary') }} </h2>
                 <div class="cart-table cart-table--sm pt-3 pt-md-0">
 
 
@@ -237,12 +229,12 @@
                                         class="lazyload fade-up"
                                         src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
                                         data-src="{{ asset('assets/cards/' . $item->model?->firstMedia?->file_name) }}"
-                                        alt="{{ $item->model?->name }}"></a>
+                                        alt="{{ $item->model?->product_name }}"></a>
                             </div>
                             <div class="cart-table-prd-content-wrap">
                                 <div class="cart-table-prd-info">
                                     <h2 class="cart-table-prd-name"><a
-                                            href="{{ route('frontend.card', $item->model?->slug) }}">{{ $item->model?->name }}
+                                            href="{{ route('frontend.card', $item->model?->slug) }}">{{ $item->model?->product_name }}
                                         </a>
                                     </h2>
                                 </div>
@@ -270,18 +262,17 @@
                                 @if (!session()->has('coupon'))
                                     <input type="text" wire:model="coupon_code"
                                         class="form-control form-control--sm col-md-12 card-discount-txt rounded-pill"
-                                        placeholder="كود الخصم">
+                                        placeholder="{{ __('panel.f_discount_code') }}">
                                 @endif
 
                                 @if (session()->has('coupon'))
                                     <button type="button" wire:click.prevent="removeCoupon()"
                                         class="btn btn--full btn--md rounded-pill">
-
-                                        حذف كوبون الخصم
+                                        {{ __('panel.f_delete') }}
                                     </button>
                                 @else
                                     <button type="submit" class="btn col-4 col-sm-4 card-discount-btn rounded-pill">
-                                        تطبيق
+                                        {{ __('panel.f_applay') }}
                                     </button>
                                 @endif
                             </div>

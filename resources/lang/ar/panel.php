@@ -616,6 +616,8 @@ return [
     'f_if_you_have_question'                            =>  'إذا كان لديك سؤال',
 
     'f_payment_methods'                                 =>  'وسائل الدفع',
+    'f_choose_your_payment_method'                      =>  'إختر طريقة الدفع',
+
 
     'f_center_pay'                                      =>  'سينر باي',
     'f_copyright'                                       =>  'حقوق الطبع محفوظة',
@@ -776,6 +778,14 @@ return [
     //========================== Cart page ============================================//
     'f_cancel_cart'                                     =>  'الغاء السلة',
     'f_complete_purchase'                               =>  'إستكمال الدفع',
+
+
+    //========================== checkout page ============================================//
+    'f_order_summary'                                   => 'ملخص الطلب',
+    'f_conversion_pay_via'                             =>  'بيانات التحويل عبر',
+
+    'f_Choose_the_type_with _which_the_conversion_will_be_made' => 'اختر النوع الذي سيتم التحويل بواسطتة',
+
 
 
 
