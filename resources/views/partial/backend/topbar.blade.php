@@ -57,25 +57,23 @@
 
             </div> --}}
 
-            <div class="dropdown d-inline-block  ms-2">
+            {{-- <div class="dropdown d-inline-block  ms-2">
 
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown">
-
                         <a href="#"
                             class="nav-link dropdown-toggle d-flex align-items-center btn btn-sm px-3 font-size-16 header-item waves-effect"
                             id="languagesDropdown" data-toggle="dropdown" role="button" aria-expanded="false"
                             aria-haspopup="true">
-                            {{-- {{ config('locales.languages')[app()->getLocale()]['name'] }} --}}
                             {{ __('panel.' . config('locales.languages')[app()->getLocale()]['lang']) }}
                             <span class="caret"></span>
                             <i class="mdi mdi-chevron-down"></i>
                         </a>
+
                         <div class="dropdown-menu" aria-labelledby="languagesDropdown">
                             @foreach (config('locales.languages') as $key => $val)
                                 @if ($key != app()->getLocale())
                                     <a href="{{ route('change.language', $key) }}" class="dropdown-item">
-                                        {{-- {{ $val['name'] }} --}}
                                         {{ __('panel.' . $val['lang']) }}
                                     </a>
                                 @endif
@@ -85,41 +83,34 @@
                     </li>
                 </ul>
 
-            </div>
+            </div> --}}
 
 
 
             <div class="dropdown d-none d-sm-inline-block">
                 <button type="button" class="btn header-item waves-effect" data-bs-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
-                    <img class="" src="{{ asset('backend/images/flags/us.jpg') }}" alt="Header Language"
+
+                    <img class="" src="{{ asset('backend/images/flags/' . app()->getLocale() . '.webp') }}"
+                        alt="{{ __('panel.' . config('locales.languages')[app()->getLocale()]['lang']) }}"
                         height="16">
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
 
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <img src="{{ asset('backend/images/flags/spain.jpg') }}" alt="user-image" class="me-1"
-                            height="12"> <span class="align-middle">Spanish</span>
-                    </a>
+                    @foreach (config('locales.languages') as $key => $val)
+                        @if ($key != app()->getLocale())
+                            <a href="{{ route('change.language', $key) }}" class="dropdown-item">
+                                <img src="{{ asset('backend/images/flags/' . $key . '.webp') }}" alt="user-image"
+                                    class="me-1" height="12"> <span
+                                    class="align-middle">{{ __('panel.' . $val['lang']) }}</span>
+                            </a>
+                        @endif
+                    @endforeach
 
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <img src="{{ asset('backend/images/flags/germany.jpg') }}" alt="user-image" class="me-1"
-                            height="12"> <span class="align-middle">German</span>
-                    </a>
 
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <img src="{{ asset('backend/images/flags/italy.jpg') }}" alt="user-image" class="me-1"
-                            height="12"> <span class="align-middle">Italian</span>
-                    </a>
 
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <img src="{{ asset('backend/images/flags/russia.jpg') }}" alt="user-image" class="me-1"
-                            height="12"> <span class="align-middle">Russian</span>
-                    </a>
+
+
                 </div>
             </div>
 
