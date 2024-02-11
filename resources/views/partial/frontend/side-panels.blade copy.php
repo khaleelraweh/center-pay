@@ -69,71 +69,48 @@
                     <div class="mobilemenu-currency">
                         <div class="dropdn_currency">
                             <div class="dropdn dropdn_caret">
-
-                                @php
-                                    // came from even (AppServiceProvider:boot(on first load ) or LocaleController:switch(on change language ) or CurrenciesController:currencyLoad(on Currency change ))
-                                    $currency_code = session('currency_code');
-                                    $currency_symbol = session('currency_symbol');
-                                    $currency_name = session('currency_name');
-                                @endphp
-
-                                <a href="#" class="dropdn-link js-dropdn-link">
-                                    {{ Str::title($currency_name) }}
-                                    <i class="icon-angle-down"></i>
-                                </a>
-
+                                <a href="#" class="dropdn-link js-dropdn-link">دولار امريكي<i
+                                        class="icon-angle-down"></i></a>
                                 <div class="dropdn-content">
                                     <ul>
-                                        @forelse (\App\Models\Currency::where('status',1)->get() as $currency)
-                                            {{--  to show non choosen items --}}
-                                            @if ($currency['currency_code'] != $currency_code)
-                                                <li
-                                                    class="{{ $currency['currency_code'] == $currency_code ? 'active' : '' }}">
-                                                    <a href="javascript:;"
-                                                        onclick="currency_change('{{ $currency['currency_code'] }}');">
-                                                        <span style="font-size: 12px">
-                                                            {{ Str::title($currency->currency_name) }}
-                                                        </span>
-                                                    </a>
-                                                </li>
-                                            @endif
-
-                                        @empty
-                                        @endforelse
+                                        <li class="active">
+                                            <a href="#"><span>دولار امريكي</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><span>يورو</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><span>باند امريكي</span></a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                     <div class="mobilemenu-language">
                         <div class="dropdn_language">
                             <div class="dropdn dropdn_language dropdn_language--noimg dropdn_caret">
-                                <a href="#" class="dropdn-link js-dropdn-link">
-                                    <span class="js-dropdn-select-current mainBtnLang">
-                                        {{ __('panel.' . config('locales.languages')[app()->getLocale()]['lang']) }}
-                                    </span>
-                                    <i class="icon-angle-down"></i>
-                                </a>
-
+                                <a href="#" class="dropdn-link js-dropdn-link"><span
+                                        class="js-dropdn-select-current">العربية</span><i
+                                        class="icon-angle-down"></i></a>
                                 <div class="dropdn-content">
                                     <ul>
-
-                                        @foreach (config('locales.languages') as $key => $val)
-                                            @if ($key != app()->getLocale())
-                                                <li>
-                                                    <a href="{{ route('change.language', $key) }}" data-reload
-                                                        class="mylang" onclick="setLanguageStyle('english');"
-                                                        title="english">
-                                                        <img src="{{ asset('frontend/images/flags/en.webp') }}"
-                                                            alt="" />
-                                                        {{-- {{ $val['name'] }} --}}
-                                                        {{ __('panel.' . $val['lang']) }}
-                                                    </a>
-                                                </li>
-                                            @endif
-                                        @endforeach
-
+                                        <li class="active">
+                                            <a href="#"><img src="{{ asset('frontend/images/flags/en.webp') }}"
+                                                    alt="" />الانجليزية</a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="{{ asset('frontend/images/flags/sp.webp') }}"
+                                                    alt="" />الاسبانية</a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="{{ asset('frontend/images/flags/de.webp') }}"
+                                                    alt="" />الالمانية</a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="{{ asset('frontend/images/flags/fr.webp') }}"
+                                                    alt="" />الفرنسية</a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
