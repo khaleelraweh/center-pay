@@ -565,6 +565,7 @@ return [
     'or'                        => 'or',
     'by'                        =>  'By',
     'for'                       =>  'for',
+    'with'                      =>  'with',
 
 
 
@@ -827,5 +828,6 @@ return [
     'f_customer_bank_account_number'                   =>  'Customer bank account number',
     'f_copy_of_the_transfer_receipt'                   =>  'A copy of the transfer receipt',
 
+    'f_paypal'                                          =>  'PayPal',
 
 ];

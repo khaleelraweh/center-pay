@@ -538,6 +538,8 @@ return [
     'or'                            =>  'او',
     'by'                            =>  'بواسطة',
     'for'                           =>  'ل',
+    'with'                          =>  'عبر',
+
 
 
     // =================== Static word in the webpage ===============//
@@ -794,7 +796,7 @@ return [
     'f_customer_bank_account_number'                   =>  'رقم الحساب البنكي للعميل',
     'f_copy_of_the_transfer_receipt'                   =>  'صورة من وصل التحويل ',
 
-
+    'f_paypal'                                          =>  'باي بال',
 
 
 

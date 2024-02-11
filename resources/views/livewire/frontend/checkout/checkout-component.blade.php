@@ -117,11 +117,6 @@
                         @endif
 
 
-
-
-
-
-
                         @if ($payment_category_id != '' && $payment_method_id != '')
                             @forelse ($payment_method_details as $payment_method_detail)
                                 @if ($payment_method_detail->method_name == 'paypal')
@@ -134,8 +129,13 @@
 
                                         <div class="col-sm-12 mt-5">
                                             <button type="submit" name="submit"
-                                                class="btn btn--full btn--md rounded-pill js-save-order"><span>اكمال
-                                                    عملية الشراء عبر paypal</span></button>
+                                                class="btn btn--full btn--md rounded-pill js-save-order">
+                                                <span>
+                                                    {{ __('panel.f_complete_purchase') }}
+                                                    {{ __('panel.with') }}
+                                                    {{ __('panel.f_paypal') }}
+                                                </span>
+                                            </button>
                                         </div>
 
                                     </form>
