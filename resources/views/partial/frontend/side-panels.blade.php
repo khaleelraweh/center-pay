@@ -124,7 +124,7 @@
                                                 <li>
                                                     <a href="{{ route('change.language', $key) }}" data-reload
                                                         class="mylang" onclick="setLanguageStyle('english');"
-                                                        title="english">
+                                                        title="{{ $val['name_native'] }}">
                                                         <img src="{{ asset('frontend/images/flags/' . $val['lang'] . '.webp') }}"
                                                             alt="" />
                                                         {{-- {{ $val['name'] }} --}}
