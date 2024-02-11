@@ -146,12 +146,13 @@
                             <div class="hdr-inline-link">
                                 <div class="dropdn_language">
                                     <div class="dropdn dropdn_language dropdn_language--noimg dropdn_caret">
-                                        <a href="#" class="dropdn-link js-dropdn-link">
-                                            <span class="js-dropdn-select-current mainBtnLang">
 
-                                                {{ __('panel.' . config('locales.languages')[app()->getLocale()]['lang']) }}
-                                            </span>
-                                            <i class="icon-angle-down"></i>
+                                        <a href="#" class="dropdn-link js-dropdn-link">
+                                            <img class=""
+                                                src="{{ asset('frontend/images/flags/' . app()->getLocale() . '.webp') }}"
+                                                alt="{{ __('panel.' . config('locales.languages')[app()->getLocale()]['lang']) }}"
+                                                height="16"
+                                                title="{{ __('panel.' . config('locales.languages')[app()->getLocale()]['lang']) }}">
                                         </a>
 
                                         <div class="dropdn-content">
@@ -161,12 +162,16 @@
                                                     @if ($key != app()->getLocale())
                                                         <li>
                                                             <a href="{{ route('change.language', $key) }}" data-reload
-                                                                class="mylang" onclick="setLanguageStyle('english');"
-                                                                title="english">
-                                                                <img src="{{ asset('frontend/images/flags/en.webp') }}"
-                                                                    alt="" />
-                                                                {{-- {{ $val['name'] }} --}}
-                                                                {{ __('panel.' . $val['lang']) }}
+                                                                class="mylang d-flex align-items-center"
+                                                                onclick="setLanguageStyle('english');"
+                                                                title="{{ __('panel.' . $val['lang']) }}">
+
+                                                                <img src="{{ asset('frontend/images/flags/' . $key . '.webp') }}"
+                                                                    alt="user-image" class="me-1 d-block"
+                                                                    height="12">
+                                                                <span class="align-middle">
+                                                                    {{ __('panel.' . $val['lang']) }}
+                                                                </span>
                                                             </a>
                                                         </li>
                                                     @endif
