@@ -251,7 +251,7 @@
         <div class="dropdn-content account-drop" id="dropdnAccount">
             <div class="dropdn-content-block">
                 <div class="dropdn-close">
-                    <span class="js-dropdn-close">اغلاق</span>
+                    <span class="js-dropdn-close">{{ __('panel.f_close') }}</span>
                 </div>
                 <ul>
                     <li>
