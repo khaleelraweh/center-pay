@@ -93,9 +93,15 @@
 
                                                 <select class="form-control js-banks form-control--sm rounded-pill"
                                                     wire:model="payment_method_id">
-                                                    <option value="">اختر نوع
-                                                        {{ $payment_category_name_ar }} الذي تم/ يتم
-                                                        التحويل بواسطته</option>
+                                                    {{-- <option value="">
+                                                        اختر نوع
+                                                        {{ $payment_category_name_ar }}
+                                                         الذي تم/ يتم
+                                                        التحويل بواسطته
+                                                    </option> --}}
+                                                    <option value="">
+                                                        {{ __('panel.f_choose_the_transfer_method') }}
+                                                    </option>
 
 
                                                     @forelse ($payment_methods as $payment_method)

@@ -796,6 +796,15 @@ return [
     'f_customer_bank_account_number'                   =>  'رقم الحساب البنكي للعميل',
     'f_copy_of_the_transfer_receipt'                   =>  'صورة من وصل التحويل ',
 
+
+    'f_choose_the_transfer_method'                      =>  'إختر طريقة التحويل التي سيتم الدفع من خلالها',
+
+    'f_reservesion_proccess_completed'                  =>  'تمت عملية الحجز بنجاح , سيتم مراجعة طلبك و ارسال إشعار بحالة الطلب قريبا .',
+
+    'f_your_recent_payment_successful_with_refrence_code'    =>  'عملية الدفع الأخيرة التي قمت بها قد تمت بنجاح , رقم المرجع هو : ',
+
+    'f_you_have_cancelled_your_order_payment'           => 'لقد قمت بالغاء عملية إتمام الشراء !',
+
     'f_paypal'                                          =>  'باي بال',
 
 

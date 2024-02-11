@@ -828,6 +828,15 @@ return [
     'f_customer_bank_account_number'                   =>  'Customer bank account number',
     'f_copy_of_the_transfer_receipt'                   =>  'A copy of the transfer receipt',
 
-    'f_paypal'                                          =>  'PayPal',
+    'f_choose_the_transfer_method'                      =>  'Choose the bank transfer method by which payment will be made',
+
+    'f_reservesion_proccess_completed'                  =>  'The reservation process was completed successfully. Your request will be reviewed and a notification of the request status will be sent soon.',
+
+    'f_your_recent_payment_successful_with_refrence_code'    =>  'Your recent payment is successful with reference code : ',
+
+    'f_you_have_cancelled_your_order_payment'           => 'You have cancelled your order payment!',
+
+    'f_paypal'                                           =>  'PayPal',
+
 
 ];

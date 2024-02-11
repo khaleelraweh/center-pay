@@ -17,15 +17,17 @@ use Illuminate\Support\Str;
 
 class PaymentController extends Controller
 {
-    public function checkout(){
-        
+    public function checkout()
+    {
+
         return view('frontend.checkout');
-    } 
+    }
 
     // online 
-    public function checkout_now(Request $request){ 
+    public function checkout_now(Request $request)
+    {
 
-        $order = (new OrderService)->createOrder($request->except(['_token','submit']));  
+        $order = (new OrderService)->createOrder($request->except(['_token', 'submit']));
         $paypal = new PaypalService('PayPal_Rest');
         $response = $paypal->purchase([
             "intent" => "CAPTURE",
@@ -43,11 +45,11 @@ class PaymentController extends Controller
             ]
         ]);
 
-        
 
-        if(isset($response['id']) && $response['id'] != null){
-            foreach($response['links'] as $link){
-                if( $link['rel'] === 'approve' ){
+
+        if (isset($response['id']) && $response['id'] != null) {
+            foreach ($response['links'] as $link) {
+                if ($link['rel'] === 'approve') {
 
                     // $users = User::whereHas('roles',function ($query){
                     //     $query->whereIn('name',['admin','supervisor']);
@@ -62,21 +64,19 @@ class PaymentController extends Controller
                     return redirect()->away($link['href']);
                 }
             }
-        }else{
-            
-            return redirect()->route('checkout.cancel' ,$order->id);
+        } else {
+
+            return redirect()->route('checkout.cancel', $order->id);
         }
-
-        
-
     }
 
     // inner
-    public function checkout_in(Request $request){
-        if($request->payType == 1){
-        
+    public function checkout_in(Request $request)
+    {
+        if ($request->payType == 1) {
+
             $order = Order::create([
-                'ref_id'                => 'ORD-'. Str::random(15),
+                'ref_id'                => 'ORD-' . Str::random(15),
                 'user_id'               => auth()->id(),
                 'payment_method_id'     => $request['payment_method_id'],
                 'subtotal'              => getNumbers()->get('subtotal'),
@@ -91,22 +91,23 @@ class PaymentController extends Controller
                 'bankReceipt'   => $request->bankReceipt,
             ]);
 
-            foreach(Cart::content() as $item){
+            foreach (Cart::content() as $item) {
 
                 OrderProduct::create([
                     'order_id' => $order->id,
                     'product_id' => $item->model->id,
                     'quantity' => $item->qty,
                 ]);
-    
+
                 $product = Product::find($item->model->id);
                 $product->update(['quantity' => $product->quantity - $item->qty]);
             }
-    
-            
-            $order->transactions()->create(['transaction' => OrderTransaction::NEW_ORDER]
+
+
+            $order->transactions()->create(
+                ['transaction' => OrderTransaction::NEW_ORDER]
             );
-            
+
             Cart::instance('default')->destroy();
             session()->forget([
                 'coupon',
@@ -124,23 +125,23 @@ class PaymentController extends Controller
                 'payment_result' => 'success',
             ]);
 
-           
-            toast('تم عملية الحجز بنجاح سيتم مراجعة طلبك وارسال اشعار بحالة الطلب الخاص بك في خلال يوم من الان' , 'success');
-            return redirect()->route('frontend.index');
 
-    
+            toast(__('panel.f_reservesion_proccess_completed'), 'success');
+
+            return redirect()->route('frontend.index');
         }
     }
 
-    public function completed(Request $request , $order_id){
+    public function completed(Request $request, $order_id)
+    {
 
         $order = Order::find($order_id);
 
         $paypal = new PaypalService('PayPal_Rest');
         $response = $paypal->complete($request->token);
-        
 
-        if(isset($response['status']) && $response['status'] == 'COMPLETED'){
+
+        if (isset($response['status']) && $response['status'] == 'COMPLETED') {
             $order->update(['order_status' => Order::PAYMENT_COMPLETED]);
             $order->transactions()->create([
                 'transaction' => OrderTransaction::PAYMENT_COMPLETED,
@@ -149,11 +150,11 @@ class PaymentController extends Controller
                 'payment_result' => 'success',
             ]);
 
-            if(session()->has('coupon')){
+            if (session()->has('coupon')) {
                 $coupon = Coupon::whereCode(session()->get('coupon')['code'])->first();
                 $coupon->increment('used_times');
             }
-            
+
             Cart::instance('default')->destroy();
             session()->forget([
                 'coupon',
@@ -170,37 +171,35 @@ class PaymentController extends Controller
             // });
 
             // toast('Your recent payment is successful with reference code : '. $response->getTransactionReference() , 'success');
-            toast('Your recent payment is successful with reference code : ' . $response['id'] , 'success');
+            toast(__('panel.f_your_recent_payment_successful_with_refrence_code') . $response['id'], 'success');
 
             return redirect()->route('frontend.index');
-
-        }else{
-            return redirect()->route('checkout.cancel' ,$order->id);
+        } else {
+            return redirect()->route('checkout.cancel', $order->id);
         }
+    }
 
-
-    }  
-
-    public function cancelled($order_id){
+    public function cancelled($order_id)
+    {
         $order = Order::find($order_id);
         $order->update([
             'order_status' => Order::CANCELED
         ]);
 
-        $order->products()->each(function ($order_product){
+        $order->products()->each(function ($order_product) {
             $product = Product::whereId($order_product->pivot->product_id)->first();
             $product->update([
                 'quantity' => $product->quantity + $order_product->quantity
             ]);
         });
 
-        toast('You have cancelled your order payment!' , 'error'); //using realrashed sweet alert lab
+        toast(__('panel.f_you_have_cancelled_your_order_payment'), 'error'); //using realrashed sweet alert lab
 
         return redirect()->route('frontend.index');
-
     }
 
-    public function webhook($order , $env){
+    public function webhook($order, $env)
+    {
         //
-    } 
+    }
 }
