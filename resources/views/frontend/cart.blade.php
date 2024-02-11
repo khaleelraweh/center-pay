@@ -4,8 +4,8 @@
     <div class="holder breadcrumbs-wrap mt-0">
         <div class="container">
             <ul class="breadcrumbs">
-                <li><a href="{{ route('frontend.index') }}">الرئيسية</a></li>
-                <li><span>السلة</span></li>
+                <li><a href="{{ route('frontend.index') }}">{{ __('panel.main') }}</a></li>
+                <li><span>{{ __('panel.f_shopping_cart') }}</span></li>
             </ul>
         </div>
     </div>
@@ -13,7 +13,7 @@
     <div class="holder">
         <div class="container">
             <div class="page-title text-center">
-                <h1> سلة التسوق</h1>
+                <h1>{{ __('panel.f_shopping_cart') }}</h1>
             </div>
 
 
@@ -38,7 +38,7 @@
                             <div class="cart">
                                 <div class="card-body bg-transparent">
                                     <div class="minicart-empty-text text-center">
-                                        <h1>سلة الشراء فارغة</h1>
+                                        <h1>{{ __('panel.f_shopping_cart_is_empty') }}</h1>
                                     </div>
                                     <div class="minicart-empty-icon">
                                         <i class="icon-shopping-bag"></i>
@@ -64,7 +64,7 @@
                             <div class="holder">
                                 <div class="container">
                                     <div class="title-wrap text-center">
-                                        <h2 class="h1-style">قد يعجبك ايضا</h2>
+                                        <h2 class="h1-style"> {{ __('panel.f_may_you_like') }} </h2>
                                         <div class="carousel-arrows carousel-arrows--center"></div>
                                     </div>
                                     {{-- may want more   --}}
@@ -81,7 +81,7 @@
                 <div class="col-md-4 mt-3 mt-md-0 js-hide-empty">
 
                     <div class="text-center">
-                        <h2>الإجمالي</h2>
+                        <h2>{{ __('panel.f_total') }}</h2>
                     </div>
 
                     {{-- call to card total panel --}}
@@ -95,55 +95,6 @@
 
 
 
-        </div>
-    </div>
-
-    <div class="holder">
-        <div class="footer-shop-info">
-            <div class="container">
-                <div class="text-icn-blocks-bg-row">
-                    <div class="text-icn-block-footer">
-                        <div class="icn">
-                            <i class="icon-tag "></i>
-                        </div>
-                        <div class="text">
-                            <h4>أسعارنا الأفضل</h4>
-                            {{-- <p>
-                                سيتم تسليم طلبك خلال 3-5 أيام عمل بعد كل ذلك
-                                العناصر الخاصة بك متاحة
-                            </p> --}}
-                        </div>
-                    </div>
-
-                    <div class="text-icn-block-footer">
-                        <div class="icn">
-                            <i class="icon-shopping"></i>
-                        </div>
-                        <div class="text">
-                            <h4>عروضنا الأقوى</h4>
-                        </div>
-                    </div>
-
-                    <div class="text-icn-block-footer">
-                        <div class="icn">
-                            <i class="icon-call-center"></i>
-                        </div>
-                        <div class="text">
-                            <h4>خدمة عملاء متميزة</h4>
-
-                        </div>
-                    </div>
-                    <div class="text-icn-block-footer">
-                        <div class="icn">
-                            <i class="icon-shopping-1"></i>
-                        </div>
-                        <div class="text">
-                            <h4>منتجات تناسب احتياجك</h4>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 @endsection

@@ -6,18 +6,18 @@
                 <div class="item-body product">
                     <a class="item-img" href="{{ route('frontend.card', $cartItem->model?->slug) }}">
                         <img src="{{ asset('assets/cards/' . $cartItem->model?->firstMedia->file_name) }}"
-                            class="img-fluid" alt="{{ $cartItem->model?->name }}">
+                            class="img-fluid" alt="{{ $cartItem->model?->product_name }}">
                     </a>
                     <div class="item-text">
                         <h3 class="item-name">
                             <a class="item-name-anchor" href="{{ route('frontend.card', $cartItem->model?->slug) }}">
-                                {{ $cartItem->model?->name }} </a>
+                                {{ $cartItem->model?->product_name }} </a>
                         </h3>
                         <a class="item-category" href="javascrip:void(0);">
-                            {{ $cartItem->model?->category->name }} </a>
+                            {{ $cartItem->model?->category->category_name }} </a>
                         <div class="cart-item-prices">
                             <span class="item-price" style="display: flex; align-items: center;">
-                                السعر:
+                                {{ __('panel.price') }}:
                                 {{ currency_converter($cartItem->model?->price) }}<span
                                     style="color: rgb(181, 181, 181); text-decoration: line-through; margin: 0px 5px;"></span>
                             </span>
@@ -28,13 +28,13 @@
                 <div class="item-footer">
 
                     <a wire:click.prevent="removeFromCart('{{ $cartItem->rowId }}')" x-on:click="open = ! open"
-                        class="item-delete js-item-delete" title="حذف من السلة">
+                        class="item-delete js-item-delete" title="{{ __('panel.f_remove_from_cart') }}">
                         <i class="icon-recycle"></i>
                     </a>
 
                     <div class="item-tools">
                         <div class="quantity">
-                            <strong> الكمية </strong>
+                            <strong> {{ __('panel.f_quentity') }} </strong>
                             <div class="quantity-choice">
                                 <div class="qty qty-changer">
                                     <button class="decrease"

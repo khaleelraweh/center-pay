@@ -6,8 +6,8 @@
         <div class=" panel panel-default">
             <div class="panel-heading active">
                 <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#productAccordion" href="#collapse1">الاجمالي
-
+                    <a data-toggle="collapse" data-parent="#productAccordion" href="#collapse1">
+                        {{ __('panel.f_subtotal') }}
                     </a>
                     <span class="toggle-arrow"><span></span><span></span></span>
                 </h4>
@@ -16,11 +16,11 @@
                 <div class="panel-body">
 
                     <div class="d-flex mt-4">
-                        <div class="col ">إجمالي المبلغ</div>
+                        <div class="col ">{{ __('panel.f_total') }}</div>
                         <div class="col-auto js-price text-right">{{ currency_converter($cart_subtotal) }} </div>
                     </div>
                     <div class="d-flex mt-4">
-                        <div class="col ">إجمالي الضريبة</div>
+                        <div class="col "> {{ __('panel.f_tax') }} </div>
                         <div class="col-auto js-price text-right">{{ currency_converter($cart_tax) }} </div>
                     </div>
 
@@ -32,8 +32,8 @@
             <div class="panel-heading active ">
 
                 <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#productAccordion" href="#collapse2">كود
-                        الخصم
+                    <a data-toggle="collapse" data-parent="#productAccordion" href="#collapse2">
+                        {{ __('panel.f_discount_code') }}
                     </a>
                     <span class="toggle-arrow"><span></span><span></span></span>
                 </h4>
@@ -47,18 +47,17 @@
                             @if (!session()->has('coupon'))
                                 <input type="text" wire:model="coupon_code"
                                     class="form-control form-control--sm col-md-12 card-discount-txt rounded-pill"
-                                    placeholder="كود الخصم">
+                                    placeholder=" {{ __('panel.f_discount_code') }} ">
                             @endif
 
                             @if (session()->has('coupon'))
                                 <button type="button" wire:click.prevent="removeCoupon()"
                                     class="btn btn--full btn--md rounded-pill">
-
-                                    حذف
+                                    {{ __('panel.f_delete') }}
                                 </button>
                             @else
                                 <button type="submit" class="btn col-4 col-sm-4 card-discount-btn rounded-pill">
-                                    تطبيق
+                                    {{ __('panel.f_applay') }}
                                 </button>
                             @endif
                         </div>
@@ -67,7 +66,7 @@
 
                     @if (session()->has('coupon'))
                         <div class="d-flex mt-2">
-                            <div class="col">اجمالي الخصم للكوبون (
+                            <div class="col"> {{ __('panel.f_total_discount') }} (
                                 <small>{{ getNumbers()->get('discount_code') }}</small>
                                 )
                             </div>
@@ -84,9 +83,8 @@
         <div class="panel">
             <div class="panel-heading active">
                 <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#productAccordion" href="#collapse3">الاجمالي
-                        الكلي
-
+                    <a data-toggle="collapse" data-parent="#productAccordion" href="#collapse3">
+                        {{ __('panel.f_total') }}
                     </a>
                     <span class="toggle-arrow"><span></span><span></span></span>
                 </h4>
@@ -95,7 +93,7 @@
                 <div class="panel-body">
 
                     <div class="d-flex mt-5">
-                        <div class="col card-total-txt">الإجمالي</div>
+                        <div class="col card-total-txt">{{ __('panel.f_total') }}</div>
                         <div class="col-auto card-total-price text-right">{{ currency_converter($cart_total) }}</div>
                     </div>
 
@@ -106,9 +104,11 @@
         {{-- استكمال عملية الدفع --}}
         <div class="mt-2"></div>
         @if (Cart::instance('default')->count() > 0)
-            <a href="{{ route('frontend.checkout') }}" id="js-login-frm"
-                class="btn btn--full btn--md rounded-pill"><span>استكمال
-                    الدفع</span></a>
+            <a href="{{ route('frontend.checkout') }}" id="js-login-frm" class="btn btn--full btn--md rounded-pill">
+                <span>
+                    {{ __('panel.f_complete_purchase') }}
+                </span>
+            </a>
         @endif
     @else
         {{-- سلة الشراء فارغة  --}}

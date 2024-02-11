@@ -598,7 +598,7 @@ return [
     'f_add_to_card'                             =>  'add to cart',
     'f_add_to_shopping_cart'                    =>  'add to shopping cart',
     'f_add_to_wishlist'                         =>  'Add To Wishlist',
-    'f_shop_cart'                               =>  'Shop Cart',
+    'f_shop_cart'                               =>  'Shoping Cart',
     'f_wishlist_cart'                           =>  'Wishlist Cart',
     'f_main'                                    =>  'Main',
     'f_read_more'                               =>  'Read More',
@@ -672,6 +672,7 @@ return [
     'f_item_price'                                      =>  'Item Price',
     'f_quentity'                                        =>  'Quentity',
     'f_total'                                           =>  'Total',
+    'f_subtotal'                                        =>  'SubTotal',
 
 
     'f_remove_from_shopping_cart'                       =>  'Remove From Shopping Cart',
@@ -797,8 +798,16 @@ return [
 
 
     'f_discount'                                        =>  'Discount',
+    'f_discount_code'                                   =>  'Discount Code',
+    'f_total_discount'                                  =>  'Total Discount',
     'f_tax'                                             =>  'Tax',
+
+    'f_applay'                                          =>  'Applay',
+    'f_delete'                                          =>  'Delete',
 
     'f_no_orders_yet'                                   =>  'There is no orders yet',
 
+    //========================== Cart page ============================================//
+    'f_cancel_cart'                                     =>  'Cancel cart',
+    'f_complete_purchase'                               =>  'Complete Purchase',
 ];

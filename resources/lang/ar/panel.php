@@ -637,6 +637,9 @@ return [
     'f_item_price'                                      =>  'سعر الحبة',
     'f_quentity'                                        =>  'الكمية',
     'f_total'                                           =>  'الإجمالي',
+    'f_subtotal'                                        =>  'المجموعت الفرعي',
+
+
     'f_remove_from_shopping_cart'                       =>  'حذف من سلة التسوق',
     'f_shopping_cart_is_empty'                          =>  'سلة التسوق فارغة',
 
@@ -760,10 +763,19 @@ return [
     'f_days'                                            =>  'ايام',
 
     'f_discount'                                        =>  'تخفيض',
+    'f_discount_code'                                   =>  'كود الخصم',
+    'f_total_discount'                                  =>  'إجمالي الخصم',
     'f_tax'                                             =>  'ضريبة',
+
+    'f_applay'                                          =>  'تطبيق',
+    'f_delete'                                          =>  'حذف',
+
 
     'f_no_orders_yet'                                   =>  'لا يوجد اي طلب الى الآن',
 
+    //========================== Cart page ============================================//
+    'f_cancel_cart'                                     =>  'الغاء السلة',
+    'f_complete_purchase'                               =>  'إستكمال الدفع',
 
 
 

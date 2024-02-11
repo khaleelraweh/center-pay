@@ -3,7 +3,7 @@
         <div class="text-center mt-4">
             <a href="#" wire:click.prevent="removeAll()" class="btn btn--grey js-remove-all-product rounded-pill">
                 <i class="icon-recycle"></i>
-                الغاء السلة
+                {{ __('panel.f_cancel_cart') }}
             </a>
 
         </div>
