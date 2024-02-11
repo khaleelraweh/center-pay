@@ -136,3 +136,8 @@ border-radius: var(--main-border-radius);
 .page-content{
   min-height: auto !important;
 }
+
+.blog .slick-list{
+  max-height: 400px;
+
+}
