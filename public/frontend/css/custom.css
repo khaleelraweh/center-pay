@@ -127,3 +127,8 @@ border-radius: var(--main-border-radius);
 .related-posts .post-prws{
   background-color: transparent !important;
 }
+
+/* style the sub menu in mobile language  */
+.mobilemenu-content .dropdn .dropdn-content ul li{
+  text-align: inherit  !important;
+}
