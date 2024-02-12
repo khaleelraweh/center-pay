@@ -39,7 +39,8 @@
 
                         {{-- top control area  --}}
                         <div class="prd-circle-labels">
-                            <a href="#" wire:click.prevent="addToWishList('{{ $more_card->id }}')"
+                            <a href="#"
+                                wire:click.prevent="store( 'wishlist' , {{ $more_card->id }} , '{{ $more_card->product_name }}' , 1 , {{ $more_card->price }})"
                                 class="circle-label-compare circle-label-wishlist--add js-add-wishlist mt-0"
                                 title="Add To Wishlist">
                                 <i class="icon-heart-stroke"></i>
@@ -96,7 +97,7 @@
                             <div class="prd-action">
                                 <form action="#">
                                     <button class="btn js-prd-addtocart rounded-pill"
-                                        wire:click.prevent="addToCart('{{ $more_card->id }}')"
+                                        wire:click.prevent="store( 'default' , {{ $more_card->id }} , '{{ $more_card->product_name }}' , 1 , {{ $more_card->price }})"
                                         data-product='{"name": "{{ $more_card->name }}", "path":"{{ asset('assets/cards/' . $more_card->firstMedia->file_name) }}", "url":"{{ route('frontend.card', $more_card->slug) }}", "aspect_ratio":0.778}'>
                                         {{ __('panel.f_add_to_card') }}
                                     </button>
@@ -130,7 +131,7 @@
                                 <div class="prd-action-left">
                                     <form action="#">
                                         <button class="btn js-prd-addtocart rounded-pill"
-                                            wire:click.prevent="addToCart('{{ $more_card->id }}')"
+                                            wire:click.prevent="store( 'default' , {{ $more_card->id }} , '{{ $more_card->product_name }}' , 1 , {{ $more_card->price }})"
                                             data-product='{"name": "{{ $more_card->name }}", "path":"{{ asset('assets/cards/' . $more_card->firstMedia->file_name) }}", "url":"{{ route('frontend.card', $more_card->slug) }}", "aspect_ratio":0.778}'>
                                             {{ __('panel.f_add_to_card') }}
                                         </button>
