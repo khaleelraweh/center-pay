@@ -18533,7 +18533,8 @@ body:not(.has-sticky) .bnr-sticky
 .prd-price .price-old
 {
     font-family: 'Open Sans', sans-serif;
-    font-size: 13px;
+    /* font-size: 13px; */
+    font-size: 12px;
     font-weight: 300;
     line-height: 18px;
 
