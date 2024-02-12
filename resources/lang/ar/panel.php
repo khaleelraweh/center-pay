@@ -641,7 +641,7 @@ return [
     'f_item_price'                                      =>  'سعر الحبة',
     'f_quentity'                                        =>  'الكمية',
     'f_total'                                           =>  'الإجمالي',
-    'f_subtotal'                                        =>  'المجموعت الفرعي',
+    'f_subtotal'                                        =>  'المجموع الفرعي',
 
 
     'f_remove_from_shopping_cart'                       =>  'حذف من سلة التسوق',
