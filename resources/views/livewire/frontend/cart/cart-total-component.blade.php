@@ -17,7 +17,7 @@
                     <div class="d-flex mt-4">
                         <div class="col ">{{ __('panel.f_total') }}</div>
                         <div class="col-auto js-price text-right">{{ currency_converter($cart_subtotal) }}
-                            {{ getNumbers()->get('admin_discount') }}
+
                         </div>
                     </div>
                     <div class="d-flex mt-4">
@@ -30,6 +30,7 @@
         </div>
         {{-- كود الخصم --}}
         <div class="panel">
+
             <div class="panel-heading active ">
 
                 <h4 class="panel-title">
@@ -43,8 +44,22 @@
             <div id="collapse2" class="panel-collapse collapse show">
                 <div class="panel-body">
 
+                    @if (session()->has('offer_discount'))
+                        <div class="d-flex mt-2">
+                            <div class="col">
+                                {{ __('panel.f_total_admin_discount') }}
+                            </div>
+
+                            <div class="col-auto  card-discount-price text-right">
+                                {{ currency_converter(getNumbers()->get('admin_discount')) }}</div>
+                        </div>
+                    @endif
+
                     <form wire:submit.prevent="applyDiscount()">
+
                         <div class="form-inline mt-2 d-flex">
+
+
 
                             @if (!session()->has('coupon'))
                                 <input type="text" wire:model="coupon_code"
@@ -55,7 +70,7 @@
                             @if (session()->has('coupon'))
                                 <button type="button" wire:click.prevent="removeCoupon()"
                                     class="btn btn--full btn--md rounded-pill">
-                                    {{ __('panel.f_delete') }}
+                                    {{ __('panel.f_remove_coupon_code') }}
                                 </button>
                             @else
                                 <button type="submit" class="btn col-4 col-sm-4 card-discount-btn rounded-pill">
@@ -63,20 +78,39 @@
                                 </button>
                             @endif
                         </div>
+
                     </form>
 
 
                     @if (session()->has('coupon'))
                         <div class="d-flex mt-2">
-                            <div class="col"> {{ __('panel.f_total_discount') }} (
-                                <small>{{ getNumbers()->get('discount_code') }}</small>
-                                )
+                            <div class="col">
+                                {{ __('panel.f_total_advertisment_discount') }}
+                                (<small>{{ getNumbers()->get('discount_code') }} </small>)
+                                :
                             </div>
 
                             <div class="col-auto  card-discount-price text-right">
                                 {{ currency_converter($cart_discount) }}</div>
                         </div>
                     @endif
+
+
+                    @if (session()->has('offer_discount') && session()->has('coupon'))
+                        <div class="d-flex mt-2">
+                            <div class="col">
+                                {{ __('panel.f_total_discount') }}
+                            </div>
+
+                            <div class="col-auto  card-discount-price text-right">
+                                {{ currency_converter(getNumbers()->get('admin_discount') + $cart_discount) }}
+                            </div>
+                        </div>
+                    @endif
+
+
+
+
 
                 </div>
             </div>

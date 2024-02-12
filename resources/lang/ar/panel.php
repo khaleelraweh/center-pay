@@ -768,7 +768,11 @@ return [
 
     'f_discount'                                        =>  'تخفيض',
     'f_discount_code'                                   =>  'كود الخصم',
-    'f_total_discount'                                  =>  'إجمالي الخصم',
+    'f_total_admin_discount'                            =>  'إجمالي قيمة تخفيض الإدارة',
+    'f_total_advertisment_discount'                     =>  'إجمالي قيمة كود الخصم',
+    'f_total_discount'                                  =>  'إجمالي الخصومات',
+    'f_remove_coupon_code'                              =>  'حذف الكوبون',
+
     'f_tax'                                             =>  'ضريبة',
 
     'f_applay'                                          =>  'تطبيق',

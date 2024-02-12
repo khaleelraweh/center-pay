@@ -802,7 +802,11 @@ return [
 
     'f_discount'                                        =>  'Discount',
     'f_discount_code'                                   =>  'Discount Code',
-    'f_total_discount'                                  =>  'Total Discount',
+    'f_total_admin_discount'                            =>  'Total Admen Discount',
+    'f_total_advertisment_discount'                     =>  'Total Code Discount',
+    'f_total_discount'                                  =>  'Total Discounts',
+    'f_remove_coupon_code'                              =>  'Remove Coupon',
+
     'f_tax'                                             =>  'Tax',
 
     'f_applay'                                          =>  'Applay',
