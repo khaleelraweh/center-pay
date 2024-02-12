@@ -14,7 +14,6 @@
             </div>
             <div id="collapse1" class="panel-collapse collapse show">
                 <div class="panel-body">
-
                     <div class="d-flex mt-4">
                         <div class="col ">{{ __('panel.f_total') }}</div>
                         <div class="col-auto js-price text-right">{{ currency_converter($cart_subtotal) }} </div>
@@ -38,6 +37,7 @@
                     <span class="toggle-arrow"><span></span><span></span></span>
                 </h4>
             </div>
+
             <div id="collapse2" class="panel-collapse collapse show">
                 <div class="panel-body">
 

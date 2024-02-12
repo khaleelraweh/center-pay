@@ -16,9 +16,7 @@
                 <h1>{{ __('panel.f_shopping_cart') }}</h1>
             </div>
 
-
             <div class="row">
-
                 <div class="col-md-8 js-hide-empty">
 
                     <div
@@ -74,8 +72,6 @@
                             </div>
                         </div>
                     @endif
-
-
                 </div>
 
                 <div class="col-md-4 mt-3 mt-md-0 js-hide-empty">
@@ -89,11 +85,7 @@
 
                 </div>
 
-
-
             </div>
-
-
 
         </div>
     </div>

@@ -1,6 +1,6 @@
 <div x-data="{ open: true }" x-show="open">
     {{-- <div class="cart"> --}}
-    <div class="cart-table-prd">
+    <div class="cart-table-prd custom-padding-0">
         <div class="card-body bg-transparent">
             <div class="cart-item">
                 <div class="item-body product">

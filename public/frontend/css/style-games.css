@@ -36187,7 +36187,7 @@ body.has-round-btns .form-inline .form-control
 }
 .cart-table-prd > *:first-child
 {
-    padding-left: 0;
+    /* padding-left: 0; */
 }
 .cart-table-prd > *:last-child
 {

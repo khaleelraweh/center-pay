@@ -141,3 +141,10 @@ border-radius: var(--main-border-radius);
   max-height: 400px;
 
 }
+
+
+@media(min-width:560px){
+  .cart-table-prd.custom-padding-0{
+    padding: 0;
+  }
+}

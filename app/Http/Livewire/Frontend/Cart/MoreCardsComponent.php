@@ -13,43 +13,6 @@ class MoreCardsComponent extends Component
 
     public $more_cards;
 
-    public function addToCart($id)
-    {
-
-        $card = card::whereId($id)->Active()->HasQuantity()->ActiveCategory()->firstOrFail();
-
-        $duplicates = Cart::instance('default')->search(function ($cartItem, $rowId) use ($card) {
-            return $cartItem->id === $card->id;
-        });
-
-        if ($duplicates->isNotEmpty()) {
-            $this->alert('error', 'الباقة  مضافة مسبقا!!');
-        } else {
-            Cart::instance('default')->add($card->id, $card->name, 1, $card->price)->associate(Card::class);
-            $this->emit('updateCart');
-            $this->alert('success', 'تم إضافة الباقة الي السلة بنجاح!');
-            return redirect()->back();
-        }
-    }
-
-    public function addToWishList($id)
-    {
-
-        $card = Card::whereId($id)->Active()->HasQuantity()->ActiveCategory()->firstOrFail();
-
-        $duplicates = Cart::instance('wishlist')->search(function ($cartItem, $rowId) use ($card) {
-            return $cartItem->id === $card->id;
-        });
-
-        if ($duplicates->isNotEmpty()) {
-            $this->alert('error', 'الباقة مضافة مسبقا');
-        } else {
-            Cart::instance('wishlist')->add($card->id, $card->name, 1, $card->price)->associate(Card::class);
-            $this->emit('updateCart');
-            $this->alert('success', 'تم اضافة الباقة الي قائمة مفضلاتك بنجاح');
-        }
-    }
-
     public function store($instance, $card_id, $card_name, $card_quentity, $card_price)
     {
 
