@@ -43,18 +43,6 @@
 
                     <div class="card-body">
 
-                        {{-- <h2>الدفع بواسطة </h2> --}}
-                        {{-- <form>
-                            <div class="payment-method__tabs is-hidden-phone mt-2">
-                                <button class="paypal_btn" name="payment_key" type="submit">
-                                    <div class="payment-method__tab-inner">
-                                        <img alt="PayPal" width="95px" height="25px"
-                                            src="https://public-assets.envato-static.com/assets/buying/paypal-logo-802cab56dfafa8b4bc682e9e4ba31ac076a0b6e520026fc397151baec13f3d36.svg">
-                                    </div>
-                                </button>
-                            </div>
-                        </form> --}}
-
                         {{-- show paymnt mehtod category  --}}
                         <div class=" payment-method mt-3">
                             <h2> {{ __('panel.f_payment_methods') }} </h2>
@@ -93,12 +81,7 @@
 
                                                 <select class="form-control js-banks form-control--sm rounded-pill"
                                                     wire:model="payment_method_id">
-                                                    {{-- <option value="">
-                                                        اختر نوع
-                                                        {{ $payment_category_name_ar }}
-                                                         الذي تم/ يتم
-                                                        التحويل بواسطته
-                                                    </option> --}}
+
                                                     <option value="">
                                                         {{ __('panel.f_choose_the_transfer_method') }}
                                                     </option>
@@ -110,7 +93,6 @@
                                                         </option>
                                                     @empty
                                                     @endforelse
-
 
                                                 </select>
                                             </div>
@@ -272,45 +254,12 @@
 
                 {{-- coupon part  --}}
                 <div class="mt-2"></div>
-                <div class="card checkout pref">
-                    <div class="card-body">
-                        <form class="col-md-12" wire:submit.prevent="applyDiscount()">
-                            <div class="form-inline mt-2 d-flex">
+                <div class="card checkout ">
+                    <div class="card-body main-back-color">
 
-                                @if (!session()->has('coupon'))
-                                    <input type="text" wire:model="coupon_code"
-                                        class="form-control form-control--sm col-md-12 card-discount-txt rounded-pill"
-                                        placeholder="{{ __('panel.f_discount_code') }}">
-                                @endif
-
-                                @if (session()->has('coupon'))
-                                    <button type="button" wire:click.prevent="removeCoupon()"
-                                        class="btn btn--full btn--md rounded-pill">
-                                        {{ __('panel.f_delete') }}
-                                    </button>
-                                @else
-                                    <button type="submit" class="btn col-4 col-sm-4 card-discount-btn rounded-pill">
-                                        {{ __('panel.f_applay') }}
-                                    </button>
-                                @endif
-                            </div>
-                        </form>
-
-                        @if (session()->has('coupon'))
-                            <div class="d-flex mt-2">
-                                <div class="col"> {{ __('panel.f_total_discount') }} (
-                                    <small>{{ getNumbers()->get('discount_code') }}</small>
-                                    )
-                                </div>
-
-                                <div class="col-auto  card-discount-price text-right">
-                                    ${{ $cart_discount }}</div>
-                            </div>
-                        @endif
-
-                        <div class="cart-total-sm mt-3">
+                        <div class="cart-total-sm ">
                             <span>{{ __('panel.f_total') }}</span>
-                            <span class="card-total-price">{{ currency_converter(Cart::total()) }}</span>
+                            <span class="card-total-price">{{ currency_converter(getNumbers()->get('total')) }}</span>
                         </div>
 
                     </div>
