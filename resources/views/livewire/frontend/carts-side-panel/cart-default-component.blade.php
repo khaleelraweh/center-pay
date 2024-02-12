@@ -23,13 +23,18 @@
 
                         <!-- content part part  -->
                         <div class="minicart-prd-info col">
-                            <div class="minicart-prd-tag"><a
-                                    href="{{ route('frontend.card_category', $item->model->category->slug) }}">{{ $item->model->category->category_name }}</a>
-                            </div>
                             <h2 class="minicart-prd-name">
-                                <a href="{{ route('frontend.card', $item->model->slug) }}">{{ $item->model->product_name }}
+                                <a href="{{ route('frontend.card', $item->model->slug) }}">
+                                    {{ $item->model->product_name }}
                                 </a>
                             </h2>
+
+                            <div class="minicart-prd-tag">
+                                <a href="{{ route('frontend.card_category', $item->model->category->slug) }}">
+                                    {{ $item->model->category->category_name }}
+                                </a>
+                            </div>
+
 
                             <div class="minicart-prd-price prd-price pt-0 mt-1">
                                 <span class="minicart-prd-qty-label">
@@ -38,7 +43,8 @@
                                     </small>
                                 </span>
                                 @if ($item->model->offer_price > 0)
-                                    <div class="price-old"> {{ currency_converter($item->model->price) }}</div>
+                                    <div class="price-old d-none d-sm-block">
+                                        {{ currency_converter($item->model->price) }}</div>
                                     <div class="price-new">
                                         {{ currency_converter($item->model->price - $item->model->offer_price) }}
                                     </div>
@@ -79,22 +85,11 @@
                                         </small>
                                     </span>
                                     @if ($item->model->offer_price > 0)
-                                        <div class="price-old">
+                                        <div class="price-old d-none d-sm-block">
                                             {{ currency_converter($item->model->price * $item->qty) }} </div>
 
                                         <div class="price-new">
                                             {{ currency_converter($item->model->price * $item->qty - $item->model->offer_price * $item->qty) }}
-                                            {{-- build session here  --}}
-                                            @php
-                                                // if (session()->has('offer_discount1')) {
-                                                //     $temp = session()->get('offer_discount1');
-                                                //     $temp = $temp + $item->model->offer_price * $item->qty;
-                                                //     session()->forget('offer_discount1');
-                                                //     session()->put('offer_discount1', $temp);
-                                                // } else {
-                                                //     session()->put('offer_discount1', $item->model->offer_price * $item->qty);
-                                                // }
-                                            @endphp
                                         </div>
                                     @else
                                         <div class="price-new">

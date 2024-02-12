@@ -153,3 +153,53 @@ border-radius: var(--main-border-radius);
 .blog .post-prw-text{
   border-radius: 40px 4px 40px 4px;
 }
+
+
+/* custom cart  */
+
+.cart .cart-table-prd{
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+
+/* custom cards in cart page  */
+@media (max-width: 767px) {
+  /* style mobile grid for the cart item page  */
+  .custom-mobile-cart-grid{
+    flex-direction: column;
+  }
+
+  .prd-grid.data-to-show-md-2 .prd{
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .custom-product-cart{
+  display: flex !important;
+
+}
+
+ .cart-item .item-img{
+  width: 100px !important;
+}
+}
+
+/* style custom old price  */
+.custom-old-price{
+font-family: "DroidKufi-Regular", 'Montserrat', sans-serif;
+font-size: 13px;
+font-size: 12px;
+font-weight: 300;
+line-height: 18px;
+padding-right: 10px;
+text-decoration: line-through;
+color: #fff;
+padding-right: 0;
+padding-left: 10px;
+}
+
+/* style custom btn in checkout and cart  */
+
+.card-discount-txt{
+  height: 50px;
+}

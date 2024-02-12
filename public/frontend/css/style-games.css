@@ -12171,30 +12171,33 @@ body.boxed .dropdn.dropdn_fullheight .dropdn-content
 .minicart-prd-tag,
 .minicart-prd-tag a
 {
-    color: #dc3c01;
+    /* color: #dc3c01; */
 }
 .minicart-prd-tag a:hover
 {
     text-decoration: none;
 
-    color: #fff;
+    /* color: #fff; */
+    color: #dc3c01;
 }
 
 .minicart-prd-name
 {
-    font-size: 15px;
-    font-weight: 400;
+    font-size: 16px;
+    font-weight: 500;
     line-height: 20px;
 
     margin-top: 2px;
     margin-bottom: 0;
 
     transition: .2s;
+    
 }
 .minicart-prd-name,
 .minicart-prd-name a:not(.btn)
 {
-    color: #fff;
+    /* color: #fff; */
+    color: #dc3c01;
 }
 .minicart-prd-name a:not(.btn):hover
 {
@@ -12267,6 +12270,8 @@ body.boxed .dropdn.dropdn_fullheight .dropdn-content
     transition: .2s; 
 
     -ms-flex-direction: column;
+
+    width: fit-content;
 }
 .minicart-prd-action > a:not(.btn)
 {

@@ -63,6 +63,7 @@ function getNumbers()
         'shipping' => (float) $shipping,
         'shipping_code' =>    $shipping_code,
         'total' => (float) $total,
+        'admin_discount'    =>  $admin_discount,
     ]);
 }
 

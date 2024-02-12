@@ -10,7 +10,7 @@
         </div>
     </div>
 
-    <div class="holder">
+    <div class="holder cart ">
         <div class="container">
             <div class="page-title text-center">
                 <h1>{{ __('panel.f_shopping_cart') }}</h1>
@@ -20,7 +20,7 @@
                 <div class="col-md-8 js-hide-empty">
 
                     <div
-                        class="prd-grid product-listing data-to-show-2 data-to-show-md-2 data-to-show-sm-1 js-category-grid">
+                        class="prd-grid custom-mobile-cart-grid product-listing data-to-show-2 data-to-show-md-2 data-to-show-sm-1 js-category-grid">
 
                         {{-- عناصر سلة التسوق  --}}
                         @forelse (Cart::content('default') as $item)

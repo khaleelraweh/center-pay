@@ -154,3 +154,45 @@ border-radius: var(--main-border-radius);
 .blog .post-prw-text{
   border-radius: 40px 4px 40px 4px;
 }
+
+
+.cart .cart-table-prd{
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+
+/* custom cards in cart page  */
+@media (max-width: 767px) {
+    .custom-product-cart{
+    display: flex !important;
+
+  }
+
+   .cart-item .item-img{
+    width: 100px !important;
+  }
+}
+
+/* style custom old price  */
+.custom-old-price{
+  font-family: "DroidKufi-Regular", 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  line-height: 18px;
+  padding-right: 10px;
+  text-decoration: line-through;
+  color: #fff;
+  padding-right: 0;
+  padding-left: 10px;
+}
+
+.custom-new-price{
+  font-size: 15px;
+}
+
+
+/* style custom btn in checkout and cart  */
+
+.card-discount-txt{
+  height: 50px;
+}

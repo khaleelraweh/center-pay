@@ -64,10 +64,10 @@
                                 <li data-image="{{ asset('assets/cards/' . $photo->file_name) }}"
                                     class="{{ $loop->first ? 'active' : null }}">
                                     <a href="#" class="js-color-toggle" data-toggle="tooltip"
-                                        data-placement="right" title="{{ $more_card->name }}">
+                                        data-placement="right" title="{{ $more_card->product_name }}">
                                         <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
                                             data-src="{{ asset('assets/cards/' . $photo->file_name) }}"
-                                            class="lazyload fade-up" alt="{{ $more_card->name }}">
+                                            class="lazyload fade-up" alt="{{ $more_card->product_name }}">
                                     </a>
                                 </li>
                             @endforeach
@@ -83,13 +83,13 @@
 
                             <div class="prd-tag">
                                 <a href="{{ route('frontend.card_category', $more_card->category->slug) }}">
-                                    {{ $more_card->category->name }}
+                                    {{ $more_card->category->category_name }}
                                 </a>
                             </div>
 
                             <h2 class="prd-title">
                                 <a href="{{ route('frontend.card', $more_card->slug) }}">
-                                    {{ $more_card->name }}
+                                    {{ $more_card->product_name }}
                                 </a>
                             </h2>
 
@@ -98,7 +98,7 @@
                                 <form action="#">
                                     <button class="btn js-prd-addtocart rounded-pill"
                                         wire:click.prevent="store( 'default' , {{ $more_card->id }} , '{{ $more_card->product_name }}' , 1 , {{ $more_card->price }})"
-                                        data-product='{"name": "{{ $more_card->name }}", "path":"{{ asset('assets/cards/' . $more_card->firstMedia->file_name) }}", "url":"{{ route('frontend.card', $more_card->slug) }}", "aspect_ratio":0.778}'>
+                                        data-product='{"name": "{{ $more_card->product_name }}", "path":"{{ asset('assets/cards/' . $more_card->firstMedia->file_name) }}", "url":"{{ route('frontend.card', $more_card->slug) }}", "aspect_ratio":0.778}'>
                                         {{ __('panel.f_add_to_card') }}
                                     </button>
                                 </form>
@@ -132,7 +132,7 @@
                                     <form action="#">
                                         <button class="btn js-prd-addtocart rounded-pill"
                                             wire:click.prevent="store( 'default' , {{ $more_card->id }} , '{{ $more_card->product_name }}' , 1 , {{ $more_card->price }})"
-                                            data-product='{"name": "{{ $more_card->name }}", "path":"{{ asset('assets/cards/' . $more_card->firstMedia->file_name) }}", "url":"{{ route('frontend.card', $more_card->slug) }}", "aspect_ratio":0.778}'>
+                                            data-product='{"name": "{{ $more_card->product_name }}", "path":"{{ asset('assets/cards/' . $more_card->firstMedia->file_name) }}", "url":"{{ route('frontend.card', $more_card->slug) }}", "aspect_ratio":0.778}'>
                                             {{ __('panel.f_add_to_card') }}
                                         </button>
                                     </form>

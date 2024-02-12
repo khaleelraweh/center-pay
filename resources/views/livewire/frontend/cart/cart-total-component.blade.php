@@ -16,7 +16,9 @@
                 <div class="panel-body">
                     <div class="d-flex mt-4">
                         <div class="col ">{{ __('panel.f_total') }}</div>
-                        <div class="col-auto js-price text-right">{{ currency_converter($cart_subtotal) }} </div>
+                        <div class="col-auto js-price text-right">{{ currency_converter($cart_subtotal) }}
+                            {{ getNumbers()->get('admin_discount') }}
+                        </div>
                     </div>
                     <div class="d-flex mt-4">
                         <div class="col "> {{ __('panel.f_tax') }} </div>
