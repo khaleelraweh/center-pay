@@ -15,7 +15,7 @@
                 </div>
             </div>
 
-            <div class="holder">
+            <div class="holder blog">
                 <div class="container">
 
                     <div class="row flex-column-reverse flex-md-row">

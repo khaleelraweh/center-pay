@@ -47,7 +47,7 @@
 
 
 
-        <div class="holder">
+        <div class="holder blog">
             <div class="container">
 
                 <div class="row ">
