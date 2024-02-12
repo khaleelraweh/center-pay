@@ -144,7 +144,7 @@
                     <div class="hdr-links-wrap col-auto ml-auto">
                         <div class="hdr-group-link hide-mobile">
                             <div class="hdr-inline-link">
-                                <div class="dropdn_language " style="transform: translateY(5px);">
+                                <div class="dropdn_language">
                                     <div class="dropdn dropdn_language dropdn_language--noimg dropdn_caret">
 
                                         <a href="#" class="dropdn-link js-dropdn-link">
@@ -223,30 +223,20 @@
                         </div>
                         <div class="hdr-inline-link">
 
-                            <form action="{{ route('admin.create_update_theme') }}" method="post" class="d-none">
+
+
+                            <form action="{{ route('admin.create_update_theme') }}" method="post" class="d-flex">
                                 @csrf
                                 <label for="theme" class="dropdn-link  minicart-link only-icon m-0"
-                                    style="cursor: pointer">
-                                    <input type="radio" name="theme_choice" id="theme"
-                                        value="{{ $dark == 'dark' ? 'light' : 'dark' }}" class="btn-check "
-                                        onchange="this.form.submit();">
-                                    <i
-                                        class="{{ Cookie::get('theme') == 'light' ? 'fas fa-moon fa-lg' : 'fas fa-sun text-warning' }} ">
-                                    </i>
-                                </label>
-                            </form>
-
-
-                            <div class="dropdn dropdn_account dropdn_fullheight">
-                                <label for="theme" class="dropdn-link js-dropdn-link js-dropdn-link only-icon"
                                     style="cursor: pointer">
                                     <input type="radio" name="theme_choice" id="theme" {{-- value="{{ Cookie::get('theme') != null ? (Cookie::get('theme') == 'dark' ? 'light' : 'dark') : 'light' }}" --}}
                                         value="{{ $dark == 'dark' ? 'light' : 'dark' }}" class="btn-check "
                                         onchange="this.form.submit();">
                                     <i
-                                        class="{{ Cookie::get('theme') == 'light' ? 'fas fa-moon fa-lg' : 'fas fa-sun text-warning fa-lg' }} "></i>
+                                        class="{{ Cookie::get('theme') == 'light' ? 'fas fa-moon fa-lg' : 'fas fa-sun text-warning' }} "></i>
+                                    {{-- Mode --}}
                                 </label>
-                            </div>
+                            </form>
 
 
                             <div class="search_container_desktop">
@@ -271,12 +261,8 @@
 
                             <div class="dropdn dropdn_account dropdn_fullheight">
                                 <a href="#" class="dropdn-link js-dropdn-link js-dropdn-link only-icon"
-                                    data-panel="#dropdnAccount">
-                                    <i class="icon-user"></i>
-                                    <span class="dropdn-link-txt">
-                                        حسابي
-                                    </span>
-                                </a>
+                                    data-panel="#dropdnAccount"><i class="icon-user"></i><span
+                                        class="dropdn-link-txt">حسابي</span></a>
                             </div>
 
                             {{-- call to cart component livewire for cart and wishlist counter --}}
