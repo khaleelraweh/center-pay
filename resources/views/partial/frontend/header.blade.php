@@ -144,7 +144,7 @@
                     <div class="hdr-links-wrap col-auto ml-auto">
                         <div class="hdr-group-link hide-mobile">
                             <div class="hdr-inline-link">
-                                <div class="dropdn_language " style="transform: translateY(5px);">
+                                <div class="dropdn_language ">
                                     <div class="dropdn dropdn_language dropdn_language--noimg dropdn_caret">
 
                                         <a href="#" class="dropdn-link js-dropdn-link">

@@ -43579,5 +43579,6 @@ body
   .card-discount-btn{
     z-index: 10;
     position: absolute;
-    left: 10px;
+    left: initial;
+    right: 10px;
   }

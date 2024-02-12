@@ -4560,3 +4560,10 @@ ul.category-list-lg li a
   select{
     direction: rtl;
   }
+
+  .card-discount-btn{
+    z-index: 10;
+    position: absolute;
+    right: initial;
+    left: 10px;
+  }

@@ -42,7 +42,7 @@
                 <div class="panel-body">
 
                     <form wire:submit.prevent="applyDiscount()">
-                        <div class="form-inline mt-2">
+                        <div class="form-inline mt-2 d-flex">
 
                             @if (!session()->has('coupon'))
                                 <input type="text" wire:model="coupon_code"

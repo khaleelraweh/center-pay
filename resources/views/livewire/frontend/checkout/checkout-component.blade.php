@@ -275,7 +275,7 @@
                 <div class="card checkout pref">
                     <div class="card-body">
                         <form class="col-md-12" wire:submit.prevent="applyDiscount()">
-                            <div class="form-inline mt-2">
+                            <div class="form-inline mt-2 d-flex">
 
                                 @if (!session()->has('coupon'))
                                     <input type="text" wire:model="coupon_code"
