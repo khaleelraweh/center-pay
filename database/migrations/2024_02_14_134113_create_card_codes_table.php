@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('card_codes', function (Blueprint $table) {
             $table->id();
             $table->string('code')->require();
-            $table->tinyInteger('order_id')->default(0);
             $table->tinyInteger('code_type')->default(0); // نوع الكود مباشر , غير مباشر 
             $table->tinyInteger('encoding_type')->default(0);
             $table->foreignId('product_id')->constrained()->cascadeOnDelete();
+            $table->tinyInteger('order_id')->default(0);
 
             // will be use always
             $table->boolean('status')->default(true);

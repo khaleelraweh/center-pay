@@ -1,6 +1,32 @@
 :root{
     --main_color: #0D85CF;
+
+    --link-color: #6c757d ;
+    --active-link-color: #fff ;
+
+    --background-link-color:#002F65;
+    --background-active-link-color:#212529;
+
 }
+
+/* style card code links */
+.card_codes .nav-item .nav-link{
+    background-color: var(--background-link-color) ;
+    color: var(--link-color);
+    border: none;
+}
+.card_codes .nav-item:not(:first-child) .nav-link{
+    margin-right: 2px;
+    margin-left: 2px;
+}
+
+
+.card_codes .nav-tabs .nav-link.active{
+    background-color: var(--background-active-link-color);
+    color: var(--active-link-color);
+}
+
+
 
 
 .picker__select--month,

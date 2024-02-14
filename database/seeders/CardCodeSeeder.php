@@ -24,13 +24,13 @@ class CardCodeSeeder extends Seeder
             //انشاء مصفوفة لتخزين الف منتج فيها لاضافتها الي قاعدة البيانات
 
             $card_codes[] = [
-                'code'                  => $faker->numberBetween(12, 12),
+                'code'                  => $faker->numberBetween(10000000, 99999999),
                 'order_id'              => rand(0, 1),
                 'code_type'             => rand(0, 1), // صفر مباشر و الواحد غير مباشر
                 'encoding_type'         => 0,
                 'product_id'            =>  $cards->random(),
 
-                'status'                => true,
+                'status'                => rand(true, false),
                 'published_on'          => $faker->dateTime(),
                 'created_by'            =>  $faker->realTextBetween(10, 20),
                 'created_at'            => now(),

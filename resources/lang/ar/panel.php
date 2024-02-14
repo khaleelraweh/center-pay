@@ -276,6 +276,36 @@ return [
     'blog_tags'                     => 'الكلمات المفتاحية',
 
 
+    ##############################################################
+
+    // =============  Manage Card Codes    ===============//
+    'manage_card_codes'                             => 'نظام إدارة الأكواد',
+
+    // --------------- Card Codes   --------------//
+    'show_card_codes'                               => 'الأكواد',
+    'add_new_card_codes'                            => 'إضافة كود جديد',
+    'edit_existing_card_codes'                      => 'التعديل على كود موجود ',
+
+
+    // ........... commons in Card Codes    ....... //
+    'cc_code'                                       => 'الكود',
+    'cc_code_type'                                  => 'نوع الكود',
+    'cc_direct_code'                                => 'كود مباشر',
+    'cc_Indirect_code'                              => 'كود غير مباشر',
+    'cc_encoding_type'                              => 'نوع التشفير',
+    'cc_card_name'                                  => 'رقم البطاقة',
+    'cc_card_name'                                  => 'اسم البطاقة',
+    'cc_code_status_used'                           => 'مستخدم',
+    'cc_code_status_not_used'                       => 'غير مستخدم',
+    'cc_order_id'                                   => 'رقم الطلب',
+
+    // ............ card codes tabs ..................//
+    'cc_available_code'                         => 'الاكواد المتوفرة',
+    'cc_codes_used'                             => 'الاكواد المستخدمة',
+    'cc_codes_used_by_administration'           => 'الاكواد المستخدمة من قبل الإدارة',
+    'cc_using_and_printing_codes'               => 'إستخدام وطباعة الاكواد',
+
+
     ################################ Manage payments ##############################
     'manage_payments'               => 'إدارة عمليات الدفع',
 

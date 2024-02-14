@@ -24,6 +24,12 @@ class CardCode extends Model
         return $this->status ? __('panel.status_active') : __('panel.status_inactive');
     }
 
+
+    public function code_type()
+    {
+        return $this->code_type ? __('panel.cc_direct_code') : __('panel.cc_Indirect_code');
+    }
+
     public function scopeActive($query)
     {
         return $query->whereStatus(true);

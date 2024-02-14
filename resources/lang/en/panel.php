@@ -305,6 +305,36 @@ return [
     'blog_tags'         => 'Blog Tags',
 
 
+    ##############################################################
+
+    // =============  Manage Card Codes    ===============//
+    'manage_card_codes'                      => 'Manage Card Codes',
+
+    // --------------- Card Codes   --------------//
+    'show_card_codes'                        => 'Card Codes',
+    'add_new_card_codes'                          => 'Add New Card Codes',
+    'edit_existing_card_codes'                    => 'Edit Existing Card Codes ',
+
+
+    // ........... commons in Card Codes    ....... //
+    'cc_code'                           => 'Code',
+    'cc_code_type'                      => 'Code Type',
+    'cc_direct_code'                    => 'Direct code',
+    'cc_Indirect_code'                  => 'Indirect code',
+    'cc_encoding_type'                  => 'Encoding Type',
+    'cc_card_id'                        => 'Product Id',
+    'cc_card_name'                      => 'Product Name',
+    'cc_code_status_used'               => 'Used',
+    'cc_code_status_not_used'           => 'Not Used',
+    'cc_order_id'                       => 'Order Id',
+
+
+    // ............ card codes tabs ..................//
+    'cc_available_code'                         => 'Available codes',
+    'cc_codes_used'                             => 'Codes Used',
+    'cc_codes_used_by_administration'           => 'Codes used by the administration',
+    'cc_using_and_printing_codes'               => 'Using and printing codes',
+
 
     ##############################################################
 
