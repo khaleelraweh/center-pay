@@ -15,9 +15,10 @@ class CardCodeController extends Controller
             return redirect('admin/index');
         }
 
-        $card_codes = CardCode::with('product')
+        $aval_card_codes = CardCode::with('product')
             ->ActiveProduct()
             ->CardCategory()
+            ->where('order_id', '<=', 0)
             ->when(\request()->keyword != null, function ($query) {
                 $query->search(\request()->keyword);
             })
@@ -25,9 +26,25 @@ class CardCodeController extends Controller
                 $query->where('status', \request()->status);
             })
             ->orderBy(\request()->sort_by ?? 'created_at', \request()->order_by ?? 'desc')
-            ->paginate(\request()->limit_by ?? 10);
+            ->paginate(\request()->limit_by ?? 10, ['*'], 'aval_code');
 
-        return view('backend.card_codes.index', compact('card_codes'));
+
+
+
+        $used_card_codes = CardCode::with('product')
+            ->ActiveProduct()
+            ->CardCategory()
+            ->where('order_id', '<=', 0)
+            ->when(\request()->keyword != null, function ($query) {
+                $query->search(\request()->keyword);
+            })
+            ->when(\request()->status != null, function ($query) {
+                $query->where('status', \request()->status);
+            })
+            ->orderBy(\request()->sort_by ?? 'created_at', \request()->order_by ?? 'desc')
+            ->paginate(\request()->limit_by ?? 10, ['*'], 'used_code');
+
+        return view('backend.card_codes.index', compact('aval_card_codes', 'used_card_codes'));
     }
 
     public function create()

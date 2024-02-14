@@ -93,7 +93,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($card_codes->where('order_id','<=',0) as $card_code)
+                                @forelse ($aval_card_codes as $card_code)
                                     <tr>
                                         <td class="d-none d-sm-table-cell">
                                             <span class="btn btn-primary"> {{ $card_code->code_type() }}</span>
@@ -135,7 +135,7 @@
                                 <tr>
                                     <td colspan="6">
                                         <div class="float-right">
-                                            {!! $card_codes->appends(request()->all())->links() !!}
+                                            {!! $aval_card_codes->appends(request()->all())->links() !!}
                                         </div>
                                     </td>
                                 </tr>
@@ -162,7 +162,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($card_codes->where('order_id','>',0) as $card_code)
+                                @forelse ($used_card_codes as $card_code)
                                     <tr>
                                         <td class="d-none d-sm-table-cell">
                                             <span class="btn btn-primary"> {{ $card_code->code_type() }}</span>
@@ -204,7 +204,7 @@
                                 <tr>
                                     <td colspan="6">
                                         <div class="float-right">
-                                            {!! $card_codes->appends(request()->all())->links() !!}
+                                            {!! $used_card_codes->appends(request()->all())->links() !!}
                                         </div>
                                     </td>
                                 </tr>
