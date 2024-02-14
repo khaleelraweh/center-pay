@@ -25,8 +25,11 @@ class CardCodeController extends Controller
             ->when(\request()->status_available_codes != null, function ($query) {
                 $query->where('status', \request()->status_available_codes);
             })
+            ->when(\request()->code_type_available_codes != null, function ($query) {
+                $query->where('code_type', \request()->code_type_available_codes);
+            })
             ->orderBy(\request()->sort_by_available_codes ?? 'created_at', \request()->order_by_available_codes ?? 'desc')
-            ->paginate(\request()->limit_by_available_codes ?? 10, ['*'], 'available_code');
+            ->paginate(\request()->limit_by_available_codes ?? 10, ['*'], 'available_codes');
 
 
 
@@ -42,7 +45,7 @@ class CardCodeController extends Controller
                 $query->where('status', \request()->status_used_code);
             })
             ->orderBy(\request()->sort_by_used_code ?? 'created_at', \request()->order_by_used_code ?? 'desc')
-            ->paginate(\request()->limit_by_used_code ?? 10, ['*'], 'used_code');
+            ->paginate(\request()->limit_by_used_code ?? 10, ['*'], 'used_codes');
 
         return view('backend.card_codes.index', compact('available_card_codes', 'used_card_codes'));
     }

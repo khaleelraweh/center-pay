@@ -27,6 +27,19 @@
 }
 
 
+@media (max-width: 767px) {
+    .card_codes .nav {
+    flex-direction: column;
+  }
+
+   .card_codes .nav-item .nav-link{
+    width: 100%;
+    margin-bottom: 5px;
+  }
+
+
+}
+
 
 
 .picker__select--month,

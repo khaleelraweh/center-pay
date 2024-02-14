@@ -31,21 +31,56 @@
             {{-- filter form part 
             @include('backend.card_codes.filter.filter_avalible') --}}
 
+            @php
+                $index_used = 0;
+                $active_used = false;
+                $index_aval = 0;
+                $active_aval = false;
+                static $count = 0;
+
+                if (isset($_GET['used_codes']) && isset($_GET['available_codes'])) {
+                    foreach (request()->all() as $key => $value) {
+                        if ($key == 'used_codes') {
+                            $index_used = $count;
+                        } elseif ($key == 'available_codes') {
+                            $index_aval = $count;
+                        }
+                        $count++;
+                    }
+                    if ($index_used > $index_aval) {
+                        $active_used = true;
+                    } elseif ($index_aval > $index_used) {
+                        $active_aval = true;
+                    } else {
+                        $active_aval = true;
+                    }
+                } elseif (isset($_GET['used_codes'])) {
+                    $active_used = true;
+                } elseif (isset($_GET['available_codes'])) {
+                    $active_aval = true;
+                } else {
+                    $active_aval = true;
+                }
+
+            @endphp
+
+            {{-- {{ $index_used }} --}}
+
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="cc_available_code-tab" data-bs-toggle="tab"
-                        data-bs-target="#cc_available_code" type="button" role="tab" aria-controls="cc_available_code"
-                        aria-selected="true">
+                    <button class="nav-link {{ $active_aval ? 'active' : '' }}" id="cc_available_code-tab"
+                        data-bs-toggle="tab" data-bs-target="#cc_available_code" type="button" role="tab"
+                        aria-controls="cc_available_code" aria-selected="true">
                         <i class="fa fa-code"></i>
                         {{ __('panel.cc_available_code') }}
                     </button>
                 </li>
 
 
-
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="cc_codes_used-tab" data-bs-toggle="tab" data-bs-target="#cc_codes_used"
-                        type="button" role="tab" aria-controls="cc_codes_used" aria-selected="false">
+                    <button class="nav-link {{ $active_used ? 'active' : '' }}" id="cc_codes_used-tab" data-bs-toggle="tab"
+                        data-bs-target="#cc_codes_used" type="button" role="tab" aria-controls="cc_codes_used"
+                        aria-selected="false">
                         <i class="fa fa-code"></i>
                         {{ __('panel.cc_codes_used') }}
                     </button>
@@ -75,7 +110,15 @@
 
             <div class="tab-content" id="myTabContent">
 
-                <div class="tab-pane fade show active" id="cc_available_code" role="tabpanel"
+                {{-- {{ app('request')->input('used_codes') }} --}}
+                {{-- {{ request()->used_codes }} --}}
+
+
+                {{-- @foreach (request()->all() as $key => $item)
+                    {{ $key }} => {{ $item }}
+                @endforeach --}}
+
+                <div class="tab-pane fade {{ $active_aval ? 'show active' : '' }} " id="cc_available_code" role="tabpanel"
                     aria-labelledby="cc_available_code-tab">
 
                     {{-- filter form part  --}}
@@ -148,7 +191,8 @@
 
                 </div>
 
-                <div class="tab-pane fade" id="cc_codes_used" role="tabpanel" aria-labelledby="cc_codes_used-tab">
+                <div class="tab-pane fade {{ $active_used ? 'show active' : '' }}" id="cc_codes_used" role="tabpanel"
+                    aria-labelledby="cc_codes_used-tab">
 
                     {{-- filter form part  --}}
                     @include('backend.card_codes.filter.filter_used')
