@@ -152,4 +152,9 @@ class Product extends Model
     {
         return $this->belongsToMany(Order::class)->withPivot('quantity');
     }
+
+    public function cardCode()
+    {
+        return $this->hasMany(cardCode::class);
+    }
 }

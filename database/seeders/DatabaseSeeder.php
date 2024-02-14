@@ -43,5 +43,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CurrencySeeder::class);
 
         $this->call(PostSeeder::class);
+
+        $this->call(CardCodeSeeder::class);
     }
 }

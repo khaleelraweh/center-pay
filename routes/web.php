@@ -3,6 +3,7 @@
 use App\Http\Controllers\Backend\AdvertisorSliderController;
 use App\Http\Controllers\Backend\BackendController;
 use App\Http\Controllers\Backend\CardCategoriesController;
+use App\Http\Controllers\Backend\CardCodeController;
 use App\Http\Controllers\Backend\CardController;
 use App\Http\Controllers\Backend\CityController;
 use App\Http\Controllers\Backend\CommonQuestionController;
@@ -204,6 +205,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
 
         // });
+
+        Route::resource('card_codes', CardCodeController::class);
+
+
 
 
         // Route::resource('site_infos' , SiteSettingsController::class);
