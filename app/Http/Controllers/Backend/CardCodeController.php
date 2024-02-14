@@ -15,18 +15,18 @@ class CardCodeController extends Controller
             return redirect('admin/index');
         }
 
-        $aval_card_codes = CardCode::with('product')
+        $available_card_codes = CardCode::with('product')
             ->ActiveProduct()
             ->CardCategory()
             ->where('order_id', '<=', 0)
-            ->when(\request()->keyword != null, function ($query) {
-                $query->search(\request()->keyword);
+            ->when(\request()->keyword_available_codes != null, function ($query) {
+                $query->search(\request()->keyword_available_codes);
             })
-            ->when(\request()->status != null, function ($query) {
-                $query->where('status', \request()->status);
+            ->when(\request()->status_available_codes != null, function ($query) {
+                $query->where('status', \request()->status_available_codes);
             })
-            ->orderBy(\request()->sort_by ?? 'created_at', \request()->order_by ?? 'desc')
-            ->paginate(\request()->limit_by ?? 10, ['*'], 'aval_code');
+            ->orderBy(\request()->sort_by_available_codes ?? 'created_at', \request()->order_by_available_codes ?? 'desc')
+            ->paginate(\request()->limit_by_available_codes ?? 10, ['*'], 'available_code');
 
 
 
@@ -35,16 +35,16 @@ class CardCodeController extends Controller
             ->ActiveProduct()
             ->CardCategory()
             ->where('order_id', '<=', 0)
-            ->when(\request()->keyword != null, function ($query) {
-                $query->search(\request()->keyword);
+            ->when(\request()->keyword_used_code != null, function ($query) {
+                $query->search(\request()->keyword_used_code);
             })
-            ->when(\request()->status != null, function ($query) {
-                $query->where('status', \request()->status);
+            ->when(\request()->status_used_code != null, function ($query) {
+                $query->where('status', \request()->status_used_code);
             })
-            ->orderBy(\request()->sort_by ?? 'created_at', \request()->order_by ?? 'desc')
-            ->paginate(\request()->limit_by ?? 10, ['*'], 'used_code');
+            ->orderBy(\request()->sort_by_used_code ?? 'created_at', \request()->order_by_used_code ?? 'desc')
+            ->paginate(\request()->limit_by_used_code ?? 10, ['*'], 'used_code');
 
-        return view('backend.card_codes.index', compact('aval_card_codes', 'used_card_codes'));
+        return view('backend.card_codes.index', compact('available_card_codes', 'used_card_codes'));
     }
 
     public function create()

@@ -28,8 +28,8 @@
         </div>
 
         <div class="card-body">
-            {{-- filter form part  --}}
-            @include('backend.card_codes.filter.filter')
+            {{-- filter form part 
+            @include('backend.card_codes.filter.filter_avalible') --}}
 
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
@@ -78,6 +78,9 @@
                 <div class="tab-pane fade show active" id="cc_available_code" role="tabpanel"
                     aria-labelledby="cc_available_code-tab">
 
+                    {{-- filter form part  --}}
+                    @include('backend.card_codes.filter.filter_available')
+
                     {{-- table for available code   --}}
                     <div class="table-responsive">
                         <table class="table table-hover table-striped table-bordered dt-responsive nowrap"
@@ -93,7 +96,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($aval_card_codes as $card_code)
+                                @forelse ($available_card_codes as $card_code)
                                     <tr>
                                         <td class="d-none d-sm-table-cell">
                                             <span class="btn btn-primary"> {{ $card_code->code_type() }}</span>
@@ -135,7 +138,7 @@
                                 <tr>
                                     <td colspan="6">
                                         <div class="float-right">
-                                            {!! $aval_card_codes->appends(request()->all())->links() !!}
+                                            {!! $available_card_codes->appends(request()->all())->links() !!}
                                         </div>
                                     </td>
                                 </tr>
@@ -146,6 +149,9 @@
                 </div>
 
                 <div class="tab-pane fade" id="cc_codes_used" role="tabpanel" aria-labelledby="cc_codes_used-tab">
+
+                    {{-- filter form part  --}}
+                    @include('backend.card_codes.filter.filter_used')
 
                     {{-- table for codes used    --}}
                     <div class="table-responsive">
