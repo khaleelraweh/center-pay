@@ -27,7 +27,8 @@ class CardCode extends Model
 
     public function code_type()
     {
-        return $this->code_type ? __('panel.cc_direct_code') : __('panel.cc_Indirect_code');
+        //            code type ?              1               :              0
+        return $this->code_type ? __('panel.cc_Indirect_code') : __('panel.cc_direct_code');
     }
 
     public function scopeActive($query)

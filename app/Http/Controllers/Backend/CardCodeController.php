@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Backend\CardCodeRequest;
 use App\Models\CardCode;
 use App\Models\Product;
 use App\Models\ProductCategory;
@@ -40,7 +41,7 @@ class CardCodeController extends Controller
         $used_card_codes = CardCode::with('product')
             ->ActiveProduct()
             ->CardCategory()
-            ->where('order_id', '<=', 0)
+            ->where('order_id', '>', 0)
             ->when(\request()->keyword_used_code != null, function ($query) {
                 $query->search(\request()->keyword_used_code);
             })
@@ -67,7 +68,7 @@ class CardCodeController extends Controller
         return view('backend.card_codes.create', compact('product_categories', 'cards'));
     }
 
-    public function store(Request $request)
+    public function store(CardCodeRequest $request)
     {
 
         if (!auth()->user()->ability('admin', 'create_card_codes')) {
