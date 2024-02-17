@@ -207,6 +207,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         // });
 
         Route::resource('card_codes', CardCodeController::class);
+        Route::post('card_codes/custom_codes', [CardCodeController::class, 'store_custom_codes'])->name('card_codes.store_custom_codes');
+        Route::post('card_codes/custom_group_codes', [CardCodeController::class, 'store_custom_group_codes'])->name('card_codes.store_custom_group_codes');
+
 
 
 

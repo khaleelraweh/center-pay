@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('card_codes', function (Blueprint $table) {
             $table->id();
+            $table->string('code_name')->nullable();
             $table->string('code')->require();
             $table->tinyInteger('code_type')->default(0); // نوع الكود مباشر والصفر يعني مباشر  , غير مباشر والواحد يعني غير مباشر 
             $table->tinyInteger('encoding_type')->default(0);

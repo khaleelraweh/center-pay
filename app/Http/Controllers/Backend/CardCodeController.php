@@ -108,6 +108,82 @@ class CardCodeController extends Controller
         ]);
     }
 
+
+    public function  store_custom_codes(Request $request)
+    {
+
+        // dd($request->code[0]);
+
+        $custom_codes_list = [];
+        for ($i = 0; $i < count($request->code_name); $i++) {
+            if (!empty($request->code_name[$i]  && !empty(trim($request->code[$i])))) {
+                $custom_codes_list[$i]['code_name']         =   $request->code_name[$i];
+                $custom_codes_list[$i]['code']              =   trim($request->code[$i]);
+                $custom_codes_list[$i]['product_id']        =   $request->product_id;
+                $custom_codes_list[$i]['created_at']        =   now();
+            }
+        }
+
+        // dd($custom_codes_list);
+
+        $custom_codes = CardCode::insert($custom_codes_list);
+
+        if ($custom_codes) {
+            return redirect()->route('admin.card_codes.index')->with([
+                'message' => __('panel.created_successfully'),
+                'alert-type' => 'success'
+            ]);
+        }
+
+        return redirect()->route('admin.card_codes.index')->with([
+            'message' => __('panel.something_was_wrong'),
+            'alert-type' => 'danger'
+        ]);
+    }
+
+    public function  store_custom_group_codes(Request $request)
+    {
+
+        // dd($request);
+
+        $custom_codes = true;
+
+
+
+        for ($i = 0; $i < count($request->code_name); $i++) {
+            $custom_codes_list = [];
+            $arr = [];
+
+            $arr = explode("\n", $request->code[$i]);
+
+            foreach ($arr as $key => $value) {
+                if (!empty($request->code_name[$i]  && !empty(trim($value)))) {
+
+                    $custom_codes_list[$i]['code_name']         =   $request->code_name[$i];
+                    $custom_codes_list[$i]['code']              =   trim($value);
+                    $custom_codes_list[$i]['product_id']        =   $request->product_id;
+                    $custom_codes_list[$i]['created_at']        =   now();
+
+                    $card_codes                                 =   CardCode::insert($custom_codes_list);
+                }
+            }
+        }
+
+
+
+        if ($custom_codes) {
+            return redirect()->route('admin.card_codes.index')->with([
+                'message' => __('panel.created_successfully'),
+                'alert-type' => 'success'
+            ]);
+        }
+
+        return redirect()->route('admin.card_codes.index')->with([
+            'message' => __('panel.something_was_wrong'),
+            'alert-type' => 'danger'
+        ]);
+    }
+
     public function show($id)
     {
         if (!auth()->user()->ability('admin', 'display_card_codes')) {
