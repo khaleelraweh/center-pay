@@ -83,8 +83,8 @@
                     <div class="col-auto hdr-logo">
                         <a href="{{ route('frontend.index') }}" class="logo"><img
                                 srcset="
-                    {{ asset('frontend/images/games/logo-games.webp ') }}  1x,
-                    {{ asset('frontend/images/games/logo-games2x.webp') }} 2x
+                    {{ asset($dark == 'dark' ? 'frontend/images/games/logo-games.webp' : 'frontend/images/games/logo-games-white.webp') }}  1x,
+                    {{ asset($dark == 'dark' ? 'frontend/images/games/logo-games2x.webp' : 'frontend/images/games/logo-games-white.webp') }} 2x
                   "
                                 alt="سنتر باي" /></a>
                     </div>
