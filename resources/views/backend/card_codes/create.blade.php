@@ -76,7 +76,7 @@
                         @csrf
 
                         {{-- card category  field --}}
-                        <div class="row pt-4">
+                        <div class="row pt-3">
                             <div class="col-12 ">
                                 <label for="product_category_id">تصنيف البطائق</label>
                                 <select name="product_category_id" class="form-control">
@@ -92,7 +92,7 @@
                         </div>
 
                         {{-- card name  field --}}
-                        <div class="row pt-4">
+                        <div class="row pt-3">
                             <div class="col-12 ">
                                 <label for="card_id"> البطائق</label>
                                 <select name="product_id" class="form-control">
@@ -107,9 +107,24 @@
                             </div>
                         </div>
 
+                        {{-- card codes  --}}
+                        <div class="row pt-3">
+                            <div class="col-12">
+                                <label for="code">إضافة الاكواد</label>
+                                <textarea name="code" value="" id="code" style="width:100%;height:300px;"
+                                    placeholder="يرجي إدخال الاكواد الخاصة ومن ثم النقر على enter "></textarea>
+                            </div>
+                        </div>
 
-
-
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group pt-3 ">
+                                    <button type="submit" name="submit" class="btn btn-primary">
+                                        {{ __('panel.save_data') }}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                         {{-- {{ dd($product_categories) }} --}}
                     </form>
                 </div>
