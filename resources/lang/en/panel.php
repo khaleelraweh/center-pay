@@ -335,6 +335,12 @@ return [
     'cc_codes_used_by_administration'           => 'Codes used by the administration',
     'cc_using_and_printing_codes'               => 'Using and printing codes',
 
+    // card codes tab add 
+    'cc_add_direct_codes'                       =>  'Add Direct Codes',
+    'cc_add_custom_codes'                       =>  'Add Custom Codes',
+    'cc_add_custom_group_codes'                 =>  'Add Custom Group Codes',
+
+
 
     ##############################################################
 

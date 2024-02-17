@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\CardCode;
+use App\Models\Product;
+use App\Models\ProductCategory;
 use Illuminate\Http\Request;
 
 class CardCodeController extends Controller
@@ -57,11 +59,15 @@ class CardCodeController extends Controller
         }
 
         // get all categories that are active to choose one of them to be parent of product
-        $categories = ProductCategory::whereStatus(1)->whereSection(2)->get(['id', 'category_name']);
-        // get all tags to add some of them to product 
-        $tags = Tag::whereStatus(1)->get(['id', 'name']);
+        $product_categories = ProductCategory::whereStatus(1)->whereSection(2)->get(['id', 'category_name']);
+        // $cards = Product::whereStatus(1)->cardCategory()->get(['id', 'product_name']);
+        $cards = Product::whereStatus(1)->cardCategory();
+        $cards->where('id')
+            ->get(['id', 'product_name']);
 
-        return view('backend.cards.create', compact('categories', 'tags'));
+
+
+        return view('backend.card_codes.create', compact('product_categories', 'cards'));
     }
 
     public function store(CardRequest $request)

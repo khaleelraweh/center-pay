@@ -24,6 +24,16 @@
                     </li>
                 </ul>
             </div>
+            <div class="ml-auto">
+                @ability('admin', 'create_card_codes')
+                    <a href="{{ route('admin.card_codes.create') }}" class="btn btn-primary">
+                        <span class="icon text-white-50">
+                            <i class="fa fa-plus-square"></i>
+                        </span>
+                        <span class="text">{{ __('panel.add_new_card_codes') }}</span>
+                    </a>
+                @endability
+            </div>
 
         </div>
 
@@ -274,6 +284,7 @@
                 </div>
 
             </div>
+
         </div>
 
     </div>

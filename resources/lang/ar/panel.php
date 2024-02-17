@@ -300,14 +300,19 @@ return [
     'cc_order_id'                                   => 'رقم الطلب',
 
     // ............ card codes tabs ..................//
-    'cc_available_code'                         => 'الاكواد المتوفرة',
-    'cc_codes_used'                             => 'الاكواد المستخدمة',
-    'cc_codes_used_by_administration'           => 'الاكواد المستخدمة من قبل الإدارة',
-    'cc_using_and_printing_codes'               => 'إستخدام وطباعة الاكواد',
+    'cc_available_code'                             => 'الاكواد المتوفرة',
+    'cc_codes_used'                                 => 'الاكواد المستخدمة',
+    'cc_codes_used_by_administration'               => 'الاكواد المستخدمة من قبل الإدارة',
+    'cc_using_and_printing_codes'                   => 'إستخدام وطباعة الاكواد',
+
+    // card codes tab add 
+    'cc_add_direct_codes'                       =>  'إضافة اكواد مباشرة',
+    'cc_add_custom_codes'                       =>  'إضافة اكواد مخصصة',
+    'cc_add_custom_group_codes'                 =>  'إضافة مجموعة اكواد مخصصة',
 
 
     ################################ Manage payments ##############################
-    'manage_payments'               => 'إدارة عمليات الدفع',
+    'manage_payments'                               => 'إدارة عمليات الدفع',
 
     // --------------- payment categories   --------------//
     'show_payment_categories'       => 'تصنيفات الدفع',
