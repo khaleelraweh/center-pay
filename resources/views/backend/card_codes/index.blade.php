@@ -78,7 +78,7 @@
 
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link {{ $active_aval ? 'active' : '' }}" id="cc_available_code-tab"
+                    <button class="nav-link {{ $active_aval ? 'active' : '' }} " id="cc_available_code-tab"
                         data-bs-toggle="tab" data-bs-target="#cc_available_code" type="button" role="tab"
                         aria-controls="cc_available_code" aria-selected="true">
                         <i class="fa fa-code"></i>
