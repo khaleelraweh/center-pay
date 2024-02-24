@@ -18,23 +18,21 @@
             </div>
         </div>
 
-        @if (!is_null($selectedCardCategory))
-            {{-- card name  field --}}
-            <div class="row pt-3">
-                <div class="col-12 ">
-                    <label for="card_id"> البطائق</label>
-                    <select wire:model="selectedCard" name="product_id" class="form-control">
-                        <option value="">---</option>
-                        @forelse ($cards as $card)
-                            <option value="{{ $card->id }}"
-                                {{ old('product_id') == $card->id ? 'selected' : null }}>
-                                {{ $card->product_name }}</option>
-                        @empty
-                        @endforelse
-                    </select>
-                </div>
+        {{-- card name  field --}}
+        <div class="row pt-3">
+            <div class="col-12 ">
+                <label for="card_id"> البطائق</label>
+                <select wire:model="selectedCard" name="product_id" class="form-control">
+                    <option value="">---</option>
+                    @forelse ($cards as $card)
+                        <option value="{{ $card->id }}" {{ old('product_id') == $card->id ? 'selected' : null }}>
+                            {{ $card->product_name }}</option>
+                    @empty
+                    @endforelse
+                </select>
             </div>
-        @endif
+        </div>
+
 
 
 
