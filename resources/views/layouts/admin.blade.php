@@ -74,6 +74,8 @@
 
     @yield('style')
 
+    @livewireStyles
+
 
 
 
@@ -183,6 +185,7 @@
 
 
     @yield('script')
+    @livewireScripts
 
 
 </body>

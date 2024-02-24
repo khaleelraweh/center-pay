@@ -1,4 +1,5 @@
 <?php return array (
+  'backend.card-code.create-direct-code-component' => 'App\\Http\\Livewire\\Backend\\CardCode\\CreateDirectCodeComponent',
   'frontend.card-category.related-cards-component' => 'App\\Http\\Livewire\\Frontend\\CardCategory\\RelatedCardsComponent',
   'frontend.card.related-cards-component' => 'App\\Http\\Livewire\\Frontend\\Card\\RelatedCardsComponent',
   'frontend.card.update-qty-component' => 'App\\Http\\Livewire\\Frontend\\Card\\UpdateQtyComponent',
